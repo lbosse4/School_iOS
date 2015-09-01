@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     
     var roundNumber = 0
     var numQuestionsCorrect = 0
-    var numQuestionsAsked = 0
     var randomMultiplicandValue : UInt32 = 0
     var randomMultiplierValue :UInt32 = 0
     var currentAnswer = 0
@@ -59,8 +58,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func startButtonPressed(sender: AnyObject) {
+        startButton.hidden = true
+        answerLabel.hidden = true
+        
+        if startButton.currentTitle == "Restart"{
+            startButton.setTitle("Start", forState: .Normal)
+            numQuestionsCorrect = 0
+            correctAnswerProgressLabel.hidden = true
+        }
+        
         if startButton.currentTitle == "Start"{
-            startButton.hidden = true
             startButton.setTitle("Next", forState: .Normal)
             
         }
@@ -73,17 +80,6 @@ class ViewController: UIViewController {
             populateAnswerChoicesSegmentedControl(currentAnswer)
             answerChoicesSegmentedControl.hidden = false
             
-            roundNumber++
-            
-            if roundNumber >= numRoundsInGame {
-                startButton.setTitle("Restart", forState: .Normal)
-                roundNumber = 0
-            }
-            
-        }
-        
-        if startButton.currentTitle == "Restart"{
-            startButton.setTitle("Start", forState: .Normal)
         }
     }
     
@@ -101,11 +97,24 @@ class ViewController: UIViewController {
             break
         }
         
+        answerChoicesSegmentedControl.selectedSegmentIndex = -1
+        answerChoicesSegmentedControl.hidden = true
+        
         TESTLABEL.text = "user answer = \(userSelectedAnswer)"
         if userSelectedAnswer == currentAnswer {
+            directionLabel.text = "Correct! Great Job."
+            numQuestionsCorrect++
+            updateProgressLabel()
+            resetStartButton()
+            answerLabel.text = "\(currentAnswer)"
+            answerLabel.hidden = false
             
         } else {
-            
+            directionLabel.text = "Incorrect."
+            updateProgressLabel()
+            resetStartButton()
+            answerLabel.text = "\(currentAnswer)"
+            answerLabel.hidden = false
         }
     }
     
@@ -145,22 +154,6 @@ class ViewController: UIViewController {
 
         answerChoicesArray.shuffle()
         
-        //SHUFFLE ANSWERS
-        //answerChoicesArray
-        /*possible technique:
-        
-        initialize all to -1.
-        inside of while loop:
-        
-        Pick a random index
-        put answer there
-        repeat until all have been placed,
-        ONLY PLACE IF THE VALUE IN THAT INDEX IS -1
-        
-        NOTES FROM CLASS
-        
-        */
-        
         var tempAnswerOptionToString = ""
         for var i = 0; i < answerChoicesSegmentedControl.numberOfSegments; i++ {
             answerChoicesSegmentedControl.setTitle("\(answerChoicesArray[i])", forSegmentAtIndex: i)
@@ -185,11 +178,23 @@ class ViewController: UIViewController {
         }
     }
     
-    /* Correct code for naming the progress label
-    correctAnswerProgressMessage = "\(numbQuestionsCorrect)/\(numbQuestionsAsked) Questions Correct"
-    correctAnswerProgressLabel.text = correctAnswerProgressMessage
-    correctAnswerProgressLabel.hidden = false
-    */
+    func updateProgressLabel(){
+        roundNumber++
+        correctAnswerProgressLabel.text = "\(numQuestionsCorrect)/\(roundNumber) Questions Correct"
+        correctAnswerProgressLabel.hidden = false
+    }
+    
+    func resetStartButton(){
+        
+        if roundNumber >= numRoundsInGame {
+            startButton.setTitle("Restart", forState: .Normal)
+            roundNumber = 0
+        } else {
+            startButton.setTitle("Next", forState: .Normal)
+        }
+        
+        startButton.hidden = false
+    }
 
 }
 
