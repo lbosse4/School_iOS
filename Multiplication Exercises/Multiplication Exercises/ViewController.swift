@@ -57,7 +57,9 @@ class ViewController: UIViewController {
             startButton.hidden = true
             startButton.setTitle("Next", forState: .Normal)
             
-        } else if startButton.currentTitle == "Next"{
+        }
+        
+        if startButton.currentTitle == "Next"{
             directionLabel.text = "Pick correct answer."
             generateMultiplicationArgs()
             currentAnswer = Int(randomMultiplicandValue * randomMultiplierValue)
@@ -71,7 +73,9 @@ class ViewController: UIViewController {
                 roundNumber = 0
             }
             
-        } else if startButton.currentTitle == "Restart"{
+        }
+        
+        if startButton.currentTitle == "Restart"{
             startButton.setTitle("Start", forState: .Normal)
         }
     }
