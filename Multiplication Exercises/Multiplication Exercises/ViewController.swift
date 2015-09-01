@@ -113,7 +113,7 @@ class ViewController: UIViewController {
             loopCounter++
         }
 
-        
+        answerChoicesArray.shuffle()
         
         //SHUFFLE ANSWERS
         //answerChoicesArray
@@ -161,5 +161,23 @@ class ViewController: UIViewController {
     correctAnswerProgressLabel.hidden = false
     */
 
+}
+
+extension Array {
+    mutating func shuffle() {
+        for var i = self.count - 1; i > 0; i-- {
+            var j = Int(arc4random_uniform(UInt32(i)))
+            swap(&(self[i]), &(self[j]))
+        }
+    }
+    
+    func shuffledCopy() -> [Element] {
+        var copy : [T] = Array()
+        for element in self {
+            let index = Int(arc4random_uniform(UInt32(copy.count+1)))
+            copy.insert(element, atIndex: index)
+        }
+        return copy
+    }
 }
 
