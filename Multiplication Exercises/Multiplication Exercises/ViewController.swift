@@ -96,14 +96,21 @@ class ViewController: UIViewController {
     func populateAnswerChoicesSegmentedControl(answer: Int) {
         answerChoicesArray[0] = answer
         
-        var answerChoicesArrayIsPopulated = 0
         var loopCounter = 1
-        while(answerChoicesArrayIsPopulated != 1){
-            generateAnswerChoice(currentAnswer)
-            for var i = loopCounter; i > 1; i-- {
-                
+        var tempAnswerChoice = 0
+        var tempLoopCounter = 0
+        while(loopCounter < answerChoicesSegmentedControl.numberOfSegments){
+            tempAnswerChoice = generateAnswerChoice(currentAnswer)
+            tempLoopCounter = loopCounter
+            for var i = loopCounter; i > 0; i-- {
+                if tempAnswerChoice == answerChoicesArray[i]{
+                    loopCounter--
+                }
             }
-            answerChoicesArrayIsPopulated = 1
+            if tempLoopCounter == loopCounter{
+                answerChoicesArray[loopCounter] = tempAnswerChoice
+            }
+            loopCounter++
         }
 
         //SHUFFLE ANSWERS
