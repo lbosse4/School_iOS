@@ -11,8 +11,14 @@ import UIKit
 class ViewController: UIViewController {
 
     let numbPossibleAnswers = 4
+    //This is exclusive
+    let multiplicationArgsUpperBound : UInt32 = 16
     var numbQuestionsCorrect = 0
     var numbQuestionsAsked = 0
+    var randomMultiplicandValue : UInt32 = 0
+    var randomMultiplierValue :UInt32 = 0
+    var multiplicandValueToText = ""
+    var multiplierValueToText = ""
     var correctAnswerProgressMessage = ""
     
     @IBOutlet weak var multiplicandLabel: UILabel!
@@ -22,6 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var answerChoicesSegmentedControl: UISegmentedControl!
     @IBOutlet weak var correctAnswerProgressLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var directionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +49,26 @@ class ViewController: UIViewController {
     @IBAction func startButtonPressed(sender: AnyObject) {
         if startButton.currentTitle == "Start"{
             startButton.hidden = true
+            directionLabel.text = "Pick correct answer."
             startButton.setTitle("Next", forState: .Normal)
-            
+            generateMultiplicationArgs()
         }
     }
     
     func generateMultiplicationArgs() {
+        randomMultiplicandValue = arc4random_uniform(multiplicationArgsUpperBound)
+        randomMultiplierValue = arc4random_uniform(multiplicationArgsUpperBound)
         
+        multiplicandValueToText = "\(randomMultiplicandValue)"
+        multiplierValueToText = "\(randomMultiplierValue)"
+        
+        multiplicandLabel.text = multiplicandValueToText
+        multiplierLabel.text = multiplierValueToText
+        
+        multiplicandLabel.hidden = false
+        multiplierLabel.hidden = false
+        multiplicationSymbolLabel.hidden = false
+        horizontalLineLabel.hidden = false
     }
     
     /* Correct code for naming the progress label
