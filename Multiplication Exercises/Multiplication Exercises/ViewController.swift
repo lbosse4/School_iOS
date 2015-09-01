@@ -10,24 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let numbPossibleAnswers = 4
     //This is exclusive
     let multiplicationArgsUpperBound: UInt32 = 16
-    let numbRoundsInGame = 10
+    let numRoundsInGame = 10
     let allowedDistanceFromRightAnswer: UInt32 = 5
+    let numPositiveOrNegativeOptions: UInt32 = 2
     
     var roundNumber = 0
-    var numbQuestionsCorrect = 0
-    var numbQuestionsAsked = 0
+    var numQuestionsCorrect = 0
+    var numQuestionsAsked = 0
     var randomMultiplicandValue : UInt32 = 0
     var randomMultiplierValue :UInt32 = 0
     var currentAnswer = 0
     
     var answerChoicesArray = [0,0,0,0]
-    
-    var multiplicandValueToText = ""
-    var multiplierValueToText = ""
-    var correctAnswerProgressMessage = ""
     
     @IBOutlet weak var multiplicandLabel: UILabel!
     @IBOutlet weak var multiplierLabel: UILabel!
@@ -60,9 +56,8 @@ class ViewController: UIViewController {
         if startButton.currentTitle == "Start"{
             startButton.hidden = true
             startButton.setTitle("Next", forState: .Normal)
-        }
-        
-        if startButton.currentTitle == "Next"{
+            
+        } else if startButton.currentTitle == "Next"{
             directionLabel.text = "Pick correct answer."
             generateMultiplicationArgs()
             currentAnswer = Int(randomMultiplicandValue * randomMultiplierValue)
@@ -71,12 +66,12 @@ class ViewController: UIViewController {
             
             roundNumber++
             
-            if roundNumber >= numbRoundsInGame {
+            if roundNumber >= numRoundsInGame {
                 startButton.setTitle("Restart", forState: .Normal)
                 roundNumber = 0
             }
-        }
-        if startButton.currentTitle == "Restart"{
+            
+        } else if startButton.currentTitle == "Restart"{
             startButton.setTitle("Start", forState: .Normal)
         }
     }
@@ -85,11 +80,8 @@ class ViewController: UIViewController {
         randomMultiplicandValue = arc4random_uniform(multiplicationArgsUpperBound)
         randomMultiplierValue = arc4random_uniform(multiplicationArgsUpperBound)
         
-        multiplicandValueToText = "\(randomMultiplicandValue)"
-        multiplierValueToText = "\(randomMultiplierValue)"
-        
-        multiplicandLabel.text = multiplicandValueToText
-        multiplierLabel.text = multiplierValueToText
+        multiplicandLabel.text = "\(randomMultiplicandValue)"
+        multiplierLabel.text = "\(randomMultiplierValue)"
         
         multiplicandLabel.hidden = false
         multiplierLabel.hidden = false
@@ -97,12 +89,16 @@ class ViewController: UIViewController {
         horizontalLineLabel.hidden = false
     }
     
-    func populateAnswerChoicesSegmentedControl(answer:Int) {
+    func populateAnswerChoicesSegmentedControl(answer: Int) {
         answerChoicesArray[0] = answer
-        answerChoicesArray[1] = answer + Int(arc4random_uniform(allowedDistanceFromRightAnswer)) + 1
-        answerChoicesArray[2] = answer + Int(arc4random_uniform(allowedDistanceFromRightAnswer)) + 1
-        answerChoicesArray[3] = answer + Int(arc4random_uniform(allowedDistanceFromRightAnswer)) + 1
         
+        /* figure out how to populate the other three
+        var answerChoicesArrayIsPopulated = 0
+        var counter = 0
+        while(answerChoicesArrayIsPopulated != 1){
+            
+        }
+        */
         //SHUFFLE ANSWERS
         //answerChoicesArray
         
@@ -112,6 +108,23 @@ class ViewController: UIViewController {
         }
     }
     
+    func generateAnswerChoice(answer: Int) -> Int {
+        
+        if answer < Int(allowedDistanceFromRightAnswer) {
+            return answer + Int(arc4random_uniform(allowedDistanceFromRightAnswer)) + 1
+            
+        } else {
+            //this variable randomly decides whether the random value is added or subtracted
+            var plusOrMinusIndicator = Int(arc4random_uniform(numPositiveOrNegativeOptions))
+            
+            if plusOrMinusIndicator == 0{
+                return answer + Int(arc4random_uniform(allowedDistanceFromRightAnswer)) + 1
+            }
+            else{
+                return answer - Int(arc4random_uniform(allowedDistanceFromRightAnswer)) - 1
+            }
+        }
+    }
     
     /* Correct code for naming the progress label
     correctAnswerProgressMessage = "\(numbQuestionsCorrect)/\(numbQuestionsAsked) Questions Correct"
