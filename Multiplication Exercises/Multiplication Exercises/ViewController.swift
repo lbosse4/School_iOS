@@ -22,8 +22,14 @@ class ViewController: UIViewController {
     var randomMultiplicandValue : UInt32 = 0
     var randomMultiplierValue :UInt32 = 0
     var currentAnswer = 0
+    var userSelectedAnswer = 0
     
     var answerChoicesArray = [0,0,0,0]
+    
+    @IBOutlet weak var TESTLABEL: UILabel!
+    
+    
+    
     
     @IBOutlet weak var multiplicandLabel: UILabel!
     @IBOutlet weak var multiplierLabel: UILabel!
@@ -61,6 +67,7 @@ class ViewController: UIViewController {
         
         if startButton.currentTitle == "Next"{
             directionLabel.text = "Pick correct answer."
+            
             generateMultiplicationArgs()
             currentAnswer = Int(randomMultiplicandValue * randomMultiplierValue)
             populateAnswerChoicesSegmentedControl(currentAnswer)
@@ -79,6 +86,29 @@ class ViewController: UIViewController {
             startButton.setTitle("Start", forState: .Normal)
         }
     }
+    
+    @IBAction func answerChoiceIndexChanged(sender: UISegmentedControl) {
+        switch answerChoicesSegmentedControl.selectedSegmentIndex {
+        case 0:
+            userSelectedAnswer = answerChoicesArray[0]
+        case 1:
+            userSelectedAnswer = answerChoicesArray[1]
+        case 2:
+            userSelectedAnswer = answerChoicesArray[2]
+        case 3:
+            userSelectedAnswer = answerChoicesArray[3]
+        default:
+            break
+        }
+        
+        TESTLABEL.text = "user answer = \(userSelectedAnswer)"
+        if userSelectedAnswer == currentAnswer {
+            
+        } else {
+            
+        }
+    }
+    
     
     func generateMultiplicationArgs() {
         randomMultiplicandValue = arc4random_uniform(multiplicationArgsUpperBound)
@@ -165,7 +195,7 @@ class ViewController: UIViewController {
 
 extension Array {
     mutating func shuffle() {
-        for var i = self.count - 1; i > 0; i-- {
+        for var i = self.count - 1; i >= 0; i-- {
             var j = Int(arc4random_uniform(UInt32(i)))
             swap(&(self[i]), &(self[j]))
         }
