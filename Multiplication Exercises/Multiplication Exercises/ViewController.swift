@@ -25,11 +25,6 @@ class ViewController: UIViewController {
     
     var answerChoicesArray = [0,0,0,0]
     
-    @IBOutlet weak var TESTLABEL: UILabel!
-    
-    
-    
-    
     @IBOutlet weak var multiplicandLabel: UILabel!
     @IBOutlet weak var multiplierLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
@@ -100,7 +95,6 @@ class ViewController: UIViewController {
         answerChoicesSegmentedControl.selectedSegmentIndex = -1
         answerChoicesSegmentedControl.hidden = true
         
-        TESTLABEL.text = "user answer = \(userSelectedAnswer)"
         if userSelectedAnswer == currentAnswer {
             directionLabel.text = "Correct! Great Job."
             numQuestionsCorrect++
@@ -201,7 +195,7 @@ class ViewController: UIViewController {
 extension Array {
     mutating func shuffle() {
         for var i = self.count - 1; i >= 0; i-- {
-            var j = Int(arc4random_uniform(UInt32(i)))
+            var j = Int(arc4random_uniform(UInt32(self.count)))
             swap(&(self[i]), &(self[j]))
         }
     }
