@@ -10,9 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var multiplicandLabel: UILabel!
+    @IBOutlet weak var multiplierLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        multiplicandLabel.hidden = true
+        multiplierLabel.hidden = true
+        
     }
 
     override func didReceiveMemoryWarning() {
