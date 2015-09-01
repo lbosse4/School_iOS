@@ -96,15 +96,29 @@ class ViewController: UIViewController {
     func populateAnswerChoicesSegmentedControl(answer: Int) {
         answerChoicesArray[0] = answer
         
-        /* figure out how to populate the other three
         var answerChoicesArrayIsPopulated = 0
-        var counter = 0
+        var loopCounter = 1
         while(answerChoicesArrayIsPopulated != 1){
-            
+            generateAnswerChoice(currentAnswer)
+            for var i = loopCounter; i > 1; i-- {
+                
+            }
+            answerChoicesArrayIsPopulated = 1
         }
-        */
+
         //SHUFFLE ANSWERS
         //answerChoicesArray
+        /*possible technique:
+        
+        initialize all to -1.
+        inside of while loop:
+        
+        Pick a random index
+        put answer there
+        repeat until all have been placed,
+        ONLY PLACE IF THE VALUE IN THAT INDEX IS -1
+        
+        */
         
         var tempAnswerOptionToString = ""
         for var i = 0; i < answerChoicesSegmentedControl.numberOfSegments; i++ {
