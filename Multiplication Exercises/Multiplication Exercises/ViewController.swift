@@ -102,6 +102,14 @@ class ViewController: UIViewController {
         answerChoicesArray[1] = answer + Int(arc4random_uniform(allowedDistanceFromRightAnswer)) + 1
         answerChoicesArray[2] = answer + Int(arc4random_uniform(allowedDistanceFromRightAnswer)) + 1
         answerChoicesArray[3] = answer + Int(arc4random_uniform(allowedDistanceFromRightAnswer)) + 1
+        
+        //SHUFFLE ANSWERS
+        //answerChoicesArray
+        
+        var tempAnswerOptionToString = ""
+        for var i = 0; i < answerChoicesSegmentedControl.numberOfSegments; i++ {
+            answerChoicesSegmentedControl.setTitle("\(answerChoicesArray[i])", forSegmentAtIndex: i)
+        }
     }
     
     
