@@ -113,6 +113,8 @@ class ViewController: UIViewController {
             loopCounter++
         }
 
+        
+        
         //SHUFFLE ANSWERS
         //answerChoicesArray
         /*possible technique:
@@ -124,6 +126,8 @@ class ViewController: UIViewController {
         put answer there
         repeat until all have been placed,
         ONLY PLACE IF THE VALUE IN THAT INDEX IS -1
+        
+        NOTES FROM CLASS
         
         */
         
