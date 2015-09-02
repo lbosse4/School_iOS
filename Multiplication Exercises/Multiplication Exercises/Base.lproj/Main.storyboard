@@ -19,11 +19,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2015-08-31 at 11.57.01 AM.png" id="3ob-Lc-PwA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chalkboard.png" id="3ob-Lc-PwA">
                                 <rect key="frame" x="0.0" y="111" width="320" height="296"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2015-08-31 at 12.08.26 PM.png" id="5LS-0v-3yg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Floor.png" id="5LS-0v-3yg">
                                 <rect key="frame" x="0.0" y="487" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="0.94896194152273483" blue="0.96967987769952491" alpha="1" colorSpace="calibratedRGB"/>
@@ -127,8 +127,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Screen Shot 2015-08-31 at 11.57.01 AM.png" width="698" height="423"/>
-        <image name="Screen Shot 2015-08-31 at 12.08.26 PM.png" width="458" height="119"/>
+        <image name="Chalkboard.png" width="698" height="423"/>
+        <image name="Floor.png" width="458" height="119"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    //This is exclusive
     let multiplicationArgsUpperBound: UInt32 = 16
     let numRoundsInGame = 10
     let allowedDistanceFromRightAnswer: UInt32 = 5
@@ -22,8 +21,15 @@ class ViewController: UIViewController {
     var randomMultiplierValue :UInt32 = 0
     var currentAnswer = 0
     var userSelectedAnswer = 0
+    var currentStartButtonState = startButtonOptions.Start
     
     var answerChoicesArray = [0,0,0,0]
+    
+    enum startButtonOptions: String{
+        case Restart = "Restart"
+        case Start = "Start"
+        case Next = "Next"
+    }
     
     @IBOutlet weak var multiplicandLabel: UILabel!
     @IBOutlet weak var multiplierLabel: UILabel!
@@ -45,6 +51,8 @@ class ViewController: UIViewController {
         multiplicationSymbolLabel.hidden = true
         answerChoicesSegmentedControl.hidden = true
         correctAnswerProgressLabel.hidden = true
+        answerLabel.hidden = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,26 +64,32 @@ class ViewController: UIViewController {
         startButton.hidden = true
         answerLabel.hidden = true
         
-        if startButton.currentTitle == "Restart"{
+        switch currentStartButtonState {
+        case .Restart:
+            currentStartButtonState = startButtonOptions.Start
             startButton.setTitle("Start", forState: .Normal)
             numQuestionsCorrect = 0
             correctAnswerProgressLabel.hidden = true
-        }
-        
-        if startButton.currentTitle == "Start"{
-            startButton.setTitle("Next", forState: .Normal)
+            fallthrough
             
-        }
-        
-        if startButton.currentTitle == "Next"{
+        case .Start:
+            currentStartButtonState = startButtonOptions.Next
+            startButton.setTitle("Next", forState: .Normal)
+            fallthrough
+            
+        case .Next:
             directionLabel.text = "Pick correct answer."
             
             generateMultiplicationArgs()
             currentAnswer = Int(randomMultiplicandValue * randomMultiplierValue)
-            populateAnswerChoicesSegmentedControl(currentAnswer)
+            populateSegmentedControlAnswerChoices(currentAnswer)
             answerChoicesSegmentedControl.hidden = false
+            break
             
+        default:
+            break
         }
+        
     }
     
     @IBAction func answerChoiceIndexChanged(sender: UISegmentedControl) {
@@ -126,7 +140,7 @@ class ViewController: UIViewController {
         horizontalLineLabel.hidden = false
     }
     
-    func populateAnswerChoicesSegmentedControl(answer: Int) {
+    func populateSegmentedControlAnswerChoices(answer: Int) {
         answerChoicesArray[0] = answer
         
         var loopCounter = 1
@@ -181,9 +195,11 @@ class ViewController: UIViewController {
     func resetStartButton(){
         
         if roundNumber >= numRoundsInGame {
+            currentStartButtonState = startButtonOptions.Restart
             startButton.setTitle("Restart", forState: .Normal)
             roundNumber = 0
         } else {
+            currentStartButtonState = startButtonOptions.Next
             startButton.setTitle("Next", forState: .Normal)
         }
         
