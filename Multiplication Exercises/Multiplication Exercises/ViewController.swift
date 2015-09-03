@@ -92,38 +92,26 @@ class ViewController: UIViewController {
         
     }
     
+    //called when user chooses an answer
     @IBAction func answerChoiceIndexChanged(sender: UISegmentedControl) {
-        switch answerChoicesSegmentedControl.selectedSegmentIndex {
-        case 0:
-            userSelectedAnswer = answerChoicesArray[0]
-        case 1:
-            userSelectedAnswer = answerChoicesArray[1]
-        case 2:
-            userSelectedAnswer = answerChoicesArray[2]
-        case 3:
-            userSelectedAnswer = answerChoicesArray[3]
-        default:
-            break
-        }
+        let currentSelectedAnswerIndex = answerChoicesSegmentedControl.selectedSegmentIndex
+        userSelectedAnswer = answerChoicesArray[currentSelectedAnswerIndex]
         
+        //deselect and hide all segments
         answerChoicesSegmentedControl.selectedSegmentIndex = -1
         answerChoicesSegmentedControl.hidden = true
         
         if userSelectedAnswer == currentAnswer {
             directionLabel.text = "Correct! Great Job."
             numQuestionsCorrect++
-            updateProgressLabel()
-            resetStartButton()
-            answerLabel.text = "\(currentAnswer)"
-            answerLabel.hidden = false
-            
         } else {
             directionLabel.text = "Incorrect."
-            updateProgressLabel()
-            resetStartButton()
-            answerLabel.text = "\(currentAnswer)"
-            answerLabel.hidden = false
         }
+        
+        updateProgressLabel()
+        resetStartButton()
+        answerLabel.text = "\(currentAnswer)"
+        answerLabel.hidden = false
     }
     
     
@@ -146,9 +134,14 @@ class ViewController: UIViewController {
         var loopCounter = 1
         var tempAnswerChoice = 0
         var tempLoopCounter = 0
+        
         while(loopCounter < answerChoicesSegmentedControl.numberOfSegments){
             tempAnswerChoice = generateAnswerChoice(currentAnswer)
             tempLoopCounter = loopCounter
+            
+        
+            //array has function called .containsObject
+            
             for var i = loopCounter; i > 0; i-- {
                 if tempAnswerChoice == answerChoicesArray[i]{
                     loopCounter--
@@ -162,7 +155,6 @@ class ViewController: UIViewController {
 
         answerChoicesArray.shuffle()
         
-        var tempAnswerOptionToString = ""
         for var i = 0; i < answerChoicesSegmentedControl.numberOfSegments; i++ {
             answerChoicesSegmentedControl.setTitle("\(answerChoicesArray[i])", forSegmentAtIndex: i)
         }
@@ -198,9 +190,6 @@ class ViewController: UIViewController {
             currentStartButtonState = startButtonOptions.Restart
             startButton.setTitle("Restart", forState: .Normal)
             roundNumber = 0
-        } else {
-            currentStartButtonState = startButtonOptions.Next
-            startButton.setTitle("Next", forState: .Normal)
         }
         
         startButton.hidden = false
