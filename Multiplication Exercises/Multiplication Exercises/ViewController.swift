@@ -63,6 +63,7 @@ class ViewController: UIViewController {
     @IBAction func startButtonPressed(sender: AnyObject) {
         startButton.hidden = true
         answerLabel.hidden = true
+        directionLabel.textColor = UIColor.blackColor()
         
         switch currentStartButtonState {
         case .Restart:
@@ -103,9 +104,11 @@ class ViewController: UIViewController {
         
         if userSelectedAnswer == currentAnswer {
             directionLabel.text = "Correct! Great Job."
+            directionLabel.textColor = UIColor(red: 0.0, green: 0.502, blue: 0.004, alpha: 1.0)
             numQuestionsCorrect++
         } else {
             directionLabel.text = "Incorrect."
+            directionLabel.textColor = UIColor.redColor()
         }
         
         updateProgressLabel()
@@ -130,27 +133,21 @@ class ViewController: UIViewController {
     
     func populateSegmentedControlAnswerChoices(answer: Int) {
         answerChoicesArray[0] = answer
+        for (var i = 1; i < answerChoicesSegmentedControl.numberOfSegments; i++){
+            answerChoicesArray[i] = 0
+        }
         
-        var loopCounter = 1
+        //var loopCounter = 1
         var tempAnswerChoice = 0
-        var tempLoopCounter = 0
+        //var tempLoopCounter = 0
         
-        while(loopCounter < answerChoicesSegmentedControl.numberOfSegments){
+        for(var i = 1; i < answerChoicesSegmentedControl.numberOfSegments; i++){
             tempAnswerChoice = generateAnswerChoice(currentAnswer)
-            tempLoopCounter = loopCounter
             
-        
-            //array has function called .containsObject
-            
-            for var i = loopCounter; i > 0; i-- {
-                if tempAnswerChoice == answerChoicesArray[i]{
-                    loopCounter--
-                }
+            while (contains(answerChoicesArray, tempAnswerChoice)){
+                tempAnswerChoice = generateAnswerChoice(currentAnswer)
             }
-            if tempLoopCounter == loopCounter{
-                answerChoicesArray[loopCounter] = tempAnswerChoice
-            }
-            loopCounter++
+            answerChoicesArray[i] = tempAnswerChoice
         }
 
         answerChoicesArray.shuffle()
