@@ -34,7 +34,7 @@
                                     <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="26"/>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="26"/>
+                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="23"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="24"/>
@@ -147,6 +147,7 @@
                             <constraint firstItem="lha-Lb-Yud" firstAttribute="centerX" secondItem="3ob-Lc-PwA" secondAttribute="centerX" constant="-7" id="16u-PM-Die"/>
                             <constraint firstAttribute="centerX" secondItem="0NH-Fw-kfL" secondAttribute="centerX" constant="-11" id="2vm-d2-egH"/>
                             <constraint firstItem="0NH-Fw-kfL" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="-72" id="2zG-RK-jlG">
+                                <variation key="heightClass=compact-widthClass=regular" constant="-52"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-98"/>
                             </constraint>
                             <constraint firstItem="Nwf-1a-Afp" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="-1" id="3v9-14-P2b">
@@ -162,14 +163,22 @@
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="XQA-4b-1Gb" secondAttribute="centerX" id="Eza-0n-KLa"/>
                             <constraint firstItem="V1K-XJ-rvC" firstAttribute="trailing" secondItem="Nwf-1a-Afp" secondAttribute="trailing" id="I48-Fc-tTT"/>
-                            <constraint firstItem="3ob-Lc-PwA" firstAttribute="top" secondItem="lha-Lb-Yud" secondAttribute="bottom" constant="17" id="Jff-YK-Y3L"/>
-                            <constraint firstItem="5LS-0v-3yg" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="73" id="Jvp-No-Qg1"/>
+                            <constraint firstItem="3ob-Lc-PwA" firstAttribute="top" secondItem="lha-Lb-Yud" secondAttribute="bottom" constant="17" id="Jff-YK-Y3L">
+                                <variation key="heightClass=compact-widthClass=regular" constant="-6"/>
+                            </constraint>
+                            <constraint firstItem="5LS-0v-3yg" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="73" id="Jvp-No-Qg1">
+                                <variation key="heightClass=compact-widthClass=regular" constant="59"/>
+                            </constraint>
                             <constraint firstAttribute="centerX" secondItem="V1K-XJ-rvC" secondAttribute="centerX" id="KBW-bp-a6i"/>
                             <constraint firstItem="XQA-4b-1Gb" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="2" id="Knn-5x-ra0"/>
-                            <constraint firstItem="lha-Lb-Yud" firstAttribute="top" secondItem="in4-H6-nyX" secondAttribute="bottom" id="Ro0-iE-jcc"/>
+                            <constraint firstItem="lha-Lb-Yud" firstAttribute="top" secondItem="in4-H6-nyX" secondAttribute="bottom" id="Ro0-iE-jcc">
+                                <variation key="heightClass=compact-widthClass=regular" constant="-13"/>
+                            </constraint>
                             <constraint firstItem="ARl-B3-RRo" firstAttribute="centerY" secondItem="5LS-0v-3yg" secondAttribute="centerY" constant="0.5" id="Tkd-FO-xU4"/>
                             <constraint firstAttribute="centerX" secondItem="JVs-fL-uTq" secondAttribute="centerX" id="baX-il-qPN"/>
-                            <constraint firstItem="3ob-Lc-PwA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="bd8-Tp-3Al"/>
+                            <constraint firstItem="3ob-Lc-PwA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="bd8-Tp-3Al">
+                                <variation key="heightClass=compact-widthClass=regular" constant="45"/>
+                            </constraint>
                             <constraint firstAttribute="centerX" secondItem="2By-eh-M7Z" secondAttribute="centerX" constant="-1.5" id="dqP-Cj-vNd"/>
                             <constraint firstItem="Nwf-1a-Afp" firstAttribute="leading" secondItem="7tE-SW-Qgo" secondAttribute="trailing" constant="-23" id="gaB-4y-Nae">
                                 <variation key="heightClass=regular-widthClass=regular" constant="-80"/>
@@ -180,10 +189,14 @@
                             <constraint firstAttribute="centerX" secondItem="3ob-Lc-PwA" secondAttribute="centerX" id="nnt-G3-0qH"/>
                             <constraint firstItem="V1K-XJ-rvC" firstAttribute="trailing" secondItem="JVs-fL-uTq" secondAttribute="trailing" id="odV-ez-2YK"/>
                             <constraint firstItem="5LS-0v-3yg" firstAttribute="top" secondItem="1nz-Gf-jw6" secondAttribute="bottom" constant="2" id="pco-ru-Hhl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3ob-Lc-PwA" secondAttribute="trailing" constant="-16" id="qE2-HK-pwZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3ob-Lc-PwA" secondAttribute="trailing" constant="-16" id="qE2-HK-pwZ">
+                                <variation key="heightClass=compact-widthClass=regular" constant="45"/>
+                            </constraint>
                             <constraint firstItem="ARl-B3-RRo" firstAttribute="centerX" secondItem="5LS-0v-3yg" secondAttribute="centerX" constant="1" id="qSm-Ll-DgA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5LS-0v-3yg" secondAttribute="trailing" constant="-24" id="rRZ-wT-36Y"/>
-                            <constraint firstItem="0NH-Fw-kfL" firstAttribute="width" secondItem="3ob-Lc-PwA" secondAttribute="height" multiplier="249:300" constant="-21" id="zk2-0p-UH2"/>
+                            <constraint firstItem="0NH-Fw-kfL" firstAttribute="width" secondItem="3ob-Lc-PwA" secondAttribute="height" multiplier="249:300" constant="-21" id="zk2-0p-UH2">
+                                <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                            </constraint>
                         </constraints>
                     </view>
                     <connections>
