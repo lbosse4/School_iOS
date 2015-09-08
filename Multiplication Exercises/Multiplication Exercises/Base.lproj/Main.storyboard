@@ -44,7 +44,10 @@
                                 <rect key="frame" x="-8" y="484" width="616" height="116"/>
                                 <color key="tintColor" red="1" green="0.94896194152273483" blue="0.96967987769952491" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="5LS-0v-3yg" secondAttribute="height" multiplier="600:113" id="uP7-52-Xfx"/>
+                                    <constraint firstAttribute="width" secondItem="5LS-0v-3yg" secondAttribute="height" multiplier="600:113" id="uP7-52-Xfx">
+                                        <variation key="heightClass=compact-widthClass=regular" constant="450"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="500"/>
+                                    </constraint>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chalkboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-Lc-PwA">
@@ -56,7 +59,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="125"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plier" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwf-1a-Afp">
@@ -65,7 +68,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="125"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="0NH-Fw-kfL">
@@ -99,7 +102,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="125"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press Start to begin." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nz-Gf-jw6">
@@ -120,7 +123,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="125"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tE-SW-Qgo">
@@ -129,31 +132,33 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="125"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96010890151515149" green="0.92441524121576457" blue="0.74170044801339019" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JVs-fL-uTq" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="50" id="0tK-T9-Gjm">
-                                <variation key="heightClass=regular-widthClass=regular" constant="160"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="115"/>
                             </constraint>
                             <constraint firstItem="3ob-Lc-PwA" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="-66" id="13I-aa-x53">
-                                <variation key="heightClass=regular-widthClass=regular" constant="-190"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-160"/>
                             </constraint>
                             <constraint firstItem="lha-Lb-Yud" firstAttribute="centerX" secondItem="3ob-Lc-PwA" secondAttribute="centerX" constant="-7" id="16u-PM-Die"/>
                             <constraint firstAttribute="centerX" secondItem="0NH-Fw-kfL" secondAttribute="centerX" constant="-11" id="2vm-d2-egH"/>
                             <constraint firstItem="0NH-Fw-kfL" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="-72" id="2zG-RK-jlG">
-                                <variation key="heightClass=regular-widthClass=regular" constant="-100"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-98"/>
                             </constraint>
-                            <constraint firstItem="Nwf-1a-Afp" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="-1" id="3v9-14-P2b"/>
+                            <constraint firstItem="Nwf-1a-Afp" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="-1" id="3v9-14-P2b">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-13"/>
+                            </constraint>
                             <constraint firstItem="V1K-XJ-rvC" firstAttribute="trailing" secondItem="2By-eh-M7Z" secondAttribute="trailing" constant="-1" id="5nD-OD-foj"/>
                             <constraint firstItem="2By-eh-M7Z" firstAttribute="top" secondItem="7tE-SW-Qgo" secondAttribute="bottom" constant="-34" id="6oC-zS-fpr">
-                                <variation key="heightClass=regular-widthClass=regular" constant="-130"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-115"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="Nwf-1a-Afp" secondAttribute="centerX" id="8id-Gu-psX"/>
                             <constraint firstItem="2By-eh-M7Z" firstAttribute="top" secondItem="Nwf-1a-Afp" secondAttribute="bottom" constant="-34" id="CX3-bK-39V">
-                                <variation key="heightClass=regular-widthClass=regular" constant="-125"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-108"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="XQA-4b-1Gb" secondAttribute="centerX" id="Eza-0n-KLa"/>
                             <constraint firstItem="V1K-XJ-rvC" firstAttribute="trailing" secondItem="Nwf-1a-Afp" secondAttribute="trailing" id="I48-Fc-tTT"/>
