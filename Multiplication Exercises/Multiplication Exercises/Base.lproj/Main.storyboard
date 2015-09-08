@@ -18,8 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Multiplication Exercises" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lha-Lb-Yud">
-                                <rect key="frame" x="0.0" y="14" width="320" height="97"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiplication Exercises" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lha-Lb-Yud">
+                                <rect key="frame" x="179" y="20" width="243" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="97" id="UJb-F1-ufz"/>
+                                    <constraint firstAttribute="width" constant="243" id="hEq-Wl-LOf"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="31"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -62,18 +66,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARl-B3-RRo">
-                                <rect key="frame" x="100" y="505" width="121" height="46"/>
-                                <color key="backgroundColor" red="0.19946371009061953" green="0.36987963272430191" blue="0.10477248074573711" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="34"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EpG-3K-HhF"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X/Y Questions Correct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQA-4b-1Gb">
                                 <rect key="frame" x="38" y="402" width="245" height="33"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="19"/>
@@ -92,7 +84,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.11943909703470768" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plicand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1K-XJ-rvC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Plicand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1K-XJ-rvC">
                                 <rect key="frame" x="69" y="125" width="235" height="75"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="45"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,17 +93,34 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chalkboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-Lc-PwA">
                                 <rect key="frame" x="0.0" y="111" width="600" height="303"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARl-B3-RRo">
+                                <rect key="frame" x="241" y="521" width="120" height="46"/>
+                                <color key="backgroundColor" red="0.19946371009061953" green="0.36987963272430191" blue="0.10477248074573711" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="34"/>
+                                <state key="normal" title="  Start  ">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EpG-3K-HhF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96010890151515149" green="0.92441524121576457" blue="0.74170044801339019" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="lha-Lb-Yud" firstAttribute="centerX" secondItem="3ob-Lc-PwA" secondAttribute="centerX" id="16u-PM-Die"/>
+                            <constraint firstItem="ARl-B3-RRo" firstAttribute="centerY" secondItem="5LS-0v-3yg" secondAttribute="centerY" constant="0.5" id="5kl-sY-TBb"/>
                             <constraint firstItem="5LS-0v-3yg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="9HF-Gx-pYE"/>
                             <constraint firstItem="5LS-0v-3yg" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="73" id="Jvp-No-Qg1"/>
                             <constraint firstItem="3ob-Lc-PwA" firstAttribute="top" secondItem="in4-H6-nyX" secondAttribute="bottom" constant="91" id="NPw-Ii-gvT"/>
+                            <constraint firstItem="lha-Lb-Yud" firstAttribute="top" secondItem="in4-H6-nyX" secondAttribute="bottom" id="Ro0-iE-jcc"/>
                             <constraint firstItem="3ob-Lc-PwA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="bd8-Tp-3Al"/>
+                            <constraint firstItem="ARl-B3-RRo" firstAttribute="centerX" secondItem="5LS-0v-3yg" secondAttribute="centerX" constant="0.5" id="eB4-6D-IIC"/>
                             <constraint firstItem="lNQ-yn-wAX" firstAttribute="top" secondItem="5LS-0v-3yg" secondAttribute="bottom" id="itp-bW-zgW"/>
                             <constraint firstAttribute="centerX" secondItem="3ob-Lc-PwA" secondAttribute="centerX" id="nnt-G3-0qH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3ob-Lc-PwA" secondAttribute="trailing" constant="-16" id="qE2-HK-pwZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5LS-0v-3yg" secondAttribute="trailing" constant="-16" id="scd-hA-yiq"/>
+                            <constraint firstItem="V1K-XJ-rvC" firstAttribute="top" secondItem="lha-Lb-Yud" secondAttribute="bottom" constant="8" symbolic="YES" id="tTs-5k-gts"/>
                         </constraints>
                     </view>
                     <connections>
