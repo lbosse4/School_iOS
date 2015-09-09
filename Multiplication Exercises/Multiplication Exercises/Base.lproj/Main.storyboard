@@ -18,8 +18,144 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Floor.png" translatesAutoresizingMaskIntoConstraints="NO" id="5LS-0v-3yg">
+                                <rect key="frame" x="-8" y="484" width="616" height="116"/>
+                                <color key="tintColor" red="1" green="0.94896194152273483" blue="0.96967987769952491" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5LS-0v-3yg" secondAttribute="height" multiplier="600:113" id="uP7-52-Xfx">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="225"/>
+                                        <variation key="heightClass=compact-widthClass=regular" constant="450"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="350"/>
+                                    </constraint>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chalkboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-Lc-PwA">
+                                <rect key="frame" x="0.0" y="126" width="600" height="285"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="________" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2By-eh-M7Z">
+                                <rect key="frame" x="209" y="200" width="185" height="43"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="89"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plier" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwf-1a-Afp">
+                                <rect key="frame" x="207" y="191" width="186" height="43"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="89"/>
+                                </variation>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="0NH-Fw-kfL">
+                                <rect key="frame" x="186" y="339" width="228" height="29"/>
+                                <color key="backgroundColor" red="0.99424370679999996" green="1" blue="0.99372233570000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                    <segment title="Third"/>
+                                    <segment title="Fourth"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="answerChoiceIndexChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="8Hf-Cj-lJ2"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARl-B3-RRo">
+                                <rect key="frame" x="241" y="514" width="120" height="46"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="34"/>
+                                <state key="normal" title="  Start  ">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EpG-3K-HhF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVs-fL-uTq">
+                                <rect key="frame" x="208" y="242" width="185" height="43"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="89"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press Start to begin." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nz-Gf-jw6">
+                                <rect key="frame" x="160" y="454" width="281" height="28"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="28"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.11943909703470768" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="40"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plicand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V1K-XJ-rvC">
+                                <rect key="frame" x="205" y="149" width="188" height="43"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="89"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tE-SW-Qgo">
+                                <rect key="frame" x="209" y="191" width="21" height="43"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="89"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X/Y Questions Correct" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQA-4b-1Gb">
+                                <rect key="frame" x="193" y="413" width="214" height="19"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="17"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="29"/>
+                                </variation>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiplication Exercises" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lha-Lb-Yud">
-                                <rect key="frame" x="179" y="20" width="228" height="74"/>
+                                <rect key="frame" x="179" y="35" width="228" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="74" id="UJb-F1-ufz"/>
                                     <constraint firstAttribute="width" constant="228" id="hEq-Wl-LOf"/>
@@ -40,126 +176,11 @@
                                     <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="24"/>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Floor.png" translatesAutoresizingMaskIntoConstraints="NO" id="5LS-0v-3yg">
-                                <rect key="frame" x="-8" y="484" width="616" height="116"/>
-                                <color key="tintColor" red="1" green="0.94896194152273483" blue="0.96967987769952491" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="5LS-0v-3yg" secondAttribute="height" multiplier="600:113" id="uP7-52-Xfx">
-                                        <variation key="heightClass=compact-widthClass=compact" constant="248"/>
-                                        <variation key="heightClass=compact-widthClass=regular" constant="450"/>
-                                        <variation key="heightClass=regular-widthClass=regular" constant="500"/>
-                                    </constraint>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chalkboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="3ob-Lc-PwA">
-                                <rect key="frame" x="0.0" y="111" width="600" height="300"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="________" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2By-eh-M7Z">
-                                <rect key="frame" x="209" y="185" width="185" height="43"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plier" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwf-1a-Afp">
-                                <rect key="frame" x="207" y="176" width="186" height="43"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
-                                </variation>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="0NH-Fw-kfL">
-                                <rect key="frame" x="186" y="339" width="228" height="29"/>
-                                <color key="backgroundColor" red="0.99424370679999996" green="1" blue="0.99372233570000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                    <segment title="Third"/>
-                                    <segment title="Fourth"/>
-                                </segments>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="answerChoiceIndexChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="8Hf-Cj-lJ2"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARl-B3-RRo">
-                                <rect key="frame" x="241" y="520" width="120" height="46"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="34"/>
-                                <state key="normal" title="  Start  ">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EpG-3K-HhF"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVs-fL-uTq">
-                                <rect key="frame" x="208" y="227" width="185" height="43"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press Start to begin." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nz-Gf-jw6">
-                                <rect key="frame" x="160" y="454" width="281" height="28"/>
-                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="28"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="0.11943909703470768" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plicand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V1K-XJ-rvC">
-                                <rect key="frame" x="205" y="134" width="188" height="43"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tE-SW-Qgo">
-                                <rect key="frame" x="209" y="176" width="21" height="43"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X/Y Questions Correct" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQA-4b-1Gb">
-                                <rect key="frame" x="193" y="413" width="214" height="19"/>
-                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="19"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="17"/>
-                                </variation>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96010890151515149" green="0.92441524121576457" blue="0.74170044801339019" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JVs-fL-uTq" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="50" id="0tK-T9-Gjm">
-                                <variation key="heightClass=regular-widthClass=regular" constant="115"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="92"/>
                             </constraint>
                             <constraint firstItem="3ob-Lc-PwA" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="-66" id="13I-aa-x53">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-63"/>
@@ -169,23 +190,23 @@
                             <constraint firstItem="lha-Lb-Yud" firstAttribute="centerX" secondItem="3ob-Lc-PwA" secondAttribute="centerX" constant="-7" id="16u-PM-Die"/>
                             <constraint firstAttribute="centerX" secondItem="0NH-Fw-kfL" secondAttribute="centerX" id="2vm-d2-egH"/>
                             <constraint firstItem="0NH-Fw-kfL" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="-72" id="2zG-RK-jlG">
-                                <variation key="heightClass=compact-widthClass=compact" constant="50"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="73"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="-99"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="65"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-96"/>
                             </constraint>
                             <constraint firstItem="Nwf-1a-Afp" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="-1" id="3v9-14-P2b">
                                 <variation key="heightClass=regular-widthClass=regular" constant="-13"/>
                             </constraint>
                             <constraint firstItem="V1K-XJ-rvC" firstAttribute="trailing" secondItem="2By-eh-M7Z" secondAttribute="trailing" constant="-1" id="5nD-OD-foj"/>
                             <constraint firstItem="2By-eh-M7Z" firstAttribute="top" secondItem="7tE-SW-Qgo" secondAttribute="bottom" constant="-34" id="6oC-zS-fpr">
-                                <variation key="heightClass=regular-widthClass=regular" constant="-115"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-100"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="Nwf-1a-Afp" secondAttribute="centerX" id="8id-Gu-psX">
                                 <variation key="heightClass=compact-widthClass=compact" constant="105"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="150"/>
                             </constraint>
                             <constraint firstItem="2By-eh-M7Z" firstAttribute="top" secondItem="Nwf-1a-Afp" secondAttribute="bottom" constant="-34" id="CX3-bK-39V">
-                                <variation key="heightClass=regular-widthClass=regular" constant="-108"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-95"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="XQA-4b-1Gb" secondAttribute="centerX" id="Eza-0n-KLa">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-103"/>
@@ -199,6 +220,7 @@
                             <constraint firstItem="5LS-0v-3yg" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="73" id="Jvp-No-Qg1">
                                 <variation key="heightClass=compact-widthClass=compact" constant="37"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="59"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="90"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="V1K-XJ-rvC" secondAttribute="centerX" constant="1" id="KBW-bp-a6i">
                                 <variation key="heightClass=compact-widthClass=compact" constant="105"/>
@@ -208,13 +230,15 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="-75"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="-73"/>
                             </constraint>
-                            <constraint firstItem="lha-Lb-Yud" firstAttribute="top" secondItem="in4-H6-nyX" secondAttribute="bottom" id="Ro0-iE-jcc">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-25"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="-13"/>
+                            <constraint firstItem="lha-Lb-Yud" firstAttribute="top" secondItem="in4-H6-nyX" secondAttribute="bottom" constant="15" id="Ro0-iE-jcc">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                             </constraint>
-                            <constraint firstItem="ARl-B3-RRo" firstAttribute="centerY" secondItem="5LS-0v-3yg" secondAttribute="centerY" constant="0.5" id="Tkd-FO-xU4">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-205"/>
+                            <constraint firstItem="ARl-B3-RRo" firstAttribute="centerY" secondItem="5LS-0v-3yg" secondAttribute="centerY" constant="-5" id="Tkd-FO-xU4">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-180"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="-240"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="-8"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="JVs-fL-uTq" secondAttribute="centerX" id="baX-il-qPN">
                                 <variation key="heightClass=compact-widthClass=compact" constant="105"/>
@@ -235,7 +259,9 @@
                             <constraint firstAttribute="centerX" secondItem="1nz-Gf-jw6" secondAttribute="centerX" id="jnr-cu-etU"/>
                             <constraint firstItem="5LS-0v-3yg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-24" id="lnM-6k-Q4g"/>
                             <constraint firstAttribute="centerX" secondItem="3ob-Lc-PwA" secondAttribute="centerX" id="nnt-G3-0qH"/>
-                            <constraint firstItem="V1K-XJ-rvC" firstAttribute="trailing" secondItem="JVs-fL-uTq" secondAttribute="trailing" id="odV-ez-2YK"/>
+                            <constraint firstItem="V1K-XJ-rvC" firstAttribute="trailing" secondItem="JVs-fL-uTq" secondAttribute="trailing" id="odV-ez-2YK">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="5LS-0v-3yg" firstAttribute="top" secondItem="1nz-Gf-jw6" secondAttribute="bottom" constant="2" id="pco-ru-Hhl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3ob-Lc-PwA" secondAttribute="trailing" constant="-16" id="qE2-HK-pwZ">
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
@@ -246,9 +272,10 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="115"/>
                             </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="5LS-0v-3yg" secondAttribute="trailing" constant="-24" id="rRZ-wT-36Y"/>
-                            <constraint firstItem="0NH-Fw-kfL" firstAttribute="width" secondItem="3ob-Lc-PwA" secondAttribute="height" multiplier="249:300" constant="-21" id="zk2-0p-UH2">
-                                <variation key="heightClass=compact-widthClass=compact" constant="316"/>
+                            <constraint firstItem="0NH-Fw-kfL" firstAttribute="width" secondItem="3ob-Lc-PwA" secondAttribute="height" multiplier="249:300" constant="-8.5499999999999829" id="zk2-0p-UH2">
+                                <variation key="heightClass=compact-widthClass=compact" constant="280"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="430"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="65"/>
                             </constraint>
                         </constraints>
                     </view>
