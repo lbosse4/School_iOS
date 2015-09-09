@@ -59,6 +59,9 @@
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
@@ -68,19 +71,23 @@
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="0NH-Fw-kfL">
                                 <rect key="frame" x="186" y="339" width="228" height="29"/>
+                                <color key="backgroundColor" red="0.99424370679999996" green="1" blue="0.99372233570000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                     <segment title="Third"/>
                                     <segment title="Fourth"/>
                                 </segments>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="answerChoiceIndexChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="8Hf-Cj-lJ2"/>
                                 </connections>
@@ -102,6 +109,9 @@
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
@@ -117,6 +127,9 @@
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
@@ -126,6 +139,9 @@
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="37"/>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="100"/>
                                 </variation>
@@ -146,15 +162,16 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="115"/>
                             </constraint>
                             <constraint firstItem="3ob-Lc-PwA" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="-66" id="13I-aa-x53">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-58"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-63"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="-79"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-160"/>
                             </constraint>
                             <constraint firstItem="lha-Lb-Yud" firstAttribute="centerX" secondItem="3ob-Lc-PwA" secondAttribute="centerX" constant="-7" id="16u-PM-Die"/>
                             <constraint firstAttribute="centerX" secondItem="0NH-Fw-kfL" secondAttribute="centerX" id="2vm-d2-egH"/>
                             <constraint firstItem="0NH-Fw-kfL" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="-72" id="2zG-RK-jlG">
-                                <variation key="heightClass=compact-widthClass=compact" constant="65"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="-52"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="-98"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="50"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="73"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-99"/>
                             </constraint>
                             <constraint firstItem="Nwf-1a-Afp" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="-1" id="3v9-14-P2b">
                                 <variation key="heightClass=regular-widthClass=regular" constant="-13"/>
@@ -165,12 +182,14 @@
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="Nwf-1a-Afp" secondAttribute="centerX" id="8id-Gu-psX">
                                 <variation key="heightClass=compact-widthClass=compact" constant="105"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="150"/>
                             </constraint>
                             <constraint firstItem="2By-eh-M7Z" firstAttribute="top" secondItem="Nwf-1a-Afp" secondAttribute="bottom" constant="-34" id="CX3-bK-39V">
                                 <variation key="heightClass=regular-widthClass=regular" constant="-108"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="XQA-4b-1Gb" secondAttribute="centerX" id="Eza-0n-KLa">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-100"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-103"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="-110"/>
                             </constraint>
                             <constraint firstItem="V1K-XJ-rvC" firstAttribute="trailing" secondItem="Nwf-1a-Afp" secondAttribute="trailing" id="I48-Fc-tTT"/>
                             <constraint firstItem="3ob-Lc-PwA" firstAttribute="top" secondItem="lha-Lb-Yud" secondAttribute="bottom" constant="17" id="Jff-YK-Y3L">
@@ -178,14 +197,16 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="-6"/>
                             </constraint>
                             <constraint firstItem="5LS-0v-3yg" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="73" id="Jvp-No-Qg1">
-                                <variation key="heightClass=compact-widthClass=compact" constant="55"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="37"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="59"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="V1K-XJ-rvC" secondAttribute="centerX" constant="1" id="KBW-bp-a6i">
                                 <variation key="heightClass=compact-widthClass=compact" constant="105"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="150"/>
                             </constraint>
                             <constraint firstItem="XQA-4b-1Gb" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="2" id="Knn-5x-ra0">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-75"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="-73"/>
                             </constraint>
                             <constraint firstItem="lha-Lb-Yud" firstAttribute="top" secondItem="in4-H6-nyX" secondAttribute="bottom" id="Ro0-iE-jcc">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-25"/>
@@ -193,9 +214,11 @@
                             </constraint>
                             <constraint firstItem="ARl-B3-RRo" firstAttribute="centerY" secondItem="5LS-0v-3yg" secondAttribute="centerY" constant="0.5" id="Tkd-FO-xU4">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-205"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="-240"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="JVs-fL-uTq" secondAttribute="centerX" id="baX-il-qPN">
                                 <variation key="heightClass=compact-widthClass=compact" constant="105"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="150"/>
                             </constraint>
                             <constraint firstItem="3ob-Lc-PwA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="bd8-Tp-3Al">
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
@@ -203,6 +226,7 @@
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="2By-eh-M7Z" secondAttribute="centerX" constant="-1.5" id="dqP-Cj-vNd">
                                 <variation key="heightClass=compact-widthClass=compact" constant="105"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="150"/>
                             </constraint>
                             <constraint firstItem="Nwf-1a-Afp" firstAttribute="leading" secondItem="7tE-SW-Qgo" secondAttribute="trailing" constant="-23" id="gaB-4y-Nae">
                                 <variation key="heightClass=regular-widthClass=regular" constant="-80"/>
@@ -219,11 +243,12 @@
                             </constraint>
                             <constraint firstItem="ARl-B3-RRo" firstAttribute="centerX" secondItem="5LS-0v-3yg" secondAttribute="centerX" constant="1" id="qSm-Ll-DgA">
                                 <variation key="heightClass=compact-widthClass=compact" constant="137"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="115"/>
                             </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="5LS-0v-3yg" secondAttribute="trailing" constant="-24" id="rRZ-wT-36Y"/>
                             <constraint firstItem="0NH-Fw-kfL" firstAttribute="width" secondItem="3ob-Lc-PwA" secondAttribute="height" multiplier="249:300" constant="-21" id="zk2-0p-UH2">
-                                <variation key="heightClass=compact-widthClass=compact" constant="325"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="316"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="430"/>
                             </constraint>
                         </constraints>
                     </view>
