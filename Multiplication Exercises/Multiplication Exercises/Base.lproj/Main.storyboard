@@ -84,6 +84,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="45"/>
+                                </variation>
                                 <connections>
                                     <action selector="startButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EpG-3K-HhF"/>
                                 </connections>
@@ -109,7 +112,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.11943909703470768" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="40"/>
+                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="50"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plicand" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V1K-XJ-rvC">
@@ -151,14 +154,18 @@
                                     <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="17"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="29"/>
+                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="36"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiplication Exercises" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lha-Lb-Yud">
                                 <rect key="frame" x="179" y="35" width="228" height="74"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="UJb-F1-ufz"/>
-                                    <constraint firstAttribute="width" constant="228" id="hEq-Wl-LOf"/>
+                                    <constraint firstAttribute="height" constant="74" id="UJb-F1-ufz">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="228" id="hEq-Wl-LOf">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="362"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="31"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -175,6 +182,9 @@
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="24"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="50"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96010890151515149" green="0.92441524121576457" blue="0.74170044801339019" alpha="1" colorSpace="calibratedRGB"/>
@@ -185,7 +195,7 @@
                             <constraint firstItem="3ob-Lc-PwA" firstAttribute="top" secondItem="V1K-XJ-rvC" secondAttribute="bottom" constant="-66" id="13I-aa-x53">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-63"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="-79"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="-160"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-136"/>
                             </constraint>
                             <constraint firstItem="lha-Lb-Yud" firstAttribute="centerX" secondItem="3ob-Lc-PwA" secondAttribute="centerX" constant="-7" id="16u-PM-Die"/>
                             <constraint firstAttribute="centerX" secondItem="0NH-Fw-kfL" secondAttribute="centerX" id="2vm-d2-egH"/>
@@ -220,7 +230,7 @@
                             <constraint firstItem="5LS-0v-3yg" firstAttribute="top" secondItem="3ob-Lc-PwA" secondAttribute="bottom" constant="73" id="Jvp-No-Qg1">
                                 <variation key="heightClass=compact-widthClass=compact" constant="37"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="59"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="90"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="V1K-XJ-rvC" secondAttribute="centerX" constant="1" id="KBW-bp-a6i">
                                 <variation key="heightClass=compact-widthClass=compact" constant="105"/>
@@ -239,6 +249,7 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="-180"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="-240"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="-8"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-7"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="JVs-fL-uTq" secondAttribute="centerX" id="baX-il-qPN">
                                 <variation key="heightClass=compact-widthClass=compact" constant="105"/>
