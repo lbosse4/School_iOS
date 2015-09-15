@@ -38,7 +38,7 @@
 		89898E1E1BA6283E004A42AF /* tileX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89898E051BA6283E004A42AF /* tileX@2x.png */; };
 		89898E1F1BA6283E004A42AF /* tileY@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89898E061BA6283E004A42AF /* tileY@2x.png */; };
 		89898E201BA6283E004A42AF /* tileZ@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89898E071BA6283E004A42AF /* tileZ@2x.png */; };
-		899DACA01BA6318300F1340D /* PentominoesBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 899DAC9F1BA6318300F1340D /* PentominoesBackground.png */; };
+		89C585111BA7B51900DDD8DF /* PentominoesBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 89C585101BA7B51900DDD8DF /* PentominoesBackground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,7 @@
 		89898E051BA6283E004A42AF /* tileX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tileX@2x.png"; sourceTree = "<group>"; };
 		89898E061BA6283E004A42AF /* tileY@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tileY@2x.png"; sourceTree = "<group>"; };
 		89898E071BA6283E004A42AF /* tileZ@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tileZ@2x.png"; sourceTree = "<group>"; };
-		899DAC9F1BA6318300F1340D /* PentominoesBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PentominoesBackground.png; sourceTree = "<group>"; };
+		89C585101BA7B51900DDD8DF /* PentominoesBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PentominoesBackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +147,7 @@
 				89898DF11BA6283E004A42AF /* Board1@2x.png */,
 				89898DF21BA6283E004A42AF /* Board1button.png */,
 				89898DF31BA6283E004A42AF /* Board2@2x.png */,
+				89C585101BA7B51900DDD8DF /* PentominoesBackground.png */,
 				89898DF41BA6283E004A42AF /* Board2button.png */,
 				89898DF51BA6283E004A42AF /* Board3@2x.png */,
 				89898DF61BA6283E004A42AF /* Board3button.png */,
@@ -154,7 +155,6 @@
 				89898DF81BA6283E004A42AF /* Board4button.png */,
 				89898DF91BA6283E004A42AF /* Board5@2x.png */,
 				89898DFA1BA6283E004A42AF /* Board5button.png */,
-				899DAC9F1BA6318300F1340D /* PentominoesBackground.png */,
 				89898DFB1BA6283E004A42AF /* Solutions.plist */,
 				89898DFC1BA6283E004A42AF /* tileF@2x.png */,
 				89898DFD1BA6283E004A42AF /* tileI@2x.png */,
@@ -290,7 +290,7 @@
 				89898E121BA6283E004A42AF /* Board5@2x.png in Resources */,
 				89898E191BA6283E004A42AF /* tileP@2x.png in Resources */,
 				89898E181BA6283E004A42AF /* tileN@2x.png in Resources */,
-				899DACA01BA6318300F1340D /* PentominoesBackground.png in Resources */,
+				89C585111BA7B51900DDD8DF /* PentominoesBackground.png in Resources */,
 				89898E161BA6283E004A42AF /* tileI@2x.png in Resources */,
 				89898E201BA6283E004A42AF /* tileZ@2x.png in Resources */,
 				89898DD71BA62821004A42AF /* Images.xcassets in Resources */,
