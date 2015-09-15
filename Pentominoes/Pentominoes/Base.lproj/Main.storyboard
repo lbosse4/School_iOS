@@ -165,6 +165,9 @@
                             </constraint>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="boardImage" destination="h1J-5C-AA8" id="oCC-qF-KPQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

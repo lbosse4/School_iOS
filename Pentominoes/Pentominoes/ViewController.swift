@@ -10,21 +10,34 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBAction func boardButtonPressed(sender: AnyObject) {
-        
-    }
-    
+    @IBOutlet weak var boardImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func boardButtonPressed(sender: AnyObject) {
+        let currentBoardTagPressed = sender.tag
+        let currentBoardImage = "Board\(currentBoardTagPressed).png"
+        
+        boardImage.image = UIImage(named: currentBoardImage)
+    }
+    
+    
+    
 
+    /*
+    let currentBoardTagPressed = sender.tag
+    let currentBoardImage = "Board\(currentBoardTagPressed).png"
+    
+    boardImage.image = UIImage(named: currentBoardImage)
+    */
 
 }
 
