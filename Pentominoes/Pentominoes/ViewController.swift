@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var boardImageView: UIImageView!
     
+    let model = Model()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +25,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
-        let currentBoardTagPressed = sender.tag
-        let currentBoardImageName = "Board\(currentBoardTagPressed).png"
-        
+        let currentBoardImageName = model.help(sender)
         boardImageView.image = UIImage(named: currentBoardImageName)
         
     }
