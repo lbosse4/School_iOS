@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -140,12 +141,17 @@
                                     <action selector="solveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4WW-ZD-gGG"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWJ-YI-B98">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="h1J-5C-AA8" firstAttribute="leading" secondItem="5VV-of-w2R" secondAttribute="trailing" constant="34" id="2Qv-P2-eca">
                                 <variation key="heightClass=regular-widthClass=regular" constant="49"/>
                             </constraint>
+                            <constraint firstItem="zWJ-YI-B98" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="59P-OD-9T1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zWJ-YI-B98" secondAttribute="bottom" constant="20" id="8cv-NI-BNc"/>
                             <constraint firstAttribute="bottomMargin" secondItem="q2j-Ll-Dnv" secondAttribute="bottom" constant="-48" id="9j1-8V-FD2"/>
                             <constraint firstItem="97E-N8-LiF" firstAttribute="top" secondItem="p77-Ub-JZG" secondAttribute="bottom" constant="8" id="CkT-EH-bcX">
                                 <variation key="heightClass=regular-widthClass=regular" constant="21"/>
@@ -153,6 +159,7 @@
                             <constraint firstItem="H2s-wu-WY1" firstAttribute="top" secondItem="1Dl-s0-xyO" secondAttribute="bottom" constant="36" id="GWr-41-Px1">
                                 <variation key="heightClass=regular-widthClass=regular" constant="28"/>
                             </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="zWJ-YI-B98" secondAttribute="trailing" constant="25" id="Jtt-uM-8Ri"/>
                             <constraint firstItem="h1J-5C-AA8" firstAttribute="leading" secondItem="p77-Ub-JZG" secondAttribute="trailing" constant="34" id="N33-p5-tgB">
                                 <variation key="heightClass=regular-widthClass=regular" constant="49"/>
                             </constraint>
@@ -165,6 +172,7 @@
                             <constraint firstItem="h1J-5C-AA8" firstAttribute="leading" secondItem="P3U-LK-iws" secondAttribute="trailing" constant="34" id="WI4-Ml-21f">
                                 <variation key="heightClass=regular-widthClass=regular" constant="49"/>
                             </constraint>
+                            <constraint firstAttribute="centerX" secondItem="zWJ-YI-B98" secondAttribute="centerX" id="X19-yg-76p"/>
                             <constraint firstItem="1Dl-s0-xyO" firstAttribute="leading" secondItem="h1J-5C-AA8" secondAttribute="trailing" constant="35" id="ZTE-TO-5JZ">
                                 <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                             </constraint>
@@ -172,6 +180,7 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="31"/>
                             </constraint>
                             <constraint firstAttribute="centerY" secondItem="h1J-5C-AA8" secondAttribute="centerY" id="bgP-rm-HSA"/>
+                            <constraint firstItem="zWJ-YI-B98" firstAttribute="top" secondItem="eEL-kW-Ft9" secondAttribute="bottom" constant="30" id="cE1-KP-xbI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="q2j-Ll-Dnv" secondAttribute="trailing" constant="-16" id="cOf-4K-dsW"/>
                             <constraint firstItem="5VV-of-w2R" firstAttribute="top" secondItem="h1J-5C-AA8" secondAttribute="top" id="ets-lb-bxT">
                                 <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
@@ -198,9 +207,34 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="59"/>
                             </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="zWJ-YI-B98"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="59P-OD-9T1"/>
+                                <exclude reference="Jtt-uM-8Ri"/>
+                                <exclude reference="X19-yg-76p"/>
+                                <exclude reference="cE1-KP-xbI"/>
+                                <exclude reference="8cv-NI-BNc"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="zWJ-YI-B98"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="59P-OD-9T1"/>
+                                <include reference="Jtt-uM-8Ri"/>
+                                <exclude reference="X19-yg-76p"/>
+                                <include reference="cE1-KP-xbI"/>
+                                <include reference="8cv-NI-BNc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="boardImageView" destination="h1J-5C-AA8" id="e4I-Sf-aHf"/>
+                        <outlet property="petominoesContainerView" destination="zWJ-YI-B98" id="qYi-Ad-tMh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
