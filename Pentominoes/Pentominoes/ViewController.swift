@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var boardImage: UIImageView!
+    @IBOutlet weak var boardImageView: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,20 +25,21 @@ class ViewController: UIViewController {
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
         let currentBoardTagPressed = sender.tag
-        let currentBoardImage = "Board\(currentBoardTagPressed).png"
+        let currentBoardImageName = "Board\(currentBoardTagPressed).png"
         
-        boardImage.image = UIImage(named: currentBoardImage)
+        boardImageView.image = UIImage(named: currentBoardImageName)
+        
+    }
+    
+    @IBAction func resetButtonPressed(sender: AnyObject) {
+    
+    }
+    
+    @IBAction func solveButtonPressed(sender: AnyObject) {
+    
     }
     
     
-    
-
-    /*
-    let currentBoardTagPressed = sender.tag
-    let currentBoardImage = "Board\(currentBoardTagPressed).png"
-    
-    boardImage.image = UIImage(named: currentBoardImage)
-    */
 
 }
 
