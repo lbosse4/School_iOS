@@ -49,7 +49,7 @@ class Model {
         return currentBoardImageName
     }
     
-    func generatePentominoesPieces() {
+    func generatePentominoesPieces(containerSize : CGSize) {
         var tempXCoordinate : CGFloat = 0.0 - pentominoPaddingX
         var tempYCoordinate : CGFloat = 0.0
         for i in 0...numPentominoesPieces - 1 {
@@ -57,8 +57,7 @@ class Model {
             let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png")
             
             
-            
-            if i%newPentominoLineBound == 0 && i != 0 {
+            if tempXCoordinate + pentominoPaddingX > containerSize.width {
                 tempYCoordinate += pentominoPaddingY
                 tempXCoordinate = 0.0
             }else{
@@ -76,6 +75,10 @@ class Model {
         
         
     }
+    
+    //func setInitialPieces(piece : pe){
+        
+    //}
     
 }
 

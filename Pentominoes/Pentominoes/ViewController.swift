@@ -31,8 +31,9 @@ class ViewController: UIViewController {
             
 
        
-            
-        model.generatePentominoesPieces()
+        let pentominoContainerSize = petominoesContainerView.bounds.size
+        
+        model.generatePentominoesPieces(pentominoContainerSize)
         
         for i in 0..<model.numPentominoesPieces {
             let myImage = model.pentominoesArray[i].image
@@ -54,7 +55,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
-    
+        for piece in model.pentominoesArray {
+            let myImage = piece.image
+            let imageView = UIImageView(image: myImage)
+            
+            let pieceBoundSize = imageView.bounds.size
+            
+            imageView.frame = CGRect(x: piece.initialX, y: piece.initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
+        }
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
