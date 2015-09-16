@@ -17,10 +17,9 @@ class Model {
     let pentominoPaddingX : CGFloat = 191
     let pentominoPaddingY : CGFloat = 105
     let newPentominoLineBound = 4
-    let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Info", ofType: ".plist")
-    
     
     var pentominoesPiecesHaveBeenInitialized = false
+    var currentBoardNumber = 0
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
 
@@ -91,7 +90,21 @@ class Model {
         return imageView
     }
     
+    func initializeSolutionPList(){
+        let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Info", ofType: ".plist")
+        let solutionsArray = NSArray(contentsOfFile: solutionsBundlePath!)
+        
+        
+    }
     
+    func solvePuzzle(boardNumber : Int){
+        for piece in pentominoesArray {
+            let randomNumber = arc4random(UIInt(800))
+            
+            
+            
+        }
+    }
     
 }
 

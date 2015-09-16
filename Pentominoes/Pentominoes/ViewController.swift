@@ -36,6 +36,7 @@ class ViewController: UIViewController {
                 petominoesContainerView.addSubview(imageView)
             }
             
+            model.initializeSolutionPList()
             model.pentominoesPiecesHaveBeenInitialized = true
         }
     }
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
     @IBAction func boardButtonPressed(sender: AnyObject) {
         let currentBoardImageName = model.generateBoardImageName(sender)
         boardImageView.image = UIImage(named: currentBoardImageName)
+        model.currentBoardNumber = sender.tag
     }
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
@@ -62,7 +64,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
-    
+        model.solvePuzzle(model.currentBoardNumber)
     }
     
     
