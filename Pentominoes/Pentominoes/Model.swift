@@ -16,6 +16,8 @@ class Model {
     let numPentominoesPieces = 12
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
+
+    var pentominoesArray = [pentominoesPiece]()
     
     class pentominoesPiece {
         var image : UIImage
@@ -33,23 +35,35 @@ class Model {
         }
     }
     
-    //var pentominoesArray : pentominoesPiece
-    
-    init () {
-        //pentominoesArray
-    }
-    
     func generateBoardImageName(sender: AnyObject) -> String {
         let currentBoardTagPressed = sender.tag
         let currentBoardImageName = "Board\(currentBoardTagPressed).png"
         return currentBoardImageName
     }
     
-    func generatePentominoesPiece(arrayIndex: Int) -> pentominoesPiece {
-        let tempPentominoesPiece = pentominoesPiece()
-        let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[arrayIndex]).png")
-        tempPentominoesPiece.image = tempPentominoesImage!
-        return tempPentominoesPiece
+    func generatePentominoesPieces() {
+        for i in 0...numPentominoesPieces - 1 {
+            let tempPentominoesPiece = pentominoesPiece()
+            let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png")
+            tempPentominoesPiece.image = tempPentominoesImage!
+           
+            
+            pentominoesArray.append(tempPentominoesPiece)
+        
+        }
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

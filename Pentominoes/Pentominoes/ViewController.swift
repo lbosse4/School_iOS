@@ -26,32 +26,43 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        for i in 0...model.numPentominoesPieces - 1 {
-            model.generatePentominoesPiece(i)
+     
+        
+            
+
+       
+            
+        model.generatePentominoesPieces()
+        for i in 0..<model.numPentominoesPieces {
+            let myImage = model.pentominoesArray[i].image
+            let imageView = UIImageView(image: myImage)
+            petominoesContainerView.addSubview(imageView)
+            
         }
+        
     }
+    
+    
+    /*
+for i in 0..<lionImageCount {
+    let name = "Lion\(i).jpg"
+    let image = UIImage(named: name)
+    if let myimage = image {
+        let imageView = UIImageView(image: myimage)
+        imageView.frame = CGRectZero
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
+    
+        imageViews.append(imageView)
+    
+    }
+}
+    */
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
         let currentBoardImageName = model.generateBoardImageName(sender)
         boardImageView.image = UIImage(named: currentBoardImageName)
     }
-    
-    
-    /*
-    for i in 0..<lionImageCount {
-        let name = "Lion\(i).jpg"
-        let image = UIImage(named: name)
-        if let myimage = image {
-            let imageView = UIImageView(image: myimage)
-            imageView.frame = CGRectZero
-            imageView.contentMode = UIViewContentMode.ScaleAspectFit
-            imageView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
-    
-            imageViews.append(imageView)
-    
-        }
-    }
-    */
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
     
