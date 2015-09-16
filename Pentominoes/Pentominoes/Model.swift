@@ -14,6 +14,9 @@ class Model {
     
     let numBoards = 6
     let numPentominoesPieces = 12
+    let pentominoPaddingX : CGFloat = 191
+    let pentominoPaddingY : CGFloat = 105
+    let newPentominoLineBound = 4
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
 
@@ -25,6 +28,9 @@ class Model {
         var numRotations : Int
         var initialX : CGFloat
         var initialY : CGFloat
+        var width : CGFloat
+        var height : CGFloat
+        
         
         init() {
             image = UIImage(named: "tileF.png")!
@@ -32,6 +38,8 @@ class Model {
             numRotations = 0
             initialX = 0.0
             initialY = 0.0
+            width = 0.0
+            height = 0.0
         }
     }
     
@@ -42,15 +50,31 @@ class Model {
     }
     
     func generatePentominoesPieces() {
+        var tempXCoordinate : CGFloat = 0.0 - pentominoPaddingX
+        var tempYCoordinate : CGFloat = 0.0
         for i in 0...numPentominoesPieces - 1 {
             let tempPentominoesPiece = pentominoesPiece()
             let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png")
-            tempPentominoesPiece.image = tempPentominoesImage!
+            
+            
+            
+            if i%newPentominoLineBound == 0 && i != 0 {
+                tempYCoordinate += pentominoPaddingY
+                tempXCoordinate = 0.0
+            }else{
+                tempXCoordinate += pentominoPaddingX
+            }
            
+            tempPentominoesPiece.image = tempPentominoesImage!
+            tempPentominoesPiece.initialX = tempXCoordinate
+            tempPentominoesPiece.initialY = tempYCoordinate
             
             pentominoesArray.append(tempPentominoesPiece)
         
         }
+        
+        
+        
     }
     
 }

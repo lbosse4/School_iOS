@@ -179,7 +179,7 @@
                             <constraint firstItem="P3U-LK-iws" firstAttribute="top" secondItem="5VV-of-w2R" secondAttribute="bottom" constant="36" id="aZD-8H-sd5">
                                 <variation key="heightClass=regular-widthClass=regular" constant="31"/>
                             </constraint>
-                            <constraint firstAttribute="centerY" secondItem="h1J-5C-AA8" secondAttribute="centerY" id="bgP-rm-HSA"/>
+                            <constraint firstAttribute="centerY" secondItem="h1J-5C-AA8" secondAttribute="centerY" constant="70" id="bgP-rm-HSA"/>
                             <constraint firstItem="zWJ-YI-B98" firstAttribute="top" secondItem="eEL-kW-Ft9" secondAttribute="bottom" constant="30" id="cE1-KP-xbI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="q2j-Ll-Dnv" secondAttribute="trailing" constant="-16" id="cOf-4K-dsW"/>
                             <constraint firstItem="5VV-of-w2R" firstAttribute="top" secondItem="h1J-5C-AA8" secondAttribute="top" id="ets-lb-bxT">

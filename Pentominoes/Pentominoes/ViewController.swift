@@ -33,31 +33,20 @@ class ViewController: UIViewController {
        
             
         model.generatePentominoesPieces()
+        
         for i in 0..<model.numPentominoesPieces {
             let myImage = model.pentominoesArray[i].image
             let imageView = UIImageView(image: myImage)
+            
+            let pieceBoundSize = imageView.bounds.size
+            
+            imageView.frame = CGRect(x: model.pentominoesArray[i].initialX, y: model.pentominoesArray[i].initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
+            
             petominoesContainerView.addSubview(imageView)
             
         }
         
     }
-    
-    
-    /*
-for i in 0..<lionImageCount {
-    let name = "Lion\(i).jpg"
-    let image = UIImage(named: name)
-    if let myimage = image {
-        let imageView = UIImageView(image: myimage)
-        imageView.frame = CGRectZero
-        imageView.contentMode = UIViewContentMode.ScaleAspectFit
-        imageView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
-    
-        imageViews.append(imageView)
-    
-    }
-}
-    */
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
         let currentBoardImageName = model.generateBoardImageName(sender)
