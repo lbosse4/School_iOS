@@ -26,27 +26,18 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-     
+        if !model.pentominoesPiecesHaveBeenInitialized {
+            let pentominoContainerSize = petominoesContainerView.bounds.size
         
-            
-
-       
-        let pentominoContainerSize = petominoesContainerView.bounds.size
+            model.generatePentominoesPieces(pentominoContainerSize)
         
-        model.generatePentominoesPieces(pentominoContainerSize)
-        
-        for i in 0..<model.numPentominoesPieces {
-            let myImage = model.pentominoesArray[i].image
-            let imageView = UIImageView(image: myImage)
+            for i in 0..<model.numPentominoesPieces {
+                let imageView = model.setInitialPieces(model.pentominoesArray[i])
+                petominoesContainerView.addSubview(imageView)
+            }
             
-            let pieceBoundSize = imageView.bounds.size
-            
-            imageView.frame = CGRect(x: model.pentominoesArray[i].initialX, y: model.pentominoesArray[i].initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
-            
-            petominoesContainerView.addSubview(imageView)
-            
+            model.pentominoesPiecesHaveBeenInitialized = true
         }
-        
     }
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
@@ -56,12 +47,17 @@ class ViewController: UIViewController {
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
         for piece in model.pentominoesArray {
-            let myImage = piece.image
-            let imageView = UIImageView(image: myImage)
+            model.setInitialPieces(piece)
             
-            let pieceBoundSize = imageView.bounds.size
+            /*
+            if piece.numFlips != 0 {
+                
+            }
             
-            imageView.frame = CGRect(x: piece.initialX, y: piece.initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
+            if piece.numRotations != 0 {
+                
+            }*/
+            
         }
     }
     

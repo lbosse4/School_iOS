@@ -17,6 +17,10 @@ class Model {
     let pentominoPaddingX : CGFloat = 191
     let pentominoPaddingY : CGFloat = 105
     let newPentominoLineBound = 4
+    let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Info", ofType: ".plist")
+    
+    
+    var pentominoesPiecesHaveBeenInitialized = false
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
 
@@ -76,9 +80,18 @@ class Model {
         
     }
     
-    //func setInitialPieces(piece : pe){
+    func setInitialPieces(piece : pentominoesPiece) -> UIImageView{
+        let myImage = piece.image
+        let imageView = UIImageView(image: myImage)
         
-    //}
+        let pieceBoundSize = imageView.bounds.size
+        
+        imageView.frame = CGRect(x: piece.initialX, y: piece.initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
+        
+        return imageView
+    }
+    
+    
     
 }
 
