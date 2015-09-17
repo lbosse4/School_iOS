@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     @IBAction func solveButtonPressed(sender: AnyObject) {
         model.solvePuzzle(model.currentBoardNumber)
         
-        
+        /*
         for view in model.pentominoImageViews {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 let pentominoContainerOrigin = self.petominoesContainerView.bounds.origin
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
             })
             
             
-        }
+        }*/
     }
     
     func rotatePentominoView (view : UIImageView){

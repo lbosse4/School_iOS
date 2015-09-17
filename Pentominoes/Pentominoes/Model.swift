@@ -136,12 +136,13 @@ class Model {
         }
     }
     func getBoardDictionary(boardNum:Int) -> NSDictionary {
-        let boardDictionary = NSDictionary(objectsAndKeys: solutionsArray[boardNum])
-        return boardDictionary
+        let boardDictionary = solutionsArray[boardNum] as? NSDictionary
+        return boardDictionary!
     }
     
     func populatePiecesWithCurrentAnswers (currentDictionary : NSDictionary) {
         for piece in pentominoesArray {
+            
             
             if let xSolution = currentDictionary["x"] as? NSNumber{
                 piece.solutionX = CGFloat(xSolution.floatValue)
@@ -155,7 +156,22 @@ class Model {
             if let flipsSolution = currentDictionary["flips"] as? NSNumber {
                 piece.numFlips = flipsSolution.integerValue
             }
+            /*
+            let xSolution = currentDictionary["x"] as? NSNumber
+            let ySolution = currentDictionary["y"] as? NSNumber
+            let rotationsSolution = currentDictionary["rotations"] as? NSNumber
+            let flipsSolution = currentDictionary["flips"] as? NSNumber
+            
+            piece.solutionX = CGFloat(xSolution!.floatValue)
+            piece.solutionY = CGFloat(ySolution!.floatValue)
+            piece.numRotations = rotationsSolution!.integerValue
+            piece.numFlips = flipsSolution!.integerValue
+            */
+            
+            
         }
+        
+        
     }
     
     func solvePuzzle(boardNumber : Int){
