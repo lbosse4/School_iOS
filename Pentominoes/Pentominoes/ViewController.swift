@@ -27,9 +27,12 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        
+        
+        
         if !model.pentominoPiecesHaveBeenInitialized {
             let pentominoContainerSize = petominoesContainerView.bounds.size
-        
+            
             model.generatePentominoesPieces(pentominoContainerSize)
         
             for i in 0..<model.numPentominoesPieces {
@@ -69,13 +72,35 @@ class ViewController: UIViewController {
         let testBoundX : CGFloat = 200
         let testBoundY : CGFloat = 200
         for view in model.pentominoImageViews {
-            //view.
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                let bounds = view.bounds
+                let newPieceOrigin = view.convertPoint(view.center, fromCoordinateSpace: self.boardImageView)
+                let rect = CGRectMake(newPieceOrigin.x, newPieceOrigin.y, bounds.width, bounds.height)
+
+                view.frame = rect
+                self.rotatePentominoView(view)
+            })
             
             
         }
     }
     
+    func rotatePentominoView (view : UIImageView){
+        UIView.animateWithDuration(2.0, animations: {
+            view.transform = CGAffineTransformMakeRotation((45.0 * CGFloat(M_PI)) / 90.0)
+        })
+    }
+    
     
 
 }
+
+
+
+
+
+
+
+
+
 

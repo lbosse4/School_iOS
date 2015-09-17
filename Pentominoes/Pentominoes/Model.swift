@@ -46,6 +46,14 @@ class Model {
             width = 0.0
             height = 0.0
         }
+        
+        func rotate() {
+            
+        }
+        
+        func flip () {
+            
+        }
     }
     
     func generateBoardImageName(sender: AnyObject) -> String {
@@ -97,9 +105,8 @@ class Model {
     func initializeSolutionPList(){
         let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Solutions", ofType: ".plist")
         let solutionsArray = NSArray(contentsOfFile: solutionsBundlePath!)
-        solutionsArray
-        
     }
+    
     
     func solvePuzzle(boardNumber : Int){
         
