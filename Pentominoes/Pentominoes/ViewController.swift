@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var petominoesContainerView: UIView!
     
     let model = Model()
+    var imageViews = [UIImageView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        if !model.pentominoesPiecesHaveBeenInitialized {
+        if !model.pentominoPiecesHaveBeenInitialized {
             let pentominoContainerSize = petominoesContainerView.bounds.size
         
             model.generatePentominoesPieces(pentominoContainerSize)
@@ -37,7 +38,7 @@ class ViewController: UIViewController {
             }
             
             model.initializeSolutionPList()
-            model.pentominoesPiecesHaveBeenInitialized = true
+            model.pentominoPiecesHaveBeenInitialized = true
         }
     }
     
@@ -64,7 +65,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
-        model.solvePuzzle(model.currentBoardNumber)
+        //model.solvePuzzle(model.currentBoardNumber)
+        let testBoundX : CGFloat = 200
+        let testBoundY : CGFloat = 200
+        for view in model.pentominoImageViews {
+            //view.
+            
+            
+        }
     }
     
     

@@ -18,8 +18,10 @@ class Model {
     let pentominoPaddingY : CGFloat = 105
     let newPentominoLineBound = 4
     
-    var pentominoesPiecesHaveBeenInitialized = false
+    var pentominoPiecesHaveBeenInitialized = false
     var currentBoardNumber = 0
+    
+    var pentominoImageViews = [UIImageView]()
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
 
@@ -87,7 +89,9 @@ class Model {
         
         imageView.frame = CGRect(x: piece.initialX, y: piece.initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
         
+        pentominoImageViews.append(imageView)
         return imageView
+        
     }
     
     func initializeSolutionPList(){
@@ -98,12 +102,7 @@ class Model {
     }
     
     func solvePuzzle(boardNumber : Int){
-        for piece in pentominoesArray {
-            let randomNumber = arc4random(UIInt(800))
-            
-            
-            
-        }
+        
     }
     
 }
