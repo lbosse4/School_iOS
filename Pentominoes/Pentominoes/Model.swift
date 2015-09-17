@@ -23,6 +23,7 @@ class Model {
     var pentominoPiecesHaveBeenInitialized = false
     var currentBoardNumber = 0
     
+    var solutionsArray = NSArray()
     var pentominoImageViews = [UIImageView]()
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -37,6 +38,7 @@ class Model {
         var initialY : CGFloat
         var width : CGFloat
         var height : CGFloat
+        var letter : Character
         
         
         init() {
@@ -47,6 +49,7 @@ class Model {
             initialY = 0.0
             width = 0.0
             height = 0.0
+            letter = "F"
         }
         
         func rotate() {
@@ -82,6 +85,9 @@ class Model {
             tempPentominoesPiece.image = tempPentominoesImage!
             tempPentominoesPiece.initialX = tempXCoordinate
             tempPentominoesPiece.initialY = tempYCoordinate
+            tempPentominoesPiece.letter = Character(tileLettersArray[i])
+            
+            
             
             pentominoesArray.append(tempPentominoesPiece)
         
@@ -91,6 +97,15 @@ class Model {
         
     }
     
+    ////////////////////////////////////////
+    //*
+    //*
+    //*
+    //*         MOVE TO VIEW CONTROLLER
+    //*
+    //*
+    //*
+    //*
     func setInitialPieces(piece : pentominoesPiece) -> UIImageView{
         let myImage = piece.image
         let imageView = UIImageView(image: myImage)
@@ -106,9 +121,14 @@ class Model {
     
     func initializeSolutionPList(){
         let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Solutions", ofType: ".plist")
-        let solutionsArray = NSArray(contentsOfFile: solutionsBundlePath!)
+        solutionsArray = NSArray(contentsOfFile: solutionsBundlePath!)!
+    }
+    func getBoardDictionary(boardNum:Int) {
+        //myArr:Array = initializeSolutionPList
+        //return myArr[boardNum]
     }
     
+    //dictionary["x"]....
     
     func solvePuzzle(boardNumber : Int){
         

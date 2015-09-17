@@ -41,6 +41,7 @@ class ViewController: UIViewController {
             }
             
             model.initializeSolutionPList()
+            model.getBoardDictionary(0)
             model.pentominoPiecesHaveBeenInitialized = true
         }
     }
