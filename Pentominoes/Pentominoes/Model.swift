@@ -95,9 +95,9 @@ class Model {
     }
     
     func initializeSolutionPList(){
-        let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Info", ofType: ".plist")
+        let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Solutions", ofType: ".plist")
         let solutionsArray = NSArray(contentsOfFile: solutionsBundlePath!)
-        
+        solutionsArray
         
     }
     
