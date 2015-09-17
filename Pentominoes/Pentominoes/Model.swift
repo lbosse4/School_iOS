@@ -17,6 +17,8 @@ class Model {
     let pentominoPaddingX : CGFloat = 191
     let pentominoPaddingY : CGFloat = 105
     let newPentominoLineBound = 4
+    let ninetyDegrees = (CGFloat(M_PI)) / 2.0
+    let rotationDuration = 2.0
     
     var pentominoPiecesHaveBeenInitialized = false
     var currentBoardNumber = 0

@@ -69,13 +69,17 @@ class ViewController: UIViewController {
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
         //model.solvePuzzle(model.currentBoardNumber)
-        let testBoundX : CGFloat = 200
-        let testBoundY : CGFloat = 200
+        
+        
         for view in model.pentominoImageViews {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
-                let bounds = view.bounds
-                let newPieceOrigin = view.convertPoint(view.center, fromCoordinateSpace: self.boardImageView)
-                let rect = CGRectMake(newPieceOrigin.x, newPieceOrigin.y, bounds.width, bounds.height)
+                let pentominoContainerOrigin = self.petominoesContainerView.bounds.origin
+                let pieceBounds = self.view.bounds
+                let pieceWidth = view.bounds.width
+                let pieceHeight = view.bounds.height
+                
+                let newPieceOrigin = view.convertPoint(pentominoContainerOrigin, fromCoordinateSpace: self.boardImageView)
+                let rect = CGRectMake(newPieceOrigin.x, newPieceOrigin.y, pieceWidth, pieceHeight)
 
                 view.frame = rect
                 self.rotatePentominoView(view)
@@ -86,12 +90,13 @@ class ViewController: UIViewController {
     }
     
     func rotatePentominoView (view : UIImageView){
-        UIView.animateWithDuration(2.0, animations: {
-            view.transform = CGAffineTransformMakeRotation((45.0 * CGFloat(M_PI)) / 90.0)
+        
+        UIView.animateWithDuration(model.rotationDuration, animations: {
+            view.transform = CGAffineTransformMakeRotation(self.model.ninetyDegrees)
         })
     }
     
-    
+
 
 }
 
