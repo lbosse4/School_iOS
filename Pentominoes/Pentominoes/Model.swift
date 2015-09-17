@@ -39,7 +39,10 @@ class Model {
         var width : CGFloat
         var height : CGFloat
         var letter : Character
-        
+        var solutionX : CGFloat
+        var solutionY : CGFloat
+        var numberOfRotationsSolution : Int
+        var numberOfFlipsSolution : Int
         
         init() {
             image = UIImage(named: "tileF.png")!
@@ -50,8 +53,12 @@ class Model {
             width = 0.0
             height = 0.0
             letter = "F"
+            solutionX = 0.0
+            solutionY = 0.0
+            numberOfRotationsSolution = 0
+            numberOfFlipsSolution = 0
         }
-        
+        // use these to orient the piece
         func rotate() {
             
         }
@@ -133,10 +140,28 @@ class Model {
         return boardDictionary
     }
     
-    //dictionary["x"]....
+    func populatePiecesWithCurrentAnswers (currentDictionary : NSDictionary) {
+        for piece in pentominoesArray {
+            
+            if let xSolution = currentDictionary["x"] as? NSNumber{
+                piece.solutionX = CGFloat(xSolution.floatValue)
+            }
+            if let ySolution = currentDictionary["y"] as? NSNumber{
+                piece.solutionY = CGFloat(ySolution.floatValue)
+            }
+            if let rotationsSolution = currentDictionary["rotations"] as? NSNumber{
+                piece.numRotations = rotationsSolution.integerValue
+            }
+            if let flipsSolution = currentDictionary["flips"] as? NSNumber {
+                piece.numFlips = flipsSolution.integerValue
+            }
+        }
+    }
     
     func solvePuzzle(boardNumber : Int){
-        
+        initializeSolutionPList()
+        let currentDictionary = getBoardDictionary(currentBoardNumber)
+        populatePiecesWithCurrentAnswers(currentDictionary)
     }
     
 }

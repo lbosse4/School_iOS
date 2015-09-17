@@ -40,8 +40,6 @@ class ViewController: UIViewController {
                 petominoesContainerView.addSubview(imageView)
             }
             
-            model.initializeSolutionPList()
-            model.getBoardDictionary(model.currentBoardNumber)
             model.pentominoPiecesHaveBeenInitialized = true
         }
     }
@@ -69,7 +67,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
-        //model.solvePuzzle(model.currentBoardNumber)
+        model.solvePuzzle(model.currentBoardNumber)
         
         
         for view in model.pentominoImageViews {
