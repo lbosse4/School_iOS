@@ -72,24 +72,28 @@ class Model {
         var tempYCoordinate : CGFloat = 0.0
         for i in 0...numPentominoesPieces - 1 {
             let tempPentominoesPiece = pentominoesPiece()
-            let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png")
             
-            
-            if tempXCoordinate + pentominoPaddingX > containerSize.width {
-                tempYCoordinate += pentominoPaddingY
-                tempXCoordinate = 0.0
-            }else{
-                tempXCoordinate += pentominoPaddingX
+            if let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png"){
+                
+                if tempXCoordinate + pentominoPaddingX > containerSize.width {
+                    tempYCoordinate += pentominoPaddingY
+                    tempXCoordinate = 0.0
+                }else{
+                    tempXCoordinate += pentominoPaddingX
+                }
+                
+                tempPentominoesPiece.image = tempPentominoesImage
+                tempPentominoesPiece.initialX = tempXCoordinate
+                tempPentominoesPiece.initialY = tempYCoordinate
+                tempPentominoesPiece.letter = Character(tileLettersArray[i])
+                
+                
+                
+                pentominoesArray.append(tempPentominoesPiece)
             }
-           
-            tempPentominoesPiece.image = tempPentominoesImage!
-            tempPentominoesPiece.initialX = tempXCoordinate
-            tempPentominoesPiece.initialY = tempYCoordinate
-            tempPentominoesPiece.letter = Character(tileLettersArray[i])
             
             
             
-            pentominoesArray.append(tempPentominoesPiece)
         
         }
         
@@ -120,12 +124,13 @@ class Model {
     }
     
     func initializeSolutionPList(){
-        let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Solutions", ofType: ".plist")
-        solutionsArray = NSArray(contentsOfFile: solutionsBundlePath!)!
+        if let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Solutions", ofType: ".plist") {
+        solutionsArray = NSArray(contentsOfFile: solutionsBundlePath)!
+        }
     }
-    func getBoardDictionary(boardNum:Int) {
-        //myArr:Array = initializeSolutionPList
-        //return myArr[boardNum]
+    func getBoardDictionary(boardNum:Int) -> NSDictionary {
+        let boardDictionary = NSDictionary(objectsAndKeys: solutionsArray[boardNum])
+        return boardDictionary
     }
     
     //dictionary["x"]....

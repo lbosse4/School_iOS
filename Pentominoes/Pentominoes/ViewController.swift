@@ -41,7 +41,7 @@ class ViewController: UIViewController {
             }
             
             model.initializeSolutionPList()
-            model.getBoardDictionary(0)
+            model.getBoardDictionary(model.currentBoardNumber)
             model.pentominoPiecesHaveBeenInitialized = true
         }
     }
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
                 let rect = CGRectMake(newPieceOrigin.x, newPieceOrigin.y, pieceWidth, pieceHeight)
 
                 view.frame = rect
-                self.rotatePentominoView(view)
+                //self.rotatePentominoView(view)
             })
             
             
