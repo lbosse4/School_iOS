@@ -103,22 +103,21 @@ class ViewController : UIViewController {
         for aView in pentominoImageViews {
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 
-                let pentominoContainerOrigin = self.petominoesContainerView.bounds.origin
                 let pieceBounds = aView.bounds
                 let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
                 let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
                 
-                let pieceWidth : CGFloat = pieceBounds.width
-                let pieceHeight : CGFloat = pieceBounds.height
+                var pieceWidth : CGFloat = pieceBounds.width
+                var pieceHeight : CGFloat = pieceBounds.height
                 
                 let gridOriginX = CGFloat(self.model.pentominoesArray[loopCounter].solutionX) * self.gridTileConversion
                 let gridOriginY = CGFloat(self.model.pentominoesArray[loopCounter].solutionY) * self.gridTileConversion
                 
                 let newPieceOrigin = aView.convertPoint(pieceBounds.origin, fromView: self.boardImageView)
                 
-                self.rotatePentominoView(aView, numRotations: rotationSolution, width: &self.model.pentominoesArray[loopCounter].width, height: &self.model.pentominoesArray[loopCounter].height)
+                self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight)
                 
-                //self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution)
+                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution)
                 
                 let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
                 
@@ -141,7 +140,7 @@ class ViewController : UIViewController {
         
     }
     
-    func rotatePentominoView (view : UIImageView, numRotations : Int, inout  width : Int, inout height : Int){
+    func rotatePentominoView (view : UIImageView, numRotations : Int, inout  width : CGFloat, inout height : CGFloat){
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
         if numRotations > 0{
             for i in 1 ... numRotations {
