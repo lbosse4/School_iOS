@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController : UIViewController {
 
     @IBOutlet weak var boardImageView: UIImageView!
     @IBOutlet weak var petominoesContainerView: UIView!

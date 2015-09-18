@@ -23,7 +23,7 @@ class Model {
     var pentominoPiecesHaveBeenInitialized = false
     var currentBoardNumber = 0
     
-    var solutionsArray = NSArray()
+    var solutionsArray : NSArray = NSArray()
     var pentominoImageViews = [UIImageView]()
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -41,8 +41,8 @@ class Model {
         var letter : Character
         var solutionX : CGFloat
         var solutionY : CGFloat
-        var numberOfRotationsSolution : Int
-        var numberOfFlipsSolution : Int
+        var numRotationsSolution : Int
+        var numFlipsSolution : Int
         
         init() {
             image = UIImage(named: "tileF.png")!
@@ -55,8 +55,8 @@ class Model {
             letter = "F"
             solutionX = 0.0
             solutionY = 0.0
-            numberOfRotationsSolution = 0
-            numberOfFlipsSolution = 0
+            numRotationsSolution = 0
+            numFlipsSolution = 0
         }
         // use these to orient the piece
         func rotate() {
@@ -94,14 +94,8 @@ class Model {
                 tempPentominoesPiece.initialY = tempYCoordinate
                 tempPentominoesPiece.letter = Character(tileLettersArray[i])
                 
-                
-                
                 pentominoesArray.append(tempPentominoesPiece)
             }
-            
-            
-            
-        
         }
         
         
@@ -132,18 +126,33 @@ class Model {
     
     func initializeSolutionPList(){
         if let solutionsBundlePath = NSBundle.mainBundle().pathForResource("Solutions", ofType: ".plist") {
-        solutionsArray = NSArray(contentsOfFile: solutionsBundlePath)!
+            solutionsArray = NSArray(contentsOfFile: solutionsBundlePath)!
         }
     }
-    func getBoardDictionary(boardNum:Int) -> NSDictionary {
-        let boardDictionary = solutionsArray[boardNum] as? NSDictionary
-        return boardDictionary!
+    func getBoardDictionary(boardNum:Int) -> [String : [String : Int]] {
+        let boardDictionary = solutionsArray[boardNum] as! [String : [String : Int]]
+        return boardDictionary
     }
     
-    func populatePiecesWithCurrentAnswers (currentDictionary : NSDictionary) {
+    func populatePiecesWithCurrentAnswers (currentDictionary : [String : [String : Int]]) {
         for piece in pentominoesArray {
             
+            let letterDictionary = currentDictionary["\(piece.letter)"]!
+            //let ySolution = currentDictionary["\(piece.letter)"]!
+            //let rotationSolution = currentDictionary["\(piece.letter)"]
+            //let flipSolution = currentDictionary["\(piece.letter)"]
             
+            let xcoord = letterDictionary["x"]
+            let ycoord = letterDictionary["y"]
+            let numRotations = letterDictionary["rotations"]
+            let numFlips = letterDictionary["flips"]
+            
+            piece.solutionX = (CGFloat)(xcoord!)
+            piece.solutionY = (CGFloat)(ycoord!)
+            piece.numRotationsSolution = (Int)(numRotations!)
+            piece.numFlipsSolution = (Int)(numFlips!)
+            
+            /*
             if let xSolution = currentDictionary["x"] as? NSNumber{
                 piece.solutionX = CGFloat(xSolution.floatValue)
             }
@@ -155,7 +164,7 @@ class Model {
             }
             if let flipsSolution = currentDictionary["flips"] as? NSNumber {
                 piece.numFlips = flipsSolution.integerValue
-            }
+            }*/
             /*
             let xSolution = currentDictionary["x"] as? NSNumber
             let ySolution = currentDictionary["y"] as? NSNumber
@@ -168,7 +177,6 @@ class Model {
             piece.numFlips = flipsSolution!.integerValue
             */
             
-            
         }
         
         
@@ -178,6 +186,7 @@ class Model {
         initializeSolutionPList()
         let currentDictionary = getBoardDictionary(currentBoardNumber)
         populatePiecesWithCurrentAnswers(currentDictionary)
+        
     }
     
 }
