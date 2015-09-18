@@ -44,8 +44,12 @@ class ViewController : UIViewController {
                 let imageView = UIImageView(image: myImage)
                 
                 let pieceBoundSize = imageView.bounds.size
+                let width : CGFloat = pieceBoundSize.width
+                let height : CGFloat = pieceBoundSize.height
                 
-                imageView.frame = CGRect(x: model.pentominoesArray[i].initialX, y: model.pentominoesArray[i].initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
+                imageView.frame = CGRect(x: CGFloat(model.pentominoesArray[i].initialX), y: CGFloat(model.pentominoesArray[i].initialY), width: width, height: height)
+                
+                //imageView.frame = CGRect(x: model.pentominoesArray[i].initialX, y: model.pentominoesArray[i].initialY, width: width, height: height)
                 
                 pentominoImageViews.append(imageView)
                 petominoesContainerView.addSubview(imageView)
@@ -63,17 +67,6 @@ class ViewController : UIViewController {
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
         for piece in model.pentominoesArray {
-            //model.setInitialPieces(piece)
-            let myImage = piece.image
-            let imageView = UIImageView(image: myImage)
-            
-            let pieceBoundSize = imageView.bounds.size
-            
-            imageView.frame = CGRect(x: piece.initialX, y: piece.initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
-            
-            pentominoImageViews.append(imageView)
-            
-            
             /*
             if piece.numFlips != 0 {
                 
@@ -103,8 +96,7 @@ class ViewController : UIViewController {
                 view.frame = rect
                 //self.rotatePentominoView(view)
             })
-            
-            
+        
         }
     }
     
@@ -114,8 +106,6 @@ class ViewController : UIViewController {
             view.transform = CGAffineTransformMakeRotation(self.ninetyDegrees)
         })
     }
-    
-    
 
 }
 

@@ -14,8 +14,8 @@ class Model {
     
     let numBoards = 6
     let numPentominoesPieces = 12
-    let pentominoPaddingX : CGFloat = 191
-    let pentominoPaddingY : CGFloat = 105
+    let pentominoPaddingX : Int = 191
+    let pentominoPaddingY : Int = 105
     let newPentominoLineBound = 4
     let rotationDuration = 2.0
     
@@ -32,13 +32,13 @@ class Model {
         var image : UIImage
         var numFlips : Int
         var numRotations : Int
-        var initialX : CGFloat
-        var initialY : CGFloat
-        var width : CGFloat
-        var height : CGFloat
+        var initialX : Int
+        var initialY : Int
+        var width : Int
+        var height : Int
         var letter : Character
-        var solutionX : CGFloat
-        var solutionY : CGFloat
+        var solutionX : Int
+        var solutionY : Int
         var numRotationsSolution : Int
         var numFlipsSolution : Int
         
@@ -46,13 +46,13 @@ class Model {
             image = UIImage(named: "tileF.png")!
             numFlips = 0
             numRotations = 0
-            initialX = 0.0
-            initialY = 0.0
-            width = 0.0
-            height = 0.0
+            initialX = 0
+            initialY = 0
+            width = 0
+            height = 0
             letter = "F"
-            solutionX = 0.0
-            solutionY = 0.0
+            solutionX = 0
+            solutionY = 0
             numRotationsSolution = 0
             numFlipsSolution = 0
         }
@@ -73,16 +73,16 @@ class Model {
     }
     
     func generatePentominoesPieces(containerSize : CGSize) {
-        var tempXCoordinate : CGFloat = 0.0 - pentominoPaddingX
-        var tempYCoordinate : CGFloat = 0.0
+        var tempXCoordinate = 0 - pentominoPaddingX
+        var tempYCoordinate = 0
         for i in 0...numPentominoesPieces - 1 {
             let tempPentominoesPiece = pentominoesPiece()
             
             if let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png"){
                 
-                if tempXCoordinate + pentominoPaddingX > containerSize.width {
+                if tempXCoordinate + pentominoPaddingX > Int(containerSize.width) {
                     tempYCoordinate += pentominoPaddingY
-                    tempXCoordinate = 0.0
+                    tempXCoordinate = 0
                 }else{
                     tempXCoordinate += pentominoPaddingX
                 }
@@ -97,28 +97,6 @@ class Model {
         }
         
         
-        
-    }
-    
-    ////////////////////////////////////////
-    //*
-    //*
-    //*
-    //*         MOVE TO VIEW CONTROLLER
-    //*
-    //*
-    //*
-    //*
-    func setInitialPieces(piece : pentominoesPiece) -> UIImageView{
-        let myImage = piece.image
-        let imageView = UIImageView(image: myImage)
-        
-        let pieceBoundSize = imageView.bounds.size
-        
-        imageView.frame = CGRect(x: piece.initialX, y: piece.initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
-        
-        //pentominoImageViews.append(imageView)
-        return imageView
         
     }
     
@@ -142,10 +120,10 @@ class Model {
             let numRotations = letterDictionary["rotations"]
             let numFlips = letterDictionary["flips"]
             
-            piece.solutionX = (CGFloat)(xcoord!)
-            piece.solutionY = (CGFloat)(ycoord!)
-            piece.numRotationsSolution = (Int)(numRotations!)
-            piece.numFlipsSolution = (Int)(numFlips!)
+            piece.solutionX = xcoord!
+            piece.solutionY = ycoord!
+            piece.numRotationsSolution = numRotations!
+            piece.numFlipsSolution = numFlips!
             
         }
         
