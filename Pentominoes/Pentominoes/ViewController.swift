@@ -25,6 +25,7 @@ class ViewController : UIViewController {
     let ninetyDegrees = (CGFloat(M_PI)) / 2.0
     let gridTileConversion : CGFloat = 30.0
     let numRotationDifferences = 2
+    let numPossibleRotations = 4
     let isOdd = 1
     let isEven = 0
     
@@ -68,6 +69,7 @@ class ViewController : UIViewController {
             
             model.pentominoPiecesHaveBeenInitialized = true
         }
+        
     }
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
@@ -77,15 +79,38 @@ class ViewController : UIViewController {
     }
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
-        for piece in model.pentominoesArray {
-            /*
-            if piece.numFlips != 0 {
+        var loopCounter = 0
+        for aView in pentominoImageViews {
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
                 
-            }
+                let pieceBounds = aView.bounds
+                let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
+                let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
+                
+                var pieceWidth : CGFloat = pieceBounds.width
+                var pieceHeight : CGFloat = pieceBounds.height
+                
+                let originalOriginXCoordinate = CGFloat(self.model.pentominoesArray[loopCounter].initialX)
+                let originalOriginYCoordinate = CGFloat(self.model.pentominoesArray[loopCounter].initialY)
+                
+                if self.model.pentominoesArray[loopCounter].numFlips != 0 {
+                    self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution)
+                }
+                
+                if self.model.pentominoesArray[loopCounter].numRotations != 0 {
+                    self.rotatePentominoView(aView, numRotations: self.numPossibleRotations-rotationSolution, width: &pieceWidth, height: &pieceHeight)
+                }
+                
+                let rect = CGRectMake(originalOriginXCoordinate, originalOriginYCoordinate, pieceWidth, pieceHeight)
+                
+                aView.frame = rect
+                
+                self.petominoesContainerView.addSubview(aView)
+                
+                loopCounter += 1
+            })
             
-            if piece.numRotations != 0 {
-                
-            }*/
+            
             
         }
         
@@ -112,8 +137,6 @@ class ViewController : UIViewController {
                 
                 let gridOriginX = CGFloat(self.model.pentominoesArray[loopCounter].solutionX) * self.gridTileConversion
                 let gridOriginY = CGFloat(self.model.pentominoesArray[loopCounter].solutionY) * self.gridTileConversion
-                
-                let newPieceOrigin = aView.convertPoint(pieceBounds.origin, fromView: self.boardImageView)
                 
                 self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight)
                 

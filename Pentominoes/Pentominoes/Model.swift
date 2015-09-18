@@ -56,18 +56,7 @@ class Model {
             numRotationsSolution = 0
             numFlipsSolution = 0
         }
-        // use these to orient the piece
-        func rotate(numRotations : Int) {
-            if numRotations % 2 == 0 {
-                
-            } else {
-                
-            }
-        }
-        
-        func flip (numFlips : Int) {
-            
-        }
+    
     }
     
     func generateBoardImageName(sender: AnyObject) -> String {
