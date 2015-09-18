@@ -17,14 +17,12 @@ class Model {
     let pentominoPaddingX : CGFloat = 191
     let pentominoPaddingY : CGFloat = 105
     let newPentominoLineBound = 4
-    let ninetyDegrees = (CGFloat(M_PI)) / 2.0
     let rotationDuration = 2.0
     
     var pentominoPiecesHaveBeenInitialized = false
     var currentBoardNumber = 0
     
     var solutionsArray : NSArray = NSArray()
-    var pentominoImageViews = [UIImageView]()
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
 
@@ -59,11 +57,11 @@ class Model {
             numFlipsSolution = 0
         }
         // use these to orient the piece
-        func rotate() {
+        func rotate(numRotations : Int) {
             
         }
         
-        func flip () {
+        func flip (numFlips : Int) {
             
         }
     }
@@ -119,7 +117,7 @@ class Model {
         
         imageView.frame = CGRect(x: piece.initialX, y: piece.initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
         
-        pentominoImageViews.append(imageView)
+        //pentominoImageViews.append(imageView)
         return imageView
         
     }
@@ -138,9 +136,6 @@ class Model {
         for piece in pentominoesArray {
             
             let letterDictionary = currentDictionary["\(piece.letter)"]!
-            //let ySolution = currentDictionary["\(piece.letter)"]!
-            //let rotationSolution = currentDictionary["\(piece.letter)"]
-            //let flipSolution = currentDictionary["\(piece.letter)"]
             
             let xcoord = letterDictionary["x"]
             let ycoord = letterDictionary["y"]
@@ -151,31 +146,6 @@ class Model {
             piece.solutionY = (CGFloat)(ycoord!)
             piece.numRotationsSolution = (Int)(numRotations!)
             piece.numFlipsSolution = (Int)(numFlips!)
-            
-            /*
-            if let xSolution = currentDictionary["x"] as? NSNumber{
-                piece.solutionX = CGFloat(xSolution.floatValue)
-            }
-            if let ySolution = currentDictionary["y"] as? NSNumber{
-                piece.solutionY = CGFloat(ySolution.floatValue)
-            }
-            if let rotationsSolution = currentDictionary["rotations"] as? NSNumber{
-                piece.numRotations = rotationsSolution.integerValue
-            }
-            if let flipsSolution = currentDictionary["flips"] as? NSNumber {
-                piece.numFlips = flipsSolution.integerValue
-            }*/
-            /*
-            let xSolution = currentDictionary["x"] as? NSNumber
-            let ySolution = currentDictionary["y"] as? NSNumber
-            let rotationsSolution = currentDictionary["rotations"] as? NSNumber
-            let flipsSolution = currentDictionary["flips"] as? NSNumber
-            
-            piece.solutionX = CGFloat(xSolution!.floatValue)
-            piece.solutionY = CGFloat(ySolution!.floatValue)
-            piece.numRotations = rotationsSolution!.integerValue
-            piece.numFlips = flipsSolution!.integerValue
-            */
             
         }
         

@@ -14,7 +14,11 @@ class ViewController : UIViewController {
     @IBOutlet weak var petominoesContainerView: UIView!
     
     let model = Model()
+    
+    let ninetyDegrees = (CGFloat(M_PI)) / 2.0
+    
     var imageViews = [UIImageView]()
+    var pentominoImageViews = [UIImageView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +40,14 @@ class ViewController : UIViewController {
             model.generatePentominoesPieces(pentominoContainerSize)
         
             for i in 0..<model.numPentominoesPieces {
-                let imageView = model.setInitialPieces(model.pentominoesArray[i])
+                let myImage = model.pentominoesArray[i].image
+                let imageView = UIImageView(image: myImage)
+                
+                let pieceBoundSize = imageView.bounds.size
+                
+                imageView.frame = CGRect(x: model.pentominoesArray[i].initialX, y: model.pentominoesArray[i].initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
+                
+                pentominoImageViews.append(imageView)
                 petominoesContainerView.addSubview(imageView)
             }
             
@@ -52,7 +63,16 @@ class ViewController : UIViewController {
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
         for piece in model.pentominoesArray {
-            model.setInitialPieces(piece)
+            //model.setInitialPieces(piece)
+            let myImage = piece.image
+            let imageView = UIImageView(image: myImage)
+            
+            let pieceBoundSize = imageView.bounds.size
+            
+            imageView.frame = CGRect(x: piece.initialX, y: piece.initialY, width: pieceBoundSize.width, height: pieceBoundSize.height)
+            
+            pentominoImageViews.append(imageView)
+            
             
             /*
             if piece.numFlips != 0 {
@@ -69,8 +89,8 @@ class ViewController : UIViewController {
     @IBAction func solveButtonPressed(sender: AnyObject) {
         model.solvePuzzle(model.currentBoardNumber)
         
-        /*
-        for view in model.pentominoImageViews {
+        
+        for view in pentominoImageViews {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 let pentominoContainerOrigin = self.petominoesContainerView.bounds.origin
                 let pieceBounds = self.view.bounds
@@ -85,17 +105,17 @@ class ViewController : UIViewController {
             })
             
             
-        }*/
+        }
     }
     
     func rotatePentominoView (view : UIImageView){
         
         UIView.animateWithDuration(model.rotationDuration, animations: {
-            view.transform = CGAffineTransformMakeRotation(self.model.ninetyDegrees)
+            view.transform = CGAffineTransformMakeRotation(self.ninetyDegrees)
         })
     }
     
-
+    
 
 }
 
