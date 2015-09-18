@@ -146,9 +146,6 @@ class ViewController : UIViewController {
             for i in 1 ... numRotations {
                 UIView.animateWithDuration(model.rotationDuration, animations: {
                     view.transform = CGAffineTransformRotate(view.transform, self.ninetyDegrees)
-                    
-                    
-                    //view.transform = CGAffineTransformMakeRotation(self.ninetyDegrees)
                 })
             }
         }
@@ -161,11 +158,11 @@ class ViewController : UIViewController {
     func flipPentominoView (view : UIImageView, numFlips : Int, numRotations : Int){
         let evenOrOdd = self.checkNumberOfRotations(numFlips)
         if numFlips > 0 {
-            if evenOrOdd == isEven {
+            //if evenOrOdd == isEven {
                 view.transform = CGAffineTransformScale(view.transform, -1.0, 1.0)
-            }else{
-                view.transform = CGAffineTransformScale(view.transform, 1.0, -1.0)
-            }
+            //}else{
+              //  view.transform = CGAffineTransformScale(view.transform, 1.0, -1.0)
+            //}
         }
         
     }
