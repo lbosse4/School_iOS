@@ -233,6 +233,12 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="board0Button" destination="5VV-of-w2R" id="0aT-3k-rqv"/>
+                        <outlet property="board1Button" destination="P3U-LK-iws" id="dnw-Tj-O7v"/>
+                        <outlet property="board2Button" destination="p77-Ub-JZG" id="P37-NX-dPE"/>
+                        <outlet property="board3Button" destination="tao-oc-5Y0" id="x7j-BL-aJh"/>
+                        <outlet property="board4Button" destination="1Dl-s0-xyO" id="P54-jw-flG"/>
+                        <outlet property="board5Button" destination="H2s-wu-WY1" id="8LE-hA-kda"/>
                         <outlet property="boardImageView" destination="h1J-5C-AA8" id="e4I-Sf-aHf"/>
                         <outlet property="petominoesContainerView" destination="zWJ-YI-B98" id="qYi-Ad-tMh"/>
                     </connections>

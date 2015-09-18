@@ -12,11 +12,19 @@ class ViewController : UIViewController {
 
     @IBOutlet weak var boardImageView: UIImageView!
     @IBOutlet weak var petominoesContainerView: UIView!
+    @IBOutlet weak var board0Button: UIButton!
+    @IBOutlet weak var board1Button: UIButton!
+    @IBOutlet weak var board2Button: UIButton!
+    @IBOutlet weak var board3Button: UIButton!
+    @IBOutlet weak var board4Button: UIButton!
+    @IBOutlet weak var board5Button: UIButton!
+    
     
     let model = Model()
     
     let ninetyDegrees = (CGFloat(M_PI)) / 2.0
     let gridTileConversion : CGFloat = 30.0
+    let numRotationDifferences = 2
     let isOdd = 1
     let isEven = 0
     
@@ -80,6 +88,13 @@ class ViewController : UIViewController {
             }*/
             
         }
+        
+        board0Button.enabled = true
+        board1Button.enabled = true
+        board2Button.enabled = true
+        board3Button.enabled = true
+        board4Button.enabled = true
+        board5Button.enabled = true
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
@@ -90,48 +105,84 @@ class ViewController : UIViewController {
                 
                 let pentominoContainerOrigin = self.petominoesContainerView.bounds.origin
                 let pieceBounds = aView.bounds
-                let pieceWidth = pieceBounds.width
-                let pieceHeight = pieceBounds.height
+                let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
+                let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
+                
+                let pieceWidth : CGFloat = pieceBounds.width
+                let pieceHeight : CGFloat = pieceBounds.height
+                
                 let gridOriginX = CGFloat(self.model.pentominoesArray[loopCounter].solutionX) * self.gridTileConversion
                 let gridOriginY = CGFloat(self.model.pentominoesArray[loopCounter].solutionY) * self.gridTileConversion
                 
                 let newPieceOrigin = aView.convertPoint(pieceBounds.origin, fromView: self.boardImageView)
                 
-                let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
+                self.rotatePentominoView(aView, numRotations: rotationSolution, width: &self.model.pentominoesArray[loopCounter].width, height: &self.model.pentominoesArray[loopCounter].height)
                 
-                self.rotatePentominoView(aView, numRotations: self.model.pentominoesArray[loopCounter].numRotationsSolution)
+                //self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution)
+                
+                let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
                 
                 aView.frame = rect
                 
                 self.boardImageView.addSubview(aView)
                 
                 loopCounter += 1
-            
+                
             })
-        
+            
         }
+        
+        board0Button.enabled = false
+        board1Button.enabled = false
+        board2Button.enabled = false
+        board3Button.enabled = false
+        board4Button.enabled = false
+        board5Button.enabled = false
+        
     }
     
-    func rotatePentominoView (view : UIImageView, numRotations : Int){
+    func rotatePentominoView (view : UIImageView, numRotations : Int, inout  width : Int, inout height : Int){
+        let evenOrOdd = self.checkNumberOfRotations(numRotations)
         if numRotations > 0{
             for i in 1 ... numRotations {
                 UIView.animateWithDuration(model.rotationDuration, animations: {
-                    view.transform = CGAffineTransformMakeRotation(self.ninetyDegrees)
+                    view.transform = CGAffineTransformRotate(view.transform, self.ninetyDegrees)
+                    
+                    
+                    //view.transform = CGAffineTransformMakeRotation(self.ninetyDegrees)
                 })
+            }
+        }
+        if evenOrOdd == isOdd {
+            swap(&width, &height)
+        }
+        
+    }
+    
+    func flipPentominoView (view : UIImageView, numFlips : Int, numRotations : Int){
+        let evenOrOdd = self.checkNumberOfRotations(numFlips)
+        if numFlips > 0 {
+            if evenOrOdd == isEven {
+                view.transform = CGAffineTransformScale(view.transform, -1.0, 1.0)
+            }else{
+                view.transform = CGAffineTransformScale(view.transform, 1.0, -1.0)
             }
         }
         
     }
     
     func checkNumberOfRotations (rotations : Int) -> Int{
-        if rotations % 2 == 0 {
+        if rotations % numRotationDifferences == 0 {
             return isEven
         }else{
             return isOdd
         }
     }
-
+    
 }
+
+
+
 
 
 
