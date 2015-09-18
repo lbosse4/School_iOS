@@ -17,6 +17,8 @@ class ViewController : UIViewController {
     
     let ninetyDegrees = (CGFloat(M_PI)) / 2.0
     let gridTileConversion : CGFloat = 30.0
+    let isOdd = 1
+    let isEven = 0
     
     var imageViews = [UIImageView]()
     var pentominoImageViews = [UIImageView]()
@@ -84,7 +86,7 @@ class ViewController : UIViewController {
         model.extractBoardSolutions(model.currentBoardNumber)
         var loopCounter = 0
         for aView in pentominoImageViews {
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
                 
                 let pentominoContainerOrigin = self.petominoesContainerView.bounds.origin
                 let pieceBounds = aView.bounds
@@ -95,9 +97,9 @@ class ViewController : UIViewController {
                 
                 let newPieceOrigin = aView.convertPoint(pieceBounds.origin, fromView: self.boardImageView)
                 
-                
-                
                 let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
+                
+                self.rotatePentominoView(aView, numRotations: self.model.pentominoesArray[loopCounter].numRotationsSolution)
                 
                 aView.frame = rect
                 
@@ -105,26 +107,28 @@ class ViewController : UIViewController {
                 
                 loopCounter += 1
             
-                /*let pentominoContainerOrigin = self.petominoesContainerView.bounds.origin
-                let pieceBounds = self.view.bounds
-                let pieceWidth = view.bounds.width
-                let pieceHeight = view.bounds.height
-                
-                let newPieceOrigin = view.convertPoint(pentominoContainerOrigin, fromView: self.boardImageView)
-                let rect = CGRectMake(newPieceOrigin.x, newPieceOrigin.y, pieceWidth, pieceHeight)
-
-                view.frame = rect
-                self.rotatePentominoView(view)*/
             })
         
         }
     }
     
-    func rotatePentominoView (view : UIImageView){
+    func rotatePentominoView (view : UIImageView, numRotations : Int){
+        if numRotations > 0{
+            for i in 1 ... numRotations {
+                UIView.animateWithDuration(model.rotationDuration, animations: {
+                    view.transform = CGAffineTransformMakeRotation(self.ninetyDegrees)
+                })
+            }
+        }
         
-        UIView.animateWithDuration(model.rotationDuration, animations: {
-            view.transform = CGAffineTransformMakeRotation(self.ninetyDegrees)
-        })
+    }
+    
+    func checkNumberOfRotations (rotations : Int) -> Int{
+        if rotations % 2 == 0 {
+            return isEven
+        }else{
+            return isOdd
+        }
     }
 
 }
