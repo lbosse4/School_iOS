@@ -16,6 +16,7 @@ class ViewController : UIViewController {
     let model = Model()
     
     let ninetyDegrees = (CGFloat(M_PI)) / 2.0
+    let gridTileConversion : CGFloat = 30.0
     
     var imageViews = [UIImageView]()
     var pentominoImageViews = [UIImageView]()
@@ -80,21 +81,40 @@ class ViewController : UIViewController {
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
-        model.solvePuzzle(model.currentBoardNumber)
-        
-        
-        for view in pentominoImageViews {
+        model.extractBoardSolutions(model.currentBoardNumber)
+        var loopCounter = 0
+        for aView in pentominoImageViews {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
+                
                 let pentominoContainerOrigin = self.petominoesContainerView.bounds.origin
+                let pieceBounds = aView.bounds
+                let pieceWidth = pieceBounds.width
+                let pieceHeight = pieceBounds.height
+                let gridOriginX = CGFloat(self.model.pentominoesArray[loopCounter].solutionX) * self.gridTileConversion
+                let gridOriginY = CGFloat(self.model.pentominoesArray[loopCounter].solutionY) * self.gridTileConversion
+                
+                let newPieceOrigin = aView.convertPoint(pieceBounds.origin, fromView: self.boardImageView)
+                
+                
+                
+                let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
+                
+                aView.frame = rect
+                
+                self.boardImageView.addSubview(aView)
+                
+                loopCounter += 1
+            
+                /*let pentominoContainerOrigin = self.petominoesContainerView.bounds.origin
                 let pieceBounds = self.view.bounds
                 let pieceWidth = view.bounds.width
                 let pieceHeight = view.bounds.height
                 
-                let newPieceOrigin = view.convertPoint(pentominoContainerOrigin, fromCoordinateSpace: self.boardImageView)
+                let newPieceOrigin = view.convertPoint(pentominoContainerOrigin, fromView: self.boardImageView)
                 let rect = CGRectMake(newPieceOrigin.x, newPieceOrigin.y, pieceWidth, pieceHeight)
 
                 view.frame = rect
-                //self.rotatePentominoView(view)
+                self.rotatePentominoView(view)*/
             })
         
         }

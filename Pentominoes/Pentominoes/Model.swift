@@ -58,7 +58,11 @@ class Model {
         }
         // use these to orient the piece
         func rotate(numRotations : Int) {
-            
+            if numRotations % 2 == 0 {
+                
+            } else {
+                
+            }
         }
         
         func flip (numFlips : Int) {
@@ -75,7 +79,7 @@ class Model {
     func generatePentominoesPieces(containerSize : CGSize) {
         var tempXCoordinate = 0 - pentominoPaddingX
         var tempYCoordinate = 0
-        for i in 0...numPentominoesPieces - 1 {
+        for i in 0..<numPentominoesPieces {
             let tempPentominoesPiece = pentominoesPiece()
             
             if let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png"){
@@ -124,17 +128,17 @@ class Model {
             piece.solutionY = ycoord!
             piece.numRotationsSolution = numRotations!
             piece.numFlipsSolution = numFlips!
-            
         }
         
         
     }
     
-    func solvePuzzle(boardNumber : Int){
-        initializeSolutionPList()
-        let currentDictionary = getBoardDictionary(currentBoardNumber)
-        populatePiecesWithCurrentAnswers(currentDictionary)
-        
+    func extractBoardSolutions(boardNumber : Int){
+        if boardNumber != 0 {
+            initializeSolutionPList()
+            let currentDictionary = getBoardDictionary(currentBoardNumber - 1)
+            populatePiecesWithCurrentAnswers(currentDictionary)
+        }
     }
     
 }
