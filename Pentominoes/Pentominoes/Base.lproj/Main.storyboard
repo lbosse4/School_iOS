@@ -241,6 +241,7 @@
                         <outlet property="board5Button" destination="H2s-wu-WY1" id="8LE-hA-kda"/>
                         <outlet property="boardImageView" destination="h1J-5C-AA8" id="e4I-Sf-aHf"/>
                         <outlet property="petominoesContainerView" destination="zWJ-YI-B98" id="qYi-Ad-tMh"/>
+                        <outlet property="solveButton" destination="eEL-kW-Ft9" id="cS3-sg-7Ta"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

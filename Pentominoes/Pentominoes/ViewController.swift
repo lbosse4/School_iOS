@@ -12,6 +12,7 @@ class ViewController : UIViewController {
 
     @IBOutlet weak var boardImageView: UIImageView!
     @IBOutlet weak var petominoesContainerView: UIView!
+    @IBOutlet weak var solveButton: UIButton!
     @IBOutlet weak var board0Button: UIButton!
     @IBOutlet weak var board1Button: UIButton!
     @IBOutlet weak var board2Button: UIButton!
@@ -35,6 +36,7 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        solveButton.enabled = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,20 +74,21 @@ class ViewController : UIViewController {
         let currentBoardImageName = model.generateBoardImageName(sender)
         boardImageView.image = UIImage(named: currentBoardImageName)
         model.currentBoardNumber = sender.tag
+        
+        setButtons()
+        
     }
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
         var loopCounter = 0
         for aView in pentominoImageViews {
-            UIView.animateWithDuration(5.0, animations: { () -> Void in
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
                 
                 let pieceBounds = aView.bounds
                 let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
                 let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
                 //let rotationsNeededToReturn = self.numPossibleRotations - (self.model.pentominoesArray[loopCounter].numRotations % self.numPossibleRotations)
                 let rotationsNeededToReturn = self.numPossibleRotations - self.model.pentominoesArray[loopCounter].numRotations
-                
-                
                 var pieceWidth : CGFloat = pieceBounds.width
                 var pieceHeight : CGFloat = pieceBounds.height
                 
@@ -93,7 +96,6 @@ class ViewController : UIViewController {
                 let originalOriginYCoordinate = CGFloat(self.model.pentominoesArray[loopCounter].initialY)
                 
                 if self.model.pentominoesArray[loopCounter].numRotations != 0 {
-//                    self.rotatePentominoView(aView, numRotations: rotationsNeededToReturn, width: &pieceWidth, height: &pieceHeight)
                     if rotationsNeededToReturn != 0{
                         for i in 1 ... rotationsNeededToReturn {
                             UIView.animateWithDuration(self.model.rotationDuration, animations: {
@@ -124,9 +126,6 @@ class ViewController : UIViewController {
                 
                 loopCounter += 1
             })
-            
-            
-            
         }
 
         board0Button.enabled = true
@@ -135,14 +134,17 @@ class ViewController : UIViewController {
         board3Button.enabled = true
         board4Button.enabled = true
         board5Button.enabled = true
+        setButtons()
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
+        
         model.extractBoardSolutions(model.currentBoardNumber)
         var loopCounter = 0
         for aView in pentominoImageViews {
+            
+                self.boardImageView.addSubview(aView)
             UIView.animateWithDuration(0.3, animations: { () -> Void in
-                
                 let pieceBounds = aView.bounds
                 let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
                 let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
@@ -163,8 +165,6 @@ class ViewController : UIViewController {
                 
                 aView.frame = rect
                 
-                self.boardImageView.addSubview(aView)
-                
                 loopCounter += 1
                 
             })
@@ -177,6 +177,7 @@ class ViewController : UIViewController {
         board3Button.enabled = false
         board4Button.enabled = false
         board5Button.enabled = false
+        solveButton.enabled = false
         
     }
     
@@ -212,6 +213,15 @@ class ViewController : UIViewController {
             return isEven
         }else{
             return isOdd
+        }
+    }
+    
+    func setButtons () {
+        if model.currentBoardNumber == 0 {
+            solveButton.enabled = false
+        }
+        else {
+            solveButton.enabled = true
         }
     }
     
