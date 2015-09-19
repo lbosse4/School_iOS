@@ -142,33 +142,53 @@ class ViewController : UIViewController {
         model.extractBoardSolutions(model.currentBoardNumber)
         var loopCounter = 0
         for aView in pentominoImageViews {
+
+//            UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                let pieceBounds = aView.bounds
+//                let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
+//                let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
+//                
+//                var pieceWidth : CGFloat = pieceBounds.width
+//                var pieceHeight : CGFloat = pieceBounds.height
+//                
+//                let gridOriginX = CGFloat(self.model.pentominoesArray[loopCounter].solutionX) * self.gridTileConversion
+//                let gridOriginY = CGFloat(self.model.pentominoesArray[loopCounter].solutionY) * self.gridTileConversion
+//                
+//                self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight)
+//                self.model.pentominoesArray[loopCounter].numRotations += rotationSolution
+//                
+//                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution)
+//                self.model.pentominoesArray[loopCounter].numFlips += flipSolution
+//                
+//                let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
+//                
+//                aView.frame = rect
             
-                self.boardImageView.addSubview(aView)
+            moveView(aView, toSuperview: boardImageView)
+            let boarImageViewSize = boardImageView.bounds.size
+            let gridOriginX = CGFloat(self.model.pentominoesArray[loopCounter].solutionX) * self.gridTileConversion
+            let gridOriginY = CGFloat(self.model.pentominoesArray[loopCounter].solutionY) * self.gridTileConversion
+            let pieceBounds = aView.bounds
+            let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
+            let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
+            
+            var pieceWidth : CGFloat = pieceBounds.width
+            var pieceHeight : CGFloat = pieceBounds.height
+            
+            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight)
+            self.model.pentominoesArray[loopCounter].numRotations += rotationSolution
+            
+            self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution)
+            self.model.pentominoesArray[loopCounter].numFlips += flipSolution
+            
+            
+            //let newCenter = CGPointMake(gridOriginX, gridOriginY)
+            let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
+            
             UIView.animateWithDuration(0.3, animations: { () -> Void in
-                let pieceBounds = aView.bounds
-                let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
-                let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
-                
-                var pieceWidth : CGFloat = pieceBounds.width
-                var pieceHeight : CGFloat = pieceBounds.height
-                
-                let gridOriginX = CGFloat(self.model.pentominoesArray[loopCounter].solutionX) * self.gridTileConversion
-                let gridOriginY = CGFloat(self.model.pentominoesArray[loopCounter].solutionY) * self.gridTileConversion
-                
-                self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight)
-                self.model.pentominoesArray[loopCounter].numRotations += rotationSolution
-                
-                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution)
-                self.model.pentominoesArray[loopCounter].numFlips += flipSolution
-                
-                let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
-                
                 aView.frame = rect
-                
-                loopCounter += 1
-                
             })
-            
+            loopCounter += 1
         }
         
         board0Button.enabled = false
@@ -185,7 +205,7 @@ class ViewController : UIViewController {
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
         if numRotations > 0{
             for i in 1 ... numRotations {
-                UIView.animateWithDuration(model.rotationDuration, animations: {
+                UIView.animateWithDuration(0.3, animations: {
                     view.transform = CGAffineTransformRotate(view.transform, self.ninetyDegrees)
                 })
             }
@@ -200,7 +220,9 @@ class ViewController : UIViewController {
         let evenOrOdd = self.checkNumberOfRotations(numFlips)
         if numFlips > 0 {
             //if evenOrOdd == isEven {
+            UIView.animateWithDuration(0.3, animations: {
                 view.transform = CGAffineTransformScale(view.transform, -1.0, 1.0)
+            })
             //}else{
                 //view.transform = CGAffineTransformScale(view.transform, 1.0, -1.0)
             //}
@@ -223,6 +245,12 @@ class ViewController : UIViewController {
         else {
             solveButton.enabled = true
         }
+    }
+    
+    func moveView(view:UIView, toSuperview superView: UIView) {
+        let newCenter = superView.convertPoint(view.center, fromView: view.superview)
+        view.center = newCenter
+        superView.addSubview(view)
     }
     
 }
