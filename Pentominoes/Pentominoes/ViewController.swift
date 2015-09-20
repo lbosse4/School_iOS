@@ -79,6 +79,9 @@ class ViewController : UIViewController {
     @IBAction func resetButtonPressed(sender: AnyObject) {
         var loopCounter = 0
         for aView in pentominoImageViews {
+            moveView(aView, toSuperview: petominoesContainerView)
+            
+            
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 
                 let pieceBounds = aView.bounds
