@@ -32,6 +32,9 @@ class ViewController : UIViewController {
     let isEven = 0
     let isSolve = true
     let isReset = false
+    let negativeTransformValue : CGFloat = -1.0
+    let positiveTransformValue : CGFloat = 1.0
+    let animationDuration = 0.3
     
     var boardButtons = [UIButton]()
     var pentominoImageViews = [UIImageView]()
@@ -111,9 +114,9 @@ class ViewController : UIViewController {
             
             let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
             if evenOrOdd == self.isOdd{
-                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: 1.0, y: -1.0)
+                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: positiveTransformValue, y: negativeTransformValue)
             }else {
-                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: -1.0, y: 1.0)
+                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: negativeTransformValue, y: positiveTransformValue)
             }
             
             self.model.pentominoesArray[loopCounter].numRotations = 0
@@ -121,7 +124,7 @@ class ViewController : UIViewController {
             
             let rect = CGRectMake(originalOriginXCoordinate, originalOriginYCoordinate, pieceWidth, pieceHeight)
             
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
+            UIView.animateWithDuration(animationDuration, animations: { () -> Void in
                 aView.frame = rect
             })
             self.petominoesContainerView.addSubview(aView)
@@ -151,7 +154,7 @@ class ViewController : UIViewController {
             self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight, isSolve: self.isSolve)
             self.model.pentominoesArray[loopCounter].numRotations += rotationSolution
             
-            self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: -1.0, y: 1.0)
+            self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: negativeTransformValue, y: positiveTransformValue)
             self.model.pentominoesArray[loopCounter].numFlips += flipSolution
             
             let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
