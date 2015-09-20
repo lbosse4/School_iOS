@@ -109,15 +109,12 @@ class ViewController : UIViewController {
             
             self.rotatePentominoView(aView, numRotations: rotationsNeededToReturn, width: &pieceWidth, height: &pieceHeight, isSolve: self.isReset)
             
-            //if self.model.pentominoesArray[loopCounter].numFlips != 0 {
-                let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
-                if evenOrOdd == self.isOdd{
-                    self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: 1.0, y: -1.0)
-                }else {
-                    self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: -1.0, y: 1.0)
-                }
-                
-            //}
+            let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
+            if evenOrOdd == self.isOdd{
+                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: 1.0, y: -1.0)
+            }else {
+                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: -1.0, y: 1.0)
+            }
             
             self.model.pentominoesArray[loopCounter].numRotations = 0
             self.model.pentominoesArray[loopCounter].numFlips = 0
