@@ -17,7 +17,7 @@ class Model {
     let pentominoPaddingX : Int = 191
     let pentominoPaddingY : Int = 105
     let newPentominoLineBound = 4
-    let rotationDuration = 2.0
+    let rotationDuration = 0.3
     
     var pentominoPiecesHaveBeenInitialized = false
     var currentBoardNumber = 0
