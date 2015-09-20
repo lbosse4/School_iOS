@@ -37,6 +37,8 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        solveButton.enabled = false
+        resetButton.enabled = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,6 +76,11 @@ class ViewController : UIViewController {
         let currentBoardImageName = model.generateBoardImageName(sender)
         boardImageView.image = UIImage(named: currentBoardImageName)
         model.currentBoardNumber = sender.tag
+        if model.currentBoardNumber != 0 {
+            solveButton.enabled = true
+        } else {
+            solveButton.enabled = false
+        }
     }
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
@@ -140,6 +147,7 @@ class ViewController : UIViewController {
         board3Button.enabled = true
         board4Button.enabled = true
         board5Button.enabled = true
+        resetButton.enabled = false
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
@@ -178,7 +186,8 @@ class ViewController : UIViewController {
         board3Button.enabled = false
         board4Button.enabled = false
         board5Button.enabled = false
-        
+        solveButton.enabled = false
+        resetButton.enabled = true
     }
     
     func rotatePentominoView (view : UIImageView, numRotations : Int, inout  width : CGFloat, inout height : CGFloat){
