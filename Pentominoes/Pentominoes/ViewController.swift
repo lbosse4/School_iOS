@@ -105,14 +105,16 @@ class ViewController : UIViewController {
 //            self.model.pentominoesArray[loopCounter].numFlips = 0
             
             if self.model.pentominoesArray[loopCounter].numRotations != 0 {
-                if rotationsNeededToReturn > 0{
+                //                    self.rotatePentominoView(aView, numRotations: rotationsNeededToReturn, width: &pieceWidth, height: &pieceHeight)
+                if rotationsNeededToReturn != 0{
                     for i in 1 ... rotationsNeededToReturn {
-                        UIView.animateWithDuration(animationDuration, animations: {
+                        UIView.animateWithDuration(self.animationDuration, animations: {
                             aView.transform = CGAffineTransformRotate(aView.transform, self.ninetyDegrees)
                         })
                     }
                 }
             }
+            self.model.pentominoesArray[loopCounter].numRotations = 0
             
             if self.model.pentominoesArray[loopCounter].numFlips != 0 {
                 let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
@@ -123,6 +125,27 @@ class ViewController : UIViewController {
                 }
                 
             }
+            self.model.pentominoesArray[loopCounter].numFlips = 0
+            
+//            if self.model.pentominoesArray[loopCounter].numRotations != 0 {
+//                if rotationsNeededToReturn > 0{
+//                    for i in 1 ... rotationsNeededToReturn {
+//                        UIView.animateWithDuration(animationDuration, animations: {
+//                            aView.transform = CGAffineTransformRotate(aView.transform, self.ninetyDegrees)
+//                        })
+//                    }
+//                }
+//            }
+//            
+//            if self.model.pentominoesArray[loopCounter].numFlips != 0 {
+//                let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
+//                if evenOrOdd == self.isOdd{
+//                    aView.transform = CGAffineTransformScale(aView.transform, 1.0, -1.0)
+//                }else {
+//                    self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution)
+//                }
+//                
+//            }
 
             let rect = CGRectMake(originalOriginXCoordinate, originalOriginYCoordinate, pieceWidth, pieceHeight)
             
@@ -159,7 +182,7 @@ class ViewController : UIViewController {
             var pieceWidth : CGFloat = pieceBounds.width
             var pieceHeight : CGFloat = pieceBounds.height
             
-            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight, rotationFactor: solveAngleFactor)
+            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight)
             self.model.pentominoesArray[loopCounter].numRotations += rotationSolution
             
             self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution)
@@ -186,12 +209,12 @@ class ViewController : UIViewController {
     
     //self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight, isSolve)
     
-    func rotatePentominoView (view : UIImageView, numRotations : Int, inout  width : CGFloat, inout height : CGFloat, rotationFactor : Int){
+    func rotatePentominoView (view : UIImageView, numRotations : Int, inout  width : CGFloat, inout height : CGFloat){
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
         if numRotations > 0{
             for i in 1 ... numRotations {
                 UIView.animateWithDuration(animationDuration, animations: { //() -> Void in
-                    let angle = self.ninetyDegrees * CGFloat(rotationFactor)
+                    let angle = self.ninetyDegrees
                     view.transform = CGAffineTransformRotate(view.transform, angle)
                 })
             }
