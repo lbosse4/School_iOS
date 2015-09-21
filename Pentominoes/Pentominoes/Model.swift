@@ -14,14 +14,15 @@ class Model {
     
     let numBoards = 6
     let numPentominoesPieces = 12
-    let pentominoPaddingX : Double = 191
-    let pentominoPaddingY : Double = 105
+    let landscapeModeX = 170.0
+    let portraitModeX = 191.0
     let newPentominoLineBound = 4
     let rotationDuration = 0.3
     let numBoardButtons = 6
     
-    var pentominoPiecesHaveBeenInitialized = false
     var currentBoardNumber = 0
+    var pentominoPaddingX : Double = 191.0
+    var pentominoPaddingY : Double = 120.0
     
     var solutionsArray : NSArray = NSArray()
     
@@ -66,24 +67,24 @@ class Model {
         return currentBoardImageName
     }
     
-    func generatePentominoesPieces(containerWidth : Double) {
+    func generatePentominoesPieces() {
         var tempXCoordinate = 0.0 - pentominoPaddingX
         var tempYCoordinate = 0.0
         for i in 0..<numPentominoesPieces {
             let tempPentominoesPiece = pentominoesPiece()
             
             if let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png"){
-                
-                if tempXCoordinate + pentominoPaddingX > containerWidth {
-                    tempYCoordinate += pentominoPaddingY
-                    tempXCoordinate = 0
-                }else{
-                    tempXCoordinate += pentominoPaddingX
-                }
-                
+//                
+//                if tempXCoordinate + pentominoPaddingX > containerWidth {
+//                    tempYCoordinate += pentominoPaddingY
+//                    tempXCoordinate = 0
+//                }else{
+//                    tempXCoordinate += pentominoPaddingX
+//                }
+//                
                 tempPentominoesPiece.image = tempPentominoesImage
-                tempPentominoesPiece.initialX = tempXCoordinate
-                tempPentominoesPiece.initialY = tempYCoordinate
+//                tempPentominoesPiece.initialX = tempXCoordinate
+//                tempPentominoesPiece.initialY = tempYCoordinate
                 tempPentominoesPiece.letter = Character(tileLettersArray[i])
                 
                 pentominoesArray.append(tempPentominoesPiece)
@@ -131,8 +132,19 @@ class Model {
         }
     }
     
-    func generatePentominoesCoordinates (piece : pentominoesPiece, x: Double, y: Double, width: Double) {
+    func generatePentominoesCoordinates (inout piece : pentominoesPiece, inout x: Double, inout y: Double, containerWidth: Double) {
+        //var tempXCoordinate = x
+        //var tempYCoordinate = y
         
+        if x + pentominoPaddingX > containerWidth {
+            y =  y + pentominoPaddingY
+            x = 0.0
+        }else{
+            x =  x + pentominoPaddingX
+        }
+        
+        piece.initialX = x
+        piece.initialY = y
     }
     
 }

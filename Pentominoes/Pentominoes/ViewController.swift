@@ -45,6 +45,22 @@ class ViewController : UIViewController {
         solveButton.enabled = false
         resetButton.enabled = false
         
+        model.generatePentominoesPieces()
+        
+        for i in 0..<model.numPentominoesPieces {
+            let myImage = model.pentominoesArray[i].image
+            let imageView = UIImageView(image: myImage)
+//            let pieceBoundSize = imageView.bounds.size
+//            let width : CGFloat = pieceBoundSize.width
+//            let height : CGFloat = pieceBoundSize.height
+//            
+//            CGRect(x: 0.0, y: 0.0, width: width, height: height)
+            
+            
+            pentominoImageViews.append(imageView)
+            pentominoesContainerView.addSubview(imageView)
+        }
+        
         boardButtons.append(board0Button)
         boardButtons.append(board1Button)
         boardButtons.append(board2Button)
@@ -59,35 +75,31 @@ class ViewController : UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        let pentominoContainerSize = pentominoesContainerView.bounds.size
+        if view.bounds.width > view.bounds.height {
+            model.pentominoPaddingX = model.landscapeModeX
+        }
+        else {
+            model.pentominoPaddingX = model.portraitModeX
+        }
+        var loopCounter = 0
+        var tempXCoordinate = 0.0 - model.pentominoPaddingX
+        var tempYCoordinate = 0.0
         
-        if !model.pentominoPiecesHaveBeenInitialized {
+        for aView in pentominoImageViews {
+            var tempPiece = model.pentominoesArray[loopCounter]
+            model.generatePentominoesCoordinates(&tempPiece, x: &tempXCoordinate, y: &tempYCoordinate, containerWidth: Double(pentominoContainerSize.width))
             
-            let pentominoContainerSize = pentominoesContainerView.bounds.size
+            model.pentominoesArray[loopCounter].initialX = tempXCoordinate
+            model.pentominoesArray[loopCounter].initialY = tempYCoordinate
             
-            model.generatePentominoesPieces(Double(pentominoContainerSize.width))
+            let pieceBoundSize = aView.bounds.size
+            let width : CGFloat = pieceBoundSize.width
+            let height : CGFloat = pieceBoundSize.height
             
-            for i in 0..<model.numPentominoesPieces {
-                let myImage = model.pentominoesArray[i].image
-                let imageView = UIImageView(image: myImage)
-                
-                let pieceBoundSize = imageView.bounds.size
-                let width : CGFloat = pieceBoundSize.width
-                let height : CGFloat = pieceBoundSize.height
-                
-                imageView.frame = CGRect(x: CGFloat(model.pentominoesArray[i].initialX), y: CGFloat(model.pentominoesArray[i].initialY), width: width, height: height)
-                pentominoImageViews.append(imageView)
-                pentominoesContainerView.addSubview(imageView)
-                
-            }
+            aView.frame = CGRect(x: CGFloat(tempXCoordinate), y: CGFloat(tempYCoordinate), width: width, height: height)
             
-            model.pentominoPiecesHaveBeenInitialized = true
-        } else {
-            var tempXCoordinate = 0.0 - model.pentominoPaddingX
-            var tempYCoordinate = 0.0
-            for currentPiece in model.pentominoesArray {
-                //implement. use this here and in generatePentominoesPieces
-                model.generatePentominoesCoordinates(currentPiece, x: tempXCoordinate, y: tempYCoordinate, width: Double(pentominoesContainerView.bounds.width))
-            }
+            loopCounter += 1
         }
         
     }
