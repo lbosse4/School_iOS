@@ -11,7 +11,7 @@ import UIKit
 class ViewController : UIViewController {
 
     @IBOutlet weak var boardImageView: UIImageView!
-    @IBOutlet weak var petominoesContainerView: UIView!
+    @IBOutlet weak var pentominoesContainerView: UIView!
     @IBOutlet weak var solveButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var board0Button: UIButton!
@@ -61,9 +61,10 @@ class ViewController : UIViewController {
     override func viewDidLayoutSubviews() {
         
         if !model.pentominoPiecesHaveBeenInitialized {
-            let pentominoContainerSize = petominoesContainerView.bounds.size
             
-            model.generatePentominoesPieces(pentominoContainerSize)
+            let pentominoContainerSize = pentominoesContainerView.bounds.size
+            
+            model.generatePentominoesPieces(Double(pentominoContainerSize.width))
             
             for i in 0..<model.numPentominoesPieces {
                 let myImage = model.pentominoesArray[i].image
@@ -74,12 +75,19 @@ class ViewController : UIViewController {
                 let height : CGFloat = pieceBoundSize.height
                 
                 imageView.frame = CGRect(x: CGFloat(model.pentominoesArray[i].initialX), y: CGFloat(model.pentominoesArray[i].initialY), width: width, height: height)
-                
                 pentominoImageViews.append(imageView)
-                petominoesContainerView.addSubview(imageView)
+                pentominoesContainerView.addSubview(imageView)
+                
             }
             
             model.pentominoPiecesHaveBeenInitialized = true
+        } else {
+            var tempXCoordinate = 0.0 - model.pentominoPaddingX
+            var tempYCoordinate = 0.0
+            for currentPiece in model.pentominoesArray {
+                //implement. use this here and in generatePentominoesPieces
+                model.generatePentominoesCoordinates(currentPiece, x: tempXCoordinate, y: tempYCoordinate, width: Double(pentominoesContainerView.bounds.width))
+            }
         }
         
     }
@@ -98,7 +106,7 @@ class ViewController : UIViewController {
     @IBAction func resetButtonPressed(sender: AnyObject) {
         var loopCounter = 0
         for aView in pentominoImageViews {
-            moveView(aView, toSuperview: petominoesContainerView)
+            moveView(aView, toSuperview: pentominoesContainerView)
     
             let originalOriginXCoordinate = CGFloat(self.model.pentominoesArray[loopCounter].initialX)
             let originalOriginYCoordinate = CGFloat(self.model.pentominoesArray[loopCounter].initialY)
@@ -127,7 +135,7 @@ class ViewController : UIViewController {
             UIView.animateWithDuration(animationDuration, animations: { () -> Void in
                 aView.frame = rect
             })
-            self.petominoesContainerView.addSubview(aView)
+            self.pentominoesContainerView.addSubview(aView)
                 
             loopCounter += 1
         }

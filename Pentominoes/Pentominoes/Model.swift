@@ -14,8 +14,8 @@ class Model {
     
     let numBoards = 6
     let numPentominoesPieces = 12
-    let pentominoPaddingX : Int = 191
-    let pentominoPaddingY : Int = 105
+    let pentominoPaddingX : Double = 191
+    let pentominoPaddingY : Double = 105
     let newPentominoLineBound = 4
     let rotationDuration = 0.3
     let numBoardButtons = 6
@@ -26,20 +26,20 @@ class Model {
     var solutionsArray : NSArray = NSArray()
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
-
+    
     var pentominoesArray = [pentominoesPiece]()
     
     class pentominoesPiece {
         var image : UIImage
         var numFlips : Int
         var numRotations : Int
-        var initialX : Int
-        var initialY : Int
+        var initialX : Double
+        var initialY : Double
         var width : Int
         var height : Int
         var letter : Character
-        var solutionX : Int
-        var solutionY : Int
+        var solutionX : Double
+        var solutionY : Double
         var numRotationsSolution : Int
         var numFlipsSolution : Int
         
@@ -57,7 +57,7 @@ class Model {
             numRotationsSolution = 0
             numFlipsSolution = 0
         }
-    
+        
     }
     
     func generateBoardImageName(sender: AnyObject) -> String {
@@ -66,15 +66,15 @@ class Model {
         return currentBoardImageName
     }
     
-    func generatePentominoesPieces(containerSize : CGSize) {
-        var tempXCoordinate = 0 - pentominoPaddingX
-        var tempYCoordinate = 0
+    func generatePentominoesPieces(containerWidth : Double) {
+        var tempXCoordinate = 0.0 - pentominoPaddingX
+        var tempYCoordinate = 0.0
         for i in 0..<numPentominoesPieces {
             let tempPentominoesPiece = pentominoesPiece()
             
             if let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png"){
                 
-                if tempXCoordinate + pentominoPaddingX > Int(containerSize.width) {
+                if tempXCoordinate + pentominoPaddingX > containerWidth {
                     tempYCoordinate += pentominoPaddingY
                     tempXCoordinate = 0
                 }else{
@@ -114,8 +114,8 @@ class Model {
             let numRotations = letterDictionary["rotations"]
             let numFlips = letterDictionary["flips"]
             
-            piece.solutionX = xcoord!
-            piece.solutionY = ycoord!
+            piece.solutionX = Double(xcoord!)
+            piece.solutionY = Double(ycoord!)
             piece.numRotationsSolution = numRotations!
             piece.numFlipsSolution = numFlips!
         }
@@ -129,6 +129,10 @@ class Model {
             let currentDictionary = getBoardDictionary(currentBoardNumber - 1)
             populatePiecesWithCurrentAnswers(currentDictionary)
         }
+    }
+    
+    func generatePentominoesCoordinates (piece : pentominoesPiece, x: Double, y: Double, width: Double) {
+        
     }
     
 }
