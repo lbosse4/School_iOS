@@ -140,13 +140,16 @@ class ViewController : UIViewController {
             var pieceWidth : CGFloat = pieceBounds.width
             var pieceHeight : CGFloat = pieceBounds.height
             
-            self.rotatePentominoView(aView, numRotations: rotationsNeededToReturn, width: &pieceWidth, height: &pieceHeight)
+            self.rotatePentominoView(aView, numRotations: rotationsNeededToReturn, width: &pieceWidth, height: &pieceHeight, isSolve: self.isReset)
             
-            let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
-            if evenOrOdd == self.isOdd{
-                self.flipPentominoView(aView, numRotations: rotationSolution)
-            }else {
-                self.flipPentominoView(aView, numRotations: rotationSolution)
+            //TAKE INTO ACCOUNT PREVIOUS FLIPS
+            if flipSolution != 0 {
+                let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
+                if evenOrOdd == self.isOdd{
+                    self.flipPentominoView(aView, numRotations: rotationSolution)
+                }else {
+                    self.flipPentominoView(aView, numRotations: rotationSolution)
+                }
             }
             
             self.model.pentominoesArray[loopCounter].numRotations = 0
@@ -181,11 +184,14 @@ class ViewController : UIViewController {
             var pieceWidth : CGFloat = pieceBounds.width
             var pieceHeight : CGFloat = pieceBounds.height
             
-            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight)
+            //FIX THIS TO ACCOUNT FOR ANY PREVIOUS ROTATIONS - USE MOD
+            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight, isSolve: self.isSolve)
             self.model.pentominoesArray[loopCounter].numRotations += rotationSolution
             
-            self.flipPentominoView(aView, numRotations: rotationSolution)
-            self.model.pentominoesArray[loopCounter].numFlips += flipSolution
+            if flipSolution != 0 {
+                self.flipPentominoView(aView, numRotations: rotationSolution)
+                self.model.pentominoesArray[loopCounter].numFlips += flipSolution
+            }
             
             let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
             
@@ -205,7 +211,7 @@ class ViewController : UIViewController {
         if let tappedImageView = recognizer.view as? UIImageView {
             var width = tappedImageView.bounds.width
             var height = tappedImageView.bounds.height
-            rotatePentominoView(tappedImageView, numRotations: 1, width: &width, height: &height)
+            rotatePentominoView(tappedImageView, numRotations: 1, width: &width, height: &height, isSolve: self.isSolve)
             
             model.pentominoesArray[tappedImageView.tag].numRotations++
         }
@@ -233,7 +239,7 @@ class ViewController : UIViewController {
         }
     }
     
-    func rotatePentominoView (view : UIImageView, numRotations : Int,inout width : CGFloat, inout height : CGFloat){
+    func rotatePentominoView (view : UIImageView, numRotations : Int,inout width : CGFloat, inout height : CGFloat, isSolve : Bool){
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
         if numRotations > 0{
             for i in 1 ... numRotations {
@@ -242,7 +248,7 @@ class ViewController : UIViewController {
                 })
             }
         }
-        if evenOrOdd == isOdd {
+        if evenOrOdd == isOdd && isSolve{
             swap(&width, &height)
         }
     }
