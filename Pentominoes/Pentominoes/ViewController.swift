@@ -28,6 +28,7 @@ class ViewController : UIViewController {
     let gridTileConversion : CGFloat = 30.0
     let numRotationDifferences = 2
     let numPossibleRotations = 4
+    let rotationDuration = 0.15
     let isOdd = 1
     let isEven = 0
     let isSolve = true
@@ -50,12 +51,8 @@ class ViewController : UIViewController {
         for i in 0..<model.numPentominoesPieces {
             let myImage = model.pentominoesArray[i].image
             let imageView = UIImageView(image: myImage)
-//            let pieceBoundSize = imageView.bounds.size
-//            let width : CGFloat = pieceBoundSize.width
-//            let height : CGFloat = pieceBoundSize.height
-//            
-//            CGRect(x: 0.0, y: 0.0, width: width, height: height)
-            
+            imageView.tag = i
+            imageView.userInteractionEnabled = true
             
             pentominoImageViews.append(imageView)
             pentominoesContainerView.addSubview(imageView)
@@ -67,6 +64,11 @@ class ViewController : UIViewController {
         boardButtons.append(board3Button)
         boardButtons.append(board4Button)
         boardButtons.append(board5Button)
+        
+//        let recognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
+//        pentominoesContainerView.addGestureRecognizer(recognizer)
+//        spriteImageView.addGestureRecognizer(recognizer)
+//        bananArray.append(spriteImageView)
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,6 +101,9 @@ class ViewController : UIViewController {
             
             aView.frame = CGRect(x: CGFloat(tempXCoordinate), y: CGFloat(tempYCoordinate), width: width, height: height)
             
+            let recognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
+            aView.addGestureRecognizer(recognizer)
+            
             loopCounter += 1
         }
         
@@ -130,7 +135,7 @@ class ViewController : UIViewController {
             var pieceWidth : CGFloat = pieceBounds.width
             var pieceHeight : CGFloat = pieceBounds.height
             
-            self.rotatePentominoView(aView, numRotations: rotationsNeededToReturn, width: &pieceWidth, height: &pieceHeight, isSolve: self.isReset)
+            self.rotatePentominoView(aView, numRotations: rotationsNeededToReturn, width: &pieceWidth, height: &pieceHeight)
             
             let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
             if evenOrOdd == self.isOdd{
@@ -171,7 +176,7 @@ class ViewController : UIViewController {
             var pieceWidth : CGFloat = pieceBounds.width
             var pieceHeight : CGFloat = pieceBounds.height
             
-            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight, isSolve: self.isSolve)
+            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight)
             self.model.pentominoesArray[loopCounter].numRotations += rotationSolution
             
             self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: negativeTransformValue, y: positiveTransformValue)
@@ -179,7 +184,7 @@ class ViewController : UIViewController {
             
             let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
             
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
+            UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
                 aView.frame = rect
             })
             loopCounter += 1
@@ -191,22 +196,34 @@ class ViewController : UIViewController {
         resetButton.enabled = true
     }
     
+    func singleTapRotate (recognizer:UITapGestureRecognizer) {
+        if let tappedImageView = recognizer.view as? UIImageView {
+            var width = tappedImageView.bounds.width
+            var height = tappedImageView.bounds.height
+            rotatePentominoView(tappedImageView, numRotations: 1, width: &width, height: &height)
+            
+            model.pentominoesArray[tappedImageView.tag].numRotations++
+        }
+        
+    }
+
+    
     func updateBoardButtonEnabledStatus(status : Bool){
         for board in boardButtons {
             board.enabled = status
         }
     }
     
-    func rotatePentominoView (view : UIImageView, numRotations : Int, inout  width : CGFloat, inout height : CGFloat, isSolve : Bool){
+    func rotatePentominoView (view : UIImageView, numRotations : Int,inout width : CGFloat, inout height : CGFloat){
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
         if numRotations > 0{
             for i in 1 ... numRotations {
-                UIView.animateWithDuration(model.rotationDuration, animations: {
+                UIView.animateWithDuration(rotationDuration, animations: {
                     view.transform = CGAffineTransformRotate(view.transform, self.ninetyDegrees)
                 })
             }
         }
-        if evenOrOdd == isOdd && isSolve{
+        if evenOrOdd == isOdd {
             swap(&width, &height)
         }
     }
@@ -214,7 +231,7 @@ class ViewController : UIViewController {
     func flipPentominoView (view : UIImageView, numFlips : Int, numRotations : Int, x : CGFloat, y : CGFloat){
         let evenOrOdd = self.checkNumberOfRotations(numFlips)
         if numFlips > 0 {
-            UIView.animateWithDuration(model.rotationDuration, animations: { () -> Void in
+            UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
                 view.transform = CGAffineTransformScale(view.transform, x, y)
             })
         }

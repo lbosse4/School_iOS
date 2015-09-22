@@ -17,7 +17,6 @@ class Model {
     let landscapeModeX = 170.0
     let portraitModeX = 191.0
     let newPentominoLineBound = 4
-    let rotationDuration = 0.3
     let numBoardButtons = 6
     
     var currentBoardNumber = 0
@@ -74,17 +73,8 @@ class Model {
             let tempPentominoesPiece = pentominoesPiece()
             
             if let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png"){
-//                
-//                if tempXCoordinate + pentominoPaddingX > containerWidth {
-//                    tempYCoordinate += pentominoPaddingY
-//                    tempXCoordinate = 0
-//                }else{
-//                    tempXCoordinate += pentominoPaddingX
-//                }
-//                
+   
                 tempPentominoesPiece.image = tempPentominoesImage
-//                tempPentominoesPiece.initialX = tempXCoordinate
-//                tempPentominoesPiece.initialY = tempYCoordinate
                 tempPentominoesPiece.letter = Character(tileLettersArray[i])
                 
                 pentominoesArray.append(tempPentominoesPiece)
@@ -133,9 +123,6 @@ class Model {
     }
     
     func generatePentominoesCoordinates (inout piece : pentominoesPiece, inout x: Double, inout y: Double, containerWidth: Double) {
-        //var tempXCoordinate = x
-        //var tempYCoordinate = y
-        
         if x + pentominoPaddingX > containerWidth {
             y =  y + pentominoPaddingY
             x = 0.0
