@@ -141,9 +141,9 @@ class ViewController : UIViewController {
             
             let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
             if evenOrOdd == self.isOdd{
-                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: positiveTransformValue, y: negativeTransformValue)
+                self.flipPentominoView(aView, numRotations: rotationSolution)
             }else {
-                self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: negativeTransformValue, y: positiveTransformValue)
+                self.flipPentominoView(aView, numRotations: rotationSolution)
             }
             
             self.model.pentominoesArray[loopCounter].numRotations = 0
@@ -181,7 +181,7 @@ class ViewController : UIViewController {
             self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight)
             self.model.pentominoesArray[loopCounter].numRotations += rotationSolution
             
-            self.flipPentominoView(aView, numFlips: flipSolution, numRotations: rotationSolution, x: negativeTransformValue, y: positiveTransformValue)
+            self.flipPentominoView(aView, numRotations: rotationSolution)
             self.model.pentominoesArray[loopCounter].numFlips += flipSolution
             
             let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
@@ -211,12 +211,8 @@ class ViewController : UIViewController {
 
     func doubleTapFlip (recognizer:UITapGestureRecognizer) {
         if let tappedImageView = recognizer.view as? UIImageView {
-        
-//            var width = tappedImageView.bounds.width
-//            var height = tappedImageView.bounds.height
-//            rotatePentominoView(tappedImageView, numRotations: 1, width: &width, height: &height)
-//            
-//            model.pentominoesArray[tappedImageView.tag].numRotations++
+            flipPentominoView(tappedImageView, numRotations: model.pentominoesArray[tappedImageView.tag].numRotations)
+            model.pentominoesArray[tappedImageView.tag].numFlips++
         }
         
     }
@@ -241,14 +237,17 @@ class ViewController : UIViewController {
         }
     }
     
-    func flipPentominoView (view : UIImageView, numFlips : Int, numRotations : Int, x : CGFloat, y : CGFloat){
-        let evenOrOdd = self.checkNumberOfRotations(numFlips)
-        if numFlips > 0 {
-            UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
-                view.transform = CGAffineTransformScale(view.transform, x, y)
-            })
-        }
+    func flipPentominoView (view : UIImageView, numRotations : Int){
+        let evenOrOdd = self.checkNumberOfRotations(numRotations)
         
+        UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
+            if evenOrOdd == self.isOdd {
+                view.transform = CGAffineTransformScale(view.transform, self.positiveTransformValue, self.negativeTransformValue)
+            } else {
+                view.transform = CGAffineTransformScale(view.transform, self.negativeTransformValue, self.positiveTransformValue)
+            }
+            
+        })
     }
     
     func checkNumberOfRotations (rotations : Int) -> Int{
