@@ -28,7 +28,7 @@ class ViewController : UIViewController {
     let gridTileConversion : CGFloat = 30.0
     let numRotationDifferences = 2
     let numPossibleRotations = 4
-    let rotationDuration = 0.15
+    let rotationDuration = 0.1
     let isOdd = 1
     let isEven = 0
     let isSolve = true
@@ -64,11 +64,6 @@ class ViewController : UIViewController {
         boardButtons.append(board3Button)
         boardButtons.append(board4Button)
         boardButtons.append(board5Button)
-        
-//        let recognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
-//        pentominoesContainerView.addGestureRecognizer(recognizer)
-//        spriteImageView.addGestureRecognizer(recognizer)
-//        bananArray.append(spriteImageView)
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,8 +96,15 @@ class ViewController : UIViewController {
             
             aView.frame = CGRect(x: CGFloat(tempXCoordinate), y: CGFloat(tempYCoordinate), width: width, height: height)
             
-            let recognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
-            aView.addGestureRecognizer(recognizer)
+            let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
+            singleTapRecognizer.numberOfTapsRequired = 1
+            aView.addGestureRecognizer(singleTapRecognizer)
+            
+            let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapFlip:")
+            doubleTapRecognizer.numberOfTapsRequired = 2
+            aView.addGestureRecognizer(doubleTapRecognizer)
+            
+            singleTapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
             
             loopCounter += 1
         }
@@ -207,6 +209,17 @@ class ViewController : UIViewController {
         
     }
 
+    func doubleTapFlip (recognizer:UITapGestureRecognizer) {
+        if let tappedImageView = recognizer.view as? UIImageView {
+        
+//            var width = tappedImageView.bounds.width
+//            var height = tappedImageView.bounds.height
+//            rotatePentominoView(tappedImageView, numRotations: 1, width: &width, height: &height)
+//            
+//            model.pentominoesArray[tappedImageView.tag].numRotations++
+        }
+        
+    }
     
     func updateBoardButtonEnabledStatus(status : Bool){
         for board in boardButtons {
