@@ -106,6 +106,9 @@ class ViewController : UIViewController {
             
             singleTapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
             
+            let panRecognizer = UIPanGestureRecognizer(target: self, action: "panPentomino:")
+            aView.addGestureRecognizer(panRecognizer)
+            
             loopCounter += 1
         }
         
@@ -217,6 +220,13 @@ class ViewController : UIViewController {
         
     }
     
+    func panPentomino (recognizer: UIPanGestureRecognizer){
+        if let panningImageView = recognizer.view as? UIImageView {
+            let point = recognizer.locationInView(pentominoesContainerView)
+            panningImageView.center = point
+        }
+    }
+    
     func updateBoardButtonEnabledStatus(status : Bool){
         for board in boardButtons {
             board.enabled = status
@@ -239,13 +249,12 @@ class ViewController : UIViewController {
     
     func flipPentominoView (view : UIImageView, numRotations : Int){
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
-        
         UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
-            if evenOrOdd == self.isOdd {
-                view.transform = CGAffineTransformScale(view.transform, self.positiveTransformValue, self.negativeTransformValue)
-            } else {
+            //if evenOrOdd == self.isOdd {
+                //view.transform = CGAffineTransformScale(view.transform, self.positiveTransformValue, self.negativeTransformValue)
+            //} else {
                 view.transform = CGAffineTransformScale(view.transform, self.negativeTransformValue, self.positiveTransformValue)
-            }
+            //}
             
         })
     }
