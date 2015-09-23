@@ -100,6 +100,7 @@ class ViewController : UIViewController {
             })
             let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
             singleTapRecognizer.numberOfTapsRequired = 1
+            //singleTapRecognizer.
             aView.addGestureRecognizer(singleTapRecognizer)
             
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapFlip:")
@@ -293,6 +294,7 @@ class ViewController : UIViewController {
                 boardImageView.bringSubviewToFront(panningImageView)
                 
                 let currentLocation = recognizer.locationInView(boardImageView)
+                
                 if checkPanningViewBounds(currentLocation) {
                     //RESET PIECE
                 }
