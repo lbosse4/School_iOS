@@ -147,14 +147,16 @@ class Model {
         return flipSolution - (numFlips % numPossibleFlips)
     }
     
-    func calculateSolveRotations(piece : pentominoesPiece) -> Int{
+   func calculateSolveRotations(piece : pentominoesPiece) -> Int{
         let rotationSolution = piece.numRotationsSolution
         let numRotations = piece.numRotations
         
-        let answer = rotationSolution - numRotations % numPossibleRotations
-        
-        return answer
-        
+        var answer = rotationSolution - numRotations % numPossibleRotations
+        if answer >= 0{
+            return answer
+        } else {
+            return numPossibleRotations + answer
+        }
     }
     
     
