@@ -244,19 +244,29 @@ class ViewController : UIViewController {
         if let panningImageView = recognizer.view as? UIImageView {
             let point = recognizer.locationInView(pentominoesContainerView)
             panningImageView.center = point
+            switch recognizer.state {
+            case .Changed:
+//                let origin = CGPoint(x: panningImageView.frame.origin.x, y: panningImageView.frame.origin.y)
+//                
+//                boardImageView.addSubview(panningImageView)
+//                panningImageView.frame.origin = origin
+                return
+            case .Ended:
+                var width : CGFloat = panningImageView.bounds.width
+                var height : CGFloat = panningImageView.bounds.height
+                if CGRectIntersectsRect(panningImageView.frame, boardImageView.frame){
+                    rotatePentominoView(panningImageView, numRotations: 1, width: &width, height: &height, isSolve: true)
+                }
+                return
+            case .Cancelled:
+                //reset ImageView (panningImageView)
+                pentominoesContainerView.addSubview(panningImageView)
+                return
+            default:
+                break
+            }
         }
-        switch recognizer.state {
-        case .Began:
-            return
-        case .Changed:
-            return
-        case .Ended:
-            return
-        case .Cancelled:
-            return
-        default:
-            break
-        }
+        
     }
     
     func updateBoardButtonEnabledStatus(status : Bool){

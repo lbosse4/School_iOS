@@ -44,6 +44,7 @@ class Model {
         var numRotationsSolution : Int
         var numFlipsSolution : Int
         
+        
         init() {
             image = UIImage(named: "tileF.png")!
             numFlips = 0
