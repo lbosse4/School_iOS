@@ -191,7 +191,7 @@ class ViewController : UIViewController {
             let rotationsNeeded = model.calculateSolveRotations(model.pentominoesArray[loopCounter])
             let flipsNeeded = model.calculateSolveFlips(model.pentominoesArray[loopCounter])
             
-            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight, isSolve: self.isSolve)
+            self.rotatePentominoView(aView, numRotations: rotationsNeeded, width: &pieceWidth, height: &pieceHeight, isSolve: self.isSolve)
             self.model.pentominoesArray[loopCounter].numRotations += rotationsNeeded
             
             if flipsNeeded != 0 {
@@ -199,12 +199,12 @@ class ViewController : UIViewController {
                 self.model.pentominoesArray[loopCounter].numFlips += flipsNeeded
             }
             
-            let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
-            //let origin = CGPoint(x: gridOriginX, y: gridOriginY)
+            //let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
+            let origin = CGPoint(x: gridOriginX, y: gridOriginY)
             
             UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
-                aView.frame = rect
-                //aView.frame.origin = origin
+                //aView.frame = rect
+                aView.frame.origin = origin
             })
             loopCounter += 1
             
