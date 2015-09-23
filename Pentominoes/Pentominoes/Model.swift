@@ -16,8 +16,9 @@ class Model {
     let numPentominoesPieces = 12
     let landscapeModeX = 170.0
     let portraitModeX = 191.0
-    let newPentominoLineBound = 4
     let numBoardButtons = 6
+    let numPossibleRotations = 4
+    let numPossibleFlips = 2
     
     var currentBoardNumber = 0
     var pentominoPaddingX : Double = 191.0
@@ -73,16 +74,13 @@ class Model {
             let tempPentominoesPiece = pentominoesPiece()
             
             if let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png"){
-   
+                
                 tempPentominoesPiece.image = tempPentominoesImage
                 tempPentominoesPiece.letter = Character(tileLettersArray[i])
                 
                 pentominoesArray.append(tempPentominoesPiece)
             }
         }
-        
-        
-        
     }
     
     func initializeSolutionPList(){
@@ -134,6 +132,38 @@ class Model {
         piece.initialY = y
     }
     
+    func calculateResetRotations(piece : pentominoesPiece) -> Int{
+        let rotationSolution = piece.numRotationsSolution
+        let numRotations = piece.numRotations
+        
+        return rotationSolution - (numRotations % numPossibleRotations)
+    }
+    
+    
+    func calculateResetFlips(piece : pentominoesPiece) -> Int{
+        let flipSolution = piece.numFlipsSolution
+        let numFlips = piece.numFlips
+        
+        return flipSolution - (numFlips % numPossibleFlips)
+    }
+    
+    func calculateSolveRotations(piece : pentominoesPiece) -> Int{
+        let rotationSolution = piece.numRotationsSolution
+        let numRotations = piece.numRotations
+        
+        let answer = rotationSolution - numRotations % numPossibleRotations
+        
+        return answer
+        
+    }
+    
+    
+    func calculateSolveFlips(piece : pentominoesPiece) -> Int{
+        let flipSolution = piece.numFlipsSolution
+        let numFlips = piece.numFlips
+        
+        return flipSolution - (numFlips % numPossibleFlips)
+    }
 }
 
 

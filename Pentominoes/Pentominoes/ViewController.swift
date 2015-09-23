@@ -94,8 +94,10 @@ class ViewController : UIViewController {
             let width : CGFloat = pieceBoundSize.width
             let height : CGFloat = pieceBoundSize.height
             
-            aView.frame = CGRect(x: CGFloat(tempXCoordinate), y: CGFloat(tempYCoordinate), width: width, height: height)
-            
+            UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+                aView.frame.origin = CGPoint(x: CGFloat(self.model.pentominoesArray[loopCounter].initialX), y: CGFloat(self.model.pentominoesArray[loopCounter].initialY))
+                //aView.frame = CGRect(x: CGFloat(tempXCoordinate), y: CGFloat(tempYCoordinate), width: width, height: height)
+            })
             let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
             singleTapRecognizer.numberOfTapsRequired = 1
             aView.addGestureRecognizer(singleTapRecognizer)
@@ -129,13 +131,13 @@ class ViewController : UIViewController {
         var loopCounter = 0
         for aView in pentominoImageViews {
             moveView(aView, toSuperview: pentominoesContainerView)
-    
+            
             let originalOriginXCoordinate = CGFloat(self.model.pentominoesArray[loopCounter].initialX)
             let originalOriginYCoordinate = CGFloat(self.model.pentominoesArray[loopCounter].initialY)
             let pieceBounds = aView.bounds
             let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
             let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
-            let rotationsNeededToReturn = self.numPossibleRotations - self.model.pentominoesArray[loopCounter].numRotations
+            let rotationsNeededToReturn = self.model.numPossibleRotations - self.model.pentominoesArray[loopCounter].numRotations
             
             var pieceWidth : CGFloat = pieceBounds.width
             var pieceHeight : CGFloat = pieceBounds.height
@@ -162,7 +164,7 @@ class ViewController : UIViewController {
                 aView.frame = rect
             })
             self.pentominoesContainerView.addSubview(aView)
-                
+            
             loopCounter += 1
         }
         
@@ -186,18 +188,23 @@ class ViewController : UIViewController {
             var pieceHeight : CGFloat = pieceBounds.height
             
             //FIX THIS TO ACCOUNT FOR ANY PREVIOUS ROTATIONS - USE MOD
-            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight, isSolve: self.isSolve)
-            self.model.pentominoesArray[loopCounter].numRotations += rotationSolution
+            let rotationsNeeded = model.calculateSolveRotations(model.pentominoesArray[loopCounter])
+            let flipsNeeded = model.calculateSolveFlips(model.pentominoesArray[loopCounter])
             
-            if flipSolution != 0 {
-                self.flipPentominoView(aView, numRotations: rotationSolution, x: negativeTransformValue, y: positiveTransformValue)
-                self.model.pentominoesArray[loopCounter].numFlips += flipSolution
+            self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight, isSolve: self.isSolve)
+            self.model.pentominoesArray[loopCounter].numRotations += rotationsNeeded
+            
+            if flipsNeeded != 0 {
+                self.flipPentominoView(aView, numRotations: rotationsNeeded, x: negativeTransformValue, y: positiveTransformValue)
+                self.model.pentominoesArray[loopCounter].numFlips += flipsNeeded
             }
             
             let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
+            //let origin = CGPoint(x: gridOriginX, y: gridOriginY)
             
             UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
                 aView.frame = rect
+                //aView.frame.origin = origin
             })
             loopCounter += 1
             
@@ -280,16 +287,3 @@ class ViewController : UIViewController {
         superView.addSubview(view)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
