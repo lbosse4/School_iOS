@@ -164,7 +164,16 @@ class Model {
         let flipSolution = piece.numFlipsSolution
         let numFlips = piece.numFlips
         
-        return flipSolution - (numFlips % numPossibleFlips)
+        var answer = flipSolution - numFlips % numPossibleFlips
+        if answer >= 0{
+            //return answer
+        } else {
+            answer = numPossibleFlips + answer
+            
+            //return numPossibleFlips + answer
+        }
+        
+        return answer
     }
 }
 
