@@ -43,7 +43,8 @@ class Model {
         var solutionY : Double
         var numRotationsSolution : Int
         var numFlipsSolution : Int
-        
+        var numUserFlips : Int
+        var isUserFlipped : Bool
         
         init() {
             image = UIImage(named: "tileF.png")!
@@ -58,6 +59,8 @@ class Model {
             solutionY = 0
             numRotationsSolution = 0
             numFlipsSolution = 0
+            numUserFlips = 0
+            isUserFlipped = false
         }
         
     }
