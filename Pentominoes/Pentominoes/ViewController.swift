@@ -245,6 +245,18 @@ class ViewController : UIViewController {
             let point = recognizer.locationInView(pentominoesContainerView)
             panningImageView.center = point
         }
+        switch recognizer.state {
+        case .Began:
+            return
+        case .Changed:
+            return
+        case .Ended:
+            return
+        case .Cancelled:
+            return
+        default:
+            break
+        }
     }
     
     func updateBoardButtonEnabledStatus(status : Bool){
