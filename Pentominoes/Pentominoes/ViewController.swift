@@ -291,10 +291,16 @@ class ViewController : UIViewController {
                 //panningImageView.frame.origin = origin
                 panningImageView.center = origin
                 boardImageView.bringSubviewToFront(panningImageView)
+                
+                let currentLocation = recognizer.locationInView(boardImageView)
+                if checkPanningViewBounds(currentLocation) {
+                    //RESET PIECE
+                }
                 return
             case .Cancelled:
                 //reset ImageView (panningImageView)
                 pentominoesContainerView.addSubview(panningImageView)
+                //RESET THE PIECE
                 return
             default:
                 break
@@ -344,5 +350,9 @@ class ViewController : UIViewController {
         let newCenter = superView.convertPoint(view.center, fromView: view.superview)
         view.center = newCenter
         superView.addSubview(view)
+    }
+    
+    func checkPanningViewBounds (currentLocation: CGPoint) -> Bool{
+        return (currentLocation.x > boardImageView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > boardImageView.bounds.height) || (currentLocation.y < 0)
     }
 }
