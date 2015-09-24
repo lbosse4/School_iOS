@@ -39,6 +39,8 @@
 		89898E1E1BA6283E004A42AF /* tileX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89898E051BA6283E004A42AF /* tileX@2x.png */; };
 		89898E1F1BA6283E004A42AF /* tileY@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89898E061BA6283E004A42AF /* tileY@2x.png */; };
 		89898E201BA6283E004A42AF /* tileZ@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89898E071BA6283E004A42AF /* tileZ@2x.png */; };
+		898A8B061BB458B80066B67E /* PentominoesBackground1.png in Resources */ = {isa = PBXBuildFile; fileRef = 898A8B051BB458B80066B67E /* PentominoesBackground1.png */; };
+		898A8B081BB459900066B67E /* HintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A8B071BB459900066B67E /* HintsViewController.swift */; };
 		89C585111BA7B51900DDD8DF /* PentominoesBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 89C585101BA7B51900DDD8DF /* PentominoesBackground.png */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		89898E051BA6283E004A42AF /* tileX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tileX@2x.png"; sourceTree = "<group>"; };
 		89898E061BA6283E004A42AF /* tileY@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tileY@2x.png"; sourceTree = "<group>"; };
 		89898E071BA6283E004A42AF /* tileZ@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tileZ@2x.png"; sourceTree = "<group>"; };
+		898A8B051BB458B80066B67E /* PentominoesBackground1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PentominoesBackground1.png; sourceTree = "<group>"; };
+		898A8B071BB459900066B67E /* HintsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsViewController.swift; sourceTree = "<group>"; };
 		89C585101BA7B51900DDD8DF /* PentominoesBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PentominoesBackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +138,7 @@
 				89898DCF1BA62821004A42AF /* AppDelegate.swift */,
 				89898DD11BA62821004A42AF /* ViewController.swift */,
 				89898DD31BA62821004A42AF /* Main.storyboard */,
+				898A8B071BB459900066B67E /* HintsViewController.swift */,
 				893A41F21BA8BAB2009F3C21 /* Model.swift */,
 				89898DD61BA62821004A42AF /* Images.xcassets */,
 				89898DD81BA62821004A42AF /* LaunchScreen.xib */,
@@ -151,6 +156,7 @@
 				89898DF21BA6283E004A42AF /* Board1button.png */,
 				89898DF31BA6283E004A42AF /* Board2@2x.png */,
 				89C585101BA7B51900DDD8DF /* PentominoesBackground.png */,
+				898A8B051BB458B80066B67E /* PentominoesBackground1.png */,
 				89898DF41BA6283E004A42AF /* Board2button.png */,
 				89898DF51BA6283E004A42AF /* Board3@2x.png */,
 				89898DF61BA6283E004A42AF /* Board3button.png */,
@@ -296,6 +302,7 @@
 				89C585111BA7B51900DDD8DF /* PentominoesBackground.png in Resources */,
 				89898E161BA6283E004A42AF /* tileI@2x.png in Resources */,
 				89898E201BA6283E004A42AF /* tileZ@2x.png in Resources */,
+				898A8B061BB458B80066B67E /* PentominoesBackground1.png in Resources */,
 				89898DD71BA62821004A42AF /* Images.xcassets in Resources */,
 				89898E151BA6283E004A42AF /* tileF@2x.png in Resources */,
 				89898E0A1BA6283E004A42AF /* Board1@2x.png in Resources */,
@@ -320,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				893A41F31BA8BAB2009F3C21 /* Model.swift in Sources */,
+				898A8B081BB459900066B67E /* HintsViewController.swift in Sources */,
 				89898DD21BA62821004A42AF /* ViewController.swift in Sources */,
 				89898DD01BA62821004A42AF /* AppDelegate.swift in Sources */,
 			);

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PentominoesBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="q2j-Ll-Dnv">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PentominoesBackground1.png" translatesAutoresizingMaskIntoConstraints="NO" id="q2j-Ll-Dnv">
                                 <rect key="frame" x="0.0" y="20" width="600" height="628"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
@@ -167,6 +167,9 @@
                                         <include reference="fX5-ox-Cuo"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="ewK-fo-dxQ" kind="presentation" identifier="HintSegue" modalPresentationStyle="formSheet" id="Tqc-mw-KVu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -280,6 +283,106 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Hints View Controller-->
+        <scene sceneID="rmI-yb-04r">
+            <objects>
+                <viewController id="ewK-fo-dxQ" customClass="HintsViewController" customModule="Pentominoes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iao-GO-4oN"/>
+                        <viewControllerLayoutGuide type="bottom" id="T5h-Yf-0eN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tif-Eg-1az">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PentominoesBackground1.png" translatesAutoresizingMaskIntoConstraints="NO" id="xGL-eG-HUy">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.35650820211685497" green="1" blue="0.95069406277484414" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEO-To-RNN">
+                                <rect key="frame" x="745" y="189" width="80" height="40"/>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="27"/>
+                                <state key="normal" title="Okay">
+                                    <color key="titleColor" red="1" green="0.96657694650000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="257" y="622" width="87" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="solveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fl2-rn-sB9"/>
+                                </connections>
+                            </button>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Board0.png" translatesAutoresizingMaskIntoConstraints="NO" id="xbG-36-TOn">
+                                <rect key="frame" x="-120" y="-190" width="840" height="840"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="420" id="HnM-Tj-sol"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="420" id="Na2-6a-wJX"/>
+                                    <constraint firstAttribute="width" constant="420" id="ghX-e9-Uwq"/>
+                                    <constraint firstAttribute="height" constant="420" id="y1o-eg-cDg"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="HnM-Tj-sol"/>
+                                        <exclude reference="Na2-6a-wJX"/>
+                                        <exclude reference="ghX-e9-Uwq"/>
+                                        <exclude reference="y1o-eg-cDg"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="HnM-Tj-sol"/>
+                                        <include reference="Na2-6a-wJX"/>
+                                        <include reference="ghX-e9-Uwq"/>
+                                        <include reference="y1o-eg-cDg"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xbG-36-TOn" firstAttribute="top" secondItem="iao-GO-4oN" secondAttribute="bottom" constant="77" id="3la-nq-3Hx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xGL-eG-HUy" secondAttribute="trailing" constant="-16" id="5Ux-H9-ETQ"/>
+                            <constraint firstItem="T5h-Yf-0eN" firstAttribute="top" secondItem="xGL-eG-HUy" secondAttribute="bottom" id="CMh-0t-zcd"/>
+                            <constraint firstItem="xGL-eG-HUy" firstAttribute="top" secondItem="tif-Eg-1az" secondAttribute="topMargin" id="J5b-MD-e0u"/>
+                            <constraint firstItem="xGL-eG-HUy" firstAttribute="leading" secondItem="tif-Eg-1az" secondAttribute="leadingMargin" constant="-16" id="MnJ-vx-tmi"/>
+                            <constraint firstAttribute="centerX" secondItem="xbG-36-TOn" secondAttribute="centerX" id="edK-fx-vxI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="xGL-eG-HUy"/>
+                                <exclude reference="jEO-To-RNN"/>
+                                <exclude reference="xbG-36-TOn"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="5Ux-H9-ETQ"/>
+                                <exclude reference="J5b-MD-e0u"/>
+                                <exclude reference="MnJ-vx-tmi"/>
+                                <exclude reference="3la-nq-3Hx"/>
+                                <exclude reference="edK-fx-vxI"/>
+                                <exclude reference="CMh-0t-zcd"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="xGL-eG-HUy"/>
+                                <include reference="jEO-To-RNN"/>
+                                <include reference="xbG-36-TOn"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="5Ux-H9-ETQ"/>
+                                <include reference="J5b-MD-e0u"/>
+                                <include reference="MnJ-vx-tmi"/>
+                                <include reference="3la-nq-3Hx"/>
+                                <include reference="edK-fx-vxI"/>
+                                <include reference="CMh-0t-zcd"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EEU-5E-cRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1030.5" y="291.75"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Board0.png" width="840" height="840"/>
@@ -289,6 +392,6 @@
         <image name="Board3button.png" width="105" height="105"/>
         <image name="Board4button.png" width="105" height="105"/>
         <image name="Board5button.png" width="105" height="105"/>
-        <image name="PentominoesBackground.png" width="578" height="649"/>
+        <image name="PentominoesBackground1.png" width="568" height="508"/>
     </resources>
 </document>
