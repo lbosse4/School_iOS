@@ -51,9 +51,9 @@ class ViewController : UIViewController {
         for i in 0..<model.numPentominoesPieces {
             let myImage = model.pentominoesArray[i].image
             let imageView = UIImageView(image: myImage)
-            imageView.tag = i
+            //imageView.tag = i
             imageView.userInteractionEnabled = true
-            
+            imageView.letter = String(model.pentominoesArray[i].letter)
             pentominoImageViews.append(imageView)
             pentominoesContainerView.addSubview(imageView)
         }
@@ -183,35 +183,39 @@ class ViewController : UIViewController {
             
             let originalOriginXCoordinate = CGFloat(self.model.pentominoesArray[loopCounter].initialX)
             let originalOriginYCoordinate = CGFloat(self.model.pentominoesArray[loopCounter].initialY)
-            let pieceBounds = aView.bounds
-            let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
-            let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
-            let rotationsNeededToReturn = self.model.numPossibleRotations - self.model.pentominoesArray[loopCounter].numRotations
+//            let pieceBounds = aView.bounds
+//            let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
+//            let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
+//            let rotationsNeededToReturn = self.model.numPossibleRotations - self.model.pentominoesArray[loopCounter].numRotations
+//            
+//            var pieceWidth : CGFloat = pieceBounds.width
+//            var pieceHeight : CGFloat = pieceBounds.height
             
-            var pieceWidth : CGFloat = pieceBounds.width
-            var pieceHeight : CGFloat = pieceBounds.height
+//            self.rotatePentominoView(aView, numRotations: rotationsNeededToReturn, width: &pieceWidth, height: &pieceHeight, isSolve: self.isReset)
+//            
+//            //TAKE INTO ACCOUNT PREVIOUS FLIPS
+//            if flipSolution != 0 {
+//                //                let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
+//                //
+//                //                if evenOrOdd == self.isOdd{
+//                self.flipPentominoView(aView, numRotations: rotationSolution, currentNumRotations: model.pentominoesArray[loopCounter].numRotations)
+//                //                }else {
+//                //                    self.flipPentominoView(aView, numRotations: rotationSolution)
+//                //
+//                //                }
+//            }
             
-            self.rotatePentominoView(aView, numRotations: rotationsNeededToReturn, width: &pieceWidth, height: &pieceHeight, isSolve: self.isReset)
             
-            //TAKE INTO ACCOUNT PREVIOUS FLIPS
-            if flipSolution != 0 {
-                //                let evenOrOdd = self.checkNumberOfRotations(self.model.pentominoesArray[loopCounter].numRotations)
-                //
-                //                if evenOrOdd == self.isOdd{
-                self.flipPentominoView(aView, numRotations: rotationSolution, currentNumRotations: model.pentominoesArray[loopCounter].numRotations)
-                //                }else {
-                //                    self.flipPentominoView(aView, numRotations: rotationSolution)
-                //
-                //                }
-            }
             
             self.model.pentominoesArray[loopCounter].numRotations = 0
             self.model.pentominoesArray[loopCounter].numFlips = 0
             
-            let rect = CGRectMake(originalOriginXCoordinate, originalOriginYCoordinate, pieceWidth, pieceHeight)
+            //let rect = CGRectMake(originalOriginXCoordinate, originalOriginYCoordinate, pieceWidth, pieceHeight)
+            let origin = CGPoint(x: originalOriginXCoordinate, y: originalOriginYCoordinate)
             
             UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-                aView.frame = rect
+                aView.frame.origin = origin
+                aView.transform = CGAffineTransformIdentity
             })
             self.pentominoesContainerView.addSubview(aView)
             
@@ -309,20 +313,24 @@ class ViewController : UIViewController {
             let rotationsNeeded = model.calculateSolveRotations(model.pentominoesArray[loopCounter])
             let flipsNeeded = model.calculateSolveFlips(model.pentominoesArray[loopCounter])
             
-            self.rotatePentominoView(aView, numRotations: rotationsNeeded, width: &pieceWidth, height: &pieceHeight, isSolve: self.isSolve)
-            self.model.pentominoesArray[loopCounter].numRotations += rotationsNeeded
-            
-            if flipsNeeded != 0 {
-                self.flipPentominoView(aView, numRotations: rotationsNeeded, currentNumRotations: model.pentominoesArray[loopCounter].numRotations)
-                self.model.pentominoesArray[loopCounter].numFlips += flipsNeeded
-            }
-            
-            //let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
-            let origin = CGPoint(x: gridOriginX, y: gridOriginY)
-            
             UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
+                aView.transform = CGAffineTransformIdentity
+                
+                self.rotatePentominoView(aView, numRotations: rotationSolution, width: &pieceWidth, height: &pieceHeight, isSolve: self.isSolve)
+                self.model.pentominoesArray[loopCounter].numRotations += rotationsNeeded
+                
+                if flipSolution != 0 {
+                    self.weirdflipPentominoView(aView, numRotations: rotationsNeeded, x: self.negativeTransformValue, y: self.positiveTransformValue)
+                    self.model.pentominoesArray[loopCounter].numFlips += flipsNeeded
+                }
+                
+                //let rect = CGRectMake(gridOriginX, gridOriginY, pieceWidth, pieceHeight)
+                let origin = CGPoint(x: gridOriginX, y: gridOriginY)
+
+            
                 //aView.frame = rect
                 aView.frame.origin = origin
+                
             })
             loopCounter += 1
             
@@ -353,6 +361,7 @@ class ViewController : UIViewController {
         
 //*
         if let tappedImageView = recognizer.view as? UIImageView {
+            let index = findViewIndex(tappedImageView)
             var width = tappedImageView.bounds.width
             var height = tappedImageView.bounds.height
             let isUserFlipped = model.pentominoesArray[tappedImageView.tag].isUserFlipped
@@ -483,9 +492,9 @@ class ViewController : UIViewController {
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
         if numRotations > 0{
             for i in 1 ... numRotations {
-                UIView.animateWithDuration(rotationDuration, animations: {
+                //UIView.animateWithDuration(rotationDuration, animations: {
                     view.transform = CGAffineTransformRotate(view.transform, self.ninetyDegrees)
-                })
+                //})
             }
         }
         if evenOrOdd == isOdd && isSolve{
@@ -495,14 +504,14 @@ class ViewController : UIViewController {
     
     func flipPentominoView (view : UIImageView, numRotations : Int, currentNumRotations: Int){
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
-        UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
+        //UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
             if evenOrOdd == self.isOdd {
                 view.transform = CGAffineTransformScale(view.transform, self.positiveTransformValue , self.negativeTransformValue)
             }
             else {
                 view.transform = CGAffineTransformScale(view.transform, self.negativeTransformValue , self.positiveTransformValue)
             }
-        })
+        //})
     }
     
     func checkNumberOfRotations (rotations : Int) -> Int{
@@ -521,5 +530,27 @@ class ViewController : UIViewController {
     
     func checkPanningViewBounds (currentLocation: CGPoint) -> Bool{
         return (currentLocation.x > boardImageView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > boardImageView.bounds.height) || (currentLocation.y < 0)
+    }
+    func findViewIndex(currentView :UIImageView) -> Int{
+        var index = 0
+        for i in 0..<model.numPentominoesPieces {
+            
+            if currentView.letter == String(model.pentominoesArray[i].letter){
+                //THIS STATEMENT NEVER GETS REACHED
+                index = i
+            }
+        }
+        return index
+    }
+}
+
+
+extension UIView {
+    var letter : String {
+        get { return String(UnicodeScalar(tag))}
+        set(newLetter){
+            let s : NSString = newLetter
+            tag = Int(s.characterAtIndex(0))
+        }
     }
 }

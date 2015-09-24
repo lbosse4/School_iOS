@@ -21,6 +21,7 @@ class Model {
     let numPossibleFlips = 2
     
     var currentBoardNumber = 0
+    var numHints = 0
     var pentominoPaddingX : Double = 191.0
     var pentominoPaddingY : Double = 120.0
     
