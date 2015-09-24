@@ -144,6 +144,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWJ-YI-B98">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0K-bI-Abu">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="H2r-Wd-0LR"/>
+                                    <constraint firstAttribute="width" constant="102" id="fX5-ox-Cuo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="27"/>
+                                <state key="normal" title="Hints">
+                                    <color key="titleColor" red="1" green="0.96657694650000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="H2r-Wd-0LR"/>
+                                        <exclude reference="fX5-ox-Cuo"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="H2r-Wd-0LR"/>
+                                        <include reference="fX5-ox-Cuo"/>
+                                    </mask>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -158,6 +182,7 @@
                             <constraint firstItem="H2s-wu-WY1" firstAttribute="top" secondItem="1Dl-s0-xyO" secondAttribute="bottom" constant="36" id="GWr-41-Px1">
                                 <variation key="heightClass=regular-widthClass=regular" constant="28"/>
                             </constraint>
+                            <constraint firstAttribute="centerX" secondItem="s0K-bI-Abu" secondAttribute="centerX" id="IQH-VX-YSy"/>
                             <constraint firstItem="h1J-5C-AA8" firstAttribute="leading" secondItem="p77-Ub-JZG" secondAttribute="trailing" constant="34" id="N33-p5-tgB">
                                 <variation key="heightClass=regular-widthClass=regular" constant="49"/>
                             </constraint>
@@ -195,6 +220,7 @@
                             <constraint firstItem="tao-oc-5Y0" firstAttribute="top" secondItem="h1J-5C-AA8" secondAttribute="top" id="mCx-0C-GQL">
                                 <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                             </constraint>
+                            <constraint firstItem="h1J-5C-AA8" firstAttribute="top" secondItem="s0K-bI-Abu" secondAttribute="bottom" id="saq-Hz-LeW"/>
                             <constraint firstItem="q2j-Ll-Dnv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="tXZ-3r-iwb"/>
                             <constraint firstItem="eEL-kW-Ft9" firstAttribute="leading" secondItem="h1J-5C-AA8" secondAttribute="trailing" constant="25" id="tps-Qy-mP5">
                                 <variation key="heightClass=regular-widthClass=regular" constant="60"/>
@@ -210,8 +236,11 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="zWJ-YI-B98"/>
+                                <exclude reference="s0K-bI-Abu"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="saq-Hz-LeW"/>
+                                <exclude reference="IQH-VX-YSy"/>
                                 <exclude reference="T44-TE-wph"/>
                                 <exclude reference="X19-yg-76p"/>
                                 <exclude reference="cE1-KP-xbI"/>
@@ -222,8 +251,11 @@
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
                                 <include reference="zWJ-YI-B98"/>
+                                <include reference="s0K-bI-Abu"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="saq-Hz-LeW"/>
+                                <include reference="IQH-VX-YSy"/>
                                 <include reference="T44-TE-wph"/>
                                 <exclude reference="X19-yg-76p"/>
                                 <include reference="cE1-KP-xbI"/>
