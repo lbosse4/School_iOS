@@ -13,6 +13,9 @@ class HintsViewController : UIViewController {
     let model = Model()
     var pentominoImageViews = [UIImageView]()
     
+    @IBOutlet weak var backgroudView: UIImageView!
+    @IBOutlet weak var boardView: UIImageView!
+    
     override func viewDidLoad() {
         /////MAY NEED TO CHANGE THIS
         model.numHints++
@@ -49,8 +52,14 @@ class HintsViewController : UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        
+    }
+    
     func displayCurrentHints(numHints : Int) {
         //CURRENTLY NUMHINTS IS ZERO
     }
+    
+    
 
 }
