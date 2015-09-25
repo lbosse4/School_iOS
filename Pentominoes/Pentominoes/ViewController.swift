@@ -96,10 +96,12 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
             
             let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
             singleTapRecognizer.numberOfTapsRequired = 1
+            singleTapRecognizer.delegate = self
             aView.addGestureRecognizer(singleTapRecognizer)
             
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapFlip:")
             doubleTapRecognizer.numberOfTapsRequired = 2
+            doubleTapRecognizer.delegate = self
             aView.addGestureRecognizer(doubleTapRecognizer)
             
             singleTapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
@@ -124,6 +126,13 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         default:
             assert(false, "Unhandled Segue in ViewController")
         }
+    }
+    
+    //MARK: Gesture Delegate
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        //code goes here
+        //SEE EX: http://stackoverflow.com/questions/27092090/overload-gesturerecognizershouldbegin-with-uipangesturerecognizer-in-swift
+        return true
     }
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
@@ -160,6 +169,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
+        hintButton.enabled = false
         model.extractBoardSolutions(model.currentBoardNumber)
         var loopCounter = 0
         for aView in pentominoImageViews {
