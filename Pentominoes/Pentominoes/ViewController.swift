@@ -96,17 +96,18 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
             
             let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
             singleTapRecognizer.numberOfTapsRequired = 1
-            singleTapRecognizer.delegate = self
+            //singleTapRecognizer.delegate = self
             aView.addGestureRecognizer(singleTapRecognizer)
             
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapFlip:")
             doubleTapRecognizer.numberOfTapsRequired = 2
-            doubleTapRecognizer.delegate = self
+            //doubleTapRecognizer.delegate = self
             aView.addGestureRecognizer(doubleTapRecognizer)
             
             singleTapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
             
             let panRecognizer = UIPanGestureRecognizer(target: self, action: "panPentomino:")
+            //panRecognizer.delegate = self
             aView.addGestureRecognizer(panRecognizer)
             
             loopCounter += 1
@@ -127,13 +128,30 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
             assert(false, "Unhandled Segue in ViewController")
         }
     }
-    
-    //MARK: Gesture Delegate
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        //code goes here
-        //SEE EX: http://stackoverflow.com/questions/27092090/overload-gesturerecognizershouldbegin-with-uipangesturerecognizer-in-swift
-        return true
-    }
+//    
+//    //MARK: Gesture Delegate
+//    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+//        if let tapGestureRecognizer = gestureRecognizer as? UITapGestureRecognizer {
+//            let currentLocation = tapGestureRecognizer.locationInView(pentominoesContainerView)
+//            if let imageView = tapGestureRecognizer.view as? UIImageView {
+//                if !checkPentominoContainerBounds(currentLocation){
+//                    //imageView.userInteractionEnabled = false
+//                    tapGestureRecognizer.enabled = false
+//                    //tapGestureRecognizer.
+//                }
+//                else {
+//                    //imageView.userInteractionEnabled = true
+//                    tapGestureRecognizer.enabled = true
+//                }
+//            }
+//        }
+////        else if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
+////            if let imageView = tapGestureRecognizer.view as? UIImageView{
+////                imageView.userInteractionEnabled = true
+////            }
+////        }
+//        return true
+//    }
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
         let currentBoardImageName = model.generateBoardImageName(sender)
@@ -216,31 +234,40 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     
     func singleTapRotate (recognizer:UITapGestureRecognizer) {
         if let tappedImageView = recognizer.view as? UIImageView {
-            let index = findViewIndex(tappedImageView)
-            var width = tappedImageView.bounds.width
-            var height = tappedImageView.bounds.height
-            let isUserFlipped = model.pentominoesArray[index].isUserFlipped
-            
-            UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
-                self.rotatePentominoView(tappedImageView, numRotations: 1, width: &width, height: &height, isSolve: self.isSolve)
-            })
-            model.pentominoesArray[index].numRotations++
+            let currentLocation = recognizer.locationInView(boardImageView)
+            if !checkPanningViewBounds(currentLocation){
+                let index = findViewIndex(tappedImageView)
+                var width = tappedImageView.bounds.width
+                var height = tappedImageView.bounds.height
+                let isUserFlipped = model.pentominoesArray[index].isUserFlipped
+                
+                UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
+                    self.rotatePentominoView(tappedImageView, numRotations: 1, width: &width, height: &height, isSolve: self.isSolve)
+                })
+                model.pentominoesArray[index].numRotations++
+            }
         }
     }
 
     func doubleTapFlip (recognizer:UITapGestureRecognizer) {
         if let tappedImageView = recognizer.view as? UIImageView {
-            let index = findViewIndex(tappedImageView)
-            let evenOrOdd = self.checkNumberOfRotations(model.pentominoesArray[index].numRotations )
-            if evenOrOdd == isOdd {
-                flipPentominoView(
-                    tappedImageView, numRotations: model.pentominoesArray[index].numRotations, x: self.positiveTransformValue, y: self.negativeTransformValue)
-            } else {
-                flipPentominoView(tappedImageView, numRotations: model.pentominoesArray[index].numRotations, x: self.negativeTransformValue, y: self.positiveTransformValue)
+            let currentLocation = recognizer.locationInView(boardImageView)
+            if !checkPanningViewBounds(currentLocation){
+                let index = findViewIndex(tappedImageView)
+                let evenOrOdd = self.checkNumberOfRotations(model.pentominoesArray[index].numRotations )
+                UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
+                    if evenOrOdd == self.isOdd {
+                        self.flipPentominoView(
+                            tappedImageView, numRotations: self.model.pentominoesArray[index].numRotations, x: self.positiveTransformValue, y: self.negativeTransformValue)
+                    } else {
+                        self.flipPentominoView(tappedImageView, numRotations: self.model.pentominoesArray[index].numRotations, x: self.negativeTransformValue, y: self.positiveTransformValue)
+                    }
+                })
+                model.pentominoesArray[index].numFlips++
             }
-            model.pentominoesArray[index].numFlips++
         }
     }
+    
     
     func panPentomino (recognizer: UIPanGestureRecognizer){
         if let panningImageView = recognizer.view as? UIImageView {
@@ -341,6 +368,11 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     func checkPanningViewBounds (currentLocation: CGPoint) -> Bool{
         return (currentLocation.x > boardImageView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > boardImageView.bounds.height) || (currentLocation.y < 0)
     }
+    
+    func checkPentominoContainerBounds(currentLocation: CGPoint) -> Bool{
+        return (currentLocation.x > pentominoesContainerView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > pentominoesContainerView.bounds.height) || (currentLocation.y < 0)
+    }
+    
     func findViewIndex(currentView :UIImageView) -> Int{
         var index = 0
         for i in 0..<model.numPentominoesPieces {
