@@ -168,6 +168,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="hintButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8N8-gL-AaE"/>
                                     <segue destination="ewK-fo-dxQ" kind="presentation" identifier="HintSegue" modalPresentationStyle="formSheet" id="Tqc-mw-KVu"/>
                                 </connections>
                             </button>
@@ -275,6 +276,7 @@
                         <outlet property="board4Button" destination="1Dl-s0-xyO" id="P54-jw-flG"/>
                         <outlet property="board5Button" destination="H2s-wu-WY1" id="8LE-hA-kda"/>
                         <outlet property="boardImageView" destination="h1J-5C-AA8" id="e4I-Sf-aHf"/>
+                        <outlet property="hintButton" destination="s0K-bI-Abu" id="1Zj-fo-d3b"/>
                         <outlet property="pentominoesContainerView" destination="zWJ-YI-B98" id="g3G-Hr-4DU"/>
                         <outlet property="resetButton" destination="97E-N8-LiF" id="New-yw-jCa"/>
                         <outlet property="solveButton" destination="eEL-kW-Ft9" id="cS3-sg-7Ta"/>
@@ -347,7 +349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEU-5E-cRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939" y="229"/>
+            <point key="canvasLocation" x="1227" y="243.75"/>
         </scene>
     </scenes>
     <resources>

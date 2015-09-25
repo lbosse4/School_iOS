@@ -20,6 +20,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     @IBOutlet weak var board3Button: UIButton!
     @IBOutlet weak var board4Button: UIButton!
     @IBOutlet weak var board5Button: UIButton!
+    @IBOutlet weak var hintButton: UIButton!
     
     
     let model = Model()
@@ -45,7 +46,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         // Do any additional setup after loading the view, typically from a nib.
         solveButton.enabled = false
         resetButton.enabled = false
-        
+        hintButton.enabled = false
         model.generatePentominoesPieces()
         
         for i in 0..<model.numPentominoesPieces {
@@ -117,20 +118,12 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
             let hintViewController = segue.destinationViewController as! HintsViewController
             hintViewController.delegate = self
             hintViewController.configureWithBoardNumber(model.currentBoardNumber)
+            hintViewController.configureWithHintNumber(model.hintCount)
+            
             hintViewController.completionBlock = {() in self.dismissViewControllerAnimated(true, completion: nil)}
         default:
             assert(false, "Unhandled Segue in ViewController")
         }
-        
-//        switch segue.identifier! {
-//        case "StatSegue":
-//            let statViewController = segue.destinationViewController as! StatViewController
-//            statViewController.delegate = self
-//            statViewController.configureWithBananaCount(model.bananasEatenCount())
-//            statViewController.completionBlock = {() in self.dismissViewControllerAnimated(true, completion: nil)}
-//        default:
-//            assert(false, "Unhandled Segue in ViewController")
-//        }
     }
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
@@ -142,14 +135,17 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
                 let index = findViewIndex(aView)
                 resetPentominoView(aView, index: index)
             }
+            model.hintCount = 0
         }
         
         model.currentBoardNumber = sender.tag
         
         if model.currentBoardNumber != 0 {
             solveButton.enabled = true
+            hintButton.enabled = true
         } else {
             solveButton.enabled = false
+            hintButton.enabled = false
         }
     }
     
@@ -200,6 +196,13 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         solveButton.enabled = false
         resetButton.enabled = true
     }
+    
+    @IBAction func hintButtonPressed(sender: UIButton) {
+        if model.hintCount <= model.numPentominoesPieces{
+            model.hintCount++
+        }
+    }
+    
     
     func singleTapRotate (recognizer:UITapGestureRecognizer) {
         if let tappedImageView = recognizer.view as? UIImageView {
@@ -278,9 +281,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     
     func flipPentominoView (view : UIImageView, numRotations : Int, x: CGFloat, y: CGFloat){
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
-        UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
-            view.transform = CGAffineTransformScale(view.transform, x, y)
-        })
+        view.transform = CGAffineTransformScale(view.transform, x, y)
     }
     
     func rotatePentominoView (view : UIImageView, numRotations : Int,inout width : CGFloat, inout height : CGFloat, isSolve : Bool){
