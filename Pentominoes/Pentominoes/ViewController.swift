@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController : UIViewController {
+class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var boardImageView: UIImageView!
     @IBOutlet weak var pentominoesContainerView: UIView!
@@ -109,6 +109,28 @@ class ViewController : UIViewController {
             loopCounter += 1
         }
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "HintSegue":
+            let hintViewController = segue.destinationViewController as! HintsViewController
+            hintViewController.delegate = self
+            hintViewController.configureWithBoardNumber(model.currentBoardNumber)
+            hintViewController.completionBlock = {() in self.dismissViewControllerAnimated(true, completion: nil)}
+        default:
+            assert(false, "Unhandled Segue in ViewController")
+        }
+        
+//        switch segue.identifier! {
+//        case "StatSegue":
+//            let statViewController = segue.destinationViewController as! StatViewController
+//            statViewController.delegate = self
+//            statViewController.configureWithBananaCount(model.bananasEatenCount())
+//            statViewController.completionBlock = {() in self.dismissViewControllerAnimated(true, completion: nil)}
+//        default:
+//            assert(false, "Unhandled Segue in ViewController")
+//        }
     }
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
@@ -317,6 +339,10 @@ class ViewController : UIViewController {
             }
         }
         return index
+    }
+    
+    func dismissHints() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

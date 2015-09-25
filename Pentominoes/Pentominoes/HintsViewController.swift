@@ -7,18 +7,26 @@
 //
 
 import UIKit
+protocol HintDelegateProtocol {
+    func dismissHints()
+}
+
 
 class HintsViewController : UIViewController {
 
-    let model = Model()
     var pentominoImageViews = [UIImageView]()
+    var delegate : HintDelegateProtocol?
+    var currentBoardNumber : Int = 0
+    var numHints = 0
+    var completionBlock : (() -> Void)?
+    let numPentominoesPieces = 12
     
     @IBOutlet weak var backgroudView: UIImageView!
     @IBOutlet weak var boardView: UIImageView!
     
     override func viewDidLoad() {
         /////MAY NEED TO CHANGE THIS
-        model.numHints++
+        
         
         
         
@@ -27,24 +35,14 @@ class HintsViewController : UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        model.generatePentominoesPieces()
-        
-        for i in 0..<model.numPentominoesPieces {
-            let myImage = model.pentominoesArray[i].image
-            let imageView = UIImageView(image: myImage)
-            imageView.tag = i
-            imageView.userInteractionEnabled = true
-            
-            pentominoImageViews.append(imageView)
-            //pentominoesContainerView.addSubview(imageView)
-        }
+    
         
         
         
         
         
         //THIS WILL INIT TO ZERO. CHANGE.
-        displayCurrentHints(model.numHints)
+        displayCurrentHints(0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,10 +54,22 @@ class HintsViewController : UIViewController {
         
     }
     
+    @IBAction func okayButtonPressed(sender: UIButton) {
+        delegate!.dismissHints()
+    }
+    
+    @IBAction func dismissByCompletion(sender: AnyObject) {
+        if let closure = completionBlock {
+            closure()
+        }
+    }
+    
     func displayCurrentHints(numHints : Int) {
         //CURRENTLY NUMHINTS IS ZERO
     }
     
-    
+    func configureWithBoardNumber(boardNumber :Int) {
+        currentBoardNumber = boardNumber
+    }
 
 }
