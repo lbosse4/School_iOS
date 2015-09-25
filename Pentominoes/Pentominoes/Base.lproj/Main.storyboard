@@ -298,9 +298,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PentominoesBackground1.png" translatesAutoresizingMaskIntoConstraints="NO" id="xGL-eG-HUy">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.35650820211685497" green="1" blue="0.95069406277484414" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
-                                </variation>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Board0.png" translatesAutoresizingMaskIntoConstraints="NO" id="xbG-36-TOn">
                                 <rect key="frame" x="90" y="55" width="420" height="420"/>
@@ -308,9 +305,6 @@
                                     <constraint firstAttribute="height" constant="420" id="7iT-1m-RBS"/>
                                     <constraint firstAttribute="width" constant="420" id="bvh-pj-kEK"/>
                                 </constraints>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="90" y="77" width="420" height="420"/>
-                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQl-8J-7Hg">
                                 <rect key="frame" x="245" y="519" width="111" height="40"/>
