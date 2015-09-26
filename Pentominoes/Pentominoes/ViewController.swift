@@ -92,7 +92,10 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
             model.pentominoesArray[loopCounter].initialY = tempYCoordinate
 
             UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-                aView.frame.origin = CGPoint(x: CGFloat(self.model.pentominoesArray[loopCounter].initialX), y: CGFloat(self.model.pentominoesArray[loopCounter].initialY))
+                let boardCoordinates = aView.convertPoint(CGPoint(x: aView.frame.origin.x, y: aView.frame.origin.y), toCoordinateSpace: self.boardImageView)
+                if self.checkBoardViewBounds(boardCoordinates) {
+                    aView.frame.origin = CGPoint(x: CGFloat(self.model.pentominoesArray[loopCounter].initialX), y: CGFloat(self.model.pentominoesArray[loopCounter].initialY))
+                }
             })
             
             let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
@@ -211,7 +214,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     func singleTapRotate (recognizer:UITapGestureRecognizer) {
         if let tappedImageView = recognizer.view as? UIImageView {
             let currentLocation = recognizer.locationInView(boardImageView)
-            if !checkPanningViewBounds(currentLocation){
+            if !checkBoardViewBounds(currentLocation){
                 let index = findViewIndex(tappedImageView)
                 var width = tappedImageView.bounds.width
                 var height = tappedImageView.bounds.height
@@ -223,9 +226,6 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
                     
                     let snapOrigin : CGPoint = self.findSnapCoordinates(currentLocation);
                     tappedImageView.frame.origin = CGPoint(x: snapOrigin.x, y: snapOrigin.y)
-//                    let snapOrigin : CGPoint = findSnapCoordinates(currentLocation);
-//                    boardImageView.addSubview(panningImageView)
-//                    panningImageView.frame = CGRect(x: snapOrigin.x, y: snapOrigin.y, width: imageBounds.width, height: imageBounds.height)
                 })
                 
                 model.pentominoesArray[index].numRotations++
@@ -236,7 +236,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     func doubleTapFlip (recognizer:UITapGestureRecognizer) {
         if let tappedImageView = recognizer.view as? UIImageView {
             let currentLocation = recognizer.locationInView(boardImageView)
-            if !checkPanningViewBounds(currentLocation){
+            if !checkBoardViewBounds(currentLocation){
                 let index = findViewIndex(tappedImageView)
                 let evenOrOdd = self.checkNumberOfRotations(model.pentominoesArray[index].numRotations )
                 UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
@@ -285,7 +285,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
                 let currentLocation = panningImageView.frame.origin
                 panningImageView.frame = CGRect(x: origin.x, y: origin.y, width: imageBounds.width * (1/1.25), height: imageBounds.height * (1/1.25))
                 
-                if checkPanningViewBounds(currentLocation) {
+                if checkBoardViewBounds(currentLocation) {
                     let index = findViewIndex(panningImageView)
                     resetPentominoView(panningImageView, index: index)
                 } else {
@@ -363,7 +363,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         superView.addSubview(view)
     }
     
-    func checkPanningViewBounds (currentLocation: CGPoint) -> Bool{
+    func checkBoardViewBounds (currentLocation: CGPoint) -> Bool{
         return (currentLocation.x > boardImageView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > boardImageView.bounds.height) || (currentLocation.y < 0)
     }
     
