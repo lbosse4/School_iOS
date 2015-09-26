@@ -24,6 +24,7 @@ class HintsViewController : UIViewController {
     
     let negativeTransformValue : CGFloat = -1.0
     let positiveTransformValue : CGFloat = 1.0
+    let initialOrigin = CGPoint(x: 0.0, y: 0.0)
     let numRotationDifferences = 2
     let isOdd = 1
     let isEven = 0
@@ -134,7 +135,7 @@ class HintsViewController : UIViewController {
                 
                 tempPentominoesPiece.image = myImage
                 tempPentominoesPiece.letter = Character(tileLettersArray[i])
-                let origin = CGPoint(x: 0.0,y: 0.0)
+                let origin = CGPoint(x: initialOrigin.x, y: initialOrigin.y)
                 imageView.frame.origin = origin
                 pentominoImageViews.append(imageView)
                 pentominoesArray.append(tempPentominoesPiece)
