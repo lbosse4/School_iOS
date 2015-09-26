@@ -46,7 +46,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         solveButton.enabled = false
-        resetButton.enabled = false
+        //resetButton.enabled = false
         hintButton.enabled = false
         model.generatePentominoesPieces()
         
@@ -80,41 +80,38 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         else {
             model.pentominoPaddingX = model.portraitModeX
         }
-        var loopCounter = 0
+    
         var tempXCoordinate = 0.0 - model.pentominoPaddingX
         var tempYCoordinate = 0.0
         
         for aView in pentominoImageViews {
-            var tempPiece = model.pentominoesArray[loopCounter]
+            let index = findViewIndex(aView)
+            var tempPiece = model.pentominoesArray[index]
             model.generatePentominoesCoordinates(&tempPiece, x: &tempXCoordinate, y: &tempYCoordinate, containerWidth: Double(pentominoContainerSize.width))
             
-            model.pentominoesArray[loopCounter].initialX = tempXCoordinate
-            model.pentominoesArray[loopCounter].initialY = tempYCoordinate
+            model.pentominoesArray[index].initialX = tempXCoordinate
+            model.pentominoesArray[index].initialY = tempYCoordinate
 
             UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-                let boardCoordinates = aView.convertPoint(CGPoint(x: aView.frame.origin.x, y: aView.frame.origin.y), toCoordinateSpace: self.boardImageView)
+                let boardCoordinates = aView.convertPoint(CGPoint(x: aView.frame.origin.x, y: aView.frame.origin.y), fromCoordinateSpace: self.boardImageView)
                 if self.checkBoardViewBounds(boardCoordinates) {
-                    aView.frame.origin = CGPoint(x: CGFloat(self.model.pentominoesArray[loopCounter].initialX), y: CGFloat(self.model.pentominoesArray[loopCounter].initialY))
+                    aView.frame.origin = CGPoint(x: CGFloat(self.model.pentominoesArray[index].initialX), y: CGFloat(self.model.pentominoesArray[index].initialY))
                 }
             })
             
             let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTapRotate:")
             singleTapRecognizer.numberOfTapsRequired = 1
-            //singleTapRecognizer.delegate = self
             aView.addGestureRecognizer(singleTapRecognizer)
             
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapFlip:")
             doubleTapRecognizer.numberOfTapsRequired = 2
-            //doubleTapRecognizer.delegate = self
             aView.addGestureRecognizer(doubleTapRecognizer)
             
             singleTapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
             
             let panRecognizer = UIPanGestureRecognizer(target: self, action: "panPentomino:")
-            //panRecognizer.delegate = self
             aView.addGestureRecognizer(panRecognizer)
             
-            loopCounter += 1
         }
         
     }
@@ -149,21 +146,21 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         
         if model.currentBoardNumber != 0 {
             solveButton.enabled = true
-            hintButton.enabled = true
         } else {
             solveButton.enabled = false
-            hintButton.enabled = false
         }
+        checkHintButtonStatus()
     }
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
+        checkHintButtonStatus()
         for aView in pentominoImageViews {
             let index = findViewIndex(aView)
             resetPentominoView(aView, index: index)
         }
         
         updateBoardButtonEnabledStatus(true)
-        resetButton.enabled = false
+        //resetButton.enabled = false
     }
     
     @IBAction func solveButtonPressed(sender: AnyObject) {
@@ -199,10 +196,10 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
             loopCounter += 1
             
         }
-        
+        model.hintCount = 0
         updateBoardButtonEnabledStatus(false)
+        
         solveButton.enabled = false
-        resetButton.enabled = true
     }
     
     @IBAction func hintButtonPressed(sender: UIButton) {
@@ -255,6 +252,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     
     func panPentomino (recognizer: UIPanGestureRecognizer){
         if let panningImageView = recognizer.view as? UIImageView {
+            let index = findViewIndex(panningImageView)
             let point = recognizer.locationInView(pentominoesContainerView)
             panningImageView.frame.origin = point
             switch recognizer.state {
@@ -262,8 +260,12 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
                 boardImageView.addSubview(panningImageView)
                 var origin = pentominoesContainerView.convertPoint(recognizer.locationInView(boardImageView), fromView: pentominoesContainerView)
                 let imageBounds = panningImageView.bounds
-
-                panningImageView.frame = CGRect(x: origin.x, y: origin.y, width: imageBounds.width * 1.25, height: imageBounds.height * 1.25)
+                let evenOrOdd = checkNumberOfRotations(model.pentominoesArray[index].numRotations)
+                if evenOrOdd == isEven {
+                    panningImageView.frame = CGRect(x: origin.x, y: origin.y, width: imageBounds.width * 1.25, height: imageBounds.height * 1.25)
+                } else {
+                    panningImageView.frame = CGRect(x: origin.x, y: origin.y, width: imageBounds.height * 1.25, height: imageBounds.width * 1.25)
+                }
                 boardImageView.bringSubviewToFront(panningImageView)
             case .Changed:
                 boardImageView.addSubview(panningImageView)
@@ -286,15 +288,14 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
                 panningImageView.frame = CGRect(x: origin.x, y: origin.y, width: imageBounds.width * (1/1.25), height: imageBounds.height * (1/1.25))
                 
                 if checkBoardViewBounds(currentLocation) {
-                    let index = findViewIndex(panningImageView)
                     resetPentominoView(panningImageView, index: index)
                 } else {
-                    //CALCULATE AND RETURN A POINT
                     let imageBounds = panningImageView.bounds
                     let snapOrigin : CGPoint = findSnapCoordinates(currentLocation);
                     boardImageView.addSubview(panningImageView)
-                    panningImageView.frame = CGRect(x: snapOrigin.x, y: snapOrigin.y, width: imageBounds.width, height: imageBounds.height)
-                    //panningImageView.frame.origin = snapOrigin
+                    //UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+                        panningImageView.frame = CGRect(x: snapOrigin.x, y: snapOrigin.y, width: imageBounds.width, height: imageBounds.height)
+                    //})
                 }
                 return
             case .Cancelled:
@@ -401,6 +402,16 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     
     func dismissHints() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func checkHintButtonStatus (){
+        if model.currentBoardNumber != 0 {
+            hintButton.enabled = true
+            solveButton.enabled = true
+        } else {
+            hintButton.enabled = false
+            solveButton.enabled = false
+        }
     }
 }
 
