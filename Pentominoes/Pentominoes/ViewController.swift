@@ -27,6 +27,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     
     let ninetyDegrees = (CGFloat(M_PI)) / 2.0
     let gridTileConversion : CGFloat = 30.0
+    let gridTileConversionInt : Int = 30
     let numRotationDifferences = 2
     let numPossibleRotations = 4
     let rotationDuration = 0.15
@@ -128,30 +129,6 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
             assert(false, "Unhandled Segue in ViewController")
         }
     }
-//    
-//    //MARK: Gesture Delegate
-//    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if let tapGestureRecognizer = gestureRecognizer as? UITapGestureRecognizer {
-//            let currentLocation = tapGestureRecognizer.locationInView(pentominoesContainerView)
-//            if let imageView = tapGestureRecognizer.view as? UIImageView {
-//                if !checkPentominoContainerBounds(currentLocation){
-//                    //imageView.userInteractionEnabled = false
-//                    tapGestureRecognizer.enabled = false
-//                    //tapGestureRecognizer.
-//                }
-//                else {
-//                    //imageView.userInteractionEnabled = true
-//                    tapGestureRecognizer.enabled = true
-//                }
-//            }
-//        }
-////        else if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
-////            if let imageView = tapGestureRecognizer.view as? UIImageView{
-////                imageView.userInteractionEnabled = true
-////            }
-////        }
-//        return true
-//    }
     
     @IBAction func boardButtonPressed(sender: AnyObject) {
         let currentBoardImageName = model.generateBoardImageName(sender)
@@ -231,7 +208,6 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         }
     }
     
-    
     func singleTapRotate (recognizer:UITapGestureRecognizer) {
         if let tappedImageView = recognizer.view as? UIImageView {
             let currentLocation = recognizer.locationInView(boardImageView)
@@ -243,7 +219,15 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
                 
                 UIView.animateWithDuration(rotationDuration, animations: { () -> Void in
                     self.rotatePentominoView(tappedImageView, numRotations: 1, width: &width, height: &height, isSolve: self.isSolve)
+                    let currentLocation = tappedImageView.frame.origin
+                    
+                    let snapOrigin : CGPoint = self.findSnapCoordinates(currentLocation);
+                    tappedImageView.frame.origin = CGPoint(x: snapOrigin.x, y: snapOrigin.y)
+//                    let snapOrigin : CGPoint = findSnapCoordinates(currentLocation);
+//                    boardImageView.addSubview(panningImageView)
+//                    panningImageView.frame = CGRect(x: snapOrigin.x, y: snapOrigin.y, width: imageBounds.width, height: imageBounds.height)
                 })
+                
                 model.pentominoesArray[index].numRotations++
             }
         }
@@ -277,26 +261,40 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
             case .Began:
                 boardImageView.addSubview(panningImageView)
                 var origin = pentominoesContainerView.convertPoint(recognizer.locationInView(boardImageView), fromView: pentominoesContainerView)
-                panningImageView.center = origin
+                let imageBounds = panningImageView.bounds
+
+                panningImageView.frame = CGRect(x: origin.x, y: origin.y, width: imageBounds.width * 1.25, height: imageBounds.height * 1.25)
                 boardImageView.bringSubviewToFront(panningImageView)
             case .Changed:
                 boardImageView.addSubview(panningImageView)
                 var origin = pentominoesContainerView.convertPoint(recognizer.locationInView(boardImageView), fromView: pentominoesContainerView)
+
                 panningImageView.center = origin
                 boardImageView.bringSubviewToFront(panningImageView)
 
                 return
             case .Ended:
+                let imageBounds = panningImageView.bounds
+                
+                boardImageView.bringSubviewToFront(panningImageView)
                 boardImageView.addSubview(panningImageView)
                 var origin = pentominoesContainerView.convertPoint(recognizer.locationInView(boardImageView), fromView: pentominoesContainerView)
                 panningImageView.center = origin
                 boardImageView.bringSubviewToFront(panningImageView)
                 
-                let currentLocation = recognizer.locationInView(boardImageView)
+                let currentLocation = panningImageView.frame.origin
+                panningImageView.frame = CGRect(x: origin.x, y: origin.y, width: imageBounds.width * (1/1.25), height: imageBounds.height * (1/1.25))
                 
                 if checkPanningViewBounds(currentLocation) {
                     let index = findViewIndex(panningImageView)
                     resetPentominoView(panningImageView, index: index)
+                } else {
+                    //CALCULATE AND RETURN A POINT
+                    let imageBounds = panningImageView.bounds
+                    let snapOrigin : CGPoint = findSnapCoordinates(currentLocation);
+                    boardImageView.addSubview(panningImageView)
+                    panningImageView.frame = CGRect(x: snapOrigin.x, y: snapOrigin.y, width: imageBounds.width, height: imageBounds.height)
+                    //panningImageView.frame.origin = snapOrigin
                 }
                 return
             case .Cancelled:
@@ -369,9 +367,26 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         return (currentLocation.x > boardImageView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > boardImageView.bounds.height) || (currentLocation.y < 0)
     }
     
-    func checkPentominoContainerBounds(currentLocation: CGPoint) -> Bool{
-        return (currentLocation.x > pentominoesContainerView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > pentominoesContainerView.bounds.height) || (currentLocation.y < 0)
+    func findSnapCoordinates(currentOrigin : CGPoint) -> CGPoint{
+        var x : Int = Int(currentOrigin.x) / gridTileConversionInt
+        var y : Int = Int(currentOrigin.y) / gridTileConversionInt
+        let xRemainder = currentOrigin.x % gridTileConversion
+        let yRemainder = currentOrigin.y % gridTileConversion
+
+        if xRemainder > gridTileConversion/2 {
+            x++
+        }
+        
+        if yRemainder > gridTileConversion/2 {
+            y++
+        }
+        
+        let CGx = CGFloat(x) * gridTileConversion
+        let CGy = CGFloat(y) * gridTileConversion
+        
+        return CGPoint(x: CGx, y: CGy)
     }
+
     
     func findViewIndex(currentView :UIImageView) -> Int{
         var index = 0
