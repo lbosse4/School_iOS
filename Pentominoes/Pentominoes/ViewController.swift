@@ -14,13 +14,8 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     @IBOutlet weak var pentominoesContainerView: UIView!
     @IBOutlet weak var solveButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var board0Button: UIButton!
-    @IBOutlet weak var board1Button: UIButton!
-    @IBOutlet weak var board2Button: UIButton!
-    @IBOutlet weak var board3Button: UIButton!
-    @IBOutlet weak var board4Button: UIButton!
-    @IBOutlet weak var board5Button: UIButton!
     @IBOutlet weak var hintButton: UIButton!
+    @IBOutlet var boardButtons: [UIButton]!
     
     
     let model = Model()
@@ -39,7 +34,6 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     let positiveTransformValue : CGFloat = 1.0
     let animationDuration = 0.2
     
-    var boardButtons = [UIButton]()
     var pentominoImageViews = [UIImageView]()
     
     override func viewDidLoad() {
@@ -59,12 +53,6 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
             pentominoesContainerView.addSubview(imageView)
         }
         
-        boardButtons.append(board0Button)
-        boardButtons.append(board1Button)
-        boardButtons.append(board2Button)
-        boardButtons.append(board3Button)
-        boardButtons.append(board4Button)
-        boardButtons.append(board5Button)
     }
     
     override func didReceiveMemoryWarning() {
