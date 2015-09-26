@@ -40,7 +40,6 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         solveButton.enabled = false
-        //resetButton.enabled = false
         hintButton.enabled = false
         model.generatePentominoesPieces()
         
@@ -137,11 +136,11 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         } else {
             solveButton.enabled = false
         }
-        checkHintButtonStatus()
+        checkHintandSolveButtonStatus()
     }
     
     @IBAction func resetButtonPressed(sender: AnyObject) {
-        checkHintButtonStatus()
+        checkHintandSolveButtonStatus()
         for aView in pentominoImageViews {
             let index = findViewIndex(aView)
             resetPentominoView(aView, index: index)
@@ -392,7 +391,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func checkHintButtonStatus (){
+    func checkHintandSolveButtonStatus (){
         if model.currentBoardNumber != 0 {
             hintButton.enabled = true
             solveButton.enabled = true

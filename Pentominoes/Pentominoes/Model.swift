@@ -136,51 +136,7 @@ class Model {
         piece.initialX = x
         piece.initialY = y
     }
-    
-    func calculateResetRotations(piece : PentominoesPiece) -> Int{
-        let rotationSolution = piece.numRotationsSolution
-        let numRotations = piece.numRotations
-        
-        return rotationSolution - (numRotations % numPossibleRotations)
-    }
-    
-    
-    func calculateResetFlips(piece : PentominoesPiece) -> Int{
-        let flipSolution = piece.numFlipsSolution
-        let numFlips = piece.numFlips
-        
-        return flipSolution - (numFlips % numPossibleFlips)
-    }
-    
-   func calculateSolveRotations(piece : PentominoesPiece) -> Int{
-        let rotationSolution = piece.numRotationsSolution
-        let numRotations = piece.numRotations
-        
-        var answer = rotationSolution - numRotations % numPossibleRotations
-        if answer >= 0{
-            return answer
-        } else {
-            return numPossibleRotations + answer
-        }
-    }
-    
-    
-    func calculateSolveFlips(piece : PentominoesPiece) -> Int{
-        let flipSolution = piece.numFlipsSolution
-        let numFlips = piece.numFlips
-        
-        var answer = flipSolution - numFlips % numPossibleFlips
-        if answer >= 0{
-            //return answer
-        } else {
-            answer = numPossibleFlips + answer
-            
-            //return numPossibleFlips + answer
-        }
-        
-        return answer
-    }
-}
+ }
 
 
 
