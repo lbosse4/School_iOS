@@ -166,15 +166,16 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     @IBAction func solveButtonPressed(sender: AnyObject) {
         hintButton.enabled = false
         model.extractBoardSolutions(model.currentBoardNumber)
-        var loopCounter = 0
+        
         for aView in pentominoImageViews {
+            let index = findViewIndex(aView)
             moveView(aView, toSuperview: boardImageView)
             
-            let gridOriginX = CGFloat(self.model.pentominoesArray[loopCounter].solutionX) * self.gridTileConversion
-            let gridOriginY = CGFloat(self.model.pentominoesArray[loopCounter].solutionY) * self.gridTileConversion
+            let gridOriginX = CGFloat(self.model.pentominoesArray[index].solutionX) * self.gridTileConversion
+            let gridOriginY = CGFloat(self.model.pentominoesArray[index].solutionY) * self.gridTileConversion
             let pieceBounds = aView.bounds
-            let flipSolution = self.model.pentominoesArray[loopCounter].numFlipsSolution
-            let rotationSolution = self.model.pentominoesArray[loopCounter].numRotationsSolution
+            let flipSolution = self.model.pentominoesArray[index].numFlipsSolution
+            let rotationSolution = self.model.pentominoesArray[index].numRotationsSolution
             
             var pieceWidth : CGFloat = pieceBounds.width
             var pieceHeight : CGFloat = pieceBounds.height
@@ -193,7 +194,6 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
                 aView.frame.origin = origin
                 
             })
-            loopCounter += 1
             
         }
         model.hintCount = 0

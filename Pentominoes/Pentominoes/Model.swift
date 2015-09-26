@@ -29,9 +29,9 @@ class Model {
     
     let tileLettersArray = ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
     
-    var pentominoesArray = [pentominoesPiece]()
+    var pentominoesArray = [PentominoesPiece]()
     
-    class pentominoesPiece {
+    class PentominoesPiece {
         var image : UIImage
         var numFlips : Int
         var numRotations : Int
@@ -76,7 +76,7 @@ class Model {
         var tempXCoordinate = 0.0 - pentominoPaddingX
         var tempYCoordinate = 0.0
         for i in 0..<numPentominoesPieces {
-            let tempPentominoesPiece = pentominoesPiece()
+            let tempPentominoesPiece = PentominoesPiece()
             
             if let tempPentominoesImage = UIImage(named: "tile\(tileLettersArray[i]).png"){
                 
@@ -93,7 +93,7 @@ class Model {
             solutionsArray = NSArray(contentsOfFile: solutionsBundlePath)!
         }
     }
-    func getBoardDictionary(boardNum:Int) -> [String : [String : Int]] {
+    func generateBoardDictionary(boardNum:Int) -> [String : [String : Int]] {
         let boardDictionary = solutionsArray[boardNum] as! [String : [String : Int]]
         return boardDictionary
     }
@@ -120,12 +120,12 @@ class Model {
     func extractBoardSolutions(boardNumber : Int){
         if boardNumber != 0 {
             initializeSolutionPList()
-            let currentDictionary = getBoardDictionary(currentBoardNumber - 1)
+            let currentDictionary = generateBoardDictionary(currentBoardNumber - 1)
             populatePiecesWithCurrentAnswers(currentDictionary)
         }
     }
     
-    func generatePentominoesCoordinates (inout piece : pentominoesPiece, inout x: Double, inout y: Double, containerWidth: Double) {
+    func generatePentominoesCoordinates (inout piece : PentominoesPiece, inout x: Double, inout y: Double, containerWidth: Double) {
         if x + pentominoPaddingX > containerWidth {
             y =  y + pentominoPaddingY
             x = 0.0
@@ -137,7 +137,7 @@ class Model {
         piece.initialY = y
     }
     
-    func calculateResetRotations(piece : pentominoesPiece) -> Int{
+    func calculateResetRotations(piece : PentominoesPiece) -> Int{
         let rotationSolution = piece.numRotationsSolution
         let numRotations = piece.numRotations
         
@@ -145,14 +145,14 @@ class Model {
     }
     
     
-    func calculateResetFlips(piece : pentominoesPiece) -> Int{
+    func calculateResetFlips(piece : PentominoesPiece) -> Int{
         let flipSolution = piece.numFlipsSolution
         let numFlips = piece.numFlips
         
         return flipSolution - (numFlips % numPossibleFlips)
     }
     
-   func calculateSolveRotations(piece : pentominoesPiece) -> Int{
+   func calculateSolveRotations(piece : PentominoesPiece) -> Int{
         let rotationSolution = piece.numRotationsSolution
         let numRotations = piece.numRotations
         
@@ -165,7 +165,7 @@ class Model {
     }
     
     
-    func calculateSolveFlips(piece : pentominoesPiece) -> Int{
+    func calculateSolveFlips(piece : PentominoesPiece) -> Int{
         let flipSolution = piece.numFlipsSolution
         let numFlips = piece.numFlips
         
