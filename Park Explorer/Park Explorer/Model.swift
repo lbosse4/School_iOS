@@ -21,10 +21,12 @@ class Model {
         var parkName : String
         var parkNumber : Int
         var images = [Photo]()
+        var numPhotos : Int
         
         init() {
             parkName = ""
             parkNumber = 0
+            numPhotos = 0
         }
         
     }
@@ -72,44 +74,12 @@ class Model {
                 tempPhoto.imageName = currentPhoto["imageName"]!
                 tempPhoto.caption = currentPhoto["caption"]!
                 park.images.append(tempPhoto)
+                park.numPhotos++
             }
 
         }
     }
-    
-//    func generateBoardDictionary(boardNum:Int) -> [String : [String : Int]] {
-//        let boardDictionary = solutionsArray[boardNum] as! [String : [String : Int]]
-//        return boardDictionary
-//    }
-//    
-//    func populatePiecesWithCurrentAnswers (currentDictionary : [String : [String : Int]]) {
-//        for piece in pentominoesArray {
-//            
-//            let letterDictionary = currentDictionary["\(piece.letter)"]!
-//            
-//            let xcoord = letterDictionary["x"]
-//            let ycoord = letterDictionary["y"]
-//            let numRotations = letterDictionary["rotations"]
-//            let numFlips = letterDictionary["flips"]
-//            
-//            piece.solutionX = Double(xcoord!)
-//            piece.solutionY = Double(ycoord!)
-//            piece.numRotationsSolution = numRotations!
-//            piece.numFlipsSolution = numFlips!
-//        }
-//        
-//        
-//    }
-//    
-//    func extractBoardSolutions(boardNumber : Int){
-//        if boardNumber != 0 {
-//            initializeSolutionPList()
-//            let currentDictionary = generateBoardDictionary(currentBoardNumber - 1)
-//            populatePiecesWithCurrentAnswers(currentDictionary)
-//        }
-//    }
-
-}
+ }
 
 
 
