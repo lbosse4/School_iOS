@@ -73,8 +73,8 @@ class Model {
     }
     
     func generatePentominoesPieces() {
-        var tempXCoordinate = 0.0 - pentominoPaddingX
-        var tempYCoordinate = 0.0
+        _ = 0.0 - pentominoPaddingX
+        _ = 0.0
         for i in 0..<numPentominoesPieces {
             let tempPentominoesPiece = PentominoesPiece()
             

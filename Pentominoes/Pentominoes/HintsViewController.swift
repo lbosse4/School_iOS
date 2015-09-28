@@ -185,14 +185,13 @@ class HintsViewController : UIViewController {
     
     
     func flipPentominoView (view : UIImageView, numRotations : Int, x: CGFloat, y: CGFloat){
-    let evenOrOdd = self.checkNumberOfRotations(numRotations)
     view.transform = CGAffineTransformScale(view.transform, x, y)
     }
     
     func rotatePentominoView (view : UIImageView, numRotations : Int,inout width : CGFloat, inout height : CGFloat, isSolve : Bool){
         let evenOrOdd = self.checkNumberOfRotations(numRotations)
         if numRotations > 0{
-            for i in 1 ... numRotations {
+            for var i = 1; i <= numRotations; i++ {
                 view.transform = CGAffineTransformRotate(view.transform, self.ninetyDegrees)
             }
         }
