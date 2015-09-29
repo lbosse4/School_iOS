@@ -18,8 +18,10 @@ class Model {
     
     class Park {
         var parkName : String
+        //get rid of this
         var parkNumber : Int
         var images = [Photo]()
+        //get rid of this. use the count of the array instead
         var numPhotos : Int
         
         init() {
@@ -37,6 +39,10 @@ class Model {
             imageName = ""
             caption = ""
         }
+    }
+    
+    init() {
+        extractParkInformation()
     }
     
     func generateParksArray() {

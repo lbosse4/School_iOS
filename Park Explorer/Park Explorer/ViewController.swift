@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        model.extractParkInformation()
+        //model.extractParkInformation()
         for var i = 0; i < model.numParks; i++ {
             largestImageWidths.append(0)
         }
@@ -64,19 +64,22 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         for park in model.parksArray {
             
             let frame = CGRect(x: viewSize.width * CGFloat(park.parkNumber), y: 0.0, width: viewSize.width, height: viewSize.height)
-            let pageView = UIView(frame: frame)
-            myScrollView.addSubview(pageView)
+            //let pageView = UIView(frame: frame)
+            //myScrollView.addSubview(pageView)
             //Maybe pick color scheme
-            pageView.backgroundColor = UIColor.random()
+            //pageView.backgroundColor = UIColor.random()
             
             let firstImage = UIImage(named: "\(park.images[0].imageName).jpg")
             let imageView = UIImageView(image: firstImage)
-            imageView.autoresizingMask = [UIViewAutoresizing.FlexibleHeight]
-            pageView.addSubview(imageView)
+            //imageView.autoresizingMask = [UIViewAutoresizing.FlexibleHeight]
+            //pageView.addSubview(imageView)
             
-            imageView.frame = CGRect(x: pageView.frame.origin.x, y: pageView.frame.origin.y, width: pageView.frame.width, height: pageView.frame.height/3)
+            imageView.frame = frame
+            myScrollView.addSubview(imageView)
             //imageView.frame.width = pageView.frame.width
-            imageView.frame.origin = pageView.frame.origin
+            //imageView.frame.origin = pageView.frame.origin
+            
+            imageView.contentMode = UIViewContentMode.ScaleAspectFit
             
             myScrollView.delegate = self
             myScrollView.minimumZoomScale = 1.0
@@ -99,12 +102,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK:  Scrollview delegate
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return imageView
+        return scrollView.subviews[0]
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
     }
-
+    //scrollview did end declerating
+    //instance variable for where scrollview was previously
 }
 
