@@ -11,7 +11,6 @@ import UIKit
 
 class Model {
     var parksNSArray : NSArray = NSArray()
-    //var photosNSArray : NSArray = NSArray()
     var parksArray = [Park]()
     
     
@@ -56,7 +55,6 @@ class Model {
     
     func generateParkDictionary(parkNum : Int) -> AnyObject {
         let parkDictionary = parksNSArray[parkNum]
-        
         return parkDictionary
     }
     
