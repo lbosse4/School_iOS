@@ -11,6 +11,13 @@ import UIKit
 class ViewController: UIViewController, UIScrollViewDelegate {
     
     let model = Model()
+    let minZoomScale : CGFloat = 1.0
+    let maxZoomScale : CGFloat = 10.0
+    let titleLabelHeight : CGFloat = 50.0
+    let font = "Bodoni 72 SmallCaps"
+    let titleFontSize : CGFloat = 50.0
+    let titleBufferFromTop : CGFloat = 25.0
+    
     var imageView : UIImageView?
     var largestImageWidths = [CGFloat]()
     
@@ -38,65 +45,45 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func configureScrollView(){
-        
-//        var xOrigin : CGFloat = 0.0
-//        for park in model.parksArray {
-//            var yOrigin : CGFloat = 0.0
-//            for photo in park.images {
-//                let image = UIImage(named: "\(photo.imageName).jpg")
-//                let imageView = UIImageView(image: image)
-//                let frame = CGRect(x: xOrigin, y: yOrigin, width: view.frame.width, height: view.frame.height * 2.0)
-//                yOrigin += imageView.bounds.height
-//                imageView.frame = frame
-//                myScrollView.addSubview(imageView)
-//               
-//                //myScrollView.contentSize =
-//                
-//                let currentWidth = imageView.frame.width
-//                if currentWidth > largestImageWidths[park.parkNumber] {
-//                    largestImageWidths[park.parkNumber] = currentWidth
-//                }
-//                
-//            }
-//            xOrigin += largestImageWidths[park.parkNumber]
-//        }
+
         let viewSize = myScrollView.bounds.size
+        var parkCounter = 0
+        var maxPhotoCount = 0
         for park in model.parksArray {
+            var photoCounter = 0
+            for photo in park.images {
+                
+                let frame = CGRect(x: viewSize.width * CGFloat(parkCounter), y: viewSize.height * CGFloat(photoCounter), width: viewSize.width, height: viewSize.height)
+                
+                let firstImage = UIImage(named: "\(photo.imageName).jpg")
+                let imageView = UIImageView(image: firstImage)
+                
+                imageView.frame = frame
+                myScrollView.addSubview(imageView)
+                
+                imageView.contentMode = UIViewContentMode.ScaleAspectFit
+                myScrollView.delegate = self
+                myScrollView.minimumZoomScale = minZoomScale
+                myScrollView.maximumZoomScale = maxZoomScale
+                if (photoCounter > maxPhotoCount) {
+                    maxPhotoCount = photoCounter
+                }
+                if photoCounter == 0 {
+                    let titleLabel = UILabel(frame: CGRect(x: viewSize.width * CGFloat(parkCounter), y: titleBufferFromTop, width: viewSize.width, height: titleLabelHeight))
+                    titleLabel.text = ("\(park.parkName)")
+                    titleLabel.font = UIFont(name: font, size: titleFontSize)
+                    titleLabel.textAlignment = NSTextAlignment.Center
+                    titleLabel.textColor = UIColor.whiteColor()
+                    myScrollView.addSubview(titleLabel)
+                    myScrollView.bringSubviewToFront(titleLabel)
+                }
+                photoCounter++
+            }
             
-            let frame = CGRect(x: viewSize.width * CGFloat(park.parkNumber), y: 0.0, width: viewSize.width, height: viewSize.height)
-            //let pageView = UIView(frame: frame)
-            //myScrollView.addSubview(pageView)
-            //Maybe pick color scheme
-            //pageView.backgroundColor = UIColor.random()
-            
-            let firstImage = UIImage(named: "\(park.images[0].imageName).jpg")
-            let imageView = UIImageView(image: firstImage)
-            //imageView.autoresizingMask = [UIViewAutoresizing.FlexibleHeight]
-            //pageView.addSubview(imageView)
-            
-            imageView.frame = frame
-            myScrollView.addSubview(imageView)
-            //imageView.frame.width = pageView.frame.width
-            //imageView.frame.origin = pageView.frame.origin
-            
-            imageView.contentMode = UIViewContentMode.ScaleAspectFit
-            
-            myScrollView.delegate = self
-            myScrollView.minimumZoomScale = 1.0
-            myScrollView.maximumZoomScale = 10.0
-            
+            parkCounter++
         }
-        
-//        let viewSize = myScrollView.bounds.size
-//        for i in 0..<model.count() {
-//            
-//            let frame = CGRect(x: viewSize.width*(CGFloat(i)), y: 0.0, width: viewSize.width, height: viewSize.height)
-//            let pageView = UIView(frame: frame)
-//            myScrollView.addSubview(pageView)
-//            pageView.backgroundColor = UIColor.random()
-//            
-//        }
-        myScrollView.contentSize = CGSize(width: viewSize.width*CGFloat(model.numParks), height: viewSize.height)
+    
+        myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numParks), height: viewSize.height * CGFloat(maxPhotoCount))
         
     }
     
