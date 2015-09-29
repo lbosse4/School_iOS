@@ -14,9 +14,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let minZoomScale : CGFloat = 1.0
     let maxZoomScale : CGFloat = 10.0
     let titleLabelHeight : CGFloat = 50.0
-    let font = "Bodoni 72 SmallCaps"
-    let titleFontSize : CGFloat = 50.0
-    let titleBufferFromTop : CGFloat = 25.0
+    let titleFont = "Bodoni 72 SmallCaps"
+    let captionFont = "Bodoni 72"
+    let titleFontSize : CGFloat = 55.0
+    let captionFontSize : CGFloat = 30.0
+    let titleBufferFromTop : CGFloat = 40.0
+    let captionBuffer : CGFloat = 55.0
+    let numCaptionLines = 2
     
     var imageView : UIImageView?
     var largestImageWidths = [CGFloat]()
@@ -69,14 +73,25 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                     maxPhotoCount = photoCounter
                 }
                 if photoCounter == 0 {
-                    let titleLabel = UILabel(frame: CGRect(x: viewSize.width * CGFloat(parkCounter), y: titleBufferFromTop, width: viewSize.width, height: titleLabelHeight))
+                    let titleFrame = CGRect(x: viewSize.width * CGFloat(parkCounter), y: titleBufferFromTop, width: viewSize.width, height: titleLabelHeight)
+                    let titleLabel = UILabel(frame: titleFrame)
                     titleLabel.text = ("\(park.parkName)")
-                    titleLabel.font = UIFont(name: font, size: titleFontSize)
+                    titleLabel.font = UIFont(name: titleFont, size: titleFontSize)
                     titleLabel.textAlignment = NSTextAlignment.Center
                     titleLabel.textColor = UIColor.whiteColor()
                     myScrollView.addSubview(titleLabel)
                     myScrollView.bringSubviewToFront(titleLabel)
                 }
+                
+                let captionFrame = CGRect(x: viewSize.width * CGFloat(parkCounter), y: viewSize.height * CGFloat(photoCounter + 1) - imageView.frame.height/2 + captionBuffer, width: viewSize.width, height: 300.0)
+                let captionLabel = UILabel(frame: captionFrame)
+                captionLabel.font = UIFont(name: captionFont, size: captionFontSize)
+                captionLabel.text = photo.caption
+                captionLabel.numberOfLines = numCaptionLines
+                captionLabel.textColor = UIColor.whiteColor()
+                captionLabel.textAlignment = NSTextAlignment.Center
+                myScrollView.addSubview(captionLabel)
+                
                 photoCounter++
             }
             
