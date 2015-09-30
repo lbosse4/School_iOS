@@ -22,7 +22,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let captionBuffer : CGFloat = 55.0
     let numCaptionLines = 2
     let captionHeight : CGFloat = 300.0
+    let arrowAppearanceDuration = 1.25
     
+    var arrowTimer : NSTimer?
     var previousOffset = CGPoint(x: 0.0,y: 0.0)
     var previousOrigin = CGPoint(x: 0.0, y: 0.0)
     var imageView : UIImageView?
@@ -148,6 +150,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    func hideArrows(){
+        for arrow in arrows {
+            arrow.hidden = true
+        }
+    }
+    
     // MARK:  Scrollview delegate
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return scrollView.subviews[0]
@@ -177,15 +185,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let parkNumber = Int(origin.x/pageWidth)
         myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numParks), height: viewSize.height * CGFloat(model.parksArray[parkNumber].images.count))
         
-
-        
-        //let pageHeight = myScrollView.bo
-//        if origin.y != 0 {
-//            display left/right arrows..........
-//        }
-        
+//        if let timer = arrowTimer {
+//            timer.invalidate()
+//            arrowTimer = nil
+//        } else {
+            arrowTimer = NSTimer.scheduledTimerWithTimeInterval(arrowAppearanceDuration,target: self, selector: "hideArrows", userInfo: nil, repeats: false)
+        //}
     }
-    //scrollview did end decelerating
-    //instance variable for where scrollview was previously
+
 }
 
