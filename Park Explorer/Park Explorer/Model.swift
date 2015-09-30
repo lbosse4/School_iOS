@@ -21,12 +21,10 @@ class Model {
         //get rid of this
         var parkNumber : Int
         var images = [Photo]()
-        var numPhotos : Int
         
         init() {
             parkName = ""
             parkNumber = 0
-            numPhotos = 0
         }
         
     }
@@ -77,7 +75,6 @@ class Model {
                 tempPhoto.imageName = currentPhoto["imageName"]!
                 tempPhoto.caption = currentPhoto["caption"]!
                 park.images.append(tempPhoto)
-                park.numPhotos++
             }
 
         }
