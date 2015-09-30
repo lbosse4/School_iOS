@@ -112,6 +112,38 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
         for arrow in arrows {
             view.bringSubviewToFront(arrow)
+            arrow.hidden = true
+        }
+        
+    }
+    
+    func displayArrows(origin : CGPoint) {
+        let pageWidth = myScrollView.bounds.size.width
+        let parkNumber = Int(origin.x/pageWidth)
+        let pageHeight = myScrollView.bounds.size.height
+        let photoNumber = Int(origin.y/pageHeight)
+        
+        if parkNumber < model.numParks - 1 && photoNumber == 0{
+            rightArrowImageView.hidden = false
+        } else {
+            rightArrowImageView.hidden = true
+        }
+        if parkNumber > 0 && photoNumber == 0 {
+            leftArrowImageView.hidden = false
+        } else {
+            leftArrowImageView.hidden = true
+        }
+        
+        if photoNumber != 0 {
+            upArrowImageView.hidden = false
+        } else {
+            upArrowImageView.hidden = true
+        }
+        
+        if photoNumber + 1 != model.parksArray[parkNumber].images.count {
+            downArrowImageView.hidden = false
+        } else {
+            downArrowImageView.hidden = true
         }
         
     }
@@ -123,16 +155,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let origin = myScrollView.contentOffset
-        //let viewSize = myScrollView.bounds.size
-        //let pageWidth = myScrollView.bounds.size.width
-        //let parkNumber = Int(origin.x/pageWidth)
-        //let pageHeight = myScrollView.bounds.size.height
-        //let photoNumber = Int(origin.y/pageHeight)
-        
+        displayArrows(origin)
         if origin.y != 0{
             if origin.x - previousOrigin.x != 0 {
-                //let currentPageOrigin = CGPoint(x: viewSize.width * CGFloat(parkNumber), y: viewSize.height * CGFloat(photoNumber))
-
                 let currentPageOrigin = previousOffset
                 myScrollView.contentOffset = currentPageOrigin
             }
@@ -151,7 +176,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let pageWidth = myScrollView.bounds.size.width
         let parkNumber = Int(origin.x/pageWidth)
         myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numParks), height: viewSize.height * CGFloat(model.parksArray[parkNumber].images.count))
-    
+        
+
         
         //let pageHeight = myScrollView.bo
 //        if origin.y != 0 {
