@@ -24,6 +24,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let captionHeight : CGFloat = 300.0
     
     var previousOffset = CGPoint(x: 0.0,y: 0.0)
+    var previousOrigin = CGPoint(x: 0.0, y: 0.0)
     var imageView : UIImageView?
     
     
@@ -122,30 +123,26 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let origin = myScrollView.contentOffset
-        let viewSize = myScrollView.bounds.size
-        let pageWidth = myScrollView.bounds.size.width
-        let parkNumber = Int(origin.x/pageWidth)
-        let pageHeight = myScrollView.bounds.size.height
-        let photoNumber = Int(origin.y/pageHeight)
+        //let viewSize = myScrollView.bounds.size
+        //let pageWidth = myScrollView.bounds.size.width
+        //let parkNumber = Int(origin.x/pageWidth)
+        //let pageHeight = myScrollView.bounds.size.height
+        //let photoNumber = Int(origin.y/pageHeight)
         
         if origin.y != 0{
-            if origin.x - previousOffset.x > 0 {
-                let currentPageOrigin = CGPoint(x: viewSize.width * CGFloat(parkNumber), y: viewSize.height * CGFloat(photoNumber))
-                
-                //myScrollView.contentSize = CGSize(width: viewSize.width, height: viewSize.height * CGFloat(model.parksArray[parkNumber].images.count))
+            if origin.x - previousOrigin.x != 0 {
+                //let currentPageOrigin = CGPoint(x: viewSize.width * CGFloat(parkNumber), y: viewSize.height * CGFloat(photoNumber))
+
+                let currentPageOrigin = previousOffset
                 myScrollView.contentOffset = currentPageOrigin
-                previousOffset = currentPageOrigin
-            } else if origin.x - previousOffset.x < 0 {
-                let currentPageOrigin = CGPoint(x: viewSize.width * CGFloat(parkNumber + 1), y: viewSize.height * CGFloat(photoNumber))
-                
-                //myScrollView.contentSize = CGSize(width: viewSize.width, height: viewSize.height * CGFloat(model.parksArray[parkNumber].images.count))
-                myScrollView.contentOffset = currentPageOrigin
-                previousOffset = currentPageOrigin
             }
             
-        } else {
-            previousOffset = origin
         }
+        previousOrigin = origin
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        previousOffset = myScrollView.contentOffset
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
