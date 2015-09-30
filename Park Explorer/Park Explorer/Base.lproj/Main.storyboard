@@ -17,6 +17,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowRight.png" translatesAutoresizingMaskIntoConstraints="NO" id="sz5-bC-H2W">
+                                <rect key="frame" x="565" y="290" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="PsU-pT-9RW"/>
+                                    <constraint firstAttribute="height" constant="20" id="dE4-KE-FgD"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowDown.png" translatesAutoresizingMaskIntoConstraints="NO" id="Obi-O5-mBd">
+                                <rect key="frame" x="290" y="575" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="gSl-XB-PwP"/>
+                                    <constraint firstAttribute="width" constant="20" id="mYw-Nf-rzK"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowUp.png" translatesAutoresizingMaskIntoConstraints="NO" id="BBj-YF-Yj4">
+                                <rect key="frame" x="290" y="25" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="87I-gM-oYl"/>
+                                    <constraint firstAttribute="height" constant="20" id="nLa-ud-Nyr"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowLeft.png" translatesAutoresizingMaskIntoConstraints="NO" id="Num-AM-j0Z">
+                                <rect key="frame" x="15" y="290" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Xj3-uu-DXw"/>
+                                    <constraint firstAttribute="width" constant="20" id="YGT-Sx-GeN"/>
+                                </constraints>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bfh-t8-019">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
@@ -24,13 +52,35 @@
                         <color key="backgroundColor" red="0.17913510101010099" green="0.0" blue="0.0198400430572955" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Bfh-t8-019" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="04t-9g-eiB"/>
+                            <constraint firstItem="Num-AM-j0Z" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2gK-rX-cso"/>
+                            <constraint firstItem="Obi-O5-mBd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FoR-yb-TRl"/>
+                            <constraint firstItem="BBj-YF-Yj4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JTL-nD-CYw"/>
+                            <constraint firstItem="Num-AM-j0Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="Mu4-f5-rv0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Obi-O5-mBd" secondAttribute="bottom" constant="5" id="PiB-hh-EM2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sz5-bC-H2W" secondAttribute="trailing" constant="-5" id="QlZ-op-GGI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Bfh-t8-019" secondAttribute="bottom" id="WS7-lH-TII"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bfh-t8-019" secondAttribute="trailing" constant="-20" id="WcR-ud-BFg"/>
+                            <constraint firstItem="Obi-O5-mBd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="enZ-G3-coz"/>
+                            <constraint firstItem="BBj-YF-Yj4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="hFU-g1-2lb"/>
                             <constraint firstItem="Bfh-t8-019" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="qk6-I8-Ztq"/>
+                            <constraint firstItem="sz5-bC-H2W" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uKc-Wz-FzW"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="enZ-G3-coz"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="downArrowImageView" destination="Obi-O5-mBd" id="amC-hT-Naf"/>
+                        <outlet property="leftArrowImageView" destination="Num-AM-j0Z" id="a1D-OQ-qrj"/>
                         <outlet property="myScrollView" destination="Bfh-t8-019" id="eb5-cu-xV3"/>
+                        <outlet property="rightArrowImageView" destination="sz5-bC-H2W" id="jg3-a2-1m4"/>
+                        <outlet property="upArrowImageView" destination="BBj-YF-Yj4" id="ylB-io-fJ4"/>
+                        <outletCollection property="arrows" destination="sz5-bC-H2W" collectionClass="NSMutableArray" id="XFZ-Sr-k0v"/>
+                        <outletCollection property="arrows" destination="Obi-O5-mBd" collectionClass="NSMutableArray" id="YwY-dl-J3S"/>
+                        <outletCollection property="arrows" destination="BBj-YF-Yj4" collectionClass="NSMutableArray" id="uyg-tD-51s"/>
+                        <outletCollection property="arrows" destination="Num-AM-j0Z" collectionClass="NSMutableArray" id="h3p-lh-qO1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -38,4 +88,10 @@
             <point key="canvasLocation" x="491" y="302"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrowDown.png" width="60" height="60"/>
+        <image name="arrowLeft.png" width="60" height="60"/>
+        <image name="arrowRight.png" width="60" height="60"/>
+        <image name="arrowUp.png" width="60" height="60"/>
+    </resources>
 </document>

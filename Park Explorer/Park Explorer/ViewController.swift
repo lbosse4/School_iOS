@@ -27,6 +27,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var imageView : UIImageView?
     
     
+    @IBOutlet weak var upArrowImageView: UIImageView!
+    @IBOutlet weak var downArrowImageView: UIImageView!
+    @IBOutlet weak var rightArrowImageView: UIImageView!
+    @IBOutlet weak var leftArrowImageView: UIImageView!
+    @IBOutlet var arrows: [UIImageView]!
+    
+    
     @IBOutlet weak var myScrollView: UIScrollView!
     
     override func viewDidLoad() {
@@ -101,6 +108,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         myScrollView.alwaysBounceHorizontal = false
         myScrollView.showsVerticalScrollIndicator = false
         myScrollView.showsHorizontalScrollIndicator = false
+        
+        for arrow in arrows {
+            view.bringSubviewToFront(arrow)
+        }
         
     }
     
