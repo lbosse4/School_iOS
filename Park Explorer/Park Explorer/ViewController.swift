@@ -118,14 +118,20 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let photoNumber = Int(origin.y/pageHeight)
         
         if origin.y != 0{
-            if origin.x - previousOffset.x != 0 {
+            if origin.x - previousOffset.x > 0 {
                 let currentPageOrigin = CGPoint(x: viewSize.width * CGFloat(parkNumber), y: viewSize.height * CGFloat(photoNumber))
                 
                 //myScrollView.contentSize = CGSize(width: viewSize.width, height: viewSize.height * CGFloat(model.parksArray[parkNumber].images.count))
                 myScrollView.contentOffset = currentPageOrigin
                 previousOffset = currentPageOrigin
-            
+            } else if origin.x - previousOffset.x < 0 {
+                let currentPageOrigin = CGPoint(x: viewSize.width * CGFloat(parkNumber + 1), y: viewSize.height * CGFloat(photoNumber))
+                
+                //myScrollView.contentSize = CGSize(width: viewSize.width, height: viewSize.height * CGFloat(model.parksArray[parkNumber].images.count))
+                myScrollView.contentOffset = currentPageOrigin
+                previousOffset = currentPageOrigin
             }
+            
         } else {
             previousOffset = origin
         }
