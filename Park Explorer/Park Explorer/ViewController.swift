@@ -22,6 +22,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let captionBuffer : CGFloat = 55.0
     let numCaptionLines = 2
     
+    var previousOffset = CGPoint(x: 0.0,y: 0.0)
     var imageView : UIImageView?
     var largestImageWidths = [CGFloat]()
     
@@ -98,7 +99,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             parkCounter++
         }
     
-        myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numParks), height: viewSize.height * CGFloat(maxPhotoCount))
+        myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numParks), height: viewSize.height * CGFloat(maxPhotoCount + 1))
         
     }
     
@@ -108,9 +109,24 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        let origin = myScrollView.contentOffset
+        
+        previousOffset = origin
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let origin = myScrollView.contentOffset
+        let viewSize = myScrollView.bounds.size
+        let pageWidth = myScrollView.bounds.size.width
+        let parkNumber = Int(origin.x/pageWidth)
+        myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numParks), height: viewSize.height * CGFloat(model.parksArray[parkNumber].numPhotos))
+        //let pageHeight = myScrollView.bo
+//        if origin.y != 0 {
+//            display left/right arrows..........
+//        }
         
     }
-    //scrollview did end declerating
+    //scrollview did end decelerating
     //instance variable for where scrollview was previously
 }
 
