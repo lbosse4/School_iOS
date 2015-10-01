@@ -123,37 +123,48 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func pinchDetected(recognizer: UIPinchGestureRecognizer){
+        
         let viewSize = myScrollView.bounds.size
-        let zoomScrollViewFrame = CGRect(x: myScrollView.frame.origin.x, y: myScrollView.frame.origin.y, width: viewSize.width, height: viewSize.height)
-        zoomScrollView = UIScrollView(frame: zoomScrollViewFrame)
-        zoomScrollView.backgroundColor = UIColor.blackColor()
-        view.addSubview(zoomScrollView)
-        
-        let origin = myScrollView.contentOffset
-        let pageWidth = myScrollView.bounds.size.width
-        let parkNumber = Int(origin.x/pageWidth)
-        let pageHeight = myScrollView.bounds.size.height
-        let photoNumber = Int(origin.y/pageHeight)
-        
-        let image = UIImage(named: "\(model.parksArray[parkNumber].images[photoNumber].imageName).jpg")
-        let imageView = UIImageView(image: image!)
-        imageView.contentMode = UIViewContentMode.ScaleAspectFit
-        
         let frame = CGRect(x: 0.0, y: 0.0, width: viewSize.width, height: viewSize.height)
-        imageView.frame = frame
         
-        zoomScrollView.addSubview(imageView)
-        zoomScrollView.delegate = self
-        zoomScrollView.minimumZoomScale = minZoomScale
-        zoomScrollView.maximumZoomScale = maxZoomScale
-        zoomScrollView.contentSize = viewSize
-        
-        if recognizer.scale == minZoomScale {
-            zoomScrollView.removeFromSuperview()
-        } else {
-            zoomScrollView.zoomScale = recognizer.scale
+        switch recognizer.state {
+        case .Began:
+            
+            let zoomScrollViewFrame = CGRect(x: myScrollView.frame.origin.x, y: myScrollView.frame.origin.y, width: viewSize.width, height: viewSize.height)
+            zoomScrollView = UIScrollView(frame: zoomScrollViewFrame)
+            zoomScrollView.backgroundColor = UIColor.blackColor()
+            view.addSubview(zoomScrollView)
+            
+            let origin = myScrollView.contentOffset
+            let pageWidth = myScrollView.bounds.size.width
+            let parkNumber = Int(origin.x/pageWidth)
+            let pageHeight = myScrollView.bounds.size.height
+            let photoNumber = Int(origin.y/pageHeight)
+            
+            let image = UIImage(named: "\(model.parksArray[parkNumber].images[photoNumber].imageName).jpg")
+            let imageView = UIImageView(image: image!)
+            imageView.contentMode = UIViewContentMode.ScaleAspectFit
+            
+            imageView.frame = frame
+            
+            zoomScrollView.addSubview(imageView)
+            zoomScrollView.delegate = self
+            zoomScrollView.minimumZoomScale = minZoomScale
+            zoomScrollView.maximumZoomScale = maxZoomScale
+            zoomScrollView.contentSize = viewSize
+        case .Changed:
+            //if recognizer.scale < minZoomScale {
+                //zoomScrollView.removeFromSuperview()
+            //} else {
+                zoomScrollView.zoomScale = recognizer.scale
+                //zoomScrollView.contentSize = CGSize(width: frame.width * zoomScrollView.zoomScale, height: frame.height * zoomScrollView.zoomScale)
+            //}
+        case .Ended:
+            break;
+        default:
+            break;
+            
         }
-        
         
         //let frame = CGRect(x: viewSize.width * CGFloat(parkNumber), y: viewSize.height * CGFloat(photoNumber), width: viewSize.width, height: viewSize.height)
         
@@ -200,16 +211,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK:  Scrollview delegate
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-////        let origin = myScrollView.contentOffset
-////        //let viewSize = myScrollView.bounds.size
-////        let pageWidth = myScrollView.bounds.size.width
-////        let parkNumber = Int(origin.x/pageWidth)
-////        let pageHeight = myScrollView.bounds.size.height
-////        let photoNumber = Int(origin.y/pageHeight)
-////        
-////        
-//        
-        return zoomScrollView.subviews[0]
+      
+        return scrollView.subviews[0]
+    }
+    
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+        if scale <= minZoomScale {
+            zoomScrollView.removeFromSuperview()
+        }
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -227,6 +236,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         previousOffset = myScrollView.contentOffset
+        if let timer = arrowTimer {
+            timer.invalidate()
+            arrowTimer = nil
+        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
