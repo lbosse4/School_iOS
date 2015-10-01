@@ -64,7 +64,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let viewSize = myScrollView.bounds.size
         var parkCounter = 0
         var maxPhotoCount = 0
-        for park in model.parksArray {
+        for park in model.parkArray() {
             var photoCounter = 0
             for photo in park.images {
                 let frame = CGRect(x: viewSize.width * CGFloat(parkCounter), y: viewSize.height * CGFloat(photoCounter), width: viewSize.width, height: viewSize.height)
@@ -108,7 +108,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             parkCounter++
         }
     
-        myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numParks), height: viewSize.height * CGFloat(maxPhotoCount + 1))
+        myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numberOfParks()), height: viewSize.height * CGFloat(maxPhotoCount + 1))
         myScrollView.directionalLockEnabled = true
         myScrollView.alwaysBounceHorizontal = false
         myScrollView.showsVerticalScrollIndicator = false
@@ -139,7 +139,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             let pageHeight = myScrollView.bounds.size.height
             let photoNumber = Int(origin.y/pageHeight)
             
-            let image = UIImage(named: "\(model.parksArray[parkNumber].images[photoNumber].imageName).jpg")
+            let image = UIImage(named: "\(model.imageNameForPark(parkNumber, atIndex: photoNumber)).jpg")
             let imageView = UIImageView(image: image!)
             imageView.contentMode = UIViewContentMode.ScaleAspectFit
             
@@ -166,7 +166,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let pageHeight = myScrollView.bounds.size.height
         let photoNumber = Int(origin.y/pageHeight)
         
-        if parkNumber < model.numParks - 1 && photoNumber == 0{
+        if parkNumber < model.numberOfParks() - 1 && photoNumber == 0{
             rightArrowImageView.hidden = false
         } else {
             rightArrowImageView.hidden = true
@@ -184,7 +184,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             upArrowImageView.hidden = true
         }
         
-        if photoNumber + 1 != model.parksArray[parkNumber].images.count {
+        if photoNumber + 1 != model.imageCountForPark(parkNumber) {
             downArrowImageView.hidden = false
         } else {
             downArrowImageView.hidden = true
@@ -235,7 +235,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let viewSize = myScrollView.bounds.size
         let pageWidth = myScrollView.bounds.size.width
         let parkNumber = Int(origin.x/pageWidth)
-        myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numParks), height: viewSize.height * CGFloat(model.parksArray[parkNumber].images.count))
+        myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numberOfParks()), height: viewSize.height * CGFloat(model.imageCountForPark(parkNumber)))
         
         arrowTimer = NSTimer.scheduledTimerWithTimeInterval(arrowAppearanceDuration,target: self, selector: "hideArrows", userInfo: nil, repeats: false)
     }

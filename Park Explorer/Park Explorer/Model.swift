@@ -42,6 +42,22 @@ class Model {
         extractParkInformation()
     }
     
+    func parkArray() -> [Park] {
+        return parksArray
+    }
+    
+    func numberOfParks() -> Int{
+        return numParks
+    }
+    
+    func imageNameForPark(parkNumber : Int, atIndex : Int ) -> String{
+        return parksArray[parkNumber].images[atIndex].imageName
+    }
+    
+    func imageCountForPark(parkNumber : Int) -> Int{
+        return parksArray[parkNumber].images.count
+    }
+    
     func generateParksArray() {
         for var i = 0; i < numParks; i++ {
             let tempPark = Park()
