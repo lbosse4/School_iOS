@@ -23,6 +23,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let numCaptionLines = 2
     let captionHeight : CGFloat = 300.0
     let arrowAppearanceDuration = 1.25
+    let maroonColor = UIColor(red: 0.20, green: 0.0, blue: 0.08, alpha: 1.0)
     
     var arrowTimer : NSTimer?
     var previousOffset = CGPoint(x: 0.0,y: 0.0)
@@ -43,7 +44,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //model.extractParkInformation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +67,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         for park in model.parksArray {
             var photoCounter = 0
             for photo in park.images {
-                
                 let frame = CGRect(x: viewSize.width * CGFloat(parkCounter), y: viewSize.height * CGFloat(photoCounter), width: viewSize.width, height: viewSize.height)
                 
                 let image = UIImage(named: "\(photo.imageName).jpg")
@@ -123,16 +122,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func pinchDetected(recognizer: UIPinchGestureRecognizer){
-        
+        hideArrows()
         let viewSize = myScrollView.bounds.size
         let frame = CGRect(x: 0.0, y: 0.0, width: viewSize.width, height: viewSize.height)
         
         switch recognizer.state {
         case .Began:
-            
             let zoomScrollViewFrame = CGRect(x: myScrollView.frame.origin.x, y: myScrollView.frame.origin.y, width: viewSize.width, height: viewSize.height)
             zoomScrollView = UIScrollView(frame: zoomScrollViewFrame)
-            zoomScrollView.backgroundColor = UIColor.blackColor()
+            zoomScrollView.backgroundColor = maroonColor
             view.addSubview(zoomScrollView)
             
             let origin = myScrollView.contentOffset
@@ -153,21 +151,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             zoomScrollView.maximumZoomScale = maxZoomScale
             zoomScrollView.contentSize = viewSize
         case .Changed:
-            //if recognizer.scale < minZoomScale {
-                //zoomScrollView.removeFromSuperview()
-            //} else {
-                zoomScrollView.zoomScale = recognizer.scale
-                //zoomScrollView.contentSize = CGSize(width: frame.width * zoomScrollView.zoomScale, height: frame.height * zoomScrollView.zoomScale)
-            //}
-        case .Ended:
-            break;
+            zoomScrollView.zoomScale = recognizer.scale
+        
         default:
             break;
             
         }
-        
-        //let frame = CGRect(x: viewSize.width * CGFloat(parkNumber), y: viewSize.height * CGFloat(photoNumber), width: viewSize.width, height: viewSize.height)
-        
         
     }
     
@@ -211,7 +200,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK:  Scrollview delegate
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-      
         return scrollView.subviews[0]
     }
     
@@ -249,12 +237,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let parkNumber = Int(origin.x/pageWidth)
         myScrollView.contentSize = CGSize(width: viewSize.width * CGFloat(model.numParks), height: viewSize.height * CGFloat(model.parksArray[parkNumber].images.count))
         
-//        if let timer = arrowTimer {
-//            timer.invalidate()
-//            arrowTimer = nil
-//        } else {
-            arrowTimer = NSTimer.scheduledTimerWithTimeInterval(arrowAppearanceDuration,target: self, selector: "hideArrows", userInfo: nil, repeats: false)
-        //}
+        arrowTimer = NSTimer.scheduledTimerWithTimeInterval(arrowAppearanceDuration,target: self, selector: "hideArrows", userInfo: nil, repeats: false)
     }
 
 }
