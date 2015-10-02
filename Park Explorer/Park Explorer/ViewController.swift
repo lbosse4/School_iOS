@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let titleLabelHeight : CGFloat = 50.0
     let titleFont = "Bodoni 72 SmallCaps"
     let captionFont = "Bodoni 72"
+    let iPadMinWidth : CGFloat = 450.0
     let titleFontSize : CGFloat = 55.0
     let captionFontSize : CGFloat = 30.0
     let titleBufferFromTop : CGFloat = 40.0
@@ -93,14 +94,17 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                     myScrollView.bringSubviewToFront(titleLabel)
                 }
                 
-                let captionFrame = CGRect(x: viewSize.width * CGFloat(parkCounter), y: viewSize.height * CGFloat(photoCounter + 1) - imageView.frame.height/2 + captionBuffer, width: viewSize.width, height: captionHeight)
-                let captionLabel = UILabel(frame: captionFrame)
-                captionLabel.font = UIFont(name: captionFont, size: captionFontSize)
-                captionLabel.text = photo.caption
-                captionLabel.numberOfLines = numCaptionLines
-                captionLabel.textColor = UIColor.whiteColor()
-                captionLabel.textAlignment = NSTextAlignment.Center
-                myScrollView.addSubview(captionLabel)
+                if view.frame.width < iPadMinWidth{
+                    let captionFrame = CGRect(x: viewSize.width * CGFloat(parkCounter), y: viewSize.height * CGFloat(photoCounter + 1) - imageView.frame.height/2 + captionBuffer, width: viewSize.width, height: captionHeight)
+                    let captionLabel = UILabel(frame: captionFrame)
+                    captionLabel.font = UIFont(name: captionFont, size: captionFontSize)
+                    captionLabel.text = photo.caption
+                    captionLabel.numberOfLines = numCaptionLines
+                    captionLabel.textColor = UIColor.whiteColor()
+                    captionLabel.textAlignment = NSTextAlignment.Center
+                    myScrollView.addSubview(captionLabel)
+                }
+                
                 
                 photoCounter++
             }
