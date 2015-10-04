@@ -66,11 +66,7 @@ class Model {
         
     }
     
-    func generateBoardImageName(sender: AnyObject) -> String {
-        let currentBoardTagPressed = sender.tag
-        let currentBoardImageName = "Board\(currentBoardTagPressed).png"
-        return currentBoardImageName
-    }
+    
     
     func generatePentominoesPieces() {
         _ = 0.0 - pentominoPaddingX
@@ -86,6 +82,12 @@ class Model {
                 pentominoesArray.append(tempPentominoesPiece)
             }
         }
+    }
+    
+    func generateBoardImageName(sender: AnyObject) -> String {
+        let currentBoardTagPressed = sender.tag
+        let currentBoardImageName = "Board\(currentBoardTagPressed).png"
+        return currentBoardImageName
     }
     
     func initializeSolutionPList(){

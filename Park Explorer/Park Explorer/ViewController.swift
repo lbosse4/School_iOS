@@ -31,6 +31,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var previousOrigin = CGPoint(x: 0.0, y: 0.0)
     var imageView : UIImageView?
     var zoomScrollView = UIScrollView()
+    var isZoomed = false
     
     
     @IBOutlet weak var upArrowImageView: UIImageView!
@@ -156,6 +157,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             zoomScrollView.contentSize = viewSize
         case .Changed:
             zoomScrollView.zoomScale = recognizer.scale
+            isZoomed = true
         
         default:
             break;
@@ -210,6 +212,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         if scale <= minZoomScale {
             zoomScrollView.removeFromSuperview()
+            isZoomed = false
+        } else {
+            isZoomed = true
         }
     }
     
@@ -224,6 +229,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
         }
         previousOrigin = origin
+        if isZoomed {
+            hideArrows()
+        }
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
