@@ -246,8 +246,8 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
     func panPentomino (recognizer: UIPanGestureRecognizer){
         if let panningImageView = recognizer.view as? UIImageView {
             let index = findViewIndex(panningImageView)
-            let point = recognizer.locationInView(pentominoesContainerView)
-            panningImageView.frame.origin = point
+            //let point = recognizer.locationInView(pentominoesContainerView)
+            //panningImageView.frame.origin = point
             switch recognizer.state {
             case .Began:
                 boardImageView.addSubview(panningImageView)
@@ -267,12 +267,12 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
                 panningImageView.center = origin
                 boardImageView.bringSubviewToFront(panningImageView)
 
-                return
+                //return
             case .Ended:
                 let imageBounds = panningImageView.bounds
                 
                 boardImageView.bringSubviewToFront(panningImageView)
-                boardImageView.addSubview(panningImageView)
+                //boardImageView.addSubview(panningImageView)
                 let origin = pentominoesContainerView.convertPoint(recognizer.locationInView(boardImageView), fromView: pentominoesContainerView)
                 panningImageView.center = origin
                 boardImageView.bringSubviewToFront(panningImageView)
@@ -294,7 +294,7 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
                         panningImageView.frame.origin = CGPoint(x: snapOrigin.x, y: snapOrigin.y)
                     //})
                 }
-                return
+                //return
             case .Cancelled:
                 let index = findViewIndex(panningImageView)
                 resetPentominoView(panningImageView, index: index)
@@ -321,6 +321,8 @@ class ViewController : UIViewController, HintDelegateProtocol, UIGestureRecogniz
         if numRotations > 0{
             for var i = 1; i < numRotations; i++ {
                 view.transform = CGAffineTransformRotate(view.transform, self.ninetyDegrees)
+                //view.transform = CGAffineTransformMakeRotation(self.ninetyDegrees)
+
             }
         }
         if evenOrOdd == isOdd && isSolve{
