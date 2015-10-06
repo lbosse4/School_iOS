@@ -52,15 +52,7 @@ class ParkTableViewController: UITableViewController {
         
         
         cell.parkImageView.image = image
-        //cell.parkImageView.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        /*
-        if stateModel.isCheckedStateAtIndex(indexPath.row) {
-        cell.accessoryType = .Checkmark
-        } else {
-        cell.accessoryType = .None
-        }
-        */
+        cell.parkImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         return cell
     }
@@ -78,8 +70,10 @@ class ParkTableViewController: UITableViewController {
 //        return model.parkNameForSection(section)
 //    }
     
+    
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        collapsedSections[indexPath.section] = true
+        //collapsedSections[indexPath.section] = true
         //stateModel.toggleIsCheckedStateAtIndex(indexPath.row)
         //tableView.reloadData()
     }
