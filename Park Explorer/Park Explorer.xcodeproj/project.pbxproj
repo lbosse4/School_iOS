@@ -15,10 +15,10 @@
 		894D21B21BB897B7006DA7AE /* Park_ExplorerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D21B11BB897B7006DA7AE /* Park_ExplorerTests.swift */; };
 		894D21BD1BB897B7006DA7AE /* Park_ExplorerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D21BC1BB897B7006DA7AE /* Park_ExplorerUITests.swift */; };
 		894D21CB1BB8985D006DA7AE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D21CA1BB8985D006DA7AE /* Model.swift */; settings = {ASSET_TAGS = (); }; };
-		8971D4B21BC33A370012B096 /* collectionImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8971D4B11BC33A370012B096 /* collectionImage.png */; settings = {ASSET_TAGS = (); }; };
-		8971D4B41BC33A3B0012B096 /* tableImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8971D4B31BC33A3B0012B096 /* tableImage.png */; settings = {ASSET_TAGS = (); }; };
 		8971D4BA1BC343670012B096 /* ParkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8971D4B91BC343670012B096 /* ParkTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		8971D4BC1BC345190012B096 /* ParkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8971D4BB1BC345190012B096 /* ParkTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8971D4BE1BC3573D0012B096 /* ParkCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8971D4BD1BC3573D0012B096 /* ParkCollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8971D4C01BC35E590012B096 /* ParkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8971D4BF1BC35E590012B096 /* ParkCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		8988DD801BB89F4B00681EDD /* arrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988DD5D1BB89F4B00681EDD /* arrowDown.png */; settings = {ASSET_TAGS = (); }; };
 		8988DD811BB89F4B00681EDD /* arrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988DD5E1BB89F4B00681EDD /* arrowLeft.png */; settings = {ASSET_TAGS = (); }; };
 		8988DD821BB89F4B00681EDD /* arrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988DD5F1BB89F4B00681EDD /* arrowRight.png */; settings = {ASSET_TAGS = (); }; };
@@ -54,6 +54,9 @@
 		8988DDA01BB89F4B00681EDD /* Zion01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8988DD7D1BB89F4B00681EDD /* Zion01.jpg */; settings = {ASSET_TAGS = (); }; };
 		8988DDA11BB89F4B00681EDD /* Zion02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8988DD7E1BB89F4B00681EDD /* Zion02.jpg */; settings = {ASSET_TAGS = (); }; };
 		8988DDA21BB89F4B00681EDD /* Zion03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8988DD7F1BB89F4B00681EDD /* Zion03.jpg */; settings = {ASSET_TAGS = (); }; };
+		89ADD20D1BC362A600F82DBC /* ParkCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ADD20C1BC362A600F82DBC /* ParkCollectionReusableView.swift */; settings = {ASSET_TAGS = (); }; };
+		89ADD2101BC364EB00F82DBC /* collectionImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 89ADD20E1BC364EB00F82DBC /* collectionImage.png */; settings = {ASSET_TAGS = (); }; };
+		89ADD2111BC364EB00F82DBC /* tableImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 89ADD20F1BC364EB00F82DBC /* tableImage.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,10 +91,10 @@
 		894D21BC1BB897B7006DA7AE /* Park_ExplorerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Park_ExplorerUITests.swift; sourceTree = "<group>"; };
 		894D21BE1BB897B7006DA7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		894D21CA1BB8985D006DA7AE /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		8971D4B11BC33A370012B096 /* collectionImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionImage.png; sourceTree = "<group>"; };
-		8971D4B31BC33A3B0012B096 /* tableImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableImage.png; sourceTree = "<group>"; };
 		8971D4B91BC343670012B096 /* ParkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkTableViewCell.swift; sourceTree = "<group>"; };
 		8971D4BB1BC345190012B096 /* ParkTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkTableViewController.swift; sourceTree = "<group>"; };
+		8971D4BD1BC3573D0012B096 /* ParkCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkCollectionViewController.swift; sourceTree = "<group>"; };
+		8971D4BF1BC35E590012B096 /* ParkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkCollectionViewCell.swift; sourceTree = "<group>"; };
 		8988DD5D1BB89F4B00681EDD /* arrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowDown.png; sourceTree = "<group>"; };
 		8988DD5E1BB89F4B00681EDD /* arrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowLeft.png; sourceTree = "<group>"; };
 		8988DD5F1BB89F4B00681EDD /* arrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowRight.png; sourceTree = "<group>"; };
@@ -127,6 +130,9 @@
 		8988DD7D1BB89F4B00681EDD /* Zion01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zion01.jpg; sourceTree = "<group>"; };
 		8988DD7E1BB89F4B00681EDD /* Zion02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zion02.jpg; sourceTree = "<group>"; };
 		8988DD7F1BB89F4B00681EDD /* Zion03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zion03.jpg; sourceTree = "<group>"; };
+		89ADD20C1BC362A600F82DBC /* ParkCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkCollectionReusableView.swift; sourceTree = "<group>"; };
+		89ADD20E1BC364EB00F82DBC /* collectionImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionImage.png; sourceTree = "<group>"; };
+		89ADD20F1BC364EB00F82DBC /* tableImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,8 +213,8 @@
 		8971D4B01BC339EC0012B096 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				8971D4B11BC33A370012B096 /* collectionImage.png */,
-				8971D4B31BC33A3B0012B096 /* tableImage.png */,
+				89ADD20E1BC364EB00F82DBC /* collectionImage.png */,
+				89ADD20F1BC364EB00F82DBC /* tableImage.png */,
 				8988DD5D1BB89F4B00681EDD /* arrowDown.png */,
 				8988DD5E1BB89F4B00681EDD /* arrowLeft.png */,
 				8988DD5F1BB89F4B00681EDD /* arrowRight.png */,
@@ -263,6 +269,8 @@
 			children = (
 				894D21A01BB897B5006DA7AE /* Main.storyboard */,
 				8971D4B91BC343670012B096 /* ParkTableViewCell.swift */,
+				8971D4BF1BC35E590012B096 /* ParkCollectionViewCell.swift */,
+				89ADD20C1BC362A600F82DBC /* ParkCollectionReusableView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 			children = (
 				894D219E1BB897B5006DA7AE /* ViewController.swift */,
 				8971D4BB1BC345190012B096 /* ParkTableViewController.swift */,
+				8971D4BD1BC3573D0012B096 /* ParkCollectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -392,11 +401,11 @@
 				8988DD9B1BB89F4B00681EDD /* Yosemite02.jpg in Resources */,
 				8988DD821BB89F4B00681EDD /* arrowRight.png in Resources */,
 				894D21A71BB897B5006DA7AE /* LaunchScreen.storyboard in Resources */,
-				8971D4B41BC33A3B0012B096 /* tableImage.png in Resources */,
+				89ADD2111BC364EB00F82DBC /* tableImage.png in Resources */,
 				8988DDA21BB89F4B00681EDD /* Zion03.jpg in Resources */,
 				8988DD931BB89F4B00681EDD /* nps-logo.png in Resources */,
 				8988DD8F1BB89F4B00681EDD /* Glacier03.jpg in Resources */,
-				8971D4B21BC33A370012B096 /* collectionImage.png in Resources */,
+				89ADD2101BC364EB00F82DBC /* collectionImage.png in Resources */,
 				8988DDA01BB89F4B00681EDD /* Zion01.jpg in Resources */,
 				8988DD921BB89F4B00681EDD /* GrandTeton02.jpg in Resources */,
 				8988DD891BB89F4B00681EDD /* Carlsbad03.jpg in Resources */,
@@ -454,8 +463,11 @@
 			files = (
 				894D21CB1BB8985D006DA7AE /* Model.swift in Sources */,
 				894D219F1BB897B5006DA7AE /* ViewController.swift in Sources */,
+				8971D4BE1BC3573D0012B096 /* ParkCollectionViewController.swift in Sources */,
 				894D219D1BB897B5006DA7AE /* AppDelegate.swift in Sources */,
+				8971D4C01BC35E590012B096 /* ParkCollectionViewCell.swift in Sources */,
 				8971D4BC1BC345190012B096 /* ParkTableViewController.swift in Sources */,
+				89ADD20D1BC362A600F82DBC /* ParkCollectionReusableView.swift in Sources */,
 				8971D4BA1BC343670012B096 /* ParkTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
