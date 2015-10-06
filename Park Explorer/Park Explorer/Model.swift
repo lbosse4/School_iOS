@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 class Model {
+    static let sharedInstance = Model()
+    
     var parksNSArray : NSArray = NSArray()
     var parksArray = [Park]()
-    
     
     let numParks = 8
     
@@ -56,6 +57,26 @@ class Model {
     
     func imageCountForPark(parkNumber : Int) -> Int{
         return parksArray[parkNumber].images.count
+    }
+    
+    func imageCaptionAtIndexPath(indexPath : NSIndexPath) -> String{
+        return imageAtIndexPath(indexPath).caption
+    }
+    
+    func imageNameAtIndexPath(indexPath : NSIndexPath) -> String {
+        return imageAtIndexPath(indexPath).imageName
+    }
+    
+    func parkNameForSection(section: Int) -> String{
+        return parksArray[section].parkName
+    }
+    
+    private func imageAtIndexPath(indexPath : NSIndexPath) -> Photo {
+        return parksArray[indexPath.section].images[indexPath.row]
+    }
+    
+    func parkAtIndexPath() -> Int{
+        return 0
     }
     
     func generateParksArray() {
