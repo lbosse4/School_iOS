@@ -72,7 +72,7 @@ class ParkTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         tableView.scrollEnabled = false
         
         let viewSize = tableView.bounds.size
@@ -96,7 +96,7 @@ class ParkTableViewController: UITableViewController {
         imageView.frame = originalFrame
         //imageView.frame = tab
         
-        let frame = CGRect(x: 0.0, y: 0.0, width: viewSize.width, height: viewSize.height)
+        let frame = CGRect(x: 0.0, y: tableView.contentOffset.y, width: viewSize.width, height: viewSize.height)
         
         
         UIView.animateWithDuration(3.0) { () -> Void in
