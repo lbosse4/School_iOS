@@ -13,7 +13,7 @@ private let reuseIdentifier = "ParkCollectionCell"
 class ParkCollectionViewController : UICollectionViewController{
     let model = Model.sharedInstance
     
-    private let insets = UIEdgeInsetsMake(50.0, 10.0, 50.0, 10.0)
+    private let insets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
