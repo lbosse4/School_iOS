@@ -13,7 +13,7 @@ private let reuseIdentifier = "ParkCollectionCell"
 class ParkCollectionViewController : UICollectionViewController{
     let model = Model.sharedInstance
     
-    private let insets = UIEdgeInsetsMake(50.0, 20.0, 50.0, 20.0)
+    private let insets = UIEdgeInsetsMake(50.0, 10.0, 50.0, 10.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +58,12 @@ class ParkCollectionViewController : UICollectionViewController{
         default:
             assert(false, "Unexpected element kind")
         }
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return insets
     }
     
 }
