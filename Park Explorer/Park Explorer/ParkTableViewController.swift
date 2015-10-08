@@ -96,17 +96,16 @@ class ParkTableViewController: UITableViewController {
         let zoomScrollViewFrame = CGRect(x: view.frame.origin.x, y: tableView.contentOffset.y, width: viewSize.width, height: viewSize.height)
         zoomScrollView = UIScrollView(frame: zoomScrollViewFrame)
         view.addSubview(zoomScrollView)
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("ParkTableCell", forIndexPath: indexPath) as! ParkTableViewCell
+       
         let image = UIImage(named: "\(model.imageNameAtIndexPath(indexPath)).jpg")
-        //let imageView = UIImageView(image: image)
-        //let imageFrame = tableView.rectForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ParkTableViewCell
         let imageFrame = cell.parkImageView.frame
-        let convertedFrame = zoomScrollView.convertRect(imageFrame, fromCoordinateSpace: cell)
+        let convertedFrame = zoomScrollView.convertRect(imageFrame, fromCoordinateSpace: cell.parkImageView)
         let imageView = UIImageView(frame: convertedFrame)
         //let imageView = UIImageView(frame: cell.parkImageView.frame)
-        let rowOffset = tableView.rectForRowAtIndexPath(indexPath)
-        imageView.frame.origin.y += rowOffset.origin.y
+        //let rowOffset = tableView.rectForRowAtIndexPath(indexPath)
+        let frameInCell = cell.parkImageView.frame
+        imageView.frame.origin.y += viewSize.height/CGFloat(2.0) - frameInCell.origin.y
         imageView.image = image
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         zoomScrollView.addSubview(imageView)
@@ -141,15 +140,10 @@ class ParkTableViewController: UITableViewController {
             
         }
        
-        
         zoomScrollView.delegate = self
         zoomScrollView.minimumZoomScale = minZoomScale
         zoomScrollView.maximumZoomScale = maxZoomScale
         zoomScrollView.contentSize = viewSize
-        
-        //collapsedSections[indexPath.section] = true
-        //stateModel.toggleIsCheckedStateAtIndex(indexPath.row)
-        //tableView.reloadData()
     }
     
     func imageViewTapped(recognizer : UITapGestureRecognizer){
