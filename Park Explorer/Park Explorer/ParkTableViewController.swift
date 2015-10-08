@@ -29,8 +29,9 @@ class ParkTableViewController: UITableViewController {
             let viewSize = view.frame.size
             //let frame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: viewSize.width, height: viewSize.height)
             let frame = CGRect(x: 0.0, y: 0.0, width: viewSize.width, height: viewSize.height)
+            
             zoomScrollView.subviews[0].frame = frame
-            zoomScrollView.contentSize = viewSize
+            zoomScrollView.contentSize = frame.size
         }
     }
     
@@ -38,12 +39,6 @@ class ParkTableViewController: UITableViewController {
         collapsedSections[sender.tag] = !collapsedSections[sender.tag]
         let indexSet = NSIndexSet(index: sender.tag)
         tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
-    }
-    
-    func moveView(view:UIView, toSuperview superView: UIView) {
-        let newCenter = superView.convertPoint(view.center, fromView: view.superview)
-        view.center = newCenter
-        superView.addSubview(view)
     }
     
     // MARK: - Table view data source
@@ -81,12 +76,6 @@ class ParkTableViewController: UITableViewController {
         return button
     }
     
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return model.parkNameForSection(section)
-//    }
-    
-    
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         tableView.scrollEnabled = false
@@ -100,25 +89,18 @@ class ParkTableViewController: UITableViewController {
         let image = UIImage(named: "\(model.imageNameAtIndexPath(indexPath)).jpg")
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ParkTableViewCell
         let imageFrame = cell.parkImageView.frame
-        let convertedFrame = zoomScrollView.convertRect(imageFrame, fromCoordinateSpace: cell.parkImageView)
+        let convertedFrame = zoomScrollView.convertRect(imageFrame, fromCoordinateSpace: cell.parkImageView!)
         let imageView = UIImageView(frame: convertedFrame)
         //let imageView = UIImageView(frame: cell.parkImageView.frame)
         //let rowOffset = tableView.rectForRowAtIndexPath(indexPath)
         let frameInCell = cell.parkImageView.frame
+        //imageView.frame.origin.y += rowOffset.origin.y
+        //imageView.frame.origin.x += frameInCell.origin.x
         imageView.frame.origin.y += viewSize.height/CGFloat(2.0) - frameInCell.origin.y
+        imageView.frame.origin.x -= 16.0
         imageView.image = image
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         zoomScrollView.addSubview(imageView)
-        
-        //moveView(imageView, toSuperview: zoomScrollView)
-        //zoomScrollView.addSubview(imageView)
-        
-        //let originalPoint = cell.parkImageView.superview!.convertPoint(cell.parkImageView.center, toView: zoomScrollView)
-        //let originalFrame = zoomScrollView.convertRect(cell.parkImageView.frame, fromView: cell)
-        //view.con
-        //imageView.frame = originalPoint //originalFrame
-        //
-
         
         
         
