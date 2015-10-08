@@ -13,6 +13,8 @@ class ParkTableViewController: UITableViewController {
     let model = Model.sharedInstance
     let minZoomScale : CGFloat = 1.0
     let maxZoomScale : CGFloat = 10.0
+    let buttonHeight : CGFloat = 30.0
+    let animationDuration : NSTimeInterval = 1.5
     
     var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     var isZoomed = false
@@ -23,22 +25,11 @@ class ParkTableViewController: UITableViewController {
         for _ in 0..<model.numberOfParks() {
             collapsedSections.append(false)
         }
-        zoomScrollView.showsHorizontalScrollIndicator = false
-        zoomScrollView.showsVerticalScrollIndicator = false
     }
     
-    override func viewDidLayoutSubviews() {
-        if zoomScrollView.superview == tableView {
-//            let viewSize = view.frame.size
-//            let frame = CGRect(x: 0.0, y: 0.0, width: viewSize.width, height: viewSize.height)
-            //zoomScrollView.contentSize = view.frame.size
-            zoomScrollView.backgroundColor = UIColor.blackColor()
-//            zoomScrollView.subviews[0].frame = frame
-        }
-    }
     
     override func shouldAutorotate() -> Bool {
-        //dont let them animate while rotating
+        //dont let them rotate while animating
         return true
     }
     
@@ -79,7 +70,7 @@ class ParkTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let button = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.width, height: 30.0))
+        let button = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.width, height: buttonHeight))
         button.setTitle(model.parkNameForSection(section), forState: .Normal)
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
@@ -103,13 +94,14 @@ class ParkTableViewController: UITableViewController {
         let convertedFrame = parkImageFrameLocationInCell(indexPath)
         let imageView = UIImageView(image: image)
 
-        imageView.image = image
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         imageView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         imageView.frame = zoomScrollView.bounds
         zoomScrollView.addSubview(imageView)
         zoomScrollView.frame = convertedFrame
         zoomScrollView.contentSize = convertedFrame.size
+        zoomScrollView.showsVerticalScrollIndicator = false
+        zoomScrollView.showsHorizontalScrollIndicator = false
         
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "imageViewTapped:")
@@ -117,8 +109,7 @@ class ParkTableViewController: UITableViewController {
         imageView.addGestureRecognizer(tapRecognizer)
         imageView.userInteractionEnabled = true
         
-        UIView.animateWithDuration(1.0) { () -> Void in
-            
+        UIView.animateWithDuration(animationDuration) { () -> Void in
             self.zoomScrollView.frame = self.view.bounds
             self.tableView.bringSubviewToFront(self.zoomScrollView)
             
@@ -135,7 +126,7 @@ class ParkTableViewController: UITableViewController {
             //animate the image back here
             let convertedFrame = parkImageFrameLocationInCell(selectedIndexPath)
             
-            UIView.animateWithDuration(2.0, animations: { () -> Void in
+            UIView.animateWithDuration(animationDuration, animations: { () -> Void in
                 self.zoomScrollView.frame = convertedFrame
                 }, completion: { (finished) -> Void in
                     self.zoomScrollView.removeFromSuperview()
@@ -143,11 +134,6 @@ class ParkTableViewController: UITableViewController {
             })
             
         }
-    }
-    
-    func selectedCell(indexPath: NSIndexPath) -> ParkTableViewCell{
-        let cell = tableView.cellForRowAtIndexPath(selectedIndexPath) as! ParkTableViewCell
-        return cell
     }
     
     func parkImageFrameLocationInCell(indexPath: NSIndexPath) -> CGRect {

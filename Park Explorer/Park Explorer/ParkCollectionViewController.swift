@@ -14,8 +14,10 @@ class ParkCollectionViewController : UICollectionViewController{
     let model = Model.sharedInstance
     let minZoomScale : CGFloat = 1.0
     let maxZoomScale : CGFloat = 10.0
+    let animationDuration : NSTimeInterval = 1.5
     
-    var zoomScrollView = UIScrollView()
+    var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+    var zoomScrollView = UIScrollView(frame: CGRectZero)
     var isZoomed = false
     
     private let insets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
@@ -23,14 +25,6 @@ class ParkCollectionViewController : UICollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        //TODO: Always Comment this out!!!!
-        // Register cell classes
-        //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
      
     // MARK: UICollectionViewDataSource
@@ -61,48 +55,66 @@ class ParkCollectionViewController : UICollectionViewController{
     
     
     
-    
+    func parkImageFrameLocationInCell(indexPath: NSIndexPath) -> CGRect {
+        let cell = collectionView!.cellForItemAtIndexPath(selectedIndexPath) as! ParkCollectionViewCell
+        let imageFrame = cell.parkImageView.frame
+        let convertedFrame = view.convertRect(imageFrame, fromCoordinateSpace: cell.contentView)
+        return convertedFrame
+    }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //collectionView.deselectItemAtIndexPath(indexPath, animated: false)
+        collectionView.deselectItemAtIndexPath(indexPath, animated: false)
         collectionView.scrollEnabled = false
+        selectedIndexPath = indexPath
         
         let viewSize = view.bounds.size
         
-        let zoomScrollViewFrame = CGRect(x: view.frame.origin.x, y: collectionView.frame.origin.y, width: viewSize.width, height: viewSize.height)
-        zoomScrollView = UIScrollView(frame: zoomScrollViewFrame)
+        //let zoomScrollViewFrame = CGRect(x: view.frame.origin.x, y: collectionView.frame.origin.y, width: viewSize.width, height: viewSize.height)
+        zoomScrollView = UIScrollView(frame: CGRectZero)
+        zoomScrollView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         view.addSubview(zoomScrollView)
         
         let image = UIImage(named: "\(model.imageNameAtIndexPath(indexPath)).jpg")
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ParkCollectionViewCell
-        let imageFrame = cell.parkImageView.frame
-        let convertedFrame = cell.parkImageView.convertRect(imageFrame, fromCoordinateSpace: cell.parkImageView!)
-        let imageView = UIImageView(frame: convertedFrame)
+        let convertedFrame = parkImageFrameLocationInCell(indexPath)
+        let imageView = UIImageView(image: image)
         
-        let frameInCell = cell.parkImageView.frame
-        imageView.frame.origin.y += viewSize.height/CGFloat(2.0) - frameInCell.origin.y
-        imageView.frame.origin.x -= 16.0
-        
-        imageView.image = image
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        imageView.frame = zoomScrollView.bounds
         zoomScrollView.addSubview(imageView)
+        zoomScrollView.frame = convertedFrame
+        zoomScrollView.contentSize = convertedFrame.size
+        zoomScrollView.showsVerticalScrollIndicator = false
+        zoomScrollView.showsHorizontalScrollIndicator = false
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "imageViewTapped:")
         tapRecognizer.numberOfTapsRequired = 1
         imageView.addGestureRecognizer(tapRecognizer)
         imageView.userInteractionEnabled = true
 
-        //let frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y /*+ collectionView.contentOffset.y*/, width: viewSize.width, height: viewSize.height)
-        UIView.animateWithDuration(3.0) { () -> Void in
-            self.zoomScrollView.addSubview(imageView)
-            imageView.frame = zoomScrollViewFrame
+        UIView.animateWithDuration(animationDuration){ () -> Void in
+            self.zoomScrollView.frame = self.view.bounds
+            //imageView.frame = zoomScrollViewFrame
             
-            self.collectionView?.bringSubviewToFront(self.zoomScrollView)
+            //self.collectionView?.bringSubviewToFront(self.zoomScrollView)
         }
         zoomScrollView.delegate = self
         zoomScrollView.minimumZoomScale = minZoomScale
         zoomScrollView.maximumZoomScale = maxZoomScale
         zoomScrollView.contentSize = viewSize
+    }
+    
+    func imageViewTapped(recognizer : UITapGestureRecognizer){
+        if !isZoomed {
+            //animate the image back here
+            let convertedFrame = parkImageFrameLocationInCell(selectedIndexPath)
+            UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+                self.zoomScrollView.frame = convertedFrame
+                }, completion: { (finished) -> Void in
+                    self.zoomScrollView.removeFromSuperview()
+                    self.collectionView?.scrollEnabled = true
+            })
+        }
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
@@ -120,14 +132,6 @@ class ParkCollectionViewController : UICollectionViewController{
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
             return insets
-    }
-    
-    func imageViewTapped(recognizer : UITapGestureRecognizer){
-        if !isZoomed {
-            //animate the image back here
-            zoomScrollView.removeFromSuperview()
-            collectionView!.scrollEnabled = true
-        }
     }
     
     // MARK:  Scrollview delegate
