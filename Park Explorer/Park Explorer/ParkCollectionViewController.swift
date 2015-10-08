@@ -27,7 +27,7 @@ class ParkCollectionViewController : UICollectionViewController{
         // Register cell classes
         //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
-    
+     
     // MARK: UICollectionViewDataSource
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -45,6 +45,8 @@ class ParkCollectionViewController : UICollectionViewController{
         let image = UIImage(named: "\(model.imageNameAtIndexPath(indexPath)).jpg")
         
         cell.parkImageView.image = image
+        cell.parkImageView.contentMode = UIViewContentMode.ScaleAspectFit
+
         
         return cell
     }
