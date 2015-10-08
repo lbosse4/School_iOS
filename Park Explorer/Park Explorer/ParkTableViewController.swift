@@ -14,7 +14,7 @@ class ParkTableViewController: UITableViewController {
     let minZoomScale : CGFloat = 1.0
     let maxZoomScale : CGFloat = 10.0
     
-    var selectedIndexPath = NSIndexPath()
+    var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     var isZoomed = false
     var zoomScrollView = UIScrollView()
     var collapsedSections = [Bool]()
@@ -26,13 +26,21 @@ class ParkTableViewController: UITableViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        if zoomScrollView.superview == tableView {
-            let viewSize = view.frame.size
-            let frame = CGRect(x: 0.0, y: 0.0, width: viewSize.width, height: viewSize.height)
-            //tableView.scrollToRowAtIndexPath(selectedIndexPath, atScrollPosition: .Middle, animated: true)
-            zoomScrollView.contentSize = frame.size
-            zoomScrollView.subviews[0].frame = frame
-        }
+//        if zoomScrollView.superview == tableView {
+//            let viewSize = view.frame.size
+//            let frame = CGRect(x: 0.0, y: 0.0, width: viewSize.width, height: viewSize.height)
+//            zoomScrollView.contentSize = frame.size
+//            zoomScrollView.subviews[0].frame = frame
+//        }
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        //dont let them animate while rotating
+        return true
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        tableView.scrollToRowAtIndexPath(selectedIndexPath, atScrollPosition: .Middle, animated: true)
     }
     
     func collapseSection(sender: UIButton){
@@ -83,32 +91,35 @@ class ParkTableViewController: UITableViewController {
         
         let viewSize = view.bounds.size
        
-        let zoomScrollViewFrame = CGRect(x: view.frame.origin.x, y: tableView.contentOffset.y, width: viewSize.width, height: viewSize.height)
-        zoomScrollView = UIScrollView(frame: zoomScrollViewFrame)
+        //let zoomScrollViewFrame = CGRect(x: view.frame.origin.x, y: tableView.contentOffset.y, width: viewSize.width, height: viewSize.height)
+        zoomScrollView = UIScrollView(frame: CGRectZero)
         zoomScrollView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         view.addSubview(zoomScrollView)
        
         let image = UIImage(named: "\(model.imageNameAtIndexPath(indexPath)).jpg")
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ParkTableViewCell
-        let imageFrame = cell.parkImageView.frame
-        let convertedFrame = view.convertRect(imageFrame, fromCoordinateSpace: cell.contentView)
+        //let cell = selectedCell(selectedIndexPath)
+        //let imageFrame = cell.parkImageView.frame
+        //let convertedFrame = view.convertRect(imageFrame, fromCoordinateSpace: cell.contentView)
+        let convertedFrame = parkImageFrameLocationInCell(indexPath)
         let imageView = UIImageView(image: image)
 
         imageView.image = image
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         imageView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        imageView.frame = zoomScrollView.bounds
         zoomScrollView.addSubview(imageView)
         zoomScrollView.frame = convertedFrame
+        zoomScrollView.contentSize = convertedFrame.size
+        
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "imageViewTapped:")
         tapRecognizer.numberOfTapsRequired = 1
         imageView.addGestureRecognizer(tapRecognizer)
         imageView.userInteractionEnabled = true
         
-        UIView.animateWithDuration(5.0) { () -> Void in
+        UIView.animateWithDuration(1.0) { () -> Void in
             
             self.zoomScrollView.frame = self.view.frame
-            
             self.tableView.bringSubviewToFront(self.zoomScrollView)
             
         }
@@ -122,17 +133,29 @@ class ParkTableViewController: UITableViewController {
     func imageViewTapped(recognizer : UITapGestureRecognizer){
         if !isZoomed {
             //animate the image back here
+            let convertedFrame = parkImageFrameLocationInCell(selectedIndexPath)
             
+            UIView.animateWithDuration(2.0, animations: { () -> Void in
+                self.zoomScrollView.frame = convertedFrame
+                }, completion: { (finished) -> Void in
+                    self.zoomScrollView.removeFromSuperview()
+                    self.tableView.scrollEnabled = true
+            })
             
-            zoomScrollView.removeFromSuperview()
-            tableView.scrollEnabled = true
         }
     }
     
-//    func imageCoordinatesInCell(indexPath: NSIndexPath) -> ParkTableViewCell{
-//        
-//        return cell
-//    }
+    func selectedCell(indexPath: NSIndexPath) -> ParkTableViewCell{
+        let cell = tableView.cellForRowAtIndexPath(selectedIndexPath) as! ParkTableViewCell
+        return cell
+    }
+    
+    func parkImageFrameLocationInCell(indexPath: NSIndexPath) -> CGRect {
+        let cell = tableView.cellForRowAtIndexPath(selectedIndexPath) as! ParkTableViewCell
+        let imageFrame = cell.parkImageView.frame
+        let convertedFrame = view.convertRect(imageFrame, fromCoordinateSpace: cell.contentView)
+        return convertedFrame
+    }
     
     // MARK:  Scrollview delegate
     override func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
