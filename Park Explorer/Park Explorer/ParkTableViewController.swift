@@ -23,15 +23,18 @@ class ParkTableViewController: UITableViewController {
         for _ in 0..<model.numberOfParks() {
             collapsedSections.append(false)
         }
+        zoomScrollView.showsHorizontalScrollIndicator = false
+        zoomScrollView.showsVerticalScrollIndicator = false
     }
     
     override func viewDidLayoutSubviews() {
-//        if zoomScrollView.superview == tableView {
+        if zoomScrollView.superview == tableView {
 //            let viewSize = view.frame.size
 //            let frame = CGRect(x: 0.0, y: 0.0, width: viewSize.width, height: viewSize.height)
-//            zoomScrollView.contentSize = frame.size
+            //zoomScrollView.contentSize = view.frame.size
+            zoomScrollView.backgroundColor = UIColor.blackColor()
 //            zoomScrollView.subviews[0].frame = frame
-//        }
+        }
     }
     
     override func shouldAutorotate() -> Bool {
@@ -40,7 +43,7 @@ class ParkTableViewController: UITableViewController {
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        tableView.scrollToRowAtIndexPath(selectedIndexPath, atScrollPosition: .Middle, animated: true)
+        //tableView.scrollToRowAtIndexPath(selectedIndexPath, atScrollPosition: .Middle, animated: true)
     }
     
     func collapseSection(sender: UIButton){
@@ -97,9 +100,6 @@ class ParkTableViewController: UITableViewController {
         view.addSubview(zoomScrollView)
        
         let image = UIImage(named: "\(model.imageNameAtIndexPath(indexPath)).jpg")
-        //let cell = selectedCell(selectedIndexPath)
-        //let imageFrame = cell.parkImageView.frame
-        //let convertedFrame = view.convertRect(imageFrame, fromCoordinateSpace: cell.contentView)
         let convertedFrame = parkImageFrameLocationInCell(indexPath)
         let imageView = UIImageView(image: image)
 
@@ -119,7 +119,7 @@ class ParkTableViewController: UITableViewController {
         
         UIView.animateWithDuration(1.0) { () -> Void in
             
-            self.zoomScrollView.frame = self.view.frame
+            self.zoomScrollView.frame = self.view.bounds
             self.tableView.bringSubviewToFront(self.zoomScrollView)
             
         }

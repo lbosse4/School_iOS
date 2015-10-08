@@ -55,6 +55,14 @@ class ParkCollectionViewController : UICollectionViewController{
         return cell
     }
 
+    
+    
+    //USE view NOT collectionView EMMA SAID THAT WOULD FIX IT 
+    
+    
+    
+    
+    
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         //collectionView.deselectItemAtIndexPath(indexPath, animated: false)
         collectionView.scrollEnabled = false
