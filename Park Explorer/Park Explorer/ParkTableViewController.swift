@@ -153,9 +153,13 @@ class ParkTableViewController: UITableViewController {
             isZoomed = false
         } else {
             isZoomed = true
+            
         }
     }
 }
+
+
+
 
 
 
