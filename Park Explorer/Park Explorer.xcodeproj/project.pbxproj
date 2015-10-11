@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		894375041BCB1238002F2662 /* WalkThroughStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894375031BCB1238002F2662 /* WalkThroughStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
+		894375061BCB1AB7002F2662 /* WalkThroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894375051BCB1AB6002F2662 /* WalkThroughPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		894375081BCB243A002F2662 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894375071BCB243A002F2662 /* ContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		894D219D1BB897B5006DA7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D219C1BB897B5006DA7AE /* AppDelegate.swift */; };
 		894D219F1BB897B5006DA7AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D219E1BB897B5006DA7AE /* ViewController.swift */; };
 		894D21A21BB897B5006DA7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D21A01BB897B5006DA7AE /* Main.storyboard */; };
@@ -77,6 +80,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		894375031BCB1238002F2662 /* WalkThroughStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalkThroughStoryboard.storyboard; sourceTree = "<group>"; };
+		894375051BCB1AB6002F2662 /* WalkThroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkThroughPageViewController.swift; sourceTree = "<group>"; };
+		894375071BCB243A002F2662 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		894D21991BB897B4006DA7AE /* Park Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park Explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		894D219C1BB897B5006DA7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		894D219E1BB897B5006DA7AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +273,7 @@
 		8971D4B61BC3400C0012B096 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				894375031BCB1238002F2662 /* WalkThroughStoryboard.storyboard */,
 				894D21A01BB897B5006DA7AE /* Main.storyboard */,
 				8971D4B91BC343670012B096 /* ParkTableViewCell.swift */,
 				8971D4BF1BC35E590012B096 /* ParkCollectionViewCell.swift */,
@@ -287,6 +294,8 @@
 		8971D4B81BC3407F0012B096 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				894375071BCB243A002F2662 /* ContentViewController.swift */,
+				894375051BCB1AB6002F2662 /* WalkThroughPageViewController.swift */,
 				894D219E1BB897B5006DA7AE /* ViewController.swift */,
 				8971D4BB1BC345190012B096 /* ParkTableViewController.swift */,
 				8971D4BD1BC3573D0012B096 /* ParkCollectionViewController.swift */,
@@ -429,6 +438,7 @@
 				8988DD8E1BB89F4B00681EDD /* Glacier02.jpg in Resources */,
 				8988DD9E1BB89F4B00681EDD /* Yosemite05.jpg in Resources */,
 				894D21A21BB897B5006DA7AE /* Main.storyboard in Resources */,
+				894375041BCB1238002F2662 /* WalkThroughStoryboard.storyboard in Resources */,
 				8988DD831BB89F4B00681EDD /* arrowUp.png in Resources */,
 				8988DD841BB89F4B00681EDD /* BryceCanyon01.jpg in Resources */,
 				8988DD911BB89F4B00681EDD /* GrandTeton01.jpg in Resources */,
@@ -461,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894375081BCB243A002F2662 /* ContentViewController.swift in Sources */,
 				894D21CB1BB8985D006DA7AE /* Model.swift in Sources */,
 				894D219F1BB897B5006DA7AE /* ViewController.swift in Sources */,
 				8971D4BE1BC3573D0012B096 /* ParkCollectionViewController.swift in Sources */,
@@ -469,6 +480,7 @@
 				8971D4BC1BC345190012B096 /* ParkTableViewController.swift in Sources */,
 				89ADD20D1BC362A600F82DBC /* ParkCollectionReusableView.swift in Sources */,
 				8971D4BA1BC343670012B096 /* ParkTableViewCell.swift in Sources */,
+				894375061BCB1AB7002F2662 /* WalkThroughPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

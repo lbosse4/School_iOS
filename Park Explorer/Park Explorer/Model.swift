@@ -16,6 +16,7 @@ class Model {
     var parksArray = [Park]()
     
     let numParks = 8
+    let numWalkThroughPages = 3
     
     class Park {
         var parkName : String
@@ -41,6 +42,10 @@ class Model {
     
     init() {
         extractParkInformation()
+    }
+    
+    func numWalkThroughPages() -> Int{
+        return numWalkThroughPages
     }
     
     func parkArray() -> [Park] {
