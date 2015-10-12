@@ -41,17 +41,6 @@ class Model {
         }
     }
     
-//    class InstructionPage {
-//        //var index : Int
-//        //var buttonTitle : String
-//        var imageName : String
-//        init(){
-//            //index = 0
-//            //buttonTitle = "Next"
-//            imageName = "PageInstruction1.png"
-//        }
-//    }
-    
     init() {
         extractParkInformation()
         configureInstructions()
@@ -72,9 +61,6 @@ class Model {
     func pageInstructionImageAtIndex(index:Int) -> String{
         return instructionImages[index]
     }
-//    func pageInstructionButtonTitleAtIndex(index:Int) -> String{
-//        return instructionsArray[index].buttonTitle
-//    }
     
     func numberOfParks() -> Int{
         return numParks
@@ -110,15 +96,7 @@ class Model {
     
     func configureInstructions(){
         for i in 0 ..< numWalkThroughPages {
-            //let tempInstructionPage = InstructionPage()
-            //tempInstructionPage.index = i
             let tempString = "PageInstruction\(i + 1).png"
-            
-//            if i == numWalkThroughPages - 1 {
-//                tempInstructionPage.buttonTitle = "Continue to Parks!"
-//            } else {
-//                tempInstructionPage.buttonTitle = "Next"
-//            }
             instructionImages.append(tempString)
         }
     }

@@ -26,9 +26,6 @@ class ContentViewController : UIViewController {
     func configure(pageInstructionImageName : String, index : Int){
         pageIndex = index
         instructionImageName = pageInstructionImageName
-        //buttonTitleContent = buttonTitle
-        
-        
     }
     
     override func viewDidLoad() {
@@ -36,8 +33,6 @@ class ContentViewController : UIViewController {
         instructionImageView.image = image
         instructionImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
-//        navigationButton.setTitle(buttonTitleContent, forState: .Normal)
-//        navigationButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         if pageIndex == model.numWalkThroughPages - 1 {
             segueButton.backgroundColor = greenColor
             navigationButton.hidden = true
@@ -50,9 +45,19 @@ class ContentViewController : UIViewController {
     }
 
     @IBAction func navigateButtonPressed(sender: UIButton) {
+//        pageIndex! += 1
+//        instructionImageView.image = UIImage(named: model.pageInstructionImageAtIndex(pageIndex!))
         
     }
 
+    func viewControllerAtIndex(index:Int) -> UIViewController {
+        let contentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
+        
+        let pageInstructionImage =  model.pageInstructionImageAtIndex(index)
+        contentViewController.configure(pageInstructionImage, index: index)
+        
+        return contentViewController
+    }
 }
 
 

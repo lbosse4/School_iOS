@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zrs-hL-CM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1785" y="712"/>
+            <point key="canvasLocation" x="1777" y="732"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="gM4-gb-GQa">
@@ -80,6 +80,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.21176470589999999" green="0.0" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParkTableCell" rowHeight="93" id="JDb-9e-ETD" customClass="ParkTableViewCell" customModule="Park_Explorer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="93"/>
@@ -88,17 +89,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-nP-hyc">
-                                            <rect key="frame" x="19" y="0.0" width="309" height="84"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-nP-hyc">
+                                            <rect key="frame" x="8" y="0.0" width="320" height="92"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="23"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ro-qd-4bf">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ro-qd-4bf">
                                             <rect key="frame" x="347" y="0.0" width="240" height="92"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="240" id="4Dv-zd-Yw8"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.21176470589999999" green="0.0" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="1Ro-qd-4bf" firstAttribute="leading" secondItem="VbH-nP-hyc" secondAttribute="trailing" constant="19" id="KZb-qu-0cO"/>
+                                        <constraint firstItem="VbH-nP-hyc" firstAttribute="bottom" secondItem="rsY-li-3o3" secondAttribute="bottomMargin" constant="8" id="SXC-3R-h1j"/>
+                                        <constraint firstItem="VbH-nP-hyc" firstAttribute="top" secondItem="rsY-li-3o3" secondAttribute="topMargin" constant="-8" id="UOf-Sd-1er"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1Ro-qd-4bf" secondAttribute="bottom" constant="-8" id="dIS-Ht-dbY"/>
+                                        <constraint firstItem="VbH-nP-hyc" firstAttribute="leading" secondItem="rsY-li-3o3" secondAttribute="leadingMargin" id="fgk-Qo-E9v"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="1Ro-qd-4bf" secondAttribute="trailing" constant="5" id="qnI-dC-Oyg"/>
+                                        <constraint firstItem="1Ro-qd-4bf" firstAttribute="top" secondItem="rsY-li-3o3" secondAttribute="topMargin" constant="-8" id="t84-wv-P3a"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -169,7 +182,7 @@
                                 </state>
                                 <connections>
                                     <action selector="navigateButtonPressed:" destination="UdI-Cx-aGD" eventType="touchUpInside" id="5uz-NJ-Hdz"/>
-                                    <segue destination="MKK-yR-NMd" kind="show" id="gx0-Gw-uwt"/>
+                                    <segue destination="MKK-yR-NMd" kind="show" identifier="SplitViewSegue" id="gx0-Gw-uwt"/>
                                 </connections>
                             </button>
                         </subviews>
