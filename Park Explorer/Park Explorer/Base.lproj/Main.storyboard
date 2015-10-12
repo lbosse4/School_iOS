@@ -48,10 +48,6 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="e8b-wj-9LC" secondAttribute="trailing" id="y4G-h6-JZD"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="captionLabel" destination="Roy-JV-DzL" id="KDu-VM-FjS"/>
-                                    <outlet property="parkImageView" destination="e8b-wj-9LC" id="wMp-pM-sAv"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

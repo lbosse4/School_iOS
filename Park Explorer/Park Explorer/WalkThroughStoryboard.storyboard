@@ -130,6 +130,10 @@
                                         <constraint firstItem="1Ro-qd-4bf" firstAttribute="top" secondItem="rsY-li-3o3" secondAttribute="topMargin" constant="-8" id="t84-wv-P3a"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="captionLabel" destination="VbH-nP-hyc" id="tOD-B9-nDO"/>
+                                    <outlet property="parkImageView" destination="1Ro-qd-4bf" id="3Sk-9L-Ldu"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

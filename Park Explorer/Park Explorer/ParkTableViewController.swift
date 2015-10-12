@@ -32,12 +32,6 @@ class ParkTableViewController: UITableViewController {
         }
     }
     
-    
-    override func shouldAutorotate() -> Bool {
-        //dont let them rotate while animating
-        return true
-    }
-    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         //tableView.scrollToRowAtIndexPath(selectedIndexPath, atScrollPosition: .Middle, animated: true)
     }
