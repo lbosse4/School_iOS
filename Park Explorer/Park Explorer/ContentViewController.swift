@@ -14,6 +14,8 @@ class ContentViewController : UIViewController {
     
     @IBOutlet weak var navigationButton: UIButton!
     
+    @IBOutlet weak var segueButton: UIButton!
+    
     private var instructionImageName: String?
     private var buttonTitleContent : String?
     let greenColor = UIColor(red: 0.0, green: 0.502, blue: 0.004, alpha: 1.0)
@@ -21,10 +23,10 @@ class ContentViewController : UIViewController {
     
     var pageIndex: Int?
     
-    func configure(pageInstructionImageName : String, buttonTitle : String, index : Int){
+    func configure(pageInstructionImageName : String, index : Int){
         pageIndex = index
         instructionImageName = pageInstructionImageName
-        buttonTitleContent = buttonTitle
+        //buttonTitleContent = buttonTitle
         
         
     }
@@ -34,35 +36,22 @@ class ContentViewController : UIViewController {
         instructionImageView.image = image
         instructionImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
-        navigationButton.setTitle(buttonTitleContent, forState: .Normal)
-        navigationButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+//        navigationButton.setTitle(buttonTitleContent, forState: .Normal)
+//        navigationButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         if pageIndex == model.numWalkThroughPages - 1 {
-            navigationButton.backgroundColor = greenColor
+            segueButton.backgroundColor = greenColor
+            navigationButton.hidden = true
+            segueButton.hidden = false
         } else {
             navigationButton.backgroundColor = UIColor.blueColor()
+            navigationButton.hidden = false
+            segueButton.hidden = true
         }
     }
-   
-//    func configureWithTitle(title:String, flagName:String, info:String, index:Int) {
-//        stateIndex = index
-//        state  = title
-//        flagImage = UIImage(named: flagName)
-//        self.info = info
-//    }
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        // Do any additional setup after loading the view.
-//        titleLabel.text = state
-//        flagImageView.image = flagImage
-//        infoTextView.text = info
-//    }
-//    
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
+
+    @IBAction func navigateButtonPressed(sender: UIButton) {
+        
+    }
 
 }
 

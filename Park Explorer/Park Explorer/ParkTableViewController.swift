@@ -16,6 +16,10 @@ class ParkTableViewController: UITableViewController {
     let buttonHeight : CGFloat = 30.0
     let animationDuration : NSTimeInterval = 1.5
     let maroonColor = UIColor(red: 0.20, green: 0.0, blue: 0.08, alpha: 1.0)
+
+    let titleFont = "Bodoni 72 SmallCaps"
+    let titleFontSize : CGFloat = 25
+    let buttonBorderWidth : CGFloat = 0.8
     
     var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     var isZoomed = false
@@ -73,9 +77,13 @@ class ParkTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.width, height: buttonHeight))
         button.setTitle(model.parkNameForSection(section), forState: .Normal)
-        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
+        button.backgroundColor = maroonColor
+        button.titleLabel?.font = UIFont(name: titleFont, size: titleFontSize)
         button.tag = section
+        button.layer.borderWidth = buttonBorderWidth
+        button.layer.borderColor = UIColor.whiteColor().CGColor
         return button
     }
     

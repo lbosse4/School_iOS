@@ -27,9 +27,9 @@ class  WalkThroughPageViewController: UIPageViewController, UIPageViewController
 //        contentViewController.configureWithTitle(state, flagName: flagName, info: info, index: index)
         
         let pageInstructionImage =  model.pageInstructionImageAtIndex(index)
-        let pageButtonTitle = model.pageInstructionButtonTitleAtIndex(index)
+        //let pageButtonTitle = model.pageInstructionImageAtIndex(index)
         
-        contentViewController.configure(pageInstructionImage, buttonTitle: pageButtonTitle, index: index)
+        contentViewController.configure(pageInstructionImage, index: index)
         
         return contentViewController
     }

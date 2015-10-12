@@ -26,7 +26,7 @@
         <!--Page View Controller-->
         <scene sceneID="ihY-an-dvd">
             <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="ydA-KO-cpZ" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ydA-KO-cpZ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCi-wk-6Rg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-337" y="379"/>
@@ -98,6 +98,7 @@
                                             <rect key="frame" x="347" y="0.0" width="240" height="92"/>
                                         </imageView>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.21176470589999999" green="0.0" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -148,16 +149,40 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="Vnd-C4-SHp"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="26"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigateButtonPressed:" destination="UdI-Cx-aGD" eventType="touchUpInside" id="jdN-TN-J8l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="um1-wF-uCb">
+                                <rect key="frame" x="24" y="541" width="552" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="kjq-An-uBv"/>
+                                    <constraint firstAttribute="height" constant="39" id="nff-k2-hZy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="26"/>
+                                <state key="normal" title="Continue to Parks!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigateButtonPressed:" destination="UdI-Cx-aGD" eventType="touchUpInside" id="5uz-NJ-Hdz"/>
+                                    <segue destination="MKK-yR-NMd" kind="show" id="gx0-Gw-uwt"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="iVv-1V-Ncw" secondAttribute="trailing" constant="4" id="3WH-ew-ANU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="um1-wF-uCb" secondAttribute="trailing" constant="4" id="7yf-DO-xL6"/>
                             <constraint firstItem="MlE-q1-8oZ" firstAttribute="leading" secondItem="ZTq-bl-ALE" secondAttribute="leadingMargin" constant="1" id="F5n-NU-LVv"/>
+                            <constraint firstItem="Wap-Bj-hzx" firstAttribute="top" secondItem="um1-wF-uCb" secondAttribute="bottom" constant="20" id="Pxm-Ou-2Vx"/>
                             <constraint firstItem="Wap-Bj-hzx" firstAttribute="top" secondItem="iVv-1V-Ncw" secondAttribute="bottom" constant="20" id="TWm-Fv-31d"/>
                             <constraint firstItem="iVv-1V-Ncw" firstAttribute="top" secondItem="MlE-q1-8oZ" secondAttribute="bottom" constant="10" id="VzH-m5-bNR"/>
                             <constraint firstItem="MlE-q1-8oZ" firstAttribute="top" secondItem="nCD-Zy-Ubw" secondAttribute="bottom" id="YQl-oF-xJX"/>
+                            <constraint firstItem="um1-wF-uCb" firstAttribute="leading" secondItem="ZTq-bl-ALE" secondAttribute="leadingMargin" constant="4" id="oWC-Uz-JQa"/>
                             <constraint firstItem="iVv-1V-Ncw" firstAttribute="leading" secondItem="ZTq-bl-ALE" secondAttribute="leadingMargin" constant="4" id="oyZ-Xn-Cdf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MlE-q1-8oZ" secondAttribute="trailing" constant="1" id="sCZ-Yr-prB"/>
                         </constraints>
@@ -165,6 +190,7 @@
                     <connections>
                         <outlet property="instructionImageView" destination="MlE-q1-8oZ" id="PhW-20-P2p"/>
                         <outlet property="navigationButton" destination="iVv-1V-Ncw" id="N05-zX-yDm"/>
+                        <outlet property="segueButton" destination="um1-wF-uCb" id="mab-my-4zh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5k-e4-1gf" userLabel="First Responder" sceneMemberID="firstResponder"/>

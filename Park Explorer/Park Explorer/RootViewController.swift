@@ -29,9 +29,9 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource {
         let contentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
         
         let pageInstructionImage =  model.pageInstructionImageAtIndex(index)
-        let pageButtonTitle = model.pageInstructionButtonTitleAtIndex(index)
+        //let pageButtonTitle = model.pageInstructionButtonTitleAtIndex(index)
         
-        contentViewController.configure(pageInstructionImage, buttonTitle: pageButtonTitle, index: index)
+        contentViewController.configure(pageInstructionImage, index: index)
         
 //        let state = stateModel.stateAtIndex(index)
 //        let flagName = stateModel.flagNameAtIndex(index)

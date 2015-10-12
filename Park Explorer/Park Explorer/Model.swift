@@ -13,7 +13,7 @@ class Model {
     static let sharedInstance = Model()
     
     private var parksNSArray : NSArray = NSArray()
-    private var instructionsArray = [InstructionPage]()
+    private var instructionImages = [String]()
     private var parksArray = [Park]()
     
     let numParks = 8
@@ -41,16 +41,16 @@ class Model {
         }
     }
     
-    class InstructionPage {
-        //var index : Int
-        var buttonTitle : String
-        var imageName : String
-        init(){
-            //index = 0
-            buttonTitle = "Next"
-            imageName = "PageInstruction1.png"
-        }
-    }
+//    class InstructionPage {
+//        //var index : Int
+//        //var buttonTitle : String
+//        var imageName : String
+//        init(){
+//            //index = 0
+//            //buttonTitle = "Next"
+//            imageName = "PageInstruction1.png"
+//        }
+//    }
     
     init() {
         extractParkInformation()
@@ -65,16 +65,16 @@ class Model {
         return parksArray
     }
     
-    func instructionPageArray() -> [InstructionPage]{
-        return instructionsArray
+    func instructionPageArray() -> [String]{
+        return instructionImages
     }
     
     func pageInstructionImageAtIndex(index:Int) -> String{
-        return instructionsArray[index].imageName
+        return instructionImages[index]
     }
-    func pageInstructionButtonTitleAtIndex(index:Int) -> String{
-        return instructionsArray[index].buttonTitle
-    }
+//    func pageInstructionButtonTitleAtIndex(index:Int) -> String{
+//        return instructionsArray[index].buttonTitle
+//    }
     
     func numberOfParks() -> Int{
         return numParks
@@ -110,16 +110,16 @@ class Model {
     
     func configureInstructions(){
         for i in 0 ..< numWalkThroughPages {
-            let tempInstructionPage = InstructionPage()
+            //let tempInstructionPage = InstructionPage()
             //tempInstructionPage.index = i
-            tempInstructionPage.imageName = "PageInstruction\(i + 1).png"
+            let tempString = "PageInstruction\(i + 1).png"
             
-            if i == numWalkThroughPages - 1 {
-                tempInstructionPage.buttonTitle = "Continue to Parks!"
-            } else {
-                tempInstructionPage.buttonTitle = "Next"
-            }
-            instructionsArray.append(tempInstructionPage)
+//            if i == numWalkThroughPages - 1 {
+//                tempInstructionPage.buttonTitle = "Continue to Parks!"
+//            } else {
+//                tempInstructionPage.buttonTitle = "Next"
+//            }
+            instructionImages.append(tempString)
         }
     }
     
