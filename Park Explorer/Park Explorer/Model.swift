@@ -44,7 +44,7 @@ class Model {
         extractParkInformation()
     }
     
-    func numWalkThroughPages() -> Int{
+    func numberOfWalkThroughPages() -> Int{
         return numWalkThroughPages
     }
     

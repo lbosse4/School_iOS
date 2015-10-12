@@ -1,5 +1,5 @@
 //
-//  WalkThroughPageViewController.swift
+//  RootViewController.swift
 //  Park Explorer
 //
 //  Created by Lauren Bosse on 10/11/15.
@@ -8,15 +8,21 @@
 
 import UIKit
 
-class  WalkThroughPageViewController: UIPageViewController, UIPageViewControllerDataSource {
+class RootViewController : UIViewController, UIPageViewControllerDataSource {
     let model = Model.sharedInstance
+    var pageViewController : UIPageViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pageViewController = (self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as? UIPageViewController)!
+        pageViewController!.dataSource = self
         
-        self.dataSource = self
         let firstPage = viewControllerAtIndex(0)
-        self.setViewControllers([firstPage], direction: .Forward, animated: false, completion: nil)
+        pageViewController!.setViewControllers([firstPage], direction: .Forward, animated: false, completion: nil)
+        pageViewController!.view.frame = self.view.bounds
+        self.addChildViewController(pageViewController!)
+        pageViewController!.didMoveToParentViewController(self)
+        self.view.addSubview(pageViewController!.view)
     }
     
     func viewControllerAtIndex(index:Int) -> UIViewController {
@@ -28,6 +34,7 @@ class  WalkThroughPageViewController: UIPageViewController, UIPageViewController
         
         return contentViewController
     }
+    
     
     //MARK: PageView Controller Data Source
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {

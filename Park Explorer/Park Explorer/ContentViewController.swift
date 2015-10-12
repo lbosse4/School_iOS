@@ -9,6 +9,11 @@
 import UIKit
 
 class ContentViewController : UIViewController {
+    
+    @IBOutlet weak var InstructionImageView: UIImageView!
+    
+    @IBOutlet weak var navigationButton: UIButton!
+    
     var pageIndex: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
