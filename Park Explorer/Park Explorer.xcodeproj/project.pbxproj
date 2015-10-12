@@ -11,6 +11,9 @@
 		894375061BCB1AB7002F2662 /* WalkThroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894375051BCB1AB6002F2662 /* WalkThroughPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		894375081BCB243A002F2662 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894375071BCB243A002F2662 /* ContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8943750A1BCB5300002F2662 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894375091BCB5300002F2662 /* RootViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		894375181BCB702C002F2662 /* PageInstruction1.png in Resources */ = {isa = PBXBuildFile; fileRef = 894375151BCB702C002F2662 /* PageInstruction1.png */; settings = {ASSET_TAGS = (); }; };
+		894375191BCB702C002F2662 /* PageInstruction3.png in Resources */ = {isa = PBXBuildFile; fileRef = 894375161BCB702C002F2662 /* PageInstruction3.png */; settings = {ASSET_TAGS = (); }; };
+		8943751A1BCB702C002F2662 /* PageInstruction2.png in Resources */ = {isa = PBXBuildFile; fileRef = 894375171BCB702C002F2662 /* PageInstruction2.png */; settings = {ASSET_TAGS = (); }; };
 		894D219D1BB897B5006DA7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D219C1BB897B5006DA7AE /* AppDelegate.swift */; };
 		894D219F1BB897B5006DA7AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D219E1BB897B5006DA7AE /* ViewController.swift */; };
 		894D21A21BB897B5006DA7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D21A01BB897B5006DA7AE /* Main.storyboard */; };
@@ -85,6 +88,9 @@
 		894375051BCB1AB6002F2662 /* WalkThroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkThroughPageViewController.swift; sourceTree = "<group>"; };
 		894375071BCB243A002F2662 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		894375091BCB5300002F2662 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		894375151BCB702C002F2662 /* PageInstruction1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction1.png; sourceTree = "<group>"; };
+		894375161BCB702C002F2662 /* PageInstruction3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction3.png; sourceTree = "<group>"; };
+		894375171BCB702C002F2662 /* PageInstruction2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction2.png; sourceTree = "<group>"; };
 		894D21991BB897B4006DA7AE /* Park Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park Explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		894D219C1BB897B5006DA7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		894D219E1BB897B5006DA7AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +174,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8943750B1BCB6E56002F2662 /* Park Photos */ = {
+			isa = PBXGroup;
+			children = (
+				8988DD611BB89F4B00681EDD /* BryceCanyon01.jpg */,
+				8988DD621BB89F4B00681EDD /* BryceCanyon02.jpg */,
+				8988DD631BB89F4B00681EDD /* BryceCanyon03.jpg */,
+				8988DD641BB89F4B00681EDD /* Carlsbad01.jpg */,
+				8988DD651BB89F4B00681EDD /* Carlsbad02.jpg */,
+				8988DD661BB89F4B00681EDD /* Carlsbad03.jpg */,
+				8988DD671BB89F4B00681EDD /* Carlsbad04.jpg */,
+				8988DD681BB89F4B00681EDD /* Everglades01.jpg */,
+				8988DD691BB89F4B00681EDD /* Everglades02.jpg */,
+				8988DD6A1BB89F4B00681EDD /* Glacier01.jpg */,
+				8988DD6B1BB89F4B00681EDD /* Glacier02.jpg */,
+				8988DD6C1BB89F4B00681EDD /* Glacier03.jpg */,
+				8988DD6D1BB89F4B00681EDD /* Glacier04.jpg */,
+				8988DD6E1BB89F4B00681EDD /* GrandTeton01.jpg */,
+				8988DD6F1BB89F4B00681EDD /* GrandTeton02.jpg */,
+				8988DD701BB89F4B00681EDD /* nps-logo.png */,
+				8988DD711BB89F4B00681EDD /* NPSbw.png */,
+				8988DD731BB89F4B00681EDD /* Yellowstone01.jpg */,
+				8988DD741BB89F4B00681EDD /* Yellowstone02.jpg */,
+				8988DD751BB89F4B00681EDD /* Yellowstone03.jpg */,
+				8988DD761BB89F4B00681EDD /* Yellowstone04.jpg */,
+				8988DD771BB89F4B00681EDD /* Yosemite01.jpg */,
+				8988DD781BB89F4B00681EDD /* Yosemite02.jpg */,
+				8988DD791BB89F4B00681EDD /* Yosemite03.jpg */,
+				8988DD7A1BB89F4B00681EDD /* Yosemite04.jpg */,
+				8988DD7B1BB89F4B00681EDD /* Yosemite05.jpg */,
+				8988DD7C1BB89F4B00681EDD /* Yosemite06.jpg */,
+				8988DD7D1BB89F4B00681EDD /* Zion01.jpg */,
+				8988DD7E1BB89F4B00681EDD /* Zion02.jpg */,
+				8988DD7F1BB89F4B00681EDD /* Zion03.jpg */,
+			);
+			name = "Park Photos";
+			sourceTree = "<group>";
+		};
+		8943750D1BCB6E77002F2662 /* Arrows */ = {
+			isa = PBXGroup;
+			children = (
+				8988DD5D1BB89F4B00681EDD /* arrowDown.png */,
+				8988DD5E1BB89F4B00681EDD /* arrowLeft.png */,
+				8988DD5F1BB89F4B00681EDD /* arrowRight.png */,
+				8988DD601BB89F4B00681EDD /* arrowUp.png */,
+			);
+			name = Arrows;
+			sourceTree = "<group>";
+		};
+		8943750E1BCB6E8A002F2662 /* Page Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				894375151BCB702C002F2662 /* PageInstruction1.png */,
+				894375161BCB702C002F2662 /* PageInstruction3.png */,
+				894375171BCB702C002F2662 /* PageInstruction2.png */,
+			);
+			name = "Page Instructions";
+			sourceTree = "<group>";
+		};
 		894D21901BB897B3006DA7AE = {
 			isa = PBXGroup;
 			children = (
@@ -221,42 +285,11 @@
 		8971D4B01BC339EC0012B096 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8943750E1BCB6E8A002F2662 /* Page Instructions */,
+				8943750D1BCB6E77002F2662 /* Arrows */,
+				8943750B1BCB6E56002F2662 /* Park Photos */,
 				89ADD20E1BC364EB00F82DBC /* collectionImage.png */,
 				89ADD20F1BC364EB00F82DBC /* tableImage.png */,
-				8988DD5D1BB89F4B00681EDD /* arrowDown.png */,
-				8988DD5E1BB89F4B00681EDD /* arrowLeft.png */,
-				8988DD5F1BB89F4B00681EDD /* arrowRight.png */,
-				8988DD601BB89F4B00681EDD /* arrowUp.png */,
-				8988DD611BB89F4B00681EDD /* BryceCanyon01.jpg */,
-				8988DD621BB89F4B00681EDD /* BryceCanyon02.jpg */,
-				8988DD631BB89F4B00681EDD /* BryceCanyon03.jpg */,
-				8988DD641BB89F4B00681EDD /* Carlsbad01.jpg */,
-				8988DD651BB89F4B00681EDD /* Carlsbad02.jpg */,
-				8988DD661BB89F4B00681EDD /* Carlsbad03.jpg */,
-				8988DD671BB89F4B00681EDD /* Carlsbad04.jpg */,
-				8988DD681BB89F4B00681EDD /* Everglades01.jpg */,
-				8988DD691BB89F4B00681EDD /* Everglades02.jpg */,
-				8988DD6A1BB89F4B00681EDD /* Glacier01.jpg */,
-				8988DD6B1BB89F4B00681EDD /* Glacier02.jpg */,
-				8988DD6C1BB89F4B00681EDD /* Glacier03.jpg */,
-				8988DD6D1BB89F4B00681EDD /* Glacier04.jpg */,
-				8988DD6E1BB89F4B00681EDD /* GrandTeton01.jpg */,
-				8988DD6F1BB89F4B00681EDD /* GrandTeton02.jpg */,
-				8988DD701BB89F4B00681EDD /* nps-logo.png */,
-				8988DD711BB89F4B00681EDD /* NPSbw.png */,
-				8988DD731BB89F4B00681EDD /* Yellowstone01.jpg */,
-				8988DD741BB89F4B00681EDD /* Yellowstone02.jpg */,
-				8988DD751BB89F4B00681EDD /* Yellowstone03.jpg */,
-				8988DD761BB89F4B00681EDD /* Yellowstone04.jpg */,
-				8988DD771BB89F4B00681EDD /* Yosemite01.jpg */,
-				8988DD781BB89F4B00681EDD /* Yosemite02.jpg */,
-				8988DD791BB89F4B00681EDD /* Yosemite03.jpg */,
-				8988DD7A1BB89F4B00681EDD /* Yosemite04.jpg */,
-				8988DD7B1BB89F4B00681EDD /* Yosemite05.jpg */,
-				8988DD7C1BB89F4B00681EDD /* Yosemite06.jpg */,
-				8988DD7D1BB89F4B00681EDD /* Zion01.jpg */,
-				8988DD7E1BB89F4B00681EDD /* Zion02.jpg */,
-				8988DD7F1BB89F4B00681EDD /* Zion03.jpg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -409,13 +442,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8943751A1BCB702C002F2662 /* PageInstruction2.png in Resources */,
 				8988DD961BB89F4B00681EDD /* Yellowstone01.jpg in Resources */,
 				8988DD9B1BB89F4B00681EDD /* Yosemite02.jpg in Resources */,
 				8988DD821BB89F4B00681EDD /* arrowRight.png in Resources */,
 				894D21A71BB897B5006DA7AE /* LaunchScreen.storyboard in Resources */,
 				89ADD2111BC364EB00F82DBC /* tableImage.png in Resources */,
+				894375181BCB702C002F2662 /* PageInstruction1.png in Resources */,
 				8988DDA21BB89F4B00681EDD /* Zion03.jpg in Resources */,
 				8988DD931BB89F4B00681EDD /* nps-logo.png in Resources */,
+				894375191BCB702C002F2662 /* PageInstruction3.png in Resources */,
 				8988DD8F1BB89F4B00681EDD /* Glacier03.jpg in Resources */,
 				89ADD2101BC364EB00F82DBC /* collectionImage.png in Resources */,
 				8988DDA01BB89F4B00681EDD /* Zion01.jpg in Resources */,

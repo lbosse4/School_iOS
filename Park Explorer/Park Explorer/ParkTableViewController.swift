@@ -15,6 +15,7 @@ class ParkTableViewController: UITableViewController {
     let maxZoomScale : CGFloat = 10.0
     let buttonHeight : CGFloat = 30.0
     let animationDuration : NSTimeInterval = 1.5
+    let maroonColor = UIColor(red: 0.20, green: 0.0, blue: 0.08, alpha: 1.0)
     
     var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     var isZoomed = false
@@ -82,7 +83,7 @@ class ParkTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         tableView.scrollEnabled = false
         selectedIndexPath = indexPath
-        
+       
         let viewSize = view.bounds.size
        
         //let zoomScrollViewFrame = CGRect(x: view.frame.origin.x, y: tableView.contentOffset.y, width: viewSize.width, height: viewSize.height)
@@ -100,6 +101,7 @@ class ParkTableViewController: UITableViewController {
         zoomScrollView.addSubview(imageView)
         zoomScrollView.frame = convertedFrame
         zoomScrollView.contentSize = convertedFrame.size
+         zoomScrollView.backgroundColor = maroonColor
         zoomScrollView.showsVerticalScrollIndicator = false
         zoomScrollView.showsHorizontalScrollIndicator = false
         
@@ -125,6 +127,8 @@ class ParkTableViewController: UITableViewController {
         if !isZoomed {
             //animate the image back here
             let convertedFrame = parkImageFrameLocationInCell(selectedIndexPath)
+            
+            
             
             UIView.animateWithDuration(animationDuration, animations: { () -> Void in
                 self.zoomScrollView.frame = convertedFrame
