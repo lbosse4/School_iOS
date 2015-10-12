@@ -144,7 +144,7 @@ class ViewController: UIViewController {
         for(var i = 1; i < answerChoicesSegmentedControl.numberOfSegments; i++){
             tempAnswerChoice = generateAnswerChoice(currentAnswer)
             
-            while (contains(answerChoicesArray, tempAnswerChoice)){
+            while (answerChoicesArray.contains(tempAnswerChoice)){
                 tempAnswerChoice = generateAnswerChoice(currentAnswer)
             }
             answerChoicesArray[i] = tempAnswerChoice
@@ -164,7 +164,7 @@ class ViewController: UIViewController {
             
         } else {
             //this variable randomly decides whether the random value is added or subtracted
-            var plusOrMinusIndicator = Int(arc4random_uniform(numPositiveOrNegativeOptions))
+            let plusOrMinusIndicator = Int(arc4random_uniform(numPositiveOrNegativeOptions))
             
             if plusOrMinusIndicator == 0{
                 return answer + Int(arc4random_uniform(allowedDistanceFromRightAnswer)) + 1
@@ -197,13 +197,13 @@ class ViewController: UIViewController {
 extension Array {
     mutating func shuffle() {
         for var i = self.count - 1; i >= 0; i-- {
-            var j = Int(arc4random_uniform(UInt32(self.count)))
+            let j = Int(arc4random_uniform(UInt32(self.count)))
             swap(&(self[i]), &(self[j]))
         }
     }
     
     func shuffledCopy() -> [Element] {
-        var copy : [T] = Array()
+        var copy : [Element] = Array()
         for element in self {
             let index = Int(arc4random_uniform(UInt32(copy.count+1)))
             copy.insert(element, atIndex: index)

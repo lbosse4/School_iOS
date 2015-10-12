@@ -12,8 +12,9 @@ import UIKit
 class Model {
     static let sharedInstance = Model()
     
-    var parksNSArray : NSArray = NSArray()
-    var parksArray = [Park]()
+    private var parksNSArray : NSArray = NSArray()
+    private var instructionsArray = [InstructionPage]()
+    private var parksArray = [Park]()
     
     let numParks = 8
     let numWalkThroughPages = 3
@@ -40,8 +41,20 @@ class Model {
         }
     }
     
+    class InstructionPage {
+        //var index : Int
+        var buttonTitle : String
+        var imageName : String
+        init(){
+            //index = 0
+            buttonTitle = "Next"
+            imageName = "PageInstruction1.png"
+        }
+    }
+    
     init() {
         extractParkInformation()
+        configureInstructions()
     }
     
     func numberOfWalkThroughPages() -> Int{
@@ -50,6 +63,17 @@ class Model {
     
     func parkArray() -> [Park] {
         return parksArray
+    }
+    
+    func instructionPageArray() -> [InstructionPage]{
+        return instructionsArray
+    }
+    
+    func pageInstructionImageAtIndex(index:Int) -> String{
+        return instructionsArray[index].imageName
+    }
+    func pageInstructionButtonTitleAtIndex(index:Int) -> String{
+        return instructionsArray[index].buttonTitle
     }
     
     func numberOfParks() -> Int{
@@ -82,6 +106,21 @@ class Model {
     
     func parkAtIndexPath() -> Int{
         return 0
+    }
+    
+    func configureInstructions(){
+        for i in 0 ..< numWalkThroughPages {
+            let tempInstructionPage = InstructionPage()
+            //tempInstructionPage.index = i
+            tempInstructionPage.imageName = "PageInstruction\(i + 1).png"
+            
+            if i == numWalkThroughPages - 1 {
+                tempInstructionPage.buttonTitle = "Continue to Parks!"
+            } else {
+                tempInstructionPage.buttonTitle = "Next"
+            }
+            instructionsArray.append(tempInstructionPage)
+        }
     }
     
     func generateParksArray() {
