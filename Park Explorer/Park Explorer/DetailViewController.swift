@@ -31,7 +31,8 @@ class DetailViewController: UIViewController {
         
         if let detail = self.imageDetail {
             if let imageView = self.parkImageView {
-                imageView.image = UIImage(named: detail.description)
+                imageView.image = UIImage(named: "\(detail.description).jpg")
+                imageView.contentMode = UIViewContentMode.ScaleAspectFit
             }
         }
         
