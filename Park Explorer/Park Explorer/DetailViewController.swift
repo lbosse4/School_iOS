@@ -28,6 +28,7 @@ class DetailViewController: UIViewController {
     
     func configureView() {
         // Update the user interface for the detail item.
+        
         if let detail = self.imageDetail {
             if let imageView = self.parkImageView {
                 imageView.image = UIImage(named: detail.description)

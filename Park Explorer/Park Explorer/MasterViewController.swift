@@ -87,6 +87,12 @@ class MasterViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         //tableView.scrollEnabled = false
         selectedIndexPath = indexPath
+        //performSegueWithIdentifier("showDetail", sender: self)
+
+        
+//        
+//        let masterViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MasterViewController") as! MasterViewController
+//        prepareForSegue(masterViewController.segueForUnwindingToViewController(detailViewController!, fromViewController: masterViewController, identifier: "showDetail")!, sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

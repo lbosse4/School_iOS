@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="1767" y="724"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Detail-->
         <scene sceneID="CwI-UL-2fX">
             <objects>
                 <viewController id="uWt-Rr-lZT" customClass="DetailViewController" customModule="Park_Explorer" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,12 +60,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LA4-VT-l2i">
-                                <rect key="frame" x="20" y="64" width="560" height="389"/>
+                                <rect key="frame" x="20" y="64" width="560" height="461"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZG-lw-kWx">
-                                <rect key="frame" x="20" y="461" width="560" height="119"/>
+                                <rect key="frame" x="20" y="533" width="560" height="47"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="119" id="Ngo-yl-UYP"/>
+                                    <constraint firstAttribute="height" constant="47" id="Ngo-yl-UYP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,7 +83,7 @@
                             <constraint firstItem="LA4-VT-l2i" firstAttribute="top" secondItem="ofh-Zc-ASD" secondAttribute="bottom" id="zdn-4T-4wi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="273-sf-yM8"/>
+                    <navigationItem key="navigationItem" title="Detail" id="273-sf-yM8"/>
                     <connections>
                         <outlet property="captionLabel" destination="MZG-lw-kWx" id="Sf0-9n-srV"/>
                         <outlet property="parkImageView" destination="LA4-VT-l2i" id="eWF-Bn-Ihp"/>
@@ -96,7 +96,7 @@
         <!--Parks-->
         <scene sceneID="gM4-gb-GQa">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="gFj-CI-qt4" customClass="MasterViewController" customModule="Park_Explorer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MasterViewController" clearsSelectionOnViewWillAppear="NO" id="gFj-CI-qt4" customClass="MasterViewController" customModule="Park_Explorer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nce-6P-i13">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,7 +184,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MlE-q1-8oZ">
-                                <rect key="frame" x="21" y="20" width="558" height="511"/>
+                                <rect key="frame" x="21" y="25" width="558" height="506"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVv-1V-Ncw">
                                 <rect key="frame" x="24" y="541" width="552" height="39"/>
@@ -223,7 +223,7 @@
                             <constraint firstItem="Wap-Bj-hzx" firstAttribute="top" secondItem="um1-wF-uCb" secondAttribute="bottom" constant="20" id="Pxm-Ou-2Vx"/>
                             <constraint firstItem="Wap-Bj-hzx" firstAttribute="top" secondItem="iVv-1V-Ncw" secondAttribute="bottom" constant="20" id="TWm-Fv-31d"/>
                             <constraint firstItem="iVv-1V-Ncw" firstAttribute="top" secondItem="MlE-q1-8oZ" secondAttribute="bottom" constant="10" id="VzH-m5-bNR"/>
-                            <constraint firstItem="MlE-q1-8oZ" firstAttribute="top" secondItem="nCD-Zy-Ubw" secondAttribute="bottom" id="YQl-oF-xJX"/>
+                            <constraint firstItem="MlE-q1-8oZ" firstAttribute="top" secondItem="nCD-Zy-Ubw" secondAttribute="bottom" constant="5" id="YQl-oF-xJX"/>
                             <constraint firstItem="um1-wF-uCb" firstAttribute="leading" secondItem="ZTq-bl-ALE" secondAttribute="leadingMargin" constant="4" id="oWC-Uz-JQa"/>
                             <constraint firstItem="iVv-1V-Ncw" firstAttribute="leading" secondItem="ZTq-bl-ALE" secondAttribute="leadingMargin" constant="4" id="oyZ-Xn-Cdf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MlE-q1-8oZ" secondAttribute="trailing" constant="1" id="sCZ-Yr-prB"/>
