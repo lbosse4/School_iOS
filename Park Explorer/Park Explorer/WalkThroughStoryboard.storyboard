@@ -27,6 +27,9 @@
                                 <state key="normal" title="Continue to Parks!">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="segueButtonPressed:" destination="ugc-fY-U9M" eventType="touchUpInside" id="bkM-Tq-ngb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to Continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22x-FO-S5U">
                                 <rect key="frame" x="209" y="550" width="182" height="32"/>

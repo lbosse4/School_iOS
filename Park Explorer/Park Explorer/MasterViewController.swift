@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
     
     @IBOutlet weak var titleLabel: UINavigationItem!
     
@@ -99,7 +99,8 @@ class MasterViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
+        switch segue.identifier! {
+        case "showDetail":
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 //let object = objects[indexPath.row] as! NSDate
                 let imageName = model.imageNameAtIndexPath(indexPath)
@@ -110,7 +111,18 @@ class MasterViewController: UITableViewController {
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
+        case "walkThroughSegue":
+            let walkThroughViewController = segue.destinationViewController as! RootViewController
+            walkThroughViewController.delegate = self
+            walkThroughViewController.completionBlock = {() in self.dismissViewControllerAnimated(true, completion: nil)}
+            
+        default:
+            assert(false, "Unhandled Segue in ViewController")
         }
+        
+    }
+    func dismissWalkThrough() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol WalkThroughDelegateProtocol {
+    func dismissWalkThrough()
+}
+
 class RootViewController : UIViewController, UIPageViewControllerDataSource{
     
     @IBOutlet weak var segueButton: UIButton!
@@ -16,6 +20,9 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource{
     let model = Model.sharedInstance
     let greenColor = UIColor(red: 0.0, green: 0.502, blue: 0.004, alpha: 1.0)
     var pageViewController : UIPageViewController?
+    var completionBlock : (() -> Void)?
+    var delegate : WalkThroughDelegateProtocol?
+    
     //var currentPageIndex : Int = 0
     
     override func viewDidLoad() {
@@ -63,6 +70,18 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource{
     
     @IBAction func returnFromWalkThrough(segue: UIStoryboardSegue){
         
+    }
+    
+    @IBAction func segueButtonPressed(sender: UIButton) {
+        delegate!.dismissWalkThrough()
+    }
+    
+    
+    
+    @IBAction func dismissByCompletion(sender: AnyObject) {
+        if let closure = completionBlock {
+            closure()
+        }
     }
     
     //MARK: PageView Controller Data Source
