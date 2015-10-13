@@ -37,6 +37,11 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        performSegueWithIdentifier("walkThroughSegue", sender: self)
+    }
 
     func collapseSection(sender: UIButton){
         collapsedSections[sender.tag] = !collapsedSections[sender.tag]

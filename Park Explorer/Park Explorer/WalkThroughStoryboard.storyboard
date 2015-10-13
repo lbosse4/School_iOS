@@ -60,12 +60,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LA4-VT-l2i">
-                                <rect key="frame" x="20" y="64" width="560" height="461"/>
+                                <rect key="frame" x="20" y="64" width="560" height="422"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZG-lw-kWx">
-                                <rect key="frame" x="20" y="533" width="560" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZG-lw-kWx">
+                                <rect key="frame" x="20" y="494" width="560" height="86"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="Ngo-yl-UYP"/>
+                                    <constraint firstAttribute="height" constant="86" id="Ngo-yl-UYP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -149,6 +149,7 @@
                     <navigationItem key="navigationItem" title="Parks" id="mZu-UF-8mt"/>
                     <connections>
                         <outlet property="titleLabel" destination="mZu-UF-8mt" id="ked-P5-TzU"/>
+                        <segue destination="ugc-fY-U9M" kind="presentation" identifier="walkThroughSegue" id="dHD-v9-cJP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZk-cm-1G5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -211,7 +212,6 @@
                                 </state>
                                 <connections>
                                     <action selector="navigateButtonPressed:" destination="UdI-Cx-aGD" eventType="touchUpInside" id="5uz-NJ-Hdz"/>
-                                    <segue destination="MKK-yR-NMd" kind="show" identifier="SplitViewSegue" id="gx0-Gw-uwt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -254,6 +254,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6S5-ry-5ie"/>
+        <segue reference="gPT-vK-sPR"/>
     </inferredMetricsTieBreakers>
 </document>
