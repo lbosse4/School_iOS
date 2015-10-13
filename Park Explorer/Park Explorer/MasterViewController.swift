@@ -25,6 +25,7 @@ class MasterViewController: UITableViewController {
     var zoomScrollView = UIScrollView()
     var collapsedSections = [Bool]()
     var detailViewController: DetailViewController? = nil
+    var isInitialLoad : Bool = true
     
     override func viewDidLoad() {
         
@@ -40,7 +41,10 @@ class MasterViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        performSegueWithIdentifier("walkThroughSegue", sender: self)
+        if isInitialLoad {
+            performSegueWithIdentifier("walkThroughSegue", sender: self)
+            isInitialLoad = false
+        }
     }
 
     func collapseSection(sender: UIButton){
@@ -92,12 +96,6 @@ class MasterViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         //tableView.scrollEnabled = false
         selectedIndexPath = indexPath
-        //performSegueWithIdentifier("showDetail", sender: self)
-
-        
-//        
-//        let masterViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MasterViewController") as! MasterViewController
-//        prepareForSegue(masterViewController.segueForUnwindingToViewController(detailViewController!, fromViewController: masterViewController, identifier: "showDetail")!, sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

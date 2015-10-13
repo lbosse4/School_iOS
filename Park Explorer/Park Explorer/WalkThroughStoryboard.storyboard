@@ -16,8 +16,37 @@
                     <view key="view" contentMode="scaleToFill" id="hDJ-dI-rG0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.21176470588235294" green="0.0" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="um1-wF-uCb">
+                                <rect key="frame" x="207" y="543" width="186" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="kjq-An-uBv"/>
+                                    <constraint firstAttribute="height" constant="39" id="nff-k2-hZy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="26"/>
+                                <state key="normal" title="Continue to Parks!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to Continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22x-FO-S5U">
+                                <rect key="frame" x="209" y="550" width="182" height="32"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="26"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="22x-FO-S5U" firstAttribute="centerX" secondItem="hDJ-dI-rG0" secondAttribute="centerX" id="0ip-yd-VoD"/>
+                            <constraint firstItem="VVZ-iL-5mb" firstAttribute="top" secondItem="22x-FO-S5U" secondAttribute="bottom" constant="18" id="Rqd-CJ-Rto"/>
+                            <constraint firstItem="um1-wF-uCb" firstAttribute="centerX" secondItem="hDJ-dI-rG0" secondAttribute="centerX" id="ceD-5L-JLJ"/>
+                            <constraint firstItem="VVZ-iL-5mb" firstAttribute="top" secondItem="um1-wF-uCb" secondAttribute="bottom" constant="18" id="gPB-km-VaH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="directionLabel" destination="22x-FO-S5U" id="jg6-CT-9GR"/>
+                        <outlet property="segueButton" destination="um1-wF-uCb" id="oEq-gO-b7T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiG-4X-5o1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,54 +214,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MlE-q1-8oZ">
-                                <rect key="frame" x="21" y="25" width="558" height="506"/>
+                                <rect key="frame" x="21" y="25" width="558" height="505"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVv-1V-Ncw">
-                                <rect key="frame" x="24" y="541" width="552" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="Vnd-C4-SHp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="26"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="navigateButtonPressed:" destination="UdI-Cx-aGD" eventType="touchUpInside" id="jdN-TN-J8l"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="um1-wF-uCb">
-                                <rect key="frame" x="24" y="541" width="552" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="kjq-An-uBv"/>
-                                    <constraint firstAttribute="height" constant="39" id="nff-k2-hZy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="26"/>
-                                <state key="normal" title="Continue to Parks!">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="navigateButtonPressed:" destination="UdI-Cx-aGD" eventType="touchUpInside" id="5uz-NJ-Hdz"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="iVv-1V-Ncw" secondAttribute="trailing" constant="4" id="3WH-ew-ANU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="um1-wF-uCb" secondAttribute="trailing" constant="4" id="7yf-DO-xL6"/>
+                            <constraint firstItem="Wap-Bj-hzx" firstAttribute="top" secondItem="MlE-q1-8oZ" secondAttribute="bottom" constant="70" id="6XK-YA-tPI"/>
                             <constraint firstItem="MlE-q1-8oZ" firstAttribute="leading" secondItem="ZTq-bl-ALE" secondAttribute="leadingMargin" constant="1" id="F5n-NU-LVv"/>
-                            <constraint firstItem="Wap-Bj-hzx" firstAttribute="top" secondItem="um1-wF-uCb" secondAttribute="bottom" constant="20" id="Pxm-Ou-2Vx"/>
-                            <constraint firstItem="Wap-Bj-hzx" firstAttribute="top" secondItem="iVv-1V-Ncw" secondAttribute="bottom" constant="20" id="TWm-Fv-31d"/>
-                            <constraint firstItem="iVv-1V-Ncw" firstAttribute="top" secondItem="MlE-q1-8oZ" secondAttribute="bottom" constant="10" id="VzH-m5-bNR"/>
                             <constraint firstItem="MlE-q1-8oZ" firstAttribute="top" secondItem="nCD-Zy-Ubw" secondAttribute="bottom" constant="5" id="YQl-oF-xJX"/>
-                            <constraint firstItem="um1-wF-uCb" firstAttribute="leading" secondItem="ZTq-bl-ALE" secondAttribute="leadingMargin" constant="4" id="oWC-Uz-JQa"/>
-                            <constraint firstItem="iVv-1V-Ncw" firstAttribute="leading" secondItem="ZTq-bl-ALE" secondAttribute="leadingMargin" constant="4" id="oyZ-Xn-Cdf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MlE-q1-8oZ" secondAttribute="trailing" constant="1" id="sCZ-Yr-prB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="instructionImageView" destination="MlE-q1-8oZ" id="PhW-20-P2p"/>
-                        <outlet property="navigationButton" destination="iVv-1V-Ncw" id="N05-zX-yDm"/>
-                        <outlet property="segueButton" destination="um1-wF-uCb" id="mab-my-4zh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5k-e4-1gf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -254,6 +247,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gPT-vK-sPR"/>
+        <segue reference="6S5-ry-5ie"/>
     </inferredMetricsTieBreakers>
 </document>

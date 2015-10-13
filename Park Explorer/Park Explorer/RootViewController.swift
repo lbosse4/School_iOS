@@ -8,12 +8,20 @@
 
 import UIKit
 
-class RootViewController : UIViewController, UIPageViewControllerDataSource {
+class RootViewController : UIViewController, UIPageViewControllerDataSource{
+    
+    @IBOutlet weak var segueButton: UIButton!
+    @IBOutlet weak var directionLabel: UILabel!
+    
     let model = Model.sharedInstance
+    let greenColor = UIColor(red: 0.0, green: 0.502, blue: 0.004, alpha: 1.0)
     var pageViewController : UIPageViewController?
+    //var currentPageIndex : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        segueButton.backgroundColor = greenColor
+        segueButton.userInteractionEnabled = true
         pageViewController = (self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as? UIPageViewController)!
         pageViewController!.dataSource = self
         
@@ -25,6 +33,10 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource {
         self.view.addSubview(pageViewController!.view)
     }
     
+    override func viewDidLayoutSubviews() {
+        view.bringSubviewToFront(segueButton)
+    }
+    
     func viewControllerAtIndex(index:Int) -> UIViewController {
         let contentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
         
@@ -34,11 +46,30 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource {
         return contentViewController
     }
     
+    func checkPageIndex(index:Int) {
+        UIView.animateWithDuration(NSTimeInterval(0.0), delay: NSTimeInterval(1.0), options: UIViewAnimationOptions.LayoutSubviews, animations: { () -> Void in
+            if index == self.model.numWalkThroughPages - 1 {
+                self.segueButton.hidden = false
+                self.directionLabel.hidden = true
+            } else {
+                self.segueButton.hidden = true
+                self.directionLabel.hidden = false
+            }
+            }) { (finished) -> Void in
+        }
+    }
+    
+    
+    
+    @IBAction func returnFromWalkThrough(segue: UIStoryboardSegue){
+        
+    }
     
     //MARK: PageView Controller Data Source
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let contentViewController = viewController as! ContentViewController
         var index = contentViewController.pageIndex!
+        checkPageIndex(index)
         if index == 0 {
             return nil
         } else {
@@ -50,12 +81,16 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         let contentViewController = viewController as! ContentViewController
         var index = contentViewController.pageIndex!
+        checkPageIndex(index)
         if index == model.numberOfWalkThroughPages() - 1 {
             return nil
+            
         } else {
             index++
             return viewControllerAtIndex(index)
         }
     }
+    
+    
 
 }
