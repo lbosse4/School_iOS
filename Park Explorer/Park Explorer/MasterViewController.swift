@@ -65,7 +65,7 @@ class MasterViewController: UITableViewController {
         cell.captionLabel.text = model.imageCaptionAtIndexPath(indexPath)
         let image = UIImage(named: "\(model.imageNameAtIndexPath(indexPath)).jpg")
         cell.parkImageView.image = image
-        cell.parkImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        //cell.parkImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         return cell
     }
