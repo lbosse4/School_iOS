@@ -10,12 +10,14 @@ import UIKit
 
 class MasterViewController: UITableViewController {
     
+    @IBOutlet weak var titleLabel: UINavigationItem!
+    
     let model = Model.sharedInstance
-    let buttonHeight : CGFloat = 30.0
+    let buttonHeight : CGFloat = 55.0
     let animationDuration : NSTimeInterval = 1.5
     let maroonColor = UIColor(red: 0.20, green: 0.0, blue: 0.08, alpha: 1.0)
     let titleFont = "Bodoni 72 SmallCaps"
-    let titleFontSize : CGFloat = 25
+    let titleFontSize : CGFloat = 28
     let buttonBorderWidth : CGFloat = 0.8
     
     var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -73,7 +75,7 @@ class MasterViewController: UITableViewController {
         button.setTitle(model.parkNameForSection(section), forState: .Normal)
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
-        button.backgroundColor = maroonColor
+        button.backgroundColor = UIColor.darkGrayColor()//maroonColor
         button.titleLabel?.font = UIFont(name: titleFont, size: titleFontSize)
         button.tag = section
         button.layer.borderWidth = buttonBorderWidth
@@ -81,4 +83,46 @@ class MasterViewController: UITableViewController {
         return button
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        //tableView.scrollEnabled = false
+        selectedIndexPath = indexPath
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                //let object = objects[indexPath.row] as! NSDate
+                let imageName = model.imageNameAtIndexPath(indexPath)
+                let imageCaption = model.imageCaptionAtIndexPath(indexPath)
+                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+                controller.imageDetail = imageName
+                controller.imageCaptionDetail = imageCaption
+                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

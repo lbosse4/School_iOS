@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="1767" y="724"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="CwI-UL-2fX">
             <objects>
-                <viewController id="uWt-Rr-lZT" sceneMemberID="viewController">
+                <viewController id="uWt-Rr-lZT" customClass="DetailViewController" customModule="Park_Explorer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ofh-Zc-ASD"/>
                         <viewControllerLayoutGuide type="bottom" id="zQj-Fq-5tx"/>
@@ -84,55 +84,60 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="273-sf-yM8"/>
+                    <connections>
+                        <outlet property="captionLabel" destination="MZG-lw-kWx" id="Sf0-9n-srV"/>
+                        <outlet property="parkImageView" destination="LA4-VT-l2i" id="eWF-Bn-Ihp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zrs-hL-CM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2605" y="724"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Parks-->
         <scene sceneID="gM4-gb-GQa">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="gFj-CI-qt4" customClass="MasterViewController" customModule="Park_Explorer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nce-6P-i13">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nce-6P-i13">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.21176470589999999" green="0.0" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParkTableCell" rowHeight="93" id="JDb-9e-ETD" customClass="ParkTableViewCell" customModule="Park_Explorer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="93"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParkTableCell" rowHeight="85" id="JDb-9e-ETD" customClass="ParkTableViewCell" customModule="Park_Explorer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JDb-9e-ETD" id="rsY-li-3o3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-nP-hyc">
-                                            <rect key="frame" x="8" y="0.0" width="320" height="92"/>
-                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="23"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ro-qd-4bf">
+                                            <rect key="frame" x="435" y="-4" width="157" height="92"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="157" id="8TK-YH-sfn"/>
+                                                <constraint firstAttribute="height" constant="92" id="XGY-gO-2R2"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-nP-hyc">
+                                            <rect key="frame" x="8" y="0.0" width="427" height="84"/>
+                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="19"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ro-qd-4bf">
-                                            <rect key="frame" x="347" y="0.0" width="240" height="92"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="240" id="4Dv-zd-Yw8"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.21176470589999999" green="0.0" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="1Ro-qd-4bf" firstAttribute="leading" secondItem="VbH-nP-hyc" secondAttribute="trailing" constant="19" id="KZb-qu-0cO"/>
-                                        <constraint firstItem="VbH-nP-hyc" firstAttribute="bottom" secondItem="rsY-li-3o3" secondAttribute="bottomMargin" constant="8" id="SXC-3R-h1j"/>
-                                        <constraint firstItem="VbH-nP-hyc" firstAttribute="top" secondItem="rsY-li-3o3" secondAttribute="topMargin" constant="-8" id="UOf-Sd-1er"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="1Ro-qd-4bf" secondAttribute="bottom" constant="-8" id="dIS-Ht-dbY"/>
-                                        <constraint firstItem="VbH-nP-hyc" firstAttribute="leading" secondItem="rsY-li-3o3" secondAttribute="leadingMargin" id="fgk-Qo-E9v"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="1Ro-qd-4bf" secondAttribute="trailing" constant="5" id="qnI-dC-Oyg"/>
-                                        <constraint firstItem="1Ro-qd-4bf" firstAttribute="top" secondItem="rsY-li-3o3" secondAttribute="topMargin" constant="-8" id="t84-wv-P3a"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="1Ro-qd-4bf" secondAttribute="trailing" id="8km-40-MHf"/>
+                                        <constraint firstItem="VbH-nP-hyc" firstAttribute="top" secondItem="rsY-li-3o3" secondAttribute="topMargin" constant="-8" id="AZ5-Pj-nwv"/>
+                                        <constraint firstItem="VbH-nP-hyc" firstAttribute="leading" secondItem="rsY-li-3o3" secondAttribute="leadingMargin" id="BTV-jz-7c4"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="VbH-nP-hyc" secondAttribute="bottom" constant="-8" id="e1H-qt-AqG"/>
+                                        <constraint firstItem="1Ro-qd-4bf" firstAttribute="leading" secondItem="VbH-nP-hyc" secondAttribute="trailing" id="iAM-UL-HIM"/>
+                                        <constraint firstItem="1Ro-qd-4bf" firstAttribute="centerY" secondItem="rsY-li-3o3" secondAttribute="centerY" id="rea-dR-ZKM"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="captionLabel" destination="VbH-nP-hyc" id="tOD-B9-nDO"/>
                                     <outlet property="parkImageView" destination="1Ro-qd-4bf" id="3Sk-9L-Ldu"/>
+                                    <segue destination="VTg-m5-k9g" kind="showDetail" identifier="showDetail" trigger="accessoryAction" id="5WX-NK-T9H"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -141,9 +146,9 @@
                             <outlet property="delegate" destination="gFj-CI-qt4" id="Kdz-8X-9yc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="mZu-UF-8mt"/>
+                    <navigationItem key="navigationItem" title="Parks" id="mZu-UF-8mt"/>
                     <connections>
-                        <segue destination="VTg-m5-k9g" kind="showDetail" identifier="showDetail" id="JM1-HR-32F"/>
+                        <outlet property="titleLabel" destination="mZu-UF-8mt" id="ked-P5-TzU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZk-cm-1G5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -249,6 +254,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JM1-HR-32F"/>
+        <segue reference="5WX-NK-T9H"/>
     </inferredMetricsTieBreakers>
 </document>
