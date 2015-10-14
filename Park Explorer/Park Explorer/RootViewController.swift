@@ -47,8 +47,13 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource{
     func viewControllerAtIndex(index:Int) -> UIViewController {
         let contentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
         
-        let pageInstructionImage =  model.pageInstructionImageAtIndex(index)
-        contentViewController.configure(pageInstructionImage, index: index)
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+            let pageInstructionImage =  model.pageInstructionImageAtIndex(index + model.numberOfWalkThroughPages())
+            contentViewController.configure(pageInstructionImage, index: index)
+        } else {
+            let pageInstructionImage =  model.pageInstructionImageAtIndex(index)
+            contentViewController.configure(pageInstructionImage, index: index)
+        }
 
         return contentViewController
     }

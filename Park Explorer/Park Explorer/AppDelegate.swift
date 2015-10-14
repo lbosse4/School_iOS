@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum UIUserInterfaceIdiom : Int {
-    case Unspecified
-    case Phone // iPhone and iPod touch style UI
-    case Pad // iPad style UI
-}
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
