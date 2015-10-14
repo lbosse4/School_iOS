@@ -26,11 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         
         
-        let splitViewController = self.window!.rootViewController as! UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-        splitViewController.delegate = self
-//
+        let aSplitViewController = self.window!.rootViewController as! UISplitViewController
+        let navigationController = aSplitViewController.viewControllers[aSplitViewController.viewControllers.count-1] as! UINavigationController
+        navigationController.topViewController!.navigationItem.leftBarButtonItem = aSplitViewController.displayModeButtonItem()
+        aSplitViewController.delegate = self
+
+        
+        let rootViewController = aSplitViewController.viewControllers[0] as! UINavigationController
+        splitViewController(aSplitViewController, showViewController: rootViewController.viewControllers[0], sender: aSplitViewController)
+        
+        //splitViewController(<#T##splitViewController: UISplitViewController##UISplitViewController#>, showViewController: <#T##UIViewController#>, sender: <#T##AnyObject?#>)
         //splitViewController(splitViewController, collapseSecondaryViewController: , ontoPrimaryViewController: <#T##UIViewController#>)
         
         
@@ -60,6 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     // MARK: - Split view
+    
+//    func splitViewController(splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
+//        
+//        return true
+//    }
+    
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
         guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
         guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
@@ -79,5 +90,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return false
     }
 
+    func splitViewController(splitViewController: UISplitViewController, showViewController vc: UIViewController, sender: AnyObject?) -> Bool {
+        return true
+    }
+    
 }
 
