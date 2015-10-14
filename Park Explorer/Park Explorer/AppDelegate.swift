@@ -10,7 +10,6 @@ import UIKit
 
 enum UIUserInterfaceIdiom : Int {
     case Unspecified
-    
     case Phone // iPhone and iPod touch style UI
     case Pad // iPad style UI
 }
@@ -24,16 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-        
         let aSplitViewController = self.window!.rootViewController as! UISplitViewController
         let navigationController = aSplitViewController.viewControllers[aSplitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = aSplitViewController.displayModeButtonItem()
         aSplitViewController.delegate = self
 
-        
-        let rootViewController = aSplitViewController.viewControllers[0] as! UINavigationController
-        splitViewController(aSplitViewController, showViewController: rootViewController.viewControllers[0], sender: aSplitViewController)
+        aSplitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.PrimaryOverlay
+//        
+//        let rootViewController = aSplitViewController.viewControllers[0] as! UINavigationController
+//        splitViewController(aSplitViewController, showViewController: rootViewController.viewControllers[0], sender: aSplitViewController)
         
         //splitViewController(<#T##splitViewController: UISplitViewController##UISplitViewController#>, showViewController: <#T##UIViewController#>, sender: <#T##AnyObject?#>)
         //splitViewController(splitViewController, collapseSecondaryViewController: , ontoPrimaryViewController: <#T##UIViewController#>)
@@ -77,9 +75,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
        
         //let iPad = UIUserInterfaceIdiom.Pad
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
-            return false
-        }
+//        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+//            return false
+//        }
         if topAsDetailController.imageDetail == nil {
             // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
             return true
@@ -88,10 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             return true
         }
         return false
-    }
-
-    func splitViewController(splitViewController: UISplitViewController, showViewController vc: UIViewController, sender: AnyObject?) -> Bool {
-        return true
     }
     
 }

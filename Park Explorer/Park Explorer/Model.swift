@@ -44,6 +44,7 @@ class Model {
     init() {
         extractParkInformation()
         configureInstructions()
+        
     }
     
     func numberOfWalkThroughPages() -> Int{
@@ -95,7 +96,7 @@ class Model {
     }
     
     func configureInstructions(){
-        for i in 0 ..< numWalkThroughPages {
+        for i in 0 ..< numWalkThroughPages*2 {
             let tempString = "PageInstruction\(i + 1).png"
             instructionImages.append(tempString)
         }

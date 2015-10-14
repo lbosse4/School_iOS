@@ -11,9 +11,6 @@
 		894375061BCB1AB7002F2662 /* WalkThroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894375051BCB1AB6002F2662 /* WalkThroughPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		894375081BCB243A002F2662 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894375071BCB243A002F2662 /* ContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8943750A1BCB5300002F2662 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894375091BCB5300002F2662 /* RootViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		894375181BCB702C002F2662 /* PageInstruction1.png in Resources */ = {isa = PBXBuildFile; fileRef = 894375151BCB702C002F2662 /* PageInstruction1.png */; settings = {ASSET_TAGS = (); }; };
-		894375191BCB702C002F2662 /* PageInstruction3.png in Resources */ = {isa = PBXBuildFile; fileRef = 894375161BCB702C002F2662 /* PageInstruction3.png */; settings = {ASSET_TAGS = (); }; };
-		8943751A1BCB702C002F2662 /* PageInstruction2.png in Resources */ = {isa = PBXBuildFile; fileRef = 894375171BCB702C002F2662 /* PageInstruction2.png */; settings = {ASSET_TAGS = (); }; };
 		894D219D1BB897B5006DA7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D219C1BB897B5006DA7AE /* AppDelegate.swift */; };
 		894D219F1BB897B5006DA7AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894D219E1BB897B5006DA7AE /* ViewController.swift */; };
 		894D21A21BB897B5006DA7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894D21A01BB897B5006DA7AE /* Main.storyboard */; };
@@ -26,6 +23,12 @@
 		8971D4BC1BC345190012B096 /* ParkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8971D4BB1BC345190012B096 /* ParkTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8971D4BE1BC3573D0012B096 /* ParkCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8971D4BD1BC3573D0012B096 /* ParkCollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8971D4C01BC35E590012B096 /* ParkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8971D4BF1BC35E590012B096 /* ParkCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		897C34C81BCEE03F00AFEC94 /* PageInstruction1.png in Resources */ = {isa = PBXBuildFile; fileRef = 897C34C21BCEE03F00AFEC94 /* PageInstruction1.png */; settings = {ASSET_TAGS = (); }; };
+		897C34C91BCEE03F00AFEC94 /* PageInstruction2.png in Resources */ = {isa = PBXBuildFile; fileRef = 897C34C31BCEE03F00AFEC94 /* PageInstruction2.png */; settings = {ASSET_TAGS = (); }; };
+		897C34CA1BCEE03F00AFEC94 /* PageInstruction3.png in Resources */ = {isa = PBXBuildFile; fileRef = 897C34C41BCEE03F00AFEC94 /* PageInstruction3.png */; settings = {ASSET_TAGS = (); }; };
+		897C34CB1BCEE03F00AFEC94 /* PageInstruction4.png in Resources */ = {isa = PBXBuildFile; fileRef = 897C34C51BCEE03F00AFEC94 /* PageInstruction4.png */; settings = {ASSET_TAGS = (); }; };
+		897C34CC1BCEE03F00AFEC94 /* PageInstruction5.png in Resources */ = {isa = PBXBuildFile; fileRef = 897C34C61BCEE03F00AFEC94 /* PageInstruction5.png */; settings = {ASSET_TAGS = (); }; };
+		897C34CD1BCEE03F00AFEC94 /* PageInstruction6.png in Resources */ = {isa = PBXBuildFile; fileRef = 897C34C71BCEE03F00AFEC94 /* PageInstruction6.png */; settings = {ASSET_TAGS = (); }; };
 		897C3C451BCC3E87001CAE07 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897C3C441BCC3E87001CAE07 /* MasterViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		897C3C471BCC3F58001CAE07 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897C3C461BCC3F58001CAE07 /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8988DD801BB89F4B00681EDD /* arrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 8988DD5D1BB89F4B00681EDD /* arrowDown.png */; settings = {ASSET_TAGS = (); }; };
@@ -90,9 +93,6 @@
 		894375051BCB1AB6002F2662 /* WalkThroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkThroughPageViewController.swift; sourceTree = "<group>"; };
 		894375071BCB243A002F2662 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		894375091BCB5300002F2662 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		894375151BCB702C002F2662 /* PageInstruction1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction1.png; sourceTree = "<group>"; };
-		894375161BCB702C002F2662 /* PageInstruction3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction3.png; sourceTree = "<group>"; };
-		894375171BCB702C002F2662 /* PageInstruction2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction2.png; sourceTree = "<group>"; };
 		894D21991BB897B4006DA7AE /* Park Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park Explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		894D219C1BB897B5006DA7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		894D219E1BB897B5006DA7AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +111,12 @@
 		8971D4BB1BC345190012B096 /* ParkTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkTableViewController.swift; sourceTree = "<group>"; };
 		8971D4BD1BC3573D0012B096 /* ParkCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkCollectionViewController.swift; sourceTree = "<group>"; };
 		8971D4BF1BC35E590012B096 /* ParkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkCollectionViewCell.swift; sourceTree = "<group>"; };
+		897C34C21BCEE03F00AFEC94 /* PageInstruction1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction1.png; sourceTree = "<group>"; };
+		897C34C31BCEE03F00AFEC94 /* PageInstruction2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction2.png; sourceTree = "<group>"; };
+		897C34C41BCEE03F00AFEC94 /* PageInstruction3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction3.png; sourceTree = "<group>"; };
+		897C34C51BCEE03F00AFEC94 /* PageInstruction4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction4.png; sourceTree = "<group>"; };
+		897C34C61BCEE03F00AFEC94 /* PageInstruction5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction5.png; sourceTree = "<group>"; };
+		897C34C71BCEE03F00AFEC94 /* PageInstruction6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PageInstruction6.png; sourceTree = "<group>"; };
 		897C3C441BCC3E87001CAE07 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		897C3C461BCC3F58001CAE07 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8988DD5D1BB89F4B00681EDD /* arrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowDown.png; sourceTree = "<group>"; };
@@ -229,9 +235,12 @@
 		8943750E1BCB6E8A002F2662 /* Page Instructions */ = {
 			isa = PBXGroup;
 			children = (
-				894375151BCB702C002F2662 /* PageInstruction1.png */,
-				894375161BCB702C002F2662 /* PageInstruction3.png */,
-				894375171BCB702C002F2662 /* PageInstruction2.png */,
+				897C34C21BCEE03F00AFEC94 /* PageInstruction1.png */,
+				897C34C31BCEE03F00AFEC94 /* PageInstruction2.png */,
+				897C34C41BCEE03F00AFEC94 /* PageInstruction3.png */,
+				897C34C51BCEE03F00AFEC94 /* PageInstruction4.png */,
+				897C34C61BCEE03F00AFEC94 /* PageInstruction5.png */,
+				897C34C71BCEE03F00AFEC94 /* PageInstruction6.png */,
 			);
 			name = "Page Instructions";
 			sourceTree = "<group>";
@@ -448,17 +457,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8943751A1BCB702C002F2662 /* PageInstruction2.png in Resources */,
 				8988DD961BB89F4B00681EDD /* Yellowstone01.jpg in Resources */,
 				8988DD9B1BB89F4B00681EDD /* Yosemite02.jpg in Resources */,
 				8988DD821BB89F4B00681EDD /* arrowRight.png in Resources */,
 				894D21A71BB897B5006DA7AE /* LaunchScreen.storyboard in Resources */,
 				89ADD2111BC364EB00F82DBC /* tableImage.png in Resources */,
-				894375181BCB702C002F2662 /* PageInstruction1.png in Resources */,
+				897C34C81BCEE03F00AFEC94 /* PageInstruction1.png in Resources */,
 				8988DDA21BB89F4B00681EDD /* Zion03.jpg in Resources */,
 				8988DD931BB89F4B00681EDD /* nps-logo.png in Resources */,
-				894375191BCB702C002F2662 /* PageInstruction3.png in Resources */,
 				8988DD8F1BB89F4B00681EDD /* Glacier03.jpg in Resources */,
+				897C34CA1BCEE03F00AFEC94 /* PageInstruction3.png in Resources */,
 				89ADD2101BC364EB00F82DBC /* collectionImage.png in Resources */,
 				8988DDA01BB89F4B00681EDD /* Zion01.jpg in Resources */,
 				8988DD921BB89F4B00681EDD /* GrandTeton02.jpg in Resources */,
@@ -470,12 +478,14 @@
 				8988DD9A1BB89F4B00681EDD /* Yosemite01.jpg in Resources */,
 				8988DD811BB89F4B00681EDD /* arrowLeft.png in Resources */,
 				894D21A41BB897B5006DA7AE /* Assets.xcassets in Resources */,
+				897C34CD1BCEE03F00AFEC94 /* PageInstruction6.png in Resources */,
 				8988DD9C1BB89F4B00681EDD /* Yosemite03.jpg in Resources */,
 				8988DD851BB89F4B00681EDD /* BryceCanyon02.jpg in Resources */,
 				8988DD8A1BB89F4B00681EDD /* Carlsbad04.jpg in Resources */,
 				8988DD901BB89F4B00681EDD /* Glacier04.jpg in Resources */,
 				8988DDA11BB89F4B00681EDD /* Zion02.jpg in Resources */,
 				8988DD981BB89F4B00681EDD /* Yellowstone03.jpg in Resources */,
+				897C34CC1BCEE03F00AFEC94 /* PageInstruction5.png in Resources */,
 				8988DD991BB89F4B00681EDD /* Yellowstone04.jpg in Resources */,
 				8988DD941BB89F4B00681EDD /* NPSbw.png in Resources */,
 				8988DD871BB89F4B00681EDD /* Carlsbad01.jpg in Resources */,
@@ -487,8 +497,10 @@
 				8988DD831BB89F4B00681EDD /* arrowUp.png in Resources */,
 				8988DD841BB89F4B00681EDD /* BryceCanyon01.jpg in Resources */,
 				8988DD911BB89F4B00681EDD /* GrandTeton01.jpg in Resources */,
+				897C34C91BCEE03F00AFEC94 /* PageInstruction2.png in Resources */,
 				8988DD9D1BB89F4B00681EDD /* Yosemite04.jpg in Resources */,
 				8988DD9F1BB89F4B00681EDD /* Yosemite06.jpg in Resources */,
+				897C34CB1BCEE03F00AFEC94 /* PageInstruction4.png in Resources */,
 				8988DD801BB89F4B00681EDD /* arrowDown.png in Resources */,
 				8988DD8B1BB89F4B00681EDD /* Everglades01.jpg in Resources */,
 				8988DD881BB89F4B00681EDD /* Carlsbad02.jpg in Resources */,
