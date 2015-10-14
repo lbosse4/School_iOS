@@ -31,8 +31,8 @@
                                     <action selector="segueButtonPressed:" destination="ugc-fY-U9M" eventType="touchUpInside" id="bkM-Tq-ngb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to Continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22x-FO-S5U">
-                                <rect key="frame" x="209" y="550" width="182" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe right to continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22x-FO-S5U">
+                                <rect key="frame" x="187" y="550" width="227" height="32"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoOSITCTT-Book" family="Bodoni 72 Oldstyle" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -91,10 +91,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LA4-VT-l2i">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BryceCanyon01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LA4-VT-l2i">
                                 <rect key="frame" x="20" y="64" width="560" height="422"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZG-lw-kWx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amphitheatre" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZG-lw-kWx">
                                 <rect key="frame" x="20" y="494" width="560" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="86" id="Ngo-yl-UYP"/>
@@ -238,7 +238,7 @@
         <!--Split View Controller-->
         <scene sceneID="gb2-66-VuA">
             <objects>
-                <splitViewController id="MKK-yR-NMd" sceneMemberID="viewController">
+                <splitViewController modalPresentationStyle="currentContext" id="MKK-yR-NMd" sceneMemberID="viewController">
                     <connections>
                         <segue destination="AaG-hA-Kie" kind="relationship" relationship="masterViewController" id="kVH-Yq-ajb"/>
                         <segue destination="VTg-m5-k9g" kind="relationship" relationship="detailViewController" id="gPT-vK-sPR"/>
@@ -249,7 +249,10 @@
             <point key="canvasLocation" x="965" y="379"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BryceCanyon01.jpg" width="1280" height="853"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6S5-ry-5ie"/>
+        <segue reference="gPT-vK-sPR"/>
     </inferredMetricsTieBreakers>
 </document>

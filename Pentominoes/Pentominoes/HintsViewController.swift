@@ -121,7 +121,6 @@ class HintsViewController : UIViewController {
             
             
             loopCounter += 1
-
             
         }
     }

@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum UIUserInterfaceIdiom : Int {
+    case Unspecified
+    
+    case Phone // iPhone and iPod touch style UI
+    case Pad // iPad style UI
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
@@ -24,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         splitViewController.delegate = self
 //
-        
+        //splitViewController(splitViewController, collapseSecondaryViewController: , ontoPrimaryViewController: <#T##UIViewController#>)
         
         
         return true
@@ -56,6 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
         guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
         guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
+       
+        //let iPad = UIUserInterfaceIdiom.Pad
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+            return false
+        }
         if topAsDetailController.imageDetail == nil {
             // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
             return true
