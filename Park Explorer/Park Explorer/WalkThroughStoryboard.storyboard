@@ -91,7 +91,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BryceCanyon01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LA4-VT-l2i">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BryceCanyon01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LA4-VT-l2i">
                                 <rect key="frame" x="20" y="64" width="560" height="422"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amphitheatre" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZG-lw-kWx">
@@ -181,7 +181,7 @@
                     <navigationItem key="navigationItem" title="Parks" id="mZu-UF-8mt"/>
                     <connections>
                         <outlet property="titleLabel" destination="mZu-UF-8mt" id="ked-P5-TzU"/>
-                        <segue destination="ugc-fY-U9M" kind="presentation" identifier="walkThroughSegue" id="dHD-v9-cJP"/>
+                        <segue destination="ugc-fY-U9M" kind="presentation" identifier="walkThroughSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="dHD-v9-cJP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZk-cm-1G5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -253,6 +253,6 @@
         <image name="BryceCanyon01.jpg" width="1280" height="853"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gPT-vK-sPR"/>
+        <segue reference="6S5-ry-5ie"/>
     </inferredMetricsTieBreakers>
 </document>

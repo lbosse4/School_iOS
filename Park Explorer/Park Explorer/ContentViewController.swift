@@ -11,9 +11,7 @@ import UIKit
 class ContentViewController : UIViewController {
     
     @IBOutlet weak var instructionImageView: UIImageView!
-    
-    @IBOutlet weak var navigationButton: UIButton!
-    
+        
     private var instructionImageName: String?
     private var buttonTitleContent : String?
     let model = Model.sharedInstance
@@ -29,12 +27,6 @@ class ContentViewController : UIViewController {
         let image = UIImage(named: instructionImageName!)
         instructionImageView.image = image
         instructionImageView.contentMode = UIViewContentMode.ScaleAspectFit
-    }
-
-    @IBAction func navigateButtonPressed(sender: UIButton) {
-//        pageIndex! += 1
-//        instructionImageView.image = UIImage(named: model.pageInstructionImageAtIndex(pageIndex!))
-        
     }
 
     func viewControllerAtIndex(index:Int) -> UIViewController {

@@ -41,10 +41,16 @@ class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
         if isInitialLoad {
             performSegueWithIdentifier("walkThroughSegue", sender: self)
             isInitialLoad = false
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
     }
 
     func collapseSection(sender: UIButton){
@@ -113,8 +119,12 @@ class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
             }
         case "walkThroughSegue":
             let walkThroughViewController = segue.destinationViewController as! RootViewController
+            //self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
+            //self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
             walkThroughViewController.delegate = self
-            walkThroughViewController.completionBlock = {() in self.dismissViewControllerAnimated(true, completion: nil)}
+            walkThroughViewController.completionBlock = {() in
+                self.splitViewController!.preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
+                self.dismissViewControllerAnimated(true, completion: nil)}
             
         default:
             assert(false, "Unhandled Segue in ViewController")

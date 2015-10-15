@@ -19,6 +19,7 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource{
     
     let model = Model.sharedInstance
     let greenColor = UIColor(red: 0.0, green: 0.502, blue: 0.004, alpha: 1.0)
+    //var isDisplayingPageInstructions : Bool = true
     var pageViewController : UIPageViewController?
     var completionBlock : (() -> Void)?
     var delegate : WalkThroughDelegateProtocol?
@@ -38,6 +39,16 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource{
         self.addChildViewController(pageViewController!)
         pageViewController!.didMoveToParentViewController(self)
         self.view.addSubview(pageViewController!.view)
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        //dont let them rotate while animating
+//        if isDisplayingPageInstructions {
+//            return false
+//        } else {
+//            return true
+//        }
+        return false
     }
     
     override func viewDidLayoutSubviews() {
@@ -79,11 +90,14 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource{
     
     @IBAction func segueButtonPressed(sender: UIButton) {
         delegate!.dismissWalkThrough()
+        //isDisplayingPageInstructions = false
+   
     }
     
     
     
     @IBAction func dismissByCompletion(sender: AnyObject) {
+       
         if let closure = completionBlock {
             closure()
         }

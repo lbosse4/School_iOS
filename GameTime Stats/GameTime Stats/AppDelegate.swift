@@ -1,28 +1,21 @@
 //
 //  AppDelegate.swift
-//  Park Explorer
+//  GameTime Stats
 //
-//  Created by Lauren Bosse on 9/27/15.
+//  Created by Lauren Bosse on 10/14/15.
 //  Copyright © 2015 Lauren Bosse. All rights reserved.
 //
 
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let aSplitViewController = self.window!.rootViewController as! UISplitViewController
-        let navigationController = aSplitViewController.viewControllers[aSplitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController!.navigationItem.leftBarButtonItem = aSplitViewController.displayModeButtonItem()
-        aSplitViewController.delegate = self
-
-        aSplitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
         return true
     }
 
@@ -48,26 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    // MARK: - Split view
-    
-//    func splitViewController(splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
-//        
-//        return true
-//    }
-    
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
-        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-        guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
- 
-        if topAsDetailController.imageDetail == nil {
-            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-            return true
-        }
-        if topAsDetailController.imageCaptionDetail == nil {
-            return true
-        }
-        return false
-    }
-    
+
 }
 
