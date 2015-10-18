@@ -37,16 +37,6 @@ class ContentViewController : UIViewController {
         
         return contentViewController
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        switch segue.identifier! {
-//        case "SplitViewSegue":
-//            let splitViewController = segue.destinationViewController as!
-//            break
-//        default:
-//            assert(false, "Unhandled Segue in ViewController")
-//        }
-//    }
 }
 
 

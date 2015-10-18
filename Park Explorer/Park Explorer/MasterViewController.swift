@@ -15,7 +15,6 @@ class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
     let model = Model.sharedInstance
     let buttonHeight : CGFloat = 55.0
     let animationDuration : NSTimeInterval = 1.5
-    let maroonColor = UIColor(red: 0.20, green: 0.0, blue: 0.08, alpha: 1.0)
     let titleFont = "Bodoni 72 SmallCaps"
     let titleFontSize : CGFloat = 28
     let buttonBorderWidth : CGFloat = 0.8
@@ -80,7 +79,6 @@ class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
         cell.captionLabel.text = model.imageCaptionAtIndexPath(indexPath)
         let image = UIImage(named: "\(model.imageNameAtIndexPath(indexPath)).jpg")
         cell.parkImageView.image = image
-        //cell.parkImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         return cell
     }
@@ -90,7 +88,7 @@ class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
         button.setTitle(model.parkNameForSection(section), forState: .Normal)
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
-        button.backgroundColor = UIColor.darkGrayColor()//maroonColor
+        button.backgroundColor = UIColor.darkGrayColor()
         button.titleLabel?.font = UIFont(name: titleFont, size: titleFontSize)
         button.tag = section
         button.layer.borderWidth = buttonBorderWidth
@@ -100,7 +98,6 @@ class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        //tableView.scrollEnabled = false
         selectedIndexPath = indexPath
     }
     
@@ -108,7 +105,6 @@ class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
         switch segue.identifier! {
         case "showDetail":
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                //let object = objects[indexPath.row] as! NSDate
                 let imageName = model.imageNameAtIndexPath(indexPath)
                 let imageCaption = model.imageCaptionAtIndexPath(indexPath)
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
@@ -119,12 +115,8 @@ class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
             }
         case "walkThroughSegue":
             let walkThroughViewController = segue.destinationViewController as! RootViewController
-            //self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
-            //self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
             walkThroughViewController.delegate = self
-            walkThroughViewController.completionBlock = {() in
-                self.splitViewController!.preferredDisplayMode = UISplitViewControllerDisplayMode.Automatic
-                self.dismissViewControllerAnimated(true, completion: nil)}
+            walkThroughViewController.completionBlock = {() in self.dismissViewControllerAnimated(true, completion: nil)}
             
         default:
             assert(false, "Unhandled Segue in ViewController")
@@ -132,6 +124,7 @@ class MasterViewController: UITableViewController, WalkThroughDelegateProtocol {
         
     }
     func dismissWalkThrough() {
+        self.splitViewController!.preferredDisplayMode = UISplitViewControllerDisplayMode.PrimaryOverlay
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

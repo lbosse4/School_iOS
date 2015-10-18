@@ -33,7 +33,6 @@ class ParkTableViewController: UITableViewController {
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        //tableView.scrollToRowAtIndexPath(selectedIndexPath, atScrollPosition: .Middle, animated: true)
     }
     
     func collapseSection(sender: UIButton){

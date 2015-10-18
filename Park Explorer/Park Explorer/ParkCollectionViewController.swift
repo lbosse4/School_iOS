@@ -69,7 +69,6 @@ class ParkCollectionViewController : UICollectionViewController{
         
         let viewSize = view.bounds.size
         
-        //let zoomScrollViewFrame = CGRect(x: view.frame.origin.x, y: collectionView.frame.origin.y, width: viewSize.width, height: viewSize.height)
         zoomScrollView = UIScrollView(frame: CGRectZero)
         zoomScrollView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         view.addSubview(zoomScrollView)
@@ -94,9 +93,6 @@ class ParkCollectionViewController : UICollectionViewController{
 
         UIView.animateWithDuration(animationDuration){ () -> Void in
             self.zoomScrollView.frame = self.view.bounds
-            //imageView.frame = zoomScrollViewFrame
-            
-            //self.collectionView?.bringSubviewToFront(self.zoomScrollView)
         }
         zoomScrollView.delegate = self
         zoomScrollView.minimumZoomScale = minZoomScale

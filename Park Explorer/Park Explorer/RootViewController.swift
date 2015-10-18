@@ -42,13 +42,7 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource{
     }
     
     override func shouldAutorotate() -> Bool {
-        //dont let them rotate while animating
-//        if isDisplayingPageInstructions {
-//            return false
-//        } else {
-//            return true
-//        }
-        return false
+        return true
     }
     
     override func viewDidLayoutSubviews() {
@@ -90,8 +84,6 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource{
     
     @IBAction func segueButtonPressed(sender: UIButton) {
         delegate!.dismissWalkThrough()
-        //isDisplayingPageInstructions = false
-   
     }
     
     
