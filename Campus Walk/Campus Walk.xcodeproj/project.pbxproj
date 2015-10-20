@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		89A632CE1BD5626500CCE5BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A632CD1BD5626500CCE5BC /* AppDelegate.swift */; };
+		89A632D01BD5626500CCE5BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A632CF1BD5626500CCE5BC /* ViewController.swift */; };
+		89A632D31BD5626500CCE5BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89A632D11BD5626500CCE5BC /* Main.storyboard */; };
+		89A632D51BD5626500CCE5BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89A632D41BD5626500CCE5BC /* Assets.xcassets */; };
+		89A632D81BD5626500CCE5BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89A632D61BD5626500CCE5BC /* LaunchScreen.storyboard */; };
+		89A632E31BD5626600CCE5BC /* Campus_WalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A632E21BD5626600CCE5BC /* Campus_WalkTests.swift */; };
+		89A632EE1BD5626600CCE5BC /* Campus_WalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A632ED1BD5626600CCE5BC /* Campus_WalkUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		89A632DF1BD5626600CCE5BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89A632C21BD5626400CCE5BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89A632C91BD5626500CCE5BC;
+			remoteInfo = "Campus Walk";
+		};
+		89A632EA1BD5626600CCE5BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89A632C21BD5626400CCE5BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89A632C91BD5626500CCE5BC;
+			remoteInfo = "Campus Walk";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		89A632CA1BD5626500CCE5BC /* Campus Walk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Campus Walk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89A632CD1BD5626500CCE5BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		89A632CF1BD5626500CCE5BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		89A632D21BD5626500CCE5BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		89A632D41BD5626500CCE5BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		89A632D71BD5626500CCE5BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89A632D91BD5626500CCE5BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89A632DE1BD5626600CCE5BC /* Campus WalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Campus WalkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89A632E21BD5626600CCE5BC /* Campus_WalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus_WalkTests.swift; sourceTree = "<group>"; };
+		89A632E41BD5626600CCE5BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89A632E91BD5626600CCE5BC /* Campus WalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Campus WalkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89A632ED1BD5626600CCE5BC /* Campus_WalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus_WalkUITests.swift; sourceTree = "<group>"; };
+		89A632EF1BD5626600CCE5BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89A632C71BD5626500CCE5BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89A632DB1BD5626600CCE5BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89A632E61BD5626600CCE5BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		89A632C11BD5626400CCE5BC = {
+			isa = PBXGroup;
+			children = (
+				89A632CC1BD5626500CCE5BC /* Campus Walk */,
+				89A632E11BD5626600CCE5BC /* Campus WalkTests */,
+				89A632EC1BD5626600CCE5BC /* Campus WalkUITests */,
+				89A632CB1BD5626500CCE5BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		89A632CB1BD5626500CCE5BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89A632CA1BD5626500CCE5BC /* Campus Walk.app */,
+				89A632DE1BD5626600CCE5BC /* Campus WalkTests.xctest */,
+				89A632E91BD5626600CCE5BC /* Campus WalkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89A632CC1BD5626500CCE5BC /* Campus Walk */ = {
+			isa = PBXGroup;
+			children = (
+				89A632CD1BD5626500CCE5BC /* AppDelegate.swift */,
+				89A632CF1BD5626500CCE5BC /* ViewController.swift */,
+				89A632D11BD5626500CCE5BC /* Main.storyboard */,
+				89A632D41BD5626500CCE5BC /* Assets.xcassets */,
+				89A632D61BD5626500CCE5BC /* LaunchScreen.storyboard */,
+				89A632D91BD5626500CCE5BC /* Info.plist */,
+			);
+			path = "Campus Walk";
+			sourceTree = "<group>";
+		};
+		89A632E11BD5626600CCE5BC /* Campus WalkTests */ = {
+			isa = PBXGroup;
+			children = (
+				89A632E21BD5626600CCE5BC /* Campus_WalkTests.swift */,
+				89A632E41BD5626600CCE5BC /* Info.plist */,
+			);
+			path = "Campus WalkTests";
+			sourceTree = "<group>";
+		};
+		89A632EC1BD5626600CCE5BC /* Campus WalkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				89A632ED1BD5626600CCE5BC /* Campus_WalkUITests.swift */,
+				89A632EF1BD5626600CCE5BC /* Info.plist */,
+			);
+			path = "Campus WalkUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89A632C91BD5626500CCE5BC /* Campus Walk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89A632F21BD5626600CCE5BC /* Build configuration list for PBXNativeTarget "Campus Walk" */;
+			buildPhases = (
+				89A632C61BD5626500CCE5BC /* Sources */,
+				89A632C71BD5626500CCE5BC /* Frameworks */,
+				89A632C81BD5626500CCE5BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Campus Walk";
+			productName = "Campus Walk";
+			productReference = 89A632CA1BD5626500CCE5BC /* Campus Walk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		89A632DD1BD5626600CCE5BC /* Campus WalkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89A632F51BD5626600CCE5BC /* Build configuration list for PBXNativeTarget "Campus WalkTests" */;
+			buildPhases = (
+				89A632DA1BD5626600CCE5BC /* Sources */,
+				89A632DB1BD5626600CCE5BC /* Frameworks */,
+				89A632DC1BD5626600CCE5BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89A632E01BD5626600CCE5BC /* PBXTargetDependency */,
+			);
+			name = "Campus WalkTests";
+			productName = "Campus WalkTests";
+			productReference = 89A632DE1BD5626600CCE5BC /* Campus WalkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		89A632E81BD5626600CCE5BC /* Campus WalkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89A632F81BD5626600CCE5BC /* Build configuration list for PBXNativeTarget "Campus WalkUITests" */;
+			buildPhases = (
+				89A632E51BD5626600CCE5BC /* Sources */,
+				89A632E61BD5626600CCE5BC /* Frameworks */,
+				89A632E71BD5626600CCE5BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89A632EB1BD5626600CCE5BC /* PBXTargetDependency */,
+			);
+			name = "Campus WalkUITests";
+			productName = "Campus WalkUITests";
+			productReference = 89A632E91BD5626600CCE5BC /* Campus WalkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89A632C21BD5626400CCE5BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Lauren Bosse";
+				TargetAttributes = {
+					89A632C91BD5626500CCE5BC = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = C5SFJSQJ9Q;
+					};
+					89A632DD1BD5626600CCE5BC = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = C5SFJSQJ9Q;
+						TestTargetID = 89A632C91BD5626500CCE5BC;
+					};
+					89A632E81BD5626600CCE5BC = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = C5SFJSQJ9Q;
+						TestTargetID = 89A632C91BD5626500CCE5BC;
+					};
+				};
+			};
+			buildConfigurationList = 89A632C51BD5626400CCE5BC /* Build configuration list for PBXProject "Campus Walk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 89A632C11BD5626400CCE5BC;
+			productRefGroup = 89A632CB1BD5626500CCE5BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89A632C91BD5626500CCE5BC /* Campus Walk */,
+				89A632DD1BD5626600CCE5BC /* Campus WalkTests */,
+				89A632E81BD5626600CCE5BC /* Campus WalkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89A632C81BD5626500CCE5BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89A632D81BD5626500CCE5BC /* LaunchScreen.storyboard in Resources */,
+				89A632D51BD5626500CCE5BC /* Assets.xcassets in Resources */,
+				89A632D31BD5626500CCE5BC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89A632DC1BD5626600CCE5BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89A632E71BD5626600CCE5BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89A632C61BD5626500CCE5BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89A632D01BD5626500CCE5BC /* ViewController.swift in Sources */,
+				89A632CE1BD5626500CCE5BC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89A632DA1BD5626600CCE5BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89A632E31BD5626600CCE5BC /* Campus_WalkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89A632E51BD5626600CCE5BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89A632EE1BD5626600CCE5BC /* Campus_WalkUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		89A632E01BD5626600CCE5BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89A632C91BD5626500CCE5BC /* Campus Walk */;
+			targetProxy = 89A632DF1BD5626600CCE5BC /* PBXContainerItemProxy */;
+		};
+		89A632EB1BD5626600CCE5BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89A632C91BD5626500CCE5BC /* Campus Walk */;
+			targetProxy = 89A632EA1BD5626600CCE5BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		89A632D11BD5626500CCE5BC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89A632D21BD5626500CCE5BC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		89A632D61BD5626500CCE5BC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89A632D71BD5626500CCE5BC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89A632F01BD5626600CCE5BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		89A632F11BD5626600CCE5BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		89A632F31BD5626600CCE5BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Campus Walk/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.psu.cse.lwb122.Campus-Walk";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		89A632F41BD5626600CCE5BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Campus Walk/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.psu.cse.lwb122.Campus-Walk";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		89A632F61BD5626600CCE5BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Campus WalkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.psu.cse.lwb122.Campus-WalkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Campus Walk.app/Campus Walk";
+			};
+			name = Debug;
+		};
+		89A632F71BD5626600CCE5BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Campus WalkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.psu.cse.lwb122.Campus-WalkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Campus Walk.app/Campus Walk";
+			};
+			name = Release;
+		};
+		89A632F91BD5626600CCE5BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Campus WalkUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.psu.cse.lwb122.Campus-WalkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Campus Walk";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		89A632FA1BD5626600CCE5BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Campus WalkUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.psu.cse.lwb122.Campus-WalkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Campus Walk";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89A632C51BD5626400CCE5BC /* Build configuration list for PBXProject "Campus Walk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89A632F01BD5626600CCE5BC /* Debug */,
+				89A632F11BD5626600CCE5BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89A632F21BD5626600CCE5BC /* Build configuration list for PBXNativeTarget "Campus Walk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89A632F31BD5626600CCE5BC /* Debug */,
+				89A632F41BD5626600CCE5BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		89A632F51BD5626600CCE5BC /* Build configuration list for PBXNativeTarget "Campus WalkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89A632F61BD5626600CCE5BC /* Debug */,
+				89A632F71BD5626600CCE5BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		89A632F81BD5626600CCE5BC /* Build configuration list for PBXNativeTarget "Campus WalkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89A632F91BD5626600CCE5BC /* Debug */,
+				89A632FA1BD5626600CCE5BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89A632C21BD5626400CCE5BC /* Project object */;
+}

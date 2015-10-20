@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WjT-yf-zvf">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="xzU-qc-Zfk">
+            <objects>
+                <navigationController id="WjT-yf-zvf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qsj-Nw-beV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Teo-CW-fB2" kind="relationship" relationship="rootViewController" id="zBb-3P-ren"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WgQ-P7-AlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-259" y="233"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7a3-Wc-kUs">
+            <objects>
+                <viewController id="Teo-CW-fB2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tm2-Wj-Y0J"/>
+                        <viewControllerLayoutGuide type="bottom" id="LYH-ZR-aTz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ebW-a6-geW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qK-D3E">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b06-qK-D3E" firstAttribute="top" secondItem="tm2-Wj-Y0J" secondAttribute="bottom" id="1cB-q2-I36"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b06-qK-D3E" secondAttribute="trailing" constant="-20" id="fkO-c4-Jsq"/>
+                            <constraint firstItem="LYH-ZR-aTz" firstAttribute="top" secondItem="b06-qK-D3E" secondAttribute="bottom" id="fvx-PA-SGp"/>
+                            <constraint firstItem="b06-qK-D3E" firstAttribute="leading" secondItem="ebW-a6-geW" secondAttribute="leadingMargin" constant="-20" id="u9v-Tk-79N"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ynd-Vd-O9o"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5U8-Vk-CMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="437" y="233"/>
+        </scene>
+    </scenes>
+</document>
