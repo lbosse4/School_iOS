@@ -24,7 +24,7 @@
         <!--View Controller-->
         <scene sceneID="7a3-Wc-kUs">
             <objects>
-                <viewController id="Teo-CW-fB2" sceneMemberID="viewController">
+                <viewController id="Teo-CW-fB2" customClass="ViewController" customModule="Campus_Walk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tm2-Wj-Y0J"/>
                         <viewControllerLayoutGuide type="bottom" id="LYH-ZR-aTz"/>
