@@ -41,6 +41,18 @@ class BuildingTableViewController : UITableViewController {
         
         cell.buildingTitleLabel.text = model.buildingAtIndexPath(indexPath).title
         //cell.favioriteStarImageView = UIImageView(image: UIImage(named: "emptyStar.png"))
+        if model.isFavoriteBuildingAtIndexPath(indexPath) {
+            cell.favioriteStarImageView.image = UIImage(named: "filledStar.png")
+        } else {
+            cell.favioriteStarImageView.image = UIImage(named: "emptyStar.png")
+        }
+        /*
+        if stateModel.isCheckedStateAtIndex(indexPath.row) {
+        cell.accessoryType = .Checkmark
+        } else {
+        cell.accessoryType = .None
+        }
+        */
         return cell
     }
     
@@ -55,10 +67,14 @@ class BuildingTableViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! BuildingTableViewCell
-        let image = UIImage(named: "filledStar.png")
-        cell.favioriteStarImageView.image = image
+//        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! BuildingTableViewCell
+//        let image = UIImage(named: "filledStar.png")
+//        cell.favioriteStarImageView.image = image
+        //stateModel.toggleIsCheckedStateAtIndex(indexPath.row)
+        //tableView.reloadData()
+        model.toggleIsFavoriteBuildingAtIndexPath(indexPath)
+        tableView.reloadData()
     }
 
 }

@@ -110,13 +110,11 @@ class Model {
     }
     
     func numberOfBuildingsInSection(section: Int) -> Int{
-        //let letterInSection = letterForSection(section)
         let buildings : [Building] = buildingsInSection(section)
         return buildings.count
     }
     
     func buildingAtIndexPath(indexPath : NSIndexPath) -> Building{
-        //let section = allKeys[indexPath.section]
         let buildings : [Building] = buildingsInSection(indexPath.section)
         return buildings[indexPath.row]
     }
@@ -124,11 +122,16 @@ class Model {
     func indexTitles() -> [String] {
         return allKeys
     }
-
-
-//    private func imageAtIndexPath(indexPath : NSIndexPath) -> Photo {
-//        return parksArray[indexPath.section].images[indexPath.row]
-//    }
+    
+    func isFavoriteBuildingAtIndexPath(indexPath: NSIndexPath) -> Bool {
+        let buildings : [Building] = buildingsInSection(indexPath.section)
+        return buildings[indexPath.row].isFavorite
+    }
+    
+    func toggleIsFavoriteBuildingAtIndexPath(indexPath: NSIndexPath) {
+        let buildings : [Building] = buildingsInSection(indexPath.section)
+        buildings[indexPath.row].isFavorite = !buildings[indexPath.row].isFavorite
+    }
 
 }
 
