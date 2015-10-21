@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-259" y="233"/>
         </scene>
-        <!--View Controller-->
+        <!--Buildings-->
         <scene sceneID="7a3-Wc-kUs">
             <objects>
                 <viewController id="Teo-CW-fB2" customClass="ViewController" customModule="Campus_Walk" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,11 +45,77 @@
                             <constraint firstItem="b06-qK-D3E" firstAttribute="leading" secondItem="ebW-a6-geW" secondAttribute="leadingMargin" constant="-20" id="u9v-Tk-79N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ynd-Vd-O9o"/>
+                    <navigationItem key="navigationItem" title="Buildings" id="ynd-Vd-O9o">
+                        <barButtonItem key="leftBarButtonItem" id="HAI-Nn-1Kb">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dO7-PG-0eM">
+                                <rect key="frame" x="20" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="BuildingIcon.png"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="b06-qK-D3E" id="Ofv-fF-GXP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U8-Vk-CMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="437" y="233"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="m1g-E6-t2Q">
+            <objects>
+                <tableViewController id="vWU-Jw-hBH" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="CGk-dP-l4G">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qRo-1J-kkO">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="I68-09-TqR">
+                                <rect key="frame" x="0.0" y="72" width="600" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I68-09-TqR" id="HsT-Z6-Ih6">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Curry Hall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a63-zU-khX">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="55"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="55" id="9ET-jg-Zbf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="PartyLetPlain" family="Party LET" pointSize="36"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="0.0" green="0.035485109546330468" blue="0.60211489898989901" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.035485109549999998" blue="0.60211489900000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="a63-zU-khX" firstAttribute="trailing" secondItem="HsT-Z6-Ih6" secondAttribute="trailingMargin" id="EnG-ql-Zlm"/>
+                                        <constraint firstItem="a63-zU-khX" firstAttribute="centerY" secondItem="HsT-Z6-Ih6" secondAttribute="centerY" id="beq-i9-6mw"/>
+                                        <constraint firstItem="a63-zU-khX" firstAttribute="leading" secondItem="HsT-Z6-Ih6" secondAttribute="leadingMargin" id="enu-ic-R57"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vWU-Jw-hBH" id="w32-fs-JSR"/>
+                            <outlet property="delegate" destination="vWU-Jw-hBH" id="n4t-wk-RCe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aG4-Yp-ymm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1112" y="233"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="BuildingIcon.png" width="30" height="30"/>
+    </resources>
 </document>

@@ -89,6 +89,9 @@ class Model {
         allKeys = keys.sort()
     }
     
+    func placesToPlot() -> [Building] {
+        return buildingsArray
+    }
    
 }
 

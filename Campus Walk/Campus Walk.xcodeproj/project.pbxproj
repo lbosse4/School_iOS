@@ -42,8 +42,9 @@
 		895C0B821BD6ECF200718E38 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 895C0B621BD6ECF200718E38 /* buildings.plist */; settings = {ASSET_TAGS = (); }; };
 		895C0B841BD7060000718E38 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895C0B831BD7060000718E38 /* MapKit.framework */; };
 		895C0B871BD7074200718E38 /* String+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895C0B861BD7074200718E38 /* String+FirstLetter.swift */; settings = {ASSET_TAGS = (); }; };
+		895C0B8E1BD7F8EF00718E38 /* BuildingIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 895C0B8D1BD7F8EF00718E38 /* BuildingIcon.png */; settings = {ASSET_TAGS = (); }; };
 		89A632CE1BD5626500CCE5BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A632CD1BD5626500CCE5BC /* AppDelegate.swift */; };
-		89A632D01BD5626500CCE5BC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A632CF1BD5626500CCE5BC /* MapViewController.swift */; };
+		89A632D01BD5626500CCE5BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A632CF1BD5626500CCE5BC /* ViewController.swift */; };
 		89A632D31BD5626500CCE5BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89A632D11BD5626500CCE5BC /* Main.storyboard */; };
 		89A632D51BD5626500CCE5BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89A632D41BD5626500CCE5BC /* Assets.xcassets */; };
 		89A632D81BD5626500CCE5BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89A632D61BD5626500CCE5BC /* LaunchScreen.storyboard */; };
@@ -104,9 +105,10 @@
 		895C0B621BD6ECF200718E38 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 		895C0B831BD7060000718E38 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		895C0B861BD7074200718E38 /* String+FirstLetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FirstLetter.swift"; sourceTree = "<group>"; };
+		895C0B8D1BD7F8EF00718E38 /* BuildingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuildingIcon.png; sourceTree = "<group>"; };
 		89A632CA1BD5626500CCE5BC /* Campus Walk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Campus Walk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A632CD1BD5626500CCE5BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		89A632CF1BD5626500CCE5BC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		89A632CF1BD5626500CCE5BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		89A632D21BD5626500CCE5BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89A632D41BD5626500CCE5BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89A632D71BD5626500CCE5BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -148,13 +150,14 @@
 		895C0B411BD6ECF200718E38 /* Assignment_8_Assets */ = {
 			isa = PBXGroup;
 			children = (
-				895C0B421BD6ECF200718E38 /* buildings */,
+				895C0B8A1BD7F89B00718E38 /* Button Icons */,
+				895C0B421BD6ECF200718E38 /* Buildings */,
 				895C0B621BD6ECF200718E38 /* buildings.plist */,
 			);
 			path = Assignment_8_Assets;
 			sourceTree = "<group>";
 		};
-		895C0B421BD6ECF200718E38 /* buildings */ = {
+		895C0B421BD6ECF200718E38 /* Buildings */ = {
 			isa = PBXGroup;
 			children = (
 				895C0B431BD6ECF200718E38 /* agadmin.jpg */,
@@ -189,6 +192,7 @@
 				895C0B601BD6ECF200718E38 /* engunit.jpg */,
 				895C0B611BD6ECF200718E38 /* smeal.jpg */,
 			);
+			name = Buildings;
 			path = buildings;
 			sourceTree = "<group>";
 		};
@@ -212,9 +216,17 @@
 		895C0B891BD7077400718E38 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				89A632CF1BD5626500CCE5BC /* MapViewController.swift */,
+				89A632CF1BD5626500CCE5BC /* ViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		895C0B8A1BD7F89B00718E38 /* Button Icons */ = {
+			isa = PBXGroup;
+			children = (
+				895C0B8D1BD7F8EF00718E38 /* BuildingIcon.png */,
+			);
+			name = "Button Icons";
 			sourceTree = "<group>";
 		};
 		89A632C11BD5626400CCE5BC = {
@@ -395,6 +407,7 @@
 				895C0B711BD6ECF200718E38 /* businessbuilding.jpg in Resources */,
 				895C0B7C1BD6ECF200718E38 /* eeeast.jpg in Resources */,
 				895C0B701BD6ECF200718E38 /* burrowes.jpg in Resources */,
+				895C0B8E1BD7F8EF00718E38 /* BuildingIcon.png in Resources */,
 				895C0B771BD6ECF200718E38 /* chemistry.jpg in Resources */,
 				895C0B811BD6ECF200718E38 /* smeal.jpg in Resources */,
 				895C0B6C1BD6ECF200718E38 /* boucke.jpg in Resources */,
@@ -438,7 +451,7 @@
 			files = (
 				895C0B401BD6ECC500718E38 /* Model.swift in Sources */,
 				895C0B871BD7074200718E38 /* String+FirstLetter.swift in Sources */,
-				89A632D01BD5626500CCE5BC /* MapViewController.swift in Sources */,
+				89A632D01BD5626500CCE5BC /* ViewController.swift in Sources */,
 				89A632CE1BD5626500CCE5BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
