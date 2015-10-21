@@ -16,6 +16,8 @@ class BuildingTableViewController : UITableViewController {
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
     let scroller = UILocalizedIndexedCollation.currentCollation()
     
+    
+    
     override func viewDidLoad() {
         
         //scroller
@@ -38,6 +40,7 @@ class BuildingTableViewController : UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("BuildingTableViewCell", forIndexPath: indexPath) as! BuildingTableViewCell
         
         cell.buildingTitleLabel.text = model.buildingAtIndexPath(indexPath).title
+        //cell.favioriteStarImageView = UIImageView(image: UIImage(named: "emptyStar.png"))
         return cell
     }
     
@@ -53,6 +56,9 @@ class BuildingTableViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! BuildingTableViewCell
+        let image = UIImage(named: "filledStar.png")
+        cell.favioriteStarImageView.image = image
     }
 
 }

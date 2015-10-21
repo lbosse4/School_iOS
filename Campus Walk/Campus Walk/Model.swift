@@ -14,6 +14,8 @@ class Building : NSObject, MKAnnotation {
     var subtitle : String?
     var coordinate : CLLocationCoordinate2D
     
+    var isFavorite : Bool
+    
     //var buildingCode : Int
     //var yearConstructed : Int
     //var latitude : Float
@@ -26,6 +28,7 @@ class Building : NSObject, MKAnnotation {
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinate
+        isFavorite = false
         //title = ""
         //subtitle = ""
         //buildingCode = 0

@@ -73,16 +73,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qRo-1J-kkO">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuildingTableViewCell" rowHeight="31" id="I68-09-TqR" customClass="BuildingTableViewCell" customModule="Campus_Walk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="31"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="31"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I68-09-TqR" id="HsT-Z6-Ih6">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
@@ -93,7 +86,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="9ET-jg-Zbf"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="0.0" green="0.035485109546330468" blue="0.60211489898989901" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
@@ -116,6 +109,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="buildingTitleLabel" destination="a63-zU-khX" id="7IN-xj-4ZV"/>
+                                    <outlet property="favioriteStarImageView" destination="ynW-OC-43N" id="gw5-4p-rip"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
