@@ -92,7 +92,38 @@ class Model {
     func placesToPlot() -> [Building] {
         return buildingsArray
     }
-   
+    
+    func numberOfTableSections() -> Int {
+        return allKeys.count
+    }
+    
+    func letterForSection(section:Int) -> String {
+        return allKeys[section]
+    }
+    
+    func buildingsInSection(section: Int) -> [Building]{
+        let letterInSection = letterForSection(section)
+        return buildingsDictionary[letterInSection]!
+    }
+    
+    func numberOfBuildingsInSection(section: Int) -> Int{
+        //let letterInSection = letterForSection(section)
+        let buildings : [Building] = buildingsInSection(section)
+        return buildings.count
+    }
+    
+    func buildingAtIndexPath(indexPath : NSIndexPath) -> Building{
+        //let section = allKeys[indexPath.section]
+        let buildings : [Building] = buildingsInSection(indexPath.section)
+        return buildings[indexPath.row]
+    }
+    
+
+
+//    private func imageAtIndexPath(indexPath : NSIndexPath) -> Photo {
+//        return parksArray[indexPath.section].images[indexPath.row]
+//    }
+
 }
 
 

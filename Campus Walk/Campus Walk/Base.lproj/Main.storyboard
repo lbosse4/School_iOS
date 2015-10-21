@@ -50,7 +50,10 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dO7-PG-0eM">
                                 <rect key="frame" x="20" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="BuildingIcon.png"/>
+                                <state key="normal" title="BuildingButton" image="BuildingIcon.png"/>
+                                <connections>
+                                    <segue destination="vWU-Jw-hBH" kind="show" identifier="TableViewSegue" id="thC-NP-QO6"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -62,35 +65,35 @@
             </objects>
             <point key="canvasLocation" x="437" y="233"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Building Table View Controller-->
         <scene sceneID="m1g-E6-t2Q">
             <objects>
-                <tableViewController id="vWU-Jw-hBH" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="CGk-dP-l4G">
+                <tableViewController id="vWU-Jw-hBH" customClass="BuildingTableViewController" customModule="Campus_Walk" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="31" sectionHeaderHeight="28" sectionFooterHeight="28" id="CGk-dP-l4G">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qRo-1J-kkO">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="I68-09-TqR">
-                                <rect key="frame" x="0.0" y="72" width="600" height="55"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuildingTableViewCell" rowHeight="31" id="I68-09-TqR" customClass="BuildingTableViewCell" customModule="Campus_Walk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="31"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I68-09-TqR" id="HsT-Z6-Ih6">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Curry Hall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a63-zU-khX">
-                                            <rect key="frame" x="8" y="0.0" width="584" height="55"/>
+                                            <rect key="frame" x="8" y="2" width="584" height="28"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="55" id="9ET-jg-Zbf"/>
+                                                <constraint firstAttribute="height" constant="28" id="9ET-jg-Zbf"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="PartyLetPlain" family="Party LET" pointSize="36"/>
+                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="0.0" green="0.035485109546330468" blue="0.60211489898989901" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
@@ -98,10 +101,13 @@
                                     <color key="backgroundColor" red="0.0" green="0.035485109549999998" blue="0.60211489900000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="a63-zU-khX" firstAttribute="trailing" secondItem="HsT-Z6-Ih6" secondAttribute="trailingMargin" id="EnG-ql-Zlm"/>
-                                        <constraint firstItem="a63-zU-khX" firstAttribute="centerY" secondItem="HsT-Z6-Ih6" secondAttribute="centerY" id="beq-i9-6mw"/>
+                                        <constraint firstItem="a63-zU-khX" firstAttribute="centerY" secondItem="HsT-Z6-Ih6" secondAttribute="centerY" constant="1" id="beq-i9-6mw"/>
                                         <constraint firstItem="a63-zU-khX" firstAttribute="leading" secondItem="HsT-Z6-Ih6" secondAttribute="leadingMargin" id="enu-ic-R57"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="buildingTitleLabel" destination="a63-zU-khX" id="7IN-xj-4ZV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
