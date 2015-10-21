@@ -9,22 +9,41 @@
 import Foundation
 import MapKit
 
-class Building {
-    var name : String
+class Building : NSObject, MKAnnotation {
+    var title : String?
+    var subtitle : String?
+    var coordinate : CLLocationCoordinate2D
+    
     //var buildingCode : Int
     //var yearConstructed : Int
-    var latitude : Float
-    var longitude : Float
+    //var latitude : Float
+    //var longitude : Float
     //var imageName : String
     
-    init (){
-        name = ""
+    //title: String, coordinate: CLLocationCoordinate2D, photoName:String, subtitle:String, category:BuildingCategory
+    
+    init (title: String, coordinate: CLLocationCoordinate2D, subtitle:String){
+        self.title = title
+        self.subtitle = subtitle
+        self.coordinate = coordinate
+        //title = ""
+        //subtitle = ""
         //buildingCode = 0
         //yearConstructed = 0
-        latitude = 0.0
-        longitude = 0.0
+        //latitude = 0.0
+        //longitude = 0.0
         //imageName = ""
+        super.init()
     }
+    
+    func mapItem() -> MKMapItem {
+        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = title
+        
+        return mapItem
+    }
+
 }
 
 class Model {
@@ -45,18 +64,18 @@ class Model {
         var _buildingsDictionary = [String:[Building]]()
         
         for dictionary in data {
-            let building = Building()
-            building.name = dictionary["name"] as! String
+            let building = Building(title: dictionary["name"] as! String, coordinate: CLLocationCoordinate2D(latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees), subtitle: "")
+            //building.title = dictionary["name"] as! String
             //building.buildingCode = dictionary["opp_bldg_code"] as! Int
             //building.yearConstructed = dictionary["year_constructed"] as! Int
-            building.latitude = dictionary["latitude"] as! Float
-            building.longitude = dictionary["longitude"] as! Float
+            //building.latitude = dictionary["latitude"] as! Float
+            //building.longitude = dictionary["longitude"] as! Float
             //let image = dictionary["photo"] as! String
             //building.imageName = "\(image).jpg"
             
             _buildings.append(building)
             
-            let firstLetter = building.name.firstLetter()!
+            let firstLetter = building.title!.firstLetter()!
             if let _ = _buildingsDictionary[firstLetter] {
                 _buildingsDictionary[firstLetter]!.append(building)
             } else {
