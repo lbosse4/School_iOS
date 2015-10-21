@@ -89,7 +89,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Curry Hall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a63-zU-khX">
-                                            <rect key="frame" x="8" y="2" width="584" height="28"/>
+                                            <rect key="frame" x="8" y="2" width="554" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="9ET-jg-Zbf"/>
                                             </constraints>
@@ -97,12 +97,21 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="0.0" green="0.035485109546330468" blue="0.60211489898989901" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyStar.png" translatesAutoresizingMaskIntoConstraints="NO" id="ynW-OC-43N">
+                                            <rect key="frame" x="562" y="2" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="E1c-eS-Gt2"/>
+                                                <constraint firstAttribute="height" constant="25" id="uH8-4l-pJ6"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.0" green="0.035485109549999998" blue="0.60211489900000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="a63-zU-khX" firstAttribute="trailing" secondItem="HsT-Z6-Ih6" secondAttribute="trailingMargin" id="EnG-ql-Zlm"/>
+                                        <constraint firstItem="ynW-OC-43N" firstAttribute="trailing" secondItem="HsT-Z6-Ih6" secondAttribute="trailingMargin" constant="-5" id="BtY-fF-h2f"/>
+                                        <constraint firstItem="ynW-OC-43N" firstAttribute="centerY" secondItem="HsT-Z6-Ih6" secondAttribute="centerY" constant="-0.5" id="ZkK-cw-JQF"/>
                                         <constraint firstItem="a63-zU-khX" firstAttribute="centerY" secondItem="HsT-Z6-Ih6" secondAttribute="centerY" constant="1" id="beq-i9-6mw"/>
                                         <constraint firstItem="a63-zU-khX" firstAttribute="leading" secondItem="HsT-Z6-Ih6" secondAttribute="leadingMargin" id="enu-ic-R57"/>
+                                        <constraint firstItem="ynW-OC-43N" firstAttribute="leading" secondItem="a63-zU-khX" secondAttribute="trailing" id="uZQ-za-IkW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -123,5 +132,6 @@
     </scenes>
     <resources>
         <image name="BuildingIcon.png" width="30" height="30"/>
+        <image name="emptyStar.png" width="30" height="30"/>
     </resources>
 </document>
