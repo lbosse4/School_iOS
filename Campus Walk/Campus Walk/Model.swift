@@ -118,6 +118,9 @@ class Model {
         return buildings[indexPath.row]
     }
     
+    func indexTitles() -> [String] {
+        return allKeys
+    }
 
 
 //    private func imageAtIndexPath(indexPath : NSIndexPath) -> Photo {

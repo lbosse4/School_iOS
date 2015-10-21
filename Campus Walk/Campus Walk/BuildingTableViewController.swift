@@ -14,9 +14,11 @@ class BuildingTableViewController : UITableViewController {
     let sectionLabelFontSize : CGFloat = 20.0
     let sectionLabelFont : String = "Palatino"
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
+    let scroller = UILocalizedIndexedCollation.currentCollation()
     
     override func viewDidLoad() {
         
+        //scroller
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -25,6 +27,11 @@ class BuildingTableViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.numberOfBuildingsInSection(section)
+    }
+    
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        return model.indexTitles()
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -44,18 +51,7 @@ class BuildingTableViewController : UITableViewController {
         return label
     }
     
-//    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let button = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.width, height: buttonHeight))
-//        button.setTitle(model.parkNameForSection(section), forState: .Normal)
-//        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-//        button.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
-//        button.backgroundColor = maroonColor
-//        button.titleLabel?.font = UIFont(name: titleFont, size: titleFontSize)
-//        button.tag = section
-//        button.layer.borderWidth = buttonBorderWidth
-//        button.layer.borderColor = UIColor.whiteColor().CGColor
-//        return button
-//    }
-    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    }
 
 }
