@@ -46,13 +46,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        
         if status == .AuthorizedWhenInUse {
             mapView.showsUserLocation = true
             locationManager.startUpdatingLocation()
         } else {
             mapView.showsUserLocation = false
             locationManager.stopUpdatingLocation()
-    
         }
     }
     

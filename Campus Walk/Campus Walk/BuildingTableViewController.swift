@@ -19,8 +19,7 @@ class BuildingTableViewController : UITableViewController {
     
     
     override func viewDidLoad() {
-        
-        //scroller
+    
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -40,19 +39,13 @@ class BuildingTableViewController : UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("BuildingTableViewCell", forIndexPath: indexPath) as! BuildingTableViewCell
         
         cell.buildingTitleLabel.text = model.buildingAtIndexPath(indexPath).title
-        //cell.favioriteStarImageView = UIImageView(image: UIImage(named: "emptyStar.png"))
+
         if model.isFavoriteBuildingAtIndexPath(indexPath) {
             cell.favioriteStarImageView.image = UIImage(named: "filledStar.png")
         } else {
             cell.favioriteStarImageView.image = UIImage(named: "emptyStar.png")
         }
-        /*
-        if stateModel.isCheckedStateAtIndex(indexPath.row) {
-        cell.accessoryType = .Checkmark
-        } else {
-        cell.accessoryType = .None
-        }
-        */
+        
         return cell
     }
     
@@ -67,12 +60,7 @@ class BuildingTableViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! BuildingTableViewCell
-//        let image = UIImage(named: "filledStar.png")
-//        cell.favioriteStarImageView.image = image
-        //stateModel.toggleIsCheckedStateAtIndex(indexPath.row)
-        //tableView.reloadData()
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         model.toggleIsFavoriteBuildingAtIndexPath(indexPath)
         tableView.reloadData()
     }
