@@ -65,11 +65,19 @@ class BuildingTableViewController : UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         if isModifyingFavorites {
+            let building = (self.model.buildingAtIndexPath(indexPath))
+            if building.isFavorite {
+                model.removeFavorite(building)
+            } else {
+                model.addFavorite(building)
+
+            }
             model.toggleIsFavoriteBuildingAtIndexPath(indexPath)
             tableView.reloadData()
         } else {
             
         }
+        
     }
 
     @IBAction func addFavoritesButtonPressed(sender: UIButton) {

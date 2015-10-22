@@ -132,6 +132,25 @@ class Model {
         let buildings : [Building] = buildingsInSection(indexPath.section)
         buildings[indexPath.row].isFavorite = !buildings[indexPath.row].isFavorite
     }
+    
+    func favoriteBuildingsToPlot() -> [Building] {
+        return favoriteBuildings
+    }
+    
+    func addFavorite(building: Building) {
+        favoriteBuildings.append(building)
+    }
+    
+    func removeFavorite(building: Building) {
+        var index : Int = 0
+        for aBuilding in favoriteBuildings {
+            if aBuilding.title == building.title {
+                break
+            }
+            index++
+        }
+        favoriteBuildings.removeAtIndex(index)
+    }
 
 }
 

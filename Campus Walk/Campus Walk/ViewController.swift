@@ -24,7 +24,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let initialLocation = CLLocation(latitude: initialLatitude, longitude: initialLongitude)
         centerMapOnLocation(initialLocation)
         
-        //mapView.addAnnotations(model.placesToPlot())
+        mapView.addAnnotations(model.placesToPlot())
         mapView.delegate = self
         
         locationManager.delegate = self
