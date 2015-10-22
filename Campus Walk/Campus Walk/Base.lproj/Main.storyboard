@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-259" y="233"/>
         </scene>
-        <!--Buildings-->
+        <!--Map-->
         <scene sceneID="7a3-Wc-kUs">
             <objects>
                 <viewController id="Teo-CW-fB2" customClass="ViewController" customModule="Campus_Walk" customModuleProvider="target" sceneMemberID="viewController">
@@ -65,7 +65,7 @@
                             <constraint firstItem="b06-qK-D3E" firstAttribute="leading" secondItem="ebW-a6-geW" secondAttribute="leadingMargin" constant="-20" id="u9v-Tk-79N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Buildings" id="ynd-Vd-O9o">
+                    <navigationItem key="navigationItem" title="Map" id="ynd-Vd-O9o">
                         <barButtonItem key="leftBarButtonItem" id="HAI-Nn-1Kb">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dO7-PG-0eM">
                                 <rect key="frame" x="20" y="7" width="30" height="30"/>
@@ -85,7 +85,7 @@
             </objects>
             <point key="canvasLocation" x="437" y="233"/>
         </scene>
-        <!--Building Table View Controller-->
+        <!--Buildings-->
         <scene sceneID="m1g-E6-t2Q">
             <objects>
                 <tableViewController id="vWU-Jw-hBH" customClass="BuildingTableViewController" customModule="Campus_Walk" customModuleProvider="target" sceneMemberID="viewController">
@@ -138,6 +138,22 @@
                             <outlet property="delegate" destination="vWU-Jw-hBH" id="n4t-wk-RCe"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Buildings" id="UAf-Lc-IvC">
+                        <barButtonItem key="rightBarButtonItem" id="b4U-bN-uBD">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xmu-ue-SBn">
+                                <rect key="frame" x="447" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Add Favorites"/>
+                                <connections>
+                                    <action selector="addFavoritesButtonPressed:" destination="vWU-Jw-hBH" eventType="touchUpInside" id="r9t-fk-pKt"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addFavoritesButton" destination="Xmu-ue-SBn" id="yw2-7n-kwx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aG4-Yp-ymm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,6 +16,9 @@ class BuildingTableViewController : UITableViewController {
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
     let scroller = UILocalizedIndexedCollation.currentCollation()
     
+    var isModifyingFavorites : Bool = false
+    
+    @IBOutlet weak var addFavoritesButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -61,8 +64,23 @@ class BuildingTableViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        model.toggleIsFavoriteBuildingAtIndexPath(indexPath)
-        tableView.reloadData()
+        if isModifyingFavorites {
+            model.toggleIsFavoriteBuildingAtIndexPath(indexPath)
+            tableView.reloadData()
+        } else {
+            
+        }
     }
 
+    @IBAction func addFavoritesButtonPressed(sender: UIButton) {
+        isModifyingFavorites = !isModifyingFavorites
+        if addFavoritesButton.titleForState(.Normal) == "Add Favorites"{
+            addFavoritesButton.setTitle("Done", forState: .Normal)
+        } else {
+            addFavoritesButton.setTitle("Add Favorites", forState: .Normal)
+        }
+       
+    }
+    
+    
 }
