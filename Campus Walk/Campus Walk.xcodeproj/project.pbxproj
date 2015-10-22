@@ -54,6 +54,8 @@
 		89E88A581BD951FB004307F5 /* engunit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E88A391BD951FB004307F5 /* engunit.jpg */; settings = {ASSET_TAGS = (); }; };
 		89E88A591BD951FB004307F5 /* smeal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E88A3A1BD951FB004307F5 /* smeal.jpg */; settings = {ASSET_TAGS = (); }; };
 		89E88A5B1BD95203004307F5 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89E88A5A1BD95203004307F5 /* buildings.plist */; settings = {ASSET_TAGS = (); }; };
+		89F7042A1BD9649100AC760A /* CustomMKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F704291BD9649100AC760A /* CustomMKAnnotation.swift */; settings = {ASSET_TAGS = (); }; };
+		89F704311BD972F800AC760A /* StarPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F704301BD972F800AC760A /* StarPin.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		89E88A391BD951FB004307F5 /* engunit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = engunit.jpg; sourceTree = "<group>"; };
 		89E88A3A1BD951FB004307F5 /* smeal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smeal.jpg; sourceTree = "<group>"; };
 		89E88A5A1BD95203004307F5 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
+		89F704291BD9649100AC760A /* CustomMKAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMKAnnotation.swift; sourceTree = "<group>"; };
+		89F704301BD972F800AC760A /* StarPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarPin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 		895C0B411BD6ECF200718E38 /* Assignment_8_Assets */ = {
 			isa = PBXGroup;
 			children = (
+				89F7042B1BD9683100AC760A /* Pin Images */,
 				89E88A5A1BD95203004307F5 /* buildings.plist */,
 				89E88A1B1BD951FB004307F5 /* buildings */,
 				895C0B8A1BD7F89B00718E38 /* Button Icons */,
@@ -179,6 +184,7 @@
 			children = (
 				89A632D11BD5626500CCE5BC /* Main.storyboard */,
 				895C0B911BD8061B00718E38 /* BuildingTableViewCell.swift */,
+				89F704291BD9649100AC760A /* CustomMKAnnotation.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -292,6 +298,14 @@
 				89E88A3A1BD951FB004307F5 /* smeal.jpg */,
 			);
 			path = buildings;
+			sourceTree = "<group>";
+		};
+		89F7042B1BD9683100AC760A /* Pin Images */ = {
+			isa = PBXGroup;
+			children = (
+				89F704301BD972F800AC760A /* StarPin.png */,
+			);
+			name = "Pin Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +447,7 @@
 				89E88A401BD951FB004307F5 /* atherton.jpg in Resources */,
 				895C0B8E1BD7F8EF00718E38 /* BuildingIcon.png in Resources */,
 				895C0B9D1BD84A0000718E38 /* emptyStar.png in Resources */,
+				89F704311BD972F800AC760A /* StarPin.png in Resources */,
 				89E88A561BD951FB004307F5 /* eisenhower.jpg in Resources */,
 				89A632D31BD5626500CCE5BC /* Main.storyboard in Resources */,
 				89E88A411BD951FB004307F5 /* beaver.jpg in Resources */,
@@ -466,6 +481,7 @@
 				895C0B921BD8061B00718E38 /* BuildingTableViewCell.swift in Sources */,
 				895C0B871BD7074200718E38 /* String+FirstLetter.swift in Sources */,
 				895C0B901BD8050900718E38 /* BuildingTableViewController.swift in Sources */,
+				89F7042A1BD9649100AC760A /* CustomMKAnnotation.swift in Sources */,
 				89A632D01BD5626500CCE5BC /* ViewController.swift in Sources */,
 				89A632CE1BD5626500CCE5BC /* AppDelegate.swift in Sources */,
 			);

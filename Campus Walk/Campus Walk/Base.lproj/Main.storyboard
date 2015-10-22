@@ -141,10 +141,10 @@
                     <navigationItem key="navigationItem" title="Buildings" id="UAf-Lc-IvC">
                         <barButtonItem key="rightBarButtonItem" id="b4U-bN-uBD">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xmu-ue-SBn">
-                                <rect key="frame" x="447" y="7" width="133" height="30"/>
+                                <rect key="frame" x="426" y="7" width="154" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Add Favorites"/>
+                                <state key="normal" title="Add/Remove Favorites"/>
                                 <connections>
                                     <action selector="addFavoritesButtonPressed:" destination="vWU-Jw-hBH" eventType="touchUpInside" id="r9t-fk-pKt"/>
                                 </connections>

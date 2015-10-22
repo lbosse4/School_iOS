@@ -82,10 +82,10 @@ class BuildingTableViewController : UITableViewController {
 
     @IBAction func addFavoritesButtonPressed(sender: UIButton) {
         isModifyingFavorites = !isModifyingFavorites
-        if addFavoritesButton.titleForState(.Normal) == "Add Favorites"{
+        if addFavoritesButton.titleForState(.Normal) == "Add/Remove Favorites"{
             addFavoritesButton.setTitle("Done", forState: .Normal)
         } else {
-            addFavoritesButton.setTitle("Add Favorites", forState: .Normal)
+            addFavoritesButton.setTitle("Add/Remove Favorites", forState: .Normal)
         }
        
     }

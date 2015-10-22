@@ -24,7 +24,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let initialLocation = CLLocation(latitude: initialLatitude, longitude: initialLongitude)
         centerMapOnLocation(initialLocation)
         
-        mapView.addAnnotations(model.placesToPlot())
+        //mapView.addAnnotations(model.placesToPlot())
+        mapView.addAnnotations(model.favoriteBuildingsToPlot())
+        
         mapView.delegate = self
         
         locationManager.delegate = self
@@ -38,6 +40,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 locationManager.requestWhenInUseAuthorization()
             }
         }
+        
+        mapView.addAnnotations(model.favoriteBuildingsToPlot())
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +62,86 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        if let annotation = annotation as? Building {
+            let identifier = "pin"
+            var view: MKAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+            }
+            
+            if annotation.isFavorite {
+                view.image = UIImage(named: "StarPin.png")
+            }
+            return view
+        }
+        
+        return nil
+//        if annotation is MKUserLocation {
+//            //return nil so map view draws "blue dot" for standard user location
+//            return nil
+//        }
+//        if let annotation = annotation as? Model.Place {
+//            let identifier = "pin"
+//            var view: MKAnnotationView
+//            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) {
+//                // check to see if a reusable annotation view is available before creating a new one
+//                dequeuedView.annotation = annotation
+//                view = dequeuedView
+//            } else {
+//                view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//                view.canShowCallout = true
+//                view.calloutOffset = CGPoint(x: -5, y: 5)
+//                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+//            }
+//            
+//            // Set annotation-specific properties after the view is dequeued or created..
+//            // Set the custom annotation
+//            if let categoryPhoto:UIImage = model.imageForBuildingType(annotation.category) {
+//                view.image = categoryPhoto
+//            }
+//            else {
+//                view.image = UIImage(named: "blue-pin.png")
+//            }
+//            return view
+//        }
+//        
+//        // Dropped Pin
+//        if annotation is MKPointAnnotation {
+//            let identifier = "DroppedPin"
+//            var view: MKPinAnnotationView
+//            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
+//                // check to see if a reusable annotation view is available before creating a
+//                dequeuedView.annotation = annotation
+//                view = dequeuedView
+//            } else {
+//                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//                view.canShowCallout = true
+//                view.pinTintColor = MKPinAnnotationView.purplePinColor()
+//                view.animatesDrop = true
+//                view.draggable = true
+//                
+//                view.calloutOffset = CGPoint(x: -5, y: 5)
+//                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+//                
+//                
+//            }
+//            return view
+//        }
+//        
+//        return nil
+    }
+
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse {
