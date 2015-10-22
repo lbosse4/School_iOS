@@ -3,7 +3,13 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="xzU-qc-Zfk">
@@ -33,10 +39,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qK-D3E">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
-                            </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="YMQ-9G-XPx">
                                 <rect key="frame" x="0.0" y="64" width="600" height="29"/>
                                 <color key="backgroundColor" red="0.0" green="0.035485109549999998" blue="0.60211489900000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,6 +55,10 @@
                                     <action selector="mapTypeSegmentedControlTriggered:" destination="Teo-CW-fB2" eventType="valueChanged" id="kes-nm-tu9"/>
                                 </connections>
                             </segmentedControl>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qK-D3E">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -76,9 +82,27 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="K96-iC-ZhU">
+                                <connections>
+                                    <action selector="currentLocationButtonPressed:" destination="Teo-CW-fB2" id="vIc-Rg-TsH"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem id="XSW-97-8Fg">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="I0g-6Q-Z7v">
+                                    <rect key="frame" x="454" y="7" width="84" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="StarBarBackground.png"/>
+                                    <connections>
+                                        <action selector="showFavoritesButtonPressed:" destination="Teo-CW-fB2" eventType="touchUpInside" id="OLH-td-K7j"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="b06-qK-D3E" id="Ofv-fF-GXP"/>
+                        <outlet property="showFavoritesButton" destination="I0g-6Q-Z7v" id="rV9-d9-eaa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U8-Vk-CMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,6 +186,7 @@
     </scenes>
     <resources>
         <image name="BuildingIcon.png" width="30" height="30"/>
+        <image name="StarBarBackground.png" width="30" height="30"/>
         <image name="emptyStar.png" width="30" height="30"/>
     </resources>
 </document>

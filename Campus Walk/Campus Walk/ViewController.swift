@@ -12,11 +12,14 @@ import CoreLocation
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var showFavoritesButton: UIButton!
 
     let model = Model.sharedInstance
     let locationManager = CLLocationManager()
     let initialLatitude = 40.7961
     let initialLongitude = -77.8628
+    
+    var isShowingFavorites = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +27,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let initialLocation = CLLocation(latitude: initialLatitude, longitude: initialLongitude)
         centerMapOnLocation(initialLocation)
         
-        mapView.addAnnotations(model.placesToPlot())
-        mapView.addAnnotations(model.favoriteBuildingsToPlot())
+        //mapView.addAnnotations(model.placesToPlot())
+        //mapView.addAnnotations(model.favoriteBuildingsToPlot())
         
         mapView.delegate = self
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        self.navigationItem.rightBarButtonItem = MKUserTrackingBarButtonItem(mapView: mapView)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -40,10 +45,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 locationManager.requestWhenInUseAuthorization()
             }
         }
-        
-        mapView.addAnnotations(model.favoriteBuildingsToPlot())
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        updateFavoritePins()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,9 +70,36 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    @IBAction func currentLocationButtonPressed(sender: UIBarButtonItem) {
+        locationManager.startUpdatingLocation()
+    }
+    
+    @IBAction func showFavoritesButtonPressed(sender: UIButton) {
+        isShowingFavorites = !isShowingFavorites
+        if isShowingFavorites {
+            let image = UIImage(named: "filledStar.png")
+            showFavoritesButton.setImage(image, forState: .Normal)
+            updateFavoritePins()
+        } else {
+            let image = UIImage(named: "StarBarBackground.png")
+            showFavoritesButton.setImage(image, forState: .Normal)
+            mapView.removeAnnotations(mapView.annotations)
+        }
+    }
+    
+    func updateFavoritePins() {
+        mapView.removeAnnotations(mapView.annotations)
+        if isShowingFavorites{
+            mapView.addAnnotations(model.favoriteBuildingsToPlot())
+        }
+    }
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
-            return nil
+            let view = MKAnnotationView()
+            view.image = UIImage(named: "BluePin.png")
+
+            return view
         }
         
         if let annotation = annotation as? Building {
@@ -89,59 +124,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
         return nil
-//        if annotation is MKUserLocation {
-//            //return nil so map view draws "blue dot" for standard user location
-//            return nil
-//        }
-//        if let annotation = annotation as? Model.Place {
-//            let identifier = "pin"
-//            var view: MKAnnotationView
-//            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) {
-//                // check to see if a reusable annotation view is available before creating a new one
-//                dequeuedView.annotation = annotation
-//                view = dequeuedView
-//            } else {
-//                view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//                view.canShowCallout = true
-//                view.calloutOffset = CGPoint(x: -5, y: 5)
-//                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
-//            }
-//            
-//            // Set annotation-specific properties after the view is dequeued or created..
-//            // Set the custom annotation
-//            if let categoryPhoto:UIImage = model.imageForBuildingType(annotation.category) {
-//                view.image = categoryPhoto
-//            }
-//            else {
-//                view.image = UIImage(named: "blue-pin.png")
-//            }
-//            return view
-//        }
-//        
-//        // Dropped Pin
-//        if annotation is MKPointAnnotation {
-//            let identifier = "DroppedPin"
-//            var view: MKPinAnnotationView
-//            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
-//                // check to see if a reusable annotation view is available before creating a
-//                dequeuedView.annotation = annotation
-//                view = dequeuedView
-//            } else {
-//                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//                view.canShowCallout = true
-//                view.pinTintColor = MKPinAnnotationView.purplePinColor()
-//                view.animatesDrop = true
-//                view.draggable = true
-//                
-//                view.calloutOffset = CGPoint(x: -5, y: 5)
-//                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
-//                
-//                
-//            }
-//            return view
-//        }
-//        
-//        return nil
     }
 
     
