@@ -45,6 +45,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func mapTypeSegmentedControlTriggered(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
+            
+            mapView.mapType = MKMapType.Standard
+        }
+        else if sender.selectedSegmentIndex == 1{
+            
+            mapView.mapType = MKMapType.Satellite
+        }
+        else if sender.selectedSegmentIndex == 3{
+            
+            mapView.mapType = MKMapType.Hybrid
+        }
+    }
+    
+    
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
         if status == .AuthorizedWhenInUse {

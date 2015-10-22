@@ -49,6 +49,9 @@
                                     <segment title="Hybrid"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="mapTypeSegmentedControlTriggered:" destination="Teo-CW-fB2" eventType="valueChanged" id="kes-nm-tu9"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
