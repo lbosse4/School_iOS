@@ -24,7 +24,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let initialLocation = CLLocation(latitude: initialLatitude, longitude: initialLongitude)
         centerMapOnLocation(initialLocation)
         
-        //mapView.addAnnotations(model.placesToPlot())
+        mapView.addAnnotations(model.placesToPlot())
         mapView.addAnnotations(model.favoriteBuildingsToPlot())
         
         mapView.delegate = self
@@ -82,6 +82,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             if annotation.isFavorite {
                 view.image = UIImage(named: "StarPin.png")
+            } else {
+                view.image = UIImage(named: "BluePin.png")
             }
             return view
         }

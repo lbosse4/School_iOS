@@ -56,6 +56,7 @@
 		89E88A5B1BD95203004307F5 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89E88A5A1BD95203004307F5 /* buildings.plist */; settings = {ASSET_TAGS = (); }; };
 		89F7042A1BD9649100AC760A /* CustomMKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F704291BD9649100AC760A /* CustomMKAnnotation.swift */; settings = {ASSET_TAGS = (); }; };
 		89F704311BD972F800AC760A /* StarPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F704301BD972F800AC760A /* StarPin.png */; settings = {ASSET_TAGS = (); }; };
+		89F704351BD9787900AC760A /* BluePin.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F704341BD9787900AC760A /* BluePin.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		89E88A5A1BD95203004307F5 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 		89F704291BD9649100AC760A /* CustomMKAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMKAnnotation.swift; sourceTree = "<group>"; };
 		89F704301BD972F800AC760A /* StarPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarPin.png; sourceTree = "<group>"; };
+		89F704341BD9787900AC760A /* BluePin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BluePin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +305,7 @@
 		89F7042B1BD9683100AC760A /* Pin Images */ = {
 			isa = PBXGroup;
 			children = (
+				89F704341BD9787900AC760A /* BluePin.png */,
 				89F704301BD972F800AC760A /* StarPin.png */,
 			);
 			name = "Pin Images";
@@ -443,6 +446,7 @@
 				89E88A431BD951FB004307F5 /* borland.jpg in Resources */,
 				89E88A571BD951FB004307F5 /* eisenhowerparking.jpg in Resources */,
 				89E88A481BD951FB004307F5 /* burrowes.jpg in Resources */,
+				89F704351BD9787900AC760A /* BluePin.png in Resources */,
 				89E88A421BD951FB004307F5 /* biomechanics.jpg in Resources */,
 				89E88A401BD951FB004307F5 /* atherton.jpg in Resources */,
 				895C0B8E1BD7F8EF00718E38 /* BuildingIcon.png in Resources */,
