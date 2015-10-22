@@ -46,23 +46,20 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
 
     @IBAction func mapTypeSegmentedControlTriggered(sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0{
-            
+        switch sender.selectedSegmentIndex {
+        case 0:
             mapView.mapType = MKMapType.Standard
-        }
-        else if sender.selectedSegmentIndex == 1{
-            
+        case 1:
             mapView.mapType = MKMapType.Satellite
-        }
-        else if sender.selectedSegmentIndex == 3{
-            
+        case 2:
             mapView.mapType = MKMapType.Hybrid
+        default:
+            break
         }
     }
     
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        
         if status == .AuthorizedWhenInUse {
             mapView.showsUserLocation = true
             locationManager.startUpdatingLocation()
