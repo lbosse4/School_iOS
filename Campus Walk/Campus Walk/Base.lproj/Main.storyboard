@@ -30,7 +30,7 @@
         <!--Map-->
         <scene sceneID="7a3-Wc-kUs">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="Teo-CW-fB2" customClass="ViewController" customModule="Campus_Walk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Teo-CW-fB2" customClass="ViewController" customModule="Campus_Walk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tm2-Wj-Y0J"/>
                         <viewControllerLayoutGuide type="bottom" id="LYH-ZR-aTz"/>
@@ -119,7 +119,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuildingTableViewCell" rowHeight="31" id="I68-09-TqR" customClass="BuildingTableViewCell" customModule="Campus_Walk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="31"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="31"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I68-09-TqR" id="HsT-Z6-Ih6">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
@@ -154,7 +154,6 @@
                                 <connections>
                                     <outlet property="buildingTitleLabel" destination="a63-zU-khX" id="7IN-xj-4ZV"/>
                                     <outlet property="favioriteStarImageView" destination="ynW-OC-43N" id="gw5-4p-rip"/>
-                                    <segue destination="Teo-CW-fB2" kind="show" identifier="showSelectedPinSegue" id="h6f-hJ-DBW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -190,7 +189,4 @@
         <image name="StarBarBackground.png" width="30" height="30"/>
         <image name="emptyStar.png" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="h6f-hJ-DBW"/>
-    </inferredMetricsTieBreakers>
 </document>

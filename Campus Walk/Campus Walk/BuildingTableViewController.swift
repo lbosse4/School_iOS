@@ -8,9 +8,9 @@
 
 import UIKit
 
-//protocol buildingTableDelegateProtocol : class {
-//    func plotBuilding(building:Building)
-//}
+protocol buildingTableDelegateProtocol : class {
+    func plotBuilding(building:Building)
+}
 
 class BuildingTableViewController : UITableViewController {
     let model = Model.sharedInstance
@@ -21,7 +21,7 @@ class BuildingTableViewController : UITableViewController {
     let scroller = UILocalizedIndexedCollation.currentCollation()
     
     var isModifyingFavorites : Bool = false
-    //weak var delegate: buildingTableDelegateProtocol?
+    weak var delegate: buildingTableDelegateProtocol?
     
     @IBOutlet weak var addFavoritesButton: UIButton!
     
@@ -80,7 +80,7 @@ class BuildingTableViewController : UITableViewController {
             model.toggleIsFavoriteBuildingAtIndexPath(indexPath)
             tableView.reloadData()
         } else {
-            //delegate!.plotBuilding(building)
+            delegate!.plotBuilding(building)
         }
         
     }
@@ -95,30 +95,31 @@ class BuildingTableViewController : UITableViewController {
        
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        switch identifier {
-        case "showSelectedPinSegue":
-            if isModifyingFavorites {
-                return false
-            } else {
-                return true
-            }
-        default:
-            return false
-        }
-    }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "showSelectedPinSegue":
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let selectedBuilding = model.buildingAtIndexPath(indexPath)
-                let controller = segue.destinationViewController as! ViewController
-                controller.plotBuilding(selectedBuilding)
-            }
-        default:
-            assert(false, "Unhandled Segue in ViewController")
-        }
-    }    
+//    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+//        switch identifier {
+//        case "showSelectedPinSegue":
+//            if isModifyingFavorites {
+//                return false
+//            } else {
+//                return true
+//            }
+//        default:
+//            return false
+//        }
+//    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        switch segue.identifier! {
+//        case "showSelectedPinSegue":
+//            if let indexPath = self.tableView.indexPathForSelectedRow {
+//                let selectedBuilding = model.buildingAtIndexPath(indexPath)
+//                let controller = segue.destinationViewController as! ViewController
+//                
+//                controller.plotBuilding(selectedBuilding)
+//            }
+//        default:
+//            assert(false, "Unhandled Segue in ViewController")
+//        }
+//    }    
 
     
 }

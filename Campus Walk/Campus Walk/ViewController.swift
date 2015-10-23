@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var showFavoritesButton: UIButton!
 
@@ -20,9 +20,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     let initialLongitude = -77.8628
     let initialSpanX : CLLocationDegrees = 0.01
     let initialSpanY : CLLocationDegrees = 0.01
-    let zoomedSpanX : CLLocationDegrees = 0.0085
-    let zoomedSpanY : CLLocationDegrees = 0.0085
-    let animationDuration : NSTimeInterval = 0.3
+    let zoomedSpanX : CLLocationDegrees = 0.0055
+    let zoomedSpanY : CLLocationDegrees = 0.0055
+    let animationDuration : NSTimeInterval = 3.0
     
     var isShowingFavorites = false
     
@@ -93,6 +93,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "TableViewSegue":
+            let destinationViewController = segue.destinationViewController as! BuildingTableViewController
+            destinationViewController.delegate = self
+        default:
+            break
+        }
+    }
+    
     func updateFavoritePins() {
         mapView.removeAnnotations(mapView.annotations)
         if isShowingFavorites{
@@ -102,12 +112,31 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func plotBuilding(building: Building){
-        mapView.addAnnotation(building)
-        let location = CLLocation(latitude: building.coordinate.latitude, longitude: building.coordinate.longitude)
-        UIView.animateWithDuration(animationDuration) { () -> Void in
-            self.centerMapOnLocation(location, spanX: self.zoomedSpanX, spanY: self.zoomedSpanY)
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { () -> Void in
+            self.mapView.addAnnotation(building)
+            let location = CLLocation(latitude: building.coordinate.latitude, longitude: building.coordinate.longitude)
+            UIView.animateWithDuration(self.animationDuration) { () -> Void in
+                self.centerMapOnLocation(location, spanX: self.zoomedSpanX, spanY: self.zoomedSpanY)
+            }
+            self.model.addUserAddedPin(building)
         }
-        model.addUserAddedPin(building)
+//        let completionBlock = {() in
+//            self.mapView.addAnnotation(building)
+//            let location = CLLocation(latitude: building.coordinate.latitude, longitude: building.coordinate.longitude)
+//            UIView.animateWithDuration(self.animationDuration) { () -> Void in
+//                self.centerMapOnLocation(location, spanX: self.zoomedSpanX, spanY: self.zoomedSpanY)
+//            }
+//            self.model.addUserAddedPin(building)
+//        }
+      //  let count = self.navigationController?.viewControllers.count
+       // self.navigationController?.viewControllers[count! - 2]
+        //dismissViewControllerAnimated(true, completion: nil)
+        //self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
+        
+        CATransaction.commit()
+        
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
