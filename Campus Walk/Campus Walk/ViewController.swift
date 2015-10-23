@@ -13,6 +13,7 @@ import CoreLocation
 class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var showFavoritesButton: UIButton!
+    @IBOutlet weak var trashCanButton: UIButton!
 
     let model = Model.sharedInstance
     let locationManager = CLLocationManager()
@@ -25,6 +26,7 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
     let animationDuration : NSTimeInterval = 3.0
     
     var isShowingFavorites = false
+    var currentSelectedPin: Building?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,8 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         //mapView.addAnnotations(model.favoriteBuildingsToPlot())
         
         mapView.delegate = self
+        
+        trashCanButton.hidden = true
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -73,6 +77,15 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         default:
             break
         }
+    }
+    
+    @IBAction func trashCanButtonPressed(sender: UIButton) {
+        
+        mapView.removeAnnotation(currentSelectedPin!)
+        model.removeUserPlottedPin(currentSelectedPin!)
+        currentSelectedPin = nil
+        trashCanButton.hidden = true
+        
     }
     
     @IBAction func currentLocationButtonPressed(sender: UIBarButtonItem) {
@@ -121,29 +134,14 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
             }
             self.model.addUserAddedPin(building)
         }
-//        let completionBlock = {() in
-//            self.mapView.addAnnotation(building)
-//            let location = CLLocation(latitude: building.coordinate.latitude, longitude: building.coordinate.longitude)
-//            UIView.animateWithDuration(self.animationDuration) { () -> Void in
-//                self.centerMapOnLocation(location, spanX: self.zoomedSpanX, spanY: self.zoomedSpanY)
-//            }
-//            self.model.addUserAddedPin(building)
-//        }
-      //  let count = self.navigationController?.viewControllers.count
-       // self.navigationController?.viewControllers[count! - 2]
-        //dismissViewControllerAnimated(true, completion: nil)
-        //self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+
         self.navigationController?.popViewControllerAnimated(true)
-        
         CATransaction.commit()
-        
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
-            let view = MKAnnotationView()
-            view.image = UIImage(named: "BluePin.png")
-            return view
+            return nil
         }
         
         if let annotation = annotation as? Building {
@@ -159,6 +157,7 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
             }
             
+            
             if annotation.isFavorite {
                 view.image = UIImage(named: "StarPin.png")
             } else {
@@ -170,6 +169,20 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         return nil
     }
 
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        currentSelectedPin = view.annotation as? Building
+        if !(currentSelectedPin!.isFavorite) {
+            trashCanButton.hidden = false
+        }
+    }
+    
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+        trashCanButton.hidden = true
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+    }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse {

@@ -54,6 +54,7 @@
 		89E492B71BDA77FC00A1946C /* eisenhowerparking.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E492981BDA77FC00A1946C /* eisenhowerparking.jpg */; settings = {ASSET_TAGS = (); }; };
 		89E492B81BDA77FC00A1946C /* engunit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E492991BDA77FC00A1946C /* engunit.jpg */; settings = {ASSET_TAGS = (); }; };
 		89E492B91BDA77FC00A1946C /* smeal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89E4929A1BDA77FC00A1946C /* smeal.jpg */; settings = {ASSET_TAGS = (); }; };
+		89E492C11BDA82E000A1946C /* TrashCan.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E492C01BDA82E000A1946C /* TrashCan.png */; settings = {ASSET_TAGS = (); }; };
 		89F7042A1BD9649100AC760A /* CustomMKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F704291BD9649100AC760A /* CustomMKAnnotation.swift */; settings = {ASSET_TAGS = (); }; };
 		89F704311BD972F800AC760A /* StarPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F704301BD972F800AC760A /* StarPin.png */; settings = {ASSET_TAGS = (); }; };
 		89F704351BD9787900AC760A /* BluePin.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F704341BD9787900AC760A /* BluePin.png */; settings = {ASSET_TAGS = (); }; };
@@ -131,6 +132,7 @@
 		89E492981BDA77FC00A1946C /* eisenhowerparking.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eisenhowerparking.jpg; sourceTree = "<group>"; };
 		89E492991BDA77FC00A1946C /* engunit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = engunit.jpg; sourceTree = "<group>"; };
 		89E4929A1BDA77FC00A1946C /* smeal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smeal.jpg; sourceTree = "<group>"; };
+		89E492C01BDA82E000A1946C /* TrashCan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrashCan.png; sourceTree = "<group>"; };
 		89F704291BD9649100AC760A /* CustomMKAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMKAnnotation.swift; sourceTree = "<group>"; };
 		89F704301BD972F800AC760A /* StarPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarPin.png; sourceTree = "<group>"; };
 		89F704341BD9787900AC760A /* BluePin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BluePin.png; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		895C0B8A1BD7F89B00718E38 /* Button Icons */ = {
 			isa = PBXGroup;
 			children = (
+				89E492C01BDA82E000A1946C /* TrashCan.png */,
 				89E492741BDA77CC00A1946C /* StarBarBackground.png */,
 				89E492751BDA77CC00A1946C /* filledStar.png */,
 				89E492761BDA77CC00A1946C /* emptyStar.png */,
@@ -422,6 +425,7 @@
 				89E492A21BDA77FC00A1946C /* biomechanics.jpg in Resources */,
 				89E4929B1BDA77FC00A1946C /* agadmin.jpg in Resources */,
 				89E4929F1BDA77FC00A1946C /* arts.jpg in Resources */,
+				89E492C11BDA82E000A1946C /* TrashCan.png in Resources */,
 				89E492B41BDA77FC00A1946C /* eeeast.jpg in Resources */,
 				89E4927A1BDA77CC00A1946C /* emptyStar.png in Resources */,
 				89E492B81BDA77FC00A1946C /* engunit.jpg in Resources */,

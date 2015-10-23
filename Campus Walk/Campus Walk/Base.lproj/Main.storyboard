@@ -72,16 +72,28 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="ynd-Vd-O9o">
-                        <barButtonItem key="leftBarButtonItem" id="HAI-Nn-1Kb">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dO7-PG-0eM">
-                                <rect key="frame" x="20" y="7" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="BuildingButton" image="BuildingIcon.png"/>
-                                <connections>
-                                    <segue destination="vWU-Jw-hBH" kind="show" identifier="TableViewSegue" id="thC-NP-QO6"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem id="HAI-Nn-1Kb">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dO7-PG-0eM">
+                                    <rect key="frame" x="20" y="7" width="30" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="BuildingButton" image="BuildingIcon.png"/>
+                                    <connections>
+                                        <segue destination="vWU-Jw-hBH" kind="show" identifier="TableViewSegue" id="thC-NP-QO6"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem id="3Vh-fV-VQZ">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dx1-9T-h9t">
+                                    <rect key="frame" x="58" y="7" width="84" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="TrashCan.png"/>
+                                    <connections>
+                                        <action selector="trashCanButtonPressed:" destination="Teo-CW-fB2" eventType="touchUpInside" id="qoF-N6-faa"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="K96-iC-ZhU">
                                 <connections>
@@ -103,6 +115,7 @@
                     <connections>
                         <outlet property="mapView" destination="b06-qK-D3E" id="Ofv-fF-GXP"/>
                         <outlet property="showFavoritesButton" destination="I0g-6Q-Z7v" id="rV9-d9-eaa"/>
+                        <outlet property="trashCanButton" destination="dx1-9T-h9t" id="dcL-bh-Yds"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U8-Vk-CMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -187,6 +200,7 @@
     <resources>
         <image name="BuildingIcon.png" width="30" height="30"/>
         <image name="StarBarBackground.png" width="30" height="30"/>
+        <image name="TrashCan.png" width="30" height="29"/>
         <image name="emptyStar.png" width="30" height="30"/>
     </resources>
 </document>
