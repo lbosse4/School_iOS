@@ -92,34 +92,5 @@ class BuildingTableViewController : UITableViewController {
         } else {
             addFavoritesButton.setTitle("Add/Remove Favorites", forState: .Normal)
         }
-       
     }
-    
-//    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-//        switch identifier {
-//        case "showSelectedPinSegue":
-//            if isModifyingFavorites {
-//                return false
-//            } else {
-//                return true
-//            }
-//        default:
-//            return false
-//        }
-//    }
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        switch segue.identifier! {
-//        case "showSelectedPinSegue":
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                let selectedBuilding = model.buildingAtIndexPath(indexPath)
-//                let controller = segue.destinationViewController as! ViewController
-//                
-//                controller.plotBuilding(selectedBuilding)
-//            }
-//        default:
-//            assert(false, "Unhandled Segue in ViewController")
-//        }
-//    }    
-
-    
-}
+  }

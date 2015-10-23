@@ -35,9 +35,6 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         let initialLocation = CLLocation(latitude: initialLatitude, longitude: initialLongitude)
         centerMapOnLocation(initialLocation, spanX: initialSpanX, spanY: initialSpanY)
         
-        //mapView.addAnnotations(model.placesToPlot())
-        //mapView.addAnnotations(model.favoriteBuildingsToPlot())
-        
         mapView.delegate = self
         
         trashCanButton.hidden = true
@@ -105,8 +102,6 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         } else {
             let image = UIImage(named: "StarBarBackground.png")
             showFavoritesButton.setImage(image, forState: .Normal)
-//            mapView.removeAnnotations(mapView.annotations)
-//            mapView.addAnnotations(model.userPlottedPinsToPlot())
             updatePins()
         }
     }
@@ -124,11 +119,6 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
     func updatePins() {
         mapView.removeAnnotations(mapView.annotations)
         if isShowingFavorites{
-//            for building in model.favoriteBuildingsToPlot() {
-//                if !model.userPlottedPinsToPlot().contains(building){
-//                    mapView.addAnnotation(building)
-//                }
-//            }
             mapView.addAnnotations(model.favoriteBuildingsToPlot())
         }
         mapView.addAnnotations(model.userPlottedPinsToPlot())
@@ -176,9 +166,7 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
                     view.image = UIImage(named: "BluePin.png")
                 }
             } else {
-                //if annotation.isFavorite && model.userPlottedPinsToPlot().contains(annotation){
-                    view.image = UIImage(named: "BluePin.png")
-                //}
+                view.image = UIImage(named: "BluePin.png")
             }
             
             return view
