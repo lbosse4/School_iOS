@@ -177,17 +177,6 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
                 //}
             }
             
-            
-//            if annotation.isFavorite {
-//                if model.userPlottedPinsToPlot().contains(annotation){
-//                    view.image = UIImage(named: "BluePin.png")
-//                } else {
-//                    view.image = UIImage(named: "StarPin.png")
-//                }
-//                
-//            } else {
-//                view.image = UIImage(named: "BluePin.png")
-//            }
             return view
         }
         
