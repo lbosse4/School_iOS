@@ -58,7 +58,7 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        updateFavoritePins()
+        updatePins()
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,12 +97,13 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         if isShowingFavorites {
             let image = UIImage(named: "filledStar.png")
             showFavoritesButton.setImage(image, forState: .Normal)
-            updateFavoritePins()
+            updatePins()
         } else {
             let image = UIImage(named: "StarBarBackground.png")
             showFavoritesButton.setImage(image, forState: .Normal)
-            mapView.removeAnnotations(mapView.annotations)
-            mapView.addAnnotations(model.userPlottedPinsToPlot())
+//            mapView.removeAnnotations(mapView.annotations)
+//            mapView.addAnnotations(model.userPlottedPinsToPlot())
+            updatePins()
         }
     }
     
@@ -116,9 +117,14 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         }
     }
     
-    func updateFavoritePins() {
+    func updatePins() {
         mapView.removeAnnotations(mapView.annotations)
         if isShowingFavorites{
+//            for building in model.favoriteBuildingsToPlot() {
+//                if !model.userPlottedPinsToPlot().contains(building){
+//                    mapView.addAnnotation(building)
+//                }
+//            }
             mapView.addAnnotations(model.favoriteBuildingsToPlot())
         }
         mapView.addAnnotations(model.userPlottedPinsToPlot())
@@ -133,8 +139,10 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
                 self.centerMapOnLocation(location, spanX: self.zoomedSpanX, spanY: self.zoomedSpanY)
             }
             self.model.addUserAddedPin(building)
+            
         }
 
+        
         self.navigationController?.popViewControllerAnimated(true)
         CATransaction.commit()
     }
@@ -157,12 +165,29 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
             }
             
-            
-            if annotation.isFavorite {
-                view.image = UIImage(named: "StarPin.png")
+            if isShowingFavorites {
+                if annotation.isFavorite {
+                    view.image = UIImage(named: "StarPin.png")
+                } else {
+                    view.image = UIImage(named: "BluePin.png")
+                }
             } else {
-                view.image = UIImage(named: "BluePin.png")
+                //if annotation.isFavorite && model.userPlottedPinsToPlot().contains(annotation){
+                    view.image = UIImage(named: "BluePin.png")
+                //}
             }
+            
+            
+//            if annotation.isFavorite {
+//                if model.userPlottedPinsToPlot().contains(annotation){
+//                    view.image = UIImage(named: "BluePin.png")
+//                } else {
+//                    view.image = UIImage(named: "StarPin.png")
+//                }
+//                
+//            } else {
+//                view.image = UIImage(named: "BluePin.png")
+//            }
             return view
         }
         
