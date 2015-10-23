@@ -14,6 +14,7 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var showFavoritesButton: UIButton!
     @IBOutlet weak var trashCanButton: UIButton!
+    @IBOutlet weak var mapTypeSegmentedControl: UISegmentedControl!
 
     let model = Model.sharedInstance
     let locationManager = CLLocationManager()
@@ -44,6 +45,8 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
+        
+        
         self.navigationItem.rightBarButtonItem = MKUserTrackingBarButtonItem(mapView: mapView)
     }
     
@@ -58,6 +61,7 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        view.bringSubviewToFront(mapTypeSegmentedControl)
         updatePins()
     }
     
