@@ -18,6 +18,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     let locationManager = CLLocationManager()
     let initialLatitude = 40.7961
     let initialLongitude = -77.8628
+    let initialSpanX : CLLocationDegrees = 0.01
+    let initialSpanY : CLLocationDegrees = 0.01
+    let zoomedSpanX : CLLocationDegrees = 0.0085
+    let zoomedSpanY : CLLocationDegrees = 0.0085
+    let animationDuration : NSTimeInterval = 0.3
     
     var isShowingFavorites = false
     
@@ -25,7 +30,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let initialLocation = CLLocation(latitude: initialLatitude, longitude: initialLongitude)
-        centerMapOnLocation(initialLocation)
+        centerMapOnLocation(initialLocation, spanX: initialSpanX, spanY: initialSpanY)
         
         //mapView.addAnnotations(model.placesToPlot())
         //mapView.addAnnotations(model.favoriteBuildingsToPlot())
@@ -84,6 +89,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let image = UIImage(named: "StarBarBackground.png")
             showFavoritesButton.setImage(image, forState: .Normal)
             mapView.removeAnnotations(mapView.annotations)
+            mapView.addAnnotations(model.userPlottedPinsToPlot())
         }
     }
     
@@ -92,13 +98,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if isShowingFavorites{
             mapView.addAnnotations(model.favoriteBuildingsToPlot())
         }
+        mapView.addAnnotations(model.userPlottedPinsToPlot())
+    }
+    
+    func plotBuilding(building: Building){
+        mapView.addAnnotation(building)
+        let location = CLLocation(latitude: building.coordinate.latitude, longitude: building.coordinate.longitude)
+        UIView.animateWithDuration(animationDuration) { () -> Void in
+            self.centerMapOnLocation(location, spanX: self.zoomedSpanX, spanY: self.zoomedSpanY)
+        }
+        model.addUserAddedPin(building)
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             let view = MKAnnotationView()
             view.image = UIImage(named: "BluePin.png")
-
             return view
         }
         
@@ -137,8 +152,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpanMake(0.01, 0.01))
+    func centerMapOnLocation(location: CLLocation, spanX: CLLocationDegrees, spanY: CLLocationDegrees) {
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.regionThatFits(coordinateRegion)
     }

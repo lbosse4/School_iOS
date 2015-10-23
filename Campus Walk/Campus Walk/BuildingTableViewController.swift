@@ -8,6 +8,10 @@
 
 import UIKit
 
+//protocol buildingTableDelegateProtocol : class {
+//    func plotBuilding(building:Building)
+//}
+
 class BuildingTableViewController : UITableViewController {
     let model = Model.sharedInstance
     let sectionLabelHeight : CGFloat = 40.0
@@ -17,12 +21,13 @@ class BuildingTableViewController : UITableViewController {
     let scroller = UILocalizedIndexedCollation.currentCollation()
     
     var isModifyingFavorites : Bool = false
+    //weak var delegate: buildingTableDelegateProtocol?
     
     @IBOutlet weak var addFavoritesButton: UIButton!
     
     
     override func viewDidLoad() {
-    
+        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -64,8 +69,8 @@ class BuildingTableViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let building = (self.model.buildingAtIndexPath(indexPath))
         if isModifyingFavorites {
-            let building = (self.model.buildingAtIndexPath(indexPath))
             if building.isFavorite {
                 model.removeFavorite(building)
             } else {
@@ -75,7 +80,7 @@ class BuildingTableViewController : UITableViewController {
             model.toggleIsFavoriteBuildingAtIndexPath(indexPath)
             tableView.reloadData()
         } else {
-            
+            //delegate!.plotBuilding(building)
         }
         
     }
@@ -90,5 +95,30 @@ class BuildingTableViewController : UITableViewController {
        
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        switch identifier {
+        case "showSelectedPinSegue":
+            if isModifyingFavorites {
+                return false
+            } else {
+                return true
+            }
+        default:
+            return false
+        }
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "showSelectedPinSegue":
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let selectedBuilding = model.buildingAtIndexPath(indexPath)
+                let controller = segue.destinationViewController as! ViewController
+                controller.plotBuilding(selectedBuilding)
+            }
+        default:
+            assert(false, "Unhandled Segue in ViewController")
+        }
+    }    
+
     
 }

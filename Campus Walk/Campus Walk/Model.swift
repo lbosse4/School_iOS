@@ -58,6 +58,7 @@ class Model {
     private let allKeys : [String]
     
     private var favoriteBuildings = [Building]()
+    private var userPlottedPins = [Building]()
     
     init() {
         let path = NSBundle.mainBundle().pathForResource(plistName, ofType: "plist")
@@ -137,8 +138,27 @@ class Model {
         return favoriteBuildings
     }
     
+    func userPlottedPinsToPlot() -> [Building] {
+        return userPlottedPins
+    }
+    
+    func addUserAddedPin(building: Building){
+        userPlottedPins.append(building)
+    }
+    
     func addFavorite(building: Building) {
         favoriteBuildings.append(building)
+    }
+    
+    func removeUserPlottedPin(building: Building) {
+        var index : Int = 0
+        for aBuilding in userPlottedPins {
+            if aBuilding.title == building.title {
+                break
+            }
+            index++
+        }
+        userPlottedPins.removeAtIndex(index)
     }
     
     func removeFavorite(building: Building) {
