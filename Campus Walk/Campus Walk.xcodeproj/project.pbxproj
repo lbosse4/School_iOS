@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8926C1501BDD7E57007AD067 /* NoImageAvailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 8926C14F1BDD7E57007AD067 /* NoImageAvailable.png */; settings = {ASSET_TAGS = (); }; };
+		8926C1521BDD833B007AD067 /* BuildingInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8926C1511BDD833B007AD067 /* BuildingInformationViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8926C1541BDD8DF7007AD067 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8926C1531BDD8DF7007AD067 /* DirectionsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8926C1561BDD91E9007AD067 /* CameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8926C1551BDD91E9007AD067 /* CameraIcon.png */; settings = {ASSET_TAGS = (); }; };
 		895C0B401BD6ECC500718E38 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895C0B3F1BD6ECC500718E38 /* Model.swift */; settings = {ASSET_TAGS = (); }; };
 		895C0B841BD7060000718E38 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895C0B831BD7060000718E38 /* MapKit.framework */; };
 		895C0B871BD7074200718E38 /* String+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895C0B861BD7074200718E38 /* String+FirstLetter.swift */; settings = {ASSET_TAGS = (); }; };
@@ -79,6 +83,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8926C14F1BDD7E57007AD067 /* NoImageAvailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoImageAvailable.png; sourceTree = "<group>"; };
+		8926C1511BDD833B007AD067 /* BuildingInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingInformationViewController.swift; sourceTree = "<group>"; };
+		8926C1531BDD8DF7007AD067 /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
+		8926C1551BDD91E9007AD067 /* CameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraIcon.png; sourceTree = "<group>"; };
 		895C0B3F1BD6ECC500718E38 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		895C0B831BD7060000718E38 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		895C0B861BD7074200718E38 /* String+FirstLetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FirstLetter.swift"; sourceTree = "<group>"; };
@@ -165,9 +173,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		895C0B411BD6ECF200718E38 /* Assignment_8_Assets */ = {
+		8926C14E1BDD7C13007AD067 /* Building Assets */ = {
 			isa = PBXGroup;
 			children = (
+				8926C14F1BDD7E57007AD067 /* NoImageAvailable.png */,
 				89F7047B1BD9C08200AC760A /* buildings.plist */,
 				89E4927C1BDA77FC00A1946C /* agadmin.jpg */,
 				89E4927D1BDA77FC00A1946C /* ageng.jpg */,
@@ -200,6 +209,14 @@
 				89E492981BDA77FC00A1946C /* eisenhowerparking.jpg */,
 				89E492991BDA77FC00A1946C /* engunit.jpg */,
 				89E4929A1BDA77FC00A1946C /* smeal.jpg */,
+			);
+			name = "Building Assets";
+			sourceTree = "<group>";
+		};
+		895C0B411BD6ECF200718E38 /* Assignment_8_Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8926C14E1BDD7C13007AD067 /* Building Assets */,
 				89F7042B1BD9683100AC760A /* Pin Images */,
 				895C0B8A1BD7F89B00718E38 /* Button Icons */,
 			);
@@ -230,6 +247,8 @@
 			children = (
 				89A632CF1BD5626500CCE5BC /* ViewController.swift */,
 				895C0B8F1BD8050900718E38 /* BuildingTableViewController.swift */,
+				8926C1511BDD833B007AD067 /* BuildingInformationViewController.swift */,
+				8926C1531BDD8DF7007AD067 /* DirectionsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -237,6 +256,7 @@
 		895C0B8A1BD7F89B00718E38 /* Button Icons */ = {
 			isa = PBXGroup;
 			children = (
+				8926C1551BDD91E9007AD067 /* CameraIcon.png */,
 				89E492C01BDA82E000A1946C /* TrashCan.png */,
 				89E492741BDA77CC00A1946C /* StarBarBackground.png */,
 				89E492751BDA77CC00A1946C /* filledStar.png */,
@@ -418,6 +438,7 @@
 				89E492AE1BDA77FC00A1946C /* chapel.jpg in Resources */,
 				89E492B71BDA77FC00A1946C /* eisenhowerparking.jpg in Resources */,
 				89E492A31BDA77FC00A1946C /* borland.jpg in Resources */,
+				8926C1561BDD91E9007AD067 /* CameraIcon.png in Resources */,
 				89E492B21BDA77FC00A1946C /* deike.jpg in Resources */,
 				89E492A11BDA77FC00A1946C /* beaver.jpg in Resources */,
 				89E492A01BDA77FC00A1946C /* atherton.jpg in Resources */,
@@ -431,6 +452,7 @@
 				89E492B81BDA77FC00A1946C /* engunit.jpg in Resources */,
 				89E492B31BDA77FC00A1946C /* earthengineeringsciences.jpg in Resources */,
 				89E492AF1BDA77FC00A1946C /* chemistry.jpg in Resources */,
+				8926C1501BDD7E57007AD067 /* NoImageAvailable.png in Resources */,
 				89E492AB1BDA77FC00A1946C /* carpenter.jpg in Resources */,
 				89E492B01BDA77FC00A1946C /* computer.jpg in Resources */,
 				89E492A91BDA77FC00A1946C /* businessbuilding.jpg in Resources */,
@@ -486,7 +508,9 @@
 				895C0B871BD7074200718E38 /* String+FirstLetter.swift in Sources */,
 				895C0B901BD8050900718E38 /* BuildingTableViewController.swift in Sources */,
 				89F7042A1BD9649100AC760A /* CustomMKAnnotation.swift in Sources */,
+				8926C1521BDD833B007AD067 /* BuildingInformationViewController.swift in Sources */,
 				89A632D01BD5626500CCE5BC /* ViewController.swift in Sources */,
+				8926C1541BDD8DF7007AD067 /* DirectionsViewController.swift in Sources */,
 				89A632CE1BD5626500CCE5BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

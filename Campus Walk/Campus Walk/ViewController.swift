@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDelegateProtocol, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var showFavoritesButton: UIButton!
     @IBOutlet weak var trashCanButton: UIButton!
@@ -45,6 +45,7 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         
         
         self.navigationItem.rightBarButtonItem = MKUserTrackingBarButtonItem(mapView: mapView)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -187,7 +188,12 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let buildingInfoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("buildingInformation") as! BuildingInformationViewController
         
+        buildingInfoViewController.delegate = self
+        buildingInfoViewController.building = view.annotation as? Building
+        
+        self.presentViewController(buildingInfoViewController, animated: true, completion: nil)
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -206,6 +212,39 @@ class ViewController: UIViewController, buildingTableDelegateProtocol, MKMapView
         mapView.regionThatFits(coordinateRegion)
     }
 
+    func buildingInfoViewControllerDismissed(response: MKDirectionsResponse?, sourceBuilding: Building, destinationBuilding: Building) {
+//        
+//        // remove old overlays
+//        
+//        // create new overlay
+//        for route in (response?.routes)! {
+//            mapView.addOverlay(route.polyline)
+//            
+//            stepByStepDirections = route.steps
+//            
+//            // Show the first direction
+//            directionCount = 0
+//            directionsLabel.text = stepByStepDirections![directionCount].instructions
+//            
+//            // Hide and show the appropriate buttons and views
+//            directionsMainView.hidden = false
+//            directionsPreviousButton.hidden = true
+//            if directionCount+1 == stepByStepDirections?.count {
+//                directionsNextButton.hidden = true
+//            }
+//        }
+//        
+//        let region = MKCoordinateRegionMakeWithDistance((response?.source.placemark.location?.coordinate)!, 2000, 2000)
+//        mapView.setRegion(region, animated: true)
+//        mapView.selectAnnotation(sourceBuilding, animated: true)
+//        
+//        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func cancelChildViewController() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
+    
 }
 
