@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		897F96DC1BDC3706004FE01F /* titleScreenBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 897F96DB1BDC3706004FE01F /* titleScreenBackground.png */; settings = {ASSET_TAGS = (); }; };
+		89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6A1BDC657C0051212A /* womensLacrosseField.png */; settings = {ASSET_TAGS = (); }; };
+		89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6C1BDC65820051212A /* mensLacrosseField.png */; settings = {ASSET_TAGS = (); }; };
+		89E30A6F1BDC6B520051212A /* scoreboard.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6E1BDC6B200051212A /* scoreboard.ttf */; settings = {ASSET_TAGS = (); }; };
+		89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A701BDC6C0A0051212A /* digital-7.ttf */; settings = {ASSET_TAGS = (); }; };
 		89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */; };
 		89EC2BBE1BCF0DAB008B37DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BBD1BCF0DAB008B37DC /* ViewController.swift */; };
 		89EC2BC11BCF0DAB008B37DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EC2BBF1BCF0DAB008B37DC /* Main.storyboard */; };
@@ -34,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		897F96DB1BDC3706004FE01F /* titleScreenBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titleScreenBackground.png; sourceTree = "<group>"; };
+		89E30A6A1BDC657C0051212A /* womensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womensLacrosseField.png; sourceTree = "<group>"; };
+		89E30A6C1BDC65820051212A /* mensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensLacrosseField.png; sourceTree = "<group>"; };
+		89E30A6E1BDC6B200051212A /* scoreboard.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scoreboard.ttf; sourceTree = "<group>"; };
+		89E30A701BDC6C0A0051212A /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
 		89EC2BB81BCF0DAB008B37DC /* GameTime Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameTime Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89EC2BBD1BCF0DAB008B37DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89E30A691BDC654E0051212A /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				897F96DB1BDC3706004FE01F /* titleScreenBackground.png */,
+				89E30A6C1BDC65820051212A /* mensLacrosseField.png */,
+				89E30A6A1BDC657C0051212A /* womensLacrosseField.png */,
+			);
+			name = Photos;
+			sourceTree = "<group>";
+		};
 		89EC2BAF1BCF0DAA008B37DC = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +117,9 @@
 		89EC2BBA1BCF0DAB008B37DC /* GameTime Stats */ = {
 			isa = PBXGroup;
 			children = (
+				89E30A6E1BDC6B200051212A /* scoreboard.ttf */,
+				89E30A701BDC6C0A0051212A /* digital-7.ttf */,
+				89E30A691BDC654E0051212A /* Photos */,
 				89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */,
 				89EC2BBD1BCF0DAB008B37DC /* ViewController.swift */,
 				89EC2BBF1BCF0DAB008B37DC /* Main.storyboard */,
@@ -231,9 +254,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */,
 				89EC2BC61BCF0DAB008B37DC /* LaunchScreen.storyboard in Resources */,
 				89EC2BC31BCF0DAB008B37DC /* Assets.xcassets in Resources */,
+				89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */,
+				89E30A6F1BDC6B520051212A /* scoreboard.ttf in Resources */,
+				897F96DC1BDC3706004FE01F /* titleScreenBackground.png in Resources */,
 				89EC2BC11BCF0DAB008B37DC /* Main.storyboard in Resources */,
+				89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +433,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.psu.cse.lwb122.GameTime-Stats";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -416,6 +445,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.psu.cse.lwb122.GameTime-Stats";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -486,6 +516,7 @@
 				89EC2BE21BCF0DAC008B37DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89EC2BE31BCF0DAC008B37DC /* Build configuration list for PBXNativeTarget "GameTime StatsTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +525,7 @@
 				89EC2BE51BCF0DAC008B37DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89EC2BE61BCF0DAC008B37DC /* Build configuration list for PBXNativeTarget "GameTime StatsUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +534,7 @@
 				89EC2BE81BCF0DAC008B37DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
