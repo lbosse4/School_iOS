@@ -136,6 +136,14 @@ class Model {
         favoriteBuildings.append(building)
     }
     
+    func updateImageForBuildingWithTitle(image : String, title : String){
+        for building in buildingsArray {
+            if building.title == title {
+                building.imageName = image
+            }
+        }
+    }
+    
     func yearConstructedForBuildingWithTitle(title : String) -> Int{
         for building in buildingsArray{
             if building.title == title {

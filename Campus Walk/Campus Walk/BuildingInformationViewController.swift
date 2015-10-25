@@ -14,14 +14,16 @@ protocol BuildingInfoProtocol {
     func cancelChildViewController()
 }
 
-class BuildingInformationViewController : UIViewController {
+class BuildingInformationViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var buildingTitleLabel: UILabel!
     @IBOutlet weak var buildingImageView: UIImageView!
     @IBOutlet weak var buildingYearLabel: UILabel!
     
-    var delegate: BuildingInfoProtocol?
+    
     let model = Model.sharedInstance
+    let imagePicker = UIImagePickerController()
+    var delegate: BuildingInfoProtocol?
     var building : Building? = nil
     
     override func viewDidLoad() {
@@ -35,6 +37,7 @@ class BuildingInformationViewController : UIViewController {
         } else {
             buildingYearLabel.hidden = true
         }
+        imagePicker.delegate = self
     }
     
     @IBAction func cancelButtonPressed(sender: UIButton) {
@@ -42,7 +45,20 @@ class BuildingInformationViewController : UIViewController {
     }
     
     @IBAction func cameraButtonPressed(sender: UIButton) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        //imagePicker.sourceType = .Camera
         
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            buildingImageView.image = pickedImage
+            //model.updateImageForBuildingWithTitle(pickedImage.title???, title: building.title)
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
