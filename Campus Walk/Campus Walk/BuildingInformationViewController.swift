@@ -44,7 +44,34 @@ class BuildingInformationViewController : UIViewController, UIImagePickerControl
         delegate?.cancelChildViewController()
     }
     
-    @IBAction func cameraButtonPressed(sender: UIButton) {
+    @IBAction func takePhotoButtonPressed(sender: UIButton) {
+        if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .Camera
+            imagePicker.cameraCaptureMode = .Photo
+            imagePicker.modalPresentationStyle = .FullScreen
+            presentViewController(imagePicker, animated: true, completion: nil)
+        } else {
+            noCameraFound()
+        }
+    }
+    
+    func noCameraFound(){
+        let alertVC = UIAlertController(
+            title: "No Camera",
+            message: "Sorry, this device has no camera",
+            preferredStyle: .Alert)
+        let okAction = UIAlertAction(
+            title: "OK",
+            style:.Default,
+            handler: nil)
+        alertVC.addAction(okAction)
+        presentViewController(alertVC,
+            animated: true,
+            completion: nil)
+    }
+    
+    @IBAction func addFromLibraryPressed(sender: UIButton) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
         //imagePicker.sourceType = .Camera

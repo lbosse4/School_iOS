@@ -10,7 +10,6 @@
 		8926C1501BDD7E57007AD067 /* NoImageAvailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 8926C14F1BDD7E57007AD067 /* NoImageAvailable.png */; settings = {ASSET_TAGS = (); }; };
 		8926C1521BDD833B007AD067 /* BuildingInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8926C1511BDD833B007AD067 /* BuildingInformationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8926C1541BDD8DF7007AD067 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8926C1531BDD8DF7007AD067 /* DirectionsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		8926C1561BDD91E9007AD067 /* CameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8926C1551BDD91E9007AD067 /* CameraIcon.png */; settings = {ASSET_TAGS = (); }; };
 		895C0B401BD6ECC500718E38 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895C0B3F1BD6ECC500718E38 /* Model.swift */; settings = {ASSET_TAGS = (); }; };
 		895C0B841BD7060000718E38 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895C0B831BD7060000718E38 /* MapKit.framework */; };
 		895C0B871BD7074200718E38 /* String+FirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895C0B861BD7074200718E38 /* String+FirstLetter.swift */; settings = {ASSET_TAGS = (); }; };
@@ -23,6 +22,8 @@
 		89A632D81BD5626500CCE5BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89A632D61BD5626500CCE5BC /* LaunchScreen.storyboard */; };
 		89A632E31BD5626600CCE5BC /* Campus_WalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A632E21BD5626600CCE5BC /* Campus_WalkTests.swift */; };
 		89A632EE1BD5626600CCE5BC /* Campus_WalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A632ED1BD5626600CCE5BC /* Campus_WalkUITests.swift */; };
+		89ACB86C1BDDCEDE0049E8EE /* CameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89ACB86B1BDDCEDE0049E8EE /* CameraIcon.png */; settings = {ASSET_TAGS = (); }; };
+		89ACB86E1BDDD10A0049E8EE /* LibraryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89ACB86D1BDDD10A0049E8EE /* LibraryIcon.png */; settings = {ASSET_TAGS = (); }; };
 		89E492781BDA77CC00A1946C /* StarBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E492741BDA77CC00A1946C /* StarBarBackground.png */; settings = {ASSET_TAGS = (); }; };
 		89E492791BDA77CC00A1946C /* filledStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E492751BDA77CC00A1946C /* filledStar.png */; settings = {ASSET_TAGS = (); }; };
 		89E4927A1BDA77CC00A1946C /* emptyStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E492761BDA77CC00A1946C /* emptyStar.png */; settings = {ASSET_TAGS = (); }; };
@@ -86,7 +87,6 @@
 		8926C14F1BDD7E57007AD067 /* NoImageAvailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoImageAvailable.png; sourceTree = "<group>"; };
 		8926C1511BDD833B007AD067 /* BuildingInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingInformationViewController.swift; sourceTree = "<group>"; };
 		8926C1531BDD8DF7007AD067 /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
-		8926C1551BDD91E9007AD067 /* CameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraIcon.png; sourceTree = "<group>"; };
 		895C0B3F1BD6ECC500718E38 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		895C0B831BD7060000718E38 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		895C0B861BD7074200718E38 /* String+FirstLetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FirstLetter.swift"; sourceTree = "<group>"; };
@@ -105,6 +105,8 @@
 		89A632E91BD5626600CCE5BC /* Campus WalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Campus WalkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A632ED1BD5626600CCE5BC /* Campus_WalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus_WalkUITests.swift; sourceTree = "<group>"; };
 		89A632EF1BD5626600CCE5BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89ACB86B1BDDCEDE0049E8EE /* CameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraIcon.png; sourceTree = "<group>"; };
+		89ACB86D1BDDD10A0049E8EE /* LibraryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LibraryIcon.png; sourceTree = "<group>"; };
 		89E492741BDA77CC00A1946C /* StarBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarBarBackground.png; sourceTree = "<group>"; };
 		89E492751BDA77CC00A1946C /* filledStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filledStar.png; sourceTree = "<group>"; };
 		89E492761BDA77CC00A1946C /* emptyStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyStar.png; sourceTree = "<group>"; };
@@ -256,7 +258,8 @@
 		895C0B8A1BD7F89B00718E38 /* Button Icons */ = {
 			isa = PBXGroup;
 			children = (
-				8926C1551BDD91E9007AD067 /* CameraIcon.png */,
+				89ACB86B1BDDCEDE0049E8EE /* CameraIcon.png */,
+				89ACB86D1BDDD10A0049E8EE /* LibraryIcon.png */,
 				89E492C01BDA82E000A1946C /* TrashCan.png */,
 				89E492741BDA77CC00A1946C /* StarBarBackground.png */,
 				89E492751BDA77CC00A1946C /* filledStar.png */,
@@ -438,7 +441,7 @@
 				89E492AE1BDA77FC00A1946C /* chapel.jpg in Resources */,
 				89E492B71BDA77FC00A1946C /* eisenhowerparking.jpg in Resources */,
 				89E492A31BDA77FC00A1946C /* borland.jpg in Resources */,
-				8926C1561BDD91E9007AD067 /* CameraIcon.png in Resources */,
+				89ACB86C1BDDCEDE0049E8EE /* CameraIcon.png in Resources */,
 				89E492B21BDA77FC00A1946C /* deike.jpg in Resources */,
 				89E492A11BDA77FC00A1946C /* beaver.jpg in Resources */,
 				89E492A01BDA77FC00A1946C /* atherton.jpg in Resources */,
@@ -459,6 +462,7 @@
 				89E492A71BDA77FC00A1946C /* buckhout.jpg in Resources */,
 				89E492A61BDA77FC00A1946C /* brycejordan.jpg in Resources */,
 				89E4929C1BDA77FC00A1946C /* ageng.jpg in Resources */,
+				89ACB86E1BDDD10A0049E8EE /* LibraryIcon.png in Resources */,
 				89F7047C1BD9C08200AC760A /* buildings.plist in Resources */,
 				89E492B61BDA77FC00A1946C /* eisenhower.jpg in Resources */,
 				89E492B11BDA77FC00A1946C /* davey.jpg in Resources */,
