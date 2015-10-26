@@ -395,10 +395,10 @@
                                     <action selector="cancelButtonPressed:" destination="yOM-jH-07D" eventType="touchUpInside" id="ku8-bw-0Zm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are currently viewing the \(building) Building. Would you like directions to or from this building?" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEY-c7-ebr">
-                                <rect key="frame" x="20" y="127" width="560" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Would you like directions to or from \(building)?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEY-c7-ebr">
+                                <rect key="frame" x="20" y="107" width="560" height="61"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="2Ms-dp-lbN"/>
+                                    <constraint firstAttribute="height" constant="61" id="2Ms-dp-lbN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -416,6 +416,9 @@
                                     <segment title="From"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="toFromSegmentedControlTriggered:" destination="yOM-jH-07D" eventType="valueChanged" id="Q4E-Er-CxZ"/>
+                                </connections>
                             </segmentedControl>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbD-7N-6lR">
                                 <rect key="frame" x="211" y="472" width="179" height="34"/>
@@ -440,18 +443,44 @@
                                 <state key="normal" title="Get Directions">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="cancelButtonPressed:" destination="yOM-jH-07D" eventType="touchUpInside" id="k1e-ep-XgG"/>
-                                </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Response Label. Response depends on previous choice" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mt1-9Y-Op3">
+                                <rect key="frame" x="143" y="204" width="315" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="mpI-vm-HwX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" translatesAutoresizingMaskIntoConstraints="NO" id="ZEo-Od-oUk">
+                                <rect key="frame" x="180" y="273" width="240" height="26"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="UJS-5L-oCw"/>
+                                    <constraint firstAttribute="height" constant="25" id="w3U-Yk-M5r"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Current Location"/>
+                                    <segment title="Choose a Building"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="locationOrBuildingSegmentedControlTriggered:" destination="yOM-jH-07D" eventType="valueChanged" id="t0K-HU-i95"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.75197285353535359" green="0.75197285353535359" blue="0.75197285353535359" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="mt1-9Y-Op3" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="0VY-JB-XXm"/>
                             <constraint firstItem="QcQ-tk-rbq" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" constant="1" id="7Zq-wo-zO5"/>
                             <constraint firstItem="QcQ-tk-rbq" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="89H-oZ-ejd"/>
                             <constraint firstItem="fMs-n8-pa0" firstAttribute="top" secondItem="Frd-mV-b9h" secondAttribute="bottom" constant="15" id="9Ai-7G-2bu"/>
                             <constraint firstItem="fMs-n8-pa0" firstAttribute="leading" secondItem="apT-kf-ZFr" secondAttribute="leadingMargin" id="CUi-Nx-Tj1"/>
+                            <constraint firstItem="ZEo-Od-oUk" firstAttribute="top" secondItem="mt1-9Y-Op3" secondAttribute="bottom" constant="8" id="Ere-J2-OZ7"/>
                             <constraint firstItem="fMs-n8-pa0" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="FQ4-0c-Niu"/>
+                            <constraint firstItem="mt1-9Y-Op3" firstAttribute="top" secondItem="QcQ-tk-rbq" secondAttribute="bottom" constant="8" id="JZE-5K-Wei"/>
                             <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="9ip-Od-g8b" secondAttribute="bottom" constant="56" id="Jkc-He-Ezu"/>
                             <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="0oG-Ck-quW" secondAttribute="bottom" constant="54" id="MEW-U4-Qho"/>
                             <constraint firstItem="QcQ-tk-rbq" firstAttribute="top" secondItem="OEY-c7-ebr" secondAttribute="bottom" constant="8" id="NLy-14-i5e"/>
@@ -462,16 +491,26 @@
                             <constraint firstItem="aZg-94-srr" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="ao6-yU-NRM"/>
                             <constraint firstItem="0oG-Ck-quW" firstAttribute="top" secondItem="WbD-7N-6lR" secondAttribute="bottom" constant="6" id="iVr-lO-aqu"/>
                             <constraint firstItem="0oG-Ck-quW" firstAttribute="top" secondItem="aZg-94-srr" secondAttribute="bottom" constant="8" id="jje-tZ-Ge6"/>
+                            <constraint firstItem="ZEo-Od-oUk" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="kAB-Wp-wZC"/>
                             <constraint firstItem="OEY-c7-ebr" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="rqe-Kt-Vh4"/>
                             <constraint firstItem="WbD-7N-6lR" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="rtk-Lp-UbT"/>
-                            <constraint firstItem="OEY-c7-ebr" firstAttribute="top" secondItem="fMs-n8-pa0" secondAttribute="bottom" constant="48" id="ucA-CQ-oUv"/>
+                            <constraint firstItem="OEY-c7-ebr" firstAttribute="top" secondItem="fMs-n8-pa0" secondAttribute="bottom" constant="28" id="ucA-CQ-oUv"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="7Zq-wo-zO5"/>
+                                <exclude reference="Nro-PS-B65"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="getDirectionsButton" destination="aZg-94-srr" id="Nu4-o0-Ptv"/>
+                        <outlet property="getDirectionsView" destination="WbD-7N-6lR" id="HIA-fz-wql"/>
+                        <outlet property="locationOrBuildingSegmentedControl" destination="ZEo-Od-oUk" id="Fqb-gu-2MQ"/>
+                        <outlet property="promptLabel" destination="OEY-c7-ebr" id="Hkv-MJ-tjC"/>
+                        <outlet property="responseLabel" destination="mt1-9Y-Op3" id="tPd-p0-x6w"/>
+                        <outlet property="toFromSegmentedControl" destination="QcQ-tk-rbq" id="rlc-RC-APh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7To-o4-U8I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

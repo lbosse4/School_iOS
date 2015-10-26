@@ -78,7 +78,6 @@
         <!--View Controller-->
         <scene sceneID="Rb6-ny-l0j">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dQP-n4-4oe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="kbi-2a-i8m" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jDv-r3-gSf"/>
@@ -169,15 +168,15 @@
                                 <exclude reference="waQ-sj-Nfo"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="4wl-lB-ZpT"/>
-                                <exclude reference="LFw-ZE-Xge"/>
-                                <exclude reference="RUv-7J-1f4"/>
-                                <exclude reference="dVw-z4-nV5"/>
-                                <exclude reference="g0F-zt-ACD"/>
+                                <exclude reference="edU-DZ-gVS"/>
                                 <exclude reference="LLf-d8-sRv"/>
                                 <exclude reference="WQ2-JE-p6g"/>
                                 <exclude reference="vDK-mR-39v"/>
-                                <exclude reference="edU-DZ-gVS"/>
+                                <exclude reference="RUv-7J-1f4"/>
+                                <exclude reference="dVw-z4-nV5"/>
+                                <exclude reference="g0F-zt-ACD"/>
+                                <exclude reference="4wl-lB-ZpT"/>
+                                <exclude reference="LFw-ZE-Xge"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -188,19 +187,20 @@
                                 <include reference="waQ-sj-Nfo"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="4wl-lB-ZpT"/>
-                                <include reference="LFw-ZE-Xge"/>
-                                <include reference="RUv-7J-1f4"/>
-                                <include reference="dVw-z4-nV5"/>
-                                <exclude reference="g0F-zt-ACD"/>
+                                <include reference="edU-DZ-gVS"/>
                                 <include reference="LLf-d8-sRv"/>
                                 <include reference="WQ2-JE-p6g"/>
                                 <include reference="vDK-mR-39v"/>
-                                <include reference="edU-DZ-gVS"/>
+                                <include reference="RUv-7J-1f4"/>
+                                <include reference="dVw-z4-nV5"/>
+                                <exclude reference="g0F-zt-ACD"/>
+                                <include reference="4wl-lB-ZpT"/>
+                                <include reference="LFw-ZE-Xge"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQP-n4-4oe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="836.25" y="306.75"/>
         </scene>

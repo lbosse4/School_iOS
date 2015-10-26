@@ -97,7 +97,7 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
         case "getDirectionsSegue":
             let directionsViewController = segue.destinationViewController as! DirectionsViewController
             directionsViewController.delegate = self
-            directionsViewController.source = building
+            directionsViewController.building = building
             break
             
         default:
