@@ -469,6 +469,37 @@
                                     <action selector="locationOrBuildingSegmentedControlTriggered:" destination="yOM-jH-07D" eventType="valueChanged" id="t0K-HU-i95"/>
                                 </connections>
                             </segmentedControl>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Twz-lt-Kkr">
+                                <rect key="frame" x="211" y="314" width="179" height="34"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="34" id="3sr-Q5-ioG"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="179" id="Hsn-GU-7WG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="179" id="LOQ-bg-7yv"/>
+                                    <constraint firstAttribute="width" constant="179" id="fS4-qZ-vD5"/>
+                                    <constraint firstAttribute="height" constant="34" id="kqi-hQ-XGb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="yIf-JX-JNZ"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-oa-l1D">
+                                <rect key="frame" x="213" y="316" width="175" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DE6-Ea-1Bl"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="175" id="S2f-0h-CM6"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="cBA-rR-RCO"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="qdv-ZU-hcp"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="175" id="xBd-0w-bpq"/>
+                                    <constraint firstAttribute="width" constant="175" id="xsu-qU-Nw0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="15"/>
+                                <state key="normal" title="Choose a Building">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseABuildingButtonPressed:" destination="yOM-jH-07D" eventType="touchUpInside" id="Edo-6D-oXX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.75197285353535359" green="0.75197285353535359" blue="0.75197285353535359" alpha="1" colorSpace="calibratedRGB"/>
@@ -482,6 +513,7 @@
                             <constraint firstItem="fMs-n8-pa0" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="FQ4-0c-Niu"/>
                             <constraint firstItem="mt1-9Y-Op3" firstAttribute="top" secondItem="QcQ-tk-rbq" secondAttribute="bottom" constant="8" id="JZE-5K-Wei"/>
                             <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="9ip-Od-g8b" secondAttribute="bottom" constant="56" id="Jkc-He-Ezu"/>
+                            <constraint firstItem="GiW-oa-l1D" firstAttribute="top" secondItem="ZEo-Od-oUk" secondAttribute="bottom" constant="18" id="LRj-KL-v1i"/>
                             <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="0oG-Ck-quW" secondAttribute="bottom" constant="54" id="MEW-U4-Qho"/>
                             <constraint firstItem="QcQ-tk-rbq" firstAttribute="top" secondItem="OEY-c7-ebr" secondAttribute="bottom" constant="8" id="NLy-14-i5e"/>
                             <constraint firstItem="QcQ-tk-rbq" firstAttribute="top" secondItem="OEY-c7-ebr" secondAttribute="bottom" constant="8" id="Nro-PS-B65"/>
@@ -489,12 +521,15 @@
                             <constraint firstItem="9ip-Od-g8b" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="UTB-Zv-Yw8"/>
                             <constraint firstItem="OEY-c7-ebr" firstAttribute="leading" secondItem="apT-kf-ZFr" secondAttribute="leadingMargin" id="ZO5-tF-u78"/>
                             <constraint firstItem="aZg-94-srr" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="ao6-yU-NRM"/>
+                            <constraint firstItem="Twz-lt-Kkr" firstAttribute="top" secondItem="ZEo-Od-oUk" secondAttribute="bottom" constant="16" id="bgX-yu-4Qv"/>
                             <constraint firstItem="0oG-Ck-quW" firstAttribute="top" secondItem="WbD-7N-6lR" secondAttribute="bottom" constant="6" id="iVr-lO-aqu"/>
                             <constraint firstItem="0oG-Ck-quW" firstAttribute="top" secondItem="aZg-94-srr" secondAttribute="bottom" constant="8" id="jje-tZ-Ge6"/>
                             <constraint firstItem="ZEo-Od-oUk" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="kAB-Wp-wZC"/>
+                            <constraint firstItem="Twz-lt-Kkr" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="l6m-FA-nhZ"/>
                             <constraint firstItem="OEY-c7-ebr" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="rqe-Kt-Vh4"/>
                             <constraint firstItem="WbD-7N-6lR" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="rtk-Lp-UbT"/>
                             <constraint firstItem="OEY-c7-ebr" firstAttribute="top" secondItem="fMs-n8-pa0" secondAttribute="bottom" constant="28" id="ucA-CQ-oUv"/>
+                            <constraint firstItem="GiW-oa-l1D" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="wGL-n2-Btm"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -504,6 +539,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="chooseABuildingButton" destination="GiW-oa-l1D" id="htd-Lt-tl4"/>
+                        <outlet property="chooseABuildingView" destination="Twz-lt-Kkr" id="50h-dA-ziq"/>
                         <outlet property="getDirectionsButton" destination="aZg-94-srr" id="Nu4-o0-Ptv"/>
                         <outlet property="getDirectionsView" destination="WbD-7N-6lR" id="HIA-fz-wql"/>
                         <outlet property="locationOrBuildingSegmentedControl" destination="ZEo-Od-oUk" id="Fqb-gu-2MQ"/>
@@ -515,6 +552,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7To-o4-U8I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1777" y="954"/>
+        </scene>
+        <!--Find Building Table View Controller-->
+        <scene sceneID="Re7-ju-uQa">
+            <objects>
+                <tableViewController storyboardIdentifier="FindBuildingTableViewController" id="N1H-I7-4zr" customClass="FindBuildingTableViewController" customModule="Campus_Walk" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="24" sectionHeaderHeight="28" sectionFooterHeight="28" id="W1B-nt-9Kg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FindBuildingTableViewCell" rowHeight="24" id="5G8-9j-nSF" customClass="FindBuildingTableViewCell" customModule="Campus_Walk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="24"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5G8-9j-nSF" id="jLk-XZ-1cb">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="23"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZ4-T8-SUP">
+                                            <rect key="frame" x="8" y="1" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="RZ4-T8-SUP" firstAttribute="leading" secondItem="jLk-XZ-1cb" secondAttribute="leadingMargin" id="HFa-5Q-d7H"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="RZ4-T8-SUP" secondAttribute="bottom" constant="-7" id="Tdh-NQ-GqA"/>
+                                        <constraint firstItem="RZ4-T8-SUP" firstAttribute="top" secondItem="jLk-XZ-1cb" secondAttribute="topMargin" constant="-7" id="Vvk-Fh-fwk"/>
+                                        <constraint firstItem="RZ4-T8-SUP" firstAttribute="trailing" secondItem="jLk-XZ-1cb" secondAttribute="trailingMargin" id="ZqH-u8-LVi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="buildingTitleLabel" destination="RZ4-T8-SUP" id="jYG-Tc-SW3"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="N1H-I7-4zr" id="OhN-ub-pR5"/>
+                            <outlet property="delegate" destination="N1H-I7-4zr" id="5mu-Rv-TDN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hRR-8v-QaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2426" y="954"/>
         </scene>
     </scenes>
     <resources>

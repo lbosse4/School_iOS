@@ -9,8 +9,6 @@
 import UIKit
 
 class BuildingTableViewCell : UITableViewCell {
-    let model = Model.sharedInstance
-    
     @IBOutlet weak var favioriteStarImageView: UIImageView!
     
     @IBOutlet weak var buildingTitleLabel: UILabel!

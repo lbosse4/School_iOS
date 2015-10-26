@@ -14,17 +14,19 @@ protocol GetDirectionsProtocol {
     func cancelChildViewController()
 }
 
-class DirectionsViewController : UIViewController {
+class DirectionsViewController : UIViewController, FindBuildingsProtocol {
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var toFromSegmentedControl: UISegmentedControl!
     @IBOutlet weak var responseLabel: UILabel!
     @IBOutlet weak var locationOrBuildingSegmentedControl: UISegmentedControl!
     @IBOutlet weak var getDirectionsButton: UIButton!
     @IBOutlet weak var getDirectionsView: UIView!
+    @IBOutlet weak var chooseABuildingButton: UIButton!
+    @IBOutlet weak var chooseABuildingView: UIView!
     
     let model = Model.sharedInstance
-    var delegate: GetDirectionsProtocol?
-    
+    var delegate : GetDirectionsProtocol?
+    var chosenBuildingFromTableView : Building?
     var source : Building?
     var destination : Building?
     var building : Building!
@@ -44,7 +46,6 @@ class DirectionsViewController : UIViewController {
     @IBAction func toFromSegmentedControlTriggered(sender: UISegmentedControl) {
         locationOrBuildingSegmentedControl.hidden = false
         responseLabel.hidden = false
-        
         switch sender.selectedSegmentIndex {
         //to
         case 0:
@@ -66,23 +67,50 @@ class DirectionsViewController : UIViewController {
         switch sender.selectedSegmentIndex {
         //location
         case 0:
+            chooseABuildingButton.hidden = true
+            chooseABuildingView.hidden = true
+            //sending back as a building object for simplicity reasons. Only care about the title
+            let userLocationBuildingObject = Building(title: "sender", coordinate: CLLocationCoordinate2D(), subtitle: "")
             if isStartingFromBuilding {
-                
+                destination = userLocationBuildingObject
             } else {
-                
+                source = userLocationBuildingObject
             }
+            getDirectionsView.hidden = false
+            getDirectionsButton.hidden = false
         //building
         case 1:
-            if isStartingFromBuilding {
-                
-            } else {
-                
-            }
+            chooseABuildingView.hidden = false
+            chooseABuildingButton.hidden = false
+            getDirectionsButton.hidden = true
+            getDirectionsView.hidden = true
+            
         default:
             break
         }
+        
+    }
+    @IBAction func chooseABuildingButtonPressed(sender: UIButton) {
+        let bldgSearchViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FindBuildingTableViewController") as! FindBuildingTableViewController
+        
+        bldgSearchViewController.delegate = self
+        
+        // present the view controller
+        self.presentViewController(bldgSearchViewController, animated: true, completion: nil)
+        
+    }
+
+    func findBuildingViewControllerDismissed(chosenBuilding : Building){
+        chosenBuildingFromTableView = chosenBuilding
+        self.dismissViewControllerAnimated(true, completion: nil)
         getDirectionsView.hidden = false
         getDirectionsButton.hidden = false
+        if isStartingFromBuilding {
+            destination = chosenBuildingFromTableView
+        } else {
+            source = chosenBuildingFromTableView
+        }
+        
     }
     
 }
