@@ -14,7 +14,7 @@ protocol BuildingInfoProtocol {
     func cancelChildViewController()
 }
 
-class BuildingInformationViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class BuildingInformationViewController : UIViewController, GetDirectionsProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var buildingTitleLabel: UILabel!
     @IBOutlet weak var buildingImageView: UIImageView!
@@ -82,10 +82,28 @@ class BuildingInformationViewController : UIViewController, UIImagePickerControl
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             buildingImageView.image = pickedImage
+            //*************************************** NEED TO FIGURE THIS OUT
             //model.updateImageForBuildingWithTitle(pickedImage.title???, title: building.title)
         }
-        
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func cancelChildViewController() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "getDirectionsSegue":
+            let directionsViewController = segue.destinationViewController as! DirectionsViewController
+            directionsViewController.delegate = self
+            directionsViewController.source = building
+            break
+            
+        default:
+            assert(false, "Unhandled Segue")
+        }
+        
     }
     
 }
