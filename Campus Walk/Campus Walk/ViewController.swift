@@ -50,7 +50,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         directionsView.hidden = true
-        view.bringSubviewToFront(directionsView)
+        
         self.navigationItem.rightBarButtonItem = MKUserTrackingBarButtonItem(mapView: mapView)
         
     }
@@ -67,6 +67,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         view.bringSubviewToFront(mapTypeSegmentedControl)
+        view.bringSubviewToFront(directionsView)
         updatePins()
     }
     
@@ -127,12 +128,10 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     }
     
     @IBAction func trashCanButtonPressed(sender: UIButton) {
-        
         mapView.removeAnnotation(currentSelectedPin!)
         model.removeUserPlottedPin(currentSelectedPin!)
         currentSelectedPin = nil
         trashCanButton.hidden = true
-        
     }
     
     @IBAction func currentLocationButtonPressed(sender: UIBarButtonItem) {
@@ -272,6 +271,12 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
 
     func buildingInfoViewControllerDismissed(response: MKDirectionsResponse?, sourceBuilding: Building, destinationBuilding: Building) {
         directionsView.hidden = false
+        if destinationBuilding.title == "your current location" {
+            destinationBuilding.coordinate = (locationManager.location?.coordinate)!
+        }
+        if sourceBuilding.title == "your current location" {
+            sourceBuilding.coordinate = (locationManager.location?.coordinate)!
+        }
         mapView.addAnnotation(sourceBuilding)
         mapView.addAnnotation(destinationBuilding)
         // create new overlay
