@@ -621,7 +621,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="CVv-IM-Guc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="38"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -657,7 +657,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="2Ms-dp-lbN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -709,7 +709,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="mpI-vm-HwX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -760,7 +760,7 @@
                                     <action selector="chooseABuildingButtonPressed:" destination="yOM-jH-07D" eventType="touchUpInside" id="Edo-6D-oXX"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click below for directions to fljhsdjfk from skjdfhskjdf " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dT-0k-jId">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click below for directions to fljhsdjfk from skjdfhskjdf " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dT-0k-jId">
                                 <rect key="frame" x="20" y="457" width="560" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="ACt-iu-h2T"/>
