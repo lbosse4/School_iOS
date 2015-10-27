@@ -35,6 +35,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     var currentSelectedPin : Building?
     var stepByStepDirections :[MKRouteStep]? = nil
     var directionCount : Int = 0
+    var directionResponse : MKDirectionsResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,7 +158,8 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
             let destinationViewController = segue.destinationViewController as! BuildingTableViewController
             destinationViewController.delegate = self
         case "listDirectionsSegue":
-            break
+            let listDirectionViewController = segue.destinationViewController as! ListedDirectionsViewController
+            listDirectionViewController.directionResponse = directionResponse
         default:
             break
         }
@@ -272,6 +274,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     }
 
     func buildingInfoViewControllerDismissed(response: MKDirectionsResponse?, sourceBuilding: Building, destinationBuilding: Building) {
+        directionResponse = response
         directionsView.hidden = false
         mapView.addAnnotation(sourceBuilding)
         mapView.addAnnotation(destinationBuilding)
