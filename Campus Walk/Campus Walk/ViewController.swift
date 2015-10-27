@@ -93,6 +93,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     @IBAction func directionCancelButtonPressed(sender: UIButton) {
         directionsView.hidden = true
         mapView.removeOverlays(mapView.overlays)
+        updatePins()
     }
     
     @IBAction func directionNavButtonPressed(sender: UIButton) {
