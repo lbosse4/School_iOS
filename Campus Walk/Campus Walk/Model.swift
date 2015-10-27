@@ -15,7 +15,7 @@ class Building : NSObject, MKAnnotation {
     var coordinate : CLLocationCoordinate2D
     var isFavorite : Bool
     var yearConstructed : Int
-    var imageName : String
+    var image : UIImage
     
     init (title: String, coordinate: CLLocationCoordinate2D, subtitle:String){
         self.title = title
@@ -23,7 +23,7 @@ class Building : NSObject, MKAnnotation {
         self.coordinate = coordinate
         isFavorite = false
         yearConstructed = 0
-        imageName = "NoImageAvailable.png"
+        image = UIImage(named: "NoImageAvailable.png")!
         super.init()
     }
     
@@ -59,7 +59,7 @@ class Model {
             let building = Building(title: dictionary["name"] as! String, coordinate: CLLocationCoordinate2D(latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees), subtitle: "")
             let image = dictionary["photo"] as! String
             if image != "" {
-                building.imageName = "\(image).jpg"
+                building.image = UIImage(named: "\(image).jpg")!
             }
             building.yearConstructed = dictionary["year_constructed"] as! Int
                     
@@ -144,10 +144,10 @@ class Model {
         
     }
     
-    func updateImageForBuildingWithTitle(image : String, title : String){
+    func updateImageForBuildingWithTitle(image : UIImage, title : String){
         for building in buildingsArray {
             if building.title == title {
-                building.imageName = image
+                building.image = image
             }
         }
     }

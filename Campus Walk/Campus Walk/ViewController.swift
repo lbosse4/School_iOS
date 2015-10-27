@@ -278,12 +278,16 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         directionResponse = response
 
         let dateFormatter = NSDateFormatter()
-        ETALabel.text = "ETA: \(endTime)"
+        dateFormatter.timeStyle = .ShortStyle
+        let now = NSDate()
+        let arrivalDate = now.dateByAddingTimeInterval(endTime)
+        ETALabel.text = "ETA: \(String(dateFormatter.stringFromDate(arrivalDate)))"
+        //ETALabel.text = "ETA: \(arrivalDate.description)"
         
         directionsView.hidden = false
         mapView.addAnnotation(sourceBuilding)
         mapView.addAnnotation(destinationBuilding)
-        // create new overlay
+
         for route in (response?.routes)! {
             mapView.addOverlay(route.polyline)
             
@@ -291,7 +295,6 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
             directionCount = 0
             directionsLabel.text = stepByStepDirections![directionCount].instructions
             
-            //directionsView.hidden = false
             backButton.hidden = true
             backButtonView.hidden = true
             if directionCount+1 == stepByStepDirections?.count {

@@ -30,7 +30,7 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
     var ETA : NSTimeInterval?
     
     override func viewDidLoad() {
-        buildingImageView.image = UIImage(named: (building?.imageName)!)
+        buildingImageView.image = building?.image
         buildingImageView.contentMode = UIViewContentMode.ScaleAspectFit
         buildingTitleLabel.text = building?.title
         let yearConstructed = model.yearConstructedForBuildingWithTitle((building?.title)!)
@@ -85,8 +85,8 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             buildingImageView.image = pickedImage
-            //*************************************** NEED TO FIGURE THIS OUT
-            //model.updateImageForBuildingWithTitle(pickedImage.title???, title: building.title)
+            model.updateImageForBuildingWithTitle(pickedImage
+                , title: building!.title!)
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
