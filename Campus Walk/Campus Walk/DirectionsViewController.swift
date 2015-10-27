@@ -34,7 +34,6 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol, CLLoca
     var destination : Building?
     var building : Building!
     var isStartingFromBuilding = false
-    //var isEndingAtBuilding = false
     
     override func viewDidLoad() {
         if let name = building.title {
@@ -77,7 +76,6 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol, CLLoca
         case 0:
             responseLabel.text = "Should the directions start from your current location or another building on campus?"
             destination = building
-            //isEndingAtBuilding = true
             isStartingFromBuilding = false
         //from
         case 1:
@@ -103,7 +101,6 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol, CLLoca
         case 0:
             chooseABuildingButton.hidden = true
             chooseABuildingView.hidden = true
-            //creating a 'building' object for the user location for simplicity purposes
             let userLocationBuildingObject = Building(title: "your current location", coordinate: (locationManager.location?.coordinate)!, subtitle: "")
             if isStartingFromBuilding {
                 destination = userLocationBuildingObject

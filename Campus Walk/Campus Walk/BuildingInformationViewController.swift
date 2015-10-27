@@ -147,17 +147,6 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
                         }
                     }
                 }
-                
-                //self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!)
-//                directions.calculateETAWithCompletionHandler { responseETA, error in
-//                    if error == nil {
-//                        if let r = responseETA {
-//                            self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!, endTime: r.expectedTravelTime)
-//                        }
-//                    }
-//                }
-                
-                //self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!, endTime: self.ETA!)
             }
         })
     }

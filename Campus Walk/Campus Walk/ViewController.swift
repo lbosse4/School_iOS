@@ -282,7 +282,6 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         let now = NSDate()
         let arrivalDate = now.dateByAddingTimeInterval(endTime)
         ETALabel.text = "ETA: \(String(dateFormatter.stringFromDate(arrivalDate)))"
-        //ETALabel.text = "ETA: \(arrivalDate.description)"
         
         directionsView.hidden = false
         mapView.addAnnotation(sourceBuilding)
