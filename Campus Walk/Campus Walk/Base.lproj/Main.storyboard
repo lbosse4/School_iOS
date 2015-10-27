@@ -55,10 +55,6 @@
                                     <action selector="mapTypeSegmentedControlTriggered:" destination="Teo-CW-fB2" eventType="valueChanged" id="kes-nm-tu9"/>
                                 </connections>
                             </segmentedControl>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qK-D3E">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
-                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jh-5N-Wea">
                                 <rect key="frame" x="0.0" y="91" width="600" height="130"/>
                                 <subviews>
@@ -104,6 +100,9 @@
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="directionCancelButtonPressed:" destination="Teo-CW-fB2" eventType="touchUpInside" id="eco-3b-8m5"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="knm-Tb-Euf">
                                                 <rect key="frame" x="524" y="8" width="62" height="34"/>
@@ -124,6 +123,9 @@
                                                 <state key="normal" title="Next">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="directionNavButtonPressed:" destination="Teo-CW-fB2" eventType="touchUpInside" id="1vu-7I-pJ4"/>
+                                                </connections>
                                             </button>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gk1-2V-8ej">
                                                 <rect key="frame" x="524" y="82" width="62" height="34"/>
@@ -133,7 +135,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="ihc-0V-TxC"/>
                                                 </constraints>
                                             </view>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3j-BW-UtI">
+                                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3j-BW-UtI">
                                                 <rect key="frame" x="526" y="84" width="58" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -144,6 +146,9 @@
                                                 <state key="normal" title="Back">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="directionNavButtonPressed:" destination="Teo-CW-fB2" eventType="touchUpInside" id="KVe-wj-o4P"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-CE-smc">
                                                 <rect key="frame" x="78" y="0.0" width="438" height="124"/>
@@ -197,6 +202,10 @@
                                     <constraint firstAttribute="height" constant="130" id="sa0-v7-NCu"/>
                                 </constraints>
                             </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qK-D3E">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -256,9 +265,12 @@
                     <connections>
                         <outlet property="backButton" destination="q3j-BW-UtI" id="A9e-ae-Qq8"/>
                         <outlet property="backButtonView" destination="Gk1-2V-8ej" id="hTk-ut-j4W"/>
+                        <outlet property="directionsLabel" destination="MSA-CE-smc" id="Ppe-XB-FYJ"/>
                         <outlet property="directionsView" destination="4jh-5N-Wea" id="2I1-qr-sXA"/>
                         <outlet property="mapTypeSegmentedControl" destination="YMQ-9G-XPx" id="Y9k-s1-Al5"/>
                         <outlet property="mapView" destination="b06-qK-D3E" id="Ofv-fF-GXP"/>
+                        <outlet property="nextButton" destination="FSF-fE-UQk" id="7LX-VG-y9A"/>
+                        <outlet property="nextButtonView" destination="knm-Tb-Euf" id="X2U-qM-5pq"/>
                         <outlet property="showFavoritesButton" destination="I0g-6Q-Z7v" id="rV9-d9-eaa"/>
                         <outlet property="trashCanButton" destination="dx1-9T-h9t" id="dcL-bh-Yds"/>
                     </connections>
@@ -513,7 +525,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oG-Ck-quW">
-                                <rect key="frame" x="211" y="512" width="179" height="34"/>
+                                <rect key="frame" x="211" y="546" width="179" height="34"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="179" id="DyG-Zh-o6S"/>
@@ -523,7 +535,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ip-Od-g8b">
-                                <rect key="frame" x="213" y="514" width="175" height="30"/>
+                                <rect key="frame" x="213" y="548" width="175" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="C2A-P1-ssq"/>
@@ -540,7 +552,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Would you like directions to or from \(building)?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEY-c7-ebr">
-                                <rect key="frame" x="20" y="107" width="560" height="61"/>
+                                <rect key="frame" x="20" y="79" width="560" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="2Ms-dp-lbN"/>
                                 </constraints>
@@ -549,7 +561,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" translatesAutoresizingMaskIntoConstraints="NO" id="QcQ-tk-rbq">
-                                <rect key="frame" x="250" y="176" width="100" height="21"/>
+                                <rect key="frame" x="250" y="148" width="100" height="21"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6yn-XM-bcn"/>
@@ -565,7 +577,7 @@
                                 </connections>
                             </segmentedControl>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbD-7N-6lR">
-                                <rect key="frame" x="211" y="472" width="179" height="34"/>
+                                <rect key="frame" x="211" y="506" width="179" height="34"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="179" id="8hj-Gl-1Uk"/>
@@ -575,7 +587,7 @@
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-94-srr">
-                                <rect key="frame" x="213" y="474" width="175" height="30"/>
+                                <rect key="frame" x="213" y="508" width="175" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="83o-2r-Wns"/>
@@ -592,7 +604,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Response Label. Response depends on previous choice" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mt1-9Y-Op3">
-                                <rect key="frame" x="20" y="204" width="560" height="61"/>
+                                <rect key="frame" x="20" y="176" width="560" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="mpI-vm-HwX"/>
                                 </constraints>
@@ -601,7 +613,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" translatesAutoresizingMaskIntoConstraints="NO" id="ZEo-Od-oUk">
-                                <rect key="frame" x="180" y="273" width="240" height="26"/>
+                                <rect key="frame" x="180" y="245" width="240" height="26"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="UJS-5L-oCw"/>
@@ -617,7 +629,7 @@
                                 </connections>
                             </segmentedControl>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Twz-lt-Kkr">
-                                <rect key="frame" x="211" y="314" width="179" height="34"/>
+                                <rect key="frame" x="211" y="286" width="179" height="34"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="34" id="3sr-Q5-ioG"/>
@@ -629,7 +641,7 @@
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-oa-l1D">
-                                <rect key="frame" x="213" y="316" width="175" height="30"/>
+                                <rect key="frame" x="213" y="288" width="175" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="DE6-Ea-1Bl"/>
@@ -648,7 +660,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click below for directions to fljhsdjfk from skjdfhskjdf " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dT-0k-jId">
-                                <rect key="frame" x="20" y="423" width="560" height="43"/>
+                                <rect key="frame" x="20" y="457" width="560" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="ACt-iu-h2T"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="CLr-cK-DqX"/>
@@ -675,10 +687,10 @@
                             <constraint firstItem="ZEo-Od-oUk" firstAttribute="top" secondItem="mt1-9Y-Op3" secondAttribute="bottom" constant="8" id="Ere-J2-OZ7"/>
                             <constraint firstItem="fMs-n8-pa0" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="FQ4-0c-Niu"/>
                             <constraint firstItem="mt1-9Y-Op3" firstAttribute="top" secondItem="QcQ-tk-rbq" secondAttribute="bottom" constant="8" id="JZE-5K-Wei"/>
-                            <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="9ip-Od-g8b" secondAttribute="bottom" constant="56" id="Jkc-He-Ezu"/>
+                            <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="9ip-Od-g8b" secondAttribute="bottom" constant="22" id="Jkc-He-Ezu"/>
                             <constraint firstItem="GiW-oa-l1D" firstAttribute="top" secondItem="ZEo-Od-oUk" secondAttribute="bottom" constant="18" id="LRj-KL-v1i"/>
                             <constraint firstItem="mt1-9Y-Op3" firstAttribute="leading" secondItem="apT-kf-ZFr" secondAttribute="leadingMargin" id="M6X-Rk-Mlj"/>
-                            <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="0oG-Ck-quW" secondAttribute="bottom" constant="54" id="MEW-U4-Qho"/>
+                            <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="0oG-Ck-quW" secondAttribute="bottom" constant="20" id="MEW-U4-Qho"/>
                             <constraint firstItem="QcQ-tk-rbq" firstAttribute="top" secondItem="OEY-c7-ebr" secondAttribute="bottom" constant="8" id="NLy-14-i5e"/>
                             <constraint firstItem="QcQ-tk-rbq" firstAttribute="top" secondItem="OEY-c7-ebr" secondAttribute="bottom" constant="8" id="Nro-PS-B65"/>
                             <constraint firstItem="0oG-Ck-quW" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="OC3-zE-KOO"/>
@@ -699,7 +711,7 @@
                             <constraint firstItem="0dT-0k-jId" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="mKp-xJ-IRy"/>
                             <constraint firstItem="OEY-c7-ebr" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="rqe-Kt-Vh4"/>
                             <constraint firstItem="WbD-7N-6lR" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="rtk-Lp-UbT"/>
-                            <constraint firstItem="OEY-c7-ebr" firstAttribute="top" secondItem="fMs-n8-pa0" secondAttribute="bottom" constant="28" id="ucA-CQ-oUv"/>
+                            <constraint firstItem="OEY-c7-ebr" firstAttribute="top" secondItem="fMs-n8-pa0" secondAttribute="bottom" id="ucA-CQ-oUv"/>
                             <constraint firstItem="GiW-oa-l1D" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="wGL-n2-Btm"/>
                         </constraints>
                         <variation key="default">

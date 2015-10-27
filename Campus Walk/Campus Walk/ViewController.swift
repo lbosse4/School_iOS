@@ -17,7 +17,10 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     @IBOutlet weak var mapTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var backButtonView: UIView!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButtonView: UIView!
     @IBOutlet weak var directionsView: UIView!
+    @IBOutlet weak var directionsLabel: UILabel!
     
     let model = Model.sharedInstance
     let locationManager = CLLocationManager()
@@ -27,9 +30,11 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     let initialSpanY : CLLocationDegrees = 0.01
     let zoomedSpanX : CLLocationDegrees = 0.0055
     let zoomedSpanY : CLLocationDegrees = 0.0055
-    let animationDuration : NSTimeInterval = 3.0
+    let animationDuration : NSTimeInterval = 1.5
     var isShowingFavorites = false
-    var currentSelectedPin: Building?
+    var currentSelectedPin : Building?
+    var stepByStepDirections :[MKRouteStep]? = nil
+    var directionCount : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +49,8 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        
-        
+        directionsView.hidden = true
+        view.bringSubviewToFront(directionsView)
         self.navigationItem.rightBarButtonItem = MKUserTrackingBarButtonItem(mapView: mapView)
         
     }
@@ -78,6 +83,44 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
             mapView.mapType = MKMapType.Satellite
         case 2:
             mapView.mapType = MKMapType.Hybrid
+        default:
+            break
+        }
+    }
+    
+    @IBAction func directionCancelButtonPressed(sender: UIButton) {
+        directionsView.hidden = true
+        mapView.removeOverlays(mapView.overlays)
+    }
+    
+    @IBAction func directionNavButtonPressed(sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            // increase the count
+            directionCount++
+            
+            // Make sure the previous button is shown
+            backButtonView.hidden = false
+            backButton.hidden = false
+            
+            // Show the new direction
+            directionsLabel.text = stepByStepDirections![directionCount].instructions
+            
+            // check if the next direction exists - hide next button if not
+            if directionCount+1 == stepByStepDirections?.count {
+                nextButton.hidden = true
+                nextButtonView.hidden = true
+            }
+
+        case 1:
+            directionCount--
+            nextButton.hidden = false
+            nextButtonView.hidden = false
+            directionsLabel.text = stepByStepDirections![directionCount].instructions
+            if directionCount-1 < 0 {
+                backButtonView.hidden = true
+                backButton.hidden = true
+            }
         default:
             break
         }
@@ -189,6 +232,19 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         trashCanButton.hidden = true
     }
     
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline {
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.greenColor()
+            polylineRenderer.lineWidth = 4.0
+            
+            return polylineRenderer
+        }
+        
+        // default
+        return MKOverlayRenderer(overlay: overlay)
+    }
+    
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let buildingInfoViewController = self.storyboard?.instantiateViewControllerWithIdentifier("buildingInformation") as! BuildingInformationViewController
         
@@ -215,32 +271,32 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     }
 
     func buildingInfoViewControllerDismissed(response: MKDirectionsResponse?, sourceBuilding: Building, destinationBuilding: Building) {
-//        
-//        // remove old overlays
-//        
-//        // create new overlay
-//        for route in (response?.routes)! {
-//            mapView.addOverlay(route.polyline)
-//            
-//            stepByStepDirections = route.steps
-//            
-//            // Show the first direction
-//            directionCount = 0
-//            directionsLabel.text = stepByStepDirections![directionCount].instructions
-//            
-//            // Hide and show the appropriate buttons and views
-//            directionsMainView.hidden = false
-//            directionsPreviousButton.hidden = true
-//            if directionCount+1 == stepByStepDirections?.count {
-//                directionsNextButton.hidden = true
-//            }
-//        }
-//        
-//        let region = MKCoordinateRegionMakeWithDistance((response?.source.placemark.location?.coordinate)!, 2000, 2000)
-//        mapView.setRegion(region, animated: true)
-//        mapView.selectAnnotation(sourceBuilding, animated: true)
-//        
-//        dismissViewControllerAnimated(true, completion: nil)
+        directionsView.hidden = false
+        mapView.addAnnotation(sourceBuilding)
+        mapView.addAnnotation(destinationBuilding)
+        // create new overlay
+        for route in (response?.routes)! {
+            mapView.addOverlay(route.polyline)
+            
+            stepByStepDirections = route.steps
+            directionCount = 0
+            directionsLabel.text = stepByStepDirections![directionCount].instructions
+            
+            // Hide and show the appropriate buttons and views
+            //directionsView.hidden = false
+            backButton.hidden = true
+            backButtonView.hidden = true
+            if directionCount+1 == stepByStepDirections?.count {
+                nextButton.hidden = true
+                nextButtonView.hidden = true
+            }
+        }
+
+        let region = MKCoordinateRegionMakeWithDistance((response?.source.placemark.location?.coordinate)!, 2000, 2000)
+        mapView.setRegion(region, animated: true)
+        mapView.selectAnnotation(sourceBuilding, animated: true)
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func cancelChildViewController() {

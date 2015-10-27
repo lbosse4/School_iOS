@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 protocol GetDirectionsProtocol {
-    //func buildingSourceAndDestinationSelected(source:MKAnnotation?, destination:MKAnnotation?)
+    func buildingSourceAndDestinationSelected(source:MKAnnotation?, destination:MKAnnotation?)
     func cancelChildViewController()
 }
 
@@ -42,11 +42,11 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol {
     }
     
     @IBAction func cancelButtonPressed(sender: UIButton) {
-        self.delegate?.cancelChildViewController()
+        delegate?.cancelChildViewController()
     }
     
     @IBAction func getDirectionsButtonPressed(sender: UIButton) {
-        //delegate?.buildingSourceAndDestinationSelected(source, destination: destination)
+        delegate?.buildingSourceAndDestinationSelected(source, destination: destination)
     }
     
     @IBAction func toFromSegmentedControlTriggered(sender: UISegmentedControl) {
@@ -72,6 +72,8 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol {
         locationOrBuildingSegmentedControl.selectedSegmentIndex = deselectIndex
         getDirectionsButton.hidden = true
         getDirectionsView.hidden = true
+        chooseABuildingButton.hidden = true
+        chooseABuildingView.hidden = true
     }
     
     @IBAction func locationOrBuildingSegmentedControlTriggered(sender: UISegmentedControl) {

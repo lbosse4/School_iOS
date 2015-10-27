@@ -25,6 +25,8 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
     let imagePicker = UIImagePickerController()
     var delegate: BuildingInfoProtocol?
     var building : Building? = nil
+    var finalSource : Building? = nil
+    var finalDest : Building? = nil
     
     override func viewDidLoad() {
         buildingImageView.image = UIImage(named: (building?.imageName)!)
@@ -90,6 +92,39 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
     
     func cancelChildViewController() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func buildingSourceAndDestinationSelected(source:MKAnnotation?, destination:MKAnnotation?) {
+        
+        finalSource = source as? Building
+        finalDest = destination as? Building
+        
+        getDirections()
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    func getDirections() {
+        let walkingRouteRequest = MKDirectionsRequest()
+        
+        walkingRouteRequest.transportType = .Walking
+        walkingRouteRequest.source = finalSource?.mapItem()
+        walkingRouteRequest.destination = finalDest?.mapItem()
+        
+        walkingRouteRequest.requestsAlternateRoutes = false
+        
+        let directions = MKDirections(request: walkingRouteRequest)
+        
+        directions.calculateDirectionsWithCompletionHandler({
+            (response:MKDirectionsResponse?, error:NSError?) in
+            
+            if error != nil {
+                
+            } else {
+                self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!)
+            }
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
