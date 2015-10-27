@@ -443,9 +443,12 @@
                                 <state key="normal" title="Get Directions">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="getDirectionsButtonPressed:" destination="yOM-jH-07D" eventType="touchUpInside" id="PaZ-tu-xBa"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Response Label. Response depends on previous choice" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mt1-9Y-Op3">
-                                <rect key="frame" x="143" y="204" width="315" height="61"/>
+                                <rect key="frame" x="20" y="204" width="560" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="mpI-vm-HwX"/>
                                 </constraints>
@@ -500,6 +503,22 @@
                                     <action selector="chooseABuildingButtonPressed:" destination="yOM-jH-07D" eventType="touchUpInside" id="Edo-6D-oXX"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click below for directions to fljhsdjfk from skjdfhskjdf " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dT-0k-jId">
+                                <rect key="frame" x="20" y="423" width="560" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="ACt-iu-h2T"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="CLr-cK-DqX"/>
+                                    <constraint firstAttribute="height" constant="43" id="YaE-0T-tBj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ACt-iu-h2T"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.75197285353535359" green="0.75197285353535359" blue="0.75197285353535359" alpha="1" colorSpace="calibratedRGB"/>
@@ -514,18 +533,26 @@
                             <constraint firstItem="mt1-9Y-Op3" firstAttribute="top" secondItem="QcQ-tk-rbq" secondAttribute="bottom" constant="8" id="JZE-5K-Wei"/>
                             <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="9ip-Od-g8b" secondAttribute="bottom" constant="56" id="Jkc-He-Ezu"/>
                             <constraint firstItem="GiW-oa-l1D" firstAttribute="top" secondItem="ZEo-Od-oUk" secondAttribute="bottom" constant="18" id="LRj-KL-v1i"/>
+                            <constraint firstItem="mt1-9Y-Op3" firstAttribute="leading" secondItem="apT-kf-ZFr" secondAttribute="leadingMargin" id="M6X-Rk-Mlj"/>
                             <constraint firstItem="phu-iD-Hfd" firstAttribute="top" secondItem="0oG-Ck-quW" secondAttribute="bottom" constant="54" id="MEW-U4-Qho"/>
                             <constraint firstItem="QcQ-tk-rbq" firstAttribute="top" secondItem="OEY-c7-ebr" secondAttribute="bottom" constant="8" id="NLy-14-i5e"/>
                             <constraint firstItem="QcQ-tk-rbq" firstAttribute="top" secondItem="OEY-c7-ebr" secondAttribute="bottom" constant="8" id="Nro-PS-B65"/>
                             <constraint firstItem="0oG-Ck-quW" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="OC3-zE-KOO"/>
+                            <constraint firstItem="0dT-0k-jId" firstAttribute="leading" secondItem="apT-kf-ZFr" secondAttribute="leadingMargin" id="QDU-qy-XwY"/>
                             <constraint firstItem="9ip-Od-g8b" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="UTB-Zv-Yw8"/>
+                            <constraint firstItem="OEY-c7-ebr" firstAttribute="leading" secondItem="apT-kf-ZFr" secondAttribute="leadingMargin" id="XSQ-b0-b2W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mt1-9Y-Op3" secondAttribute="trailing" id="YZs-8q-6Wy"/>
                             <constraint firstItem="OEY-c7-ebr" firstAttribute="leading" secondItem="apT-kf-ZFr" secondAttribute="leadingMargin" id="ZO5-tF-u78"/>
                             <constraint firstItem="aZg-94-srr" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="ao6-yU-NRM"/>
+                            <constraint firstItem="OEY-c7-ebr" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="bGm-QE-O6H"/>
                             <constraint firstItem="Twz-lt-Kkr" firstAttribute="top" secondItem="ZEo-Od-oUk" secondAttribute="bottom" constant="16" id="bgX-yu-4Qv"/>
+                            <constraint firstItem="0dT-0k-jId" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="dQ8-Wj-XtQ"/>
+                            <constraint firstItem="WbD-7N-6lR" firstAttribute="top" secondItem="0dT-0k-jId" secondAttribute="bottom" constant="6" id="ggp-ig-0ID"/>
                             <constraint firstItem="0oG-Ck-quW" firstAttribute="top" secondItem="WbD-7N-6lR" secondAttribute="bottom" constant="6" id="iVr-lO-aqu"/>
                             <constraint firstItem="0oG-Ck-quW" firstAttribute="top" secondItem="aZg-94-srr" secondAttribute="bottom" constant="8" id="jje-tZ-Ge6"/>
                             <constraint firstItem="ZEo-Od-oUk" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="kAB-Wp-wZC"/>
                             <constraint firstItem="Twz-lt-Kkr" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="l6m-FA-nhZ"/>
+                            <constraint firstItem="0dT-0k-jId" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="mKp-xJ-IRy"/>
                             <constraint firstItem="OEY-c7-ebr" firstAttribute="trailing" secondItem="apT-kf-ZFr" secondAttribute="trailingMargin" id="rqe-Kt-Vh4"/>
                             <constraint firstItem="WbD-7N-6lR" firstAttribute="centerX" secondItem="apT-kf-ZFr" secondAttribute="centerX" id="rtk-Lp-UbT"/>
                             <constraint firstItem="OEY-c7-ebr" firstAttribute="top" secondItem="fMs-n8-pa0" secondAttribute="bottom" constant="28" id="ucA-CQ-oUv"/>
@@ -533,6 +560,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="0VY-JB-XXm"/>
                                 <exclude reference="7Zq-wo-zO5"/>
                                 <exclude reference="Nro-PS-B65"/>
                             </mask>
@@ -541,6 +569,7 @@
                     <connections>
                         <outlet property="chooseABuildingButton" destination="GiW-oa-l1D" id="htd-Lt-tl4"/>
                         <outlet property="chooseABuildingView" destination="Twz-lt-Kkr" id="50h-dA-ziq"/>
+                        <outlet property="directionsConfirmationLabel" destination="0dT-0k-jId" id="bcT-va-XPh"/>
                         <outlet property="getDirectionsButton" destination="aZg-94-srr" id="Nu4-o0-Ptv"/>
                         <outlet property="getDirectionsView" destination="WbD-7N-6lR" id="HIA-fz-wql"/>
                         <outlet property="locationOrBuildingSegmentedControl" destination="ZEo-Od-oUk" id="Fqb-gu-2MQ"/>
