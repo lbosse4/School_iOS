@@ -60,11 +60,11 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
     
     func noCameraFound(){
         let alertVC = UIAlertController(
-            title: "No Camera",
-            message: "Sorry, this device has no camera",
+            title: "No Camera Found",
+            message: "Sorry, this device has no camera.",
             preferredStyle: .Alert)
         let okAction = UIAlertAction(
-            title: "OK",
+            title: "Okay",
             style:.Default,
             handler: nil)
         alertVC.addAction(okAction)
@@ -120,7 +120,18 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
             (response:MKDirectionsResponse?, error:NSError?) in
             
             if error != nil {
-                
+                let alertVC = UIAlertController(
+                    title: "Something's not right",
+                    message: "Sorry, the directions could not be calculated. Please try again.",
+                    preferredStyle: .Alert)
+                let okAction = UIAlertAction(
+                    title: "Okay",
+                    style:.Default,
+                    handler: nil)
+                alertVC.addAction(okAction)
+                self.presentViewController(alertVC,
+                    animated: true,
+                    completion: nil)
             } else {
                 self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!)
             }

@@ -14,7 +14,7 @@ protocol GetDirectionsProtocol {
     func cancelChildViewController()
 }
 
-class DirectionsViewController : UIViewController, FindBuildingsProtocol {
+class DirectionsViewController : UIViewController, FindBuildingsProtocol, CLLocationManagerDelegate {
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var toFromSegmentedControl: UISegmentedControl!
     @IBOutlet weak var responseLabel: UILabel!
@@ -27,6 +27,7 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol {
     
     let model = Model.sharedInstance
     let deselectIndex : Int = -1
+    let locationManager = CLLocationManager()
     var delegate : GetDirectionsProtocol?
     var chosenBuildingFromTableView : Building?
     var source : Building?
@@ -39,7 +40,26 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol {
         if let name = building.title {
             promptLabel.text = " Would you like directions to or from \(name)?"
         }
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        if CLLocationManager.locationServicesEnabled()  {
+            if CLLocationManager.authorizationStatus() == .NotDetermined {
+                locationManager.requestWhenInUseAuthorization()
+            }
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.stopUpdatingLocation()
+        }
+    }
+
     
     @IBAction func cancelButtonPressed(sender: UIButton) {
         delegate?.cancelChildViewController()
@@ -83,8 +103,8 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol {
         case 0:
             chooseABuildingButton.hidden = true
             chooseABuildingView.hidden = true
-            //sending back as a building object for simplicity reasons. Only care about the title
-            let userLocationBuildingObject = Building(title: "your current location", coordinate: CLLocationCoordinate2D(), subtitle: "")
+            //creating a 'building' object for the user location for simplicity purposes
+            let userLocationBuildingObject = Building(title: "your current location", coordinate: (locationManager.location?.coordinate)!, subtitle: "")
             if isStartingFromBuilding {
                 destination = userLocationBuildingObject
             } else {

@@ -156,6 +156,8 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         case "TableViewSegue":
             let destinationViewController = segue.destinationViewController as! BuildingTableViewController
             destinationViewController.delegate = self
+        case "listDirectionsSegue":
+            break
         default:
             break
         }
@@ -271,12 +273,6 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
 
     func buildingInfoViewControllerDismissed(response: MKDirectionsResponse?, sourceBuilding: Building, destinationBuilding: Building) {
         directionsView.hidden = false
-        if destinationBuilding.title == "your current location" {
-            destinationBuilding.coordinate = (locationManager.location?.coordinate)!
-        }
-        if sourceBuilding.title == "your current location" {
-            sourceBuilding.coordinate = (locationManager.location?.coordinate)!
-        }
         mapView.addAnnotation(sourceBuilding)
         mapView.addAnnotation(destinationBuilding)
         // create new overlay
