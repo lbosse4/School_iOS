@@ -15,7 +15,10 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     @IBOutlet weak var showFavoritesButton: UIButton!
     @IBOutlet weak var trashCanButton: UIButton!
     @IBOutlet weak var mapTypeSegmentedControl: UISegmentedControl!
-
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var backButtonView: UIView!
+    @IBOutlet weak var directionsView: UIView!
+    
     let model = Model.sharedInstance
     let locationManager = CLLocationManager()
     let initialLatitude = 40.7961
@@ -25,7 +28,6 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     let zoomedSpanX : CLLocationDegrees = 0.0055
     let zoomedSpanY : CLLocationDegrees = 0.0055
     let animationDuration : NSTimeInterval = 3.0
-    
     var isShowingFavorites = false
     var currentSelectedPin: Building?
     
