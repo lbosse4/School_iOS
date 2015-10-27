@@ -84,6 +84,13 @@
                                                     <segue destination="hKD-Hh-Wjm" kind="presentation" identifier="listDirectionsSegue" id="zhI-Ue-o5u"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-CE-smc">
+                                                <rect key="frame" x="78" y="30" width="438" height="94"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8k4-j3-Re3">
                                                 <rect key="frame" x="8" y="82" width="62" height="34"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -153,11 +160,10 @@
                                                     <action selector="directionNavButtonPressed:" destination="Teo-CW-fB2" eventType="touchUpInside" id="KVe-wj-o4P"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-CE-smc">
-                                                <rect key="frame" x="78" y="0.0" width="438" height="124"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETA: 4 years" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wq2-Iv-bll">
+                                                <rect key="frame" x="78" y="0.0" width="438" height="30"/>
                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -167,9 +173,11 @@
                                             <constraint firstAttribute="bottom" secondItem="8k4-j3-Re3" secondAttribute="bottom" constant="8" id="3Hi-P1-AaE"/>
                                             <constraint firstItem="iMl-B0-Eq9" firstAttribute="top" secondItem="eBb-hB-3Zk" secondAttribute="top" constant="10" id="70X-An-wVL"/>
                                             <constraint firstItem="Gk1-2V-8ej" firstAttribute="leading" secondItem="MSA-CE-smc" secondAttribute="trailing" constant="8" id="ABf-bQ-nGG"/>
+                                            <constraint firstItem="wq2-Iv-bll" firstAttribute="top" secondItem="eBb-hB-3Zk" secondAttribute="top" id="EZL-ta-0Pw"/>
                                             <constraint firstItem="iMl-B0-Eq9" firstAttribute="leading" secondItem="eBb-hB-3Zk" secondAttribute="leading" constant="10" id="IAi-dS-56Y"/>
                                             <constraint firstItem="fMo-V1-6xm" firstAttribute="top" secondItem="eBb-hB-3Zk" secondAttribute="top" constant="8" id="Iwh-1C-9xT"/>
                                             <constraint firstItem="8k4-j3-Re3" firstAttribute="leading" secondItem="eBb-hB-3Zk" secondAttribute="leading" constant="8" id="JrP-gp-uqw"/>
+                                            <constraint firstItem="wq2-Iv-bll" firstAttribute="leading" secondItem="fMo-V1-6xm" secondAttribute="trailing" constant="8" id="LHf-q9-ThL"/>
                                             <constraint firstAttribute="trailing" secondItem="knm-Tb-Euf" secondAttribute="trailing" constant="8" id="NRG-3t-Eix"/>
                                             <constraint firstAttribute="height" constant="124" id="Raz-hY-GnT"/>
                                             <constraint firstItem="FSF-fE-UQk" firstAttribute="top" secondItem="eBb-hB-3Zk" secondAttribute="top" constant="10" id="ZxF-eW-EKR"/>
@@ -180,10 +188,12 @@
                                             <constraint firstItem="MSA-CE-smc" firstAttribute="leading" secondItem="iMl-B0-Eq9" secondAttribute="trailing" constant="28" id="fu7-WD-BIj"/>
                                             <constraint firstItem="knm-Tb-Euf" firstAttribute="top" secondItem="eBb-hB-3Zk" secondAttribute="top" constant="8" id="gHM-7i-tG5"/>
                                             <constraint firstAttribute="bottom" secondItem="q3j-BW-UtI" secondAttribute="bottom" constant="10" id="hjK-Eq-PaH"/>
-                                            <constraint firstItem="MSA-CE-smc" firstAttribute="top" secondItem="eBb-hB-3Zk" secondAttribute="top" id="j91-Aq-cFP"/>
+                                            <constraint firstItem="MSA-CE-smc" firstAttribute="top" secondItem="eBb-hB-3Zk" secondAttribute="top" constant="30" id="j91-Aq-cFP"/>
                                             <constraint firstItem="iMl-B0-Eq9" firstAttribute="centerY" secondItem="eBb-hB-3Zk" secondAttribute="centerY" id="k8p-8C-1eR"/>
                                             <constraint firstAttribute="bottom" secondItem="gDS-KS-cWw" secondAttribute="bottom" constant="10" id="kGW-Q6-RUh"/>
                                             <constraint firstAttribute="trailing" secondItem="FSF-fE-UQk" secondAttribute="trailing" constant="10" id="lzi-qo-vcv"/>
+                                            <constraint firstItem="knm-Tb-Euf" firstAttribute="leading" secondItem="wq2-Iv-bll" secondAttribute="trailing" constant="8" id="oPi-x6-ht6"/>
+                                            <constraint firstItem="MSA-CE-smc" firstAttribute="top" secondItem="wq2-Iv-bll" secondAttribute="bottom" id="qOf-et-Zba"/>
                                             <constraint firstAttribute="bottom" secondItem="MSA-CE-smc" secondAttribute="bottom" id="weo-VQ-JjM"/>
                                             <constraint firstAttribute="trailing" secondItem="q3j-BW-UtI" secondAttribute="trailing" constant="10" id="z8e-rg-Q1k"/>
                                             <constraint firstAttribute="trailing" secondItem="Gk1-2V-8ej" secondAttribute="trailing" constant="8" id="zSw-mj-Crl"/>
@@ -266,6 +276,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="ETALabel" destination="wq2-Iv-bll" id="Vfy-Pq-ZVM"/>
                         <outlet property="backButton" destination="q3j-BW-UtI" id="A9e-ae-Qq8"/>
                         <outlet property="backButtonView" destination="Gk1-2V-8ej" id="hTk-ut-j4W"/>
                         <outlet property="directionsLabel" destination="MSA-CE-smc" id="Ppe-XB-FYJ"/>

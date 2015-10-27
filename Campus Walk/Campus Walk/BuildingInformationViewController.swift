@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 protocol BuildingInfoProtocol {
-    func buildingInfoViewControllerDismissed(response:MKDirectionsResponse?, sourceBuilding : Building, destinationBuilding : Building)
+    func buildingInfoViewControllerDismissed(response: MKDirectionsResponse?, sourceBuilding: Building, destinationBuilding: Building, endTime: NSTimeInterval)
     func cancelChildViewController()
 }
 
@@ -27,6 +27,7 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
     var building : Building? = nil
     var finalSource : Building? = nil
     var finalDest : Building? = nil
+    var ETA : NSTimeInterval?
     
     override func viewDidLoad() {
         buildingImageView.image = UIImage(named: (building?.imageName)!)
@@ -113,7 +114,9 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
         walkingRouteRequest.destination = finalDest?.mapItem()
         
         walkingRouteRequest.requestsAlternateRoutes = false
+    
         
+
         let directions = MKDirections(request: walkingRouteRequest)
         
         directions.calculateDirectionsWithCompletionHandler({
@@ -122,7 +125,7 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
             if error != nil {
                 let alertVC = UIAlertController(
                     title: "Something's not right",
-                    message: "Sorry, the directions could not be calculated. Please try again.",
+                    message: "\(error?.description)",
                     preferredStyle: .Alert)
                 let okAction = UIAlertAction(
                     title: "Okay",
@@ -133,7 +136,28 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
                     animated: true,
                     completion: nil)
             } else {
-                self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!)
+                
+                let ETAdirections = MKDirections(request: walkingRouteRequest)
+                
+                ETAdirections.calculateETAWithCompletionHandler { responseETA, error in
+                    if error == nil {
+                        if let r = responseETA {
+                            //self.ETA = r.expectedTravelTime
+                            self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!, endTime: r.expectedTravelTime)
+                        }
+                    }
+                }
+                
+                //self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!)
+//                directions.calculateETAWithCompletionHandler { responseETA, error in
+//                    if error == nil {
+//                        if let r = responseETA {
+//                            self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!, endTime: r.expectedTravelTime)
+//                        }
+//                    }
+//                }
+                
+                //self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!, endTime: self.ETA!)
             }
         })
     }

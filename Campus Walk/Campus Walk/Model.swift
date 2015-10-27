@@ -73,6 +73,10 @@ class Model {
             }
         }
         
+        for dictionary in _buildingsDictionary {
+            dictionary
+        }
+        
         buildingsArray = _buildings
         buildingsDictionary = _buildingsDictionary
         let keys = Array(buildingsDictionary.keys)
@@ -93,7 +97,9 @@ class Model {
     
     func buildingsInSection(section: Int) -> [Building]{
         let letterInSection = letterForSection(section)
-        return buildingsDictionary[letterInSection]!
+        var buildings = buildingsDictionary[letterInSection]!
+        buildings.sortInPlace { ($0.title < $1.title)}
+        return buildings
     }
     
     func numberOfBuildingsInSection(section: Int) -> Int{
@@ -102,7 +108,8 @@ class Model {
     }
     
     func buildingAtIndexPath(indexPath : NSIndexPath) -> Building{
-        let buildings : [Building] = buildingsInSection(indexPath.section)
+        var buildings : [Building] = buildingsInSection(indexPath.section)
+        //buildings.sortInPlace { ($0.title < $1.title)}
         return buildings[indexPath.row]
     }
     
@@ -134,6 +141,7 @@ class Model {
     
     func addFavorite(building: Building) {
         favoriteBuildings.append(building)
+        
     }
     
     func updateImageForBuildingWithTitle(image : String, title : String){

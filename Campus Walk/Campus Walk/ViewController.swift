@@ -21,6 +21,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     @IBOutlet weak var nextButtonView: UIView!
     @IBOutlet weak var directionsView: UIView!
     @IBOutlet weak var directionsLabel: UILabel!
+    @IBOutlet weak var ETALabel: UILabel!
     
     let model = Model.sharedInstance
     let locationManager = CLLocationManager()
@@ -31,6 +32,11 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     let zoomedSpanX : CLLocationDegrees = 0.0055
     let zoomedSpanY : CLLocationDegrees = 0.0055
     let animationDuration : NSTimeInterval = 1.5
+    let latitudinalLocationDistance : CLLocationDistance = 2000
+    let longitudinalLocationDistance : CLLocationDistance = 2000
+    let overlayLineWidth : CGFloat = 4.0
+    let calloutOffsetX = -5
+    let calloutOffsetY = 5
     var isShowingFavorites = false
     var currentSelectedPin : Building?
     var stepByStepDirections :[MKRouteStep]? = nil
@@ -99,18 +105,11 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     @IBAction func directionNavButtonPressed(sender: UIButton) {
         switch sender.tag {
         case 0:
-            // increase the count
             directionCount++
-            
-            // Make sure the previous button is shown
             backButtonView.hidden = false
             backButton.hidden = false
-            
-            // Show the new direction
             directionsLabel.text = stepByStepDirections![directionCount].instructions
-            
-            // check if the next direction exists - hide next button if not
-            if directionCount+1 == stepByStepDirections?.count {
+            if directionCount + 1 == stepByStepDirections?.count {
                 nextButton.hidden = true
                 nextButtonView.hidden = true
             }
@@ -120,7 +119,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
             nextButton.hidden = false
             nextButtonView.hidden = false
             directionsLabel.text = stepByStepDirections![directionCount].instructions
-            if directionCount-1 < 0 {
+            if directionCount - 1 < 0 {
                 backButtonView.hidden = true
                 backButton.hidden = true
             }
@@ -205,7 +204,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
             } else {
                 view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.calloutOffset = CGPoint(x: calloutOffsetX, y: calloutOffsetY)
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
             }
             
@@ -226,9 +225,10 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     }
 
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        currentSelectedPin = view.annotation as? Building
-        if !(currentSelectedPin!.isFavorite) {
-            trashCanButton.hidden = false
+        if let currentSelectedPin = view.annotation as? Building {
+            if !(currentSelectedPin.isFavorite) {
+                trashCanButton.hidden = false
+            }
         }
     }
     
@@ -240,7 +240,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         if overlay is MKPolyline {
             let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRenderer.strokeColor = UIColor.greenColor()
-            polylineRenderer.lineWidth = 4.0
+            polylineRenderer.lineWidth = overlayLineWidth
             
             return polylineRenderer
         }
@@ -274,8 +274,12 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         mapView.regionThatFits(coordinateRegion)
     }
 
-    func buildingInfoViewControllerDismissed(response: MKDirectionsResponse?, sourceBuilding: Building, destinationBuilding: Building) {
+    func buildingInfoViewControllerDismissed(response: MKDirectionsResponse?, sourceBuilding: Building, destinationBuilding: Building, endTime: NSTimeInterval) {
         directionResponse = response
+
+        let dateFormatter = NSDateFormatter()
+        ETALabel.text = "ETA: \(endTime)"
+        
         directionsView.hidden = false
         mapView.addAnnotation(sourceBuilding)
         mapView.addAnnotation(destinationBuilding)
@@ -287,7 +291,6 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
             directionCount = 0
             directionsLabel.text = stepByStepDirections![directionCount].instructions
             
-            // Hide and show the appropriate buttons and views
             //directionsView.hidden = false
             backButton.hidden = true
             backButtonView.hidden = true
@@ -297,7 +300,7 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
             }
         }
 
-        let region = MKCoordinateRegionMakeWithDistance((response?.source.placemark.location?.coordinate)!, 2000, 2000)
+        let region = MKCoordinateRegionMakeWithDistance((response?.source.placemark.location?.coordinate)!, latitudinalLocationDistance, longitudinalLocationDistance)
         mapView.setRegion(region, animated: true)
         mapView.selectAnnotation(sourceBuilding, animated: true)
         
