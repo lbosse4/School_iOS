@@ -27,7 +27,6 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
     var building : Building? = nil
     var finalSource : Building? = nil
     var finalDest : Building? = nil
-    var ETA : NSTimeInterval?
     
     override func viewDidLoad() {
         buildingImageView.image = building?.image
@@ -137,16 +136,18 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
                     completion: nil)
             } else {
                 
-                let ETAdirections = MKDirections(request: walkingRouteRequest)
+                //let ETAdirections = MKDirections(request: walkingRouteRequest)
                 
-                ETAdirections.calculateETAWithCompletionHandler { responseETA, error in
-                    if error == nil {
-                        if let r = responseETA {
-                            //self.ETA = r.expectedTravelTime
-                            self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!, endTime: r.expectedTravelTime)
-                        }
-                    }
-                }
+//                ETAdirections.calculateETAWithCompletionHandler { responseETA, error in
+//                    if error == nil {
+//                        if let r = responseETA {
+//                            //self.ETA = r.expectedTravelTime
+//                            self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!, endTime: r.expectedTravelTime)
+//                        }
+//                    }
+//                }
+                let ETA = response?.routes[0].expectedTravelTime
+                self.delegate?.buildingInfoViewControllerDismissed(response, sourceBuilding: self.finalSource!, destinationBuilding: self.finalDest!, endTime: ETA!)
             }
         })
     }

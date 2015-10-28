@@ -101,15 +101,35 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol, CLLoca
         case 0:
             chooseABuildingButton.hidden = true
             chooseABuildingView.hidden = true
-            let userLocationBuildingObject = Building(title: "your current location", coordinate: (locationManager.location?.coordinate)!, subtitle: "")
-            if isStartingFromBuilding {
-                destination = userLocationBuildingObject
+            
+            if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+                let userLocationBuildingObject = Building(title: "your current location", coordinate: (locationManager.location?.coordinate)!, subtitle: "")
+                if isStartingFromBuilding {
+                    destination = userLocationBuildingObject
+                } else {
+                    source = userLocationBuildingObject
+                }
+                getDirectionsView.hidden = false
+                getDirectionsButton.hidden = false
+                updateDirectionsConfirmationLabel()
             } else {
-                source = userLocationBuildingObject
+                let alertVC = UIAlertController(
+                    title: "Location Services Not Enabled",
+                    message: "Sorry, user location services need to be enabled to use this feature.",
+                    preferredStyle: .Alert)
+                let okAction = UIAlertAction(
+                    title: "Okay",
+                    style:.Default,
+                    handler: nil)
+                alertVC.addAction(okAction)
+                presentViewController(alertVC,
+                    animated: true,
+                    completion: nil)
+                getDirectionsButton.hidden = true
+                getDirectionsView.hidden = true
             }
-            getDirectionsView.hidden = false
-            getDirectionsButton.hidden = false
-            updateDirectionsConfirmationLabel()
+            
+            
         //building
         case 1:
             chooseABuildingView.hidden = false
