@@ -11,6 +11,8 @@
 		897083781BE040B7008F5D5B /* Orbitron Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083741BE03E03008F5D5B /* Orbitron Light.ttf */; };
 		897083791BE040BA008F5D5B /* Orbitron Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083751BE03E10008F5D5B /* Orbitron Medium.ttf */; };
 		8970837A1BE040BD008F5D5B /* collegiateHeavyOutline Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083731BE034DB008F5D5B /* collegiateHeavyOutline Medium.ttf */; };
+		89774B961BE3CACF007E02B4 /* PlusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89774B951BE3CACF007E02B4 /* PlusIcon.png */; };
+		89774B981BE3CAD4007E02B4 /* MinusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89774B971BE3CAD4007E02B4 /* MinusIcon.png */; };
 		89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6A1BDC657C0051212A /* womensLacrosseField.png */; };
 		89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6C1BDC65820051212A /* mensLacrosseField.png */; };
 		89E30A6F1BDC6B520051212A /* scoreboard.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6E1BDC6B200051212A /* scoreboard.ttf */; };
@@ -46,6 +48,8 @@
 		897083741BE03E03008F5D5B /* Orbitron Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Light.ttf"; sourceTree = "<group>"; };
 		897083751BE03E10008F5D5B /* Orbitron Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Medium.ttf"; sourceTree = "<group>"; };
 		897083761BE04098008F5D5B /* Grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grass.png; sourceTree = "<group>"; };
+		89774B951BE3CACF007E02B4 /* PlusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlusIcon.png; sourceTree = "<group>"; };
+		89774B971BE3CAD4007E02B4 /* MinusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MinusIcon.png; sourceTree = "<group>"; };
 		89E30A6A1BDC657C0051212A /* womensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6C1BDC65820051212A /* mensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6E1BDC6B200051212A /* scoreboard.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scoreboard.ttf; sourceTree = "<group>"; };
@@ -102,6 +106,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		89774B991BE3CADA007E02B4 /* Button Icons */ = {
+			isa = PBXGroup;
+			children = (
+				89774B971BE3CAD4007E02B4 /* MinusIcon.png */,
+				89774B951BE3CACF007E02B4 /* PlusIcon.png */,
+			);
+			name = "Button Icons";
+			sourceTree = "<group>";
+		};
 		89E30A691BDC654E0051212A /* Photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +148,7 @@
 		89EC2BBA1BCF0DAB008B37DC /* GameTime Stats */ = {
 			isa = PBXGroup;
 			children = (
+				89774B991BE3CADA007E02B4 /* Button Icons */,
 				897083721BE03450008F5D5B /* Fonts */,
 				89E30A691BDC654E0051212A /* Photos */,
 				89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */,
@@ -271,12 +285,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89774B961BE3CACF007E02B4 /* PlusIcon.png in Resources */,
 				89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */,
 				89EC2BC61BCF0DAB008B37DC /* LaunchScreen.storyboard in Resources */,
 				89EC2BC31BCF0DAB008B37DC /* Assets.xcassets in Resources */,
 				89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */,
 				897083771BE04098008F5D5B /* Grass.png in Resources */,
 				8970837A1BE040BD008F5D5B /* collegiateHeavyOutline Medium.ttf in Resources */,
+				89774B981BE3CAD4007E02B4 /* MinusIcon.png in Resources */,
 				89E30A6F1BDC6B520051212A /* scoreboard.ttf in Resources */,
 				897083781BE040B7008F5D5B /* Orbitron Light.ttf in Resources */,
 				897083791BE040BA008F5D5B /* Orbitron Medium.ttf in Resources */,
