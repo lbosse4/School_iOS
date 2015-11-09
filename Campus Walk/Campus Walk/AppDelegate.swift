@@ -10,6 +10,7 @@ import UIKit
 
 struct UserDefaults {
     static let MapType = "mapType"
+    static let ShowFavorites = "showFavorites"
 }
 
 @UIApplicationMain
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let prefs = NSUserDefaults.standardUserDefaults()
         prefs.registerDefaults([UserDefaults.MapType:"Standard"])
+        prefs.registerDefaults([UserDefaults.ShowFavorites:false])
         
         return true
     }

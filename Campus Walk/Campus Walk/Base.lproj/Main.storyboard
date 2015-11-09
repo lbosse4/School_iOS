@@ -303,18 +303,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPO-un-Ldl">
-                                <rect key="frame" x="245" y="290" width="110" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="jzR-Rx-ofZ"/>
-                                    <constraint firstAttribute="height" constant="20" id="rHO-Rc-fSp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="YMQ-9G-XPx">
-                                <rect key="frame" x="194" y="318" width="212" height="29"/>
+                                <rect key="frame" x="194" y="249" width="212" height="29"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="UGG-l6-Hm9"/>
@@ -329,6 +319,32 @@
                                     <action selector="mapTypeSegmentedControlTriggered:" destination="yif-rQ-Tel" eventType="valueChanged" id="vQ1-7z-lur"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPO-un-Ldl">
+                                <rect key="frame" x="245" y="221" width="110" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="jzR-Rx-ofZ"/>
+                                    <constraint firstAttribute="height" constant="20" id="rHO-Rc-fSp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Favorites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMK-qd-04V">
+                                <rect key="frame" x="237" y="312" width="127" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="127" id="IWE-mi-uR7"/>
+                                    <constraint firstAttribute="height" constant="20" id="t7Z-Dv-svg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fys-z0-SV7">
+                                <rect key="frame" x="276" y="340" width="51" height="31"/>
+                                <connections>
+                                    <action selector="showFavoritesSwitchToggled:" destination="yif-rQ-Tel" eventType="valueChanged" id="3dZ-UH-nmj"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -337,8 +353,12 @@
                             <constraint firstItem="YMQ-9G-XPx" firstAttribute="centerX" secondItem="k0e-Sa-G0i" secondAttribute="centerX" id="FMa-vE-rcm"/>
                             <constraint firstItem="dPO-un-Ldl" firstAttribute="centerX" secondItem="k0e-Sa-G0i" secondAttribute="centerX" id="ONH-UA-aNa"/>
                             <constraint firstItem="9r8-in-bQK" firstAttribute="leading" secondItem="k0e-Sa-G0i" secondAttribute="leadingMargin" id="QSq-9X-ApJ"/>
+                            <constraint firstItem="UMK-qd-04V" firstAttribute="top" secondItem="YMQ-9G-XPx" secondAttribute="bottom" constant="35" id="dmI-bA-w91"/>
                             <constraint firstItem="YMQ-9G-XPx" firstAttribute="top" secondItem="dPO-un-Ldl" secondAttribute="bottom" constant="8" id="eLV-QH-Q8S"/>
-                            <constraint firstItem="dPO-un-Ldl" firstAttribute="centerY" secondItem="k0e-Sa-G0i" secondAttribute="centerY" id="fGk-hs-ioX"/>
+                            <constraint firstItem="dPO-un-Ldl" firstAttribute="centerY" secondItem="k0e-Sa-G0i" secondAttribute="centerY" constant="-69" id="fGk-hs-ioX"/>
+                            <constraint firstItem="Fys-z0-SV7" firstAttribute="centerX" secondItem="k0e-Sa-G0i" secondAttribute="centerX" id="hNi-ll-FJ8"/>
+                            <constraint firstItem="Fys-z0-SV7" firstAttribute="top" secondItem="UMK-qd-04V" secondAttribute="bottom" constant="8" id="r1a-nK-PQ6"/>
+                            <constraint firstItem="UMK-qd-04V" firstAttribute="centerX" secondItem="k0e-Sa-G0i" secondAttribute="centerX" id="ttn-jN-1LU"/>
                             <constraint firstItem="9r8-in-bQK" firstAttribute="top" secondItem="k0e-Sa-G0i" secondAttribute="topMargin" constant="15" id="xpS-hX-9Ud"/>
                         </constraints>
                         <variation key="default">
@@ -349,6 +369,7 @@
                     </view>
                     <connections>
                         <outlet property="mapTypeSegmentedControl" destination="YMQ-9G-XPx" id="NHo-NK-uMH"/>
+                        <outlet property="showFavoritesSwitch" destination="Fys-z0-SV7" id="TZx-SA-zKm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qej-eT-Ois" userLabel="First Responder" sceneMemberID="firstResponder"/>

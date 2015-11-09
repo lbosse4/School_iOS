@@ -68,9 +68,11 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
                 locationManager.requestWhenInUseAuthorization()
             }
         }
-        
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let prefs = NSUserDefaults.standardUserDefaults()
-        //let mapType = prefs.boolForKey(UserDefaults.MapType)
         let mapType = prefs.stringForKey(UserDefaults.MapType)
         
         switch mapType! {
@@ -83,13 +85,11 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         default:
             break
         }
-
         
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        //view.bringSubviewToFront(mapTypeSegmentedControl)
+        let showingFavorites = prefs.boolForKey(UserDefaults.ShowFavorites)
+        isShowingFavorites = showingFavorites
+        updateFavoriteButton(isShowingFavorites)
+        
         view.bringSubviewToFront(directionsView)
         updatePins()
     }
@@ -143,16 +143,15 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     }
     
     @IBAction func showFavoritesButtonPressed(sender: UIButton) {
+        let prefs = NSUserDefaults.standardUserDefaults()
+        
         isShowingFavorites = !isShowingFavorites
-        if isShowingFavorites {
-            let image = UIImage(named: "filledStar.png")
-            showFavoritesButton.setImage(image, forState: .Normal)
-            updatePins()
-        } else {
-            let image = UIImage(named: "StarBarBackground.png")
-            showFavoritesButton.setImage(image, forState: .Normal)
-            updatePins()
-        }
+        prefs.setBool(isShowingFavorites, forKey: UserDefaults.ShowFavorites)
+        prefs.synchronize()
+        
+        updateFavoriteButton(isShowingFavorites)
+        
+        updatePins()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -176,6 +175,16 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
             mapView.addAnnotations(model.favoriteBuildingsToPlot())
         }
         mapView.addAnnotations(model.userPlottedPinsToPlot())
+    }
+    
+    func updateFavoriteButton(isShowing : Bool){
+        if isShowing {
+            let image = UIImage(named: "filledStar.png")
+            showFavoritesButton.setImage(image, forState: .Normal)
+        } else {
+            let image = UIImage(named: "StarBarBackground.png")
+            showFavoritesButton.setImage(image, forState: .Normal)
+        }
     }
     
     func plotBuilding(building: Building){

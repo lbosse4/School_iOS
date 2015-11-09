@@ -12,6 +12,7 @@ class PreferencesViewController : UIViewController {
     let model = Model.sharedInstance
     
     @IBOutlet weak var mapTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var showFavoritesSwitch: UISwitch!
     
     override func viewDidLoad() {
         let prefs = NSUserDefaults.standardUserDefaults()
@@ -27,6 +28,9 @@ class PreferencesViewController : UIViewController {
         default:
             break
         }
+        
+        showFavoritesSwitch.on = prefs.boolForKey(UserDefaults.ShowFavorites)
+        
     }
     
     @IBAction func mapTypeSegmentedControlTriggered(sender: UISegmentedControl) {
@@ -46,5 +50,12 @@ class PreferencesViewController : UIViewController {
         
         prefs.synchronize()
     }
+    
+    @IBAction func showFavoritesSwitchToggled(sender: UISwitch) {
+        let prefs = NSUserDefaults.standardUserDefaults()
+        prefs.setBool(sender.on, forKey: UserDefaults.ShowFavorites)
+        prefs.synchronize()
+    }
+    
     
 }
