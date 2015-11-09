@@ -39,22 +39,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="YMQ-9G-XPx">
-                                <rect key="frame" x="0.0" y="64" width="600" height="29"/>
-                                <color key="backgroundColor" red="0.0" green="0.035485109549999998" blue="0.60211489900000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="UGG-l6-Hm9"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Standard"/>
-                                    <segment title="Satellite"/>
-                                    <segment title="Hybrid"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="mapTypeSegmentedControlTriggered:" destination="Teo-CW-fB2" eventType="valueChanged" id="kes-nm-tu9"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jh-5N-Wea">
                                 <rect key="frame" x="0.0" y="91" width="600" height="130"/>
                                 <subviews>
@@ -224,11 +208,8 @@
                         <constraints>
                             <constraint firstItem="b06-qK-D3E" firstAttribute="top" secondItem="tm2-Wj-Y0J" secondAttribute="bottom" id="1cB-q2-I36"/>
                             <constraint firstItem="4jh-5N-Wea" firstAttribute="leading" secondItem="ebW-a6-geW" secondAttribute="leadingMargin" constant="-20" id="DGo-g5-Nos"/>
-                            <constraint firstItem="YMQ-9G-XPx" firstAttribute="top" secondItem="tm2-Wj-Y0J" secondAttribute="bottom" id="Gud-BJ-MrK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4jh-5N-Wea" secondAttribute="trailing" constant="-20" id="JPe-sI-lcq"/>
                             <constraint firstItem="4jh-5N-Wea" firstAttribute="top" secondItem="tm2-Wj-Y0J" secondAttribute="bottom" constant="27" id="MGP-Nd-mFg"/>
-                            <constraint firstItem="YMQ-9G-XPx" firstAttribute="leading" secondItem="ebW-a6-geW" secondAttribute="leadingMargin" constant="-20" id="TjZ-iA-gfh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YMQ-9G-XPx" secondAttribute="trailing" constant="-20" id="Z2L-4Q-fpX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="b06-qK-D3E" secondAttribute="trailing" constant="-20" id="fkO-c4-Jsq"/>
                             <constraint firstItem="LYH-ZR-aTz" firstAttribute="top" secondItem="b06-qK-D3E" secondAttribute="bottom" id="fvx-PA-SGp"/>
                             <constraint firstItem="b06-qK-D3E" firstAttribute="leading" secondItem="ebW-a6-geW" secondAttribute="leadingMargin" constant="-20" id="u9v-Tk-79N"/>
@@ -236,9 +217,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="ynd-Vd-O9o">
                         <leftBarButtonItems>
+                            <barButtonItem id="01o-OD-moI">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="TYc-RO-ywO">
+                                    <rect key="frame" x="20" y="11" width="22" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <segue destination="yif-rQ-Tel" kind="show" identifier="PreferencesSegue" id="aRC-MZ-puA"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
                             <barButtonItem id="HAI-Nn-1Kb">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dO7-PG-0eM">
-                                    <rect key="frame" x="20" y="7" width="30" height="30"/>
+                                    <rect key="frame" x="50" y="7" width="30" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="BuildingButton" image="BuildingIcon.png"/>
                                     <connections>
@@ -248,7 +238,7 @@
                             </barButtonItem>
                             <barButtonItem id="3Vh-fV-VQZ">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dx1-9T-h9t">
-                                    <rect key="frame" x="58" y="7" width="84" height="29"/>
+                                    <rect key="frame" x="88" y="7" width="84" height="29"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="TrashCan.png"/>
                                     <connections>
@@ -281,7 +271,6 @@
                         <outlet property="backButtonView" destination="Gk1-2V-8ej" id="hTk-ut-j4W"/>
                         <outlet property="directionsLabel" destination="MSA-CE-smc" id="Ppe-XB-FYJ"/>
                         <outlet property="directionsView" destination="4jh-5N-Wea" id="2I1-qr-sXA"/>
-                        <outlet property="mapTypeSegmentedControl" destination="YMQ-9G-XPx" id="Y9k-s1-Al5"/>
                         <outlet property="mapView" destination="b06-qK-D3E" id="Ofv-fF-GXP"/>
                         <outlet property="nextButton" destination="FSF-fE-UQk" id="7LX-VG-y9A"/>
                         <outlet property="nextButtonView" destination="knm-Tb-Euf" id="X2U-qM-5pq"/>
@@ -292,6 +281,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U8-Vk-CMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="437" y="233"/>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="lfB-hO-fH1">
+            <objects>
+                <viewController id="yif-rQ-Tel" customClass="PreferencesViewController" customModule="Campus_Walk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sTT-1T-ctW"/>
+                        <viewControllerLayoutGuide type="bottom" id="kVF-t8-uG7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k0e-Sa-G0i">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r8-in-bQK">
+                                <rect key="frame" x="20" y="79" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PYs-Kz-ahu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="36"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPO-un-Ldl">
+                                <rect key="frame" x="245" y="290" width="110" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="jzR-Rx-ofZ"/>
+                                    <constraint firstAttribute="height" constant="20" id="rHO-Rc-fSp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="YMQ-9G-XPx">
+                                <rect key="frame" x="194" y="318" width="212" height="29"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="UGG-l6-Hm9"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="mapTypeSegmentedControlTriggered:" destination="yif-rQ-Tel" eventType="valueChanged" id="vQ1-7z-lur"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="9r8-in-bQK" firstAttribute="trailing" secondItem="k0e-Sa-G0i" secondAttribute="trailingMargin" id="6OZ-lE-KJx"/>
+                            <constraint firstItem="9r8-in-bQK" firstAttribute="top" secondItem="sTT-1T-ctW" secondAttribute="bottom" constant="15" id="ASq-M6-sEW"/>
+                            <constraint firstItem="YMQ-9G-XPx" firstAttribute="centerX" secondItem="k0e-Sa-G0i" secondAttribute="centerX" id="FMa-vE-rcm"/>
+                            <constraint firstItem="dPO-un-Ldl" firstAttribute="centerX" secondItem="k0e-Sa-G0i" secondAttribute="centerX" id="ONH-UA-aNa"/>
+                            <constraint firstItem="9r8-in-bQK" firstAttribute="leading" secondItem="k0e-Sa-G0i" secondAttribute="leadingMargin" id="QSq-9X-ApJ"/>
+                            <constraint firstItem="YMQ-9G-XPx" firstAttribute="top" secondItem="dPO-un-Ldl" secondAttribute="bottom" constant="8" id="eLV-QH-Q8S"/>
+                            <constraint firstItem="dPO-un-Ldl" firstAttribute="centerY" secondItem="k0e-Sa-G0i" secondAttribute="centerY" id="fGk-hs-ioX"/>
+                            <constraint firstItem="9r8-in-bQK" firstAttribute="top" secondItem="k0e-Sa-G0i" secondAttribute="topMargin" constant="15" id="xpS-hX-9Ud"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xpS-hX-9Ud"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapTypeSegmentedControl" destination="YMQ-9G-XPx" id="NHo-NK-uMH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qej-eT-Ois" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1184" y="-1149"/>
         </scene>
         <!--Listed Directions View Controller-->
         <scene sceneID="Vsg-X9-fYE">

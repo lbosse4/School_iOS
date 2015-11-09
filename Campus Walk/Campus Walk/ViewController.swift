@@ -14,7 +14,6 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var showFavoritesButton: UIButton!
     @IBOutlet weak var trashCanButton: UIButton!
-    @IBOutlet weak var mapTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var backButtonView: UIView!
     @IBOutlet weak var nextButton: UIButton!
@@ -69,11 +68,28 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
                 locationManager.requestWhenInUseAuthorization()
             }
         }
+        
+        let prefs = NSUserDefaults.standardUserDefaults()
+        //let mapType = prefs.boolForKey(UserDefaults.MapType)
+        let mapType = prefs.stringForKey(UserDefaults.MapType)
+        
+        switch mapType! {
+        case "Standard":
+            mapView.mapType = MKMapType.Standard
+        case "Satellite":
+            mapView.mapType = MKMapType.Satellite
+        case "Hybrid":
+            mapView.mapType = MKMapType.Hybrid
+        default:
+            break
+        }
+
+        
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        view.bringSubviewToFront(mapTypeSegmentedControl)
+        //view.bringSubviewToFront(mapTypeSegmentedControl)
         view.bringSubviewToFront(directionsView)
         updatePins()
     }
@@ -81,19 +97,6 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func mapTypeSegmentedControlTriggered(sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            mapView.mapType = MKMapType.Standard
-        case 1:
-            mapView.mapType = MKMapType.Satellite
-        case 2:
-            mapView.mapType = MKMapType.Hybrid
-        default:
-            break
-        }
     }
     
     @IBAction func directionCancelButtonPressed(sender: UIButton) {
@@ -160,6 +163,8 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
         case "listDirectionsSegue":
             let listDirectionViewController = segue.destinationViewController as! ListedDirectionsViewController
             listDirectionViewController.directionResponse = directionResponse
+        case "PreferencesSegue":
+            break
         default:
             break
         }

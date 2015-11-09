@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct UserDefaults {
+    static let MapType = "mapType"
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let prefs = NSUserDefaults.standardUserDefaults()
+        prefs.registerDefaults([UserDefaults.MapType:"Standard"])
+        
         return true
     }
 
