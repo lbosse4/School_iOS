@@ -9,15 +9,6 @@
 import Foundation
 import MapKit
 
-struct BuildingKey {
-    static let Title = "name"
-    static let Latitude = "latitude"
-    static let Longitude = "longitude"
-    static let Photo = "photo"
-    static let YearConstructed = "year_constructed"
-    static let Favorite = "favorite"
-}
-
 class Building : NSObject, MKAnnotation {
     var title : String?
     var subtitle : String?
@@ -43,85 +34,22 @@ class Building : NSObject, MKAnnotation {
         
         return mapItem
     }
-
+    
 }
 
 class Model {
     
     static let sharedInstance = Model()
-    private var buildings : [[String:AnyObject]] = Array()
     private let buildingsArray : [Building]
-    let buildingsPath : String
     private let buildingsDictionary : [String:[Building]]
-    private let filename : String = "buildings"
+    private let plistName : String = "buildings"
     private let allKeys : [String]
     
     private var favoriteBuildings = [Building]()
     private var userPlottedPins = [Building]()
     
     init() {
-        let fileManager = NSFileManager.defaultManager()
-        let URLS = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        let URL = URLS[0]
-        buildingsPath = URL.URLByAppendingPathComponent(filename).path!
-        
-        if fileManager.fileExistsAtPath(buildingsPath) {
-            let data = NSData(contentsOfFile: buildingsPath)
-            buildings = try! NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as! [[String:AnyObject]]
-        } else {
-            
-            /*
-            let bundle = NSBundle.mainBundle()
-            if let path = bundle.pathForResource(filename, ofType: "plist") {
-                footballers = NSArray(contentsOfFile: path) as! [[String:String]]
-                for i in 0..<footballers.count {
-                    footballers[i][FootballerKey.Favorite] = "NO"
-                }
-            }
-            */
-            
-            
-            let bundle = NSBundle.mainBundle()
-            if let path = bundle.pathForResource(filename, ofType: "plist") {
-                //let data = NSData(contentsOfFile: path)
-                buildings = NSArray(contentsOfFile: path) as! [[String:AnyObject]]
-                
-                for i in 0..<buildings.count {
-                    buildings[i][BuildingKey.Favorite] = false 
-                }
-                
-            }
-        }
-        
-        var _buildings = [Building]()
-        var _buildingsDictionary = [String:[Building]]()
-
-        for dictionary in buildings {
-            let building = Building(title: dictionary[BuildingKey.Title] as! String, coordinate: CLLocationCoordinate2D(latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees), subtitle: "")
-            let image = dictionary["photo"] as! String
-            if image != "" {
-                building.image = UIImage(named: "\(image).jpg")!
-            }
-            building.yearConstructed = dictionary["year_constructed"] as! Int
-            
-            _buildings.append(building)
-            
-            let firstLetter = building.title!.firstLetter()!
-            if let _ = _buildingsDictionary[firstLetter] {
-                _buildingsDictionary[firstLetter]!.append(building)
-            } else {
-                _buildingsDictionary[firstLetter] = [building]
-            }
-        }
-        
-        buildingsArray = _buildings
-        buildingsDictionary = _buildingsDictionary
-        let keys = Array(buildingsDictionary.keys)
-        allKeys = keys.sort()
-
-        
-        /*
-        let path = NSBundle.mainBundle().pathForResource(filename, ofType: "plist")
+        let path = NSBundle.mainBundle().pathForResource(plistName, ofType: "plist")
         let data = NSArray(contentsOfFile: path!) as! [[String:AnyObject]]
         
         var _buildings = [Building]()
@@ -134,7 +62,7 @@ class Model {
                 building.image = UIImage(named: "\(image).jpg")!
             }
             building.yearConstructed = dictionary["year_constructed"] as! Int
-                    
+            
             _buildings.append(building)
             
             let firstLetter = building.title!.firstLetter()!
@@ -153,12 +81,10 @@ class Model {
         buildingsDictionary = _buildingsDictionary
         let keys = Array(buildingsDictionary.keys)
         allKeys = keys.sort()
-        */
     }
     
-    func saveJSON() {
-        let data = try! NSJSONSerialization.dataWithJSONObject(buildings, options: .PrettyPrinted)
-        data.writeToFile(buildingsPath, atomically: true)
+    func placesToPlot() -> [Building] {
+        return buildingsArray
     }
     
     func numberOfTableSections() -> Int {
@@ -256,7 +182,7 @@ class Model {
         }
         favoriteBuildings.removeAtIndex(index)
     }
-
+    
 }
 
 
