@@ -9,21 +9,36 @@
 import Foundation
 import MapKit
 
-class Building : NSObject, MKAnnotation {
+struct BuildingKey {
+    static let Title = "name"
+    static let Latitude = "latitude"
+    static let Longitude = "longitude"
+    static let Coordinate = "coordinate"
+    static let Image = "photo"
+    static let YearConstructed = "year_constructed"
+    static let Favorite = "favorite"
+}
+
+class Building : NSObject, MKAnnotation, NSCoding {
     var title : String?
     var subtitle : String?
     var coordinate : CLLocationCoordinate2D
+    var latitude : CLLocationDegrees
+    var longitude : CLLocationDegrees
     var isFavorite : Bool
     var yearConstructed : Int
     var image : UIImage
     
-    init (title: String, coordinate: CLLocationCoordinate2D, subtitle:String){
+    init (title: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, yearConstructed: Int, image: UIImage, favorite: Bool, subtitle:String){
         self.title = title
         self.subtitle = subtitle
-        self.coordinate = coordinate
-        isFavorite = false
-        yearConstructed = 0
-        image = UIImage(named: "NoImageAvailable.png")!
+        self.latitude = latitude
+        self.longitude = longitude
+        self.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        self.yearConstructed = yearConstructed
+        self.image = UIImage(named: "NoImageAvailable.png")!
+        self.isFavorite = false
+        
         super.init()
     }
     
@@ -35,6 +50,25 @@ class Building : NSObject, MKAnnotation {
         return mapItem
     }
     
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(title, forKey: BuildingKey.Title)
+        aCoder.encodeDouble(latitude, forKey: BuildingKey.Latitude)
+        aCoder.encodeDouble(longitude, forKey: BuildingKey.Longitude)
+        aCoder.encodeInteger(yearConstructed, forKey: BuildingKey.YearConstructed)
+        aCoder.encodeObject(image, forKey: BuildingKey.Image)
+        aCoder.encodeObject(isFavorite, forKey: BuildingKey.Favorite)
+    }
+    required convenience init(coder aDecoder: NSCoder) {
+        let t = aDecoder.decodeObjectForKey(BuildingKey.Title) as! String
+        let lat = aDecoder.decodeObjectForKey(BuildingKey.Latitude) as! CLLocationDegrees
+        let lon = aDecoder.decodeObjectForKey(BuildingKey.Longitude) as! CLLocationDegrees
+        let y = aDecoder.decodeIntegerForKey(BuildingKey.YearConstructed)
+        let i = aDecoder.decodeObjectForKey(BuildingKey.Image) as! UIImage
+        let f = aDecoder.decodeObjectForKey(BuildingKey.Favorite) as! Bool
+        
+        self.init(title: t, latitude: lat, longitude: lon, yearConstructed: y, image: i, favorite: f, subtitle: "")
+    }
+    
 }
 
 class Model {
@@ -42,45 +76,58 @@ class Model {
     static let sharedInstance = Model()
     private let buildingsArray : [Building]
     private let buildingsDictionary : [String:[Building]]
-    private let plistName : String = "buildings"
+    private let fileName : String = "buildings"
     private let allKeys : [String]
+    var archivePath : String
     
     private var favoriteBuildings = [Building]()
     private var userPlottedPins = [Building]()
     
     init() {
-        let path = NSBundle.mainBundle().pathForResource(plistName, ofType: "plist")
-        let data = NSArray(contentsOfFile: path!) as! [[String:AnyObject]]
+        let fileManager = NSFileManager.defaultManager()
+        let URLS = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let URL = URLS[0]
+        archivePath = URL.URLByAppendingPathComponent(fileName).path!
         
-        var _buildings = [Building]()
-        var _buildingsDictionary = [String:[Building]]()
-        
-        for dictionary in data {
-            let building = Building(title: dictionary["name"] as! String, coordinate: CLLocationCoordinate2D(latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees), subtitle: "")
-            let image = dictionary["photo"] as! String
-            if image != "" {
-                building.image = UIImage(named: "\(image).jpg")!
-            }
-            building.yearConstructed = dictionary["year_constructed"] as! Int
+        if fileManager.fileExistsAtPath(archivePath) {
+            buildingsArray = NSKeyedUnarchiver.unarchiveObjectWithFile(archivePath) as! [Building]
+        } else {
+            let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "plist")
+            let data = NSArray(contentsOfFile: path!) as! [[String:AnyObject]]
             
-            _buildings.append(building)
+            var _buildings = [Building]()
+            var _buildingsDictionary = [String:[Building]]()
             
-            let firstLetter = building.title!.firstLetter()!
-            if let _ = _buildingsDictionary[firstLetter] {
-                _buildingsDictionary[firstLetter]!.append(building)
-            } else {
-                _buildingsDictionary[firstLetter] = [building]
+            for dictionary in data {
+                //let building = Building(title: dictionary["name"] as! String, coordinate: CLLocationCoordinate2D(latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees), subtitle: "")
+                let imageName = dictionary["photo"] as! String
+                let image : UIImage
+                if imageName != "" {
+                    image = UIImage(named: imageName)!
+                    //building.image = UIImage(named: "\(image).jpg")!
+                } else {
+                    image = UIImage(named: "NoImageAvailable.png")!
+                }
+                //building.yearConstructed = dictionary["year_constructed"] as! Int
+                
+                let building = Building(title: dictionary["name"] as! String, latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees, yearConstructed: dictionary["year_constructed"] as! Int, image: image, favorite: false, subtitle: "")
+                _buildings.append(building)
+                
+                let firstLetter = building.title!.firstLetter()!
+                if let _ = _buildingsDictionary[firstLetter] {
+                    _buildingsDictionary[firstLetter]!.append(building)
+                } else {
+                    _buildingsDictionary[firstLetter] = [building]
+                }
             }
+            
+            buildingsArray = _buildings
+            buildingsDictionary = _buildingsDictionary
+            let keys = Array(buildingsDictionary.keys)
+            allKeys = keys.sort()
         }
         
-        for dictionary in _buildingsDictionary {
-            dictionary
-        }
         
-        buildingsArray = _buildings
-        buildingsDictionary = _buildingsDictionary
-        let keys = Array(buildingsDictionary.keys)
-        allKeys = keys.sort()
     }
     
     func placesToPlot() -> [Building] {

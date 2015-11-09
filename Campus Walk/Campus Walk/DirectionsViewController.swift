@@ -103,7 +103,8 @@ class DirectionsViewController : UIViewController, FindBuildingsProtocol, CLLoca
             chooseABuildingView.hidden = true
             
             if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
-                let userLocationBuildingObject = Building(title: "your current location", coordinate: (locationManager.location?.coordinate)!, subtitle: "")
+                //let userLocationBuildingObject = Building(title: "your current location", coordinate: (locationManager.location?.coordinate)!, subtitle: "")
+                let userLocationBuildingObject = Building(title: "your current location", latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!, yearConstructed: 2015, image: UIImage(named: "NoImageAvailable.png")!, favorite: true, subtitle: "")
                 if isStartingFromBuilding {
                     destination = userLocationBuildingObject
                 } else {
