@@ -36,7 +36,7 @@ class Building : NSObject, MKAnnotation, NSCoding {
         self.longitude = longitude
         self.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         self.yearConstructed = yearConstructed
-        self.image = UIImage(named: "NoImageAvailable.png")!
+        self.image = image
         self.isFavorite = false
         
         super.init()
@@ -135,6 +135,7 @@ class Model {
         buildingsDictionary = _buildingsDictionary
         let keys = Array(buildingsDictionary.keys)
         allKeys = keys.sort()
+        saveArchive()
     }
     
     func saveArchive(){
