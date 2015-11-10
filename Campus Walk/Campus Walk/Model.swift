@@ -96,14 +96,14 @@ class Model {
             let data = NSArray(contentsOfFile: path!) as! [[String:AnyObject]]
             
             var _buildings = [Building]()
-            var _buildingsDictionary = [String:[Building]]()
+            
             
             for dictionary in data {
                 //let building = Building(title: dictionary["name"] as! String, coordinate: CLLocationCoordinate2D(latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees), subtitle: "")
                 let imageName = dictionary["photo"] as! String
                 let image : UIImage
                 if imageName != "" {
-                    image = UIImage(named: imageName)!
+                    image = UIImage(named: "\(imageName).jpg")!
                     //building.image = UIImage(named: "\(image).jpg")!
                 } else {
                     image = UIImage(named: "NoImageAvailable.png")!
@@ -113,25 +113,31 @@ class Model {
                 let building = Building(title: dictionary["name"] as! String, latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees, yearConstructed: dictionary["year_constructed"] as! Int, image: image, favorite: false, subtitle: "")
                 _buildings.append(building)
                 
-                let firstLetter = building.title!.firstLetter()!
-                if let _ = _buildingsDictionary[firstLetter] {
-                    _buildingsDictionary[firstLetter]!.append(building)
-                } else {
-                    _buildingsDictionary[firstLetter] = [building]
-                }
+                
             }
-            
             buildingsArray = _buildings
-            buildingsDictionary = _buildingsDictionary
-            let keys = Array(buildingsDictionary.keys)
-            allKeys = keys.sort()
+            
+        }
+        
+        var _buildingsDictionary = [String:[Building]]()
+        
+        for building in buildingsArray {
+            let firstLetter = building.title!.firstLetter()!
+            if let _ = _buildingsDictionary[firstLetter] {
+                _buildingsDictionary[firstLetter]!.append(building)
+            } else {
+                _buildingsDictionary[firstLetter] = [building]
+            }
         }
         
         
+        buildingsDictionary = _buildingsDictionary
+        let keys = Array(buildingsDictionary.keys)
+        allKeys = keys.sort()
     }
     
-    func placesToPlot() -> [Building] {
-        return buildingsArray
+    func saveArchive(){
+        NSKeyedArchiver.archiveRootObject(buildingsArray, toFile: archivePath)
     }
     
     func numberOfTableSections() -> Int {
