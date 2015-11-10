@@ -60,8 +60,8 @@ class Building : NSObject, MKAnnotation, NSCoding {
     }
     required convenience init(coder aDecoder: NSCoder) {
         let t = aDecoder.decodeObjectForKey(BuildingKey.Title) as! String
-        let lat = aDecoder.decodeObjectForKey(BuildingKey.Latitude) as! CLLocationDegrees
-        let lon = aDecoder.decodeObjectForKey(BuildingKey.Longitude) as! CLLocationDegrees
+        let lat = aDecoder.decodeDoubleForKey(BuildingKey.Latitude)
+        let lon = aDecoder.decodeDoubleForKey(BuildingKey.Longitude)
         let y = aDecoder.decodeIntegerForKey(BuildingKey.YearConstructed)
         let i = aDecoder.decodeObjectForKey(BuildingKey.Image) as! UIImage
         let f = aDecoder.decodeObjectForKey(BuildingKey.Favorite) as! Bool
@@ -115,6 +115,7 @@ class Model {
                 
                 
             }
+            _buildings.sortInPlace{($0.title < $1.title)}
             buildingsArray = _buildings
             
         }
@@ -162,7 +163,7 @@ class Model {
     
     func buildingAtIndexPath(indexPath : NSIndexPath) -> Building{
         var buildings : [Building] = buildingsInSection(indexPath.section)
-        //buildings.sortInPlace { ($0.title < $1.title)}
+        buildings.sortInPlace { ($0.title < $1.title)}
         return buildings[indexPath.row]
     }
     
@@ -178,6 +179,7 @@ class Model {
     func toggleIsFavoriteBuildingAtIndexPath(indexPath: NSIndexPath) {
         let buildings : [Building] = buildingsInSection(indexPath.section)
         buildings[indexPath.row].isFavorite = !buildings[indexPath.row].isFavorite
+        
     }
     
     func favoriteBuildingsToPlot() -> [Building] {
@@ -203,6 +205,7 @@ class Model {
                 building.image = image
             }
         }
+        saveArchive()
     }
     
     func yearConstructedForBuildingWithTitle(title : String) -> Int{
