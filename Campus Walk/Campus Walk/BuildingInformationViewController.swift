@@ -84,8 +84,8 @@ class BuildingInformationViewController : UIViewController, GetDirectionsProtoco
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             buildingImageView.image = pickedImage
-            model.updateImageForBuildingWithTitle(pickedImage
-                , title: building!.title!)
+            model.updateImageForBuilding(pickedImage
+                , building: building!)
         }
         dismissViewControllerAnimated(true, completion: nil)
     }

@@ -55,7 +55,8 @@ class Building : NSObject, MKAnnotation, NSCoding {
         aCoder.encodeDouble(latitude, forKey: BuildingKey.Latitude)
         aCoder.encodeDouble(longitude, forKey: BuildingKey.Longitude)
         aCoder.encodeInteger(yearConstructed, forKey: BuildingKey.YearConstructed)
-        aCoder.encodeObject(image, forKey: BuildingKey.Image)
+        let dataImage : NSData = UIImagePNGRepresentation(image)!
+        aCoder.encodeObject(dataImage, forKey: BuildingKey.Image)
         aCoder.encodeObject(isFavorite, forKey: BuildingKey.Favorite)
     }
     required convenience init(coder aDecoder: NSCoder) {
@@ -63,10 +64,10 @@ class Building : NSObject, MKAnnotation, NSCoding {
         let lat = aDecoder.decodeDoubleForKey(BuildingKey.Latitude)
         let lon = aDecoder.decodeDoubleForKey(BuildingKey.Longitude)
         let y = aDecoder.decodeIntegerForKey(BuildingKey.YearConstructed)
-        let i = aDecoder.decodeObjectForKey(BuildingKey.Image) as! UIImage
+        let i = aDecoder.decodeObjectForKey(BuildingKey.Image) as! NSData
         let f = aDecoder.decodeObjectForKey(BuildingKey.Favorite) as! Bool
         
-        self.init(title: t, latitude: lat, longitude: lon, yearConstructed: y, image: i, favorite: f, subtitle: "")
+        self.init(title: t, latitude: lat, longitude: lon, yearConstructed: y, image: UIImage(data: i)!, favorite: f, subtitle: "")
     }
     
 }
@@ -74,8 +75,8 @@ class Building : NSObject, MKAnnotation, NSCoding {
 class Model {
     
     static let sharedInstance = Model()
-    private let buildingsArray : [Building]
-    private let buildingsDictionary : [String:[Building]]
+    //private let buildingsArray : [Building]
+    private var buildingsDictionary : [String:[Building]]
     private let fileName : String = "buildings"
     private let allKeys : [String]
     var archivePath : String
@@ -88,9 +89,9 @@ class Model {
         let URLS = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         let URL = URLS[0]
         archivePath = URL.URLByAppendingPathComponent(fileName).path!
-        
+        var _buildingsDictionary = [String:[Building]]()
         if fileManager.fileExistsAtPath(archivePath) {
-            buildingsArray = NSKeyedUnarchiver.unarchiveObjectWithFile(archivePath) as! [Building]
+            buildingsDictionary = NSKeyedUnarchiver.unarchiveObjectWithFile(archivePath) as! [String:[Building]]
         } else {
             let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "plist")
             let data = NSArray(contentsOfFile: path!) as! [[String:AnyObject]]
@@ -111,35 +112,42 @@ class Model {
                 //building.yearConstructed = dictionary["year_constructed"] as! Int
                 
                 let building = Building(title: dictionary["name"] as! String, latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees, yearConstructed: dictionary["year_constructed"] as! Int, image: image, favorite: false, subtitle: "")
+                building.image = image
                 _buildings.append(building)
                 
-                
+                let firstLetter = building.title!.firstLetter()!
+                if let _ = _buildingsDictionary[firstLetter] {
+                    _buildingsDictionary[firstLetter]!.append(building)
+                } else {
+                    _buildingsDictionary[firstLetter] = [building]
+                }
             }
-            _buildings.sortInPlace{($0.title < $1.title)}
-            buildingsArray = _buildings
+            //_buildings.sortInPlace{($0.title < $1.title)}
+            //buildingsArray = _buildings
             
-        }
-        
-        var _buildingsDictionary = [String:[Building]]()
-        
-        for building in buildingsArray {
-            let firstLetter = building.title!.firstLetter()!
-            if let _ = _buildingsDictionary[firstLetter] {
-                _buildingsDictionary[firstLetter]!.append(building)
-            } else {
-                _buildingsDictionary[firstLetter] = [building]
-            }
+            buildingsDictionary = _buildingsDictionary
         }
         
         
-        buildingsDictionary = _buildingsDictionary
+        
+//        for building in buildingsArray {
+//            let firstLetter = building.title!.firstLetter()!
+//            if let _ = _buildingsDictionary[firstLetter] {
+//                _buildingsDictionary[firstLetter]!.append(building)
+//            } else {
+//                _buildingsDictionary[firstLetter] = [building]
+//            }
+//        }
+        
+        
+        
         let keys = Array(buildingsDictionary.keys)
         allKeys = keys.sort()
         saveArchive()
     }
     
     func saveArchive(){
-        NSKeyedArchiver.archiveRootObject(buildingsArray, toFile: archivePath)
+        NSKeyedArchiver.archiveRootObject(buildingsDictionary, toFile: archivePath)
     }
     
     func numberOfTableSections() -> Int {
@@ -180,7 +188,9 @@ class Model {
     func toggleIsFavoriteBuildingAtIndexPath(indexPath: NSIndexPath) {
         let buildings : [Building] = buildingsInSection(indexPath.section)
         buildings[indexPath.row].isFavorite = !buildings[indexPath.row].isFavorite
-        
+        //let letter = letterForSection(indexPath.section)
+        //buildingsDictionary[letter]![indexPath.row].isFavorite = !buildingsDictionary[letter]![indexPath.row].isFavorite
+        saveArchive()
     }
     
     func favoriteBuildingsToPlot() -> [Building] {
@@ -200,22 +210,33 @@ class Model {
         
     }
     
-    func updateImageForBuildingWithTitle(image : UIImage, title : String){
-        for building in buildingsArray {
-            if building.title == title {
-                building.image = image
+    func updateImageForBuilding(image : UIImage, building: Building){
+//        for building in buildingsArray {
+//            if building.title == title {
+//                building.image = image
+//            }
+//        }
+        let firstletter = building.title?.firstLetter()
+        let buildings = buildingsDictionary[firstletter!]
+        var loopCounter = 0
+        for aBuilding in buildings! {
+            if aBuilding.title == building.title {
+                break
             }
+            loopCounter += 1
         }
+        buildingsDictionary[firstletter!]![loopCounter].image = image
+        //building.image = image
         saveArchive()
     }
     
     func yearConstructedForBuildingWithTitle(title : String) -> Int{
-        for building in buildingsArray{
-            if building.title == title {
-                return building.yearConstructed
-            }
-        }
-        return 0
+//        for building in buildingsArray{
+//            if building.title == title {
+//                return building.yearConstructed
+//            }
+//        }
+        return 2000
     }
     
     func removeUserPlottedPin(building: Building) {
