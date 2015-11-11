@@ -75,11 +75,12 @@ class Building : NSObject, MKAnnotation, NSCoding {
 class Model {
     
     static let sharedInstance = Model()
-    //private let buildingsArray : [Building]
     private var buildingsDictionary : [String:[Building]]
-    private let fileName : String = "buildings"
+    private let buildingFileName : String = "buildings"
+    private let favoriteFileName : String = "favorites"
     private let allKeys : [String]
-    var archivePath : String
+    var buildingArchivePath : String
+    var favoriteArchivePath : String
     
     private var favoriteBuildings = [Building]()
     private var userPlottedPins = [Building]()
@@ -88,16 +89,15 @@ class Model {
         let fileManager = NSFileManager.defaultManager()
         let URLS = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         let URL = URLS[0]
-        archivePath = URL.URLByAppendingPathComponent(fileName).path!
+        buildingArchivePath = URL.URLByAppendingPathComponent(buildingFileName).path!
+        favoriteArchivePath = URL.URLByAppendingPathComponent(favoriteFileName).path!
+        
         var _buildingsDictionary = [String:[Building]]()
-        if fileManager.fileExistsAtPath(archivePath) {
-            buildingsDictionary = NSKeyedUnarchiver.unarchiveObjectWithFile(archivePath) as! [String:[Building]]
+        if fileManager.fileExistsAtPath(buildingArchivePath) {
+            buildingsDictionary = NSKeyedUnarchiver.unarchiveObjectWithFile(buildingArchivePath) as! [String:[Building]]
         } else {
-            let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "plist")
+            let path = NSBundle.mainBundle().pathForResource(buildingFileName, ofType: "plist")
             let data = NSArray(contentsOfFile: path!) as! [[String:AnyObject]]
-            
-            //var _buildings = [Building]()
-            
             
             for dictionary in data {
             
@@ -111,7 +111,6 @@ class Model {
                 
                 let building = Building(title: dictionary["name"] as! String, latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees, yearConstructed: dictionary["year_constructed"] as! Int, image: image, favorite: false, subtitle: "")
                 building.image = image
-                //_buildings.append(building)
                 
                 let firstLetter = building.title!.firstLetter()!
                 if let _ = _buildingsDictionary[firstLetter] {
@@ -120,32 +119,24 @@ class Model {
                     _buildingsDictionary[firstLetter] = [building]
                 }
             }
-            //_buildings.sortInPlace{($0.title < $1.title)}
-            //buildingsArray = _buildings
             
             buildingsDictionary = _buildingsDictionary
         }
         
-        
-        
-//        for building in buildingsArray {
-//            let firstLetter = building.title!.firstLetter()!
-//            if let _ = _buildingsDictionary[firstLetter] {
-//                _buildingsDictionary[firstLetter]!.append(building)
-//            } else {
-//                _buildingsDictionary[firstLetter] = [building]
-//            }
-//        }
-        
-        
-        
+        if fileManager.fileExistsAtPath(favoriteArchivePath) {
+            favoriteBuildings = NSKeyedUnarchiver.unarchiveObjectWithFile(favoriteArchivePath) as! [Building]
+        }
         let keys = Array(buildingsDictionary.keys)
         allKeys = keys.sort()
         saveArchive()
     }
     
     func saveArchive(){
-        NSKeyedArchiver.archiveRootObject(buildingsDictionary, toFile: archivePath)
+        NSKeyedArchiver.archiveRootObject(buildingsDictionary, toFile: buildingArchivePath)
+    }
+    
+    func saveFavoriteArchive() {
+        NSKeyedArchiver.archiveRootObject(favoriteBuildings, toFile: favoriteArchivePath)
     }
     
     func numberOfTableSections() -> Int {
@@ -184,8 +175,6 @@ class Model {
     }
     
     func toggleIsFavoriteBuildingAtIndexPath(indexPath: NSIndexPath, building: Building) {
-        //let buildings : [Building] = buildingsInSection(indexPath.section)
-        //buildings[indexPath.row].isFavorite = !buildings[indexPath.row].isFavorite
         let letter = letterForSection(indexPath.section)
         let buildings = buildingsDictionary[letter]
         
@@ -198,7 +187,6 @@ class Model {
         }
         
         buildingsDictionary[letter]![loopCounter].isFavorite = !buildingsDictionary[letter]![loopCounter].isFavorite
-        saveArchive()
     }
     
     func favoriteBuildingsToPlot() -> [Building] {
@@ -211,11 +199,12 @@ class Model {
     
     func addUserAddedPin(building: Building){
         userPlottedPins.append(building)
+        
     }
     
     func addFavorite(building: Building) {
         favoriteBuildings.append(building)
-        
+        saveFavoriteArchive()
     }
     
     func updateImageForBuilding(image : UIImage, building: Building){
@@ -233,11 +222,6 @@ class Model {
     }
     
     func yearConstructedForBuildingWithTitle(title : String) -> Int{
-//        for building in buildingsArray{
-//            if building.title == title {
-//                return building.yearConstructed
-//            }
-//        }
         let firstLetter = title.firstLetter()!
         let buildings = buildingsDictionary[firstLetter]!
         for aBuilding in buildings {
@@ -268,6 +252,7 @@ class Model {
             index++
         }
         favoriteBuildings.removeAtIndex(index)
+        saveFavoriteArchive()
     }
     
 }

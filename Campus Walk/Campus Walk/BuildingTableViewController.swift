@@ -25,11 +25,6 @@ class BuildingTableViewController : UITableViewController {
     
     @IBOutlet weak var addFavoritesButton: UIButton!
     
-    
-    override func viewDidLoad() {
-        
-    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return model.numberOfTableSections()
     }
@@ -91,6 +86,11 @@ class BuildingTableViewController : UITableViewController {
             addFavoritesButton.setTitle("Done", forState: .Normal)
         } else {
             addFavoritesButton.setTitle("Add/Remove Favorites", forState: .Normal)
+            model.saveArchive()
         }
+        
     }
   }
+
+
+

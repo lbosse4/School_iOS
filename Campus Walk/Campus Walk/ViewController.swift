@@ -259,7 +259,6 @@ class ViewController: UIViewController, BuildingInfoProtocol, buildingTableDeleg
             return polylineRenderer
         }
         
-        // default
         return MKOverlayRenderer(overlay: overlay)
     }
     
