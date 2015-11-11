@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		891ECF951BF3A3C1009C813D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF941BF3A3C1009C813D /* Model.swift */; };
+		891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF961BF3A3F4009C813D /* GameViewController.swift */; };
+		891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF981BF3A409009C813D /* CreateTeamViewController.swift */; };
+		891ECF9B1BF3A449009C813D /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9A1BF3A449009C813D /* StartScreenViewController.swift */; };
+		891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9C1BF3AC9E009C813D /* DataManager.swift */; };
+		891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */; };
 		897083771BE04098008F5D5B /* Grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 897083761BE04098008F5D5B /* Grass.png */; };
 		897083781BE040B7008F5D5B /* Orbitron Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083741BE03E03008F5D5B /* Orbitron Light.ttf */; };
 		897083791BE040BA008F5D5B /* Orbitron Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083751BE03E10008F5D5B /* Orbitron Medium.ttf */; };
@@ -18,7 +24,6 @@
 		89E30A6F1BDC6B520051212A /* scoreboard.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6E1BDC6B200051212A /* scoreboard.ttf */; };
 		89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A701BDC6C0A0051212A /* digital-7.ttf */; };
 		89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */; };
-		89EC2BBE1BCF0DAB008B37DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BBD1BCF0DAB008B37DC /* ViewController.swift */; };
 		89EC2BC11BCF0DAB008B37DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EC2BBF1BCF0DAB008B37DC /* Main.storyboard */; };
 		89EC2BC31BCF0DAB008B37DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89EC2BC21BCF0DAB008B37DC /* Assets.xcassets */; };
 		89EC2BC61BCF0DAB008B37DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EC2BC41BCF0DAB008B37DC /* LaunchScreen.storyboard */; };
@@ -44,6 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		891ECF941BF3A3C1009C813D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		891ECF961BF3A3F4009C813D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		891ECF981BF3A409009C813D /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
+		891ECF9A1BF3A449009C813D /* StartScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
+		891ECF9C1BF3AC9E009C813D /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		891ECF9F1BF3B2E0009C813D /* LacrossePlayers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LacrossePlayers.xcdatamodel; sourceTree = "<group>"; };
 		897083731BE034DB008F5D5B /* collegiateHeavyOutline Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "collegiateHeavyOutline Medium.ttf"; sourceTree = "<group>"; };
 		897083741BE03E03008F5D5B /* Orbitron Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Light.ttf"; sourceTree = "<group>"; };
 		897083751BE03E10008F5D5B /* Orbitron Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Medium.ttf"; sourceTree = "<group>"; };
@@ -56,7 +67,6 @@
 		89E30A701BDC6C0A0051212A /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
 		89EC2BB81BCF0DAB008B37DC /* GameTime Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameTime Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		89EC2BBD1BCF0DAB008B37DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		89EC2BC01BCF0DAB008B37DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89EC2BC21BCF0DAB008B37DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89EC2BC51BCF0DAB008B37DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,6 +104,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		891ECF901BF3A2C2009C813D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				891ECF941BF3A3C1009C813D /* Model.swift */,
+				891ECF9C1BF3AC9E009C813D /* DataManager.swift */,
+				891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		891ECF911BF3A2C8009C813D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89EC2BBF1BCF0DAB008B37DC /* Main.storyboard */,
+				89774B991BE3CADA007E02B4 /* Button Icons */,
+				897083721BE03450008F5D5B /* Fonts */,
+				89E30A691BDC654E0051212A /* Photos */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		891ECF921BF3A2D5009C813D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				891ECF961BF3A3F4009C813D /* GameViewController.swift */,
+				891ECF981BF3A409009C813D /* CreateTeamViewController.swift */,
+				891ECF9A1BF3A449009C813D /* StartScreenViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		891ECF931BF3A367009C813D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				89EC2BC41BCF0DAB008B37DC /* LaunchScreen.storyboard */,
+				89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */,
+				89EC2BC71BCF0DAB008B37DC /* Info.plist */,
+				89EC2BC21BCF0DAB008B37DC /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		897083721BE03450008F5D5B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,15 +200,10 @@
 		89EC2BBA1BCF0DAB008B37DC /* GameTime Stats */ = {
 			isa = PBXGroup;
 			children = (
-				89774B991BE3CADA007E02B4 /* Button Icons */,
-				897083721BE03450008F5D5B /* Fonts */,
-				89E30A691BDC654E0051212A /* Photos */,
-				89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */,
-				89EC2BBD1BCF0DAB008B37DC /* ViewController.swift */,
-				89EC2BBF1BCF0DAB008B37DC /* Main.storyboard */,
-				89EC2BC21BCF0DAB008B37DC /* Assets.xcassets */,
-				89EC2BC41BCF0DAB008B37DC /* LaunchScreen.storyboard */,
-				89EC2BC71BCF0DAB008B37DC /* Info.plist */,
+				891ECF931BF3A367009C813D /* Supporting Files */,
+				891ECF901BF3A2C2009C813D /* Model */,
+				891ECF911BF3A2C8009C813D /* View */,
+				891ECF921BF3A2D5009C813D /* Controller */,
 			);
 			path = "GameTime Stats";
 			sourceTree = "<group>";
@@ -322,8 +369,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89EC2BBE1BCF0DAB008B37DC /* ViewController.swift in Sources */,
+				891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */,
+				891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */,
+				891ECF951BF3A3C1009C813D /* Model.swift in Sources */,
+				891ECF9B1BF3A449009C813D /* StartScreenViewController.swift in Sources */,
+				891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */,
 				89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */,
+				891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +625,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				891ECF9F1BF3B2E0009C813D /* LacrossePlayers.xcdatamodel */,
+			);
+			currentVersion = 891ECF9F1BF3B2E0009C813D /* LacrossePlayers.xcdatamodel */;
+			path = LacrossePlayers.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 89EC2BB01BCF0DAA008B37DC /* Project object */;
 }

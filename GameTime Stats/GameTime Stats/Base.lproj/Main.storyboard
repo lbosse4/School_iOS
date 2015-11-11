@@ -30,10 +30,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Start Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StartScreenViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -167,6 +167,9 @@
                                         <include reference="zZA-op-es9"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="39O-8P-yka" kind="show" id="hCJ-As-oO9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cn8-At-tVM">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -326,10 +329,10 @@
             </objects>
             <point key="canvasLocation" x="153.75" y="306.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="Rb6-ny-l0j">
             <objects>
-                <viewController id="kbi-2a-i8m" sceneMemberID="viewController">
+                <viewController id="kbi-2a-i8m" customClass="GameViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jDv-r3-gSf"/>
                         <viewControllerLayoutGuide type="bottom" id="OCx-YM-IHS"/>
@@ -737,14 +740,14 @@
                                                 <state key="normal" title="Button" image="PlusIcon.png"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="vwo-Iu-Sk4"/>
                                                         <exclude reference="Vl5-IC-XtX"/>
+                                                        <exclude reference="vwo-Iu-Sk4"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <mask key="constraints">
-                                                        <include reference="vwo-Iu-Sk4"/>
                                                         <include reference="Vl5-IC-XtX"/>
+                                                        <include reference="vwo-Iu-Sk4"/>
                                                     </mask>
                                                 </variation>
                                             </button>
@@ -828,32 +831,32 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="aza-ca-jzT"/>
+                                                <exclude reference="2ta-vD-Xwf"/>
+                                                <exclude reference="CQY-MF-El7"/>
+                                                <exclude reference="4Om-Uv-6ZV"/>
+                                                <exclude reference="d7g-IE-3LM"/>
+                                                <exclude reference="caX-M4-zPG"/>
+                                                <exclude reference="dFi-k6-mFL"/>
+                                                <exclude reference="DNF-Cz-Yz9"/>
+                                                <exclude reference="SjM-YZ-7Ww"/>
+                                                <exclude reference="az3-6b-jDe"/>
+                                                <exclude reference="Uvb-yh-Alr"/>
+                                                <exclude reference="BdW-CS-Ws8"/>
+                                                <exclude reference="2kf-5Y-keh"/>
+                                                <exclude reference="axF-as-9Dc"/>
+                                                <exclude reference="8FD-2o-zyJ"/>
+                                                <exclude reference="9ku-j7-KhP"/>
+                                                <exclude reference="r4H-fr-jPQ"/>
                                                 <exclude reference="Htd-gk-QIe"/>
                                                 <exclude reference="U6k-H0-HCC"/>
+                                                <exclude reference="65e-FW-83g"/>
+                                                <exclude reference="Bpj-b7-5OX"/>
+                                                <exclude reference="RE7-EG-IR3"/>
                                                 <exclude reference="wdA-4z-yDB"/>
                                                 <exclude reference="xn2-nM-Vfu"/>
                                                 <exclude reference="LRL-Ky-WrM"/>
                                                 <exclude reference="QMQ-0M-shj"/>
                                                 <exclude reference="cRv-Dz-dT8"/>
-                                                <exclude reference="4Om-Uv-6ZV"/>
-                                                <exclude reference="d7g-IE-3LM"/>
-                                                <exclude reference="2ta-vD-Xwf"/>
-                                                <exclude reference="CQY-MF-El7"/>
-                                                <exclude reference="caX-M4-zPG"/>
-                                                <exclude reference="dFi-k6-mFL"/>
-                                                <exclude reference="2kf-5Y-keh"/>
-                                                <exclude reference="axF-as-9Dc"/>
-                                                <exclude reference="Uvb-yh-Alr"/>
-                                                <exclude reference="8FD-2o-zyJ"/>
-                                                <exclude reference="9ku-j7-KhP"/>
-                                                <exclude reference="r4H-fr-jPQ"/>
-                                                <exclude reference="65e-FW-83g"/>
-                                                <exclude reference="Bpj-b7-5OX"/>
-                                                <exclude reference="RE7-EG-IR3"/>
-                                                <exclude reference="BdW-CS-Ws8"/>
-                                                <exclude reference="DNF-Cz-Yz9"/>
-                                                <exclude reference="SjM-YZ-7Ww"/>
-                                                <exclude reference="az3-6b-jDe"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -873,32 +876,32 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="aza-ca-jzT"/>
+                                                <include reference="2ta-vD-Xwf"/>
+                                                <include reference="CQY-MF-El7"/>
+                                                <include reference="4Om-Uv-6ZV"/>
+                                                <include reference="d7g-IE-3LM"/>
+                                                <include reference="caX-M4-zPG"/>
+                                                <include reference="dFi-k6-mFL"/>
+                                                <include reference="DNF-Cz-Yz9"/>
+                                                <include reference="SjM-YZ-7Ww"/>
+                                                <include reference="az3-6b-jDe"/>
+                                                <include reference="Uvb-yh-Alr"/>
+                                                <include reference="BdW-CS-Ws8"/>
+                                                <include reference="2kf-5Y-keh"/>
+                                                <include reference="axF-as-9Dc"/>
+                                                <include reference="8FD-2o-zyJ"/>
+                                                <include reference="9ku-j7-KhP"/>
+                                                <include reference="r4H-fr-jPQ"/>
                                                 <include reference="Htd-gk-QIe"/>
                                                 <include reference="U6k-H0-HCC"/>
+                                                <include reference="65e-FW-83g"/>
+                                                <include reference="Bpj-b7-5OX"/>
+                                                <include reference="RE7-EG-IR3"/>
                                                 <include reference="wdA-4z-yDB"/>
                                                 <include reference="xn2-nM-Vfu"/>
                                                 <include reference="LRL-Ky-WrM"/>
                                                 <include reference="QMQ-0M-shj"/>
                                                 <include reference="cRv-Dz-dT8"/>
-                                                <include reference="4Om-Uv-6ZV"/>
-                                                <include reference="d7g-IE-3LM"/>
-                                                <include reference="2ta-vD-Xwf"/>
-                                                <include reference="CQY-MF-El7"/>
-                                                <include reference="caX-M4-zPG"/>
-                                                <include reference="dFi-k6-mFL"/>
-                                                <include reference="2kf-5Y-keh"/>
-                                                <include reference="axF-as-9Dc"/>
-                                                <include reference="Uvb-yh-Alr"/>
-                                                <include reference="8FD-2o-zyJ"/>
-                                                <include reference="9ku-j7-KhP"/>
-                                                <include reference="r4H-fr-jPQ"/>
-                                                <include reference="65e-FW-83g"/>
-                                                <include reference="Bpj-b7-5OX"/>
-                                                <include reference="RE7-EG-IR3"/>
-                                                <include reference="BdW-CS-Ws8"/>
-                                                <include reference="DNF-Cz-Yz9"/>
-                                                <include reference="SjM-YZ-7Ww"/>
-                                                <include reference="az3-6b-jDe"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -1026,21 +1029,23 @@
             </objects>
             <point key="canvasLocation" x="836.25" y="306.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Team View Controller-->
         <scene sceneID="7Zr-3W-g6u">
             <objects>
-                <viewController id="39O-8P-yka" sceneMemberID="viewController">
+                <viewController id="39O-8P-yka" customClass="CreateTeamViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uMP-ft-J05"/>
                         <viewControllerLayoutGuide type="bottom" id="jQA-dF-LmU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="u56-RY-Pfd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G06-U9-2Br" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="836.25" y="-343.5"/>
         </scene>
     </scenes>
     <resources>
