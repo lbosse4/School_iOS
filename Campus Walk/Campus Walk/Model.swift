@@ -59,6 +59,7 @@ class Building : NSObject, MKAnnotation, NSCoding {
         aCoder.encodeObject(dataImage, forKey: BuildingKey.Image)
         aCoder.encodeObject(isFavorite, forKey: BuildingKey.Favorite)
     }
+    
     required convenience init(coder aDecoder: NSCoder) {
         let t = aDecoder.decodeObjectForKey(BuildingKey.Title) as! String
         let lat = aDecoder.decodeDoubleForKey(BuildingKey.Latitude)
