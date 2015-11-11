@@ -7,18 +7,36 @@
         <attribute name="jerseyNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="players" inverseEntity="Team" syncable="YES"/>
     </entity>
-    <entity name="Stats" syncable="YES"/>
+    <entity name="Stats" syncable="YES">
+        <attribute name="assists" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="causedTurnovers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="clears" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="drawControls" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="freePositionAttempts" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="freePositionGoals" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="freePositionPercentage" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="goals" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="groundBalls" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="opponentGoalsScoredAgainst" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="savePercentage" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="saves" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="shotPercentage" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="shotsOnGoal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="turnovers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Team" syncable="YES">
         <attribute name="logo" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="majorColor" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="minorColor" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Player" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Team" positionX="-54" positionY="-9" width="128" height="105"/>
-        <element name="Game" positionX="-36" positionY="36" width="128" height="60"/>
-        <element name="Stats" positionX="-18" positionY="45" width="128" height="45"/>
+        <element name="Game" positionX="25" positionY="183" width="128" height="60"/>
+        <element name="Player" positionX="25" positionY="-15" width="128" height="105"/>
+        <element name="Stats" positionX="-227" positionY="189" width="128" height="268"/>
+        <element name="Team" positionX="-227" positionY="-18" width="128" height="120"/>
     </elements>
 </model>
