@@ -76,10 +76,12 @@ class Building : NSObject, MKAnnotation, NSCoding {
 class Model {
     
     static let sharedInstance = Model()
+    
     private var buildingsDictionary : [String:[Building]]
     private let buildingFileName : String = "buildings"
     private let favoriteFileName : String = "favorites"
     private let allKeys : [String]
+    
     var buildingArchivePath : String
     var favoriteArchivePath : String
     
