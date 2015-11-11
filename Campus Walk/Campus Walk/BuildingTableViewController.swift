@@ -77,7 +77,7 @@ class BuildingTableViewController : UITableViewController {
                 model.addFavorite(building)
 
             }
-            model.toggleIsFavoriteBuildingAtIndexPath(indexPath)
+            model.toggleIsFavoriteBuildingAtIndexPath(indexPath, building: building)
             tableView.reloadData()
         } else {
             delegate!.plotBuilding(building)

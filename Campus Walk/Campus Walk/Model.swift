@@ -37,7 +37,7 @@ class Building : NSObject, MKAnnotation, NSCoding {
         self.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         self.yearConstructed = yearConstructed
         self.image = image
-        self.isFavorite = false
+        self.isFavorite = favorite
         
         super.init()
     }
@@ -96,24 +96,22 @@ class Model {
             let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "plist")
             let data = NSArray(contentsOfFile: path!) as! [[String:AnyObject]]
             
-            var _buildings = [Building]()
+            //var _buildings = [Building]()
             
             
             for dictionary in data {
-                //let building = Building(title: dictionary["name"] as! String, coordinate: CLLocationCoordinate2D(latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees), subtitle: "")
+            
                 let imageName = dictionary["photo"] as! String
                 let image : UIImage
                 if imageName != "" {
                     image = UIImage(named: "\(imageName).jpg")!
-                    //building.image = UIImage(named: "\(image).jpg")!
                 } else {
                     image = UIImage(named: "NoImageAvailable.png")!
                 }
-                //building.yearConstructed = dictionary["year_constructed"] as! Int
                 
                 let building = Building(title: dictionary["name"] as! String, latitude: dictionary["latitude"] as! CLLocationDegrees, longitude: dictionary["longitude"] as! CLLocationDegrees, yearConstructed: dictionary["year_constructed"] as! Int, image: image, favorite: false, subtitle: "")
                 building.image = image
-                _buildings.append(building)
+                //_buildings.append(building)
                 
                 let firstLetter = building.title!.firstLetter()!
                 if let _ = _buildingsDictionary[firstLetter] {
@@ -185,11 +183,21 @@ class Model {
         return buildings[indexPath.row].isFavorite
     }
     
-    func toggleIsFavoriteBuildingAtIndexPath(indexPath: NSIndexPath) {
-        let buildings : [Building] = buildingsInSection(indexPath.section)
-        buildings[indexPath.row].isFavorite = !buildings[indexPath.row].isFavorite
-        //let letter = letterForSection(indexPath.section)
-        //buildingsDictionary[letter]![indexPath.row].isFavorite = !buildingsDictionary[letter]![indexPath.row].isFavorite
+    func toggleIsFavoriteBuildingAtIndexPath(indexPath: NSIndexPath, building: Building) {
+        //let buildings : [Building] = buildingsInSection(indexPath.section)
+        //buildings[indexPath.row].isFavorite = !buildings[indexPath.row].isFavorite
+        let letter = letterForSection(indexPath.section)
+        let buildings = buildingsDictionary[letter]
+        
+        var loopCounter = 0
+        for aBuilding in buildings! {
+            if aBuilding.title == building.title {
+                break
+            }
+            loopCounter += 1
+        }
+        
+        buildingsDictionary[letter]![loopCounter].isFavorite = !buildingsDictionary[letter]![loopCounter].isFavorite
         saveArchive()
     }
     
@@ -211,11 +219,6 @@ class Model {
     }
     
     func updateImageForBuilding(image : UIImage, building: Building){
-//        for building in buildingsArray {
-//            if building.title == title {
-//                building.image = image
-//            }
-//        }
         let firstletter = building.title?.firstLetter()
         let buildings = buildingsDictionary[firstletter!]
         var loopCounter = 0
@@ -226,7 +229,6 @@ class Model {
             loopCounter += 1
         }
         buildingsDictionary[firstletter!]![loopCounter].image = image
-        //building.image = image
         saveArchive()
     }
     
@@ -236,7 +238,14 @@ class Model {
 //                return building.yearConstructed
 //            }
 //        }
-        return 2000
+        let firstLetter = title.firstLetter()!
+        let buildings = buildingsDictionary[firstLetter]!
+        for aBuilding in buildings {
+            if aBuilding.title == title {
+                return aBuilding.yearConstructed
+            }
+        }
+        return 0
     }
     
     func removeUserPlottedPin(building: Building) {
