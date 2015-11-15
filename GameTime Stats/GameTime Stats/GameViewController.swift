@@ -57,6 +57,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
             let panRecognizer = UIPanGestureRecognizer(target: self, action: "panningPlayer:")
             playerView.addGestureRecognizer(panRecognizer)
             
+            playerViews.append(playerView)
             loopCounter += 1
         }
     }
@@ -81,6 +82,14 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
         superView.addSubview(view)
     }
     
+    func checkForCollisions(playerView: UIView) {
+        for  currentView in playerViews {
+            if (CGRectIntersectsRect(playerView.frame, currentView.frame)) && (currentView.tag != playerView.tag) {
+                resetPlayerView(currentView)
+            }
+        }
+    }
+    
     //MARK: Gesture Recognizers
     func panningPlayer(recognizer: UIGestureRecognizer) {
         if let panningView = recognizer.view {
@@ -94,19 +103,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
                 if checkFieldViewBounds(currentLocation) {
                     resetPlayerView(panningView)
                 } else {
-                    
-                    
+                    checkForCollisions(panningView)
                 }
-//                if checkBoardViewBounds(currentLocation) {
-//                    resetPentominoView(panningImageView, index: index)
-//                } else {
-//                    let snapOrigin : CGPoint = findSnapCoordinates(currentLocation);
-//                    boardImageView.addSubview(panningImageView)
-//                    //UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-//                    panningImageView.frame.origin = CGPoint(x: snapOrigin.x, y: snapOrigin.y)
-//                    //})
-//                }
-
+            
+            case .Cancelled:
+                resetPlayerView(panningView)
             default:
                 break
             }
