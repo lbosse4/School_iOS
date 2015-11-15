@@ -10,4 +10,9 @@ import UIKit
 
 class CreateTeamViewController : UIViewController {
     let model = Model.sharedInstance
+    
+    @IBAction func cancelButtonPressed(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }
