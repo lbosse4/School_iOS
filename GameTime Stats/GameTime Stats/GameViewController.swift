@@ -18,9 +18,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
     let playerNumberFont = "collegiateHeavyOutline"
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 30
-    let startingSeconds = 0
+    let startingMinutes = 0//30
+    let startingSeconds = 2
     let maxScore = 100
+    let firstHalf = 1
+    let secondHalf = 2
     let formatter = NSNumberFormatter()
     
     //Variables
@@ -28,10 +30,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
     var playerViewTimers = [NSTimer]()
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
-    var gameTimerMinutes = 30
-    var gameTimerSeconds = 0
+    var gameTimerMinutes = 0//30
+    var gameTimerSeconds = 2
     var homeScore = 0
     var guestScore = 0
+    var currentHalf = 1
     
     //Outlets
     @IBOutlet weak var benchContainerView: UIView!
@@ -39,6 +42,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var homeScoreLabel: UILabel!
     @IBOutlet weak var guestScoreLabel: UILabel!
+    @IBOutlet weak var halfLabel: UILabel!
+    @IBOutlet weak var resetButton: UIButton!
     
     override func viewDidLoad() {
         currentPlayers = model.tstPlayers()
@@ -50,7 +55,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
         fieldImageView.userInteractionEnabled = true
         benchContainerView.userInteractionEnabled = true
         
-        gameTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
+        resetButton.hidden = true
         
         generateViews()
     }
@@ -59,6 +64,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
     func updateTimer() {
         if gameTimerMinutes == 0 && gameTimerSeconds == 0{
             gameTimer.invalidate()
+            updateHalves()
         } else {
             if gameTimerSeconds == 0 {
                 gameTimerMinutes--
@@ -68,6 +74,17 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
             }
         }
         updateTimerLabel()
+    }
+    
+    func updateHalves(){
+        
+        if currentHalf == firstHalf {
+            currentHalf = secondHalf
+            resetButton.setTitle("Second Half", forState: .Normal)
+        } else {
+            resetButton.setTitle("ViewStats", forState: .Normal)
+        }
+        resetButton.hidden = false
     }
     
     func updateTimerLabel(){
@@ -108,7 +125,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
     }
     
     func checkFieldViewBounds(currentLocation: CGPoint) -> Bool {
-        return (currentLocation.x > fieldImageView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height) || (currentLocation.y < 0)
+        return (currentLocation.x > fieldImageView.bounds.width - playerViewSize) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height - playerViewSize) || (currentLocation.y < 0)
     }
     
     func resetPlayerView(playerView: UIView) {
@@ -176,11 +193,13 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
         gameTimer.invalidate()
     }
     
-    @IBAction func resetClockButtonPressed(sender: UIButton) {
+    @IBAction func resetButtonPressed(sender: UIButton) {
         gameTimer.invalidate()
         gameTimerSeconds = startingSeconds
         gameTimerMinutes = startingMinutes
         updateTimerLabel()
+        resetButton.hidden = true
+        resetButton.setTitle("View Stats", forState: .Normal)
     }
     
     @IBAction func homeScorePlusButtonPressed(sender: UIButton) {
@@ -222,6 +241,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
             guestScore = 0
         }
     }
+    
+    
     
 }
 
