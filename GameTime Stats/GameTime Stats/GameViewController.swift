@@ -9,6 +9,7 @@
 import UIKit
 
 class GameViewController : UIViewController, UIGestureRecognizerDelegate {
+    //Constants
     let model = Model.sharedInstance
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
     let playerViewSize : CGFloat = 55.0
@@ -16,24 +17,67 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
     let playerViewMargin : CGFloat = 10.0
     let playerNumberFont = "collegiateHeavyOutline"
     let animationDuration : NSTimeInterval = 0.55
+    let maxSeconds = 59
+    let startingMinutes = 30
+    let startingSeconds = 0
+    let maxScore = 100
+    let formatter = NSNumberFormatter()
     
+    //Variables
     var playerViews = [UIView]()
+    var playerViewTimers = [NSTimer]()
     var currentPlayers = [Player]()
+    var gameTimer = NSTimer()
+    var gameTimerMinutes = 30
+    var gameTimerSeconds = 0
+    var homeScore = 0
+    var guestScore = 0
     
+    //Outlets
     @IBOutlet weak var benchContainerView: UIView!
     @IBOutlet weak var fieldImageView: UIImageView!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var homeScoreLabel: UILabel!
+    @IBOutlet weak var guestScoreLabel: UILabel!
     
     override func viewDidLoad() {
         currentPlayers = model.tstPlayers()
-        currentPlayers.sortInPlace{(Int($0.jerseyNumber!) < Int($1.jerseyNumber!))}
+        
+        //for clock - always 2 digits
+        formatter.minimumIntegerDigits = 2
+        
+        //Enable interaction to let the user move the player pieces
         fieldImageView.userInteractionEnabled = true
         benchContainerView.userInteractionEnabled = true
-        //square.layer.cornerRadius = 1/2 of length
+        
+        gameTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
         
         generateViews()
     }
     
     //MARK: Helper Functions
+    func updateTimer() {
+        if gameTimerMinutes == 0 && gameTimerSeconds == 0{
+            gameTimer.invalidate()
+        } else {
+            if gameTimerSeconds == 0 {
+                gameTimerMinutes--
+                gameTimerSeconds = maxSeconds
+            } else {
+                gameTimerSeconds--
+            }
+        }
+        updateTimerLabel()
+    }
+    
+    func updateTimerLabel(){
+        //ensure two decimal places
+        let minString = formatter.stringFromNumber(gameTimerMinutes)!
+        let secString = formatter.stringFromNumber(gameTimerSeconds)!
+        //displayCountDown
+        timerLabel.text = "\(minString):\(secString)"
+    }
+    
     func generateViews() {
         var loopCounter = 0
         
@@ -59,6 +103,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
             
             playerViews.append(playerView)
             loopCounter += 1
+        
         }
     }
     
@@ -74,6 +119,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
             playerView.frame.origin = origin
         })
         benchContainerView.addSubview(playerView)
+        
+        //ADD IN STOP TIMER FUNCTION
     }
     
     func moveView(view:UIView, toSuperview superView: UIView) {
@@ -118,6 +165,64 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
     @IBAction func cancelGameButtonPressed(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func startTimerButtonPressed(sender: UIButton) {
+        if !gameTimer.valid {
+            gameTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @IBAction func stopTimerButtonPressed(sender: UIButton) {
+        gameTimer.invalidate()
+    }
+    
+    @IBAction func resetClockButtonPressed(sender: UIButton) {
+        gameTimer.invalidate()
+        gameTimerSeconds = startingSeconds
+        gameTimerMinutes = startingMinutes
+        updateTimerLabel()
+    }
+    
+    @IBAction func homeScorePlusButtonPressed(sender: UIButton) {
+        homeScore++
+        if homeScore < maxScore {
+            let homeScoreString = formatter.stringFromNumber(homeScore)!
+            homeScoreLabel.text = homeScoreString
+        } else {
+            homeScore = maxScore - 1
+        }
+    }
+    
+    @IBAction func homeScoreMinusButtonPressed(sender: UIButton) {
+        homeScore--
+        if homeScore >= 0 {
+            let homeScoreString = formatter.stringFromNumber(homeScore)!
+            homeScoreLabel.text = homeScoreString
+        } else {
+            homeScore = 0
+        }
+    }
+    
+    @IBAction func guestScorePlusButtonPressed(sender: UIButton) {
+        guestScore++
+        if guestScore < maxScore {
+            let guestScoreString = formatter.stringFromNumber(guestScore)!
+            guestScoreLabel.text = guestScoreString
+        } else {
+            guestScore = maxScore - 1
+        }
+    }
+    
+    @IBAction func guestScoreMinusButtonPressed(sender: UIButton) {
+        guestScore--
+        if guestScore >= 0 {
+            let guestScoreString = formatter.stringFromNumber(guestScore)!
+            guestScoreLabel.text = guestScoreString
+        } else {
+            guestScore = 0
+        }
+    }
+    
 }
 
 

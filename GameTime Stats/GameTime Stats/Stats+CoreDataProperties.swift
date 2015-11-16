@@ -29,7 +29,8 @@ extension Stats {
     @NSManaged var shotPercentage: NSNumber?
     @NSManaged var shotsOnGoal: NSNumber?
     @NSManaged var turnovers: NSNumber?
-    @NSManaged var game: NSManagedObject?
-    @NSManaged var player: NSManagedObject?
+    @NSManaged var timePlayed: NSData?
+    @NSManaged var game: Game?
+    @NSManaged var player: Player?
 
 }

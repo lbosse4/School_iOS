@@ -33,7 +33,7 @@ class Model : DataManagerDelegate {
     private init() {
         dataManager.delegate = self
         teams = dataManager.fetchManagedObjectsForEntity(ObejctsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
-        testPlayers = dataManager.fetchManagedObjectsForEntity(ObejctsKey.Player, sortKeys: ["name"], predicate: nil) as! [Player]
+        testPlayers = dataManager.fetchManagedObjectsForEntity(ObejctsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
     }
     
     func xcDataModelName() -> String {

@@ -17,7 +17,7 @@ extension Player {
     @NSManaged var jerseyNumber: NSNumber?
     @NSManaged var name: String?
     @NSManaged var position: String?
-    @NSManaged var team: Team?
     @NSManaged var stats: NSSet?
+    @NSManaged var team: Team?
 
 }

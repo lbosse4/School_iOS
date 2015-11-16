@@ -2,6 +2,8 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
     <entity name="Game" representedClassName=".Game" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="guestScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="homeScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="opponentName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="stats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stats" inverseName="game" inverseEntity="Stats" syncable="YES"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="games" inverseEntity="Team" syncable="YES"/>
@@ -28,6 +30,7 @@
         <attribute name="saves" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="shotPercentage" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="shotsOnGoal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="timePlayed" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="turnovers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="stats" inverseEntity="Game" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="stats" inverseEntity="Player" syncable="YES"/>
@@ -41,9 +44,9 @@
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Game" positionX="-567" positionY="9" width="128" height="103"/>
+        <element name="Game" positionX="-567" positionY="9" width="128" height="135"/>
         <element name="Player" positionX="-207" positionY="-297" width="128" height="118"/>
-        <element name="Stats" positionX="-200" positionY="-82" width="128" height="298"/>
+        <element name="Stats" positionX="-200" positionY="-82" width="128" height="315"/>
         <element name="Team" positionX="-486" positionY="-322" width="128" height="133"/>
     </elements>
 </model>
