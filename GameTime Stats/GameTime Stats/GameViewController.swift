@@ -18,8 +18,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let playerNumberFont = "collegiateHeavyOutline"
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 0//30
-    let startingSeconds = 2
+    let startingMinutes = 30
+    let startingSeconds = 0
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
@@ -30,8 +30,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var playerViewTimers = [NSTimer]()
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
-    var gameTimerMinutes = 0//30
-    var gameTimerSeconds = 2
+    var gameTimerMinutes = 30
+    var gameTimerSeconds = 0
     var homeScore = 0
     var guestScore = 0
     var currentHalf = 1
@@ -119,7 +119,14 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             playerView.addGestureRecognizer(panRecognizer)
             
             let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTappedPlayer:")
+            singleTapRecognizer.numberOfTapsRequired = 1
             playerView.addGestureRecognizer(singleTapRecognizer)
+            
+            let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTappedPlayer:")
+            doubleTapRecognizer.numberOfTapsRequired = 2
+            playerView.addGestureRecognizer(doubleTapRecognizer)
+            
+            singleTapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
             
             playerViews.append(playerView)
             loopCounter += 1
@@ -128,7 +135,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func checkFieldViewBounds(currentLocation: CGPoint) -> Bool {
-        return (currentLocation.x > fieldImageView.bounds.width - playerViewSize) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height - playerViewSize) || (currentLocation.y < 0)
+        return (currentLocation.x > fieldImageView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height) || (currentLocation.y < 0)
     }
     
     func resetPlayerView(playerView: UIView) {
@@ -155,6 +162,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 resetPlayerView(currentView)
             }
         }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .Popover
     }
     
     //MARK: Gesture Recognizers
@@ -189,22 +200,23 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 let popoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController")
                 
                 popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-                let popoverContentSize = CGSize(width: 250, height: 350)
+                let popoverContentSize = CGSize(width: 200, height: 250)
                 popoverViewController.preferredContentSize = popoverContentSize
                 let popoverMenuViewController = popoverViewController.popoverPresentationController
                 //maybe update this based on locatoin in fieldView
                 popoverMenuViewController!.permittedArrowDirections = .Any
                 popoverMenuViewController!.delegate = self
                 popoverMenuViewController!.sourceView = tappedView
-                popoverMenuViewController!.sourceRect = CGRect(x: currentLocation.x + popoverContentSize.width, y: currentLocation.y + popoverContentSize.height, width: 300, height: 500)
-                    //CGRectMake(
-//                    300,
-//                    100,
-//                    0,
-//                    0)
+                popoverMenuViewController?.sourceRect = CGRect(x: playerViewSize/2, y: playerViewSize/2, width: 0.0, height: 0.0)
                 
                self.presentViewController(popoverViewController, animated: true, completion: nil)
             }
+        }
+    }
+    
+    func doubleTappedPlayer(recognizer: UITapGestureRecognizer) {
+        if let tappedView = recognizer.view {
+            resetPlayerView(tappedView)
         }
     }
     
