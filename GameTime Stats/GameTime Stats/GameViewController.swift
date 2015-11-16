@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController : UIViewController, UIGestureRecognizerDelegate {
+class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
     //Constants
     let model = Model.sharedInstance
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
@@ -118,6 +118,9 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
             let panRecognizer = UIPanGestureRecognizer(target: self, action: "panningPlayer:")
             playerView.addGestureRecognizer(panRecognizer)
             
+            let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTappedPlayer:")
+            playerView.addGestureRecognizer(singleTapRecognizer)
+            
             playerViews.append(playerView)
             loopCounter += 1
         
@@ -155,7 +158,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
     }
     
     //MARK: Gesture Recognizers
-    func panningPlayer(recognizer: UIGestureRecognizer) {
+    func panningPlayer(recognizer: UIPanGestureRecognizer) {
         if let panningView = recognizer.view {
             fieldImageView.addSubview(panningView)
             let origin = benchContainerView.convertPoint(recognizer.locationInView(fieldImageView), fromView: benchContainerView)
@@ -174,6 +177,33 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate {
                 resetPlayerView(panningView)
             default:
                 break
+            }
+        }
+    }
+    
+    func singleTappedPlayer(recognizer: UITapGestureRecognizer) {
+        if let tappedView = recognizer.view {
+            let currentLocation = recognizer.locationInView(fieldImageView)
+            if !checkFieldViewBounds(currentLocation){
+                
+                let popoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController")
+                
+                popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+                let popoverContentSize = CGSize(width: 250, height: 350)
+                popoverViewController.preferredContentSize = popoverContentSize
+                let popoverMenuViewController = popoverViewController.popoverPresentationController
+                //maybe update this based on locatoin in fieldView
+                popoverMenuViewController!.permittedArrowDirections = .Any
+                popoverMenuViewController!.delegate = self
+                popoverMenuViewController!.sourceView = tappedView
+                popoverMenuViewController!.sourceRect = CGRect(x: currentLocation.x + popoverContentSize.width, y: currentLocation.y + popoverContentSize.height, width: 300, height: 500)
+                    //CGRectMake(
+//                    300,
+//                    100,
+//                    0,
+//                    0)
+                
+               self.presentViewController(popoverViewController, animated: true, completion: nil)
             }
         }
     }
