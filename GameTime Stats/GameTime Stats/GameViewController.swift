@@ -8,6 +8,13 @@
 
 import UIKit
 
+struct playerTime {
+    var firstHalfSeconds = 0
+    var firstHalfMinutes = 0
+    var secondHalfSeconds = 0
+    var seconHalfMinutes = 0
+}
+
 class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
     //Constants
     let model = Model.sharedInstance
@@ -18,8 +25,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let playerNumberFont = "collegiateHeavyOutline"
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 30
-    let startingSeconds = 0
+    let startingMinutes = 0//30
+    let startingSeconds = 03
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
@@ -30,8 +37,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var playerViewTimers = [NSTimer]()
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
-    var gameTimerMinutes = 30
-    var gameTimerSeconds = 0
+    var gameTimerMinutes = 0//30
+    var gameTimerSeconds = 3//0
     var homeScore = 0
     var guestScore = 0
     var currentHalf = 1
@@ -80,6 +87,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         
         if currentHalf == firstHalf {
             currentHalf = secondHalf
+            let currentHalfString = formatter.stringFromNumber(currentHalf)!
+            halfLabel.text = currentHalfString
             resetButton.setTitle("Second Half", forState: .Normal)
         } else {
             resetButton.setTitle("ViewStats", forState: .Normal)
@@ -134,8 +143,12 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         }
     }
     
-    func checkFieldViewBounds(currentLocation: CGPoint) -> Bool {
+    func checkPopoverFieldViewBounds(currentLocation: CGPoint) -> Bool {
         return (currentLocation.x > fieldImageView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height) || (currentLocation.y < 0)
+    }
+    
+    func checkFieldViewBounds(currentLocation: CGPoint) -> Bool {
+        return (currentLocation.x > fieldImageView.bounds.width - playerViewSize) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height - playerViewSize) || (currentLocation.y < 0)
     }
     
     func resetPlayerView(playerView: UIView) {
@@ -195,7 +208,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     func singleTappedPlayer(recognizer: UITapGestureRecognizer) {
         if let tappedView = recognizer.view {
             let currentLocation = recognizer.locationInView(fieldImageView)
-            if !checkFieldViewBounds(currentLocation){
+            if !checkPopoverFieldViewBounds(currentLocation){
                 
                 let popoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController")
                 

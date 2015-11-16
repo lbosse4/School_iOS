@@ -25,7 +25,7 @@
 		8970837A1BE040BD008F5D5B /* collegiateHeavyOutline Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083731BE034DB008F5D5B /* collegiateHeavyOutline Medium.ttf */; };
 		89774B961BE3CACF007E02B4 /* PlusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89774B951BE3CACF007E02B4 /* PlusIcon.png */; };
 		89774B981BE3CAD4007E02B4 /* MinusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89774B971BE3CAD4007E02B4 /* MinusIcon.png */; };
-		89B406FA1BF95940000EE669 /* Stats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B406F81BF95940000EE669 /* Stats+CoreDataProperties.swift */; };
+		8991F21A1BFA6B4A009EE47D /* Stats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8991F2191BFA6B4A009EE47D /* Stats+CoreDataProperties.swift */; };
 		89B406FB1BF95940000EE669 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B406F91BF95940000EE669 /* Player+CoreDataProperties.swift */; };
 		89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6A1BDC657C0051212A /* womensLacrosseField.png */; };
 		89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6C1BDC65820051212A /* mensLacrosseField.png */; };
@@ -75,7 +75,7 @@
 		897083761BE04098008F5D5B /* Grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grass.png; sourceTree = "<group>"; };
 		89774B951BE3CACF007E02B4 /* PlusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlusIcon.png; sourceTree = "<group>"; };
 		89774B971BE3CAD4007E02B4 /* MinusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MinusIcon.png; sourceTree = "<group>"; };
-		89B406F81BF95940000EE669 /* Stats+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stats+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8991F2191BFA6B4A009EE47D /* Stats+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		89B406F91BF95940000EE669 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		89E30A6A1BDC657C0051212A /* womensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6C1BDC65820051212A /* mensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensLacrosseField.png; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		891ECF901BF3A2C2009C813D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				89B406F81BF95940000EE669 /* Stats+CoreDataProperties.swift */,
+				8991F2191BFA6B4A009EE47D /* Stats+CoreDataProperties.swift */,
 				893F09161BF8E23F008C8B75 /* Stats.swift */,
 				893F09171BF8E23F008C8B75 /* Team+CoreDataProperties.swift */,
 				893F09181BF8E23F008C8B75 /* Team.swift */,
@@ -393,8 +393,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8991F21A1BFA6B4A009EE47D /* Stats+CoreDataProperties.swift in Sources */,
 				891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */,
-				89B406FA1BF95940000EE669 /* Stats+CoreDataProperties.swift in Sources */,
 				893F091E1BF8E23F008C8B75 /* Stats.swift in Sources */,
 				891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */,
 				893F09221BF8E23F008C8B75 /* Game.swift in Sources */,

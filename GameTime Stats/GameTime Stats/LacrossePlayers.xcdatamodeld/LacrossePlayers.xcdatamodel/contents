@@ -28,9 +28,9 @@
         <attribute name="opponentGoalsScoredAgainst" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="savePercentage" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="saves" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="secondsPlayed" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="shotPercentage" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="shotsOnGoal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="timePlayed" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="turnovers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="stats" inverseEntity="Game" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="stats" inverseEntity="Player" syncable="YES"/>
