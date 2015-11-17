@@ -1,5 +1,5 @@
 //
-//  Game.swift
+//  Period.swift
 //  GameTime Stats
 //
 //  Created by Lauren Bosse on 11/17/15.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Game: NSManagedObject {
+class Period: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

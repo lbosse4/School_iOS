@@ -8,15 +8,16 @@
 
 import UIKit
 
-struct playerTime {
+struct playerStat {
     var firstHalfSeconds = 0
     var firstHalfMinutes = 0
     var secondHalfSeconds = 0
-    var seconHalfMinutes = 0
+    var secondHalfMinutes = 0
+    var viewTag = 0
 }
 
 class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
-    //Constants
+    //MARK: Constants
     let model = Model.sharedInstance
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
     let playerViewSize : CGFloat = 55.0
@@ -26,24 +27,28 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
     let startingMinutes = 0//30
-    let startingSeconds = 03
+    let startingSeconds = 10
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
     let formatter = NSNumberFormatter()
     
-    //Variables
+    //MARK: Variables
     var playerViews = [UIView]()
-    var playerViewTimers = [NSTimer]()
+//    var playerViewTimers = [NSTimer]()
+//    
+//    //TODO: REPLACE WITH STATS OBJECTS AFTER YOU TALK TO HANNAN
+//    var testPlayerStatObjects = [playerStat]()
+    
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
     var gameTimerMinutes = 0//30
-    var gameTimerSeconds = 3//0
+    var gameTimerSeconds = 10//0
     var homeScore = 0
     var guestScore = 0
     var currentHalf = 1
     
-    //Outlets
+    //MARK: Outlets
     @IBOutlet weak var benchContainerView: UIView!
     @IBOutlet weak var fieldImageView: UIImageView!
     @IBOutlet weak var timerLabel: UILabel!
@@ -51,8 +56,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     @IBOutlet weak var guestScoreLabel: UILabel!
     @IBOutlet weak var halfLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
+        //Extract team for current game
+        //TODO: CHANGE THIS TO EXTRACT BASED ON CORRECT TEAM NAME
         currentPlayers = model.tstPlayers()
         
         //for clock - always 2 digits
@@ -83,17 +91,44 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         updateTimerLabel()
     }
     
+//    //USE THET TAG AS THE INDEX
+//    //TODO: FIGURE OUT HOW TO PASS IN TIMER OR UIVIEW!!
+//    func updatePlayerTimer(sender: UIView) {
+//        if gameTimer.valid {
+//            let index = sender.tag
+//            if playerViewTimers[index].valid{
+//                if currentHalf == firstHalf {
+//                    if testPlayerStatObjects[index].firstHalfSeconds == maxSeconds {
+//                        testPlayerStatObjects[index].firstHalfMinutes++
+//                        testPlayerStatObjects[index].firstHalfSeconds = 0
+//                    } else {
+//                        testPlayerStatObjects[index].firstHalfSeconds++
+//                    }
+//                } else {
+//                    if testPlayerStatObjects[index].secondHalfSeconds == maxSeconds {
+//                        testPlayerStatObjects[index].secondHalfMinutes++
+//                        testPlayerStatObjects[index].secondHalfSeconds = 0
+//                    } else {
+//                        testPlayerStatObjects[index].secondHalfSeconds++
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
     func updateHalves(){
-        
         if currentHalf == firstHalf {
             currentHalf = secondHalf
             let currentHalfString = formatter.stringFromNumber(currentHalf)!
             halfLabel.text = currentHalfString
             resetButton.setTitle("Second Half", forState: .Normal)
         } else {
-            resetButton.setTitle("ViewStats", forState: .Normal)
+            resetButton.setTitle("View Stats", forState: .Normal)
         }
         resetButton.hidden = false
+        startButton.alpha = 0.5
+        startButton.userInteractionEnabled = false
+        
     }
     
     func updateTimerLabel(){
@@ -124,6 +159,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             playerNumberLabel.textAlignment = .Center
             playerView.addSubview(playerNumberLabel)
             
+            //Add playerView recongnizers
             let panRecognizer = UIPanGestureRecognizer(target: self, action: "panningPlayer:")
             playerView.addGestureRecognizer(panRecognizer)
             
@@ -136,6 +172,15 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             playerView.addGestureRecognizer(doubleTapRecognizer)
             
             singleTapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
+            
+//            //Add playerViewTimers
+//            let userInfoArr = [playerView]
+//            let playerTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updatePlayerTimer:"), userInfo: userInfoArr, repeats: true)
+//            playerViewTimers.append(playerTimer)
+//            
+//            var playerStatsObject = playerStat()
+//            playerStatsObject.viewTag = playerView.tag
+//            testPlayerStatObjects.append(playerStatsObject)
             
             playerViews.append(playerView)
             loopCounter += 1
@@ -184,6 +229,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     //MARK: Gesture Recognizers
     func panningPlayer(recognizer: UIPanGestureRecognizer) {
         if let panningView = recognizer.view {
+            view.bringSubviewToFront(panningView)
             fieldImageView.addSubview(panningView)
             let origin = benchContainerView.convertPoint(recognizer.locationInView(fieldImageView), fromView: benchContainerView)
             panningView.center = origin
@@ -249,12 +295,19 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     @IBAction func resetButtonPressed(sender: UIButton) {
-        gameTimer.invalidate()
-        gameTimerSeconds = startingSeconds
-        gameTimerMinutes = startingMinutes
-        updateTimerLabel()
-        resetButton.hidden = true
-        resetButton.setTitle("View Stats", forState: .Normal)
+        if resetButton.titleForState(.Normal) == "Second Half" {
+            gameTimer.invalidate()
+            gameTimerSeconds = startingSeconds
+            gameTimerMinutes = startingMinutes
+            updateTimerLabel()
+            resetButton.hidden = true
+            resetButton.setTitle("View Stats", forState: .Normal)
+            startButton.alpha = 1.0
+            startButton.userInteractionEnabled = true
+        } else {
+            //TODO: ADD STATS OVERVIEW VIEWCONTROLLER HERE
+        }
+        
     }
     
     @IBAction func homeScorePlusButtonPressed(sender: UIButton) {
@@ -296,9 +349,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             guestScore = 0
         }
     }
-    
-    
-    
 }
 
 

@@ -72,7 +72,7 @@ class Model : DataManagerDelegate {
             s.shotPercentage = 0.0
             s.shotsOnGoal = 0
             s.turnovers = 0
-            s.game = g
+            //s.game = g
             s.player = p
         }
         dataManager.saveContext()

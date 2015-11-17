@@ -2,7 +2,7 @@
 //  Player.swift
 //  GameTime Stats
 //
-//  Created by Lauren Bosse on 11/15/15.
+//  Created by Lauren Bosse on 11/17/15.
 //  Copyright © 2015 Lauren Bosse. All rights reserved.
 //
 

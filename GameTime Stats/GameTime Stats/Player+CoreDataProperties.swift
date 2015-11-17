@@ -2,7 +2,7 @@
 //  Player+CoreDataProperties.swift
 //  GameTime Stats
 //
-//  Created by Lauren Bosse on 11/15/15.
+//  Created by Lauren Bosse on 11/17/15.
 //  Copyright © 2015 Lauren Bosse. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

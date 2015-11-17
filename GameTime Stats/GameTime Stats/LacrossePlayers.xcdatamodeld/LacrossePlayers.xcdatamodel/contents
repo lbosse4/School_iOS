@@ -5,8 +5,13 @@
         <attribute name="guestScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="homeScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="opponentName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="stats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stats" inverseName="game" inverseEntity="Stats" syncable="YES"/>
+        <relationship name="periods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Period" inverseName="game" inverseEntity="Period" syncable="YES"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="games" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="Period" representedClassName=".Period" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="periods" inverseEntity="Game" syncable="YES"/>
+        <relationship name="stats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stats" inverseName="period" inverseEntity="Stats" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName=".Player" syncable="YES">
         <attribute name="jerseyNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -20,6 +25,7 @@
         <attribute name="causedTurnovers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="clears" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="drawControls" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="enterTime" optional="YES" transient="YES" attributeType="Date" syncable="YES"/>
         <attribute name="freePositionAttempts" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="freePositionGoals" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="freePositionPercentage" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -32,7 +38,7 @@
         <attribute name="shotPercentage" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="shotsOnGoal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="turnovers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="stats" inverseEntity="Game" syncable="YES"/>
+        <relationship name="period" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Period" inverseName="stats" inverseEntity="Period" syncable="YES"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="stats" inverseEntity="Player" syncable="YES"/>
     </entity>
     <entity name="Team" representedClassName=".Team" syncable="YES">
@@ -44,9 +50,10 @@
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Game" positionX="-567" positionY="9" width="128" height="135"/>
+        <element name="Game" positionX="-567" positionY="9" width="128" height="133"/>
         <element name="Player" positionX="-207" positionY="-297" width="128" height="118"/>
-        <element name="Stats" positionX="-200" positionY="-82" width="128" height="315"/>
+        <element name="Stats" positionX="-200" positionY="-82" width="128" height="328"/>
         <element name="Team" positionX="-486" positionY="-322" width="128" height="133"/>
+        <element name="Period" positionX="-371" positionY="179" width="128" height="88"/>
     </elements>
 </model>

@@ -1,5 +1,5 @@
 //
-//  Team+CoreDataProperties.swift
+//  Period+CoreDataProperties.swift
 //  GameTime Stats
 //
 //  Created by Lauren Bosse on 11/17/15.
@@ -12,13 +12,10 @@
 import Foundation
 import CoreData
 
-extension Team {
+extension Period {
 
-    @NSManaged var logo: NSObject?
-    @NSManaged var majorColor: NSObject?
-    @NSManaged var minorColor: NSObject?
-    @NSManaged var name: String?
-    @NSManaged var games: NSSet?
-    @NSManaged var players: NSSet?
+    @NSManaged var type: String?
+    @NSManaged var stats: NSSet?
+    @NSManaged var game: Game?
 
 }
