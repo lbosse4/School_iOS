@@ -1458,13 +1458,12 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Team Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Qh-gH-J5n">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Qh-gH-J5n">
                                         <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="J0Y-dK-kUP"/>
                                             <constraint firstAttribute="width" constant="470" id="XS2-Ot-PED"/>
                                         </constraints>
-                                        <color key="textColor" red="0.53566919189999995" green="0.53566919189999995" blue="0.53566919189999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <variation key="default">
@@ -1568,6 +1567,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="teamNameTextField" destination="1Qh-gH-J5n" id="Rxc-nJ-Y01"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G06-U9-2Br" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1647,7 +1649,7 @@
                                                 <constraint firstItem="ZDl-iK-34X" firstAttribute="leading" secondItem="4uI-Hn-ka6" secondAttribute="trailing" constant="8" id="w6T-94-E2e"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="FWD-vm-vYd">
                                         <rect key="frame" x="0.0" y="103" width="600" height="39"/>
@@ -1694,7 +1696,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="kNb-FY-q0u" secondAttribute="bottom" constant="-1" id="mFf-iq-CVR"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="bKA-sH-mz6">
                                         <rect key="frame" x="0.0" y="142" width="600" height="39"/>
@@ -1741,7 +1743,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="rdr-YL-GXH" secondAttribute="bottom" constant="-1" id="u8x-KS-KVj"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="Xj9-7j-hoQ">
                                         <rect key="frame" x="0.0" y="181" width="600" height="39"/>
@@ -1788,7 +1790,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="aSS-BJ-zV4" secondAttribute="bottom" constant="-1" id="kkX-pV-aHC"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="sTZ-hD-gwC">
                                         <rect key="frame" x="0.0" y="220" width="600" height="39"/>
@@ -1835,7 +1837,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="Chk-QE-xyL" secondAttribute="bottom" constant="-1" id="uSJ-6U-EN4"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="rx1-1T-cy2">
                                         <rect key="frame" x="0.0" y="259" width="600" height="39"/>
@@ -1882,7 +1884,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="xv5-1l-hRL" secondAttribute="bottom" constant="-1" id="ajj-RH-IqA"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="HbP-dH-D8I">
                                         <rect key="frame" x="0.0" y="298" width="600" height="39"/>
@@ -1929,7 +1931,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="mhz-kS-utn" secondAttribute="bottom" constant="-1" id="rht-QO-Ei1"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="c3H-FI-DXW">
                                         <rect key="frame" x="0.0" y="337" width="600" height="39"/>
@@ -1976,7 +1978,7 @@
                                                 <constraint firstItem="ngE-go-9fJ" firstAttribute="leading" secondItem="kwo-eJ-ddf" secondAttribute="trailing" constant="8" id="qNv-UQ-sTj"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="Wg3-Cr-L1w">
                                         <rect key="frame" x="0.0" y="376" width="600" height="39"/>
@@ -2023,7 +2025,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="v6v-BY-JEc" secondAttribute="bottom" constant="-1" id="yY0-97-jOU"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="RIw-Et-zWC">
                                         <rect key="frame" x="0.0" y="415" width="600" height="39"/>
@@ -2070,7 +2072,7 @@
                                                 <constraint firstItem="7pz-Lg-0s2" firstAttribute="top" secondItem="YRm-WL-CDx" secondAttribute="topMargin" constant="-1" id="ziu-rc-em2"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="lxY-GZ-qTX">
                                         <rect key="frame" x="0.0" y="454" width="600" height="39"/>
@@ -2117,7 +2119,7 @@
                                                 <constraint firstItem="s5R-tq-l0U" firstAttribute="top" secondItem="dcX-TH-6fJ" secondAttribute="topMargin" constant="-1" id="qTk-wK-ik1"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="39" id="TIA-7q-k1h">
                                         <rect key="frame" x="0.0" y="493" width="600" height="39"/>
@@ -2164,7 +2166,7 @@
                                                 <constraint firstItem="KUb-T2-8Mg" firstAttribute="top" secondItem="3oI-Rb-gCn" secondAttribute="topMargin" constant="-1" id="l78-OZ-BDY"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
