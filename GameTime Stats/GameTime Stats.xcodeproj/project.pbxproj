@@ -23,6 +23,7 @@
 		894BCE3F1BFBBF30008DF1C4 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE351BFBBF30008DF1C4 /* Period.swift */; };
 		894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE401BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift */; };
 		894BCE431BFBBFDA008DF1C4 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE411BFBBFDA008DF1C4 /* Stats.swift */; };
+		894BCE451BFBEADA008DF1C4 /* StatEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE441BFBEADA008DF1C4 /* StatEditorTableViewController.swift */; };
 		897083771BE04098008F5D5B /* Grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 897083761BE04098008F5D5B /* Grass.png */; };
 		897083781BE040B7008F5D5B /* Orbitron Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083741BE03E03008F5D5B /* Orbitron Light.ttf */; };
 		897083791BE040BA008F5D5B /* Orbitron Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083751BE03E10008F5D5B /* Orbitron Medium.ttf */; };
@@ -75,6 +76,7 @@
 		894BCE351BFBBF30008DF1C4 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		894BCE401BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		894BCE411BFBBFDA008DF1C4 /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		894BCE441BFBEADA008DF1C4 /* StatEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatEditorTableViewController.swift; sourceTree = "<group>"; };
 		897083731BE034DB008F5D5B /* collegiateHeavyOutline Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "collegiateHeavyOutline Medium.ttf"; sourceTree = "<group>"; };
 		897083741BE03E03008F5D5B /* Orbitron Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Light.ttf"; sourceTree = "<group>"; };
 		897083751BE03E10008F5D5B /* Orbitron Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Medium.ttf"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				891ECF961BF3A3F4009C813D /* GameViewController.swift */,
 				891ECF981BF3A409009C813D /* CreateTeamViewController.swift */,
 				891ECF9A1BF3A449009C813D /* StartScreenViewController.swift */,
+				894BCE441BFBEADA008DF1C4 /* StatEditorTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				894BCE3B1BFBBF30008DF1C4 /* Player.swift in Sources */,
 				894BCE3F1BFBBF30008DF1C4 /* Period.swift in Sources */,
 				891ECF951BF3A3C1009C813D /* Model.swift in Sources */,
+				894BCE451BFBEADA008DF1C4 /* StatEditorTableViewController.swift in Sources */,
 				894BCE3E1BFBBF30008DF1C4 /* Period+CoreDataProperties.swift in Sources */,
 				891ECF9B1BF3A449009C813D /* StartScreenViewController.swift in Sources */,
 				891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */,

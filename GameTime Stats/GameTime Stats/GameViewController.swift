@@ -24,6 +24,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let playerViewPaddingWidth : CGFloat = 60.0
     let playerViewMargin : CGFloat = 10.0
     let playerNumberFont = "collegiateHeavyOutline"
+    let popoverContentSize = CGSize(width: 350, height: 450)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
     let startingMinutes = 0//30
@@ -202,8 +203,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         UIView.animateWithDuration(animationDuration, animations: { () -> Void in
             let origin = CGPoint(x: self.playerViewMargin + (self.playerViewPaddingWidth * CGFloat(playerView.tag)), y: self.playerViewMargin)
             playerView.frame.origin = origin
-        })
-        benchContainerView.addSubview(playerView)
+            }) { (finished) -> Void in
+                self.benchContainerView.addSubview(playerView)
+        }
+        
+        
         
         //ADD IN STOP TIMER FUNCTION
     }
@@ -229,7 +233,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     //MARK: Gesture Recognizers
     func panningPlayer(recognizer: UIPanGestureRecognizer) {
         if let panningView = recognizer.view {
-            view.bringSubviewToFront(panningView)
+            //view.bringSubviewToFront(fieldImageView)
+            //fieldImageView.bringSubviewToFront(panningView)
             fieldImageView.addSubview(panningView)
             let origin = benchContainerView.convertPoint(recognizer.locationInView(fieldImageView), fromView: benchContainerView)
             panningView.center = origin
@@ -259,7 +264,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 let popoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController")
                 
                 popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-                let popoverContentSize = CGSize(width: 200, height: 250)
+                
                 popoverViewController.preferredContentSize = popoverContentSize
                 let popoverMenuViewController = popoverViewController.popoverPresentationController
                 //maybe update this based on locatoin in fieldView
