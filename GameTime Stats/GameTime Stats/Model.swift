@@ -16,7 +16,7 @@ struct PositionsKey {
     static let Goalie = "Goalie"
 }
 
-struct ObejctsKey {
+struct ObjectsKey {
     static let Player = "Player"
     static let Team = "Team"
     static let Stats = "Stats"
@@ -32,8 +32,8 @@ class Model : DataManagerDelegate {
 
     private init() {
         dataManager.delegate = self
-        teams = dataManager.fetchManagedObjectsForEntity(ObejctsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
-        testPlayers = dataManager.fetchManagedObjectsForEntity(ObejctsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
+        teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
+        testPlayers = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
     }
     
     func xcDataModelName() -> String {
@@ -41,8 +41,8 @@ class Model : DataManagerDelegate {
     }
     
     func createDatabase() {
-        let t = NSEntityDescription.insertNewObjectForEntityForName(ObejctsKey.Team, inManagedObjectContext: dataManager.managedObjectContext!) as! Team
-        let g = NSEntityDescription.insertNewObjectForEntityForName(ObejctsKey.Game, inManagedObjectContext: dataManager.managedObjectContext!) as! Game
+        let t = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Team, inManagedObjectContext: dataManager.managedObjectContext!) as! Team
+        let g = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Game, inManagedObjectContext: dataManager.managedObjectContext!) as! Game
         
         t.name = "Melizza Rox"
         g.team = t
@@ -50,13 +50,13 @@ class Model : DataManagerDelegate {
         g.date = NSDate()
         
         for i in 0..<12 {
-            let p = NSEntityDescription.insertNewObjectForEntityForName(ObejctsKey.Player, inManagedObjectContext: dataManager.managedObjectContext!) as! Player
+            let p = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Player, inManagedObjectContext: dataManager.managedObjectContext!) as! Player
             p.name = "Player\(i)"
             p.jerseyNumber = i
             p.team = t
             p.position = PositionsKey.Defender
             
-            let s = NSEntityDescription.insertNewObjectForEntityForName(ObejctsKey.Stats, inManagedObjectContext: dataManager.managedObjectContext!) as! Stats
+            let s = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Stats, inManagedObjectContext: dataManager.managedObjectContext!) as! Stats
             s.assists = 0
             s.causedTurnovers = 0
             s.clears = 0
@@ -80,6 +80,20 @@ class Model : DataManagerDelegate {
     
     func tstPlayers() -> [Player] {
         return testPlayers
+    }
+    
+//    func addPlayerWithName(name:String, team:Team) {
+//        let playerObj = NSEntityDescription.insertNewObjectForEntityForName("Player", inManagedObjectContext: dataManager.managedObjectContext!) as! Player
+//        playerObj.name = name
+//        playerObj.team = team
+//        playerObj.info = ""
+//        dataManager.saveContext()
+//    }
+    
+    func addTeamWithName(name: String) {
+        let teamObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Team, inManagedObjectContext: dataManager.managedObjectContext!) as! Team
+        teamObj.name = name
+        dataManager.saveContext()
     }
     
 }
