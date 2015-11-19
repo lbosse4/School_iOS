@@ -96,6 +96,21 @@ class Model : DataManagerDelegate {
         dataManager.saveContext()
     }
     
+    func positionAtIndex(index: Int) -> String {
+        switch index {
+        case 0:
+            return PositionsKey.Defender
+        case 1:
+            return PositionsKey.Attacker
+        case 2:
+            return PositionsKey.MidFielder
+        case 3:
+            return PositionsKey.Goalie
+        default:
+            return ""
+        }
+    }
+    
 }
 
 

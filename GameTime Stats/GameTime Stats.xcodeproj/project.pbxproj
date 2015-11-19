@@ -25,6 +25,8 @@
 		894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE401BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift */; };
 		894BCE431BFBBFDA008DF1C4 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE411BFBBFDA008DF1C4 /* Stats.swift */; };
 		894BCE451BFBEADA008DF1C4 /* StatEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE441BFBEADA008DF1C4 /* StatEditorTableViewController.swift */; };
+		896C02F91BFD483C00DAC7C7 /* AddPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896C02F81BFD483C00DAC7C7 /* AddPlayerViewController.swift */; };
+		896C02FB1BFD4CBF00DAC7C7 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896C02FA1BFD4CBF00DAC7C7 /* StringUtils.swift */; };
 		897083771BE04098008F5D5B /* Grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 897083761BE04098008F5D5B /* Grass.png */; };
 		897083781BE040B7008F5D5B /* Orbitron Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083741BE03E03008F5D5B /* Orbitron Light.ttf */; };
 		897083791BE040BA008F5D5B /* Orbitron Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083751BE03E10008F5D5B /* Orbitron Medium.ttf */; };
@@ -79,6 +81,8 @@
 		894BCE401BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stats+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		894BCE411BFBBFDA008DF1C4 /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		894BCE441BFBEADA008DF1C4 /* StatEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatEditorTableViewController.swift; sourceTree = "<group>"; };
+		896C02F81BFD483C00DAC7C7 /* AddPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerViewController.swift; sourceTree = "<group>"; };
+		896C02FA1BFD4CBF00DAC7C7 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		897083731BE034DB008F5D5B /* collegiateHeavyOutline Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "collegiateHeavyOutline Medium.ttf"; sourceTree = "<group>"; };
 		897083741BE03E03008F5D5B /* Orbitron Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Light.ttf"; sourceTree = "<group>"; };
 		897083751BE03E10008F5D5B /* Orbitron Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron Medium.ttf"; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				891ECF941BF3A3C1009C813D /* Model.swift */,
 				891ECF9C1BF3AC9E009C813D /* DataManager.swift */,
 				891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */,
+				896C02FA1BFD4CBF00DAC7C7 /* StringUtils.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				891ECF9A1BF3A449009C813D /* StartScreenViewController.swift */,
 				894BCE441BFBEADA008DF1C4 /* StatEditorTableViewController.swift */,
 				8902FCF21BFD0A2E004655CA /* ViewTeamsTableViewController.swift */,
+				896C02F81BFD483C00DAC7C7 /* AddPlayerViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -406,10 +412,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */,
+				896C02F91BFD483C00DAC7C7 /* AddPlayerViewController.swift in Sources */,
 				894BCE431BFBBFDA008DF1C4 /* Stats.swift in Sources */,
 				894BCE3A1BFBBF30008DF1C4 /* Player+CoreDataProperties.swift in Sources */,
 				894BCE3D1BFBBF30008DF1C4 /* Team.swift in Sources */,
 				894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */,
+				896C02FB1BFD4CBF00DAC7C7 /* StringUtils.swift in Sources */,
 				894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */,
 				8902FCF31BFD0A2E004655CA /* ViewTeamsTableViewController.swift in Sources */,
 				891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */,
