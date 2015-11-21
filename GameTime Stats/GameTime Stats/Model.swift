@@ -82,18 +82,19 @@ class Model : DataManagerDelegate {
         return testPlayers
     }
     
-//    func addPlayerWithName(name:String, team:Team) {
-//        let playerObj = NSEntityDescription.insertNewObjectForEntityForName("Player", inManagedObjectContext: dataManager.managedObjectContext!) as! Player
-//        playerObj.name = name
-//        playerObj.team = team
-//        playerObj.info = ""
-//        dataManager.saveContext()
-//    }
-    
-    func addTeamWithName(name: String) {
+    func addPlayerWithName(name: String, team: Team, number: Int) {
+        let playerObj = NSEntityDescription.insertNewObjectForEntityForName("Player", inManagedObjectContext: dataManager.managedObjectContext!) as! Player
+        playerObj.name = name
+        playerObj.team = team
+        playerObj.jerseyNumber = number
+        dataManager.saveContext()
+    }
+
+    func addTeamWithName(name: String) -> Team {
         let teamObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Team, inManagedObjectContext: dataManager.managedObjectContext!) as! Team
         teamObj.name = name
         dataManager.saveContext()
+        return teamObj
     }
     
     func positionAtIndex(index: Int) -> String {

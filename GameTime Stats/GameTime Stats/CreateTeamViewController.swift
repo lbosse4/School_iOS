@@ -5,11 +5,15 @@
 //  Created by Lauren Bosse on 11/11/15.
 //  Copyright © 2015 Lauren Bosse. All rights reserved.
 //
+//  All textField manipulation code came from the source listed in the StringUtils.swift file
 
 import UIKit
 
 class CreateTeamViewController : UIViewController, UITextFieldDelegate {
     let model = Model.sharedInstance
+    let maxTeamNameLength = 40
+    var team : Team?
+    var teamName : String?
     @IBOutlet weak var teamNameTextField: UITextField!
     
     override func viewDidLoad() {
@@ -25,9 +29,9 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate {
     @IBAction func addPlayerButtonPressed(sender: UIButton) {
         //TODO: MAKE TEAM NAMES UNIQUE
         
-        let teamName = teamNameTextField.text!
+        teamName = teamNameTextField.text!
         
-        if teamName.isEmpty {
+        if teamName!.isEmpty {
             let alert = UIAlertController(title: "Invalid", message: "Team's name cannot be blank", preferredStyle: UIAlertControllerStyle.Alert)
             let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alert.addAction(action)
@@ -35,7 +39,8 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate {
         } else {
             //add team to the database
             //TODO: MAYBE MOVE THIS TO COMPLETION BLOCK OF ADD PLAYERS
-            model.addTeamWithName(teamName)
+            team = model.addTeamWithName(teamName!)
+        
         }
 
     }
@@ -46,11 +51,28 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        // We still return true to allow the change to take place.
+        if string.characters.count == 0 {
+            return true
+        }
+        
+        // Check to see if the text field's contents still fit the constraints
+        // with the new content added to it.
+        // If the contents still fit the constraints, allow the change
+        // by returning true; otherwise disallow the change by returning false.
+        let currentText = textField.text ?? ""
+        let prospectiveText = (currentText as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        return prospectiveText.characters.count <= maxTeamNameLength
+    }
+    
     //MARK: Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
-        case "addPlayerSegue":
-            //Pass team to vc
+        case "addPlayersTableViewSegue":
+            let navController = segue.destinationViewController as! UINavigationController
+            let playerController = navController.viewControllers[0] as! AddPlayersTableViewController
+            playerController.team = team!
             break
         default:
             break

@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8902FCF31BFD0A2E004655CA /* ViewTeamsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902FCF21BFD0A2E004655CA /* ViewTeamsTableViewController.swift */; };
+		890661501BFF9DA00086CA2E /* AddPlayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */; };
 		891ECF951BF3A3C1009C813D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF941BF3A3C1009C813D /* Model.swift */; };
 		891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF961BF3A3F4009C813D /* GameViewController.swift */; };
 		891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF981BF3A409009C813D /* CreateTeamViewController.swift */; };
 		891ECF9B1BF3A449009C813D /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9A1BF3A449009C813D /* StartScreenViewController.swift */; };
 		891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9C1BF3AC9E009C813D /* DataManager.swift */; };
 		891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */; };
+		894BA3371C00C57100CA2D35 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA3361C00C57100CA2D35 /* DataSource.swift */; };
 		894BCE361BFBBF30008DF1C4 /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE2C1BFBBF30008DF1C4 /* Game+CoreDataProperties.swift */; };
 		894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE2D1BFBBF30008DF1C4 /* Game.swift */; };
 		894BCE3A1BFBBF30008DF1C4 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE301BFBBF30008DF1C4 /* Player+CoreDataProperties.swift */; };
@@ -64,12 +66,15 @@
 
 /* Begin PBXFileReference section */
 		8902FCF21BFD0A2E004655CA /* ViewTeamsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTeamsTableViewController.swift; sourceTree = "<group>"; };
+		8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayersTableViewController.swift; sourceTree = "<group>"; };
 		891ECF941BF3A3C1009C813D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		891ECF961BF3A3F4009C813D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		891ECF981BF3A409009C813D /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		891ECF9A1BF3A449009C813D /* StartScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		891ECF9C1BF3AC9E009C813D /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		891ECF9F1BF3B2E0009C813D /* LacrossePlayers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LacrossePlayers.xcdatamodel; sourceTree = "<group>"; };
+		894BA3361C00C57100CA2D35 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		894BA3381C00C5AA00CA2D35 /* README.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = README.docx; sourceTree = "<group>"; };
 		894BCE2C1BFBBF30008DF1C4 /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		894BCE2D1BFBBF30008DF1C4 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		894BCE301BFBBF30008DF1C4 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -149,6 +154,7 @@
 				891ECF9C1BF3AC9E009C813D /* DataManager.swift */,
 				891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */,
 				896C02FA1BFD4CBF00DAC7C7 /* StringUtils.swift */,
+				894BA3361C00C57100CA2D35 /* DataSource.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -173,6 +179,7 @@
 				894BCE441BFBEADA008DF1C4 /* StatEditorTableViewController.swift */,
 				8902FCF21BFD0A2E004655CA /* ViewTeamsTableViewController.swift */,
 				896C02F81BFD483C00DAC7C7 /* AddPlayerViewController.swift */,
+				8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -182,6 +189,7 @@
 			children = (
 				89EC2BC41BCF0DAB008B37DC /* LaunchScreen.storyboard */,
 				89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */,
+				894BA3381C00C5AA00CA2D35 /* README.docx */,
 				89EC2BC71BCF0DAB008B37DC /* Info.plist */,
 				89EC2BC21BCF0DAB008B37DC /* Assets.xcassets */,
 			);
@@ -419,9 +427,11 @@
 				894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */,
 				896C02FB1BFD4CBF00DAC7C7 /* StringUtils.swift in Sources */,
 				894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */,
+				890661501BFF9DA00086CA2E /* AddPlayersTableViewController.swift in Sources */,
 				8902FCF31BFD0A2E004655CA /* ViewTeamsTableViewController.swift in Sources */,
 				891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */,
 				894BCE3B1BFBBF30008DF1C4 /* Player.swift in Sources */,
+				894BA3371C00C57100CA2D35 /* DataSource.swift in Sources */,
 				894BCE3F1BFBBF30008DF1C4 /* Period.swift in Sources */,
 				891ECF951BF3A3C1009C813D /* Model.swift in Sources */,
 				894BCE451BFBEADA008DF1C4 /* StatEditorTableViewController.swift in Sources */,

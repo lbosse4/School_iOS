@@ -11,8 +11,11 @@
             <string>Orbitron-Light</string>
             <string>Orbitron-Light</string>
             <string>Orbitron-Light</string>
+            <string>Orbitron-Light</string>
+            <string>Orbitron-Light</string>
         </mutableArray>
         <mutableArray key="Orbitron Medium.ttf">
+            <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
@@ -1444,7 +1447,7 @@
                                                 </variation>
                                                 <connections>
                                                     <action selector="addPlayerButtonPressed:" destination="39O-8P-yka" eventType="touchUpInside" id="GFb-rT-ENV"/>
-                                                    <segue destination="clP-Vg-4C5" kind="show" identifier="addPlayerSegue" id="wlj-xH-wpH"/>
+                                                    <segue destination="zfv-Ls-vVF" kind="show" identifier="addPlayersTableViewSegue" id="Nm0-Sg-yvB"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1606,17 +1609,17 @@
         <!--Teams-->
         <scene sceneID="AfA-T6-07S">
             <objects>
-                <tableViewController title="Teams" id="Db2-9T-Dcc" sceneMemberID="viewController">
+                <tableViewController title="Teams" id="Db2-9T-Dcc" customClass="ViewTeamsTableViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZLX-qb-BMX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerCell" rowHeight="60" id="4Ah-ZF-hnt">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Ah-ZF-hnt" id="UAt-Hp-sML">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHm-kH-FFO">
@@ -1647,7 +1650,7 @@
                                                 <constraint firstAttribute="width" constant="95" id="sLK-1E-V1w"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -1669,7 +1672,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="ds3-4Y-7PV"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -1701,12 +1704,12 @@
                                             <exclude reference="RWJ-dx-Pbl"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="9Ln-lR-QF8"/>
-                                            <exclude reference="dot-4l-2Pi"/>
-                                            <exclude reference="L8p-dz-WXF"/>
-                                            <exclude reference="MZV-dH-rNa"/>
                                             <exclude reference="2wZ-mj-gKN"/>
                                             <exclude reference="bxX-Qd-Flf"/>
+                                            <exclude reference="L8p-dz-WXF"/>
+                                            <exclude reference="MZV-dH-rNa"/>
+                                            <exclude reference="9Ln-lR-QF8"/>
+                                            <exclude reference="dot-4l-2Pi"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=regular">
@@ -1716,12 +1719,12 @@
                                             <include reference="RWJ-dx-Pbl"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="9Ln-lR-QF8"/>
-                                            <include reference="dot-4l-2Pi"/>
-                                            <include reference="L8p-dz-WXF"/>
-                                            <include reference="MZV-dH-rNa"/>
                                             <include reference="2wZ-mj-gKN"/>
                                             <include reference="bxX-Qd-Flf"/>
+                                            <include reference="L8p-dz-WXF"/>
+                                            <include reference="MZV-dH-rNa"/>
+                                            <include reference="9Ln-lR-QF8"/>
+                                            <include reference="dot-4l-2Pi"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -1796,13 +1799,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="aCD-UO-0kI"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uI-Hn-ka6">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="muh-5Y-Ly8">
@@ -1843,13 +1846,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="Vxb-zW-BxA"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caused Turnovers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNb-FY-q0u">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="4z2-eM-iaP">
@@ -1890,13 +1893,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="vkA-ZL-XA6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clears" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTe-ma-oFI">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MLh-dh-Jzy">
@@ -1937,13 +1940,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="nS4-72-oZ8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draw Controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1H-pn-GWM">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="h42-jb-aE0">
@@ -1984,13 +1987,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="ycF-6Y-za5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free Position Attempts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7A-22-gww">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iGT-dU-Ymq">
@@ -2031,13 +2034,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="6of-IE-48p"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free Position Goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51L-Dx-ebA">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="TJb-x7-mdW">
@@ -2078,13 +2081,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="Pbm-Q2-uPz"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFk-6u-djB">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Jv-7P-9v6">
@@ -2129,7 +2132,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ground Balls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c6-nN-gHP">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwo-eJ-ddf">
@@ -2138,7 +2141,7 @@
                                                         <constraint firstAttribute="width" constant="30" id="KTi-Cv-yqP"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2172,13 +2175,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="Lgd-ZR-Ci5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opponent Goals Against" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6v-BY-JEc">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZlJ-U4-smu">
@@ -2219,13 +2222,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="xHQ-rU-AcK"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UO-Fm-2Qx">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6hQ-ij-CnC">
@@ -2266,13 +2269,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="ctP-68-HeO"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shots On Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5R-tq-l0U">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Xcr-ga-QFx">
@@ -2313,13 +2316,13 @@
                                                         <constraint firstAttribute="width" constant="30" id="i3B-zu-yX3"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turnovers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUb-T2-8Mg">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kfy-cq-lbK">
@@ -2367,6 +2370,175 @@
             </objects>
             <point key="canvasLocation" x="1548" y="1701.75"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sjN-tS-K4Z">
+            <objects>
+                <navigationController id="zfv-Ls-vVF" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qwz-Fm-Agt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="imX-dp-DOp" kind="relationship" relationship="rootViewController" id="69s-7x-YmX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LW3-hQ-Iof" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1548" y="-354"/>
+        </scene>
+        <!--Add Players Table View Controller-->
+        <scene sceneID="jXo-7Y-EVe">
+            <objects>
+                <tableViewController id="imX-dp-DOp" customClass="AddPlayersTableViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" id="m3P-Bm-9DZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerCell" rowHeight="60" id="eze-jE-5u9">
+                                <rect key="frame" x="0.0" y="92" width="600" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eze-jE-5u9" id="mnb-EY-sBN">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoY-Yy-ps1">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="FNq-tQ-cpJ"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="95" id="PEy-up-GJ0"/>
+                                                <constraint firstAttribute="height" constant="21" id="VM7-ee-Npq"/>
+                                                <constraint firstAttribute="width" constant="95" id="sLa-Ns-hFZ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="FNq-tQ-cpJ"/>
+                                                    <exclude reference="PEy-up-GJ0"/>
+                                                    <exclude reference="VM7-ee-Npq"/>
+                                                    <exclude reference="sLa-Ns-hFZ"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <mask key="constraints">
+                                                    <exclude reference="FNq-tQ-cpJ"/>
+                                                    <exclude reference="PEy-up-GJ0"/>
+                                                    <include reference="VM7-ee-Npq"/>
+                                                    <include reference="sLa-Ns-hFZ"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-GZ-cvo">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="390" id="1sw-hU-xbU"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="QMV-TH-hT7"/>
+                                                <constraint firstAttribute="width" constant="390" id="aFa-Sd-I0Z"/>
+                                                <constraint firstAttribute="height" constant="25" id="tXN-pg-fkh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="21"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="1sw-hU-xbU"/>
+                                                    <exclude reference="QMV-TH-hT7"/>
+                                                    <exclude reference="aFa-Sd-I0Z"/>
+                                                    <exclude reference="tXN-pg-fkh"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <mask key="constraints">
+                                                    <exclude reference="1sw-hU-xbU"/>
+                                                    <exclude reference="QMV-TH-hT7"/>
+                                                    <include reference="aFa-Sd-I0Z"/>
+                                                    <include reference="tXN-pg-fkh"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdm-C5-kYS">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="EHX-WE-rpr"/>
+                                                <constraint firstAttribute="height" constant="21" id="Y0a-th-JaI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="EHX-WE-rpr"/>
+                                                    <exclude reference="Y0a-th-JaI"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <mask key="constraints">
+                                                    <include reference="EHX-WE-rpr"/>
+                                                    <include reference="Y0a-th-JaI"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.55511906174866466" green="0.55637164689353569" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="QoY-Yy-ps1" firstAttribute="leading" secondItem="mnb-EY-sBN" secondAttribute="leadingMargin" id="CSY-01-SSZ"/>
+                                        <constraint firstItem="QoY-Yy-ps1" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="Pfq-eQ-Z3e"/>
+                                        <constraint firstItem="Jdm-C5-kYS" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="gHf-HM-nSk"/>
+                                        <constraint firstItem="Jdm-C5-kYS" firstAttribute="leading" secondItem="QoY-Yy-ps1" secondAttribute="trailing" constant="6" id="hGj-84-3La"/>
+                                        <constraint firstItem="YPt-GZ-cvo" firstAttribute="top" secondItem="mnb-EY-sBN" secondAttribute="topMargin" id="nnv-1E-V9G"/>
+                                        <constraint firstItem="YPt-GZ-cvo" firstAttribute="leading" secondItem="mnb-EY-sBN" secondAttribute="leadingMargin" id="zQN-og-zSf"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="QoY-Yy-ps1"/>
+                                            <exclude reference="YPt-GZ-cvo"/>
+                                            <exclude reference="Jdm-C5-kYS"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="gHf-HM-nSk"/>
+                                            <exclude reference="hGj-84-3La"/>
+                                            <exclude reference="CSY-01-SSZ"/>
+                                            <exclude reference="Pfq-eQ-Z3e"/>
+                                            <exclude reference="nnv-1E-V9G"/>
+                                            <exclude reference="zQN-og-zSf"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=regular">
+                                        <mask key="subviews">
+                                            <include reference="QoY-Yy-ps1"/>
+                                            <include reference="YPt-GZ-cvo"/>
+                                            <include reference="Jdm-C5-kYS"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="gHf-HM-nSk"/>
+                                            <include reference="hGj-84-3La"/>
+                                            <include reference="CSY-01-SSZ"/>
+                                            <include reference="Pfq-eQ-Z3e"/>
+                                            <include reference="nnv-1E-V9G"/>
+                                            <include reference="zQN-og-zSf"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="imX-dp-DOp" id="WWw-6G-OCY"/>
+                            <outlet property="delegate" destination="imX-dp-DOp" id="Efx-OO-hZI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="8Cq-sx-o7a">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5AT-zl-L3J">
+                            <connections>
+                                <segue destination="clP-Vg-4C5" kind="show" identifier="addPlayerSegue" id="v6F-A6-xDP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeW-qH-RQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2235" y="-354"/>
+        </scene>
         <!--Add Player View Controller-->
         <scene sceneID="CvL-vj-gsu">
             <objects>
@@ -2376,6 +2548,7 @@
                         <viewControllerLayoutGuide type="bottom" id="J7f-kQ-0h0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="t47-uu-YbZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0is-e2-EMn">
@@ -2422,8 +2595,8 @@
                                             <mask key="constraints">
                                                 <exclude reference="1K5-eq-ULu"/>
                                                 <exclude reference="DQG-XE-2Si"/>
-                                                <exclude reference="u1c-yr-OgB"/>
                                                 <exclude reference="JYv-GO-8GO"/>
+                                                <exclude reference="u1c-yr-OgB"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -2433,8 +2606,8 @@
                                             <mask key="constraints">
                                                 <include reference="1K5-eq-ULu"/>
                                                 <include reference="DQG-XE-2Si"/>
-                                                <include reference="u1c-yr-OgB"/>
                                                 <include reference="JYv-GO-8GO"/>
+                                                <include reference="u1c-yr-OgB"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -2458,16 +2631,19 @@
                                                 </state>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="aPt-2o-tCx"/>
                                                         <exclude reference="a0D-PR-qf6"/>
+                                                        <exclude reference="aPt-2o-tCx"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <mask key="constraints">
-                                                        <include reference="aPt-2o-tCx"/>
                                                         <include reference="a0D-PR-qf6"/>
+                                                        <include reference="aPt-2o-tCx"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="clP-Vg-4C5" eventType="touchUpInside" id="5EX-uX-pVb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2490,10 +2666,10 @@
                                                 <exclude reference="OPX-v5-xNI"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <exclude reference="a3o-rq-NLp"/>
-                                                <exclude reference="Wrr-6p-fsg"/>
-                                                <exclude reference="7Mn-Gy-VPK"/>
                                                 <exclude reference="6dh-D4-1p7"/>
+                                                <exclude reference="7Mn-Gy-VPK"/>
+                                                <exclude reference="Wrr-6p-fsg"/>
+                                                <exclude reference="a3o-rq-NLp"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -2501,10 +2677,10 @@
                                                 <include reference="OPX-v5-xNI"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <include reference="a3o-rq-NLp"/>
-                                                <include reference="Wrr-6p-fsg"/>
-                                                <include reference="7Mn-Gy-VPK"/>
                                                 <include reference="6dh-D4-1p7"/>
+                                                <include reference="7Mn-Gy-VPK"/>
+                                                <include reference="Wrr-6p-fsg"/>
+                                                <include reference="a3o-rq-NLp"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -2528,16 +2704,19 @@
                                                 </state>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="uVM-o4-Dwt"/>
                                                         <exclude reference="ZxH-Mq-Vvz"/>
+                                                        <exclude reference="uVM-o4-Dwt"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <mask key="constraints">
-                                                        <include reference="uVM-o4-Dwt"/>
                                                         <include reference="ZxH-Mq-Vvz"/>
+                                                        <include reference="uVM-o4-Dwt"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="addPlayerButtonPressed:" destination="clP-Vg-4C5" eventType="touchUpInside" id="CbO-fl-JXj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2560,10 +2739,10 @@
                                                 <exclude reference="9Ey-Dc-N5E"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <exclude reference="XNB-l9-Fcg"/>
-                                                <exclude reference="qaa-gK-aOo"/>
-                                                <exclude reference="kaV-Yd-RnE"/>
                                                 <exclude reference="GiA-mX-WHW"/>
+                                                <exclude reference="XNB-l9-Fcg"/>
+                                                <exclude reference="kaV-Yd-RnE"/>
+                                                <exclude reference="qaa-gK-aOo"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -2571,10 +2750,10 @@
                                                 <include reference="9Ey-Dc-N5E"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <include reference="XNB-l9-Fcg"/>
-                                                <include reference="qaa-gK-aOo"/>
-                                                <include reference="kaV-Yd-RnE"/>
                                                 <include reference="GiA-mX-WHW"/>
+                                                <include reference="XNB-l9-Fcg"/>
+                                                <include reference="kaV-Yd-RnE"/>
+                                                <include reference="qaa-gK-aOo"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -2588,27 +2767,41 @@
                                         <textInputTraits key="textInputTraits"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="wvS-0F-ZI5"/>
                                                 <exclude reference="fZg-xj-lkD"/>
+                                                <exclude reference="wvS-0F-ZI5"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <mask key="constraints">
-                                                <include reference="wvS-0F-ZI5"/>
                                                 <include reference="fZg-xj-lkD"/>
+                                                <include reference="wvS-0F-ZI5"/>
                                             </mask>
                                         </variation>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jersey Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eFT-SC-b5y">
                                         <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="O6f-Pr-JBr"/>
+                                            <constraint firstAttribute="width" constant="160" id="nFy-8G-GLB"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                            <rect key="frame" x="300" y="281" width="160" height="30"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="O6f-Pr-JBr"/>
+                                                <exclude reference="nFy-8G-GLB"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="O6f-Pr-JBr"/>
+                                                <include reference="nFy-8G-GLB"/>
+                                            </mask>
                                         </variation>
                                     </textField>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6I-62-fzM">
                                         <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="216" id="FfG-hk-j4x"/>
                                             <constraint firstAttribute="width" constant="760" id="fPv-wD-gKB"/>
@@ -2639,13 +2832,17 @@
                                     </constraint>
                                     <constraint firstItem="VtC-Ct-JoZ" firstAttribute="centerX" secondItem="0is-e2-EMn" secondAttribute="centerX" id="OkN-xq-47K"/>
                                     <constraint firstAttribute="bottom" secondItem="5tS-fW-jy8" secondAttribute="bottom" constant="53" id="SFX-GS-eBL"/>
+                                    <constraint firstItem="eFT-SC-b5y" firstAttribute="top" secondItem="gVw-VN-M1a" secondAttribute="bottom" constant="12" id="TbI-av-8wH"/>
                                     <constraint firstItem="5tS-fW-jy8" firstAttribute="top" secondItem="SMP-1s-QjU" secondAttribute="bottom" constant="15" id="dPV-EL-ESt">
                                         <variation key="heightClass=regular-widthClass=regular" constant="16"/>
                                     </constraint>
                                     <constraint firstItem="SMP-1s-QjU" firstAttribute="centerX" secondItem="0is-e2-EMn" secondAttribute="centerX" id="pCW-DW-MYP">
                                         <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                                     </constraint>
-                                    <constraint firstItem="SMP-1s-QjU" firstAttribute="top" secondItem="m6I-62-fzM" secondAttribute="bottom" constant="8" id="syQ-zJ-3vj"/>
+                                    <constraint firstItem="eFT-SC-b5y" firstAttribute="centerX" secondItem="0is-e2-EMn" secondAttribute="centerX" id="r4X-Om-VgC"/>
+                                    <constraint firstItem="SMP-1s-QjU" firstAttribute="top" secondItem="m6I-62-fzM" secondAttribute="bottom" constant="8" id="syQ-zJ-3vj">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                                    </constraint>
                                     <constraint firstItem="VtC-Ct-JoZ" firstAttribute="top" secondItem="0is-e2-EMn" secondAttribute="top" constant="25" id="tjx-Ok-gpX"/>
                                 </constraints>
                                 <variation key="default">
@@ -2658,16 +2855,18 @@
                                         <exclude reference="m6I-62-fzM"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="OkN-xq-47K"/>
-                                        <exclude reference="tjx-Ok-gpX"/>
+                                        <exclude reference="BH3-rx-SbW"/>
+                                        <exclude reference="TbI-av-8wH"/>
+                                        <exclude reference="r4X-Om-VgC"/>
                                         <exclude reference="3xY-Fz-4sk"/>
                                         <exclude reference="MD9-U3-cC9"/>
-                                        <exclude reference="BH3-rx-SbW"/>
-                                        <exclude reference="pCW-DW-MYP"/>
-                                        <exclude reference="syQ-zJ-3vj"/>
                                         <exclude reference="6nU-kR-xtK"/>
                                         <exclude reference="SFX-GS-eBL"/>
                                         <exclude reference="dPV-EL-ESt"/>
+                                        <exclude reference="pCW-DW-MYP"/>
+                                        <exclude reference="syQ-zJ-3vj"/>
+                                        <exclude reference="OkN-xq-47K"/>
+                                        <exclude reference="tjx-Ok-gpX"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -2680,25 +2879,28 @@
                                         <include reference="m6I-62-fzM"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="OkN-xq-47K"/>
-                                        <include reference="tjx-Ok-gpX"/>
+                                        <include reference="BH3-rx-SbW"/>
+                                        <include reference="TbI-av-8wH"/>
+                                        <include reference="r4X-Om-VgC"/>
                                         <include reference="3xY-Fz-4sk"/>
                                         <include reference="MD9-U3-cC9"/>
-                                        <include reference="BH3-rx-SbW"/>
-                                        <include reference="pCW-DW-MYP"/>
-                                        <include reference="syQ-zJ-3vj"/>
                                         <include reference="6nU-kR-xtK"/>
                                         <include reference="SFX-GS-eBL"/>
                                         <include reference="dPV-EL-ESt"/>
+                                        <include reference="pCW-DW-MYP"/>
+                                        <include reference="syQ-zJ-3vj"/>
+                                        <include reference="OkN-xq-47K"/>
+                                        <include reference="tjx-Ok-gpX"/>
                                     </mask>
                                 </variation>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="0is-e2-EMn" firstAttribute="trailing" secondItem="t47-uu-YbZ" secondAttribute="trailingMargin" id="4Ug-J0-bun"/>
                             <constraint firstItem="J7f-kQ-0h0" firstAttribute="top" secondItem="0is-e2-EMn" secondAttribute="bottom" constant="20" id="M2z-A1-3UK"/>
                             <constraint firstItem="0is-e2-EMn" firstAttribute="leading" secondItem="t47-uu-YbZ" secondAttribute="leadingMargin" id="aie-mW-sg8"/>
+                            <constraint firstItem="0is-e2-EMn" firstAttribute="top" secondItem="nyf-kj-E8j" secondAttribute="bottom" constant="20" id="tzN-0b-vDU"/>
                             <constraint firstItem="0is-e2-EMn" firstAttribute="top" secondItem="nyf-kj-E8j" secondAttribute="bottom" id="uRZ-8j-qeJ"/>
                         </constraints>
                         <variation key="default">
@@ -2706,10 +2908,11 @@
                                 <exclude reference="0is-e2-EMn"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="M2z-A1-3UK"/>
                                 <exclude reference="4Ug-J0-bun"/>
                                 <exclude reference="aie-mW-sg8"/>
+                                <exclude reference="tzN-0b-vDU"/>
                                 <exclude reference="uRZ-8j-qeJ"/>
-                                <exclude reference="M2z-A1-3UK"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -2717,22 +2920,25 @@
                                 <include reference="0is-e2-EMn"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="M2z-A1-3UK"/>
                                 <include reference="4Ug-J0-bun"/>
                                 <include reference="aie-mW-sg8"/>
-                                <include reference="uRZ-8j-qeJ"/>
-                                <include reference="M2z-A1-3UK"/>
+                                <include reference="tzN-0b-vDU"/>
+                                <exclude reference="uRZ-8j-qeJ"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addPlayerButton" destination="9Ey-Dc-N5E" id="i04-4p-UMn"/>
+                        <outlet property="addPlayerButtonView" destination="SMP-1s-QjU" id="FVY-vf-QgJ"/>
                         <outlet property="jerseyNumberTextField" destination="eFT-SC-b5y" id="Kvp-IA-pB0"/>
-                        <outlet property="playerNameTextField" destination="gVw-VN-M1a" id="zNQ-4v-0ES"/>
+                        <outlet property="playerNameTextField" destination="gVw-VN-M1a" id="GWG-No-gaj"/>
                         <outlet property="positionPicker" destination="m6I-62-fzM" id="YUP-yB-1FH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ZQ-zi-oPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="-354"/>
+            <point key="canvasLocation" x="2919" y="-354"/>
         </scene>
     </scenes>
     <resources>
