@@ -14,4 +14,9 @@ class Player: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
+    func firstLetter() -> String? {
+        let name = self.name!
+        return name.substringToIndex(name.startIndex.advancedBy(1))
+        
+    }
 }

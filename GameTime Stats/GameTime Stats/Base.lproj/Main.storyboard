@@ -53,7 +53,6 @@
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
-            <string>Orbitron-Medium</string>
         </mutableArray>
         <mutableArray key="collegiateHeavyOutline Medium.ttf">
             <string>CollegiateHeavyOutline-Medium</string>
@@ -2438,7 +2437,7 @@
                                                 <constraint firstAttribute="width" constant="390" id="aFa-Sd-I0Z"/>
                                                 <constraint firstAttribute="height" constant="25" id="tXN-pg-fkh"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="21"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">

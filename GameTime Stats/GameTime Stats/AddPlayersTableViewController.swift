@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class AddPlayersTableViewController: UITableViewController {
+class AddPlayersTableViewController: UITableViewController, DataSourceCellConfigurer {
     
     let model = Model.sharedInstance
     var team : Team?
@@ -17,10 +18,28 @@ class AddPlayersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        dataSource.delegate = self
-//        dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
-//        tableView.dataSource = dataSource
+        dataSource.delegate = self
+        dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
+        tableView.dataSource = dataSource
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    //MARK: Data Source Cell Configurer
+    
+    func cellIdentifierForObject(object: NSManagedObject) -> String {
+        return "playerCell"
+    }
+    
+    func configureCell(cell: UITableViewCell, withObject object: NSManagedObject) {
+        let player = object as? Player
+        cell.textLabel!.text = player!.name
+        
+    }
+
     
     //MARK: Prepare for segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

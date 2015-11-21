@@ -27,8 +27,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let popoverContentSize = CGSize(width: 350, height: 450)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 0//30
-    let startingSeconds = 10
+    let startingMinutes = 30
+    let startingSeconds = 0
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
@@ -43,8 +43,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
-    var gameTimerMinutes = 0//30
-    var gameTimerSeconds = 10//0
+    var gameTimerMinutes = 30
+    var gameTimerSeconds = 0
     var homeScore = 0
     var guestScore = 0
     var currentHalf = 1
