@@ -53,6 +53,7 @@
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
+            <string>Orbitron-Medium</string>
         </mutableArray>
         <mutableArray key="collegiateHeavyOutline Medium.ttf">
             <string>CollegiateHeavyOutline-Medium</string>
@@ -2390,12 +2391,12 @@
         <scene sceneID="jXo-7Y-EVe">
             <objects>
                 <tableViewController id="imX-dp-DOp" customClass="AddPlayersTableViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" id="m3P-Bm-9DZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" sectionHeaderHeight="28" sectionFooterHeight="28" id="m3P-Bm-9DZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerCell" rowHeight="60" id="eze-jE-5u9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addPlayerTableViewCell" rowHeight="76" id="eze-jE-5u9" customClass="AddPlayerTableViewCell" customModule="GameTime_Stats" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eze-jE-5u9" id="mnb-EY-sBN">
@@ -2410,7 +2411,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="VM7-ee-Npq"/>
                                                 <constraint firstAttribute="width" constant="95" id="sLa-Ns-hFZ"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -2430,13 +2431,13 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdm-C5-kYS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdm-C5-kYS">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="EHX-WE-rpr"/>
                                                 <constraint firstAttribute="height" constant="21" id="Y0a-th-JaI"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -2452,39 +2453,79 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKH-wI-EyD">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="390" id="PAb-8K-CDa"/>
+                                                <constraint firstAttribute="height" constant="25" id="PoT-1q-mIT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="24"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="PoT-1q-mIT"/>
+                                                    <exclude reference="PAb-8K-CDa"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <mask key="constraints">
+                                                    <include reference="PoT-1q-mIT"/>
+                                                    <include reference="PAb-8K-CDa"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" red="0.55511906174866466" green="0.55637164689353569" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="QoY-Yy-ps1" firstAttribute="leading" secondItem="mnb-EY-sBN" secondAttribute="leadingMargin" id="CSY-01-SSZ"/>
-                                        <constraint firstItem="QoY-Yy-ps1" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="Pfq-eQ-Z3e"/>
-                                        <constraint firstItem="Jdm-C5-kYS" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="gHf-HM-nSk"/>
+                                        <constraint firstItem="QoY-Yy-ps1" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="Pfq-eQ-Z3e">
+                                            <variation key="heightClass=regular-widthClass=regular" constant="-6"/>
+                                        </constraint>
+                                        <constraint firstItem="Jdm-C5-kYS" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="gHf-HM-nSk">
+                                            <variation key="heightClass=regular-widthClass=regular" constant="-6"/>
+                                        </constraint>
                                         <constraint firstItem="Jdm-C5-kYS" firstAttribute="leading" secondItem="QoY-Yy-ps1" secondAttribute="trailing" constant="6" id="hGj-84-3La"/>
+                                        <constraint firstItem="lKH-wI-EyD" firstAttribute="leading" secondItem="mnb-EY-sBN" secondAttribute="leadingMargin" id="i1L-l6-G5g"/>
+                                        <constraint firstItem="lKH-wI-EyD" firstAttribute="top" secondItem="mnb-EY-sBN" secondAttribute="topMargin" id="iWy-fU-PqM">
+                                            <variation key="heightClass=regular-widthClass=regular" constant="6"/>
+                                        </constraint>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="QoY-Yy-ps1"/>
                                             <exclude reference="Jdm-C5-kYS"/>
+                                            <exclude reference="lKH-wI-EyD"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="gHf-HM-nSk"/>
-                                            <exclude reference="hGj-84-3La"/>
+                                            <exclude reference="i1L-l6-G5g"/>
+                                            <exclude reference="iWy-fU-PqM"/>
                                             <exclude reference="CSY-01-SSZ"/>
                                             <exclude reference="Pfq-eQ-Z3e"/>
+                                            <exclude reference="gHf-HM-nSk"/>
+                                            <exclude reference="hGj-84-3La"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=regular">
                                         <mask key="subviews">
                                             <include reference="QoY-Yy-ps1"/>
                                             <include reference="Jdm-C5-kYS"/>
+                                            <include reference="lKH-wI-EyD"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="gHf-HM-nSk"/>
-                                            <include reference="hGj-84-3La"/>
+                                            <include reference="i1L-l6-G5g"/>
+                                            <include reference="iWy-fU-PqM"/>
                                             <include reference="CSY-01-SSZ"/>
                                             <include reference="Pfq-eQ-Z3e"/>
+                                            <include reference="gHf-HM-nSk"/>
+                                            <include reference="hGj-84-3La"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="jerseyNumberLabel" destination="Jdm-C5-kYS" id="Vdz-g9-s4F"/>
+                                    <outlet property="playerNameLabel" destination="lKH-wI-EyD" id="8M6-ps-cbr"/>
+                                    <outlet property="positionLabel" destination="QoY-Yy-ps1" id="CWZ-tE-yXV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

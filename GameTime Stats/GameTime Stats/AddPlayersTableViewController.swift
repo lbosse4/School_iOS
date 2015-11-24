@@ -12,13 +12,14 @@ import CoreData
 class AddPlayersTableViewController: UITableViewController, DataSourceCellConfigurer {
     
     let model = Model.sharedInstance
-    let grayColor = UIColor(red:0.56, green:0.56, blue:0.56, alpha:1.0)
-    let playerNameFont = UIFont(name: "Orbitron-Medium", size: 21.0)
+    let formatter = NSNumberFormatter()
     var team : Team?
     lazy var dataSource : DataSource = DataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        formatter.minimumIntegerDigits = 2
         
         dataSource.delegate = self
         dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
@@ -33,18 +34,20 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     //MARK: Data Source Cell Configurer
     
     func cellIdentifierForObject(object: NSManagedObject) -> String {
-        return "playerCell"
+        return "addPlayerTableViewCell"
     }
     
-    func configureCell(cell: UITableViewCell, withObject object: NSManagedObject) {
+    func configureCell(let cell: AddPlayerTableViewCell, withObject object: NSManagedObject) {
         let player = object as? Player
-        cell.backgroundColor = grayColor
-        let playerNameLabelFrame = CGRect(x: 8.0, y: 8.0, width: 390.0, height: 25.0)
-        let playerNameLabel = UILabel(frame: playerNameLabelFrame)
-        playerNameLabel.text = player!.name
-        playerNameLabel.font = playerNameFont
-        cell.addSubview(playerNameLabel)
+        let playerName = player!.name
+        cell.playerNameLabel.text = playerName
         
+        let position = player?.position
+        cell.positionLabel.text = position
+        
+        let jerseyNumber = player?.jerseyNumber
+        let jerseyNumberString = formatter.stringFromNumber(jerseyNumber!)
+        cell.jerseyNumberLabel.text = jerseyNumberString
     }
 
     

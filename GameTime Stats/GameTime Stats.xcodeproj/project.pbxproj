@@ -16,6 +16,8 @@
 		891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9C1BF3AC9E009C813D /* DataManager.swift */; };
 		891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */; };
 		894BA3371C00C57100CA2D35 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA3361C00C57100CA2D35 /* DataSource.swift */; };
+		894BA33A1C04D55800CA2D35 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA3391C04D55800CA2D35 /* PlayerTableViewCell.swift */; };
+		894BA33C1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */; };
 		894BCE361BFBBF30008DF1C4 /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE2C1BFBBF30008DF1C4 /* Game+CoreDataProperties.swift */; };
 		894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE2D1BFBBF30008DF1C4 /* Game.swift */; };
 		894BCE3A1BFBBF30008DF1C4 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE301BFBBF30008DF1C4 /* Player+CoreDataProperties.swift */; };
@@ -75,6 +77,8 @@
 		891ECF9F1BF3B2E0009C813D /* LacrossePlayers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LacrossePlayers.xcdatamodel; sourceTree = "<group>"; };
 		894BA3361C00C57100CA2D35 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		894BA3381C00C5AA00CA2D35 /* README.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = README.docx; sourceTree = "<group>"; };
+		894BA3391C04D55800CA2D35 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
+		894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerTableViewCell.swift; sourceTree = "<group>"; };
 		894BCE2C1BFBBF30008DF1C4 /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		894BCE2D1BFBBF30008DF1C4 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		894BCE301BFBBF30008DF1C4 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				89EC2BBF1BCF0DAB008B37DC /* Main.storyboard */,
+				894BA3391C04D55800CA2D35 /* PlayerTableViewCell.swift */,
+				894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */,
 				89774B991BE3CADA007E02B4 /* Button Icons */,
 				897083721BE03450008F5D5B /* Fonts */,
 				89E30A691BDC654E0051212A /* Photos */,
@@ -431,6 +437,7 @@
 				8902FCF31BFD0A2E004655CA /* ViewTeamsTableViewController.swift in Sources */,
 				891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */,
 				894BCE3B1BFBBF30008DF1C4 /* Player.swift in Sources */,
+				894BA33A1C04D55800CA2D35 /* PlayerTableViewCell.swift in Sources */,
 				894BA3371C00C57100CA2D35 /* DataSource.swift in Sources */,
 				894BCE3F1BFBBF30008DF1C4 /* Period.swift in Sources */,
 				891ECF951BF3A3C1009C813D /* Model.swift in Sources */,
@@ -441,6 +448,7 @@
 				894BCE3C1BFBBF30008DF1C4 /* Team+CoreDataProperties.swift in Sources */,
 				894BCE361BFBBF30008DF1C4 /* Game+CoreDataProperties.swift in Sources */,
 				89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */,
+				894BA33C1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift in Sources */,
 				891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

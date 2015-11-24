@@ -11,7 +11,7 @@ import CoreData
 import UIKit
 
 protocol DataSourceCellConfigurer {
-    func configureCell(cell:UITableViewCell, withObject object:NSManagedObject) -> Void
+    func configureCell(cell:AddPlayerTableViewCell, withObject object:NSManagedObject) -> Void
     func cellIdentifierForObject(object: NSManagedObject) -> String
 }
 
@@ -85,7 +85,7 @@ class DataSource : NSObject, UITableViewDataSource, NSFetchedResultsControllerDe
         let managedObject = objectAtIndexPath(indexPath)
         let cellIdentifier = delegate!.cellIdentifierForObject(managedObject)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! AddPlayerTableViewCell
         
         delegate?.configureCell(cell, withObject: managedObject)
         //self.configureCell(cell, atIndexPath: indexPath)
@@ -217,7 +217,7 @@ class DataSource : NSObject, UITableViewDataSource, NSFetchedResultsControllerDe
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
             let object = objectAtIndexPath(indexPath!)
-            delegate?.configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, withObject: object)
+            delegate?.configureCell(tableView.cellForRowAtIndexPath(indexPath!)! as! AddPlayerTableViewCell, withObject: object)
             //self.configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)

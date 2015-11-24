@@ -19,7 +19,7 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     var playerName : String?
     var playerJerseyNumber : String?
     var team : Team?
-    var chosenPosition = ""
+    var chosenPosition = "Defender"
     var cancelBlock : (() -> Void)?
     
     //MARK: Outlets
@@ -34,8 +34,10 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
         positionPicker.delegate = self
         playerNameTextField.delegate = self
         jerseyNumberTextField.delegate = self
+        
         //only allow the user to enter numbers
         jerseyNumberTextField.keyboardType = UIKeyboardType.DecimalPad
+        
         //indicate to the user that they cannot add a player until they choose all fields
         addPlayerButtonView.alpha = inactiveAlpha
         addPlayerButtonView.userInteractionEnabled = false
@@ -61,7 +63,7 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     //MARK: Actions
     @IBAction func addPlayerButtonPressed(sender: UIButton) {
         playerName = playerNameTextField.text!
-        model.addPlayerWithName(playerName!, team: team!, number: Int(playerJerseyNumber!)!)
+        model.addPlayerWithName(playerName!, team: team!, number: Int(playerJerseyNumber!)!, position: chosenPosition)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
