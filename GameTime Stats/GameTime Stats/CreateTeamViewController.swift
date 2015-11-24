@@ -12,12 +12,18 @@ import UIKit
 class CreateTeamViewController : UIViewController, UITextFieldDelegate {
     let model = Model.sharedInstance
     let maxTeamNameLength = 40
+    let inactiveAlpha : CGFloat = 0.5
+    let activeAlpha : CGFloat = 1.0
     var team : Team?
     var teamName : String?
+    
     @IBOutlet weak var teamNameTextField: UITextField!
+    @IBOutlet weak var addPlayersButtonView: UIView!
     
     override func viewDidLoad() {
         teamNameTextField.delegate = self
+        addPlayersButtonView.userInteractionEnabled = false
+        addPlayersButtonView.alpha = inactiveAlpha
     }
     
     //MARK: Actions
@@ -45,8 +51,20 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate {
 
     }
     
+    //MARK: Helper Functions
+    func checkTeamNameLength(){
+        if teamNameTextField.text != "" {
+            addPlayersButtonView.userInteractionEnabled = true
+            addPlayersButtonView.alpha = activeAlpha
+        } else {
+            addPlayersButtonView.userInteractionEnabled = false
+            addPlayersButtonView.alpha = inactiveAlpha
+        }
+    }
+    
     //MARK: TextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        checkTeamNameLength()
         textField.resignFirstResponder()
         return true
     }

@@ -1598,6 +1598,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addPlayersButtonView" destination="Jas-Nz-ynx" id="w2E-TE-MSQ"/>
                         <outlet property="teamNameTextField" destination="1Qh-gH-J5n" id="Rxc-nJ-Y01"/>
                     </connections>
                 </viewController>
@@ -2429,33 +2430,6 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-GZ-cvo">
-                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="390" id="1sw-hU-xbU"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="QMV-TH-hT7"/>
-                                                <constraint firstAttribute="width" constant="390" id="aFa-Sd-I0Z"/>
-                                                <constraint firstAttribute="height" constant="25" id="tXN-pg-fkh"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="21"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="1sw-hU-xbU"/>
-                                                    <exclude reference="QMV-TH-hT7"/>
-                                                    <exclude reference="aFa-Sd-I0Z"/>
-                                                    <exclude reference="tXN-pg-fkh"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=regular">
-                                                <mask key="constraints">
-                                                    <exclude reference="1sw-hU-xbU"/>
-                                                    <exclude reference="QMV-TH-hT7"/>
-                                                    <include reference="aFa-Sd-I0Z"/>
-                                                    <include reference="tXN-pg-fkh"/>
-                                                </mask>
-                                            </variation>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdm-C5-kYS">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                             <constraints>
@@ -2485,13 +2459,10 @@
                                         <constraint firstItem="QoY-Yy-ps1" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="Pfq-eQ-Z3e"/>
                                         <constraint firstItem="Jdm-C5-kYS" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="gHf-HM-nSk"/>
                                         <constraint firstItem="Jdm-C5-kYS" firstAttribute="leading" secondItem="QoY-Yy-ps1" secondAttribute="trailing" constant="6" id="hGj-84-3La"/>
-                                        <constraint firstItem="YPt-GZ-cvo" firstAttribute="top" secondItem="mnb-EY-sBN" secondAttribute="topMargin" id="nnv-1E-V9G"/>
-                                        <constraint firstItem="YPt-GZ-cvo" firstAttribute="leading" secondItem="mnb-EY-sBN" secondAttribute="leadingMargin" id="zQN-og-zSf"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="QoY-Yy-ps1"/>
-                                            <exclude reference="YPt-GZ-cvo"/>
                                             <exclude reference="Jdm-C5-kYS"/>
                                         </mask>
                                         <mask key="constraints">
@@ -2499,14 +2470,11 @@
                                             <exclude reference="hGj-84-3La"/>
                                             <exclude reference="CSY-01-SSZ"/>
                                             <exclude reference="Pfq-eQ-Z3e"/>
-                                            <exclude reference="nnv-1E-V9G"/>
-                                            <exclude reference="zQN-og-zSf"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=regular">
                                         <mask key="subviews">
                                             <include reference="QoY-Yy-ps1"/>
-                                            <include reference="YPt-GZ-cvo"/>
                                             <include reference="Jdm-C5-kYS"/>
                                         </mask>
                                         <mask key="constraints">
@@ -2514,8 +2482,6 @@
                                             <include reference="hGj-84-3La"/>
                                             <include reference="CSY-01-SSZ"/>
                                             <include reference="Pfq-eQ-Z3e"/>
-                                            <include reference="nnv-1E-V9G"/>
-                                            <include reference="zQN-og-zSf"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

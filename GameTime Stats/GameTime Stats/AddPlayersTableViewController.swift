@@ -12,6 +12,8 @@ import CoreData
 class AddPlayersTableViewController: UITableViewController, DataSourceCellConfigurer {
     
     let model = Model.sharedInstance
+    let grayColor = UIColor(red:0.56, green:0.56, blue:0.56, alpha:1.0)
+    let playerNameFont = UIFont(name: "Orbitron-Medium", size: 21.0)
     var team : Team?
     lazy var dataSource : DataSource = DataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
     
@@ -36,7 +38,12 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     
     func configureCell(cell: UITableViewCell, withObject object: NSManagedObject) {
         let player = object as? Player
-        cell.textLabel!.text = player!.name
+        cell.backgroundColor = grayColor
+        let playerNameLabelFrame = CGRect(x: 8.0, y: 8.0, width: 390.0, height: 25.0)
+        let playerNameLabel = UILabel(frame: playerNameLabelFrame)
+        playerNameLabel.text = player!.name
+        playerNameLabel.font = playerNameFont
+        cell.addSubview(playerNameLabel)
         
     }
 
