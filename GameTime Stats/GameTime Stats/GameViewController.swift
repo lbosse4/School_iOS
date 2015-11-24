@@ -74,6 +74,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         resetButton.hidden = true
         
         generateViews()
+        
     }
     
     //MARK: Helper Functions
@@ -144,7 +145,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         var loopCounter = 0
         
         for player in currentPlayers {
-            let playerFrame = CGRect(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(player.jerseyNumber!)), y: playerViewMargin, width: playerViewSize, height: playerViewSize)
+            let playerFrame = CGRect(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(loopCounter)), y: playerViewMargin, width: playerViewSize, height: playerViewSize)
             let playerView = UIView(frame: playerFrame)
             playerView.backgroundColor = darkBlueColor
             playerView.layer.cornerRadius = playerViewSize/2
@@ -155,7 +156,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             let playerNumberFrame = CGRect(x: 0.0, y: 0.0, width: playerViewSize, height: playerViewSize)
             let playerNumberLabel = UILabel(frame: playerNumberFrame)
             playerNumberLabel.text = "\(playerNumber)"
-            playerNumberLabel.font = UIFont(name: playerNumberFont, size: playerViewSize - playerViewMargin/2)
+            playerNumberLabel.font = UIFont(name: playerNumberFont, size: playerViewSize - playerViewMargin)
             playerNumberLabel.textColor = UIColor.whiteColor()
             playerNumberLabel.textAlignment = .Center
             playerView.addSubview(playerNumberLabel)

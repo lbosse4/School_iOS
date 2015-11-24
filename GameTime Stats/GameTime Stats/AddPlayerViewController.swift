@@ -50,6 +50,7 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
         if !(playerName == "") {
             playerJerseyNumber = jerseyNumberTextField.text
             if !(playerJerseyNumber == "") {
+                //if both fields are populated, show the button
                 addPlayerButtonView.alpha = activeAlpha
                 addPlayerButtonView.userInteractionEnabled = true
             }
@@ -64,10 +65,12 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     @IBAction func addPlayerButtonPressed(sender: UIButton) {
         playerName = playerNameTextField.text!
         model.addPlayerWithName(playerName!, team: team!, number: Int(playerJerseyNumber!)!, position: chosenPosition)
+        navigationController?.popViewControllerAnimated(true)
         cancelBlock?()
     }
     
     @IBAction func cancelButtonPressed(sender: UIButton) {
+        navigationController?.popViewControllerAnimated(true)
         cancelBlock?()
     }
     

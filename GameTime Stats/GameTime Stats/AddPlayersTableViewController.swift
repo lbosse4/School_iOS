@@ -53,6 +53,12 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         let jerseyNumberString = formatter.stringFromNumber(jerseyNumber!)
         cell.jerseyNumberLabel.text = jerseyNumberString
     }
+    
+    //MARK: Actions
+    @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
+        
+    }
+    
 
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -82,6 +88,10 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
 
     
     //MARK: Prepare for segue
@@ -91,8 +101,9 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
             let playerController = segue.destinationViewController as! AddPlayerViewController
             playerController.team = team!
             playerController.cancelBlock = {() in
-                self.dismissViewControllerAnimated(true, completion: nil)
-                //self.navigationController?.popToRootViewControllerAnimated(true)
+                //self.dismissViewControllerAnimated(true, completion: nil)
+                //self.navigationController?.popViewControllerAnimated(true)
+                self.tableView.reloadData()
             }
         default:
             break

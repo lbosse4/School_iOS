@@ -2397,10 +2397,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addPlayerTableViewCell" rowHeight="76" id="eze-jE-5u9" customClass="AddPlayerTableViewCell" customModule="GameTime_Stats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eze-jE-5u9" id="mnb-EY-sBN">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoY-Yy-ps1">
@@ -2463,14 +2463,14 @@
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="PoT-1q-mIT"/>
                                                     <exclude reference="PAb-8K-CDa"/>
+                                                    <exclude reference="PoT-1q-mIT"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=regular">
                                                 <mask key="constraints">
-                                                    <include reference="PoT-1q-mIT"/>
                                                     <include reference="PAb-8K-CDa"/>
+                                                    <include reference="PoT-1q-mIT"/>
                                                 </mask>
                                             </variation>
                                         </label>
@@ -2497,12 +2497,12 @@
                                             <exclude reference="lKH-wI-EyD"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="i1L-l6-G5g"/>
-                                            <exclude reference="iWy-fU-PqM"/>
-                                            <exclude reference="CSY-01-SSZ"/>
-                                            <exclude reference="Pfq-eQ-Z3e"/>
                                             <exclude reference="gHf-HM-nSk"/>
                                             <exclude reference="hGj-84-3La"/>
+                                            <exclude reference="CSY-01-SSZ"/>
+                                            <exclude reference="Pfq-eQ-Z3e"/>
+                                            <exclude reference="i1L-l6-G5g"/>
+                                            <exclude reference="iWy-fU-PqM"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=regular">
@@ -2512,12 +2512,12 @@
                                             <include reference="lKH-wI-EyD"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="i1L-l6-G5g"/>
-                                            <include reference="iWy-fU-PqM"/>
-                                            <include reference="CSY-01-SSZ"/>
-                                            <include reference="Pfq-eQ-Z3e"/>
                                             <include reference="gHf-HM-nSk"/>
                                             <include reference="hGj-84-3La"/>
+                                            <include reference="CSY-01-SSZ"/>
+                                            <include reference="Pfq-eQ-Z3e"/>
+                                            <include reference="i1L-l6-G5g"/>
+                                            <include reference="iWy-fU-PqM"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -2534,6 +2534,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="8Cq-sx-o7a">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="YGq-nF-dEm">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="imX-dp-DOp" id="QEx-uE-idS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5AT-zl-L3J">
                             <connections>
                                 <segue destination="clP-Vg-4C5" kind="show" identifier="addPlayerSegue" id="v6F-A6-xDP"/>

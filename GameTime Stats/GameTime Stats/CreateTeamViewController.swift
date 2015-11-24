@@ -69,7 +69,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidEndEditing(textField: UITextField) {
         checkTeamNameLength()
     }
     
