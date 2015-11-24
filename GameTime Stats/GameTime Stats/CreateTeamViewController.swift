@@ -69,6 +69,10 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        checkTeamNameLength()
+    }
+    
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // We still return true to allow the change to take place.
         if string.characters.count == 0 {

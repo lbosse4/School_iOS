@@ -64,7 +64,7 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     @IBAction func addPlayerButtonPressed(sender: UIButton) {
         playerName = playerNameTextField.text!
         model.addPlayerWithName(playerName!, team: team!, number: Int(playerJerseyNumber!)!, position: chosenPosition)
-        dismissViewControllerAnimated(true, completion: nil)
+        cancelBlock?()
     }
     
     @IBAction func cancelButtonPressed(sender: UIButton) {

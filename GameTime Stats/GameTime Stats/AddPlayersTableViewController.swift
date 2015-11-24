@@ -14,6 +14,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     let model = Model.sharedInstance
     let formatter = NSNumberFormatter()
     var team : Team?
+    //TODO: UPDATE FILTER TO ONLY INCLUD ECURRENT TEAM
     lazy var dataSource : DataSource = DataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
     
     override func viewDidLoad() {
@@ -24,6 +25,9 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         dataSource.delegate = self
         dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
         tableView.dataSource = dataSource
+        
+//        let teamNamePredicate = NSPredicate(format: "team!.name! = %@", team!.name!)
+//        dataSource.updateWithPredicate(teamNamePredicate)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -50,6 +54,35 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         cell.jerseyNumberLabel.text = jerseyNumberString
     }
 
+    // MARK: - Table view data source
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model.playerCount()
+        //TODO: USe this line instead
+        //return model.numPlayersForTeam(TEAAM)
+    }
+    
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("addPlayerTableViewCell", forIndexPath: indexPath) as! AddPlayerTableViewCell
+        
+        let player = model.playerAtIndex(indexPath.row)
+        let playerName = player.name
+        cell.playerNameLabel.text = playerName
+        
+        let position = player.position
+        cell.positionLabel.text = position
+        
+        let jerseyNumber = player.jerseyNumber
+        let jerseyNumberString = formatter.stringFromNumber(jerseyNumber!)
+        cell.jerseyNumberLabel.text = jerseyNumberString
+        
+        return cell
+    }
+
     
     //MARK: Prepare for segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -59,6 +92,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
             playerController.team = team!
             playerController.cancelBlock = {() in
                 self.dismissViewControllerAnimated(true, completion: nil)
+                //self.navigationController?.popToRootViewControllerAnimated(true)
             }
         default:
             break
