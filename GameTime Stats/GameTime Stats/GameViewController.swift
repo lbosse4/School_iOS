@@ -25,7 +25,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let playerViewPaddingHeight : CGFloat = 60.0
     let playerViewMargin : CGFloat = 10.0
     let playerNumberFont = "collegiateHeavyOutline"
-    let popoverContentSize = CGSize(width: 350, height: 450)
+    let popoverContentSize = CGSize(width: 350, height: 470)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
     let startingMinutes = 30
@@ -163,6 +163,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             
             let playerFrame : CGRect
             
+            //Set location of pieces: first statement sets bottom row, second sets top
             if loopCounter + 1 > playersPerRow {
                 playerFrame = CGRect(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(loopCounter - playersPerRow)), y: playerViewMargin + playerViewPaddingHeight, width: playerViewSize, height: playerViewSize)
             } else {

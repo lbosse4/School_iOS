@@ -77,6 +77,8 @@ class Model : DataManagerDelegate {
             s.player = p
         }
         dataManager.saveContext()*/
+        
+        dataManager.saveContext()
     }
     
     func tstPlayers() -> [Player] {
