@@ -22,6 +22,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
     let playerViewSize : CGFloat = 55.0
     let playerViewPaddingWidth : CGFloat = 60.0
+    let playerViewPaddingHeight : CGFloat = 60.0
     let playerViewMargin : CGFloat = 10.0
     let playerNumberFont = "collegiateHeavyOutline"
     let popoverContentSize = CGSize(width: 350, height: 450)
@@ -33,6 +34,9 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let firstHalf = 1
     let secondHalf = 2
     let formatter = NSNumberFormatter()
+    let benchContainerHeight : CGFloat = 150.0
+    let benchContainerWidth : CGFloat = 756.0
+    var playersPerRow : Int = 0
     
     //MARK: Variables
     var playerViews = [UIView]()
@@ -50,7 +54,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var currentHalf = 1
     
     //MARK: Outlets
-    @IBOutlet weak var benchContainerView: UIView!
+    //@IBOutlet weak var benchContainerView: UIView!
     @IBOutlet weak var fieldImageView: UIImageView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var homeScoreLabel: UILabel!
@@ -58,6 +62,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     @IBOutlet weak var halfLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var benchScrollview: UIScrollView!
     
     override func viewDidLoad() {
         //Extract team for current game
@@ -69,7 +74,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         
         //Enable interaction to let the user move the player pieces
         fieldImageView.userInteractionEnabled = true
-        benchContainerView.userInteractionEnabled = true
+        benchScrollview.userInteractionEnabled = true
         
         resetButton.hidden = true
         
@@ -143,15 +148,35 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     func generateViews() {
         var loopCounter = 0
+        playersPerRow = currentPlayers.count/2
+        let scrollViewWidth = (CGFloat(playersPerRow) * playerViewPaddingWidth) + (playerViewMargin * 2)
+        // Allow images to continue off of the screen if there are too many to fit
+        if scrollViewWidth > benchContainerWidth {
+            benchScrollview.contentSize = CGSize(width: scrollViewWidth, height: benchContainerHeight)
+        } else {
+            benchScrollview.contentSize = CGSize(width: benchContainerWidth, height: benchContainerHeight)
+        }
         
         for player in currentPlayers {
-            let playerFrame = CGRect(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(loopCounter)), y: playerViewMargin, width: playerViewSize, height: playerViewSize)
+            //margin : padding from the edge of the scrollview
+            //paddingWidth: The space needed to correctly space the view, including the width of the view
+            
+            let playerFrame : CGRect
+            
+            if loopCounter + 1 > playersPerRow {
+                playerFrame = CGRect(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(loopCounter - playersPerRow)), y: playerViewMargin + playerViewPaddingHeight, width: playerViewSize, height: playerViewSize)
+            } else {
+                playerFrame = CGRect(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(loopCounter)), y: playerViewMargin, width: playerViewSize, height: playerViewSize)
+
+            }
+            
             let playerView = UIView(frame: playerFrame)
             playerView.backgroundColor = darkBlueColor
             playerView.layer.cornerRadius = playerViewSize/2
             playerView.tag = loopCounter
-            benchContainerView.addSubview(playerView)
+            benchScrollview.addSubview(playerView)
             
+            //add player jersey number
             let playerNumber = player.jerseyNumber!
             let playerNumberFrame = CGRect(x: 0.0, y: 0.0, width: playerViewSize, height: playerViewSize)
             let playerNumberLabel = UILabel(frame: playerNumberFrame)
@@ -199,18 +224,27 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func resetPlayerView(playerView: UIView) {
-        moveView(playerView, toSuperview: benchContainerView)
+        moveView(playerView, toSuperview: benchScrollview)
+        
+        var origin : CGPoint
+        
+        if playerView.tag + 1 > playersPerRow {
+            origin = CGPoint(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(playerView.tag - playersPerRow)), y: playerViewMargin + playerViewPaddingHeight)
+        } else {
+            origin = CGPoint(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(playerView.tag)), y: playerViewMargin)
+            
+        }
         
         UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-            let origin = CGPoint(x: self.playerViewMargin + (self.playerViewPaddingWidth * CGFloat(playerView.tag)), y: self.playerViewMargin)
+            //let origin = CGPoint(x: self.playerViewMargin + (self.playerViewPaddingWidth * CGFloat(playerView.tag)), y: self.playerViewMargin)
             playerView.frame.origin = origin
             }) { (finished) -> Void in
-                self.benchContainerView.addSubview(playerView)
+                self.benchScrollview.addSubview(playerView)
         }
         
         
         
-        //ADD IN STOP TIMER FUNCTION
+        //TODO: ADD IN STOP TIMER FUNCTION
     }
     
     func moveView(view:UIView, toSuperview superView: UIView) {
@@ -237,7 +271,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             //view.bringSubviewToFront(fieldImageView)
             //fieldImageView.bringSubviewToFront(panningView)
             fieldImageView.addSubview(panningView)
-            let origin = benchContainerView.convertPoint(recognizer.locationInView(fieldImageView), fromView: benchContainerView)
+            let origin = benchScrollview.convertPoint(recognizer.locationInView(fieldImageView), fromView: benchScrollview)
             panningView.center = origin
             
             switch recognizer.state {
