@@ -17,6 +17,16 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     //TODO: UPDATE FILTER TO ONLY INCLUD ECURRENT TEAM
     lazy var dataSource : DataSource = DataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
     
+    /*
+    let teammatesViewController = segue.destinationViewController as! TeamTableViewController
+    let indexPath = tableView.indexPathForSelectedRow
+    let player = dataSource.objectAtIndexPath(indexPath!) as! Player
+    let team = player.team as! Team
+    let players = team.players?.allObjects as! [Player]
+    teammatesViewController.teammates = players
+    teammatesViewController.title = team.name
+    */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +69,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         
     }
     
+   
 
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
