@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol TeamCreatedProtocol {
+    func dismissMe()
+}
+
 class AddPlayersTableViewController: UITableViewController, DataSourceCellConfigurer {
     
     let model = Model.sharedInstance
@@ -16,6 +20,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     var team : Team?
     //TODO: UPDATE FILTER TO ONLY INCLUD ECURRENT TEAM
     lazy var dataSource : DataSource = DataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
+    var delegate : TeamCreatedProtocol?
     
     /*
     let teammatesViewController = segue.destinationViewController as! TeamTableViewController
@@ -46,7 +51,6 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     }
     
     //MARK: Data Source Cell Configurer
-    
     func cellIdentifierForObject(object: NSManagedObject) -> String {
         return "addPlayerTableViewCell"
     }
@@ -66,7 +70,8 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     
     //MARK: Actions
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
-        
+        dismissViewControllerAnimated(true, completion: nil)
+        delegate?.dismissMe()
     }
     
    

@@ -9,7 +9,7 @@
 
 import UIKit
 
-class CreateTeamViewController : UIViewController, UITextFieldDelegate {
+class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCreatedProtocol {
     let model = Model.sharedInstance
     let maxTeamNameLength = 40
     let inactiveAlpha : CGFloat = 0.5
@@ -62,6 +62,10 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate {
         }
     }
     
+    func dismissMe() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     //MARK: TextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         checkTeamNameLength()
@@ -95,6 +99,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate {
             let navController = segue.destinationViewController as! UINavigationController
             let playerController = navController.viewControllers[0] as! AddPlayersTableViewController
             playerController.team = team!
+            playerController.delegate = self
             break
         default:
             break
