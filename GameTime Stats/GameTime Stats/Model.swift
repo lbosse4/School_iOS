@@ -103,6 +103,7 @@ class Model : DataManagerDelegate {
         playerObj.jerseyNumber = number
         playerObj.position = position
         dataManager.saveContext()
+        
     }
 
     func addTeamWithName(name: String) -> Team {
@@ -110,6 +111,7 @@ class Model : DataManagerDelegate {
         teamObj.name = name
         dataManager.saveContext()
         return teamObj
+        
     }
     
     func positionAtIndex(index: Int) -> String {

@@ -32,22 +32,26 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func addPlayerButtonPressed(sender: UIButton) {
+    @IBAction func addPlayersButtonPressed(sender: UIButton) {
         //TODO: MAKE TEAM NAMES UNIQUE
         
         teamName = teamNameTextField.text!
+        team = model.addTeamWithName(teamName!)
         
-        if teamName!.isEmpty {
-            let alert = UIAlertController(title: "Invalid", message: "Team's name cannot be blank", preferredStyle: UIAlertControllerStyle.Alert)
-            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(action)
-            self.presentViewController(alert, animated: true, completion: nil)
-        } else {
-            //add team to the database
-            //TODO: MAYBE MOVE THIS TO COMPLETION BLOCK OF ADD PLAYERS
-            team = model.addTeamWithName(teamName!)
-        
-        }
+//        
+//
+//        
+//        if teamName!.isEmpty {
+//            let alert = UIAlertController(title: "Invalid", message: "Team's name cannot be blank", preferredStyle: UIAlertControllerStyle.Alert)
+//            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+//            alert.addAction(action)
+//            self.presentViewController(alert, animated: true, completion: nil)
+//        } else {
+//            //add team to the database
+//            //TODO: MAYBE MOVE THIS TO COMPLETION BLOCK OF ADD PLAYERS
+//            team = model.addTeamWithName(teamName!)
+//        
+//        }
 
     }
     

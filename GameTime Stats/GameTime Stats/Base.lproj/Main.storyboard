@@ -1463,7 +1463,7 @@
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="addPlayerButtonPressed:" destination="39O-8P-yka" eventType="touchUpInside" id="GFb-rT-ENV"/>
+                                                    <action selector="addPlayersButtonPressed:" destination="39O-8P-yka" eventType="touchUpInside" id="PWQ-l4-MdA"/>
                                                     <segue destination="zfv-Ls-vVF" kind="show" identifier="addPlayersTableViewSegue" id="Nm0-Sg-yvB"/>
                                                 </connections>
                                             </button>
