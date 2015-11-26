@@ -2389,6 +2389,20 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="assistsLabel" destination="ZDl-iK-34X" id="QGq-vv-Iqe"/>
+                        <outlet property="causedTurnoversLabel" destination="Dbq-hd-owx" id="iEM-eg-5X1"/>
+                        <outlet property="clearsLabel" destination="rdr-YL-GXH" id="KgH-87-5zv"/>
+                        <outlet property="drawControlsLabel" destination="aSS-BJ-zV4" id="AtB-rX-uV5"/>
+                        <outlet property="freePositionAttemptsLabel" destination="Chk-QE-xyL" id="K1u-Q3-73V"/>
+                        <outlet property="freePositionGoalsLabel" destination="xv5-1l-hRL" id="nHK-O3-Cx2"/>
+                        <outlet property="goalsLabel" destination="mhz-kS-utn" id="Rdx-si-iVh"/>
+                        <outlet property="groundBallsLabel" destination="kwo-eJ-ddf" id="Nt7-z8-ezU"/>
+                        <outlet property="opponentGoalsScoredAgainstLabel" destination="KSC-fl-kwV" id="8sl-v7-wPD"/>
+                        <outlet property="savesLabel" destination="7pz-Lg-0s2" id="FKc-1m-OyP"/>
+                        <outlet property="shotsOnGoalLabel" destination="OpC-PB-oRA" id="eZQ-Tm-ejq"/>
+                        <outlet property="turnoversLabel" destination="cOp-0g-OLH" id="lHB-qt-o4W"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH1-E7-9Fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
