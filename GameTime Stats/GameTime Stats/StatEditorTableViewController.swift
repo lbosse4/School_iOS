@@ -38,13 +38,71 @@ class StatEditorTableViewController: UITableViewController {
     @IBOutlet weak var shotsOnGoalLabel: UILabel!
     @IBOutlet weak var turnoversLabel: UILabel!
     
+    @IBOutlet weak var assistsStepper: UIStepper!
+    @IBOutlet weak var causedTurnoversStepper: UIStepper!
+    @IBOutlet weak var clearsStepper: UIStepper!
+    @IBOutlet weak var drawControlsStepper: UIStepper!
+    @IBOutlet weak var freePositionAttemptsStepper: UIStepper!
+    @IBOutlet weak var freePositionGoalsStepper: UIStepper!
+    @IBOutlet weak var goalsStepper: UIStepper!
+    @IBOutlet weak var groundBallsStepper: UIStepper!
+    @IBOutlet weak var opponentGoalsScoredAgainstStepper: UIStepper!
+    @IBOutlet weak var savesStepper: UIStepper!
+    @IBOutlet weak var shotsOnGoalStepper: UIStepper!
+    @IBOutlet weak var turnoversStepper: UIStepper!
+    
+    
     override func viewDidLoad() {
         
     
     }
     
+    //MARK: Actions
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
         //TODO: make sure stats save here
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func stepperToggled(sender: UIStepper) {
+        switch sender.tag {
+        case 0:
+            assistsLabel.text = "\(Int(sender.value))"
+        case 1:
+            causedTurnoversLabel.text = "\(Int(sender.value))"
+        case 2:
+            clearsLabel.text = "\(Int(sender.value))"
+        case 3:
+            drawControlsLabel.text = "\(Int(sender.value))"
+        case 4:
+            freePositionAttemptsLabel.text = "\(Int(sender.value))"
+        case 5:
+            freePositionGoalsLabel.text = "\(Int(sender.value))"
+        case 6:
+            goalsLabel.text = "\(Int(sender.value))"
+        case 7:
+            groundBallsLabel.text = "\(Int(sender.value))"
+        case 8:
+            opponentGoalsScoredAgainstLabel.text = "\(Int(sender.value))"
+        case 9:
+            savesLabel.text = "\(Int(sender.value))"
+        case 10:
+            shotsOnGoalLabel.text = "\(Int(sender.value))"
+        case 11:
+            turnoversLabel.text = "\(Int(sender.value))"
+        default:
+            break
+        }
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+

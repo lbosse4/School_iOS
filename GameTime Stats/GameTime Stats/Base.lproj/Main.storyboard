@@ -1838,6 +1838,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="4hV-Dl-vfR"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="7mw-M1-YrM"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
@@ -1879,12 +1882,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="4z2-eM-iaP">
+                                                <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="4z2-eM-iaP">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711490000003" green="0.78872711490000003" blue="0.78872711490000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="0bL-9e-hTa"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="t69-5J-KjU"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -1926,12 +1932,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MLh-dh-Jzy">
+                                                <stepper opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MLh-dh-Jzy">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711490000003" green="0.78872711490000003" blue="0.78872711490000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="M4Z-Jv-IIU"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="XYj-B5-wJp"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -1973,12 +1982,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="h42-jb-aE0">
+                                                <stepper opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="h42-jb-aE0">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711489898983" green="0.78872711489898983" blue="0.78872711489898983" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="12b-gm-9h7"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="IKK-K1-Dqt"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -2020,12 +2032,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iGT-dU-Ymq">
+                                                <stepper opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iGT-dU-Ymq">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711490000003" green="0.78872711490000003" blue="0.78872711490000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="fk3-XE-o61"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="pNt-aK-GkU"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -2067,12 +2082,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="TJb-x7-mdW">
+                                                <stepper opaque="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="TJb-x7-mdW">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711490000003" green="0.78872711490000003" blue="0.78872711490000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="8Kk-h9-ecV"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="MZZ-5G-rAU"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -2114,12 +2132,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Jv-7P-9v6">
+                                                <stepper opaque="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Jv-7P-9v6">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711489898983" green="0.78872711489898983" blue="0.78872711489898983" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="NBN-FG-lYa"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="dk8-dw-UIa"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -2146,13 +2167,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ngE-go-9fJ">
-                                                    <rect key="frame" x="498" y="4" width="94" height="29"/>
-                                                    <color key="backgroundColor" red="0.78872711489898983" green="0.78872711489898983" blue="0.78872711489898983" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="94" id="hwo-gg-7vT"/>
-                                                    </constraints>
-                                                </stepper>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ground Balls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c6-nN-gHP">
                                                     <rect key="frame" x="8" y="7" width="444" height="24"/>
                                                     <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="14"/>
@@ -2168,6 +2182,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stepper opaque="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ngE-go-9fJ">
+                                                    <rect key="frame" x="498" y="4" width="94" height="29"/>
+                                                    <color key="backgroundColor" red="0.78872711489898983" green="0.78872711489898983" blue="0.78872711489898983" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="94" id="hwo-gg-7vT"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="50V-hi-xhM"/>
+                                                    </connections>
+                                                </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" red="0.0" green="0.27615591340000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2208,12 +2232,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZlJ-U4-smu">
+                                                <stepper opaque="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZlJ-U4-smu">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711490000003" green="0.78872711490000003" blue="0.78872711490000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="8Fo-UA-enJ"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="4sm-Wv-8Tb"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -2255,12 +2282,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6hQ-ij-CnC">
+                                                <stepper opaque="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6hQ-ij-CnC">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711489898983" green="0.78872711489898983" blue="0.78872711489898983" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="BEI-s2-Zyy"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="vcf-Un-lMG"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -2302,12 +2332,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Xcr-ga-QFx">
+                                                <stepper opaque="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Xcr-ga-QFx">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711489898983" green="0.78872711489898983" blue="0.78872711489898983" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="MgZ-Ay-N1K"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="7RE-ja-Tf3"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -2349,12 +2382,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kfy-cq-lbK">
+                                                <stepper opaque="NO" tag="11" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kfy-cq-lbK">
                                                     <rect key="frame" x="498" y="4" width="94" height="29"/>
                                                     <color key="backgroundColor" red="0.78872711489898983" green="0.78872711489898983" blue="0.78872711489898983" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="jGw-Ce-ZPU"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="stepperToggled:" destination="6HQ-v9-Avd" eventType="valueChanged" id="ZuH-bS-wWr"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
                                             <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -2391,17 +2427,29 @@
                     </navigationItem>
                     <connections>
                         <outlet property="assistsLabel" destination="ZDl-iK-34X" id="QGq-vv-Iqe"/>
+                        <outlet property="assistsStepper" destination="muh-5Y-Ly8" id="hVQ-it-rmE"/>
                         <outlet property="causedTurnoversLabel" destination="Dbq-hd-owx" id="iEM-eg-5X1"/>
+                        <outlet property="causedTurnoversStepper" destination="4z2-eM-iaP" id="ZYS-DR-EYh"/>
                         <outlet property="clearsLabel" destination="rdr-YL-GXH" id="KgH-87-5zv"/>
+                        <outlet property="clearsStepper" destination="MLh-dh-Jzy" id="rsj-1g-UNb"/>
                         <outlet property="drawControlsLabel" destination="aSS-BJ-zV4" id="AtB-rX-uV5"/>
+                        <outlet property="drawControlsStepper" destination="h42-jb-aE0" id="OZe-zU-Du5"/>
                         <outlet property="freePositionAttemptsLabel" destination="Chk-QE-xyL" id="K1u-Q3-73V"/>
+                        <outlet property="freePositionAttemptsStepper" destination="iGT-dU-Ymq" id="7Zf-ej-7se"/>
                         <outlet property="freePositionGoalsLabel" destination="xv5-1l-hRL" id="nHK-O3-Cx2"/>
+                        <outlet property="freePositionGoalsStepper" destination="TJb-x7-mdW" id="vGo-2F-Imn"/>
                         <outlet property="goalsLabel" destination="mhz-kS-utn" id="Rdx-si-iVh"/>
+                        <outlet property="goalsStepper" destination="7Jv-7P-9v6" id="bBe-cO-rag"/>
                         <outlet property="groundBallsLabel" destination="kwo-eJ-ddf" id="Nt7-z8-ezU"/>
+                        <outlet property="groundBallsStepper" destination="ngE-go-9fJ" id="CMN-w6-3LY"/>
                         <outlet property="opponentGoalsScoredAgainstLabel" destination="KSC-fl-kwV" id="8sl-v7-wPD"/>
+                        <outlet property="opponentGoalsScoredAgainstStepper" destination="ZlJ-U4-smu" id="Qi2-EE-XIe"/>
                         <outlet property="savesLabel" destination="7pz-Lg-0s2" id="FKc-1m-OyP"/>
+                        <outlet property="savesStepper" destination="6hQ-ij-CnC" id="MqJ-hK-0Da"/>
                         <outlet property="shotsOnGoalLabel" destination="OpC-PB-oRA" id="eZQ-Tm-ejq"/>
+                        <outlet property="shotsOnGoalStepper" destination="Xcr-ga-QFx" id="j3r-oR-gBY"/>
                         <outlet property="turnoversLabel" destination="cOp-0g-OLH" id="lHB-qt-o4W"/>
+                        <outlet property="turnoversStepper" destination="kfy-cq-lbK" id="2Xp-fl-YZF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH1-E7-9Fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
