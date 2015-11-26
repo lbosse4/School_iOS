@@ -14,4 +14,9 @@ class ViewTeamsTableViewController: UITableViewController/*, DataSourceCellConfi
     override func viewDidLoad() {
         
     }
+    
+    @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

@@ -1192,20 +1192,20 @@
                                         <exclude reference="mQX-Vd-TYI"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="10Z-sY-rp4"/>
-                                        <exclude reference="2Kn-C5-CWK"/>
-                                        <exclude reference="faF-71-URb"/>
-                                        <exclude reference="Jqx-jm-IB9"/>
-                                        <exclude reference="RLO-uQ-rox"/>
-                                        <exclude reference="fN8-SK-oyT"/>
                                         <exclude reference="IQs-fe-0KZ"/>
                                         <exclude reference="YOl-do-vDr"/>
                                         <exclude reference="hQX-Tn-Law"/>
                                         <exclude reference="jcv-wE-7hp"/>
+                                        <exclude reference="10Z-sY-rp4"/>
+                                        <exclude reference="2Kn-C5-CWK"/>
+                                        <exclude reference="faF-71-URb"/>
                                         <exclude reference="O4j-3q-J2h"/>
                                         <exclude reference="bmE-7W-OKm"/>
                                         <exclude reference="dHC-uJ-UZP"/>
                                         <exclude reference="hNe-jy-gMQ"/>
+                                        <exclude reference="Jqx-jm-IB9"/>
+                                        <exclude reference="RLO-uQ-rox"/>
+                                        <exclude reference="fN8-SK-oyT"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -1216,20 +1216,20 @@
                                         <include reference="mQX-Vd-TYI"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="10Z-sY-rp4"/>
-                                        <include reference="2Kn-C5-CWK"/>
-                                        <include reference="faF-71-URb"/>
-                                        <exclude reference="Jqx-jm-IB9"/>
-                                        <include reference="RLO-uQ-rox"/>
-                                        <exclude reference="fN8-SK-oyT"/>
                                         <include reference="IQs-fe-0KZ"/>
                                         <include reference="YOl-do-vDr"/>
                                         <include reference="hQX-Tn-Law"/>
                                         <include reference="jcv-wE-7hp"/>
+                                        <include reference="10Z-sY-rp4"/>
+                                        <include reference="2Kn-C5-CWK"/>
+                                        <include reference="faF-71-URb"/>
                                         <include reference="O4j-3q-J2h"/>
                                         <include reference="bmE-7W-OKm"/>
                                         <include reference="dHC-uJ-UZP"/>
                                         <include reference="hNe-jy-gMQ"/>
+                                        <exclude reference="Jqx-jm-IB9"/>
+                                        <include reference="RLO-uQ-rox"/>
+                                        <exclude reference="fN8-SK-oyT"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1753,7 +1753,13 @@
                             <outlet property="delegate" destination="Db2-9T-Dcc" id="v5D-7k-Lu1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="nGg-9K-ueJ"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="nGg-9K-ueJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="qJ3-Jd-cxj">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="Db2-9T-Dcc" id="JRJ-H4-Tbf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDk-ye-NYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
