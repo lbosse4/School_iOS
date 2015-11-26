@@ -2482,7 +2482,7 @@
                                                 <constraint firstAttribute="width" constant="390" id="PAb-8K-CDa"/>
                                                 <constraint firstAttribute="height" constant="25" id="PoT-1q-mIT"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="24"/>
+                                            <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="23"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -2502,15 +2502,15 @@
                                     <constraints>
                                         <constraint firstItem="QoY-Yy-ps1" firstAttribute="leading" secondItem="mnb-EY-sBN" secondAttribute="leadingMargin" id="CSY-01-SSZ"/>
                                         <constraint firstItem="QoY-Yy-ps1" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="Pfq-eQ-Z3e">
-                                            <variation key="heightClass=regular-widthClass=regular" constant="-6"/>
+                                            <variation key="heightClass=regular-widthClass=regular" constant="-5"/>
                                         </constraint>
                                         <constraint firstItem="Jdm-C5-kYS" firstAttribute="bottom" secondItem="mnb-EY-sBN" secondAttribute="bottomMargin" id="gHf-HM-nSk">
-                                            <variation key="heightClass=regular-widthClass=regular" constant="-6"/>
+                                            <variation key="heightClass=regular-widthClass=regular" constant="-5"/>
                                         </constraint>
                                         <constraint firstItem="Jdm-C5-kYS" firstAttribute="leading" secondItem="QoY-Yy-ps1" secondAttribute="trailing" constant="6" id="hGj-84-3La"/>
                                         <constraint firstItem="lKH-wI-EyD" firstAttribute="leading" secondItem="mnb-EY-sBN" secondAttribute="leadingMargin" id="i1L-l6-G5g"/>
                                         <constraint firstItem="lKH-wI-EyD" firstAttribute="top" secondItem="mnb-EY-sBN" secondAttribute="topMargin" id="iWy-fU-PqM">
-                                            <variation key="heightClass=regular-widthClass=regular" constant="6"/>
+                                            <variation key="heightClass=regular-widthClass=regular" constant="5"/>
                                         </constraint>
                                     </constraints>
                                     <variation key="default">
