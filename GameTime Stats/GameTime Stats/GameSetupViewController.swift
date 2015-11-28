@@ -8,18 +8,24 @@
 
 import UIKit
 
+protocol cancelGameProtocol {
+    func dismissMe()
+}
+
 class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
     
     //MARK: Constants
     let model = Model.sharedInstance
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
-    let maxPlayerNameLength = 75
+    let maxPlayerNameLength = 40
     
     //MARK: Variables
     var chosenTeam : Team?
     var cancelBlock : (() -> Void)?
     var gameDate : NSDate?
+    var delegate : cancelGameProtocol?
+
     
     //MARK: Outlets
     @IBOutlet weak var opponentTeamNameTextField: UITextField!
@@ -44,6 +50,7 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     }
     
     @IBAction func cancelButtonPressed(sender: UIButton) {
+        delegate?.dismissMe()
         cancelBlock?()
     }
     

@@ -153,6 +153,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="startGameButton" destination="Cn8-At-tVM" id="wPe-Eo-vvu"/>
+                        <outlet property="viewCurrentTeamsButton" destination="AQj-XT-7de" id="Q08-rX-qaA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

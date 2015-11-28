@@ -16,7 +16,7 @@ struct playerStat {
     var viewTag = 0
 }
 
-class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
+class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, cancelGameProtocol {
     //MARK: Constants
     let model = Model.sharedInstance
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
@@ -49,7 +49,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var currentPeriod = 1
     var cancelBlock : (() -> Void)?
     var isInitialLoad = true
-
     
     //MARK: Outlets
     @IBOutlet weak var fieldImageView: UIImageView!
@@ -232,6 +231,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         return .Popover
     }
     
+    func dismissMe() {
+        cancelBlock?()
+    }
+    
     //MARK: Gesture Recognizers
     func panningPlayer(recognizer: UIPanGestureRecognizer) {
         if let panningView = recognizer.view {
@@ -373,6 +376,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             gameSetupController.cancelBlock = {() in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
+            
+            gameSetupController.delegate = self
         default:
             break
         }

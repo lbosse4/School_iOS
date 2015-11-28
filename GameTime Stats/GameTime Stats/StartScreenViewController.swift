@@ -10,6 +10,26 @@ import UIKit
 
 class StartScreenViewController : UIViewController {
     let model = Model.sharedInstance
+    let inactiveAlpha : CGFloat = 0.5
+    let activeAlpha : CGFloat = 1.0
+    
+    //MARK: Outlets
+    @IBOutlet weak var viewCurrentTeamsButton: UIButton!
+    @IBOutlet weak var startGameButton: UIButton!
+    
+    override func viewWillAppear(animated: Bool) {
+        if model.teamCount() == 0{
+            viewCurrentTeamsButton.userInteractionEnabled = false
+            viewCurrentTeamsButton.alpha = inactiveAlpha
+            startGameButton.userInteractionEnabled = false
+            startGameButton.alpha = inactiveAlpha
+        } else {
+            viewCurrentTeamsButton.userInteractionEnabled = true
+            viewCurrentTeamsButton.alpha = activeAlpha
+            startGameButton.userInteractionEnabled = true
+            startGameButton.alpha = activeAlpha
+        }
+    }
     
     //MARK: Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

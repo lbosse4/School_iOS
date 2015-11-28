@@ -4,7 +4,7 @@
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="guestScore" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="homeScore" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
-        <attribute name="opponentName" optional="YES" attributeType="String" minValueString="0" maxValueString="75" syncable="YES"/>
+        <attribute name="opponentName" optional="YES" attributeType="String" minValueString="0" maxValueString="40" syncable="YES"/>
         <relationship name="periods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Period" inverseName="game" inverseEntity="Period" syncable="YES"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="games" inverseEntity="Team" syncable="YES"/>
     </entity>
@@ -50,7 +50,7 @@
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Game" positionX="-567" positionY="9" width="128" height="133"/>
+        <element name="Game" positionX="-567" positionY="9" width="128" height="135"/>
         <element name="Period" positionX="-371" positionY="179" width="128" height="88"/>
         <element name="Player" positionX="-207" positionY="-297" width="128" height="120"/>
         <element name="Stats" positionX="-200" positionY="-82" width="128" height="330"/>
