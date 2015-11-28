@@ -87,15 +87,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grass.png" translatesAutoresizingMaskIntoConstraints="NO" id="eVa-fn-Yx8">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83s-Hf-d1W">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="10" y="30" width="42" height="21"/>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUd-4Z-UWy">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -210,7 +201,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="39O-8P-yka" kind="show" id="hCJ-As-oO9"/>
+                                    <segue destination="39O-8P-yka" kind="show" identifier="addTeamSegue" id="hCJ-As-oO9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cn8-At-tVM">
@@ -237,7 +228,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="kbi-2a-i8m" kind="show" id="GcE-Xq-ccN"/>
+                                    <segue destination="kbi-2a-i8m" kind="show" identifier="startGameSegue" id="GcE-Xq-ccN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQj-XT-7de">
@@ -264,7 +255,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="ut7-u8-DWg" kind="show" id="QV7-LQ-Lgv"/>
+                                    <segue destination="ut7-u8-DWg" kind="show" identifier="viewTeamsSegue" id="QV7-LQ-Lgv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -310,7 +301,6 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="eVa-fn-Yx8"/>
-                                <exclude reference="83s-Hf-d1W"/>
                                 <exclude reference="KUd-4Z-UWy"/>
                                 <exclude reference="Mq3-Zc-aEb"/>
                                 <exclude reference="6LG-ln-eKK"/>
@@ -347,7 +337,6 @@
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
                                 <include reference="eVa-fn-Yx8"/>
-                                <include reference="83s-Hf-d1W"/>
                                 <include reference="KUd-4Z-UWy"/>
                                 <include reference="Mq3-Zc-aEb"/>
                                 <include reference="6LG-ln-eKK"/>

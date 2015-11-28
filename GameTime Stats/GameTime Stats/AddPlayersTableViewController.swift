@@ -18,19 +18,10 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     let model = Model.sharedInstance
     let formatter = NSNumberFormatter()
     var team : Team?
+    var cancelBlock : (() -> Void)?
+    var delegate : TeamCreatedProtocol?
     //TODO: UPDATE FILTER TO ONLY INCLUD ECURRENT TEAM
     lazy var dataSource : DataSource = DataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
-    var delegate : TeamCreatedProtocol?
-    
-    /*
-    let teammatesViewController = segue.destinationViewController as! TeamTableViewController
-    let indexPath = tableView.indexPathForSelectedRow
-    let player = dataSource.objectAtIndexPath(indexPath!) as! Player
-    let team = player.team as! Team
-    let players = team.players?.allObjects as! [Player]
-    teammatesViewController.teammates = players
-    teammatesViewController.title = team.name
-    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +61,8 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     
     //MARK: Actions
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        //dismissViewControllerAnimated(true, completion: nil)
+        cancelBlock?()
         delegate?.dismissMe()
     }
     
@@ -117,8 +109,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
             let playerController = segue.destinationViewController as! AddPlayerViewController
             playerController.team = team!
             playerController.cancelBlock = {() in
-                //self.dismissViewControllerAnimated(true, completion: nil)
-                //self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewControllerAnimated(true)
                 self.tableView.reloadData()
             }
         default:

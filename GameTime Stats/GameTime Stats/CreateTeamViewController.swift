@@ -16,6 +16,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     let activeAlpha : CGFloat = 1.0
     var team : Team?
     var teamName : String?
+    var cancelBlock : (() -> Void)?
     
     @IBOutlet weak var teamNameTextField: UITextField!
     @IBOutlet weak var addPlayersButtonView: UIView!
@@ -28,8 +29,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     
     //MARK: Actions
     @IBAction func cancelButtonPressed(sender: UIButton) {
-        //TODO: REMOVE TEAM FROM DATABASE IF ADDED
-        dismissViewControllerAnimated(true, completion: nil)
+        cancelBlock?()
     }
     
     @IBAction func addPlayersButtonPressed(sender: UIButton) {
@@ -67,7 +67,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     }
     
     func dismissMe() {
-        dismissViewControllerAnimated(true, completion: nil)
+        cancelBlock?()
     }
     
     //MARK: TextField Delegate
@@ -104,6 +104,11 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
             let playerController = navController.viewControllers[0] as! AddPlayersTableViewController
             playerController.team = team!
             playerController.delegate = self
+            
+            playerController.cancelBlock = {() in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
             break
         default:
             break

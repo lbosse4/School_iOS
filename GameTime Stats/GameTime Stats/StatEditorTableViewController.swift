@@ -11,6 +11,7 @@ import UIKit
 class StatEditorTableViewController: UITableViewController {
     let model = Model.sharedInstance
     var player : Player?
+    var cancelBlock : (() -> Void)?
     
 //    @NSManaged var assists: NSNumber?
 //    @NSManaged var causedTurnovers: NSNumber?
@@ -73,11 +74,11 @@ class StatEditorTableViewController: UITableViewController {
     
     //MARK: Actions
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
-        //TODO: make sure stats save here
-        dismissViewControllerAnimated(true, completion: nil)
+        cancelBlock?()
     }
     
     //set values for stepper 
+    //TODO: SAVE HERE
     @IBAction func stepperToggled(sender: UIStepper) {
         switch sender.tag {
         case 0:

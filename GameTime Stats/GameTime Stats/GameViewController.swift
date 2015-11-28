@@ -36,7 +36,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let formatter = NSNumberFormatter()
     let benchContainerHeight : CGFloat = 150.0
     let benchContainerWidth : CGFloat = 756.0
-    var playersPerRow : Int = 0
     
     //MARK: Variables
     var playerViews = [UIView]()
@@ -47,11 +46,14 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
+    var playersPerRow : Int = 0
     var gameTimerMinutes = 30
     var gameTimerSeconds = 0
     var homeScore = 0
     var guestScore = 0
     var currentHalf = 1
+    var cancelBlock : (() -> Void)?
+
     
     //MARK: Outlets
     //@IBOutlet weak var benchContainerView: UIView!
@@ -297,19 +299,24 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             let currentLocation = recognizer.locationInView(fieldImageView)
             if !checkPopoverFieldViewBounds(currentLocation){
                 
-                let popoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController")
+                let navPopoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController") as! UINavigationController
+                let popoverViewController = navPopoverViewController.viewControllers[0] as! StatEditorTableViewController
                 
-                popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+                navPopoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
                 
                 popoverViewController.preferredContentSize = popoverContentSize
-                let popoverMenuViewController = popoverViewController.popoverPresentationController
+                let popoverMenuViewController = navPopoverViewController.popoverPresentationController
                 //maybe update this based on locatoin in fieldView
                 popoverMenuViewController!.permittedArrowDirections = .Any
                 popoverMenuViewController!.delegate = self
                 popoverMenuViewController!.sourceView = tappedView
                 popoverMenuViewController?.sourceRect = CGRect(x: playerViewSize/2, y: playerViewSize/2, width: 0.0, height: 0.0)
                 
-               self.presentViewController(popoverViewController, animated: true, completion: nil)
+                popoverViewController.cancelBlock = {() in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                
+               self.presentViewController(navPopoverViewController, animated: true, completion: nil)
             }
         }
     }
@@ -322,7 +329,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Actions
     @IBAction func cancelGameButtonPressed(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+        cancelBlock?()
     }
     
     @IBAction func startTimerButtonPressed(sender: UIButton) {
@@ -390,6 +397,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             guestScore = 0
         }
     }
+    
 }
 
 

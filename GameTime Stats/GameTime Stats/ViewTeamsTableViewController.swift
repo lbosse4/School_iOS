@@ -11,12 +11,14 @@ import UIKit
 class ViewTeamsTableViewController: UITableViewController/*, DataSourceCellConfigurer*/ {
     let model = Model.sharedInstance
     
+    var cancelBlock : (() -> Void)?
+    
     override func viewDidLoad() {
         
     }
     
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        cancelBlock?()
     }
     
 }
