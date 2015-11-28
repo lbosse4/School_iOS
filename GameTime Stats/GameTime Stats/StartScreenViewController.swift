@@ -16,14 +16,13 @@ class StartScreenViewController : UIViewController {
         switch segue.identifier! {
         case "addTeamSegue":
             let createTeamController = segue.destinationViewController as! CreateTeamViewController
-            
+        
             createTeamController.cancelBlock = {() in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             
         case "viewTeamsSegue":
             let navController = segue.destinationViewController as! UINavigationController
-            //let playerController = navController.viewControllers[0] as! AddPlayersTableViewController
             let viewTeamsController = navController.viewControllers[0] as! ViewTeamsTableViewController
             
             viewTeamsController.cancelBlock = {() in

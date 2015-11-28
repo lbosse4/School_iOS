@@ -39,11 +39,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Variables
     var playerViews = [UIView]()
-//    var playerViewTimers = [NSTimer]()
-//    
-//    //TODO: REPLACE WITH STATS OBJECTS AFTER YOU TALK TO HANNAN
-//    var testPlayerStatObjects = [playerStat]()
-    
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
@@ -56,7 +51,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
 
     
     //MARK: Outlets
-    //@IBOutlet weak var benchContainerView: UIView!
     @IBOutlet weak var fieldImageView: UIImageView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var homeScoreLabel: UILabel!
@@ -99,31 +93,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         }
         updateTimerLabel()
     }
-    
-//    //USE THET TAG AS THE INDEX
-//    //TODO: FIGURE OUT HOW TO PASS IN TIMER OR UIVIEW!!
-//    func updatePlayerTimer(sender: UIView) {
-//        if gameTimer.valid {
-//            let index = sender.tag
-//            if playerViewTimers[index].valid{
-//                if currentHalf == firstHalf {
-//                    if testPlayerStatObjects[index].firstHalfSeconds == maxSeconds {
-//                        testPlayerStatObjects[index].firstHalfMinutes++
-//                        testPlayerStatObjects[index].firstHalfSeconds = 0
-//                    } else {
-//                        testPlayerStatObjects[index].firstHalfSeconds++
-//                    }
-//                } else {
-//                    if testPlayerStatObjects[index].secondHalfSeconds == maxSeconds {
-//                        testPlayerStatObjects[index].secondHalfMinutes++
-//                        testPlayerStatObjects[index].secondHalfSeconds = 0
-//                    } else {
-//                        testPlayerStatObjects[index].secondHalfSeconds++
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     func updateHalves(){
         if currentHalf == firstHalf {
@@ -173,6 +142,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
 
             }
             
+            //create playerView
             let playerView = UIView(frame: playerFrame)
             playerView.backgroundColor = darkBlueColor
             playerView.layer.cornerRadius = playerViewSize/2
@@ -203,27 +173,16 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             
             singleTapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
             
-//            //Add playerViewTimers
-//            let userInfoArr = [playerView]
-//            let playerTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updatePlayerTimer:"), userInfo: userInfoArr, repeats: true)
-//            playerViewTimers.append(playerTimer)
-//            
-//            var playerStatsObject = playerStat()
-//            playerStatsObject.viewTag = playerView.tag
-//            testPlayerStatObjects.append(playerStatsObject)
-            
             playerViews.append(playerView)
             loopCounter += 1
         
         }
     }
     
-    func checkPopoverFieldViewBounds(currentLocation: CGPoint) -> Bool {
-        return (currentLocation.x > fieldImageView.bounds.width) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height) || (currentLocation.y < 0)
-    }
-    
-    func checkFieldViewBounds(currentLocation: CGPoint) -> Bool {
-        return (currentLocation.x > fieldImageView.bounds.width - playerViewSize) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height - playerViewSize) || (currentLocation.y < 0)
+    //makes sure that the current location is within the bounds of the field
+    //padding works for edge cases for player views - not needed for the popover view.
+    func checkFieldViewBounds(currentLocation: CGPoint, padding : CGFloat) -> Bool {
+        return (currentLocation.x > fieldImageView.bounds.width - padding) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height - padding) || (currentLocation.y < 0)
     }
     
     func resetPlayerView(playerView: UIView) {
@@ -239,13 +198,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         }
         
         UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-            //let origin = CGPoint(x: self.playerViewMargin + (self.playerViewPaddingWidth * CGFloat(playerView.tag)), y: self.playerViewMargin)
             playerView.frame.origin = origin
             }) { (finished) -> Void in
                 self.benchScrollview.addSubview(playerView)
         }
-        
-        
         
         //TODO: ADD IN STOP TIMER FUNCTION
     }
@@ -264,6 +220,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         }
     }
     
+    //present the stats editor as a popover
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .Popover
     }
@@ -280,7 +237,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             switch recognizer.state {
             case .Ended:
                 let currentLocation = panningView.frame.origin
-                if checkFieldViewBounds(currentLocation) {
+                if checkFieldViewBounds(currentLocation, padding: playerViewSize) {
                     resetPlayerView(panningView)
                 } else {
                     checkForCollisions(panningView)
@@ -297,7 +254,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     func singleTappedPlayer(recognizer: UITapGestureRecognizer) {
         if let tappedView = recognizer.view {
             let currentLocation = recognizer.locationInView(fieldImageView)
-            if !checkPopoverFieldViewBounds(currentLocation){
+            if !checkFieldViewBounds(currentLocation, padding: 0.0){
                 
                 let navPopoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController") as! UINavigationController
                 let popoverViewController = navPopoverViewController.viewControllers[0] as! StatEditorTableViewController
@@ -316,7 +273,9 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
                 
-               self.presentViewController(navPopoverViewController, animated: true, completion: nil)
+                popoverViewController.player = currentPlayers[recognizer.view!.tag]
+                
+                self.presentViewController(navPopoverViewController, animated: true, completion: nil)
             }
         }
     }

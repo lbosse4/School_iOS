@@ -61,8 +61,7 @@ class StatEditorTableViewController: UITableViewController {
             stepper.maximumValue = 99
         }
         
-        //let playerStats = player?.stats?.allObjects
-        let playerStats = model.tstPlayers()[0].stats?.allObjects
+        let playerStats = player?.stats?.allObjects
         
         assistsLabel.text = "\(playerStats)"
         
@@ -74,6 +73,7 @@ class StatEditorTableViewController: UITableViewController {
     
     //MARK: Actions
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
+        //dismiss the view controller
         cancelBlock?()
     }
     
