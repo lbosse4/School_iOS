@@ -10,6 +10,7 @@ import UIKit
 
 class StatEditorTableViewController: UITableViewController {
     let model = Model.sharedInstance
+    var player : Player?
     
 //    @NSManaged var assists: NSNumber?
 //    @NSManaged var causedTurnovers: NSNumber?
@@ -51,10 +52,23 @@ class StatEditorTableViewController: UITableViewController {
     @IBOutlet weak var shotsOnGoalStepper: UIStepper!
     @IBOutlet weak var turnoversStepper: UIStepper!
     
+    @IBOutlet var steppers: [UIStepper]!
     
     override func viewDidLoad() {
+        for stepper in steppers {
+            stepper.minimumValue = 0
+            stepper.maximumValue = 99
+        }
         
-    
+        //let playerStats = player?.stats?.allObjects
+        let playerStats = model.tstPlayers()[0].stats?.allObjects
+        
+        assistsLabel.text = "\(playerStats)"
+        
+        //assistsLabel.text = whateverThePlayerAlreadyHas
+        //assistsStepper.value = the number used above
+        
+        
     }
     
     //MARK: Actions
@@ -63,6 +77,7 @@ class StatEditorTableViewController: UITableViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    //set values for stepper 
     @IBAction func stepperToggled(sender: UIStepper) {
         switch sender.tag {
         case 0:

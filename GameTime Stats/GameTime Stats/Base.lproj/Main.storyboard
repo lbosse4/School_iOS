@@ -2450,6 +2450,18 @@
                         <outlet property="shotsOnGoalStepper" destination="Xcr-ga-QFx" id="j3r-oR-gBY"/>
                         <outlet property="turnoversLabel" destination="cOp-0g-OLH" id="lHB-qt-o4W"/>
                         <outlet property="turnoversStepper" destination="kfy-cq-lbK" id="2Xp-fl-YZF"/>
+                        <outletCollection property="steppers" destination="muh-5Y-Ly8" collectionClass="NSMutableArray" id="AMA-Xu-IMm"/>
+                        <outletCollection property="steppers" destination="4z2-eM-iaP" collectionClass="NSMutableArray" id="h1V-el-ddF"/>
+                        <outletCollection property="steppers" destination="MLh-dh-Jzy" collectionClass="NSMutableArray" id="PYV-vK-5kA"/>
+                        <outletCollection property="steppers" destination="h42-jb-aE0" collectionClass="NSMutableArray" id="r3h-t7-VlD"/>
+                        <outletCollection property="steppers" destination="iGT-dU-Ymq" collectionClass="NSMutableArray" id="CUg-Jj-og5"/>
+                        <outletCollection property="steppers" destination="TJb-x7-mdW" collectionClass="NSMutableArray" id="giD-7t-XzY"/>
+                        <outletCollection property="steppers" destination="7Jv-7P-9v6" collectionClass="NSMutableArray" id="08z-kH-d0k"/>
+                        <outletCollection property="steppers" destination="ngE-go-9fJ" collectionClass="NSMutableArray" id="zSI-2J-OQE"/>
+                        <outletCollection property="steppers" destination="ZlJ-U4-smu" collectionClass="NSMutableArray" id="m6c-vg-fs6"/>
+                        <outletCollection property="steppers" destination="6hQ-ij-CnC" collectionClass="NSMutableArray" id="Mlf-Rt-Abl"/>
+                        <outletCollection property="steppers" destination="Xcr-ga-QFx" collectionClass="NSMutableArray" id="FRi-ua-fRz"/>
+                        <outletCollection property="steppers" destination="kfy-cq-lbK" collectionClass="NSMutableArray" id="00X-VB-SOh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH1-E7-9Fz" userLabel="First Responder" sceneMemberID="firstResponder"/>

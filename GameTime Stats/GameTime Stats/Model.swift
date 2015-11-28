@@ -104,6 +104,21 @@ class Model : DataManagerDelegate {
         playerObj.position = position
         dataManager.saveContext()
         
+        let s = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Stats, inManagedObjectContext: dataManager.managedObjectContext!) as! Stats
+        s.assists = 0
+        s.causedTurnovers = 0
+        s.clears = 0
+        s.drawControls = 0
+        s.freePositionAttempts = 0
+        s.freePositionGoals = 0
+        s.goals = 0
+        s.groundBalls = 0
+        s.opponentGoalsScoredAgainst = 0
+        s.saves = 0
+        s.shotsOnGoal = 0
+        s.turnovers = 0
+        s.player = playerObj
+        
     }
 
     func addTeamWithName(name: String) -> Team {
