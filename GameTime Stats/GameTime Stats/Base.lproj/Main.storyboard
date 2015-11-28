@@ -1786,6 +1786,87 @@
             </objects>
             <point key="canvasLocation" x="831.75" y="1701.75"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="FfN-oI-nVi">
+            <objects>
+                <viewController id="Ac0-bI-DM4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SwT-vM-fja"/>
+                        <viewControllerLayoutGuide type="bottom" id="ntm-5P-Owf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="INE-gf-7nb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lx-FQ-vaA">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="KIQ-Ui-XhJ">
+                                        <rect key="frame" x="-160" y="-108" width="320" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="470379888.18945599">
+                                            <!--2015-11-28 05:04:48 +0000-->
+                                        </date>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="102" width="760" height="216"/>
+                                        </variation>
+                                    </datePicker>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UV6-Jc-vxZ">
+                                        <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="317" width="760" height="216"/>
+                                        </variation>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="KIQ-Ui-XhJ"/>
+                                        <exclude reference="UV6-Jc-vxZ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="KIQ-Ui-XhJ"/>
+                                        <include reference="UV6-Jc-vxZ"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ntm-5P-Owf" firstAttribute="top" secondItem="3lx-FQ-vaA" secondAttribute="bottom" constant="20" id="6jw-aO-16G"/>
+                            <constraint firstItem="3lx-FQ-vaA" firstAttribute="leading" secondItem="INE-gf-7nb" secondAttribute="leadingMargin" id="God-Dy-OT7"/>
+                            <constraint firstItem="3lx-FQ-vaA" firstAttribute="top" secondItem="SwT-vM-fja" secondAttribute="bottom" id="M6y-2o-n5R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3lx-FQ-vaA" secondAttribute="trailing" id="snr-Yp-NW6"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="3lx-FQ-vaA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="6jw-aO-16G"/>
+                                <exclude reference="God-Dy-OT7"/>
+                                <exclude reference="M6y-2o-n5R"/>
+                                <exclude reference="snr-Yp-NW6"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="3lx-FQ-vaA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="6jw-aO-16G"/>
+                                <include reference="God-Dy-OT7"/>
+                                <include reference="M6y-2o-n5R"/>
+                                <include reference="snr-Yp-NW6"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dhA-qU-9hY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1548" y="1028.25"/>
+        </scene>
         <!--Stats Editor-->
         <scene sceneID="rp3-WZ-Cne">
             <objects>
