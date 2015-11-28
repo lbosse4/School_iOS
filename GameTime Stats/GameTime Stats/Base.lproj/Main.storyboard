@@ -370,6 +370,7 @@
                         <outlet property="resetButton" destination="vbv-Go-LKb" id="2AL-i3-NkL"/>
                         <outlet property="startButton" destination="Kxl-SJ-cQv" id="QjY-yT-DQY"/>
                         <outlet property="timerLabel" destination="waQ-sj-Nfo" id="ODX-8Y-32m"/>
+                        <segue destination="Ac0-bI-DM4" kind="modal" identifier="gameInfoSegue" id="ZGX-lU-Iv7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQP-n4-4oe" userLabel="First Responder" sceneMemberID="firstResponder"/>

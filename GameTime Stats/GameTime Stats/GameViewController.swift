@@ -48,6 +48,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var guestScore = 0
     var currentPeriod = 1
     var cancelBlock : (() -> Void)?
+    var isInitialLoad = true
 
     
     //MARK: Outlets
@@ -75,7 +76,13 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         resetButton.hidden = true
         
         generateViews()
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if isInitialLoad {
+            performSegueWithIdentifier("gameInfoSegue", sender: self)
+            isInitialLoad = false
+        }
     }
     
     //MARK: Helper Functions
@@ -355,6 +362,19 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             guestScoreLabel.text = guestScoreString
         } else {
             guestScore = 0
+        }
+    }
+    
+    //MARK: prepare for segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "gameInfoSegue":
+            let gameSetupController = segue.destinationViewController as! GameSetupViewController
+            gameSetupController.cancelBlock = {() in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        default:
+            break
         }
     }
     

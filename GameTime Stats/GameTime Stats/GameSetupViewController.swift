@@ -18,6 +18,7 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     
     //MARK: Variables
     var chosenTeam : Team?
+    var cancelBlock : (() -> Void)?
     var gameDate : NSDate?
     
     //MARK: Outlets
@@ -43,6 +44,7 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     }
     
     @IBAction func cancelButtonPressed(sender: UIButton) {
+        cancelBlock?()
     }
     
     //MARK: TextField Delegate
