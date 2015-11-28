@@ -46,7 +46,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var gameTimerSeconds = 0
     var homeScore = 0
     var guestScore = 0
-    var currentHalf = 1
+    var currentPeriod = 1
     var cancelBlock : (() -> Void)?
 
     
@@ -95,9 +95,9 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func updateHalves(){
-        if currentHalf == firstHalf {
-            currentHalf = secondHalf
-            let currentHalfString = formatter.stringFromNumber(currentHalf)!
+        if currentPeriod == firstHalf {
+            currentPeriod = secondHalf
+            let currentHalfString = formatter.stringFromNumber(currentPeriod)!
             halfLabel.text = currentHalfString
             resetButton.setTitle("Second Half", forState: .Normal)
         } else {
@@ -274,6 +274,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 }
                 
                 popoverViewController.player = currentPlayers[recognizer.view!.tag]
+                popoverViewController.period = currentPeriod
                 
                 self.presentViewController(navPopoverViewController, animated: true, completion: nil)
             }

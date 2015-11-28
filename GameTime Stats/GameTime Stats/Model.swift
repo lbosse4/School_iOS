@@ -23,6 +23,12 @@ struct ObjectsKey {
     static let Game = "Game"
 }
 
+struct PeriodType {
+    static let FirstHalf = "FirstHalf"
+    static let SecondHalf = "SecondHalf"
+    static let Overtime = "OverTime"
+}
+
 class Model : DataManagerDelegate {
     static let sharedInstance = Model()
     
@@ -102,8 +108,8 @@ class Model : DataManagerDelegate {
         playerObj.team = team
         playerObj.jerseyNumber = number
         playerObj.position = position
-        dataManager.saveContext()
         
+        /*
         let s = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Stats, inManagedObjectContext: dataManager.managedObjectContext!) as! Stats
         s.assists = 0
         s.causedTurnovers = 0
@@ -118,6 +124,18 @@ class Model : DataManagerDelegate {
         s.shotsOnGoal = 0
         s.turnovers = 0
         s.player = playerObj
+        */
+        
+        dataManager.saveContext()
+        players = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
+        
+    }
+    
+    func addGameObject(team: Team) {
+        
+    }
+    
+    func addStatsObject(player: Player, game: Game, currentPeriod: String){
         
     }
 
@@ -125,8 +143,9 @@ class Model : DataManagerDelegate {
         let teamObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Team, inManagedObjectContext: dataManager.managedObjectContext!) as! Team
         teamObj.name = name
         dataManager.saveContext()
-        return teamObj
+        teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
         
+        return teamObj
     }
     
     func positionAtIndex(index: Int) -> String {
@@ -142,6 +161,14 @@ class Model : DataManagerDelegate {
         default:
             return ""
         }
+    }
+    
+    func teamCount() -> Int {
+        return teams.count
+    }
+    
+    func teamAtIndex(index:Int) -> Team {
+        return teams[index]
     }
     
 }

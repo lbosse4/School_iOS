@@ -11,20 +11,9 @@ import UIKit
 class StatEditorTableViewController: UITableViewController {
     let model = Model.sharedInstance
     var player : Player?
+    var period : Int?
+
     var cancelBlock : (() -> Void)?
-    
-//    @NSManaged var assists: NSNumber?
-//    @NSManaged var causedTurnovers: NSNumber?
-//    @NSManaged var clears: NSNumber?
-//    @NSManaged var drawControls: NSNumber?
-//    @NSManaged var freePositionAttempts: NSNumber?
-//    @NSManaged var freePositionGoals: NSNumber?
-//    @NSManaged var goals: NSNumber?
-//    @NSManaged var groundBalls: NSNumber?
-//    @NSManaged var opponentGoalsScoredAgainst: NSNumber?
-//    @NSManaged var saves: NSNumber?
-//    @NSManaged var shotsOnGoal: NSNumber?
-//    @NSManaged var turnovers: NSNumber?
     
     //MARK: Outlets
     @IBOutlet weak var assistsLabel: UILabel!
@@ -61,9 +50,10 @@ class StatEditorTableViewController: UITableViewController {
             stepper.maximumValue = 99
         }
         
-        let playerStats = player?.stats?.allObjects
+        let playerStatsArray = player?.stats?.allObjects as! [Stats]
         
-        assistsLabel.text = "\(playerStats)"
+        
+        //assistsLabel.text = "\(playerStats!)"
         
         //assistsLabel.text = whateverThePlayerAlreadyHas
         //assistsStepper.value = the number used above
