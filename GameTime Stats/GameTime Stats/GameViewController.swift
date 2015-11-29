@@ -26,17 +26,21 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let playerViewMargin : CGFloat = 10.0
     let numPlayersThatfit = 11
     let playerNumberFont = "collegiateHeavyOutline"
-    let popoverContentSize = CGSize(width: 350, height: 470)
+    let popoverContentSize = CGSize(width: 350.0, height: 470.0)
+    let formSheetContentSize = CGSize(width: 350.0, height: 400.0)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
     let startingMinutes = 0//30
-    let startingSeconds = 10
+    let startingSeconds = 3
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
+    let overtimeString = "OT"
     let formatter = NSNumberFormatter()
     let benchContainerHeight : CGFloat = 150.0
     let benchContainerWidth : CGFloat = 756.0
+    let no = 0
+    let yes = 1
     
     //MARK: Variables
     var playerViews = [UIView]()
@@ -44,7 +48,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
     var gameTimerMinutes = 0//30
-    var gameTimerSeconds = 10
+    var gameTimerSeconds = 3
     var homeScore = 0
     var guestScore = 0
     var currentPeriod = PeriodType.FirstHalf
@@ -52,6 +56,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var isInitialLoad = true
     var currentGame : Game?
     var currentTeam : Team?
+    var overtimeChosenAnswer : Int?
     
     //MARK: Outlets
     @IBOutlet weak var fieldImageView: UIImageView!
@@ -102,15 +107,52 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func updateHalves(){
-        
-        
-        if currentPeriod == PeriodType.FirstHalf {
+        switch currentPeriod {
+        case PeriodType.FirstHalf:
+            //set the new period
             currentPeriod = PeriodType.SecondHalf
-            halfLabel.text = currentPeriod
+            
+            //set the half indicator
+            let secondHalfString = formatter.stringFromNumber(secondHalf)
+            halfLabel.text = secondHalfString
+            
             resetButton.setTitle(PeriodType.SecondHalf, forState: .Normal)
-        } else {
+            
+        case PeriodType.SecondHalf:
+            //resetButton.setTitle("View Stats", forState: .Normal)
+            let overtimePromptController = storyboard!.instantiateViewControllerWithIdentifier("OvertimePromptViewController") as! OvertimePromptViewController
+            overtimePromptController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+            overtimePromptController.preferredContentSize = formSheetContentSize
+            
+            
+            //Asks the user if there will be overtime.
+            //If there is overtime (yes)
+            overtimePromptController.answerChosenBlock = {(answer: Int, otMinutes: Int, otSeconds: Int) in
+                self.overtimeChosenAnswer = answer
+                self.dismissViewControllerAnimated(true, completion: nil)
+                if answer == self.yes {
+                    self.currentPeriod = PeriodType.Overtime
+                    self.resetButton.setTitle(PeriodType.Overtime, forState: .Normal)
+                    self.halfLabel.text = self.overtimeString
+                } else {
+                    self.resetButton.setTitle("View Stats", forState: .Normal)
+                }
+            }
+            
+            self.presentViewController(overtimePromptController, animated: true, completion: nil)
+            
+        case PeriodType.Overtime:
             resetButton.setTitle("View Stats", forState: .Normal)
+        default: break
         }
+        
+//        if currentPeriod == PeriodType.FirstHalf {
+//            currentPeriod = PeriodType.SecondHalf
+//            halfLabel.text = currentPeriod
+//            resetButton.setTitle(PeriodType.SecondHalf, forState: .Normal)
+//        } else {
+//            resetButton.setTitle("View Stats", forState: .Normal)
+//        }
         resetButton.hidden = false
         startButton.alpha = 0.5
         startButton.userInteractionEnabled = false

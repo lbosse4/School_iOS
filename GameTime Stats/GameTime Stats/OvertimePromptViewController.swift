@@ -8,9 +8,107 @@
 
 import UIKit
 
-class OvertimePromptViewController: UIViewController{
+class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
+    
+    let no = 0
+    let yes = 1
+    let maxTimeDigits = 2
+    let inactiveAlpha : CGFloat = 0.5
+    let activeAlpha : CGFloat = 1.0
+    var chosenAnswer : Int = 0
+    var answerChosenBlock : ((answer: Int, otMinutes: Int, otSeconds: Int) -> Void)?
+    
+    //MARK: Outlets
+    @IBOutlet weak var overtimeMinutesTextField: UITextField!
+    @IBOutlet weak var overtimeSecondsTextField: UITextField!
+    @IBOutlet weak var continueButtonView: UIView!
     
     override func viewDidLoad() {
-        view.backgroundColor = UIColor.greenColor()
+        overtimeSecondsTextField.delegate = self
+        overtimeMinutesTextField.delegate = self
     }
+    
+    func checkTextFields(){
+        //if textfields are active, and are filled, let the user continue
+        if overtimeMinutesTextField.text != "" && chosenAnswer == yes {
+            if overtimeSecondsTextField != ""{
+                continueButtonView.alpha = activeAlpha
+                continueButtonView.userInteractionEnabled = true
+            }
+        } else {
+            if chosenAnswer == no {
+                continueButtonView.alpha = activeAlpha
+                continueButtonView.userInteractionEnabled = true
+            } else {
+                continueButtonView.alpha = inactiveAlpha
+                continueButtonView.userInteractionEnabled = false
+            }
+        }
+    }
+    
+    //MARK: Actions
+    @IBAction func yesOrNoChosen(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            chosenAnswer = no
+            overtimeMinutesTextField.hidden = true
+            overtimeSecondsTextField.hidden = true
+        case 1:
+            chosenAnswer = yes
+            overtimeMinutesTextField.hidden = false
+            overtimeSecondsTextField.hidden = false
+            
+        default:
+            break
+        }
+        
+        checkTextFields()
+    }
+    
+    @IBAction func continueButtonPressed(sender: UIButton) {
+        let otMin = overtimeMinutesTextField.text!
+        let otSec = overtimeSecondsTextField.text!
+
+        answerChosenBlock?(answer: chosenAnswer, otMinutes: Int(otMin)!, otSeconds: Int(otSec)!)
+    }
+    
+    //MARK: TextField Delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        // We still return true to allow the change to take place.
+        if string.characters.count == 0 {
+            return true
+        }
+        
+        checkTextFields()
+        
+        // Check to see if the text field's contents still fit the constraints
+        // with the new content added to it.
+        // If the contents still fit the constraints, allow the change
+        // by returning true; otherwise disallow the change by returning false.
+        let currentText = textField.text ?? ""
+        let prospectiveText = (currentText as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        
+        switch textField {
+        case overtimeMinutesTextField:
+            let decimalSeparator = NSLocale.currentLocale().objectForKey(NSLocaleDecimalSeparator) as! String
+            return prospectiveText.isNumeric() &&
+                prospectiveText.doesNotContainCharactersIn("-e" + decimalSeparator) &&
+                prospectiveText.characters.count <= maxTimeDigits
+        case overtimeSecondsTextField:
+            let decimalSeparator = NSLocale.currentLocale().objectForKey(NSLocaleDecimalSeparator) as! String
+            return prospectiveText.isNumeric() &&
+                prospectiveText.doesNotContainCharactersIn("-e" + decimalSeparator) &&
+                prospectiveText.characters.count <= maxTimeDigits
+            
+        default:
+            return true
+        }
+        
+    }
+
 }
