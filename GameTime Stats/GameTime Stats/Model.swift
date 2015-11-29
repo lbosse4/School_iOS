@@ -174,6 +174,11 @@ class Model : DataManagerDelegate {
         return team
     }
     
+    func statsForPlayer(player: Player, game: Game, period: Period){
+       //TODO: MAKE THIS QUERY WITH MULTIPLE PREDICATES
+        //let predicate = NSPredicate(format: <#T##String#>, <#T##args: CVarArgType...##CVarArgType#>)
+    }
+    
 }
 
 
