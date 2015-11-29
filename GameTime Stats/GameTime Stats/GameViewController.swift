@@ -102,6 +102,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func updateHalves(){
+        
+        
         if currentPeriod == PeriodType.FirstHalf {
             currentPeriod = PeriodType.SecondHalf
             halfLabel.text = currentPeriod
@@ -405,7 +407,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             break
         }
     }
-    
 }
 
 
