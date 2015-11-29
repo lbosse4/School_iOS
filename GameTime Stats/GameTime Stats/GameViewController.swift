@@ -8,13 +8,13 @@
 
 import UIKit
 
-struct playerStat {
-    var firstHalfSeconds = 0
-    var firstHalfMinutes = 0
-    var secondHalfSeconds = 0
-    var secondHalfMinutes = 0
-    var viewTag = 0
-}
+//struct playerStat {
+//    var firstHalfSeconds = 0
+//    var firstHalfMinutes = 0
+//    var secondHalfSeconds = 0
+//    var secondHalfMinutes = 0
+//    var viewTag = 0
+//}
 
 class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, cancelGameProtocol {
     //MARK: Constants
@@ -28,8 +28,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let popoverContentSize = CGSize(width: 350, height: 470)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 30
-    let startingSeconds = 0
+    let startingMinutes = 0//30
+    let startingSeconds = 10
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
@@ -42,13 +42,15 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
-    var gameTimerMinutes = 30
-    var gameTimerSeconds = 0
+    var gameTimerMinutes = 0//30
+    var gameTimerSeconds = 10
     var homeScore = 0
     var guestScore = 0
     var currentPeriod = 1
     var cancelBlock : (() -> Void)?
     var isInitialLoad = true
+    var currentGame : Game?
+    var currentTeam : Team?
     
     //MARK: Outlets
     @IBOutlet weak var fieldImageView: UIImageView!
@@ -63,7 +65,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     override func viewDidLoad() {
         //Extract team for current game
         //TODO: CHANGE THIS TO EXTRACT BASED ON CORRECT TEAM NAME
-        currentPlayers = model.tstPlayers()
+        
         
         //for clock - always 2 digits
         formatter.minimumIntegerDigits = 2
@@ -73,8 +75,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         benchScrollview.userInteractionEnabled = true
         
         resetButton.hidden = true
-        
-        generateViews()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -182,6 +182,12 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             playerViews.append(playerView)
             loopCounter += 1
         
+        }
+    }
+    
+    func addStatsObjects(){
+        for player in currentPlayers {
+            
         }
     }
     
@@ -299,6 +305,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Actions
     @IBAction func cancelGameButtonPressed(sender: UIButton) {
+        //TODO: Delete Game object here
+        //TODO: Delete all stats objects too??
         cancelBlock?()
     }
     
@@ -375,6 +383,14 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             let gameSetupController = segue.destinationViewController as! GameSetupViewController
             gameSetupController.cancelBlock = {() in
                 self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+            gameSetupController.saveBlock = { (game: Game, team: Team) in
+                self.dismissViewControllerAnimated(true, completion: nil)
+                self.currentGame = game
+                self.currentTeam = team
+                self.currentPlayers = self.model.playersForTeam(self.currentTeam!)
+                self.generateViews()
             }
             
             gameSetupController.delegate = self

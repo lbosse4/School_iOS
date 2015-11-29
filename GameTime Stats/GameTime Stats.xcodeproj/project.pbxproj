@@ -16,10 +16,10 @@
 		891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9C1BF3AC9E009C813D /* DataManager.swift */; };
 		891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */; };
 		8935A5C71C0A34E3006508FF /* GameSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8935A5C61C0A34E3006508FF /* GameSetupViewController.swift */; };
+		8935A5C91C0A8067006508FF /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8935A5C81C0A8067006508FF /* Game+CoreDataProperties.swift */; };
 		894BA3371C00C57100CA2D35 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA3361C00C57100CA2D35 /* DataSource.swift */; };
 		894BA33A1C04D55800CA2D35 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA3391C04D55800CA2D35 /* PlayerTableViewCell.swift */; };
 		894BA33C1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */; };
-		894BCE361BFBBF30008DF1C4 /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE2C1BFBBF30008DF1C4 /* Game+CoreDataProperties.swift */; };
 		894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE2D1BFBBF30008DF1C4 /* Game.swift */; };
 		894BCE3A1BFBBF30008DF1C4 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE301BFBBF30008DF1C4 /* Player+CoreDataProperties.swift */; };
 		894BCE3B1BFBBF30008DF1C4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE311BFBBF30008DF1C4 /* Player.swift */; };
@@ -77,11 +77,11 @@
 		891ECF9C1BF3AC9E009C813D /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		891ECF9F1BF3B2E0009C813D /* LacrossePlayers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LacrossePlayers.xcdatamodel; sourceTree = "<group>"; };
 		8935A5C61C0A34E3006508FF /* GameSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupViewController.swift; sourceTree = "<group>"; };
+		8935A5C81C0A8067006508FF /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		894BA3361C00C57100CA2D35 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		894BA3381C00C5AA00CA2D35 /* README.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = README.docx; sourceTree = "<group>"; };
 		894BA3391C04D55800CA2D35 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
 		894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerTableViewCell.swift; sourceTree = "<group>"; };
-		894BCE2C1BFBBF30008DF1C4 /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		894BCE2D1BFBBF30008DF1C4 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		894BCE301BFBBF30008DF1C4 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		894BCE311BFBBF30008DF1C4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			children = (
 				894BCE401BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift */,
 				894BCE411BFBBFDA008DF1C4 /* Stats.swift */,
-				894BCE2C1BFBBF30008DF1C4 /* Game+CoreDataProperties.swift */,
+				8935A5C81C0A8067006508FF /* Game+CoreDataProperties.swift */,
 				894BCE2D1BFBBF30008DF1C4 /* Game.swift */,
 				894BCE301BFBBF30008DF1C4 /* Player+CoreDataProperties.swift */,
 				894BCE311BFBBF30008DF1C4 /* Player.swift */,
@@ -429,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */,
+				8935A5C91C0A8067006508FF /* Game+CoreDataProperties.swift in Sources */,
 				896C02F91BFD483C00DAC7C7 /* AddPlayerViewController.swift in Sources */,
 				894BCE431BFBBFDA008DF1C4 /* Stats.swift in Sources */,
 				894BCE3A1BFBBF30008DF1C4 /* Player+CoreDataProperties.swift in Sources */,
@@ -450,7 +451,6 @@
 				891ECF9B1BF3A449009C813D /* StartScreenViewController.swift in Sources */,
 				891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */,
 				894BCE3C1BFBBF30008DF1C4 /* Team+CoreDataProperties.swift in Sources */,
-				894BCE361BFBBF30008DF1C4 /* Game+CoreDataProperties.swift in Sources */,
 				89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */,
 				894BA33C1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift in Sources */,
 				891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */,

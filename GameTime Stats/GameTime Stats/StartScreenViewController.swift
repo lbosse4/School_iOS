@@ -16,6 +16,7 @@ class StartScreenViewController : UIViewController {
     //MARK: Outlets
     @IBOutlet weak var viewCurrentTeamsButton: UIButton!
     @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var directionsLabel: UILabel!
     
     override func viewWillAppear(animated: Bool) {
         if model.teamCount() == 0{
@@ -23,11 +24,13 @@ class StartScreenViewController : UIViewController {
             viewCurrentTeamsButton.alpha = inactiveAlpha
             startGameButton.userInteractionEnabled = false
             startGameButton.alpha = inactiveAlpha
+            directionsLabel.hidden = false
         } else {
             viewCurrentTeamsButton.userInteractionEnabled = true
             viewCurrentTeamsButton.alpha = activeAlpha
             startGameButton.userInteractionEnabled = true
             startGameButton.alpha = activeAlpha
+            directionsLabel.hidden = true
         }
     }
     

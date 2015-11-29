@@ -21,6 +21,7 @@ struct ObjectsKey {
     static let Team = "Team"
     static let Stats = "Stats"
     static let Game = "Game"
+    static let Period = "Period"
 }
 
 struct PeriodType {
@@ -131,8 +132,12 @@ class Model : DataManagerDelegate {
         
     }
     
-    func addGameObject(team: Team) {
-        
+    func addGameObject(team : Team, date : String, opponentTeamName : String) -> Game {
+        let gameObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Game, inManagedObjectContext: dataManager.managedObjectContext!) as! Game
+        gameObj.team = team
+        gameObj.date = date
+        gameObj.opponentName = opponentTeamName
+        return gameObj
     }
     
     func addStatsObject(player: Player, game: Game, currentPeriod: String){
@@ -169,6 +174,11 @@ class Model : DataManagerDelegate {
     
     func teamAtIndex(index:Int) -> Team {
         return teams[index]
+    }
+    
+    func playersForTeam(team: Team) -> [Player]{
+        let players = team.players!.allObjects as! [Player]
+        return players
     }
     
 }

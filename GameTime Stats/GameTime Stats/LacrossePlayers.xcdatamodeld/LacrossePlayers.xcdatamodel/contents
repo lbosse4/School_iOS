@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
     <entity name="Game" representedClassName=".Game" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="guestScore" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="homeScore" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="opponentName" optional="YES" attributeType="String" minValueString="0" maxValueString="40" syncable="YES"/>

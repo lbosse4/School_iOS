@@ -23,7 +23,8 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     //MARK: Variables
     var chosenTeam : Team?
     var cancelBlock : (() -> Void)?
-    var gameDate : NSDate?
+    var saveBlock : ((game : Game, team: Team) -> Void)?
+    var gameDate = NSDate()
     var delegate : cancelGameProtocol?
 
     
@@ -39,6 +40,19 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
         
         startGameButtonView.userInteractionEnabled = false
         startGameButtonView.alpha = inactiveAlpha
+        
+        chosenTeam = model.teams[0]
+    }
+    
+    //MARK: Helper Functions
+    func checkOpponentTeamNameLength(){
+        if opponentTeamNameTextField.text != "" {
+            startGameButtonView.userInteractionEnabled = true
+            startGameButtonView.alpha = activeAlpha
+        } else {
+            startGameButtonView.userInteractionEnabled = false
+            startGameButtonView.alpha = inactiveAlpha
+        }
     }
     
     //MARK: Actions
@@ -47,6 +61,16 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     }
     
     @IBAction func startGameButtonPressed(sender: UIButton) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .ShortStyle
+        dateFormatter.dateStyle = .MediumStyle
+        let dateString = dateFormatter.stringFromDate(gameDate)
+        //gameDate = dateFormatter.dateFromString(dateString)!
+        let opponentNameString = opponentTeamNameTextField.text!
+        let currentGame = model.addGameObject(chosenTeam!, date: dateString, opponentTeamName: opponentNameString)
+        
+        saveBlock?(game: currentGame, team: chosenTeam!)
+        
     }
     
     @IBAction func cancelButtonPressed(sender: UIButton) {
@@ -66,12 +90,15 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
             return true
         }
         
+        checkOpponentTeamNameLength()
         // Check to see if the text field's contents still fit the constraints
         // with the new content added to it.
         // If the contents still fit the constraints, allow the change
         // by returning true; otherwise disallow the change by returning false.
         let currentText = textField.text ?? ""
         let prospectiveText = (currentText as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        
+        checkOpponentTeamNameLength()
         
         switch textField {
         case opponentTeamNameTextField:
@@ -82,6 +109,9 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
         
     }
 
+    func textFieldDidEndEditing(textField: UITextField) {
+        checkOpponentTeamNameLength()
+    }
     
     // MARK: Picker Datasource Delegate
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
