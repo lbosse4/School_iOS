@@ -41,6 +41,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let benchContainerWidth : CGFloat = 756.0
     let no = 0
     let yes = 1
+    let activeAlpha : CGFloat = 1.0
+    let inactiveAlpha : CGFloat = 0.5
     
     //MARK: Variables
     var playerViews = [UIView]()
@@ -57,6 +59,9 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var currentGame : Game?
     var currentTeam : Team?
     var overtimeChosenAnswer : Int?
+    var overtimeMinutes : Int?
+    var overtimeSeconds : Int?
+
     
     //MARK: Outlets
     @IBOutlet weak var fieldImageView: UIImageView!
@@ -134,6 +139,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                     self.currentPeriod = PeriodType.Overtime
                     self.resetButton.setTitle(PeriodType.Overtime, forState: .Normal)
                     self.halfLabel.text = self.overtimeString
+                    self.overtimeMinutes = otMinutes
+                    self.overtimeSeconds = otSeconds
                 } else {
                     self.resetButton.setTitle("View Stats", forState: .Normal)
                 }
@@ -146,15 +153,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         default: break
         }
         
-//        if currentPeriod == PeriodType.FirstHalf {
-//            currentPeriod = PeriodType.SecondHalf
-//            halfLabel.text = currentPeriod
-//            resetButton.setTitle(PeriodType.SecondHalf, forState: .Normal)
-//        } else {
-//            resetButton.setTitle("View Stats", forState: .Normal)
-//        }
         resetButton.hidden = false
-        startButton.alpha = 0.5
+        startButton.alpha = inactiveAlpha
         startButton.userInteractionEnabled = false
         
     }
@@ -269,12 +269,14 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         //TODO: ADD IN STOP TIMER FUNCTION
     }
     
+    //move view's center and superview
     func moveView(view:UIView, toSuperview superView: UIView) {
         let newCenter = superView.convertPoint(view.center, fromView: view.superview)
         view.center = newCenter
         superView.addSubview(view)
     }
     
+    //sees if any views are overlapping. If they are, put move the player on the field to the bench (replace with playerView)
     func checkForCollisions(playerView: UIView) {
         for  currentView in playerViews {
             if (CGRectIntersectsRect(playerView.frame, currentView.frame)) && (currentView.tag != playerView.tag) {
@@ -372,18 +374,39 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     @IBAction func resetButtonPressed(sender: UIButton) {
-        if resetButton.titleForState(.Normal) == "Second Half" {
+        switch resetButton.titleForState(.Normal)! {
+        case PeriodType.SecondHalf:
             gameTimer.invalidate()
             gameTimerSeconds = startingSeconds
             gameTimerMinutes = startingMinutes
             updateTimerLabel()
             resetButton.hidden = true
-            resetButton.setTitle("View Stats", forState: .Normal)
-            startButton.alpha = 1.0
+            startButton.alpha = activeAlpha
             startButton.userInteractionEnabled = true
-        } else {
-            //TODO: ADD STATS OVERVIEW VIEWCONTROLLER HERE
+        case PeriodType.Overtime:
+            gameTimer.invalidate()
+            gameTimerMinutes = overtimeMinutes!
+            gameTimerSeconds = overtimeSeconds!
+            updateTimerLabel()
+            resetButton.hidden = true
+            startButton.alpha = activeAlpha
+            startButton.userInteractionEnabled = true
+        default:
+            break
         }
+        
+//        if resetButton.titleForState(.Normal) == "Second Half" {
+//            gameTimer.invalidate()
+//            gameTimerSeconds = startingSeconds
+//            gameTimerMinutes = startingMinutes
+//            updateTimerLabel()
+//            resetButton.hidden = true
+//            resetButton.setTitle("View Stats", forState: .Normal)
+//            startButton.alpha = 1.0
+//            startButton.userInteractionEnabled = true
+//        } else {
+//            //TODO: ADD STATS OVERVIEW VIEWCONTROLLER HERE
+//        }
         
     }
     

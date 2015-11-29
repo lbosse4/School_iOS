@@ -31,7 +31,7 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
     func checkTextFields(){
         //if textfields are active, and are filled, let the user continue
         if overtimeMinutesTextField.text != "" && chosenAnswer == yes {
-            if overtimeSecondsTextField != ""{
+            if overtimeSecondsTextField.text != ""{
                 continueButtonView.alpha = activeAlpha
                 continueButtonView.userInteractionEnabled = true
             }
