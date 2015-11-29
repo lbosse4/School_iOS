@@ -177,8 +177,10 @@ class Model : DataManagerDelegate {
     }
     
     func playersForTeam(team: Team) -> [Player]{
-        let players = team.players!.allObjects as! [Player]
-        return players
+        let teamName = team.name!
+        let predicate = NSPredicate(format: "team.name == %@", teamName)
+        let team = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Player, sortKeys: ["jerseyNumber"], predicate: predicate) as! [Player]
+        return team
     }
     
 }
