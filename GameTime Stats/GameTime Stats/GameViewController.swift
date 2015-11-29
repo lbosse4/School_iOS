@@ -236,6 +236,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     func addStatsObjects(){
         for player in currentPlayers {
+            
             model.addStatsObject(player, game: currentGame!, currentPeriod: currentPeriod)
         }
     }
@@ -383,6 +384,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             resetButton.hidden = true
             startButton.alpha = activeAlpha
             startButton.userInteractionEnabled = true
+            addStatsObjects()
         case PeriodType.Overtime:
             gameTimer.invalidate()
             gameTimerMinutes = overtimeMinutes!
@@ -391,6 +393,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             resetButton.hidden = true
             startButton.alpha = activeAlpha
             startButton.userInteractionEnabled = true
+            addStatsObjects()
         default:
             break
         }
@@ -465,6 +468,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 self.currentTeam = team
                 self.currentPlayers = self.model.playersForTeam(self.currentTeam!)
                 self.generateViews()
+                self.addStatsObjects()
+                
             }
             
             gameSetupController.delegate = self

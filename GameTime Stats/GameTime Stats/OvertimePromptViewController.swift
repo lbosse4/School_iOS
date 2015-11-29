@@ -67,17 +67,22 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
-        let otMin = Int(overtimeMinutesTextField.text!)!
-        let otSec = Int(overtimeSecondsTextField.text!)!
-
-        if otSec > maxSeconds {
-            let alert = UIAlertController(title: "Invalid Seconds", message: "Overtime seconds must be less than \(maxSeconds + 1)", preferredStyle: UIAlertControllerStyle.Alert)
-            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(action)
-            self.presentViewController(alert, animated: true, completion: nil)
+        if chosenAnswer == yes {
+            let otMin = Int(overtimeMinutesTextField.text!)!
+            let otSec = Int(overtimeSecondsTextField.text!)!
+            
+            if otSec > maxSeconds {
+                let alert = UIAlertController(title: "Invalid Seconds", message: "Overtime seconds must be less than \(maxSeconds + 1)", preferredStyle: UIAlertControllerStyle.Alert)
+                let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alert.addAction(action)
+                self.presentViewController(alert, animated: true, completion: nil)
+            } else {
+                answerChosenBlock?(answer: chosenAnswer, otMinutes: otMin, otSeconds: otSec)
+            }
         } else {
-            answerChosenBlock?(answer: chosenAnswer, otMinutes: otMin, otSeconds: otSec)
+            answerChosenBlock?(answer: chosenAnswer, otMinutes: 0, otSeconds: 0)
         }
+        
     }
     
     //MARK: TextField Delegate

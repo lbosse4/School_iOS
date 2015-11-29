@@ -110,23 +110,6 @@ class Model : DataManagerDelegate {
         playerObj.jerseyNumber = number
         playerObj.position = position
         
-        /*
-        let s = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Stats, inManagedObjectContext: dataManager.managedObjectContext!) as! Stats
-        s.assists = 0
-        s.causedTurnovers = 0
-        s.clears = 0
-        s.drawControls = 0
-        s.freePositionAttempts = 0
-        s.freePositionGoals = 0
-        s.goals = 0
-        s.groundBalls = 0
-        s.opponentGoalsScoredAgainst = 0
-        s.saves = 0
-        s.shotsOnGoal = 0
-        s.turnovers = 0
-        s.player = playerObj
-        */
-        
         dataManager.saveContext()
         players = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
         
@@ -137,11 +120,19 @@ class Model : DataManagerDelegate {
         gameObj.team = team
         gameObj.date = date
         gameObj.opponentName = opponentTeamName
+        dataManager.saveContext()
         return gameObj
     }
     
     func addStatsObject(player: Player, game: Game, currentPeriod: String){
+        let periodObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Period, inManagedObjectContext: dataManager.managedObjectContext!) as! Period
+        periodObj.game = game
+        periodObj.type = currentPeriod
         
+        let statsObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Stats, inManagedObjectContext: dataManager.managedObjectContext!) as! Stats
+        statsObj.player = player
+        statsObj.period = periodObj
+        dataManager.saveContext()
     }
 
     func addTeamWithName(name: String) -> Team {
