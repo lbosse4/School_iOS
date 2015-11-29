@@ -25,9 +25,9 @@ struct ObjectsKey {
 }
 
 struct PeriodType {
-    static let FirstHalf = "FirstHalf"
-    static let SecondHalf = "SecondHalf"
-    static let Overtime = "OverTime"
+    static let FirstHalf = "First Half"
+    static let SecondHalf = "Second Half"
+    static let Overtime = "Overtime"
 }
 
 class Model : DataManagerDelegate {

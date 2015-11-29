@@ -11,7 +11,7 @@ import UIKit
 class StatEditorTableViewController: UITableViewController {
     let model = Model.sharedInstance
     var player : Player?
-    var period : Int?
+    var period : String?
 
     var cancelBlock : (() -> Void)?
     

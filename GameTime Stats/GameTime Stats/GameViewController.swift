@@ -21,9 +21,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let model = Model.sharedInstance
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
     let playerViewSize : CGFloat = 55.0
-    let playerViewPaddingWidth : CGFloat = 60.0
-    let playerViewPaddingHeight : CGFloat = 60.0
+    let playerViewPaddingWidth : CGFloat = 65.0
+    let playerViewPaddingHeight : CGFloat = 65.0
     let playerViewMargin : CGFloat = 10.0
+    let numPlayersThatfit = 11
     let playerNumberFont = "collegiateHeavyOutline"
     let popoverContentSize = CGSize(width: 350, height: 470)
     let animationDuration : NSTimeInterval = 0.55
@@ -46,7 +47,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var gameTimerSeconds = 10
     var homeScore = 0
     var guestScore = 0
-    var currentPeriod = 1
+    var currentPeriod = PeriodType.FirstHalf
     var cancelBlock : (() -> Void)?
     var isInitialLoad = true
     var currentGame : Game?
@@ -101,11 +102,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func updateHalves(){
-        if currentPeriod == firstHalf {
-            currentPeriod = secondHalf
-            let currentHalfString = formatter.stringFromNumber(currentPeriod)!
-            halfLabel.text = currentHalfString
-            resetButton.setTitle("Second Half", forState: .Normal)
+        if currentPeriod == PeriodType.FirstHalf {
+            currentPeriod = PeriodType.SecondHalf
+            halfLabel.text = currentPeriod
+            resetButton.setTitle(PeriodType.SecondHalf, forState: .Normal)
         } else {
             resetButton.setTitle("View Stats", forState: .Normal)
         }
@@ -126,6 +126,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     func generateViews() {
         var loopCounter = 0
         playersPerRow = currentPlayers.count/2
+        
+        //formatting - numPlayersThatFit represents the number of players that fit without scrollview
+        if playersPerRow <= numPlayersThatfit {
+            playersPerRow = numPlayersThatfit
+        }
         let scrollViewWidth = (CGFloat(playersPerRow) * playerViewPaddingWidth) + (playerViewMargin * 2)
         // Allow images to continue off of the screen if there are too many to fit
         if scrollViewWidth > benchContainerWidth {
@@ -187,7 +192,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     func addStatsObjects(){
         for player in currentPlayers {
-            
+            model.addStatsObject(player, game: currentGame!, currentPeriod: currentPeriod)
         }
     }
     
@@ -201,6 +206,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         moveView(playerView, toSuperview: benchScrollview)
         
         var origin : CGPoint
+        
+        
         
         if playerView.tag + 1 > playersPerRow {
             origin = CGPoint(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(playerView.tag - playersPerRow)), y: playerViewMargin + playerViewPaddingHeight)
