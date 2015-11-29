@@ -15,6 +15,7 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
     let maxTimeDigits = 2
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
+    let maxSeconds : Int = 59
     var chosenAnswer : Int = 0
     var answerChosenBlock : ((answer: Int, otMinutes: Int, otSeconds: Int) -> Void)?
     
@@ -31,7 +32,7 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
     func checkTextFields(){
         //if textfields are active, and are filled, let the user continue
         if overtimeMinutesTextField.text != "" && chosenAnswer == yes {
-            if overtimeSecondsTextField.text != ""{
+            if overtimeSecondsTextField.text != "" {
                 continueButtonView.alpha = activeAlpha
                 continueButtonView.userInteractionEnabled = true
             }
@@ -66,10 +67,17 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
-        let otMin = overtimeMinutesTextField.text!
-        let otSec = overtimeSecondsTextField.text!
+        let otMin = Int(overtimeMinutesTextField.text!)!
+        let otSec = Int(overtimeSecondsTextField.text!)!
 
-        answerChosenBlock?(answer: chosenAnswer, otMinutes: Int(otMin)!, otSeconds: Int(otSec)!)
+        if otSec > maxSeconds {
+            let alert = UIAlertController(title: "Invalid Seconds", message: "Overtime seconds must be less than \(maxSeconds + 1)", preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            answerChosenBlock?(answer: chosenAnswer, otMinutes: otMin, otSeconds: otSec)
+        }
     }
     
     //MARK: TextField Delegate
@@ -109,6 +117,10 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
             return true
         }
         
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        checkTextFields()
     }
 
 }
