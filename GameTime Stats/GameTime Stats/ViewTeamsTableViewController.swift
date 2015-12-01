@@ -14,6 +14,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     let formatter = NSNumberFormatter()
     let buttonWidth : CGFloat = 25.0
     let sectionHeight : CGFloat = 50.0
+    let titleFont = UIFont(name: "Orbitron-Medium", size: 30.0)
     
     lazy var dataSource : ViewTeamsDataSource = ViewTeamsDataSource(entity: "Player", sortKeys: ["team.name", "jerseyNumber"], predicate: nil, sectionNameKeyPath: "team.name", delegate: self.model)
     
@@ -53,11 +54,15 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: sectionHeight)
         let sectionView = UIView(frame: sectionViewFrame)
+        sectionView.backgroundColor = UIColor.blackColor()
         
         let teamNameLabelFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - buttonWidth, height: sectionHeight)
         let teamNameLabel = UILabel(frame: teamNameLabelFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
         teamNameLabel.text = teamName
+        teamNameLabel.font = titleFont
+        teamNameLabel.textColor = UIColor.whiteColor()
+        
         
         sectionView.addSubview(teamNameLabel)
         return sectionView
