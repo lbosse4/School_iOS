@@ -61,6 +61,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var overtimeChosenAnswer : Int?
     var overtimeMinutes : Int?
     var overtimeSeconds : Int?
+    var shouldShowStatsEditor = true
 
     
     //MARK: Outlets
@@ -109,6 +110,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             }
         }
         updateTimerLabel()
+        shouldShowStatsEditor = false
     }
     
     func updateHalves(){
@@ -141,9 +143,13 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                     self.halfLabel.text = self.overtimeString
                     self.overtimeMinutes = otMinutes
                     self.overtimeSeconds = otSeconds
+                    self.currentGame!.hasOvertime = true
                 } else {
                     self.resetButton.setTitle("View Stats", forState: .Normal)
+                    self.currentGame!.hasOvertime = false
                 }
+                
+                
             }
             
             self.presentViewController(overtimePromptController, animated: true, completion: nil)
@@ -222,7 +228,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             singleTapRecognizer.numberOfTapsRequired = 1
             playerView.addGestureRecognizer(singleTapRecognizer)
             
-            
+            singleTapRecognizer.delegate = self
             
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTappedPlayer:")
             doubleTapRecognizer.numberOfTapsRequired = 2
@@ -403,6 +409,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             break
         }
         
+        shouldShowStatsEditor = true
+        
 //        if resetButton.titleForState(.Normal) == "Second Half" {
 //            gameTimer.invalidate()
 //            gameTimerSeconds = startingSeconds
@@ -457,6 +465,16 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             guestScore = 0
         }
     }
+    
+    //MARK: Recognizer Delegate
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if shouldShowStatsEditor {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     
     //MARK: prepare for segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

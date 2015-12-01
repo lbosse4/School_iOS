@@ -2,7 +2,7 @@
 //  Game+CoreDataProperties.swift
 //  GameTime Stats
 //
-//  Created by Lauren Bosse on 11/28/15.
+//  Created by Lauren Bosse on 12/1/15.
 //  Copyright © 2015 Lauren Bosse. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -18,6 +18,7 @@ extension Game {
     @NSManaged var guestScore: NSNumber?
     @NSManaged var homeScore: NSNumber?
     @NSManaged var opponentName: String?
+    @NSManaged var hasOvertime: NSNumber?
     @NSManaged var periods: NSSet?
     @NSManaged var team: Team?
 
