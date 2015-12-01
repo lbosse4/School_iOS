@@ -21,7 +21,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     var cancelBlock : (() -> Void)?
     var delegate : TeamCreatedProtocol?
     //TODO: UPDATE FILTER TO ONLY INCLUD ECURRENT TEAM
-    lazy var dataSource : DataSource = DataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
+    lazy var dataSource : AddPlayerDataSource = AddPlayerDataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,11 +77,11 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.playerCount()
-        //TODO: USe this line instead
-        //return model.numPlayersForTeam(TEAAM)
-    }
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return model.playerCount()
+//        //TODO: USe this line instead
+//        //return model.numPlayersForTeam(TEAAM)
+//    }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

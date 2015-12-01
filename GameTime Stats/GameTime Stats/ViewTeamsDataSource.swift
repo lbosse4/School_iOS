@@ -1,8 +1,9 @@
 //
-//  DataSource.swift
+//  ViewTeamsDataSource.swift
 //  US States
 //
 //  Created by John Hannan on 7/2/15.
+//  Modified by Lauren Bosse
 //  Copyright (c) 2015 John Hannan. All rights reserved.
 //
 
@@ -10,12 +11,12 @@ import Foundation
 import CoreData
 import UIKit
 
-protocol DataSourceCellConfigurer {
-    func configureCell(cell:AddPlayerTableViewCell, withObject object:NSManagedObject) -> Void
+protocol ViewTeamsDataSourceCellConfigurer {
+    func configureCell(cell:PlayerTableViewCell, withObject object:NSManagedObject) -> Void
     func cellIdentifierForObject(object: NSManagedObject) -> String
 }
 
-class DataSource : NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class ViewTeamsDataSource : NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var tableView : UITableView! {
         didSet {
@@ -23,7 +24,7 @@ class DataSource : NSObject, UITableViewDataSource, NSFetchedResultsControllerDe
         }
     }
     let dataManager = DataManager.sharedInstance
-    var delegate : DataSourceCellConfigurer?
+    var delegate : ViewTeamsDataSourceCellConfigurer?
     
     let fetchRequest : NSFetchRequest
     
@@ -85,7 +86,7 @@ class DataSource : NSObject, UITableViewDataSource, NSFetchedResultsControllerDe
         let managedObject = objectAtIndexPath(indexPath)
         let cellIdentifier = delegate!.cellIdentifierForObject(managedObject)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! AddPlayerTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PlayerTableViewCell
         
         delegate?.configureCell(cell, withObject: managedObject)
         //self.configureCell(cell, atIndexPath: indexPath)
@@ -217,8 +218,7 @@ class DataSource : NSObject, UITableViewDataSource, NSFetchedResultsControllerDe
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         case .Update:
             let object = objectAtIndexPath(indexPath!)
-            delegate?.configureCell(tableView.cellForRowAtIndexPath(indexPath!)! as! AddPlayerTableViewCell, withObject: object)
-            //self.configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
+            delegate?.configureCell(tableView.cellForRowAtIndexPath(indexPath!)! as! PlayerTableViewCell, withObject: object)
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)

@@ -18,7 +18,8 @@
 		8935A5C71C0A34E3006508FF /* GameSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8935A5C61C0A34E3006508FF /* GameSetupViewController.swift */; };
 		8935A5C91C0A8067006508FF /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8935A5C81C0A8067006508FF /* Game+CoreDataProperties.swift */; };
 		8935A5CB1C0AA064006508FF /* OvertimePromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8935A5CA1C0AA064006508FF /* OvertimePromptViewController.swift */; };
-		894BA3371C00C57100CA2D35 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA3361C00C57100CA2D35 /* DataSource.swift */; };
+		893CB1121C0E41B400D43960 /* ViewTeamsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893CB1111C0E41B400D43960 /* ViewTeamsDataSource.swift */; };
+		894BA3371C00C57100CA2D35 /* AddPlayerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA3361C00C57100CA2D35 /* AddPlayerDataSource.swift */; };
 		894BA33A1C04D55800CA2D35 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA3391C04D55800CA2D35 /* PlayerTableViewCell.swift */; };
 		894BA33C1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */; };
 		894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BCE2D1BFBBF30008DF1C4 /* Game.swift */; };
@@ -80,7 +81,8 @@
 		8935A5C61C0A34E3006508FF /* GameSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupViewController.swift; sourceTree = "<group>"; };
 		8935A5C81C0A8067006508FF /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8935A5CA1C0AA064006508FF /* OvertimePromptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimePromptViewController.swift; sourceTree = "<group>"; };
-		894BA3361C00C57100CA2D35 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		893CB1111C0E41B400D43960 /* ViewTeamsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTeamsDataSource.swift; sourceTree = "<group>"; };
+		894BA3361C00C57100CA2D35 /* AddPlayerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerDataSource.swift; sourceTree = "<group>"; };
 		894BA3381C00C5AA00CA2D35 /* README.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = README.docx; sourceTree = "<group>"; };
 		894BA3391C04D55800CA2D35 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
 		894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerTableViewCell.swift; sourceTree = "<group>"; };
@@ -162,7 +164,8 @@
 				891ECF9C1BF3AC9E009C813D /* DataManager.swift */,
 				891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */,
 				896C02FA1BFD4CBF00DAC7C7 /* StringUtils.swift */,
-				894BA3361C00C57100CA2D35 /* DataSource.swift */,
+				894BA3361C00C57100CA2D35 /* AddPlayerDataSource.swift */,
+				893CB1111C0E41B400D43960 /* ViewTeamsDataSource.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				8935A5C91C0A8067006508FF /* Game+CoreDataProperties.swift in Sources */,
 				896C02F91BFD483C00DAC7C7 /* AddPlayerViewController.swift in Sources */,
 				894BCE431BFBBFDA008DF1C4 /* Stats.swift in Sources */,
+				893CB1121C0E41B400D43960 /* ViewTeamsDataSource.swift in Sources */,
 				894BCE3A1BFBBF30008DF1C4 /* Player+CoreDataProperties.swift in Sources */,
 				894BCE3D1BFBBF30008DF1C4 /* Team.swift in Sources */,
 				894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */,
@@ -446,7 +450,7 @@
 				891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */,
 				894BCE3B1BFBBF30008DF1C4 /* Player.swift in Sources */,
 				894BA33A1C04D55800CA2D35 /* PlayerTableViewCell.swift in Sources */,
-				894BA3371C00C57100CA2D35 /* DataSource.swift in Sources */,
+				894BA3371C00C57100CA2D35 /* AddPlayerDataSource.swift in Sources */,
 				894BCE3F1BFBBF30008DF1C4 /* Period.swift in Sources */,
 				891ECF951BF3A3C1009C813D /* Model.swift in Sources */,
 				894BCE451BFBEADA008DF1C4 /* StatEditorTableViewController.swift in Sources */,

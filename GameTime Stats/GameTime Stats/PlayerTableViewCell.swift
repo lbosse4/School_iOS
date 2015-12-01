@@ -9,5 +9,8 @@
 import UIKit
 
 class PlayerTableViewCell: UITableViewCell {
+    @IBOutlet weak var playerNameLabel: UILabel!
+    @IBOutlet weak var positionLabel: UILabel!
+    @IBOutlet weak var jerseyNumberLabel: UILabel!
     
 }
