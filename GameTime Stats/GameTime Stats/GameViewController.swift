@@ -238,6 +238,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         for player in currentPlayers {
             
             model.addStatsObject(player, game: currentGame!, currentPeriod: currentPeriod)
+            
         }
     }
     
@@ -345,6 +346,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 
                 popoverViewController.player = currentPlayers[recognizer.view!.tag]
                 popoverViewController.period = currentPeriod
+                popoverViewController.game = currentGame
+                
                 
                 self.presentViewController(navPopoverViewController, animated: true, completion: nil)
             }

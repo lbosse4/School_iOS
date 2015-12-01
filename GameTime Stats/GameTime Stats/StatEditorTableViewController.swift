@@ -10,8 +10,13 @@ import UIKit
 
 class StatEditorTableViewController: UITableViewController {
     let model = Model.sharedInstance
-    var player : Player?
-    var period : String?
+    let formatter = NSNumberFormatter()
+
+    var player : Player!
+    var period : String!
+    var game : Game!
+    var stats : Stats!
+    //var period : Period?
 
     var cancelBlock : (() -> Void)?
     
@@ -50,15 +55,45 @@ class StatEditorTableViewController: UITableViewController {
             stepper.maximumValue = 99
         }
         
-        let playerStatsArray = player?.stats?.allObjects as! [Stats]
+        formatter.minimumIntegerDigits = 2
         
+        stats = model.statsForPlayer(player, game: game, periodType: period)
         
-        //assistsLabel.text = "\(playerStats!)"
+        let numAssists = stats.assists!
+        assistsLabel.text = formatter.stringFromNumber( numAssists)
         
-        //assistsLabel.text = whateverThePlayerAlreadyHas
-        //assistsStepper.value = the number used above
+        let numCausedTurnovers = stats.causedTurnovers!
+        causedTurnoversLabel.text = formatter.stringFromNumber(numCausedTurnovers)
         
+        let numClears = stats.clears!
+        clearsLabel.text = formatter.stringFromNumber(numClears)
         
+        let numDrawControls = stats.drawControls!
+        drawControlsLabel.text = formatter.stringFromNumber(numDrawControls)
+        
+        let numFreePositionAttempts = stats.freePositionAttempts!
+        freePositionAttemptsLabel.text = formatter.stringFromNumber(numFreePositionAttempts)
+        
+        let numFreePositionGoals = stats.freePositionGoals!
+        freePositionGoalsLabel.text = formatter.stringFromNumber(numFreePositionGoals)
+        
+        let numGoals = stats.goals!
+        goalsLabel.text = formatter.stringFromNumber(numGoals)
+        
+        let numGroundBalls = stats.groundBalls!
+        groundBallsLabel.text = formatter.stringFromNumber(numGroundBalls)
+        
+        let numGoalsAgainst = stats.opponentGoalsScoredAgainst!
+        opponentGoalsScoredAgainstLabel.text = formatter.stringFromNumber(numGoalsAgainst)
+        
+        let numSaves = stats.saves!
+        savesLabel.text = formatter.stringFromNumber(numSaves)
+        
+        let numShotsOnGoal = stats.shotsOnGoal!
+        shotsOnGoalLabel.text = formatter.stringFromNumber(numShotsOnGoal)
+        
+        let numTurnovers = stats.turnovers!
+        turnoversLabel.text = formatter.stringFromNumber(numTurnovers)
     }
     
     //MARK: Actions
@@ -72,29 +107,53 @@ class StatEditorTableViewController: UITableViewController {
     @IBAction func stepperToggled(sender: UIStepper) {
         switch sender.tag {
         case 0:
-            assistsLabel.text = "\(Int(sender.value))"
+            let numAssists = Int(sender.value)
+            assistsLabel.text = formatter.stringFromNumber( numAssists)
+            stats.assists! = numAssists
         case 1:
-            causedTurnoversLabel.text = "\(Int(sender.value))"
+            let numCausedTurnovers = Int(sender.value)
+            causedTurnoversLabel.text = formatter.stringFromNumber(numCausedTurnovers)
+            stats.causedTurnovers! = numCausedTurnovers
         case 2:
-            clearsLabel.text = "\(Int(sender.value))"
+            let numClears = Int(sender.value)
+            clearsLabel.text = formatter.stringFromNumber(numClears)
+            stats.clears! = numClears
         case 3:
-            drawControlsLabel.text = "\(Int(sender.value))"
+            let numDrawControls = Int(sender.value)
+            drawControlsLabel.text = formatter.stringFromNumber(numDrawControls)
+            stats.drawControls! = numDrawControls
         case 4:
-            freePositionAttemptsLabel.text = "\(Int(sender.value))"
+            let numFreePositionAttempts = Int(sender.value)
+            freePositionAttemptsLabel.text = formatter.stringFromNumber(numFreePositionAttempts)
+            stats.freePositionAttempts! = numFreePositionAttempts
         case 5:
-            freePositionGoalsLabel.text = "\(Int(sender.value))"
+            let numFreePositionGoals = Int(sender.value)
+            freePositionGoalsLabel.text = formatter.stringFromNumber(numFreePositionGoals)
+            stats.freePositionGoals = numFreePositionGoals
         case 6:
-            goalsLabel.text = "\(Int(sender.value))"
+            let numGoals = Int(sender.value)
+            goalsLabel.text = formatter.stringFromNumber(numGoals)
+            stats.goals! = numGoals
         case 7:
-            groundBallsLabel.text = "\(Int(sender.value))"
+            let numGroundBalls = Int(sender.value)
+            groundBallsLabel.text = formatter.stringFromNumber(numGroundBalls)
+            stats.groundBalls! = numGroundBalls
         case 8:
-            opponentGoalsScoredAgainstLabel.text = "\(Int(sender.value))"
+            let numGoalsAgainst = Int(sender.value)
+            opponentGoalsScoredAgainstLabel.text = formatter.stringFromNumber(numGoalsAgainst)
+            stats.opponentGoalsScoredAgainst = numGoalsAgainst
         case 9:
-            savesLabel.text = "\(Int(sender.value))"
+            let numSaves = Int(sender.value)
+            savesLabel.text = formatter.stringFromNumber(numSaves)
+            stats.saves = numSaves
         case 10:
-            shotsOnGoalLabel.text = "\(Int(sender.value))"
+            let numShotsOnGoal = Int(sender.value)
+            shotsOnGoalLabel.text = formatter.stringFromNumber(numShotsOnGoal)
+            stats.shotsOnGoal! = numShotsOnGoal
         case 11:
-            turnoversLabel.text = "\(Int(sender.value))"
+            let numTurnovers = Int(sender.value)
+            turnoversLabel.text = formatter.stringFromNumber(numTurnovers)
+            stats.turnovers! = numTurnovers
         default:
             break
         }

@@ -174,9 +174,31 @@ class Model : DataManagerDelegate {
         return team
     }
     
-    func statsForPlayer(player: Player, game: Game, period: Period){
+    func statsForPlayer(player: Player, game: Game, periodType: String) -> Stats{
        //TODO: MAKE THIS QUERY WITH MULTIPLE PREDICATES
         //let predicate = NSPredicate(format: <#T##String#>, <#T##args: CVarArgType...##CVarArgType#>)
+        var predicatesArray = [NSPredicate]()
+        
+        let jerseyNumber = player.jerseyNumber!
+        let pred1 = NSPredicate(format: "player.jerseyNumber == %@", jerseyNumber)
+        predicatesArray.append(pred1)
+        
+        let playerName = player.name!
+        let pred2 = NSPredicate(format: "player.name == %@", playerName)
+        predicatesArray.append(pred2)
+        
+        //let periodType = period.type!
+        let pred3 = NSPredicate(format: "period.type == %@", periodType)
+        predicatesArray.append(pred3)
+        
+        let gameDate = game.date!
+        let pred4 = NSPredicate(format: "period.game.date == %@", gameDate)
+        predicatesArray.append(pred4)
+        
+        let compound = NSCompoundPredicate(andPredicateWithSubpredicates: predicatesArray)
+        let statsObj = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Stats, sortKeys: ["player.name"], predicate: compound) as! [Stats]
+        
+        return statsObj[0]
     }
     
 }
