@@ -222,6 +222,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             singleTapRecognizer.numberOfTapsRequired = 1
             playerView.addGestureRecognizer(singleTapRecognizer)
             
+            
+            
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTappedPlayer:")
             doubleTapRecognizer.numberOfTapsRequired = 2
             playerView.addGestureRecognizer(doubleTapRecognizer)
