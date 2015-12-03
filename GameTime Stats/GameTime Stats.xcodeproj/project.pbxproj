@@ -15,6 +15,14 @@
 		891ECF9B1BF3A449009C813D /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9A1BF3A449009C813D /* StartScreenViewController.swift */; };
 		891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9C1BF3AC9E009C813D /* DataManager.swift */; };
 		891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF9E1BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld */; };
+		89301FBA1C10D09D001F81A9 /* BrightnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89301FB51C10D09D001F81A9 /* BrightnessView.swift */; };
+		89301FBB1C10D09D001F81A9 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89301FB61C10D09D001F81A9 /* ColorUtils.swift */; };
+		89301FBC1C10D09D001F81A9 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89301FB71C10D09D001F81A9 /* ColorWheel.swift */; };
+		89301FBD1C10D09D001F81A9 /* SelectedColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89301FB81C10D09D001F81A9 /* SelectedColorView.swift */; };
+		89301FBE1C10D09D001F81A9 /* SwiftHSVColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89301FB91C10D09D001F81A9 /* SwiftHSVColorPicker.swift */; };
+		89301FC01C10D716001F81A9 /* StatsHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89301FBF1C10D716001F81A9 /* StatsHistoryTableViewController.swift */; };
+		89301FC21C10D787001F81A9 /* StatsHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89301FC11C10D787001F81A9 /* StatsHistoryTableViewCell.swift */; };
+		89301FC41C10DD38001F81A9 /* StatsHistoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89301FC31C10DD38001F81A9 /* StatsHistoryDataSource.swift */; };
 		8935A5C71C0A34E3006508FF /* GameSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8935A5C61C0A34E3006508FF /* GameSetupViewController.swift */; };
 		8935A5C91C0A8067006508FF /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8935A5C81C0A8067006508FF /* Game+CoreDataProperties.swift */; };
 		8935A5CB1C0AA064006508FF /* OvertimePromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8935A5CA1C0AA064006508FF /* OvertimePromptViewController.swift */; };
@@ -78,6 +86,14 @@
 		891ECF9A1BF3A449009C813D /* StartScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		891ECF9C1BF3AC9E009C813D /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		891ECF9F1BF3B2E0009C813D /* LacrossePlayers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LacrossePlayers.xcdatamodel; sourceTree = "<group>"; };
+		89301FB51C10D09D001F81A9 /* BrightnessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrightnessView.swift; sourceTree = "<group>"; };
+		89301FB61C10D09D001F81A9 /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		89301FB71C10D09D001F81A9 /* ColorWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
+		89301FB81C10D09D001F81A9 /* SelectedColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedColorView.swift; sourceTree = "<group>"; };
+		89301FB91C10D09D001F81A9 /* SwiftHSVColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHSVColorPicker.swift; sourceTree = "<group>"; };
+		89301FBF1C10D716001F81A9 /* StatsHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsHistoryTableViewController.swift; sourceTree = "<group>"; };
+		89301FC11C10D787001F81A9 /* StatsHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		89301FC31C10DD38001F81A9 /* StatsHistoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsHistoryDataSource.swift; sourceTree = "<group>"; };
 		8935A5C61C0A34E3006508FF /* GameSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSetupViewController.swift; sourceTree = "<group>"; };
 		8935A5C81C0A8067006508FF /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8935A5CA1C0AA064006508FF /* OvertimePromptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimePromptViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +182,7 @@
 				896C02FA1BFD4CBF00DAC7C7 /* StringUtils.swift */,
 				894BA3361C00C57100CA2D35 /* AddPlayerDataSource.swift */,
 				893CB1111C0E41B400D43960 /* ViewTeamsDataSource.swift */,
+				89301FC31C10DD38001F81A9 /* StatsHistoryDataSource.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -176,7 +193,9 @@
 				89EC2BBF1BCF0DAB008B37DC /* Main.storyboard */,
 				894BA3391C04D55800CA2D35 /* PlayerTableViewCell.swift */,
 				894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */,
+				89301FC11C10D787001F81A9 /* StatsHistoryTableViewCell.swift */,
 				89774B991BE3CADA007E02B4 /* Button Icons */,
+				89301FB41C10CFD0001F81A9 /* Color Picker Source */,
 				897083721BE03450008F5D5B /* Fonts */,
 				89E30A691BDC654E0051212A /* Photos */,
 			);
@@ -195,6 +214,7 @@
 				8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */,
 				8935A5C61C0A34E3006508FF /* GameSetupViewController.swift */,
 				8935A5CA1C0AA064006508FF /* OvertimePromptViewController.swift */,
+				89301FBF1C10D716001F81A9 /* StatsHistoryTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -209,6 +229,18 @@
 				89EC2BC21BCF0DAB008B37DC /* Assets.xcassets */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89301FB41C10CFD0001F81A9 /* Color Picker Source */ = {
+			isa = PBXGroup;
+			children = (
+				89301FB51C10D09D001F81A9 /* BrightnessView.swift */,
+				89301FB61C10D09D001F81A9 /* ColorUtils.swift */,
+				89301FB71C10D09D001F81A9 /* ColorWheel.swift */,
+				89301FB81C10D09D001F81A9 /* SelectedColorView.swift */,
+				89301FB91C10D09D001F81A9 /* SwiftHSVColorPicker.swift */,
+			);
+			name = "Color Picker Source";
 			sourceTree = "<group>";
 		};
 		897083721BE03450008F5D5B /* Fonts */ = {
@@ -434,10 +466,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89301FC01C10D716001F81A9 /* StatsHistoryTableViewController.swift in Sources */,
 				891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */,
 				8935A5C91C0A8067006508FF /* Game+CoreDataProperties.swift in Sources */,
+				89301FC41C10DD38001F81A9 /* StatsHistoryDataSource.swift in Sources */,
 				896C02F91BFD483C00DAC7C7 /* AddPlayerViewController.swift in Sources */,
 				894BCE431BFBBFDA008DF1C4 /* Stats.swift in Sources */,
+				89301FBC1C10D09D001F81A9 /* ColorWheel.swift in Sources */,
 				893CB1121C0E41B400D43960 /* ViewTeamsDataSource.swift in Sources */,
 				894BCE3A1BFBBF30008DF1C4 /* Player+CoreDataProperties.swift in Sources */,
 				894BCE3D1BFBBF30008DF1C4 /* Team.swift in Sources */,
@@ -450,14 +485,19 @@
 				891ECF9D1BF3AC9E009C813D /* DataManager.swift in Sources */,
 				894BCE3B1BFBBF30008DF1C4 /* Player.swift in Sources */,
 				894BA33A1C04D55800CA2D35 /* PlayerTableViewCell.swift in Sources */,
+				89301FC21C10D787001F81A9 /* StatsHistoryTableViewCell.swift in Sources */,
 				894BA3371C00C57100CA2D35 /* AddPlayerDataSource.swift in Sources */,
 				894BCE3F1BFBBF30008DF1C4 /* Period.swift in Sources */,
 				891ECF951BF3A3C1009C813D /* Model.swift in Sources */,
+				89301FBA1C10D09D001F81A9 /* BrightnessView.swift in Sources */,
+				89301FBD1C10D09D001F81A9 /* SelectedColorView.swift in Sources */,
 				894BCE451BFBEADA008DF1C4 /* StatEditorTableViewController.swift in Sources */,
+				89301FBB1C10D09D001F81A9 /* ColorUtils.swift in Sources */,
 				894BCE3E1BFBBF30008DF1C4 /* Period+CoreDataProperties.swift in Sources */,
 				891ECF9B1BF3A449009C813D /* StartScreenViewController.swift in Sources */,
 				891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */,
 				894BCE3C1BFBBF30008DF1C4 /* Team+CoreDataProperties.swift in Sources */,
+				89301FBE1C10D09D001F81A9 /* SwiftHSVColorPicker.swift in Sources */,
 				89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */,
 				894BA33C1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift in Sources */,
 				8935A5CB1C0AA064006508FF /* OvertimePromptViewController.swift in Sources */,

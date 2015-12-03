@@ -115,13 +115,14 @@ class Model : DataManagerDelegate {
         
     }
     
-    func addGameObject(team : Team, date : String, opponentTeamName : String) -> Game {
+    func addGameObject(team : Team, date : NSDate, opponentTeamName : String) -> Game {
         let gameObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Game, inManagedObjectContext: dataManager.managedObjectContext!) as! Game
         gameObj.team = team
         gameObj.date = date
         gameObj.opponentName = opponentTeamName
         dataManager.saveContext()
         return gameObj
+        
     }
     
     func addStatsObject(player: Player, game: Game, currentPeriod: String){
@@ -205,6 +206,11 @@ class Model : DataManagerDelegate {
         let statsObj = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Stats, sortKeys: ["player.name"], predicate: compound) as! [Stats]
         
         return statsObj[0]
+    }
+    
+    func deleteGame(game : Game){
+        let context = self.dataManager.managedObjectContext!
+        context.deleteObject(game)
     }
     
 }

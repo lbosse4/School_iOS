@@ -37,9 +37,6 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         let teamName = team!.name!
         let predicate = NSPredicate(format: "team.name == %@", teamName)
         dataSource.updateWithPredicate(predicate)
-        
-//        let teamNamePredicate = NSPredicate(format: "team!.name! = %@", team!.name!)
-//        dataSource.updateWithPredicate(teamNamePredicate)
     }
     
     override func viewWillAppear(animated: Bool) {

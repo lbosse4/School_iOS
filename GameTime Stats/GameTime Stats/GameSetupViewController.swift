@@ -61,13 +61,13 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     }
     
     @IBAction func startGameButtonPressed(sender: UIButton) {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
-        dateFormatter.dateStyle = .MediumStyle
-        let dateString = dateFormatter.stringFromDate(gameDate)
-        //gameDate = dateFormatter.dateFromString(dateString)!
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.timeStyle = .ShortStyle
+//        dateFormatter.dateStyle = .MediumStyle
+//        let dateString = dateFormatter.stringFromDate(gameDate)
+//        gameDate = dateFormatter.dateFromString(dateString)!
         let opponentNameString = opponentTeamNameTextField.text!
-        let currentGame = model.addGameObject(chosenTeam!, date: dateString, opponentTeamName: opponentNameString)
+        let currentGame = model.addGameObject(chosenTeam!, date: gameDate, opponentTeamName: opponentNameString)
         
         saveBlock?(game: currentGame, team: chosenTeam!)
         

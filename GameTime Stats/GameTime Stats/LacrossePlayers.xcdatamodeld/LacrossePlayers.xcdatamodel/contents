@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
     <entity name="Game" representedClassName=".Game" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="guestScore" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="hasOvertime" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="homeScore" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="opponentName" optional="YES" attributeType="String" minValueString="0" maxValueString="40" syncable="YES"/>
-        <relationship name="periods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Period" inverseName="game" inverseEntity="Period" syncable="YES"/>
+        <relationship name="periods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Period" inverseName="game" inverseEntity="Period" syncable="YES"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="games" inverseEntity="Team" syncable="YES"/>
     </entity>
     <entity name="Period" representedClassName=".Period" syncable="YES">
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="periods" inverseEntity="Game" syncable="YES"/>
-        <relationship name="stats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stats" inverseName="period" inverseEntity="Stats" syncable="YES"/>
+        <relationship name="stats" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Stats" inverseName="period" inverseEntity="Stats" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName=".Player" syncable="YES">
         <attribute name="jerseyNumber" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
@@ -52,7 +52,7 @@
     </entity>
     <elements>
         <element name="Game" positionX="-567" positionY="9" width="128" height="150"/>
-        <element name="Period" positionX="-371" positionY="179" width="128" height="88"/>
+        <element name="Period" positionX="-371" positionY="179" width="128" height="90"/>
         <element name="Player" positionX="-207" positionY="-297" width="128" height="120"/>
         <element name="Stats" positionX="-200" positionY="-82" width="128" height="330"/>
         <element name="Team" positionX="-486" positionY="-322" width="128" height="133"/>

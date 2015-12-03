@@ -38,8 +38,8 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     
     //MARK: Actions
     func addPlayerButtonPressed(sender: UIButton){
-        let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection: sender.tag)!
-        let team = model.teamWithName(sectionTitle)
+        //let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection: sender.tag)!
+        //let team = model.teamWithName(sectionTitle)
         
     }
     

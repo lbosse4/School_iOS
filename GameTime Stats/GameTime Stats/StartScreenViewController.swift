@@ -17,6 +17,7 @@ class StartScreenViewController : UIViewController {
     @IBOutlet weak var viewCurrentTeamsButton: UIButton!
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var directionsLabel: UILabel!
+    @IBOutlet weak var statsHistoryButton: UIButton!
     
     override func viewWillAppear(animated: Bool) {
         if model.teamCount() == 0{
@@ -24,12 +25,16 @@ class StartScreenViewController : UIViewController {
             viewCurrentTeamsButton.alpha = inactiveAlpha
             startGameButton.userInteractionEnabled = false
             startGameButton.alpha = inactiveAlpha
+            statsHistoryButton.userInteractionEnabled = false
+            statsHistoryButton.alpha = inactiveAlpha
             directionsLabel.hidden = false
         } else {
             viewCurrentTeamsButton.userInteractionEnabled = true
             viewCurrentTeamsButton.alpha = activeAlpha
             startGameButton.userInteractionEnabled = true
             startGameButton.alpha = activeAlpha
+            statsHistoryButton.userInteractionEnabled = true
+            statsHistoryButton.alpha = activeAlpha
             directionsLabel.hidden = true
         }
     }
@@ -43,12 +48,20 @@ class StartScreenViewController : UIViewController {
             createTeamController.cancelBlock = {() in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-            
+
         case "viewTeamsSegue":
             let navController = segue.destinationViewController as! UINavigationController
             let viewTeamsController = navController.viewControllers[0] as! ViewTeamsTableViewController
             
             viewTeamsController.cancelBlock = {() in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+        case "statsHistorySegue":
+            let navController = segue.destinationViewController as! UINavigationController
+            let statsHistoryController = navController.viewControllers[0] as! StatsHistoryTableViewController
+            
+            statsHistoryController.cancelBlock = {() in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             

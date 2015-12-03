@@ -373,6 +373,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     @IBAction func cancelGameButtonPressed(sender: UIButton) {
         //TODO: Delete Game object here
         //TODO: Delete all stats objects too??
+        model.deleteGame(currentGame!)
         cancelBlock?()
     }
     
@@ -406,6 +407,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             startButton.alpha = activeAlpha
             startButton.userInteractionEnabled = true
             addStatsObjects()
+        case "View Stats":
+            cancelBlock!()
         default:
             break
         }
