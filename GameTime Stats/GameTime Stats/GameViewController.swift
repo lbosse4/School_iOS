@@ -46,6 +46,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Variables
     var playerViews = [UIView]()
+    var isPlayerAtIndexOnField = [Bool]()
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
@@ -233,6 +234,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             
             singleTapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
             
+            isPlayerAtIndexOnField.append(false)
             playerViews.append(playerView)
             loopCounter += 1
         
@@ -258,13 +260,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         
         var origin : CGPoint
         
-        
-        
         if playerView.tag + 1 > playersPerRow {
             origin = CGPoint(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(playerView.tag - playersPerRow)), y: playerViewMargin + playerViewPaddingHeight)
         } else {
             origin = CGPoint(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(playerView.tag)), y: playerViewMargin)
-            
         }
         
         UIView.animateWithDuration(animationDuration, animations: { () -> Void in
@@ -287,6 +286,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     func checkForCollisions(playerView: UIView) {
         for  currentView in playerViews {
             if (CGRectIntersectsRect(playerView.frame, currentView.frame)) && (currentView.tag != playerView.tag) {
+                isPlayerAtIndexOnField[currentView.tag] = false
                 resetPlayerView(currentView)
             }
         }
@@ -314,12 +314,15 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             case .Ended:
                 let currentLocation = panningView.frame.origin
                 if checkFieldViewBounds(currentLocation, padding: playerViewSize) {
+                    isPlayerAtIndexOnField[panningView.tag] = false
                     resetPlayerView(panningView)
                 } else {
+                    isPlayerAtIndexOnField[panningView.tag] = true
                     checkForCollisions(panningView)
                 }
             
             case .Cancelled:
+                isPlayerAtIndexOnField[panningView.tag] = false
                 resetPlayerView(panningView)
             default:
                 break
@@ -361,6 +364,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     func doubleTappedPlayer(recognizer: UITapGestureRecognizer) {
         if let tappedView = recognizer.view {
+            isPlayerAtIndexOnField[tappedView.tag] = false
             resetPlayerView(tappedView)
         }
     }
