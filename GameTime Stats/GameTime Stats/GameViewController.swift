@@ -75,9 +75,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     @IBOutlet weak var benchScrollview: UIScrollView!
     
     override func viewDidLoad() {
-        //Extract team for current game
-        //TODO: CHANGE THIS TO EXTRACT BASED ON CORRECT TEAM NAME
-        
         
         //for clock - always 2 digits
         formatter.minimumIntegerDigits = 2

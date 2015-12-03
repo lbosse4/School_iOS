@@ -37,7 +37,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     }
     
     //MARK: Actions
-    func showTeamStats(sender: UIButton){
+    func addPlayerButtonPressed(sender: UIButton){
         let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection: sender.tag)!
         let team = model.teamWithName(sectionTitle)
         
@@ -67,6 +67,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         let sectionView = UIView(frame: sectionViewFrame)
         sectionView.backgroundColor = UIColor.blackColor()
         
+        //TODO: TURN THIS INTO A BUTTON
         let teamNameLabelFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - buttonWidth - scrollPadding, height: sectionHeight)
         let teamNameLabel = UILabel(frame: teamNameLabelFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
@@ -77,8 +78,8 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         
         let showTeamStatsButtonFrame = CGRect(x: view.frame.width - buttonWidth - scrollPadding, y: (sectionHeight - buttonHeight)/2, width: buttonWidth, height: buttonHeight)
         let showTeamStatsButton = UIButton(frame: showTeamStatsButtonFrame)
-        showTeamStatsButton.addTarget(self, action: "showTeamStats:", forControlEvents: .TouchUpInside)
-        showTeamStatsButton.setTitle("Team Stats", forState: .Normal)
+        showTeamStatsButton.addTarget(self, action: "addPlayerButtonPressed:", forControlEvents: .TouchUpInside)
+        showTeamStatsButton.setTitle("Add Player", forState: .Normal)
         showTeamStatsButton.titleLabel!.font = buttonFont
         showTeamStatsButton.backgroundColor = darkBlueColor
         showTeamStatsButton.tag = section

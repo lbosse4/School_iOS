@@ -17,9 +17,8 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     
     let model = Model.sharedInstance
     let formatter = NSNumberFormatter()
-    let buttonWidth : CGFloat = 25.0
-    let sectionHeight : CGFloat = 50.0
-    let titleFont = UIFont(name: "Orbitron-Medium", size: 30.0)
+    let sectionHeight : CGFloat = 30.0
+    let titleFont = UIFont(name: "Orbitron-Medium", size: 20.0)
     var team : Team?
     var cancelBlock : (() -> Void)?
     var delegate : TeamCreatedProtocol?
@@ -80,7 +79,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         let sectionView = UIView(frame: sectionViewFrame)
         sectionView.backgroundColor = UIColor.blackColor()
         
-        let playerNameLabelFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - buttonWidth, height: sectionHeight)
+        let playerNameLabelFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: sectionHeight)
         let playerNameLabel = UILabel(frame: playerNameLabelFrame)
         let playerNameFirstLetter = dataSource.tableView(tableView, titleForHeaderInSection: section)
         playerNameLabel.text = playerNameFirstLetter

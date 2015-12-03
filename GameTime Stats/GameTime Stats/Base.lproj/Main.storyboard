@@ -485,35 +485,35 @@
         <scene sceneID="AfA-T6-07S">
             <objects>
                 <tableViewController title="Teams" id="Db2-9T-Dcc" customClass="ViewTeamsTableViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZLX-qb-BMX">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZLX-qb-BMX">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerCell" rowHeight="69" id="4Ah-ZF-hnt" customClass="PlayerTableViewCell" customModule="GameTime_Stats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="768" height="69"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerCell" rowHeight="59" id="4Ah-ZF-hnt" customClass="PlayerTableViewCell" customModule="GameTime_Stats" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="768" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Ah-ZF-hnt" id="UAt-Hp-sML">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="68"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iHm-kH-FFO">
-                                            <rect key="frame" x="8" y="8" width="674" height="25"/>
+                                            <rect key="frame" x="8" y="8" width="674" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="25"/>
+                                            <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="18"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cHm-IF-Mnu">
-                                            <rect key="frame" x="8" y="35" width="118" height="25"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cHm-IF-Mnu">
+                                            <rect key="frame" x="8" y="31" width="84" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="20"/>
+                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RWJ-dx-Pbl">
-                                            <rect key="frame" x="120" y="35" width="40" height="25"/>
+                                            <rect key="frame" x="100" y="31" width="40" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="20"/>
+                                            <fontDescription key="fontDescription" name="Orbitron-Light" family="Orbitron" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -532,7 +532,7 @@
                             <outlet property="delegate" destination="Db2-9T-Dcc" id="v5D-7k-Lu1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="nGg-9K-ueJ">
+                    <navigationItem key="navigationItem" title="Teams" id="nGg-9K-ueJ">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="qJ3-Jd-cxj">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="Db2-9T-Dcc" id="JRJ-H4-Tbf"/>
