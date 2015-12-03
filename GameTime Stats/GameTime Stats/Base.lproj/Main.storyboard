@@ -164,7 +164,7 @@
                                     <color key="titleColor" red="0.62352941179999999" green="0.62352941179999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="A9B-4g-lhP" kind="modal" id="7iZ-Ev-4Ak"/>
+                                    <segue destination="A9B-4g-lhP" kind="modal" identifier="statsHistorySegue" id="7iZ-Ev-4Ak"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cn8-At-tVM">
