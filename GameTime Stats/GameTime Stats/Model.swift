@@ -167,6 +167,12 @@ class Model : DataManagerDelegate {
         return teams[index]
     }
     
+    func teamWithName(teamName : String) -> Team {
+        let predicate = NSPredicate(format: "name == %@", teamName)
+        let teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: predicate) as! [Team]
+        return teams[0]
+    }
+    
     func playersForTeam(team: Team) -> [Player]{
         let teamName = team.name!
         let predicate = NSPredicate(format: "team.name == %@", teamName)

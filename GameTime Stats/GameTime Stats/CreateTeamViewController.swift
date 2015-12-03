@@ -11,7 +11,7 @@ import UIKit
 
 class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCreatedProtocol {
     let model = Model.sharedInstance
-    let maxTeamNameLength = 40
+    let maxTeamNameLength = 25
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
     var team : Team?

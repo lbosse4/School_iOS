@@ -17,6 +17,9 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     
     let model = Model.sharedInstance
     let formatter = NSNumberFormatter()
+    let buttonWidth : CGFloat = 25.0
+    let sectionHeight : CGFloat = 50.0
+    let titleFont = UIFont(name: "Orbitron-Medium", size: 30.0)
     var team : Team?
     var cancelBlock : (() -> Void)?
     var delegate : TeamCreatedProtocol?
@@ -70,41 +73,28 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         delegate?.dismissMe()
     }
     
-   
-
+    
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return model.playerCount()
-//        //TODO: USe this line instead
-//        //return model.numPlayersForTeam(TEAAM)
-//    }
-    
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("addPlayerTableViewCell", forIndexPath: indexPath) as! AddPlayerTableViewCell
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: sectionHeight)
+        let sectionView = UIView(frame: sectionViewFrame)
+        sectionView.backgroundColor = UIColor.blackColor()
         
-        let player = model.playerAtIndex(indexPath.row)
-        let playerName = player.name
-        cell.playerNameLabel.text = playerName
+        let playerNameLabelFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - buttonWidth, height: sectionHeight)
+        let playerNameLabel = UILabel(frame: playerNameLabelFrame)
+        let playerNameFirstLetter = dataSource.tableView(tableView, titleForHeaderInSection: section)
+        playerNameLabel.text = playerNameFirstLetter
+        playerNameLabel.font = titleFont
+        playerNameLabel.textColor = UIColor.whiteColor()
+        playerNameLabel.textAlignment = NSTextAlignment.Center
         
-        let position = player.position
-        cell.positionLabel.text = position
-        
-        let jerseyNumber = player.jerseyNumber
-        let jerseyNumberString = formatter.stringFromNumber(jerseyNumber!)
-        cell.jerseyNumberLabel.text = jerseyNumberString
-        
-        return cell
+        sectionView.addSubview(playerNameLabel)
+        return sectionView
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return sectionHeight
     }
-
     
     //MARK: Prepare for segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
