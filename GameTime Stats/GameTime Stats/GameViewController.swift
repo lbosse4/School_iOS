@@ -378,7 +378,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     @IBAction func startTimerButtonPressed(sender: UIButton) {
         if !gameTimer.valid {
-            gameTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
+            gameTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true) 
         }
     }
     
