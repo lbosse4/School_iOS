@@ -2,7 +2,7 @@
 //  Stats+CoreDataProperties.swift
 //  GameTime Stats
 //
-//  Created by Lauren Bosse on 11/17/15.
+//  Created by Lauren Bosse on 12/3/15.
 //  Copyright © 2015 Lauren Bosse. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -18,6 +18,7 @@ extension Stats {
     @NSManaged var causedTurnovers: NSNumber?
     @NSManaged var clears: NSNumber?
     @NSManaged var drawControls: NSNumber?
+    @NSManaged var secondsLeftAtEnter: NSNumber?
     @NSManaged var freePositionAttempts: NSNumber?
     @NSManaged var freePositionGoals: NSNumber?
     @NSManaged var freePositionPercentage: NSNumber?
@@ -30,8 +31,7 @@ extension Stats {
     @NSManaged var shotPercentage: NSNumber?
     @NSManaged var shotsOnGoal: NSNumber?
     @NSManaged var turnovers: NSNumber?
-    @NSManaged var enterTime: NSDate?
-    @NSManaged var player: Player?
     @NSManaged var period: Period?
+    @NSManaged var player: Player?
 
 }

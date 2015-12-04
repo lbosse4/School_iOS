@@ -182,8 +182,6 @@ class Model : DataManagerDelegate {
     }
     
     func statsForPlayer(player: Player, game: Game, periodType: String) -> Stats{
-       //TODO: MAKE THIS QUERY WITH MULTIPLE PREDICATES
-        //let predicate = NSPredicate(format: <#T##String#>, <#T##args: CVarArgType...##CVarArgType#>)
         var predicatesArray = [NSPredicate]()
         
         let jerseyNumber = player.jerseyNumber!

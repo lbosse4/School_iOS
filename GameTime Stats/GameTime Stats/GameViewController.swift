@@ -30,7 +30,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let formSheetContentSize = CGSize(width: 350.0, height: 400.0)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 0//30
+    let startingMinutes = 1//30
     let startingSeconds = 3
     let maxScore = 100
     let firstHalf = 1
@@ -50,15 +50,15 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
-    var gameTimerMinutes = 0//30
+    var gameTimerMinutes = 1//30
     var gameTimerSeconds = 3
     var homeScore = 0
     var guestScore = 0
     var currentPeriod = PeriodType.FirstHalf
     var cancelBlock : (() -> Void)?
     var isInitialLoad = true
-    var currentGame : Game?
-    var currentTeam : Team?
+    var currentGame : Game!
+    var currentTeam : Team!
     var overtimeChosenAnswer : Int?
     var overtimeMinutes : Int?
     var overtimeSeconds : Int?
@@ -112,6 +112,18 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func updateHalves(){
+        var loopCounter = 0
+        for player in currentPlayers {
+            if isPlayerAtIndexOnField[loopCounter] {
+                let currentSecondsLeft = calculateSecondsLeft()
+                let playerStats = model.statsForPlayer(player, game: currentGame, periodType: currentPeriod)
+                let timeElapsed = Int(playerStats.secondsLeftAtEnter!) - currentSecondsLeft
+                playerStats.secondsPlayed = Int(playerStats.secondsPlayed!) + timeElapsed
+            }
+            
+            loopCounter++
+        }
+        
         switch currentPeriod {
         case PeriodType.FirstHalf:
             //set the new period
@@ -146,8 +158,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                     self.resetButton.setTitle("View Stats", forState: .Normal)
                     self.currentGame!.hasOvertime = false
                 }
-                
-                
             }
             
             self.presentViewController(overtimePromptController, animated: true, completion: nil)
@@ -249,6 +259,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         }
     }
     
+    func calculateSecondsLeft() -> Int {
+        //converts minutes to seconds, maxSeconds is one less than the number of seconds in a minute
+        return gameTimerMinutes*(maxSeconds + 1) + gameTimerSeconds
+    }
+    
     //makes sure that the current location is within the bounds of the field
     //padding works for edge cases for player views - not needed for the popover view.
     func checkFieldViewBounds(currentLocation: CGPoint, padding : CGFloat) -> Bool {
@@ -272,7 +287,13 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 self.benchScrollview.addSubview(playerView)
         }
         
-        //TODO: ADD IN STOP TIMER FUNCTION
+        if isPlayerAtIndexOnField[playerView.tag] {
+            let currentSecondsLeft = calculateSecondsLeft()
+            let playerStats = model.statsForPlayer(currentPlayers[playerView.tag], game: currentGame, periodType: currentPeriod)
+            let timeElapsed = Int(playerStats.secondsLeftAtEnter!) - currentSecondsLeft
+            playerStats.secondsPlayed = Int(playerStats.secondsPlayed!) + timeElapsed
+            
+        }
     }
     
     //move view's center and superview
@@ -286,8 +307,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     func checkForCollisions(playerView: UIView) {
         for  currentView in playerViews {
             if (CGRectIntersectsRect(playerView.frame, currentView.frame)) && (currentView.tag != playerView.tag) {
-                isPlayerAtIndexOnField[currentView.tag] = false
                 resetPlayerView(currentView)
+                isPlayerAtIndexOnField[currentView.tag] = false
             }
         }
     }
@@ -314,16 +335,25 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             case .Ended:
                 let currentLocation = panningView.frame.origin
                 if checkFieldViewBounds(currentLocation, padding: playerViewSize) {
-                    isPlayerAtIndexOnField[panningView.tag] = false
                     resetPlayerView(panningView)
+                    isPlayerAtIndexOnField[panningView.tag] = false
                 } else {
-                    isPlayerAtIndexOnField[panningView.tag] = true
+                    if !isPlayerAtIndexOnField[panningView.tag] {
+//                        let currentTime = NSDate()
+//                        let playerStats = model.statsForPlayer(currentPlayers[panningView.tag], game: currentGame!, periodType: currentPeriod)
+//                        playerStats.enterTime = currentTime
+                        let currentSecondsLeft = calculateSecondsLeft()
+                        let playerStats = model.statsForPlayer(currentPlayers[panningView.tag], game: currentGame, periodType: currentPeriod)
+                        playerStats.secondsLeftAtEnter = currentSecondsLeft
+                    }
                     checkForCollisions(panningView)
+                    isPlayerAtIndexOnField[panningView.tag] = true
                 }
             
             case .Cancelled:
-                isPlayerAtIndexOnField[panningView.tag] = false
                 resetPlayerView(panningView)
+                isPlayerAtIndexOnField[panningView.tag] = false
+
             default:
                 break
             }
@@ -364,8 +394,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     func doubleTappedPlayer(recognizer: UITapGestureRecognizer) {
         if let tappedView = recognizer.view {
-            isPlayerAtIndexOnField[tappedView.tag] = false
             resetPlayerView(tappedView)
+            isPlayerAtIndexOnField[tappedView.tag] = false
         }
     }
     
@@ -408,26 +438,13 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             startButton.userInteractionEnabled = true
             addStatsObjects()
         case "View Stats":
+            //TODO: ADD STATS OVERVIEW VIEWCONTROLLER HERE
             cancelBlock!()
         default:
             break
         }
         
         shouldShowStatsEditor = true
-        
-//        if resetButton.titleForState(.Normal) == "Second Half" {
-//            gameTimer.invalidate()
-//            gameTimerSeconds = startingSeconds
-//            gameTimerMinutes = startingMinutes
-//            updateTimerLabel()
-//            resetButton.hidden = true
-//            resetButton.setTitle("View Stats", forState: .Normal)
-//            startButton.alpha = 1.0
-//            startButton.userInteractionEnabled = true
-//        } else {
-//            //TODO: ADD STATS OVERVIEW VIEWCONTROLLER HERE
-//        }
-        
     }
     
     @IBAction func homeScorePlusButtonPressed(sender: UIButton) {
@@ -472,6 +489,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Recognizer Delegate
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
         if shouldShowStatsEditor {
             return true
         } else {

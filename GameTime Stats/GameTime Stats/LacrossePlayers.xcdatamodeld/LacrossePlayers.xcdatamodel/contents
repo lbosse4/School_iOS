@@ -26,7 +26,6 @@
         <attribute name="causedTurnovers" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="clears" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="drawControls" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="enterTime" optional="YES" transient="YES" attributeType="Date" syncable="YES"/>
         <attribute name="freePositionAttempts" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="freePositionGoals" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="freePositionPercentage" optional="YES" transient="YES" attributeType="Double" minValueString="0" maxValueString="1" defaultValueString="0.0" syncable="YES"/>
@@ -35,6 +34,7 @@
         <attribute name="opponentGoalsScoredAgainst" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="savePercentage" optional="YES" attributeType="Double" minValueString="0" maxValueString="1" defaultValueString="0.0" syncable="YES"/>
         <attribute name="saves" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
+        <attribute name="secondsLeftAtEnter" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="secondsPlayed" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="3600" defaultValueString="0" syncable="YES"/>
         <attribute name="shotPercentage" optional="YES" attributeType="Double" minValueString="0" maxValueString="1" defaultValueString="0" syncable="YES"/>
         <attribute name="shotsOnGoal" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
