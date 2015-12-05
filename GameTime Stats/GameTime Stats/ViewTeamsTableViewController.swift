@@ -129,17 +129,17 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         trashCanButton.addTarget(self, action: "trashCanButtonPressed:", forControlEvents: .TouchUpInside)
         trashCanButton.tag = section
         
-        let showTeamStatsButtonFrame = CGRect(x: view.frame.width - buttonWidth - scrollPadding, y: (sectionHeight - buttonHeight)/2, width: buttonWidth, height: buttonHeight)
-        let showTeamStatsButton = UIButton(frame: showTeamStatsButtonFrame)
-        showTeamStatsButton.addTarget(self, action: "addPlayerButtonPressed:", forControlEvents: .TouchUpInside)
-        showTeamStatsButton.setTitle("Add Player", forState: .Normal)
-        showTeamStatsButton.titleLabel!.font = buttonFont
-        showTeamStatsButton.backgroundColor = darkBlueColor
-        showTeamStatsButton.tag = section
+        let addPlayerButtonFrame = CGRect(x: view.frame.width - buttonWidth - scrollPadding, y: (sectionHeight - buttonHeight)/2, width: buttonWidth, height: buttonHeight)
+        let addPlayerButton = UIButton(frame: addPlayerButtonFrame)
+        addPlayerButton.addTarget(self, action: "addPlayerButtonPressed:", forControlEvents: .TouchUpInside)
+        addPlayerButton.setTitle("Add Player", forState: .Normal)
+        addPlayerButton.titleLabel!.font = buttonFont
+        addPlayerButton.backgroundColor = darkBlueColor
+        addPlayerButton.tag = section
         
         sectionView.addSubview(teamNameButton)
         sectionView.addSubview(trashCanButton)
-        sectionView.addSubview(showTeamStatsButton)
+        sectionView.addSubview(addPlayerButton)
 
         return sectionView
     }

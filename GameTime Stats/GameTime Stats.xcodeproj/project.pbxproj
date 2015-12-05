@@ -48,6 +48,8 @@
 		8970837A1BE040BD008F5D5B /* collegiateHeavyOutline Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 897083731BE034DB008F5D5B /* collegiateHeavyOutline Medium.ttf */; };
 		89774B961BE3CACF007E02B4 /* PlusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89774B951BE3CACF007E02B4 /* PlusIcon.png */; };
 		89774B981BE3CAD4007E02B4 /* MinusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 89774B971BE3CAD4007E02B4 /* MinusIcon.png */; };
+		89A8F9221C1392BC00FF4602 /* GameStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F9211C1392BC00FF4602 /* GameStatsTableViewController.swift */; };
+		89A8F9241C13944400FF4602 /* GameStatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F9231C13944400FF4602 /* GameStatsTableViewCell.swift */; };
 		89DB69B61C137CF40057104E /* TrashCanImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DB69B51C137CF40057104E /* TrashCanImage.png */; };
 		89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6A1BDC657C0051212A /* womensLacrosseField.png */; };
 		89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6C1BDC65820051212A /* mensLacrosseField.png */; };
@@ -121,6 +123,8 @@
 		897083761BE04098008F5D5B /* Grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grass.png; sourceTree = "<group>"; };
 		89774B951BE3CACF007E02B4 /* PlusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlusIcon.png; sourceTree = "<group>"; };
 		89774B971BE3CAD4007E02B4 /* MinusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MinusIcon.png; sourceTree = "<group>"; };
+		89A8F9211C1392BC00FF4602 /* GameStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatsTableViewController.swift; sourceTree = "<group>"; };
+		89A8F9231C13944400FF4602 /* GameStatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatsTableViewCell.swift; sourceTree = "<group>"; };
 		89DB69B51C137CF40057104E /* TrashCanImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrashCanImage.png; sourceTree = "<group>"; };
 		89E30A6A1BDC657C0051212A /* womensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6C1BDC65820051212A /* mensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensLacrosseField.png; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				894BA3391C04D55800CA2D35 /* PlayerTableViewCell.swift */,
 				894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */,
 				89301FC11C10D787001F81A9 /* StatsHistoryTableViewCell.swift */,
+				89A8F9231C13944400FF4602 /* GameStatsTableViewCell.swift */,
 				89774B991BE3CADA007E02B4 /* Button Icons */,
 				89301FB41C10CFD0001F81A9 /* Color Picker Source */,
 				897083721BE03450008F5D5B /* Fonts */,
@@ -217,6 +222,7 @@
 				8935A5C61C0A34E3006508FF /* GameSetupViewController.swift */,
 				8935A5CA1C0AA064006508FF /* OvertimePromptViewController.swift */,
 				89301FBF1C10D716001F81A9 /* StatsHistoryTableViewController.swift */,
+				89A8F9211C1392BC00FF4602 /* GameStatsTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -480,6 +486,7 @@
 				893CB1121C0E41B400D43960 /* ViewTeamsDataSource.swift in Sources */,
 				894BCE3A1BFBBF30008DF1C4 /* Player+CoreDataProperties.swift in Sources */,
 				894BCE3D1BFBBF30008DF1C4 /* Team.swift in Sources */,
+				89A8F9221C1392BC00FF4602 /* GameStatsTableViewController.swift in Sources */,
 				894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */,
 				896C02FB1BFD4CBF00DAC7C7 /* StringUtils.swift in Sources */,
 				894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */,
@@ -502,6 +509,7 @@
 				891ECFA01BF3B2E0009C813D /* LacrossePlayers.xcdatamodeld in Sources */,
 				894BCE3C1BFBBF30008DF1C4 /* Team+CoreDataProperties.swift in Sources */,
 				89301FBE1C10D09D001F81A9 /* SwiftHSVColorPicker.swift in Sources */,
+				89A8F9241C13944400FF4602 /* GameStatsTableViewCell.swift in Sources */,
 				89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */,
 				894BA33C1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift in Sources */,
 				8935A5CB1C0AA064006508FF /* OvertimePromptViewController.swift in Sources */,

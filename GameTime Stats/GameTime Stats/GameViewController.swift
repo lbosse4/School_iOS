@@ -30,7 +30,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let formSheetContentSize = CGSize(width: 350.0, height: 400.0)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 1//30
+    let startingMinutes = 0//30
     let startingSeconds = 3
     let maxScore = 100
     let firstHalf = 1
@@ -50,7 +50,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
-    var gameTimerMinutes = 1//30
+    var gameTimerMinutes = 0//30
     var gameTimerSeconds = 3
     var homeScore = 0
     var guestScore = 0
