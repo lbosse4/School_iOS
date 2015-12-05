@@ -16,8 +16,8 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     let maxJerseyNumberDigits = 2
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
-    var playerName : String?
-    var playerJerseyNumber : String?
+    var playerName : String!
+    var playerJerseyNumber : String!
     var team : Team?
     var chosenPosition = "Defender"
     var cancelBlock : (() -> Void)?
@@ -41,6 +41,7 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
         //indicate to the user that they cannot add a player until they choose all fields
         addPlayerButtonView.alpha = inactiveAlpha
         addPlayerButtonView.userInteractionEnabled = false
+        
     }
     
     //MARK: Helper Functions
@@ -64,7 +65,7 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     //MARK: Actions
     @IBAction func addPlayerButtonPressed(sender: UIButton) {
         playerName = playerNameTextField.text!
-        model.addPlayerWithName(playerName!, team: team!, number: Int(playerJerseyNumber!)!, position: chosenPosition)
+        model.addPlayerWithName(playerName, team: team!, number: Int(playerJerseyNumber)!, position: chosenPosition)
         cancelBlock?()
     }
     

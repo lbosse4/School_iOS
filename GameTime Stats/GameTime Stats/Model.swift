@@ -96,6 +96,10 @@ class Model : DataManagerDelegate {
         return players.count
     }
     
+    func teamCount() -> Int {
+        return teams.count
+    }
+    
     func playerAtIndex(index:Int) -> Player {
         let player = players[index]
         return player
@@ -160,10 +164,6 @@ class Model : DataManagerDelegate {
         }
     }
     
-    func teamCount() -> Int {
-        return teams.count
-    }
-    
     func teamAtIndex(index:Int) -> Team {
         return teams[index]
     }
@@ -209,6 +209,11 @@ class Model : DataManagerDelegate {
     func deleteGame(game : Game){
         let context = self.dataManager.managedObjectContext!
         context.deleteObject(game)
+    }
+    
+    func deleteTeam(team : Team){
+        let context = self.dataManager.managedObjectContext!
+        context.deleteObject(team)
     }
     
 }

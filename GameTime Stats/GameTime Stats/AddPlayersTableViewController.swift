@@ -37,11 +37,17 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         let teamName = team!.name!
         let predicate = NSPredicate(format: "team.name == %@", teamName)
         dataSource.updateWithPredicate(predicate)
+        
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
     }
     
     //MARK: Data Source Cell Configurer

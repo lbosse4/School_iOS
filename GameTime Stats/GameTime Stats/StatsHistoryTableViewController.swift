@@ -50,15 +50,6 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         let homeScore = game!.homeScore!
         let guestScore = game!.guestScore!
         cell.scoreLabel.text = "\(homeScore) to \(guestScore) (opponent)"
-//        let playerName = player!.name
-//        cell.playerNameLabel.text = playerName
-//        
-//        let position = player?.position
-//        cell.positionLabel.text = position
-//        
-//        let jerseyNumber = player?.jerseyNumber
-//        let jerseyNumberString = formatter.stringFromNumber(jerseyNumber!)
-//        cell.jerseyNumberLabel.text = jerseyNumberString
     }
 
     

@@ -13,8 +13,11 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     let model = Model.sharedInstance
     let formatter = NSNumberFormatter()
     let buttonWidth : CGFloat = 140.0
+    let trashCanButtonWidth : CGFloat = 30.0
+    let trashCanButtonHeight : CGFloat = 35.0
     let buttonHeight : CGFloat = 35.0
     let scrollPadding : CGFloat = 45.0
+    let trashCanPadding : CGFloat = 10.0
     let sectionHeight : CGFloat = 50.0
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.84, alpha: 1.0)
     let titleFont = UIFont(name: "Orbitron-Medium", size: 20.0)
@@ -23,6 +26,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     lazy var dataSource : ViewTeamsDataSource = ViewTeamsDataSource(entity: "Player", sortKeys: ["team.name", "jerseyNumber"], predicate: nil, sectionNameKeyPath: "team.name", delegate: self.model)
     
     var cancelBlock : (() -> Void)?
+    var collapsedSections = [Bool]()
     
     override func viewDidLoad() {
         formatter.minimumIntegerDigits = 2
@@ -30,17 +34,53 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         dataSource.delegate = self
         dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
         tableView.dataSource = dataSource
+        
+        for _ in 0..<model.teamCount() {
+            collapsedSections.append(false)
+        }
+        
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+    }
+    
+    //MARK: Actions
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
         cancelBlock?()
     }
     
-    //MARK: Actions
-    func addPlayerButtonPressed(sender: UIButton){
-        //let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection: sender.tag)!
-        //let team = model.teamWithName(sectionTitle)
+    func trashCanButtonPressed(sender: UIButton){
+        let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection: sender.tag)!
+        let team = model.teamWithName(sectionTitle)
         
+        model.deleteTeam(team)
+        self.tableView.reloadData()
+    }
+    
+    func addPlayerButtonPressed(sender: UIButton){
+        let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection: sender.tag)!
+        let team = model.teamWithName(sectionTitle)
+        
+        let addPlayerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddPlayerViewController") as! AddPlayerViewController
+        
+        addPlayerViewController.team = team
+        addPlayerViewController.cancelBlock = {() in
+            self.dismissViewControllerAnimated(true, completion: nil)
+            //self.navigationController?.popViewControllerAnimated(true)
+            self.tableView.reloadData()
+        }
+        
+        //self.navigationController?.addChildViewController(addPlayerViewController)
+        //self.navigationController?.presentViewController(addPlayerViewController, animated: true, completion: nil)
+        self.presentViewController(addPlayerViewController, animated: true, completion: nil)
+    }
+    
+    func collapseSection(sender: UIButton){
+        collapsedSections[sender.tag] = !collapsedSections[sender.tag]
+        let indexSet = NSIndexSet(index: sender.tag)
+        tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
     }
     
     //MARK: Data Source Cell Configurer
@@ -68,13 +108,26 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         sectionView.backgroundColor = UIColor.blackColor()
         
         //TODO: TURN THIS INTO A BUTTON
-        let teamNameLabelFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - buttonWidth - scrollPadding, height: sectionHeight)
-        let teamNameLabel = UILabel(frame: teamNameLabelFrame)
+        let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - buttonWidth - scrollPadding, height: sectionHeight)
+        let teamNameButton = UIButton(frame: teamNameButtonFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
-        teamNameLabel.text = teamName
-        teamNameLabel.font = titleFont
-        teamNameLabel.textColor = UIColor.whiteColor()
-        teamNameLabel.textAlignment = NSTextAlignment.Center
+        teamNameButton.setTitle(teamName, forState: .Normal)
+        teamNameButton.titleLabel!.font = titleFont
+        teamNameButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        teamNameButton.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
+        teamNameButton.tag = section
+        
+        //teamNameLabel.text = teamName
+        //teamNameLabel.font = titleFont
+        //teamNameLabel.textColor = UIColor.whiteColor()
+        //teamNameLabel.textAlignment = NSTextAlignment.Center
+        
+        let trashCanButtonFrame = CGRect(x:view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding - trashCanPadding, y: (sectionHeight - trashCanButtonHeight)/2, width: trashCanButtonWidth, height: trashCanButtonHeight)
+        let trashCanButton = UIButton(frame: trashCanButtonFrame)
+        let trashCanImage = UIImage(named: "TrashCanImage.png")
+        trashCanButton.setBackgroundImage(trashCanImage, forState: .Normal)
+        trashCanButton.addTarget(self, action: "trashCanButtonPressed:", forControlEvents: .TouchUpInside)
+        trashCanButton.tag = section
         
         let showTeamStatsButtonFrame = CGRect(x: view.frame.width - buttonWidth - scrollPadding, y: (sectionHeight - buttonHeight)/2, width: buttonWidth, height: buttonHeight)
         let showTeamStatsButton = UIButton(frame: showTeamStatsButtonFrame)
@@ -84,10 +137,22 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         showTeamStatsButton.backgroundColor = darkBlueColor
         showTeamStatsButton.tag = section
         
-        sectionView.addSubview(teamNameLabel)
+        sectionView.addSubview(teamNameButton)
+        sectionView.addSubview(trashCanButton)
         sectionView.addSubview(showTeamStatsButton)
 
         return sectionView
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if collapsedSections[section] {
+            return 0
+        } else {
+            let team = model.teamAtIndex(section)
+            let players = model.playersForTeam(team)
+            return players.count
+        }
+        
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
