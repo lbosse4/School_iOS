@@ -36,12 +36,6 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
         dataSource.updateWithPredicate(predicate)
     }
     
-    //MARK: Actions
-    func showTeamStatsButtonPressed(sender: UIButton){
-        let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection: sender.tag)!
-        let team = model.teamWithName(sectionTitle)
-    }
-    
     //MARK: Data Source Cell Configurer
     func cellIdentifierForObject(object: NSManagedObject) -> String {
         return "gameStatsCell"

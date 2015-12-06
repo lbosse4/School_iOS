@@ -5,7 +5,7 @@
         <attribute name="guestScore" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
         <attribute name="hasOvertime" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="homeScore" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
-        <attribute name="opponentName" optional="YES" attributeType="String" minValueString="0" maxValueString="40" syncable="YES"/>
+        <attribute name="opponentName" optional="YES" attributeType="String" minValueString="0" maxValueString="20" syncable="YES"/>
         <relationship name="periods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Period" inverseName="game" inverseEntity="Period" syncable="YES"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="games" inverseEntity="Team" syncable="YES"/>
     </entity>
@@ -16,7 +16,7 @@
     </entity>
     <entity name="Player" representedClassName=".Player" syncable="YES">
         <attribute name="jerseyNumber" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="99" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" minValueString="0" maxValueString="30" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="0" maxValueString="25" syncable="YES"/>
         <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="stats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stats" inverseName="player" inverseEntity="Stats" syncable="YES"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="players" inverseEntity="Team" syncable="YES"/>

@@ -18,7 +18,7 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     let model = Model.sharedInstance
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
-    let maxPlayerNameLength = 40
+    let maxPlayerNameLength = 20
     
     //MARK: Variables
     var chosenTeam : Team?

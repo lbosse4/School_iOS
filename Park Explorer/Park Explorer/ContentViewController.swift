@@ -18,15 +18,15 @@ class ContentViewController : UIViewController {
     
     var pageIndex: Int?
     
-    func configure(pageInstructionImageName : String, index : Int){
-        pageIndex = index
-        instructionImageName = pageInstructionImageName
-    }
-    
     override func viewDidLoad() {
         let image = UIImage(named: instructionImageName!)
         instructionImageView.image = image
         instructionImageView.contentMode = UIViewContentMode.ScaleAspectFit
+    }
+    
+    func configure(pageInstructionImageName : String, index : Int){
+        pageIndex = index
+        instructionImageName = pageInstructionImageName
     }
 
     func viewControllerAtIndex(index:Int) -> UIViewController {

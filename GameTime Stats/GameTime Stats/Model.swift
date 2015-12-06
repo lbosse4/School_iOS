@@ -34,6 +34,7 @@ class Model : DataManagerDelegate {
     static let sharedInstance = Model()
     
     let dataManager = DataManager.sharedInstance
+    let numPeriodTypes = 3
     var teams : [Team]!
     var players : [Player]!
 
@@ -98,6 +99,10 @@ class Model : DataManagerDelegate {
     
     func teamCount() -> Int {
         return teams.count
+    }
+    
+    func numberOfPeriodTypes() -> Int {
+        return numPeriodTypes
     }
     
     func updateTeamsAndPlayers(){

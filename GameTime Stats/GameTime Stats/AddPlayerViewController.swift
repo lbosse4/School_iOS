@@ -12,7 +12,7 @@ import UIKit
 class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
     let model = Model.sharedInstance
     let numberOfPositions = 4
-    let maxPlayerNameLength = 30
+    let maxPlayerNameLength = 25
     let maxJerseyNumberDigits = 2
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0

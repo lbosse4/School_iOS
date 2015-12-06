@@ -53,6 +53,7 @@
 		89A8F9261C13A23500FF4602 /* GameStatsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F9251C13A23500FF4602 /* GameStatsDataSource.swift */; };
 		89A8F92E1C13E7CA00FF4602 /* PlayerStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F92D1C13E7CA00FF4602 /* PlayerStatsViewController.swift */; };
 		89A8F9301C13F64E00FF4602 /* TeamStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */; };
+		89A8F9321C13FE1700FF4602 /* PlayerStatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */; };
 		89DB69B61C137CF40057104E /* TrashCanImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DB69B51C137CF40057104E /* TrashCanImage.png */; };
 		89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6A1BDC657C0051212A /* womensLacrosseField.png */; };
 		89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6C1BDC65820051212A /* mensLacrosseField.png */; };
@@ -131,6 +132,7 @@
 		89A8F9251C13A23500FF4602 /* GameStatsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatsDataSource.swift; sourceTree = "<group>"; };
 		89A8F92D1C13E7CA00FF4602 /* PlayerStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatsViewController.swift; sourceTree = "<group>"; };
 		89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsViewController.swift; sourceTree = "<group>"; };
+		89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatsDetailViewController.swift; sourceTree = "<group>"; };
 		89DB69B51C137CF40057104E /* TrashCanImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrashCanImage.png; sourceTree = "<group>"; };
 		89E30A6A1BDC657C0051212A /* womensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6C1BDC65820051212A /* mensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensLacrosseField.png; sourceTree = "<group>"; };
@@ -295,8 +297,9 @@
 			children = (
 				89301FBF1C10D716001F81A9 /* StatsHistoryTableViewController.swift */,
 				89A8F9211C1392BC00FF4602 /* GameStatsTableViewController.swift */,
-				89A8F92D1C13E7CA00FF4602 /* PlayerStatsViewController.swift */,
 				89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */,
+				89A8F92D1C13E7CA00FF4602 /* PlayerStatsViewController.swift */,
+				89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */,
 			);
 			name = "Stats History";
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				893CB1121C0E41B400D43960 /* ViewTeamsDataSource.swift in Sources */,
 				894BCE3A1BFBBF30008DF1C4 /* Player+CoreDataProperties.swift in Sources */,
 				894BCE3D1BFBBF30008DF1C4 /* Team.swift in Sources */,
+				89A8F9321C13FE1700FF4602 /* PlayerStatsDetailViewController.swift in Sources */,
 				89A8F9261C13A23500FF4602 /* GameStatsDataSource.swift in Sources */,
 				89A8F9221C1392BC00FF4602 /* GameStatsTableViewController.swift in Sources */,
 				894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */,
