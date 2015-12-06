@@ -100,6 +100,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             gameTimer.invalidate()
             shouldShowStatsEditor = false
             updateHalves()
+            //make sure all of the data is saved
+            model.saveDMContext()
         } else {
             if gameTimerSeconds == 0 {
                 gameTimerMinutes--
@@ -403,8 +405,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Actions
     @IBAction func cancelGameButtonPressed(sender: UIButton) {
-        //TODO: Delete Game object here
-        //TODO: Delete all stats objects too??
         model.deleteGame(currentGame!)
         cancelBlock?()
     }
@@ -440,18 +440,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 }
                 loopCounter++
             }
-            
-            //TODO: ADD seconds left here
-            
-            
-            
-            //            if isPlayerAtIndexOnField[playerView.tag] {
-            //                let currentSecondsLeft = calculateSecondsLeft()
-            //                let playerStats = model.statsForPlayer(currentPlayers[playerView.tag], game: currentGame, periodType: currentPeriod)
-            //                let timeElapsed = Int(playerStats.secondsLeftAtEnter!) - currentSecondsLeft
-            //                playerStats.secondsPlayed = Int(playerStats.secondsPlayed!) + timeElapsed
-            //                
-            //            }
             
         case PeriodType.Overtime:
             gameTimer.invalidate()
@@ -514,7 +502,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Recognizer Delegate
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        //TODO: FIGURE OUT WHY THIS IS NOT WORKING
+        //TODO: Make sure THIS IS WORKING
         if shouldShowStatsEditor {
             return true
         } else {

@@ -88,6 +88,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         return "playerCell"
     }
     
+    //TODO: FIGURE OUT HOW TO HIDE SECTIONS WITH CONFIGURE CELL
     func configureCell(let cell: PlayerTableViewCell, withObject object: NSManagedObject) {
         let player = object as? Player
         let playerName = player!.name
@@ -107,7 +108,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         let sectionView = UIView(frame: sectionViewFrame)
         sectionView.backgroundColor = UIColor.blackColor()
         
-        //TODO: TURN THIS INTO A BUTTON
+        //clickable to allow collapsable sections
         let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - buttonWidth - scrollPadding, height: sectionHeight)
         let teamNameButton = UIButton(frame: teamNameButtonFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
@@ -117,11 +118,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         teamNameButton.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
         teamNameButton.tag = section
         
-        //teamNameLabel.text = teamName
-        //teamNameLabel.font = titleFont
-        //teamNameLabel.textColor = UIColor.whiteColor()
-        //teamNameLabel.textAlignment = NSTextAlignment.Center
-        
+        //Button to delete team
         let trashCanButtonFrame = CGRect(x:view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding - trashCanPadding, y: (sectionHeight - trashCanButtonHeight)/2, width: trashCanButtonWidth, height: trashCanButtonHeight)
         let trashCanButton = UIButton(frame: trashCanButtonFrame)
         let trashCanImage = UIImage(named: "TrashCanImage.png")
@@ -129,6 +126,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         trashCanButton.addTarget(self, action: "trashCanButtonPressed:", forControlEvents: .TouchUpInside)
         trashCanButton.tag = section
         
+        //add a player to a specific tea,m
         let addPlayerButtonFrame = CGRect(x: view.frame.width - buttonWidth - scrollPadding, y: (sectionHeight - buttonHeight)/2, width: buttonWidth, height: buttonHeight)
         let addPlayerButton = UIButton(frame: addPlayerButtonFrame)
         addPlayerButton.addTarget(self, action: "addPlayerButtonPressed:", forControlEvents: .TouchUpInside)

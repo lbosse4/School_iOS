@@ -22,18 +22,20 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     var team : Team?
     var cancelBlock : (() -> Void)?
     var delegate : TeamCreatedProtocol?
-    //TODO: UPDATE FILTER TO ONLY INCLUD ECURRENT TEAM
     lazy var dataSource : AddPlayerDataSource = AddPlayerDataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //make sure every number always displays 2 numbers
         formatter.minimumIntegerDigits = 2
         
+        //datasource setup
         dataSource.delegate = self
         dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
         tableView.dataSource = dataSource
         
+        //set up tableview
         let teamName = team!.name!
         let predicate = NSPredicate(format: "team.name == %@", teamName)
         dataSource.updateWithPredicate(predicate)
@@ -82,6 +84,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         let sectionView = UIView(frame: sectionViewFrame)
         sectionView.backgroundColor = UIColor.blackColor()
         
+        //view for playername first letter
         let playerNameLabelFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: sectionHeight)
         let playerNameLabel = UILabel(frame: playerNameLabelFrame)
         let playerNameFirstLetter = dataSource.tableView(tableView, titleForHeaderInSection: section)

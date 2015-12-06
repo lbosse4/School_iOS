@@ -43,6 +43,7 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
     }
     
     func collapseSection(sender: UIButton){
+        //toggle whether or not the user is showing the rows in that section
         collapsedSections[sender.tag] = !collapsedSections[sender.tag]
         let indexSet = NSIndexSet(index: sender.tag)
         tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
@@ -73,7 +74,7 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         let sectionView = UIView(frame: sectionViewFrame)
         sectionView.backgroundColor = UIColor.blackColor()
         
-        //TODO: TURN THIS INTO A BUTTON
+        //for collapsable sections
         let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - scrollPadding, height: sectionHeight)
         let teamNameButton = UIButton(frame: teamNameButtonFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)

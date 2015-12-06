@@ -5,6 +5,7 @@
 //  Created by Lauren Bosse on 11/28/15.
 //  Copyright © 2015 Lauren Bosse. All rights reserved.
 //
+//  All textField manipulation code came from the source listed in the StringUtils.swift file
 
 import UIKit
 
@@ -45,6 +46,7 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     }
     
     //MARK: Helper Functions
+    //make sure text fields are filled out
     func checkOpponentTeamNameLength(){
         if opponentTeamNameTextField.text != "" {
             startGameButtonView.userInteractionEnabled = true

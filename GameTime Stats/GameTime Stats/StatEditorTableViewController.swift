@@ -111,11 +111,11 @@ class StatEditorTableViewController: UITableViewController {
     //MARK: Actions
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
         //dismiss the view controller
+        model.saveDMContext()
         cancelBlock?()
     }
     
     //set values for stepper 
-    //TODO: SAVE HERE
     @IBAction func stepperToggled(sender: UIStepper) {
         switch sender.tag {
         case 0:
@@ -169,6 +169,7 @@ class StatEditorTableViewController: UITableViewController {
         default:
             break
         }
+        
     }
     
 }

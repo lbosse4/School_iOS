@@ -5,6 +5,7 @@
 //  Created by Lauren Bosse on 11/28/15.
 //  Copyright © 2015 Lauren Bosse. All rights reserved.
 //
+//  All textField manipulation code came from the source listed in the StringUtils.swift file
 
 import UIKit
 
@@ -33,14 +34,17 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
         //if textfields are active, and are filled, let the user continue
         if overtimeMinutesTextField.text != "" && chosenAnswer == yes {
             if overtimeSecondsTextField.text != "" {
+                //show the continue button as active becuase both text fields are filled out
                 continueButtonView.alpha = activeAlpha
                 continueButtonView.userInteractionEnabled = true
             }
         } else {
+            //Show the continue button because the user does not need to fill out text fields
             if chosenAnswer == no {
                 continueButtonView.alpha = activeAlpha
                 continueButtonView.userInteractionEnabled = true
             } else {
+                //user needs to fill out text fields. Hide contiinue
                 continueButtonView.alpha = inactiveAlpha
                 continueButtonView.userInteractionEnabled = false
             }
@@ -49,6 +53,8 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
     
     //MARK: Actions
     @IBAction func yesOrNoChosen(sender: UISegmentedControl) {
+        //user's decision for overtime
+        //show text fields if necessary
         switch sender.selectedSegmentIndex {
         case 0:
             chosenAnswer = no
@@ -63,14 +69,17 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
             break
         }
         
+        //show continue nbutton if text fields are filled out
         checkTextFields()
     }
     
     @IBAction func continueButtonPressed(sender: UIButton) {
         if chosenAnswer == yes {
+            //used as time fields for overtime
             let otMin = Int(overtimeMinutesTextField.text!)!
             let otSec = Int(overtimeSecondsTextField.text!)!
             
+            //make sure seconds are valid
             if otSec > maxSeconds {
                 let alert = UIAlertController(title: "Invalid Seconds", message: "Overtime seconds must be less than \(maxSeconds + 1)", preferredStyle: UIAlertControllerStyle.Alert)
                 let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
@@ -91,6 +100,7 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
         return true
     }
     
+    //see string utils file for documentation
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // We still return true to allow the change to take place.
         if string.characters.count == 0 {

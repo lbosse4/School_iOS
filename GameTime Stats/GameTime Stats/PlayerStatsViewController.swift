@@ -8,9 +8,9 @@
 
 import UIKit
 
+//player stats page view source
 class PlayerStatsViewController: UIViewController, UIPageViewControllerDataSource{
     let model = Model.sharedInstance
-    
     
     var pageViewController : UIPageViewController?
     var player : Player!
@@ -52,6 +52,7 @@ class PlayerStatsViewController: UIViewController, UIPageViewControllerDataSourc
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        //TODO: Change this so that it reflects the actual number of stats objects for that player. the game can crash and only have one half save.
         let contentViewController = viewController as! PlayerStatsDetailViewController
         var index = contentViewController.pageIndex!
         

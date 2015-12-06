@@ -20,7 +20,9 @@ class StartScreenViewController : UIViewController {
     @IBOutlet weak var statsHistoryButton: UIButton!
     
     override func viewWillAppear(animated: Bool) {
+        //user can only access other functions if a team is made
         if model.teamCount() == 0{
+            //make other features inactive
             viewCurrentTeamsButton.userInteractionEnabled = false
             viewCurrentTeamsButton.alpha = inactiveAlpha
             startGameButton.userInteractionEnabled = false
@@ -29,6 +31,7 @@ class StartScreenViewController : UIViewController {
             statsHistoryButton.alpha = inactiveAlpha
             directionsLabel.hidden = false
         } else {
+            //make other features active
             viewCurrentTeamsButton.userInteractionEnabled = true
             viewCurrentTeamsButton.alpha = activeAlpha
             startGameButton.userInteractionEnabled = true

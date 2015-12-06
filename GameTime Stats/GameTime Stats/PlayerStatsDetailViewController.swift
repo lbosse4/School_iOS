@@ -35,11 +35,14 @@ class PlayerStatsDetailViewController: UIViewController {
     @IBOutlet weak var turnoversLabel: UILabel!
     @IBOutlet weak var timePlayedLabel: UILabel!
     
+    @IBOutlet weak var directionsLabel: UILabel!
     
     let model = Model.sharedInstance
     let dateFormatter = NSDateFormatter()
     let formatter = NSNumberFormatter()
     let secondsPerMinute : Int = 60
+    let numPeriodsWithOvertime = 3
+    let numPeriodsWithoutOvertime = 2
     
     var pageIndex: Int?
     var player: Player!
@@ -50,6 +53,22 @@ class PlayerStatsDetailViewController: UIViewController {
         dateFormatter.dateStyle = .MediumStyle
         formatter.minimumIntegerDigits = 2
         formatter.maximumFractionDigits = 2
+        
+        //if the user has reached the last page, do not direct them to continue to swipe
+        if Bool(game.hasOvertime!) {
+            
+            if pageIndex == numPeriodsWithOvertime - 1 {
+                directionsLabel.hidden = true
+            } else {
+                directionsLabel.hidden = false
+            }
+        } else {
+            if pageIndex == numPeriodsWithoutOvertime - 1 {
+                directionsLabel.hidden = true
+            } else {
+                directionsLabel.hidden = false
+            }
+        }
         
         //MARK: Setting Title/Constants
         let playerName = player.name!
@@ -157,9 +176,6 @@ class PlayerStatsDetailViewController: UIViewController {
         let secondsPlayed : Int = Int(overallSecondsPlayed) % secondsPerMinute
         let secondsPlayedString = formatter.stringFromNumber(secondsPlayed)
         timePlayedLabel.text = "\(minutesPlayedString!):\(secondsPlayedString!)"
-        
-        
-        
     }
     
     func configure(player : Player, game : Game, index : Int){

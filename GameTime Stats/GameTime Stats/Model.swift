@@ -49,54 +49,25 @@ class Model : DataManagerDelegate {
     }
     
     func createDatabase() {
-        /*
-        let t = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Team, inManagedObjectContext: dataManager.managedObjectContext!) as! Team
-        let g = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Game, inManagedObjectContext: dataManager.managedObjectContext!) as! Game
-        
-        t.name = "Melizza Rox"
-        g.team = t
-        g.opponentName = "Losers"
-        g.date = NSDate()
-        
-        for i in 0..<12 {
-            let p = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Player, inManagedObjectContext: dataManager.managedObjectContext!) as! Player
-            p.name = "Player\(i)"
-            p.jerseyNumber = i
-            p.team = t
-            p.position = PositionsKey.Defender
-            
-            let s = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Stats, inManagedObjectContext: dataManager.managedObjectContext!) as! Stats
-            s.assists = 0
-            s.causedTurnovers = 0
-            s.clears = 0
-            s.drawControls = 0
-            s.freePositionAttempts = 0
-            s.freePositionGoals = 0
-            s.freePositionPercentage = 0.0
-            s.goals = 0
-            s.groundBalls = 0
-            s.opponentGoalsScoredAgainst = 0
-            s.savePercentage = 0.0
-            s.saves = 0
-            s.shotPercentage = 0.0
-            s.shotsOnGoal = 0
-            s.turnovers = 0
-            //s.game = g
-            s.player = p
-        }
-        dataManager.saveContext()*/
-        
         dataManager.saveContext()
     }
     
+    //Save the datamanager context
+    func saveDMContext(){
+        dataManager.saveContext()
+    }
+    
+    //all players in database
     func tstPlayers() -> [Player] {
         return players
     }
     
+    //number of players in the database
     func playerCount() -> Int {
         return players.count
     }
     
+    //number of teams in database
     func teamCount() -> Int {
         return teams.count
     }
@@ -105,9 +76,14 @@ class Model : DataManagerDelegate {
         return numPeriodTypes
     }
     
+    //makes sure teams nd players are synced with datamanager
     func updateTeamsAndPlayers(){
         teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
         players = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
+    }
+    
+    func teamAtIndex(index:Int) -> Team {
+        return teams[index]
     }
     
     func playerAtIndex(index:Int) -> Player {
@@ -159,6 +135,7 @@ class Model : DataManagerDelegate {
         return teamObj
     }
     
+    //essentially an enum for positions
     func positionAtIndex(index: Int) -> String {
         switch index {
         case 0:
@@ -172,10 +149,6 @@ class Model : DataManagerDelegate {
         default:
             return ""
         }
-    }
-    
-    func teamAtIndex(index:Int) -> Team {
-        return teams[index]
     }
     
     func teamWithName(teamName : String) -> Team {
@@ -220,7 +193,6 @@ class Model : DataManagerDelegate {
         predicatesArray.append(pred4)
         
         let compound = NSCompoundPredicate(andPredicateWithSubpredicates: predicatesArray)
-//        let statsObj = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Stats, sortKeys: ["player.name"], predicate: compound) as! [Stats]
         let statsObj = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Stats, sortKeys: ["period.type"], predicate: compound) as! [Stats]
         
         return statsObj[0]
