@@ -119,6 +119,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 let playerStats = model.statsForPlayer(player, game: currentGame, periodType: currentPeriod)
                 let timeElapsed = Int(playerStats.secondsLeftAtEnter!) - currentSecondsLeft
                 playerStats.secondsPlayed = Int(playerStats.secondsPlayed!) + timeElapsed
+            
             }
             
             loopCounter++
@@ -428,6 +429,29 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             startButton.alpha = activeAlpha
             startButton.userInteractionEnabled = true
             addStatsObjects()
+            
+            var loopCounter = 0
+            for player in currentPlayers {
+                if isPlayerAtIndexOnField[loopCounter]{
+                    let currentSecondsLeft = calculateSecondsLeft()
+                    let playerStats = model.statsForPlayer(player, game: currentGame, periodType: currentPeriod)
+                    playerStats.secondsLeftAtEnter = currentSecondsLeft
+                }
+                loopCounter++
+            }
+            
+            //TODO: ADD seconds left here
+            
+            
+            
+            //            if isPlayerAtIndexOnField[playerView.tag] {
+            //                let currentSecondsLeft = calculateSecondsLeft()
+            //                let playerStats = model.statsForPlayer(currentPlayers[playerView.tag], game: currentGame, periodType: currentPeriod)
+            //                let timeElapsed = Int(playerStats.secondsLeftAtEnter!) - currentSecondsLeft
+            //                playerStats.secondsPlayed = Int(playerStats.secondsPlayed!) + timeElapsed
+            //                
+            //            }
+            
         case PeriodType.Overtime:
             gameTimer.invalidate()
             gameTimerMinutes = overtimeMinutes!

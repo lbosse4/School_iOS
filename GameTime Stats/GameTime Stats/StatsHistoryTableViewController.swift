@@ -14,14 +14,10 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
     let formatter = NSNumberFormatter()
     let dateFormatter = NSDateFormatter()
     let sectionHeight : CGFloat = 50.0
-    let buttonWidth : CGFloat = 140.0
-    let buttonHeight : CGFloat = 35.0
     let scrollPadding : CGFloat = 45.0
     let titleFont = UIFont(name: "Orbitron-Medium", size: 20.0)
-    let buttonFont = UIFont(name: "Orbitron-Light", size: 18.0)
-    let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.84, alpha: 1.0)
+    
     var collapsedSections = [Bool]()
-
     var cancelBlock : (() -> Void)?
     
     lazy var dataSource : StatsHistoryDataSource = StatsHistoryDataSource(entity: "Game", sortKeys: ["team.name", "date"], predicate: nil, sectionNameKeyPath: "team.name", delegate: self.model)
@@ -52,11 +48,6 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
     }
     
-    func showTeamStatsButtonPressed(sender: UIButton){
-        let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection: sender.tag)!
-        let team = model.teamWithName(sectionTitle)
-    }
-    
     //MARK: Data Source Cell Configurer
     func cellIdentifierForObject(object: NSManagedObject) -> String {
         return "gameCell"
@@ -83,7 +74,7 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         sectionView.backgroundColor = UIColor.blackColor()
         
         //TODO: TURN THIS INTO A BUTTON
-        let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - buttonWidth - scrollPadding, height: sectionHeight)
+        let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - scrollPadding, height: sectionHeight)
         let teamNameButton = UIButton(frame: teamNameButtonFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
         teamNameButton.setTitle(teamName, forState: .Normal)
@@ -92,16 +83,7 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         teamNameButton.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
         teamNameButton.tag = section
         
-        let showTeamStatsButtonFrame = CGRect(x: view.frame.width - buttonWidth - scrollPadding, y: (sectionHeight - buttonHeight)/2, width: buttonWidth, height: buttonHeight)
-        let showTeamStatsButton = UIButton(frame: showTeamStatsButtonFrame)
-        showTeamStatsButton.addTarget(self, action: "showTeamStatsButtonPressed:", forControlEvents: .TouchUpInside)
-        showTeamStatsButton.setTitle("Team Stats", forState: .Normal)
-        showTeamStatsButton.titleLabel!.font = buttonFont
-        showTeamStatsButton.backgroundColor = darkBlueColor
-        showTeamStatsButton.tag = section
-        
         sectionView.addSubview(teamNameButton)
-        sectionView.addSubview(showTeamStatsButton)
         
         return sectionView
     }
@@ -119,6 +101,21 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeight
+    }
+    
+    //MARK: Prepare for Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "gameStatsTableViewSegue":
+            let gameStatsTableViewController = segue.destinationViewController as! GameStatsTableViewController
+            let indexPath = tableView.indexPathForSelectedRow
+            let game = dataSource.objectAtIndexPath(indexPath!) as! Game
+            let team = game.team!
+            gameStatsTableViewController.game = game
+            gameStatsTableViewController.team = team
+        default:
+            break
+        }
     }
     
 }

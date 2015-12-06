@@ -100,6 +100,11 @@ class Model : DataManagerDelegate {
         return teams.count
     }
     
+    func updateTeamsAndPlayers(){
+        teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
+        players = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
+    }
+    
     func playerAtIndex(index:Int) -> Player {
         let player = players[index]
         return player
@@ -115,8 +120,8 @@ class Model : DataManagerDelegate {
         playerObj.position = position
         
         dataManager.saveContext()
-        players = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
-        
+        //players = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
+        updateTeamsAndPlayers()
     }
     
     func addGameObject(team : Team, date : NSDate, opponentTeamName : String) -> Game {
@@ -144,8 +149,8 @@ class Model : DataManagerDelegate {
         let teamObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Team, inManagedObjectContext: dataManager.managedObjectContext!) as! Team
         teamObj.name = name
         dataManager.saveContext()
-        teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
-        
+        //teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
+        updateTeamsAndPlayers()
         return teamObj
     }
     
@@ -210,7 +215,8 @@ class Model : DataManagerDelegate {
         predicatesArray.append(pred4)
         
         let compound = NSCompoundPredicate(andPredicateWithSubpredicates: predicatesArray)
-        let statsObj = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Stats, sortKeys: ["player.name"], predicate: compound) as! [Stats]
+//        let statsObj = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Stats, sortKeys: ["player.name"], predicate: compound) as! [Stats]
+        let statsObj = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Stats, sortKeys: ["period.type"], predicate: compound) as! [Stats]
         
         return statsObj[0]
     }
@@ -218,11 +224,13 @@ class Model : DataManagerDelegate {
     func deleteGame(game : Game){
         let context = self.dataManager.managedObjectContext!
         context.deleteObject(game)
+        updateTeamsAndPlayers()
     }
     
     func deleteTeam(team : Team){
         let context = self.dataManager.managedObjectContext!
         context.deleteObject(team)
+        updateTeamsAndPlayers()
     }
     
 }
