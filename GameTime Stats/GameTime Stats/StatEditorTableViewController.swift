@@ -61,39 +61,51 @@ class StatEditorTableViewController: UITableViewController {
         
         let numAssists = stats.assists!
         assistsLabel.text = formatter.stringFromNumber( numAssists)
+        assistsStepper.value = Double(numAssists)
         
         let numCausedTurnovers = stats.causedTurnovers!
         causedTurnoversLabel.text = formatter.stringFromNumber(numCausedTurnovers)
+        causedTurnoversStepper.value = Double(numCausedTurnovers)
         
         let numClears = stats.clears!
         clearsLabel.text = formatter.stringFromNumber(numClears)
+        clearsStepper.value = Double(numClears)
         
         let numDrawControls = stats.drawControls!
         drawControlsLabel.text = formatter.stringFromNumber(numDrawControls)
+        drawControlsStepper.value = Double(numDrawControls)
         
         let numFreePositionAttempts = stats.freePositionAttempts!
         freePositionAttemptsLabel.text = formatter.stringFromNumber(numFreePositionAttempts)
+        freePositionAttemptsStepper.value = Double(numFreePositionAttempts)
         
         let numFreePositionGoals = stats.freePositionGoals!
         freePositionGoalsLabel.text = formatter.stringFromNumber(numFreePositionGoals)
-        
+        freePositionGoalsStepper.value = Double(numFreePositionGoals)
+
         let numGoals = stats.goals!
         goalsLabel.text = formatter.stringFromNumber(numGoals)
-        
+        goalsStepper.value = Double(numGoals)
+
         let numGroundBalls = stats.groundBalls!
         groundBallsLabel.text = formatter.stringFromNumber(numGroundBalls)
+        groundBallsStepper.value = Double(numGroundBalls)
         
         let numGoalsAgainst = stats.opponentGoalsScoredAgainst!
         opponentGoalsScoredAgainstLabel.text = formatter.stringFromNumber(numGoalsAgainst)
+        opponentGoalsScoredAgainstStepper.value = Double(numGoalsAgainst)
         
         let numSaves = stats.saves!
         savesLabel.text = formatter.stringFromNumber(numSaves)
+        savesStepper.value = Double(numSaves)
         
         let numShotsOnGoal = stats.shotsOnGoal!
         shotsOnGoalLabel.text = formatter.stringFromNumber(numShotsOnGoal)
+        shotsOnGoalStepper.value = Double(numShotsOnGoal)
         
         let numTurnovers = stats.turnovers!
         turnoversLabel.text = formatter.stringFromNumber(numTurnovers)
+        turnoversStepper.value = Double(numTurnovers)
     }
     
     //MARK: Actions

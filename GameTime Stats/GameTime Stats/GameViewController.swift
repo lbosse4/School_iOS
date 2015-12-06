@@ -31,7 +31,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
     let startingMinutes = 0//30
-    let startingSeconds = 3
+    let startingSeconds = 30
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
@@ -51,7 +51,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
     var gameTimerMinutes = 0//30
-    var gameTimerSeconds = 3
+    var gameTimerSeconds = 30
     var homeScore = 0
     var guestScore = 0
     var currentPeriod = PeriodType.FirstHalf
@@ -98,6 +98,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     func updateTimer() {
         if gameTimerMinutes == 0 && gameTimerSeconds == 0{
             gameTimer.invalidate()
+            shouldShowStatsEditor = false
             updateHalves()
         } else {
             if gameTimerSeconds == 0 {
@@ -108,7 +109,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             }
         }
         updateTimerLabel()
-        shouldShowStatsEditor = false
+        
     }
     
     func updateHalves(){
@@ -513,7 +514,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Recognizer Delegate
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        
+        //TODO: FIGURE OUT WHY THIS IS NOT WORKING
         if shouldShowStatsEditor {
             return true
         } else {
