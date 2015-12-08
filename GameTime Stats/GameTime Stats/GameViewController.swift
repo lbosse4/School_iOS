@@ -422,6 +422,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     @IBAction func resetButtonPressed(sender: UIButton) {
         switch resetButton.titleForState(.Normal)! {
         case PeriodType.SecondHalf:
+            //TODO: MOVE THIS TO SECOND HALF PROMPT
             gameTimer.invalidate()
             gameTimerSeconds = startingSeconds
             gameTimerMinutes = startingMinutes
@@ -442,6 +443,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             }
             
         case PeriodType.Overtime:
+            //TODO: move this to cancel of overtime prompt
             gameTimer.invalidate()
             gameTimerMinutes = overtimeMinutes!
             gameTimerSeconds = overtimeSeconds!

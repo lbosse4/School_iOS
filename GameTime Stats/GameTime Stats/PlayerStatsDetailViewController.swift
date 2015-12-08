@@ -41,8 +41,8 @@ class PlayerStatsDetailViewController: UIViewController {
     let dateFormatter = NSDateFormatter()
     let formatter = NSNumberFormatter()
     let secondsPerMinute : Int = 60
-    let numPeriodsWithOvertime = 3
-    let numPeriodsWithoutOvertime = 2
+//    let numPeriodsWithOvertime = 3
+//    let numPeriodsWithoutOvertime = 2
     
     var pageIndex: Int?
     var player: Player!
@@ -55,19 +55,26 @@ class PlayerStatsDetailViewController: UIViewController {
         formatter.maximumFractionDigits = 2
         
         //if the user has reached the last page, do not direct them to continue to swipe
-        if Bool(game.hasOvertime!) {
-            
-            if pageIndex == numPeriodsWithOvertime - 1 {
-                directionsLabel.hidden = true
-            } else {
-                directionsLabel.hidden = false
-            }
+//        if Bool(game.hasOvertime!) {
+//            
+//            if pageIndex == numPeriodsWithOvertime - 1 {
+//                directionsLabel.hidden = true
+//            } else {
+//                directionsLabel.hidden = false
+//            }
+//        } else {
+//            if pageIndex == numPeriodsWithoutOvertime - 1 {
+//                directionsLabel.hidden = true
+//            } else {
+//                directionsLabel.hidden = false
+//            }
+//        }
+        
+        let numPeriods = model.allStatsForPlayer(player, game: game).count
+        if pageIndex == numPeriods - 1 {
+            directionsLabel.hidden = true
         } else {
-            if pageIndex == numPeriodsWithoutOvertime - 1 {
-                directionsLabel.hidden = true
-            } else {
-                directionsLabel.hidden = false
-            }
+            directionsLabel.hidden = false
         }
         
         //MARK: Setting Title/Constants

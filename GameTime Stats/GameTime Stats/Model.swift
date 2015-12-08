@@ -198,6 +198,26 @@ class Model : DataManagerDelegate {
         return statsObj[0]
     }
     
+    func allStatsForPlayer(player: Player, game: Game) -> [Stats]{
+        var predicatesArray = [NSPredicate]()
+        
+        let jerseyNumber = player.jerseyNumber!
+        let pred1 = NSPredicate(format: "player.jerseyNumber == %@", jerseyNumber)
+        predicatesArray.append(pred1)
+        
+        let playerName = player.name!
+        let pred2 = NSPredicate(format: "player.name == %@", playerName)
+        predicatesArray.append(pred2)
+
+        let gameDate = game.date!
+        let pred3 = NSPredicate(format: "period.game.date == %@", gameDate)
+        predicatesArray.append(pred3)
+        
+        let compound = NSCompoundPredicate(andPredicateWithSubpredicates: predicatesArray)
+        let statsObj = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Stats, sortKeys: ["period.type"], predicate: compound) as! [Stats]
+        return statsObj
+    }
+    
     func deleteGame(game : Game){
         let context = self.dataManager.managedObjectContext!
         context.deleteObject(game)
