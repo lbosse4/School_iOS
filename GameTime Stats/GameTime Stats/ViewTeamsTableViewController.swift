@@ -66,15 +66,17 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         let addPlayerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddPlayerViewController") as! AddPlayerViewController
         
         addPlayerViewController.team = team
+
         addPlayerViewController.cancelBlock = {() in
-            self.dismissViewControllerAnimated(true, completion: nil)
-            //self.navigationController?.popViewControllerAnimated(true)
+            //self.dismissViewControllerAnimated(true, completion: nil)
+            self.navigationController?.popViewControllerAnimated(true)
             self.tableView.reloadData()
         }
         
         //self.navigationController?.addChildViewController(addPlayerViewController)
         //self.navigationController?.presentViewController(addPlayerViewController, animated: true, completion: nil)
-        self.presentViewController(addPlayerViewController, animated: true, completion: nil)
+        //self.presentViewController(addPlayerViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(addPlayerViewController, animated: true)
     }
     
     func collapseSection(sender: UIButton){

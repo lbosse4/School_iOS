@@ -31,7 +31,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
     let startingMinutes = 0//30
-    let startingSeconds = 30
+    let startingSeconds = 3
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
@@ -51,7 +51,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
     var gameTimerMinutes = 0//30
-    var gameTimerSeconds = 30
+    var gameTimerSeconds = 3
     var homeScore = 0
     var guestScore = 0
     var currentPeriod = PeriodType.FirstHalf
@@ -138,6 +138,37 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             halfLabel.text = secondHalfString
             
             resetButton.setTitle(PeriodType.SecondHalf, forState: .Normal)
+            
+            let secondHalfPromptViewController = storyboard!.instantiateViewControllerWithIdentifier("SecondHalfPromptViewController") as! SecondHalfPromptViewController
+            secondHalfPromptViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+            secondHalfPromptViewController.preferredContentSize = formSheetContentSize
+            secondHalfPromptViewController.cancelBlock = {() in
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    self.gameTimer.invalidate()
+                    self.gameTimerSeconds = self.startingSeconds
+                    self.gameTimerMinutes = self.startingMinutes
+                    self.updateTimerLabel()
+                    //resetButton.hidden = true
+                    //startButton.alpha = activeAlpha
+                    self.startButton.alpha = self.activeAlpha
+                    self.startButton.userInteractionEnabled = true
+                    
+                    self.addStatsObjects()
+                    
+                    var loopCounter = 0
+                    for player in self.currentPlayers {
+                        if self.isPlayerAtIndexOnField[loopCounter]{
+                            let currentSecondsLeft = self.calculateSecondsLeft()
+                            let playerStats = self.model.statsForPlayer(player, game: self.currentGame, periodType: self.currentPeriod)
+                            playerStats.secondsLeftAtEnter = currentSecondsLeft
+                        }
+                        loopCounter++
+                    }
+
+                })
+            }
+            
+            presentViewController(secondHalfPromptViewController, animated: true, completion: nil)
             
         case PeriodType.SecondHalf:
             //resetButton.setTitle("View Stats", forState: .Normal)
@@ -256,10 +287,9 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func addStatsObjects(){
+        shouldShowStatsEditor = true
         for player in currentPlayers {
-            
             model.addStatsObject(player, game: currentGame!, currentPeriod: currentPeriod)
-            
         }
     }
     
@@ -422,7 +452,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     @IBAction func resetButtonPressed(sender: UIButton) {
         switch resetButton.titleForState(.Normal)! {
         case PeriodType.SecondHalf:
-            //TODO: MOVE THIS TO SECOND HALF PROMPT
+            //TODO: THIS CODE IS REPLICATEd IN THE SECOND HALF PROMPT. FIND A WAY TO CONDENSE (basically, don't have it here.)
+            //CHECK IF THE TIMER RAN OUT AND ITS THE SECOND HALF IN THE COMPLETEION BLOCK OF YOUR STATS VIEW CONTROLLER CODE
             gameTimer.invalidate()
             gameTimerSeconds = startingSeconds
             gameTimerMinutes = startingMinutes
@@ -459,7 +490,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             break
         }
         
-        shouldShowStatsEditor = true
+        //shouldShowStatsEditor = true
     }
     
     @IBAction func homeScorePlusButtonPressed(sender: UIButton) {

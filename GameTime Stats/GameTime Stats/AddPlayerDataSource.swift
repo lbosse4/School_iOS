@@ -18,7 +18,7 @@ protocol DataSourceCellConfigurer {
 
 class AddPlayerDataSource : NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    var tableView : UITableView! {
+    weak var tableView : UITableView? {
         didSet {
             fetchedResultsController.delegate = self
         }
@@ -193,15 +193,15 @@ class AddPlayerDataSource : NSObject, UITableViewDataSource, NSFetchedResultsCon
     
     //MARK: Manage Updates from fetched results controller
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.beginUpdates()
+        self.tableView!.beginUpdates()
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         switch type {
         case .Insert:
-            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            self.tableView!.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
         case .Delete:
-            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            self.tableView!.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
         default:
             return
         }
@@ -211,24 +211,29 @@ class AddPlayerDataSource : NSObject, UITableViewDataSource, NSFetchedResultsCon
         
         
         //func controller(controller: NSFetchedResultsController, didChangeObject anObject: NSManagedObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        case .Update:
-            let object = objectAtIndexPath(indexPath!)
-            delegate?.configureCell(tableView.cellForRowAtIndexPath(indexPath!)! as! AddPlayerTableViewCell, withObject: object)
-            //self.configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            
+        if let tableView = tableView {
+            switch type {
+            case .Insert:
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            case .Delete:
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            case .Update:
+                let object = objectAtIndexPath(indexPath!)
+                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? AddPlayerTableViewCell {
+                    delegate?.configureCell(cell, withObject: object)
+                }
+                
+                //self.configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
+            case .Move:
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+                
+            }
         }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.endUpdates()
+        self.tableView!.endUpdates()
     }
     
     /*

@@ -17,7 +17,7 @@ protocol StatsHistoryDataSourceCellConfigurer {
 
 class StatsHistoryDataSource : NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    var tableView : UITableView! {
+    weak var tableView : UITableView? {
         didSet {
             fetchedResultsController.delegate = self
         }
@@ -192,15 +192,15 @@ class StatsHistoryDataSource : NSObject, UITableViewDataSource, NSFetchedResults
     
     //MARK: Manage Updates from fetched results controller
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.beginUpdates()
+        self.tableView!.beginUpdates()
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         switch type {
         case .Insert:
-            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            self.tableView!.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
         case .Delete:
-            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+            self.tableView!.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
         default:
             return
         }
@@ -208,25 +208,28 @@ class StatsHistoryDataSource : NSObject, UITableViewDataSource, NSFetchedResults
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         
-        
+        if let tableView = tableView {
         //func controller(controller: NSFetchedResultsController, didChangeObject anObject: NSManagedObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        case .Update:
-            let object = objectAtIndexPath(indexPath!)
-            delegate?.configureCell(tableView.cellForRowAtIndexPath(indexPath!)! as! StatsHistoryTableViewCell, withObject: object)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            
+            switch type {
+            case .Insert:
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            case .Delete:
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            case .Update:
+                let object = objectAtIndexPath(indexPath!)
+                if let cell = tableView.cellForRowAtIndexPath(indexPath!) as? StatsHistoryTableViewCell {
+                    delegate?.configureCell(cell, withObject: object)
+                }
+            case .Move:
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+                
+            }
         }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.endUpdates()
+        self.tableView!.endUpdates()
     }
     
     /*

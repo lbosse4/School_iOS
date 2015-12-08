@@ -9,5 +9,11 @@
 import UIKit
 
 class SecondHalfPromptViewController: UIViewController {
+    var cancelBlock : (() -> Void)!
+    
+    //MARK: Actions
+    @IBAction func startButtonPressed(sender: UIButton) {
+        cancelBlock()
+    }
     
 }
