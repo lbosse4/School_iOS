@@ -34,7 +34,6 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     }
     
     @IBAction func addPlayersButtonPressed(sender: UIButton) {
-        //TODO: MAKE TEAM NAMES UNIQUE AND ALSO JERSEY NUMBERS ON NEXT SCREEN
         teamName = teamNameTextField.text!
         let teams = model.teams
         isUniqueName = true
