@@ -28,6 +28,8 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         overtimeSecondsTextField.delegate = self
         overtimeMinutesTextField.delegate = self
+        overtimeMinutesTextField.keyboardType = UIKeyboardType.DecimalPad
+        overtimeSecondsTextField.keyboardType = UIKeyboardType.DecimalPad
     }
     
     func checkTextFields(){
@@ -82,7 +84,7 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
             //make sure seconds are valid
             if otSec > maxSeconds {
                 let alert = UIAlertController(title: "Invalid Seconds", message: "Overtime seconds must be less than \(maxSeconds + 1)", preferredStyle: UIAlertControllerStyle.Alert)
-                let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                let action = UIAlertAction(title: "Okay", style: .Default, handler: nil)
                 alert.addAction(action)
                 self.presentViewController(alert, animated: true, completion: nil)
             } else {

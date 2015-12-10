@@ -36,11 +36,6 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
         dataSource.updateWithPredicate(predicate)
     }
     
-    //MARK: Actions 
-    func collapseSection(sender: UIButton){
-        
-    }
-    
     //MARK: Data Source Cell Configurer
     func cellIdentifierForObject(object: NSManagedObject) -> String {
         return "gameStatsCell"
@@ -72,7 +67,6 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
         teamNameButton.setTitle(teamName, forState: .Normal)
         teamNameButton.titleLabel!.font = titleFont
         teamNameButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        teamNameButton.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
         teamNameButton.tag = section
         
         sectionView.addSubview(teamNameButton)

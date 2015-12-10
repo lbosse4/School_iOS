@@ -17,7 +17,7 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
     var playerName : String!
-    var playerJerseyNumber : String!
+    var playerJerseyNumber : Int!
     var team : Team?
     var chosenPosition = "Defender"
     var cancelBlock : (() -> Void)?
@@ -49,8 +49,8 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     func updateAddPlayerButton() {
         playerName = playerNameTextField.text
         if !(playerName == "") {
-            playerJerseyNumber = jerseyNumberTextField.text
-            if !(playerJerseyNumber == "") {
+            if !(jerseyNumberTextField == "") {
+                playerJerseyNumber = Int(jerseyNumberTextField.text!)
                 //if both fields are populated, show the button
                 addPlayerButtonView.alpha = activeAlpha
                 addPlayerButtonView.userInteractionEnabled = true
@@ -64,9 +64,25 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     
     //MARK: Actions
     @IBAction func addPlayerButtonPressed(sender: UIButton) {
-        playerName = playerNameTextField.text!
-        model.addPlayerWithName(playerName, team: team!, number: Int(playerJerseyNumber)!, position: chosenPosition)
-        cancelBlock?()
+        var isUniqueNumber = true
+        let players = team!.players!.allObjects as! [Player]
+        for player in players {
+            let playerNumber = player.jerseyNumber!
+            if playerNumber == playerJerseyNumber {
+                isUniqueNumber = false
+            }
+        }
+        if isUniqueNumber {
+            playerName = playerNameTextField.text!
+            model.addPlayerWithName(playerName, team: team!, number: playerJerseyNumber, position: chosenPosition)
+            cancelBlock?()
+        } else {
+            let alert = UIAlertController(title: "A player's number must be unique.", message: "The jersey number \(playerJerseyNumber) is already taken.", preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
     }
     
     @IBAction func cancelButtonPressed(sender: UIButton) {

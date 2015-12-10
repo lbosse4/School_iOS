@@ -17,6 +17,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     var team : Team?
     var teamName : String?
     var cancelBlock : (() -> Void)?
+    var isUniqueName = true
     
     @IBOutlet weak var teamNameTextField: UITextField!
     @IBOutlet weak var addPlayersButtonView: UIView!
@@ -35,7 +36,26 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     @IBAction func addPlayersButtonPressed(sender: UIButton) {
         //TODO: MAKE TEAM NAMES UNIQUE AND ALSO JERSEY NUMBERS ON NEXT SCREEN
         teamName = teamNameTextField.text!
-        team = model.addTeamWithName(teamName!)
+        let teams = model.teams
+        isUniqueName = true
+        for team in teams {
+            let tmName = team.name!
+            if tmName == teamName {
+                isUniqueName = false
+                break
+            }
+        }
+        
+        if isUniqueName {
+            team = model.addTeamWithName(teamName!)
+        } else {
+            let alert = UIAlertController(title: "A team's name must be unique.", message: "The team name \(teamName!) is already taken.", preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     
     //MARK: Helper Functions
@@ -90,13 +110,32 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
             playerController.delegate = self
             
             playerController.cancelBlock = {() in
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    //TODO: Make this blank team still show up
+                    let players = self.team!.players?.allObjects as! [Player]
+                    if players.count == 0 {
+                        self.model.deleteTeam(self.team!)
+                    }
+                })
             }
             
             break
         default:
             break
         }
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        switch identifier {
+            case "addPlayersTableViewSegue":
+                if isUniqueName {
+                    return true
+                } else {
+                    return false
+                }
+            default:
+                   return true
+            }
     }
     
 }

@@ -413,7 +413,9 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 popoverMenuViewController?.sourceRect = CGRect(x: playerViewSize/2, y: playerViewSize/2, width: 0.0, height: 0.0)
                 
                 popoverViewController.cancelBlock = {() in
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                        
+                    })
                 }
                 
                 popoverViewController.player = currentPlayers[recognizer.view!.tag]
@@ -459,8 +461,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             gameTimerMinutes = startingMinutes
             updateTimerLabel()
             resetButton.hidden = true
-            startButton.alpha = activeAlpha
-            startButton.userInteractionEnabled = true
+//            startButton.alpha = activeAlpha
+//            startButton.userInteractionEnabled = true
             addStatsObjects()
             
             var loopCounter = 0

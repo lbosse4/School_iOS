@@ -26,7 +26,6 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     lazy var dataSource : ViewTeamsDataSource = ViewTeamsDataSource(entity: "Player", sortKeys: ["team.name", "jerseyNumber"], predicate: nil, sectionNameKeyPath: "team.name", delegate: self.model)
     
     var cancelBlock : (() -> Void)?
-    var collapsedSections = [Bool]()
     
     override func viewDidLoad() {
         formatter.minimumIntegerDigits = 2
@@ -34,10 +33,6 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         dataSource.delegate = self
         dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
         tableView.dataSource = dataSource
-        
-        for _ in 0..<model.teamCount() {
-            collapsedSections.append(false)
-        }
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -79,12 +74,6 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         self.navigationController?.pushViewController(addPlayerViewController, animated: true)
     }
     
-    func collapseSection(sender: UIButton){
-        collapsedSections[sender.tag] = !collapsedSections[sender.tag]
-        let indexSet = NSIndexSet(index: sender.tag)
-        tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
-    }
-    
     //MARK: Data Source Cell Configurer
     func cellIdentifierForObject(object: NSManagedObject) -> String {
         return "playerCell"
@@ -117,7 +106,6 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         teamNameButton.setTitle(teamName, forState: .Normal)
         teamNameButton.titleLabel!.font = titleFont
         teamNameButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        teamNameButton.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
         teamNameButton.tag = section
         
         //Button to delete team
@@ -142,17 +130,6 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         sectionView.addSubview(addPlayerButton)
 
         return sectionView
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if collapsedSections[section] {
-            return 0
-        } else {
-            let team = model.teamAtIndex(section)
-            let players = model.playersForTeam(team)
-            return players.count
-        }
-        
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

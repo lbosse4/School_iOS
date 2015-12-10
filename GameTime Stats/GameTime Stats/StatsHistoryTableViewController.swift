@@ -17,7 +17,6 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
     let scrollPadding : CGFloat = 45.0
     let titleFont = UIFont(name: "Orbitron-Medium", size: 20.0)
     
-    var collapsedSections = [Bool]()
     var cancelBlock : (() -> Void)?
     
     lazy var dataSource : StatsHistoryDataSource = StatsHistoryDataSource(entity: "Game", sortKeys: ["team.name", "date"], predicate: nil, sectionNameKeyPath: "team.name", delegate: self.model)
@@ -31,10 +30,6 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         dataSource.delegate = self
         dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
         tableView.dataSource = dataSource
-        
-        for _ in 0..<model.teamCount() {
-            collapsedSections.append(false)
-        }
     }
     
     //MARK: Actions
@@ -42,12 +37,7 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         cancelBlock!()
     }
     
-    func collapseSection(sender: UIButton){
-        //toggle whether or not the user is showing the rows in that section
-        collapsedSections[sender.tag] = !collapsedSections[sender.tag]
-        let indexSet = NSIndexSet(index: sender.tag)
-        tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
-    }
+    
     
     //MARK: Data Source Cell Configurer
     func cellIdentifierForObject(object: NSManagedObject) -> String {
@@ -81,23 +71,11 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         teamNameButton.setTitle(teamName, forState: .Normal)
         teamNameButton.titleLabel!.font = titleFont
         teamNameButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        teamNameButton.addTarget(self, action: "collapseSection:", forControlEvents: .TouchUpInside)
         teamNameButton.tag = section
         
         sectionView.addSubview(teamNameButton)
         
         return sectionView
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if collapsedSections[section] {
-            return 0
-        } else {
-            let team = model.teamAtIndex(section)
-            let games = model.gamesForTeam(team)
-            return games.count
-        }
-        
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
