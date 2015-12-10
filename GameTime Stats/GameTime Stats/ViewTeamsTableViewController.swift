@@ -79,7 +79,6 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         return "playerCell"
     }
     
-    //TODO: FIGURE OUT HOW TO HIDE SECTIONS WITH CONFIGURE CELL
     func configureCell(let cell: PlayerTableViewCell, withObject object: NSManagedObject) {
         let player = object as? Player
         let playerName = player!.name

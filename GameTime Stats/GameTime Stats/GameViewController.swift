@@ -63,6 +63,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var overtimeMinutes : Int?
     var overtimeSeconds : Int?
     var shouldShowStatsEditor = true
+    var isPresentingStatsEditor = false
 
     
     //MARK: Outlets
@@ -148,8 +149,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                     self.gameTimerSeconds = self.startingSeconds
                     self.gameTimerMinutes = self.startingMinutes
                     self.updateTimerLabel()
-                    //resetButton.hidden = true
-                    //startButton.alpha = activeAlpha
+                    self.resetButton.hidden = true
+                    self.startButton.alpha = self.activeAlpha
                     self.startButton.alpha = self.activeAlpha
                     self.startButton.userInteractionEnabled = true
                     
@@ -167,8 +168,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
 
                 })
             }
+            if !isPresentingStatsEditor {
+                presentViewController(secondHalfPromptViewController, animated: true, completion: nil)
+            }
             
-            presentViewController(secondHalfPromptViewController, animated: true, completion: nil)
             
         case PeriodType.SecondHalf:
             //resetButton.setTitle("View Stats", forState: .Normal)
@@ -414,7 +417,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 
                 popoverViewController.cancelBlock = {() in
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                        
+                        self.isPresentingStatsEditor = false
+                        //if the first half is over, and the stats view controller was up, present the second half option when they close it.
+                        if self.gameTimerMinutes == 0 && self.gameTimerSeconds == 0 && self.currentPeriod == PeriodType.FirstHalf {
+                            
+                        }
                     })
                 }
                 
@@ -422,8 +429,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 popoverViewController.period = currentPeriod
                 popoverViewController.game = currentGame
                 
-                
                 self.presentViewController(navPopoverViewController, animated: true, completion: nil)
+                isPresentingStatsEditor = true
             }
         }
     }
@@ -461,8 +468,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             gameTimerMinutes = startingMinutes
             updateTimerLabel()
             resetButton.hidden = true
-//            startButton.alpha = activeAlpha
-//            startButton.userInteractionEnabled = true
+            startButton.alpha = activeAlpha
+            startButton.userInteractionEnabled = true
             addStatsObjects()
             
             var loopCounter = 0
