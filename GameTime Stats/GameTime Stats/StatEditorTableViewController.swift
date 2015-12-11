@@ -11,13 +11,15 @@ import UIKit
 class StatEditorTableViewController: UITableViewController {
     let model = Model.sharedInstance
     let formatter = NSNumberFormatter()
+    let timeOutSeconds = 3
+    let secondsInterval : NSTimeInterval = 0.95
 
     var player : Player!
     var period : String!
     var game : Game!
     var stats : Stats!
-    //var period : Period?
-
+    var inactiveTimer = NSTimer()
+    var inactiveSeconds = 0
     var cancelBlock : (() -> Void)?
     
     //MARK: Outlets
@@ -106,6 +108,26 @@ class StatEditorTableViewController: UITableViewController {
         let numTurnovers = stats.turnovers!
         turnoversLabel.text = formatter.stringFromNumber(numTurnovers)
         turnoversStepper.value = Double(numTurnovers)
+        
+        setTimer()
+    }
+    
+    func setTimer(){
+        inactiveTimer = NSTimer.scheduledTimerWithTimeInterval(secondsInterval, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
+    }
+    
+    func updateTimer(){
+        if inactiveSeconds == timeOutSeconds {
+            inactiveTimer.invalidate()
+            cancelBlock!()
+        } else {
+            inactiveSeconds++
+        }
+    }
+    
+    //MARK: TableViewDelegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     //MARK: Actions
@@ -117,6 +139,7 @@ class StatEditorTableViewController: UITableViewController {
     
     //set values for stepper 
     @IBAction func stepperToggled(sender: UIStepper) {
+        inactiveSeconds = 0
         switch sender.tag {
         case 0:
             let numAssists = Int(sender.value)

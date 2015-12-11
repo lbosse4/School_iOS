@@ -44,6 +44,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let yes = 1
     let activeAlpha : CGFloat = 1.0
     let inactiveAlpha : CGFloat = 0.5
+    let secondsInterval : NSTimeInterval = 1.0
     
     //MARK: Variables
     var playerViews = [UIView]()
@@ -504,7 +505,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     @IBAction func startTimerButtonPressed(sender: UIButton) {
         if !gameTimer.valid {
-            gameTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true) 
+            gameTimer = NSTimer.scheduledTimerWithTimeInterval(secondsInterval, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
         }
         
     }
