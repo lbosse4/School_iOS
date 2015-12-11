@@ -141,6 +141,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             presentOvertimePromptViewController()
             
         case PeriodType.Overtime:
+            presentTeamStatsSummaryViewController()
             resetButton.hidden = false
         default: break
         }
@@ -186,47 +187,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
 
     }
     
-    func presentStatsEditorViewController(tappedView: UIView){
-        let navPopoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController") as! UINavigationController
-        let popoverViewController = navPopoverViewController.viewControllers[0] as! StatEditorTableViewController
-        
-        navPopoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-        
-        popoverViewController.preferredContentSize = popoverContentSize
-        let popoverMenuViewController = navPopoverViewController.popoverPresentationController
-        //maybe update this based on locatoin in fieldView
-        popoverMenuViewController!.permittedArrowDirections = .Any
-        popoverMenuViewController!.delegate = self
-        popoverMenuViewController!.sourceView = tappedView
-        popoverMenuViewController?.sourceRect = CGRect(x: playerViewSize/2, y: playerViewSize/2, width: 0.0, height: 0.0)
-        
-        popoverViewController.cancelBlock = {() in
-            self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                self.isPresentingStatsEditor = false
-                //if the first half is over, and the stats view controller was up, present the second half option when they close it.
-                if self.gameTimerMinutes == 0 && self.gameTimerSeconds == 0 {
-                    switch self.currentPeriod {
-                    case PeriodType.FirstHalf:
-                        self.presentSecondHalfPromptViewController()
-                        
-                    case PeriodType.SecondHalf:
-                        self.presentOvertimePromptViewController()
-                    default:
-                        break
-                    }
-                }
-            })
-        }
-        
-        popoverViewController.player = currentPlayers[tappedView.tag]
-        popoverViewController.period = currentPeriod
-        popoverViewController.game = currentGame
-        
-        self.presentViewController(navPopoverViewController, animated: true, completion: nil)
-        isPresentingStatsEditor = true
-
-    }
-    
     func presentOvertimePromptViewController(){
         let overtimePromptController = storyboard!.instantiateViewControllerWithIdentifier("OvertimePromptViewController") as! OvertimePromptViewController
         overtimePromptController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
@@ -256,6 +216,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             } else {
                 self.currentGame!.hasOvertime = false
                 self.resetButton.hidden = false
+                self.presentTeamStatsSummaryViewController()
             }
             self.dismissViewControllerAnimated(true, completion: nil)
         }
@@ -263,8 +224,56 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         if !isPresentingStatsEditor {
             self.presentViewController(overtimePromptController, animated: true, completion: nil)
         }
+        
+    }
+    
+    func presentTeamStatsSummaryViewController() {
+        
+    }
+    
+    func presentStatsEditorViewController(tappedView: UIView){
+        let navPopoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController") as! UINavigationController
+        let popoverViewController = navPopoverViewController.viewControllers[0] as! StatEditorTableViewController
+        
+        navPopoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+        
+        popoverViewController.preferredContentSize = popoverContentSize
+        let popoverMenuViewController = navPopoverViewController.popoverPresentationController
+        //maybe update this based on locatoin in fieldView
+        popoverMenuViewController!.permittedArrowDirections = .Any
+        popoverMenuViewController!.delegate = self
+        popoverMenuViewController!.sourceView = tappedView
+        popoverMenuViewController?.sourceRect = CGRect(x: playerViewSize/2, y: playerViewSize/2, width: 0.0, height: 0.0)
+        
+        popoverViewController.cancelBlock = {() in
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                self.isPresentingStatsEditor = false
+                //if the first half is over, and the stats view controller was up, present the second half option when they close it.
+                if self.gameTimerMinutes == 0 && self.gameTimerSeconds == 0 {
+                    switch self.currentPeriod {
+                    case PeriodType.FirstHalf:
+                        self.presentSecondHalfPromptViewController()
+                        
+                    case PeriodType.SecondHalf:
+                        self.presentOvertimePromptViewController()
+                    case PeriodType.Overtime:
+                        self.presentTeamStatsSummaryViewController()
+                    default:
+                        break
+                    }
+                }
+            })
+        }
+        
+        popoverViewController.player = currentPlayers[tappedView.tag]
+        popoverViewController.period = currentPeriod
+        popoverViewController.game = currentGame
+        
+        self.presentViewController(navPopoverViewController, animated: true, completion: nil)
+        isPresentingStatsEditor = true
 
     }
+    
     
     func updateTimerLabel(){
         //ensure two decimal places
