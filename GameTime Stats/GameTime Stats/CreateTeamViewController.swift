@@ -21,14 +21,40 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     
     @IBOutlet weak var teamNameTextField: UITextField!
     @IBOutlet weak var addPlayersButtonView: UIView!
+    @IBOutlet weak var playerIconView: UIView!
+    @IBOutlet weak var playerIconNumberLabel: UILabel!
     
     override func viewDidLoad() {
         teamNameTextField.delegate = self
         addPlayersButtonView.userInteractionEnabled = false
         addPlayersButtonView.alpha = inactiveAlpha
+        let playerIconFrame = playerIconView.frame
+        playerIconView.layer.cornerRadius = playerIconFrame.width/2
     }
     
     //MARK: Actions
+    
+    @IBAction func chooseJerseyColorButtonPressed(sender: UIButton) {
+        let colorPickerViewController = storyboard!.instantiateViewControllerWithIdentifier("ColorPickerViewController") as! ColorPickerViewController
+        //TODO: FIX THIS
+        //colorPickerViewController.previousColor = UIColor(team?.majorColor!)
+        colorPickerViewController.previousColor = UIColor.redColor()
+        colorPickerViewController.cancelBlock = {(chosenColor : UIColor) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+            self.team?.majorColor = chosenColor
+            self.playerIconView.backgroundColor = chosenColor
+        }
+        presentViewController(colorPickerViewController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func chooseNumberColorButtonPressed(sender: UIButton) {
+        let colorPickerViewController = storyboard!.instantiateViewControllerWithIdentifier("ColorPickerViewController") as! ColorPickerViewController
+        presentViewController(colorPickerViewController, animated: true) { () -> Void in
+            
+        }
+    }
+    
     @IBAction func cancelButtonPressed(sender: UIButton) {
         cancelBlock?()
     }
@@ -53,8 +79,6 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
             alert.addAction(action)
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        
-        
     }
     
     //MARK: Helper Functions

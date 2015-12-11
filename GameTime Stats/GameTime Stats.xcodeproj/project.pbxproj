@@ -61,13 +61,13 @@
 		89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6C1BDC65820051212A /* mensLacrosseField.png */; };
 		89E30A6F1BDC6B520051212A /* scoreboard.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6E1BDC6B200051212A /* scoreboard.ttf */; };
 		89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A701BDC6C0A0051212A /* digital-7.ttf */; };
+		89E94A951C1B2A17009D535A /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E94A941C1B2A17009D535A /* ColorPickerViewController.swift */; };
 		89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */; };
 		89EC2BC11BCF0DAB008B37DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EC2BBF1BCF0DAB008B37DC /* Main.storyboard */; };
 		89EC2BC31BCF0DAB008B37DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89EC2BC21BCF0DAB008B37DC /* Assets.xcassets */; };
 		89EC2BC61BCF0DAB008B37DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EC2BC41BCF0DAB008B37DC /* LaunchScreen.storyboard */; };
 		89EC2BD11BCF0DAC008B37DC /* GameTime_StatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BD01BCF0DAC008B37DC /* GameTime_StatsTests.swift */; };
 		89EC2BDC1BCF0DAC008B37DC /* GameTime_StatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BDB1BCF0DAC008B37DC /* GameTime_StatsUITests.swift */; };
-		89FD3BD81C1A5FC500546B88 /* StatsOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD3BD71C1A5FC500546B88 /* StatsOverviewViewController.swift */; };
 		89FD3BDA1C1A6C2500546B88 /* TeamStatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD3BD91C1A6C2500546B88 /* TeamStatsDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +143,7 @@
 		89E30A6C1BDC65820051212A /* mensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6E1BDC6B200051212A /* scoreboard.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scoreboard.ttf; sourceTree = "<group>"; };
 		89E30A701BDC6C0A0051212A /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
+		89E94A941C1B2A17009D535A /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		89EC2BB81BCF0DAB008B37DC /* GameTime Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameTime Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89EC2BC01BCF0DAB008B37DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,7 +156,6 @@
 		89EC2BD71BCF0DAC008B37DC /* GameTime StatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GameTime StatsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EC2BDB1BCF0DAC008B37DC /* GameTime_StatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTime_StatsUITests.swift; sourceTree = "<group>"; };
 		89EC2BDD1BCF0DAC008B37DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89FD3BD71C1A5FC500546B88 /* StatsOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsOverviewViewController.swift; sourceTree = "<group>"; };
 		89FD3BD91C1A6C2500546B88 /* TeamStatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -274,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				891ECF981BF3A409009C813D /* CreateTeamViewController.swift */,
+				89E94A941C1B2A17009D535A /* ColorPickerViewController.swift */,
 				8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */,
 				896C02F81BFD483C00DAC7C7 /* AddPlayerViewController.swift */,
 			);
@@ -288,7 +289,6 @@
 				894BCE441BFBEADA008DF1C4 /* StatEditorTableViewController.swift */,
 				8935A5CA1C0AA064006508FF /* OvertimePromptViewController.swift */,
 				896331EA1C1750CD007C77AE /* SecondHalfPromptViewController.swift */,
-				89FD3BD71C1A5FC500546B88 /* StatsOverviewViewController.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -561,8 +561,8 @@
 				89A8F9261C13A23500FF4602 /* GameStatsDataSource.swift in Sources */,
 				89A8F9221C1392BC00FF4602 /* GameStatsTableViewController.swift in Sources */,
 				894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */,
+				89E94A951C1B2A17009D535A /* ColorPickerViewController.swift in Sources */,
 				896C02FB1BFD4CBF00DAC7C7 /* StringUtils.swift in Sources */,
-				89FD3BD81C1A5FC500546B88 /* StatsOverviewViewController.swift in Sources */,
 				894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */,
 				890661501BFF9DA00086CA2E /* AddPlayersTableViewController.swift in Sources */,
 				8902FCF31BFD0A2E004655CA /* ViewTeamsTableViewController.swift in Sources */,

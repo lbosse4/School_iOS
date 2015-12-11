@@ -11,7 +11,7 @@ import UIKit
 class StatEditorTableViewController: UITableViewController {
     let model = Model.sharedInstance
     let formatter = NSNumberFormatter()
-    let timeOutSeconds = 3
+    let timeOutSeconds = 4
     let secondsInterval : NSTimeInterval = 0.95
 
     var player : Player!
