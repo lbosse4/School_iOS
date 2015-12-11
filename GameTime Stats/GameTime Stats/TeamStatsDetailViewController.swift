@@ -32,6 +32,7 @@ class TeamStatsDetailViewController: UIViewController {
     @IBOutlet weak var shotsOnGoalLabel: UILabel!
     @IBOutlet weak var turnoversLabel: UILabel!
     
+    @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var directionsLabel: UILabel!
     
     let dateFormatter = NSDateFormatter()
@@ -95,6 +96,7 @@ class TeamStatsDetailViewController: UIViewController {
         default:
             break
         }
+        periodLabel.text = periodType
         
         var numAssists = 0
         var numCausedTurnovers = 0

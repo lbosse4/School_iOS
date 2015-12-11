@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol TeamStatsViewedProtocol {
+    func dismissMe()
+}
+
 class TeamStatsViewController: UIViewController, UIPageViewControllerDataSource {
     let model = Model.sharedInstance
 
     var pageViewController : UIPageViewController?
     var cancelBlock : (() -> Void)!
+    var delegate : TeamStatsViewedProtocol?
     var team : Team!
     var game : Game!
     
@@ -73,6 +78,7 @@ class TeamStatsViewController: UIViewController, UIPageViewControllerDataSource 
 
     @IBAction func okayButtonPressed(sender: UIButton) {
         cancelBlock!()
+        delegate?.dismissMe()
     }
     
     

@@ -16,7 +16,7 @@ import UIKit
 //    var viewTag = 0
 //}
 
-class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, cancelGameProtocol {
+class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, cancelGameProtocol, TeamStatsViewedProtocol {
     //MARK: Constants
     let model = Model.sharedInstance
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
@@ -28,6 +28,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let playerNumberFont = "collegiateHeavyOutline"
     let popoverContentSize = CGSize(width: 350.0, height: 470.0)
     let formSheetContentSize = CGSize(width: 350.0, height: 400.0)
+    let statSummaryContentSize = CGSize(width: 600.0, height: 800.0)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
     let startingMinutes = 0//30
@@ -72,7 +73,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     @IBOutlet weak var homeScoreLabel: UILabel!
     @IBOutlet weak var guestScoreLabel: UILabel!
     @IBOutlet weak var halfLabel: UILabel!
-    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var benchScrollview: UIScrollView!
     
@@ -84,8 +84,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         //Enable interaction to let the user move the player pieces
         fieldImageView.userInteractionEnabled = true
         benchScrollview.userInteractionEnabled = true
-        
-        resetButton.hidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -142,7 +140,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             
         case PeriodType.Overtime:
             presentTeamStatsSummaryViewController()
-            resetButton.hidden = false
         default: break
         }
         
@@ -162,7 +159,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 self.gameTimerSeconds = self.startingSeconds
                 self.gameTimerMinutes = self.startingMinutes
                 self.updateTimerLabel()
-                self.resetButton.hidden = true
                 self.startButton.alpha = self.activeAlpha
                 self.startButton.alpha = self.activeAlpha
                 self.startButton.userInteractionEnabled = true
@@ -212,13 +208,14 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 self.startButton.alpha = self.activeAlpha
                 self.startButton.userInteractionEnabled = true
                 self.addStatsObjects()
-                
+                self.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 self.currentGame!.hasOvertime = false
-                self.resetButton.hidden = false
-                self.presentTeamStatsSummaryViewController()
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    self.presentTeamStatsSummaryViewController()
+                })
             }
-            self.dismissViewControllerAnimated(true, completion: nil)
+            
         }
         
         if !isPresentingStatsEditor {
@@ -228,6 +225,21 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func presentTeamStatsSummaryViewController() {
+        let teamStatsSummaryViewController = storyboard!.instantiateViewControllerWithIdentifier("TeamStatsViewController") as! TeamStatsViewController
+        //secondHalfPromptViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+        //secondHalfPromptViewController.preferredContentSize = formSheetContentSize
+        teamStatsSummaryViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+        teamStatsSummaryViewController.preferredContentSize = statSummaryContentSize
+        teamStatsSummaryViewController.team = currentTeam
+        teamStatsSummaryViewController.game = currentGame
+        teamStatsSummaryViewController.delegate = self
+        teamStatsSummaryViewController.cancelBlock = {() in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        if !isPresentingStatsEditor {
+            self.presentViewController(teamStatsSummaryViewController, animated: true, completion: nil)
+        }
         
     }
     
@@ -419,6 +431,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         return .Popover
     }
     
+    func popoverPresentationControllerShouldDismissPopover(popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return false
+    }
+    
     func dismissMe() {
         cancelBlock?()
     }
@@ -492,18 +508,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     @IBAction func stopTimerButtonPressed(sender: UIButton) {
         gameTimer.invalidate()
-    }
-    
-    @IBAction func resetButtonPressed(sender: UIButton) {
-        switch resetButton.titleForState(.Normal)! {
-        case "View Stats":
-            //TODO: ADD STATS OVERVIEW VIEWCONTROLLER HERE
-            cancelBlock!()
-        default:
-            break
-        }
-        
-        //shouldShowStatsEditor = true
     }
     
     @IBAction func homeScorePlusButtonPressed(sender: UIButton) {
