@@ -12,7 +12,7 @@ import CoreData
 class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCellConfigurer {
     let model = Model.sharedInstance
     let formatter = NSNumberFormatter()
-    let sectionHeight : CGFloat = 50.0
+    let sectionHeight : CGFloat = 30.0
     let scrollPadding : CGFloat = 45.0
     let titleFont = UIFont(name: "Orbitron-Medium", size: 20.0)
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.84, alpha: 1.0)

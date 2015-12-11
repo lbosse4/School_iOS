@@ -20,7 +20,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     let trashCanPadding : CGFloat = 10.0
     let sectionHeight : CGFloat = 50.0
     let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.84, alpha: 1.0)
-    let titleFont = UIFont(name: "Orbitron-Medium", size: 20.0)
+    let titleFont = UIFont(name: "Orbitron-Medium", size: 18.0)
     let buttonFont = UIFont(name: "Orbitron-Light", size: 18.0)
     
     lazy var dataSource : ViewTeamsDataSource = ViewTeamsDataSource(entity: "Player", sortKeys: ["team.name", "jerseyNumber"], predicate: nil, sectionNameKeyPath: "team.name", delegate: self.model)
@@ -99,7 +99,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         sectionView.backgroundColor = UIColor.blackColor()
         
         //clickable to allow collapsable sections
-        let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - buttonWidth - scrollPadding, height: sectionHeight)
+        let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding, height: sectionHeight)
         let teamNameButton = UIButton(frame: teamNameButtonFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
         teamNameButton.setTitle(teamName, forState: .Normal)

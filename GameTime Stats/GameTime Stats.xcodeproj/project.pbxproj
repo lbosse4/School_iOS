@@ -67,6 +67,8 @@
 		89EC2BC61BCF0DAB008B37DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EC2BC41BCF0DAB008B37DC /* LaunchScreen.storyboard */; };
 		89EC2BD11BCF0DAC008B37DC /* GameTime_StatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BD01BCF0DAC008B37DC /* GameTime_StatsTests.swift */; };
 		89EC2BDC1BCF0DAC008B37DC /* GameTime_StatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BDB1BCF0DAC008B37DC /* GameTime_StatsUITests.swift */; };
+		89FD3BD81C1A5FC500546B88 /* StatsOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD3BD71C1A5FC500546B88 /* StatsOverviewViewController.swift */; };
+		89FD3BDA1C1A6C2500546B88 /* TeamStatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD3BD91C1A6C2500546B88 /* TeamStatsDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +155,8 @@
 		89EC2BD71BCF0DAC008B37DC /* GameTime StatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GameTime StatsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EC2BDB1BCF0DAC008B37DC /* GameTime_StatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTime_StatsUITests.swift; sourceTree = "<group>"; };
 		89EC2BDD1BCF0DAC008B37DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89FD3BD71C1A5FC500546B88 /* StatsOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsOverviewViewController.swift; sourceTree = "<group>"; };
+		89FD3BD91C1A6C2500546B88 /* TeamStatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +288,7 @@
 				894BCE441BFBEADA008DF1C4 /* StatEditorTableViewController.swift */,
 				8935A5CA1C0AA064006508FF /* OvertimePromptViewController.swift */,
 				896331EA1C1750CD007C77AE /* SecondHalfPromptViewController.swift */,
+				89FD3BD71C1A5FC500546B88 /* StatsOverviewViewController.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				89301FBF1C10D716001F81A9 /* StatsHistoryTableViewController.swift */,
 				89A8F9211C1392BC00FF4602 /* GameStatsTableViewController.swift */,
 				89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */,
+				89FD3BD91C1A6C2500546B88 /* TeamStatsDetailViewController.swift */,
 				89A8F92D1C13E7CA00FF4602 /* PlayerStatsViewController.swift */,
 				89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */,
 			);
@@ -556,6 +562,7 @@
 				89A8F9221C1392BC00FF4602 /* GameStatsTableViewController.swift in Sources */,
 				894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */,
 				896C02FB1BFD4CBF00DAC7C7 /* StringUtils.swift in Sources */,
+				89FD3BD81C1A5FC500546B88 /* StatsOverviewViewController.swift in Sources */,
 				894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */,
 				890661501BFF9DA00086CA2E /* AddPlayersTableViewController.swift in Sources */,
 				8902FCF31BFD0A2E004655CA /* ViewTeamsTableViewController.swift in Sources */,
@@ -564,6 +571,7 @@
 				89A8F9301C13F64E00FF4602 /* TeamStatsViewController.swift in Sources */,
 				894BCE3B1BFBBF30008DF1C4 /* Player.swift in Sources */,
 				894BA33A1C04D55800CA2D35 /* PlayerTableViewCell.swift in Sources */,
+				89FD3BDA1C1A6C2500546B88 /* TeamStatsDetailViewController.swift in Sources */,
 				89A8F92E1C13E7CA00FF4602 /* PlayerStatsViewController.swift in Sources */,
 				89301FC21C10D787001F81A9 /* StatsHistoryTableViewCell.swift in Sources */,
 				894BA3371C00C57100CA2D35 /* AddPlayerDataSource.swift in Sources */,
