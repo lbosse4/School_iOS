@@ -126,9 +126,11 @@ class Model : DataManagerDelegate {
         dataManager.saveContext()
     }
 
-    func addTeamWithName(name: String) -> Team {
+    func addTeamWithName(name: String, majorColor: NSObject, minorColor: NSObject) -> Team {
         let teamObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Team, inManagedObjectContext: dataManager.managedObjectContext!) as! Team
         teamObj.name = name
+        teamObj.majorColor = majorColor
+        teamObj.minorColor = minorColor
         dataManager.saveContext()
         //teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
         updateTeamsAndPlayers()

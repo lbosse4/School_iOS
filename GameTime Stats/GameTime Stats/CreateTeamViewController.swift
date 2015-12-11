@@ -14,6 +14,9 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     let maxTeamNameLength = 25
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
+    
+    var majorColor : NSObject?
+    var minorColor : NSObject?
     var team : Team?
     var teamName : String?
     var cancelBlock : (() -> Void)?
@@ -30,6 +33,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
         addPlayersButtonView.alpha = inactiveAlpha
         let playerIconFrame = playerIconView.frame
         playerIconView.layer.cornerRadius = playerIconFrame.width/2
+        //TODO: SET DEFAULT COLORS HERE
     }
     
     //MARK: Actions
@@ -41,8 +45,9 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
         colorPickerViewController.previousColor = UIColor.redColor()
         colorPickerViewController.cancelBlock = {(chosenColor : UIColor) in
             self.dismissViewControllerAnimated(true, completion: nil)
-            self.team?.majorColor = chosenColor
+            self.majorColor = chosenColor
             self.playerIconView.backgroundColor = chosenColor
+        
         }
         presentViewController(colorPickerViewController, animated: true, completion: nil)
         
@@ -50,9 +55,15 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     
     @IBAction func chooseNumberColorButtonPressed(sender: UIButton) {
         let colorPickerViewController = storyboard!.instantiateViewControllerWithIdentifier("ColorPickerViewController") as! ColorPickerViewController
-        presentViewController(colorPickerViewController, animated: true) { () -> Void in
-            
+        colorPickerViewController.previousColor = UIColor.whiteColor()
+        colorPickerViewController.cancelBlock = {(chosenColor : UIColor) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+            self.minorColor = chosenColor
+            self.playerIconNumberLabel.textColor = chosenColor
+        
         }
+        presentViewController(colorPickerViewController, animated: true, completion: nil)
+        
     }
     
     @IBAction func cancelButtonPressed(sender: UIButton) {
@@ -72,7 +83,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
         }
         
         if isUniqueName {
-            team = model.addTeamWithName(teamName!)
+            team = model.addTeamWithName(teamName!, majorColor: majorColor!, minorColor: minorColor!)
         } else {
             let alert = UIAlertController(title: "A team's name must be unique.", message: "The team name \(teamName!) is already taken.", preferredStyle: UIAlertControllerStyle.Alert)
             let action = UIAlertAction(title: "Okay", style: .Default, handler: nil)
