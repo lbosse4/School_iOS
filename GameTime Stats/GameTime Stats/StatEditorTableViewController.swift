@@ -134,6 +134,7 @@ class StatEditorTableViewController: UITableViewController {
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
         //dismiss the view controller
         model.saveDMContext()
+        inactiveTimer.invalidate()
         cancelBlock?()
     }
     

@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct UserDefaults {
+    static let majorColor = "majorColor"
+    static let minorColor = "minorColor"
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,8 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
 //        var navigationBarAppearace = UINavigationBar.appearance()
-//        
 //        navigationBarAppearace.
+        
+        //NSUser Defaults
+//        let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
+//        let prefs = NSUserDefaults.standardUserDefaults()
+//        prefs.registerDefaults([UserDefaults.majorColor:darkBlueColor])
+//        prefs.registerDefaults([UserDefaults.minorColor:UIColor.whiteColor()])
+        
         
         return true
     }

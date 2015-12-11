@@ -8,14 +8,6 @@
 
 import UIKit
 
-//struct playerStat {
-//    var firstHalfSeconds = 0
-//    var firstHalfMinutes = 0
-//    var secondHalfSeconds = 0
-//    var secondHalfMinutes = 0
-//    var viewTag = 0
-//}
-
 class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, cancelGameProtocol, TeamStatsViewedProtocol {
     //MARK: Constants
     let model = Model.sharedInstance
