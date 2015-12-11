@@ -93,6 +93,9 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
             let teamStatsViewController = segue.destinationViewController as! TeamStatsViewController
             teamStatsViewController.team = team
             teamStatsViewController.game = game
+            teamStatsViewController.cancelBlock = {() in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
             
         default:
             break
