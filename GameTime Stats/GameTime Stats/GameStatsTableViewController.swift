@@ -88,6 +88,9 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
             let player = dataSource.objectAtIndexPath(indexPath!) as! Player
             playerStatsViewController.player = player
             playerStatsViewController.game = game
+            playerStatsViewController.cancelBlock = {() in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
             
         case "showTeamStatsSegue":
             let teamStatsViewController = segue.destinationViewController as! TeamStatsViewController

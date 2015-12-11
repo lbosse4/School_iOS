@@ -13,8 +13,11 @@ class PlayerStatsViewController: UIViewController, UIPageViewControllerDataSourc
     let model = Model.sharedInstance
     
     var pageViewController : UIPageViewController?
+    var cancelBlock : (() -> Void)!
     var player : Player!
     var game : Game!
+    
+    @IBOutlet weak var okayButtonView: UIView!
     
     override func viewDidLoad() {
         
@@ -28,6 +31,7 @@ class PlayerStatsViewController: UIViewController, UIPageViewControllerDataSourc
         self.addChildViewController(pageViewController!)
         pageViewController!.didMoveToParentViewController(self)
         self.view.addSubview(pageViewController!.view)
+        self.view.bringSubviewToFront(okayButtonView)
     }
     
     //MARK: Helper Functions
@@ -37,6 +41,11 @@ class PlayerStatsViewController: UIViewController, UIPageViewControllerDataSourc
         contentViewController.configure(player, game: game, index: index)
         
         return contentViewController
+    }
+    
+    //MARK: Actions
+    @IBAction func okayButtonPressed(sender: UIButton) {
+        cancelBlock()
     }
     
     //MARK: PageView Controller Data Source
@@ -66,6 +75,4 @@ class PlayerStatsViewController: UIViewController, UIPageViewControllerDataSourc
             return viewControllerAtIndex(index)
         }
     }
-
-    
 }
