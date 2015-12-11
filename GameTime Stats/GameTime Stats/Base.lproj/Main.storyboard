@@ -147,6 +147,7 @@
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
+            <string>Orbitron-Medium</string>
         </mutableArray>
         <mutableArray key="collegiateHeavyOutline Medium.ttf">
             <string>CollegiateHeavyOutline-Medium</string>
@@ -1580,6 +1581,25 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </pickerView>
+                                    <view contentMode="scaleToFill" id="m5x-U7-vhS">
+                                        <rect key="frame" x="218" y="799" width="292" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="11I-PC-ZTC">
+                                                <rect key="frame" x="6" y="7" width="281" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="34"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="clP-Vg-4C5" eventType="touchUpInside" id="1pQ-Xl-QH6"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1684,6 +1704,7 @@
                                 <action selector="doneButtonPressed:" destination="EBb-ff-bzs" id="bVR-vZ-bLD"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="rN9-5K-L8V"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nd5-e1-zkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1778,7 +1799,6 @@
                                         </state>
                                         <connections>
                                             <action selector="okayButtonPressed:" destination="Q24-D1-SzM" eventType="touchUpInside" id="K6v-bw-AE0"/>
-                                            <action selector="okayButtonPressed:" destination="qPv-gA-5wu" eventType="touchUpInside" id="ujS-33-rLL"/>
                                         </connections>
                                     </button>
                                 </subviews>

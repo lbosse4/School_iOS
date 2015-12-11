@@ -30,6 +30,11 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         dataSource.delegate = self
         dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
         tableView.dataSource = dataSource
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
     }
     
     //MARK: Actions

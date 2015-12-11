@@ -49,7 +49,7 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     func updateAddPlayerButton() {
         playerName = playerNameTextField.text
         if !(playerName == "") {
-            if !(jerseyNumberTextField == "") {
+            if !(jerseyNumberTextField.text == "") {
                 playerJerseyNumber = Int(jerseyNumberTextField.text!)
                 //if both fields are populated, show the button
                 addPlayerButtonView.alpha = activeAlpha

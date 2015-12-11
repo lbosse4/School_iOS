@@ -226,6 +226,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func presentTeamStatsSummaryViewController() {
+        currentGame.homeScore = homeScore
+        currentGame.guestScore = guestScore
         let teamStatsSummaryViewController = storyboard!.instantiateViewControllerWithIdentifier("TeamStatsViewController") as! TeamStatsViewController
         //secondHalfPromptViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
         //secondHalfPromptViewController.preferredContentSize = formSheetContentSize
