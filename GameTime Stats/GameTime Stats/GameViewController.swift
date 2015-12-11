@@ -456,9 +456,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                     isPlayerAtIndexOnField[panningView.tag] = false
                 } else {
                     if !isPlayerAtIndexOnField[panningView.tag] {
-//                        let currentTime = NSDate()
-//                        let playerStats = model.statsForPlayer(currentPlayers[panningView.tag], game: currentGame!, periodType: currentPeriod)
-//                        playerStats.enterTime = currentTime
                         let currentSecondsLeft = calculateSecondsLeft()
                         let playerStats = model.statsForPlayer(currentPlayers[panningView.tag], game: currentGame, periodType: currentPeriod)
                         playerStats.secondsLeftAtEnter = currentSecondsLeft
@@ -474,6 +471,12 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             default:
                 break
             }
+        }
+    }
+    
+    @IBAction func resetPlayersButtonPressed(sender: UIButton) {
+        for playerView in playerViews {
+            resetPlayerView(playerView)
         }
     }
     

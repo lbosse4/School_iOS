@@ -154,6 +154,7 @@
             <string>CollegiateHeavyOutline-Medium</string>
             <string>CollegiateHeavyOutline-Medium</string>
             <string>CollegiateHeavyOutline-Medium</string>
+            <string>CollegiateHeavyOutline-Medium</string>
         </mutableArray>
         <mutableArray key="digital-7.ttf">
             <string>Digital-7</string>
@@ -367,17 +368,6 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tC9-Wg-pDV">
-                                                <rect key="frame" x="195" y="226" width="104" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="CollegiateHeavyOutline-Medium" family="CollegiateHeavyOutline" pointSize="16"/>
-                                                <state key="normal" title="Cancel Game">
-                                                    <color key="titleColor" red="0.13644255050505039" green="0.13644255050505039" blue="0.13644255050505039" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="cancelGameButtonPressed:" destination="kbi-2a-i8m" eventType="touchUpInside" id="DyK-Sr-ai0"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gyb-Nl-YPB">
                                                 <rect key="frame" x="370" y="159" width="130" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -444,6 +434,28 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vbv-Go-LKb">
+                                                <rect key="frame" x="420" y="223" width="109" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="CollegiateHeavyOutline-Medium" family="CollegiateHeavyOutline" pointSize="16"/>
+                                                <state key="normal" title="Reset Players">
+                                                    <color key="titleColor" red="0.13644255050000001" green="0.13644255050000001" blue="0.13644255050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="resetPlayersButtonPressed:" destination="kbi-2a-i8m" eventType="touchUpInside" id="Zlz-uV-1NC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tC9-Wg-pDV">
+                                                <rect key="frame" x="195" y="226" width="104" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="CollegiateHeavyOutline-Medium" family="CollegiateHeavyOutline" pointSize="16"/>
+                                                <state key="normal" title="Cancel Game">
+                                                    <color key="titleColor" red="0.13644255050505039" green="0.13644255050505039" blue="0.13644255050505039" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelGameButtonPressed:" destination="kbi-2a-i8m" eventType="touchUpInside" id="DyK-Sr-ai0"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
