@@ -131,84 +131,139 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         
         switch currentPeriod {
         case PeriodType.FirstHalf:
-            //set the new period
-            currentPeriod = PeriodType.SecondHalf
-            
             //set the half indicator
             let secondHalfString = formatter.stringFromNumber(secondHalf)
             halfLabel.text = secondHalfString
             
-            resetButton.setTitle(PeriodType.SecondHalf, forState: .Normal)
-            
-            let secondHalfPromptViewController = storyboard!.instantiateViewControllerWithIdentifier("SecondHalfPromptViewController") as! SecondHalfPromptViewController
-            secondHalfPromptViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
-            secondHalfPromptViewController.preferredContentSize = formSheetContentSize
-            secondHalfPromptViewController.cancelBlock = {() in
-                self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    self.gameTimer.invalidate()
-                    self.gameTimerSeconds = self.startingSeconds
-                    self.gameTimerMinutes = self.startingMinutes
-                    self.updateTimerLabel()
-                    self.resetButton.hidden = true
-                    self.startButton.alpha = self.activeAlpha
-                    self.startButton.alpha = self.activeAlpha
-                    self.startButton.userInteractionEnabled = true
-                    
-                    self.addStatsObjects()
-                    
-                    var loopCounter = 0
-                    for player in self.currentPlayers {
-                        if self.isPlayerAtIndexOnField[loopCounter]{
-                            let currentSecondsLeft = self.calculateSecondsLeft()
-                            let playerStats = self.model.statsForPlayer(player, game: self.currentGame, periodType: self.currentPeriod)
-                            playerStats.secondsLeftAtEnter = currentSecondsLeft
-                        }
-                        loopCounter++
-                    }
-
-                })
-            }
-            if !isPresentingStatsEditor {
-                presentViewController(secondHalfPromptViewController, animated: true, completion: nil)
-            }
-            
+            presentSecondHalfPromptViewController()
             
         case PeriodType.SecondHalf:
-            //resetButton.setTitle("View Stats", forState: .Normal)
-            let overtimePromptController = storyboard!.instantiateViewControllerWithIdentifier("OvertimePromptViewController") as! OvertimePromptViewController
-            overtimePromptController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
-            overtimePromptController.preferredContentSize = formSheetContentSize
-            
-            
-            //Asks the user if there will be overtime.
-            //If there is overtime (yes)
-            overtimePromptController.answerChosenBlock = {(answer: Int, otMinutes: Int, otSeconds: Int) in
-                self.overtimeChosenAnswer = answer
-                self.dismissViewControllerAnimated(true, completion: nil)
-                if answer == self.yes {
-                    self.currentPeriod = PeriodType.Overtime
-                    self.resetButton.setTitle(PeriodType.Overtime, forState: .Normal)
-                    self.halfLabel.text = self.overtimeString
-                    self.overtimeMinutes = otMinutes
-                    self.overtimeSeconds = otSeconds
-                    self.currentGame!.hasOvertime = true
-                } else {
-                    self.resetButton.setTitle("View Stats", forState: .Normal)
-                    self.currentGame!.hasOvertime = false
-                }
-            }
-            
-            self.presentViewController(overtimePromptController, animated: true, completion: nil)
+            presentOvertimePromptViewController()
             
         case PeriodType.Overtime:
-            resetButton.setTitle("View Stats", forState: .Normal)
+            resetButton.hidden = false
         default: break
         }
         
-        resetButton.hidden = false
         startButton.alpha = inactiveAlpha
         startButton.userInteractionEnabled = false
         
+    }
+    
+    func presentSecondHalfPromptViewController(){
+        let secondHalfPromptViewController = storyboard!.instantiateViewControllerWithIdentifier("SecondHalfPromptViewController") as! SecondHalfPromptViewController
+        secondHalfPromptViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+        secondHalfPromptViewController.preferredContentSize = formSheetContentSize
+        secondHalfPromptViewController.cancelBlock = {() in
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                self.gameTimer.invalidate()
+                self.currentPeriod = PeriodType.SecondHalf
+                self.gameTimerSeconds = self.startingSeconds
+                self.gameTimerMinutes = self.startingMinutes
+                self.updateTimerLabel()
+                self.resetButton.hidden = true
+                self.startButton.alpha = self.activeAlpha
+                self.startButton.alpha = self.activeAlpha
+                self.startButton.userInteractionEnabled = true
+                
+                self.addStatsObjects()
+                
+                var loopCounter = 0
+                for player in self.currentPlayers {
+                    if self.isPlayerAtIndexOnField[loopCounter]{
+                        let currentSecondsLeft = self.calculateSecondsLeft()
+                        let playerStats = self.model.statsForPlayer(player, game: self.currentGame, periodType: self.currentPeriod)
+                        playerStats.secondsLeftAtEnter = currentSecondsLeft
+                    }
+                    loopCounter++
+                }
+                
+            })
+        }
+        if !isPresentingStatsEditor {
+            presentViewController(secondHalfPromptViewController, animated: true, completion: nil)
+        }
+
+    }
+    
+    func presentStatsEditorViewController(tappedView: UIView){
+        let navPopoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController") as! UINavigationController
+        let popoverViewController = navPopoverViewController.viewControllers[0] as! StatEditorTableViewController
+        
+        navPopoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+        
+        popoverViewController.preferredContentSize = popoverContentSize
+        let popoverMenuViewController = navPopoverViewController.popoverPresentationController
+        //maybe update this based on locatoin in fieldView
+        popoverMenuViewController!.permittedArrowDirections = .Any
+        popoverMenuViewController!.delegate = self
+        popoverMenuViewController!.sourceView = tappedView
+        popoverMenuViewController?.sourceRect = CGRect(x: playerViewSize/2, y: playerViewSize/2, width: 0.0, height: 0.0)
+        
+        popoverViewController.cancelBlock = {() in
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                self.isPresentingStatsEditor = false
+                //if the first half is over, and the stats view controller was up, present the second half option when they close it.
+                if self.gameTimerMinutes == 0 && self.gameTimerSeconds == 0 {
+                    switch self.currentPeriod {
+                    case PeriodType.FirstHalf:
+                        self.presentSecondHalfPromptViewController()
+                        
+                    case PeriodType.SecondHalf:
+                        self.presentOvertimePromptViewController()
+                    default:
+                        break
+                    }
+                }
+            })
+        }
+        
+        popoverViewController.player = currentPlayers[tappedView.tag]
+        popoverViewController.period = currentPeriod
+        popoverViewController.game = currentGame
+        
+        self.presentViewController(navPopoverViewController, animated: true, completion: nil)
+        isPresentingStatsEditor = true
+
+    }
+    
+    func presentOvertimePromptViewController(){
+        let overtimePromptController = storyboard!.instantiateViewControllerWithIdentifier("OvertimePromptViewController") as! OvertimePromptViewController
+        overtimePromptController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+        overtimePromptController.preferredContentSize = formSheetContentSize
+        
+        
+        //Asks the user if there will be overtime.
+        //If there is overtime (yes)
+        overtimePromptController.answerChosenBlock = {(answer: Int, otMinutes: Int, otSeconds: Int) in
+            self.currentPeriod = PeriodType.Overtime
+            if answer == self.yes {
+                //change to overtime
+                self.halfLabel.text = self.overtimeString
+                self.overtimeMinutes = otMinutes
+                self.overtimeSeconds = otSeconds
+                self.currentGame!.hasOvertime = true
+                
+                self.overtimeChosenAnswer = answer
+                self.gameTimer.invalidate()
+                self.gameTimerMinutes = otMinutes
+                self.gameTimerSeconds = otSeconds
+                self.updateTimerLabel()
+                self.startButton.alpha = self.activeAlpha
+                self.startButton.userInteractionEnabled = true
+                self.addStatsObjects()
+                
+            } else {
+                self.currentGame!.hasOvertime = false
+                self.resetButton.hidden = false
+            }
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        if !isPresentingStatsEditor {
+            self.presentViewController(overtimePromptController, animated: true, completion: nil)
+        }
+
     }
     
     func updateTimerLabel(){
@@ -290,10 +345,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     }
     
     func addStatsObjects(){
-        shouldShowStatsEditor = true
         for player in currentPlayers {
             model.addStatsObject(player, game: currentGame!, currentPeriod: currentPeriod)
         }
+        shouldShowStatsEditor = true
     }
     
     func calculateSecondsLeft() -> Int {
@@ -401,36 +456,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         if let tappedView = recognizer.view {
             let currentLocation = recognizer.locationInView(fieldImageView)
             if !checkFieldViewBounds(currentLocation, padding: 0.0){
-                
-                let navPopoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController") as! UINavigationController
-                let popoverViewController = navPopoverViewController.viewControllers[0] as! StatEditorTableViewController
-                
-                navPopoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-                
-                popoverViewController.preferredContentSize = popoverContentSize
-                let popoverMenuViewController = navPopoverViewController.popoverPresentationController
-                //maybe update this based on locatoin in fieldView
-                popoverMenuViewController!.permittedArrowDirections = .Any
-                popoverMenuViewController!.delegate = self
-                popoverMenuViewController!.sourceView = tappedView
-                popoverMenuViewController?.sourceRect = CGRect(x: playerViewSize/2, y: playerViewSize/2, width: 0.0, height: 0.0)
-                
-                popoverViewController.cancelBlock = {() in
-                    self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                        self.isPresentingStatsEditor = false
-                        //if the first half is over, and the stats view controller was up, present the second half option when they close it.
-                        if self.gameTimerMinutes == 0 && self.gameTimerSeconds == 0 && self.currentPeriod == PeriodType.FirstHalf {
-                            
-                        }
-                    })
-                }
-                
-                popoverViewController.player = currentPlayers[recognizer.view!.tag]
-                popoverViewController.period = currentPeriod
-                popoverViewController.game = currentGame
-                
-                self.presentViewController(navPopoverViewController, animated: true, completion: nil)
-                isPresentingStatsEditor = true
+                presentStatsEditorViewController(tappedView)
             }
         }
     }
@@ -452,6 +478,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         if !gameTimer.valid {
             gameTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true) 
         }
+        
     }
     
     @IBAction func stopTimerButtonPressed(sender: UIButton) {
@@ -460,38 +487,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     @IBAction func resetButtonPressed(sender: UIButton) {
         switch resetButton.titleForState(.Normal)! {
-        case PeriodType.SecondHalf:
-            //TODO: THIS CODE IS REPLICATEd IN THE SECOND HALF PROMPT. FIND A WAY TO CONDENSE (basically, don't have it here.)
-            //CHECK IF THE TIMER RAN OUT AND ITS THE SECOND HALF IN THE COMPLETEION BLOCK OF YOUR STATS VIEW CONTROLLER CODE
-            gameTimer.invalidate()
-            gameTimerSeconds = startingSeconds
-            gameTimerMinutes = startingMinutes
-            updateTimerLabel()
-            resetButton.hidden = true
-            startButton.alpha = activeAlpha
-            startButton.userInteractionEnabled = true
-            addStatsObjects()
-            
-            var loopCounter = 0
-            for player in currentPlayers {
-                if isPlayerAtIndexOnField[loopCounter]{
-                    let currentSecondsLeft = calculateSecondsLeft()
-                    let playerStats = model.statsForPlayer(player, game: currentGame, periodType: currentPeriod)
-                    playerStats.secondsLeftAtEnter = currentSecondsLeft
-                }
-                loopCounter++
-            }
-            
-        case PeriodType.Overtime:
-            //TODO: move this to cancel of overtime prompt
-            gameTimer.invalidate()
-            gameTimerMinutes = overtimeMinutes!
-            gameTimerSeconds = overtimeSeconds!
-            updateTimerLabel()
-            resetButton.hidden = true
-            startButton.alpha = activeAlpha
-            startButton.userInteractionEnabled = true
-            addStatsObjects()
         case "View Stats":
             //TODO: ADD STATS OVERVIEW VIEWCONTROLLER HERE
             cancelBlock!()
@@ -569,7 +564,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 self.currentPlayers = self.model.playersForTeam(self.currentTeam!)
                 self.generateViews()
                 self.addStatsObjects()
-                
             }
             
             gameSetupController.delegate = self
