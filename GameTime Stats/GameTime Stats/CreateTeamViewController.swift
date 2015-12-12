@@ -14,9 +14,10 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     let maxTeamNameLength = 25
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
+    let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
     
-    var majorColor : NSObject?
-    var minorColor : NSObject?
+    var majorColor : UIColor?
+    var minorColor : UIColor?
     var team : Team?
     var teamName : String?
     var cancelBlock : (() -> Void)?
@@ -33,16 +34,17 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
         addPlayersButtonView.alpha = inactiveAlpha
         let playerIconFrame = playerIconView.frame
         playerIconView.layer.cornerRadius = playerIconFrame.width/2
-        //TODO: SET DEFAULT COLORS HERE
+        majorColor = darkBlueColor
+        self.playerIconView.backgroundColor = darkBlueColor
+        minorColor = UIColor.whiteColor()
     }
     
     //MARK: Actions
     
     @IBAction func chooseJerseyColorButtonPressed(sender: UIButton) {
         let colorPickerViewController = storyboard!.instantiateViewControllerWithIdentifier("ColorPickerViewController") as! ColorPickerViewController
-        //TODO: FIX THIS
-        //colorPickerViewController.previousColor = UIColor(team?.majorColor!)
-        colorPickerViewController.previousColor = UIColor.redColor()
+        
+        colorPickerViewController.previousColor = majorColor
         colorPickerViewController.cancelBlock = {(chosenColor : UIColor) in
             self.dismissViewControllerAnimated(true, completion: nil)
             self.majorColor = chosenColor
@@ -55,7 +57,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     
     @IBAction func chooseNumberColorButtonPressed(sender: UIButton) {
         let colorPickerViewController = storyboard!.instantiateViewControllerWithIdentifier("ColorPickerViewController") as! ColorPickerViewController
-        colorPickerViewController.previousColor = UIColor.whiteColor()
+        colorPickerViewController.previousColor = minorColor
         colorPickerViewController.cancelBlock = {(chosenColor : UIColor) in
             self.dismissViewControllerAnimated(true, completion: nil)
             self.minorColor = chosenColor

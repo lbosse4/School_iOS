@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import UIKit
 import Foundation
 
 struct PositionsKey {
@@ -126,15 +127,26 @@ class Model : DataManagerDelegate {
         dataManager.saveContext()
     }
 
-    func addTeamWithName(name: String, majorColor: NSObject, minorColor: NSObject) -> Team {
+    func addTeamWithName(name: String, majorColor: UIColor, minorColor: UIColor) -> Team {
         let teamObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Team, inManagedObjectContext: dataManager.managedObjectContext!) as! Team
         teamObj.name = name
-        teamObj.majorColor = majorColor
-        teamObj.minorColor = minorColor
+        let majorData = NSKeyedArchiver.archivedDataWithRootObject(majorColor)
+        let minorData = NSKeyedArchiver.archivedDataWithRootObject(minorColor)
+        teamObj.majorColor = majorData//majorColor
+        teamObj.minorColor = minorData//minorColor
         dataManager.saveContext()
-        //teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
         updateTeamsAndPlayers()
         return teamObj
+    }
+    
+    func majorColorForTeam(team: Team) -> UIColor {
+        let data = team.majorColor as! NSData
+        return NSKeyedUnarchiver.unarchiveObjectWithData(data) as! UIColor
+    }
+    
+    func minorColorForTeam(team: Team) -> UIColor {
+        let data = team.minorColor as! NSData
+        return NSKeyedUnarchiver.unarchiveObjectWithData(data) as! UIColor
     }
     
     //essentially an enum for positions

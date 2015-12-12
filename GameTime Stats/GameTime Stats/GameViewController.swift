@@ -11,7 +11,6 @@ import UIKit
 class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, cancelGameProtocol, TeamStatsViewedProtocol {
     //MARK: Constants
     let model = Model.sharedInstance
-    let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
     let playerViewSize : CGFloat = 55.0
     let playerViewPaddingWidth : CGFloat = 65.0
     let playerViewPaddingHeight : CGFloat = 65.0
@@ -320,9 +319,10 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             
             //create playerView
             let playerView = UIView(frame: playerFrame)
-            playerView.backgroundColor = darkBlueColor
             playerView.layer.cornerRadius = playerViewSize/2
             playerView.tag = loopCounter
+            let viewColor : UIColor = model.majorColorForTeam(currentTeam)
+            playerView.backgroundColor = viewColor
             benchScrollview.addSubview(playerView)
             
             //add player jersey number
@@ -331,7 +331,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             let playerNumberLabel = UILabel(frame: playerNumberFrame)
             playerNumberLabel.text = "\(playerNumber)"
             playerNumberLabel.font = UIFont(name: playerNumberFont, size: playerViewSize - playerViewMargin)
-            playerNumberLabel.textColor = UIColor.whiteColor()
+            playerNumberLabel.textColor = model.minorColorForTeam(currentTeam)
             playerNumberLabel.textAlignment = .Center
             playerView.addSubview(playerNumberLabel)
             
@@ -548,7 +548,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Recognizer Delegate
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        //TODO: Make sure THIS IS WORKING
         if shouldShowStatsEditor {
             return true
         } else {

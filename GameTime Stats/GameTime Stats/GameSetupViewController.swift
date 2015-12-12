@@ -20,6 +20,7 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
     let maxPlayerNameLength = 20
+    let pickerViewFont = UIFont(name: "Orbitron-Light", size: 20.0)
     
     //MARK: Variables
     var chosenTeam : Team?
@@ -125,5 +126,14 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         chosenTeam = model.teamAtIndex(row)
+    }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        let title = model.teamAtIndex(row).name!
+        pickerLabel.text = title
+        pickerLabel.font = pickerViewFont
+        pickerLabel.backgroundColor = UIColor.purpleColor()
+        return pickerLabel
     }
 }

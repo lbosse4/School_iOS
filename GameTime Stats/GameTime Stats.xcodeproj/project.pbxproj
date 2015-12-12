@@ -56,6 +56,7 @@
 		89A8F9301C13F64E00FF4602 /* TeamStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */; };
 		89A8F9321C13FE1700FF4602 /* PlayerStatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */; };
 		89ADE57A1C14D25400298889 /* README.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 89ADE5791C14D25400298889 /* README.pdf */; };
+		89BB18841C1BB64300562DD1 /* ColoPickerImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BB18831C1BB64300562DD1 /* ColoPickerImage.png */; };
 		89DB69B61C137CF40057104E /* TrashCanImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DB69B51C137CF40057104E /* TrashCanImage.png */; };
 		89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6A1BDC657C0051212A /* womensLacrosseField.png */; };
 		89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6C1BDC65820051212A /* mensLacrosseField.png */; };
@@ -138,6 +139,7 @@
 		89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsViewController.swift; sourceTree = "<group>"; };
 		89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatsDetailViewController.swift; sourceTree = "<group>"; };
 		89ADE5791C14D25400298889 /* README.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = README.pdf; sourceTree = "<group>"; };
+		89BB18831C1BB64300562DD1 /* ColoPickerImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColoPickerImage.png; sourceTree = "<group>"; };
 		89DB69B51C137CF40057104E /* TrashCanImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrashCanImage.png; sourceTree = "<group>"; };
 		89E30A6A1BDC657C0051212A /* womensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6C1BDC65820051212A /* mensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensLacrosseField.png; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 		89E30A691BDC654E0051212A /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				89BB18831C1BB64300562DD1 /* ColoPickerImage.png */,
 				89DB69B51C137CF40057104E /* TrashCanImage.png */,
 				89E30A6C1BDC65820051212A /* mensLacrosseField.png */,
 				897083761BE04098008F5D5B /* Grass.png */,
@@ -512,6 +515,7 @@
 				89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */,
 				89EC2BC61BCF0DAB008B37DC /* LaunchScreen.storyboard in Resources */,
 				89EC2BC31BCF0DAB008B37DC /* Assets.xcassets in Resources */,
+				89BB18841C1BB64300562DD1 /* ColoPickerImage.png in Resources */,
 				89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */,
 				89DB69B61C137CF40057104E /* TrashCanImage.png in Resources */,
 				897083771BE04098008F5D5B /* Grass.png in Resources */,
