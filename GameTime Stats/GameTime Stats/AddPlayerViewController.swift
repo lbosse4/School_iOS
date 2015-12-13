@@ -16,6 +16,8 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     let maxJerseyNumberDigits = 2
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
+    let pickerViewFont = UIFont(name: "Orbitron-Light", size: 20.0)
+
     var playerName : String!
     var playerJerseyNumber : Int!
     var team : Team?
@@ -153,6 +155,17 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         chosenPosition = model.positionAtIndex(row)
         updateAddPlayerButton()
+    }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        let position = model.positionAtIndex(row)
+        pickerLabel.text = position
+        pickerLabel.font = pickerViewFont
+        pickerLabel.backgroundColor = model.majorColorForTeam(team!)
+        pickerLabel.textColor = model.minorColorForTeam(team!)
+        pickerLabel.textAlignment = .Center
+        return pickerLabel
     }
 
 }

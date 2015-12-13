@@ -857,7 +857,7 @@
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="KIQ-Ui-XhJ">
                                         <rect key="frame" x="130" y="229" width="301" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="0.13" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.12" colorSpace="calibratedRGB"/>
                                         <date key="date" timeIntervalSinceReferenceDate="470379888.18945599">
                                             <!--2015-11-28 05:04:48 +0000-->
                                         </date>
@@ -883,6 +883,7 @@
                                     <pickerView contentMode="scaleToFill" id="UV6-Jc-vxZ">
                                         <rect key="frame" x="130" y="450" width="301" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.070000000000000007" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </pickerView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Opponent Team Name" textAlignment="natural" minimumFontSize="17" id="ZOg-78-Cnw">
@@ -952,6 +953,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="762"/>
                     <connections>
+                        <outlet property="datePicker" destination="KIQ-Ui-XhJ" id="dd1-io-zPc"/>
                         <outlet property="opponentTeamNameTextField" destination="ZOg-78-Cnw" id="9FC-xT-PAq"/>
                         <outlet property="startGameButtonView" destination="piL-z0-Y1X" id="FCK-mI-dsU"/>
                         <outlet property="teamPicker" destination="UV6-Jc-vxZ" id="1Au-6H-uZ7"/>
@@ -1844,6 +1846,7 @@
                                     <pickerView contentMode="scaleToFill" id="m6I-62-fzM">
                                         <rect key="frame" x="164" y="356" width="232" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.070000000000000007" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </pickerView>
                                 </subviews>

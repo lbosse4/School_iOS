@@ -129,7 +129,7 @@ class Model : DataManagerDelegate {
         gameObj.team = team
         gameObj.date = date
         gameObj.opponentName = opponentTeamName
-        dataManager.saveContext()
+        //dataManager.saveContext()
         return gameObj
         
     }

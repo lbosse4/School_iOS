@@ -22,6 +22,7 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     let maxPlayerNameLength = 20
     let pickerViewFont = UIFont(name: "Orbitron-Light", size: 20.0)
     
+    
     //MARK: Variables
     var chosenTeam : Team?
     var cancelBlock : (() -> Void)?
@@ -34,6 +35,7 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     @IBOutlet weak var opponentTeamNameTextField: UITextField!
     @IBOutlet weak var teamPicker: UIPickerView!
     @IBOutlet weak var startGameButtonView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
         //assigning delegates
