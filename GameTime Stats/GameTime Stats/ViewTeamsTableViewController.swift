@@ -114,7 +114,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         sectionView.backgroundColor = UIColor.blackColor()
         
         //clickable to allow collapsable sections
-        let teamNameButtonFrame = CGRect(x: buttonPadding*2 + colorWheelButtonRadius, y: 0.0, width: view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding, height: sectionHeight)
+        let teamNameButtonFrame = CGRect(x: buttonPadding*2 + colorWheelButtonRadius, y: 0.0, width: view.frame.width - colorWheelButtonRadius - trashCanButtonWidth - buttonWidth - scrollPadding - buttonPadding*4, height: sectionHeight)
         let teamNameButton = UIButton(frame: teamNameButtonFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
         teamNameButton.setTitle(teamName, forState: .Normal)
@@ -123,14 +123,17 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         teamNameButton.tag = section
         
         //Button to delete team
-        let trashCanButtonFrame = CGRect(x:view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding - buttonPadding, y: (sectionHeight - trashCanButtonHeight)/2, width: trashCanButtonWidth, height: trashCanButtonHeight)
+        //let trashCanButtonFrame = CGRect(x:view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding - buttonPadding, y: (sectionHeight - trashCanButtonHeight)/2, width: trashCanButtonWidth, height: trashCanButtonHeight)
+        let trashCanButtonFrame = CGRect(x: buttonPadding, y: (sectionHeight - trashCanButtonHeight)/2, width: trashCanButtonWidth, height: trashCanButtonHeight)
         let trashCanButton = UIButton(frame: trashCanButtonFrame)
         let trashCanImage = UIImage(named: "TrashCanImage.png")
         trashCanButton.setBackgroundImage(trashCanImage, forState: .Normal)
         trashCanButton.addTarget(self, action: "trashCanButtonPressed:", forControlEvents: .TouchUpInside)
         trashCanButton.tag = section
         
-        let colorWheelButtonFrame = CGRect(x: buttonPadding, y: (sectionHeight - colorWheelButtonRadius)/2, width: colorWheelButtonRadius, height: colorWheelButtonRadius)
+        //Button to update team colors
+        let colorWheelButtonFrame = CGRect(x: view.frame.width - colorWheelButtonRadius - buttonWidth - scrollPadding - buttonPadding, y: (sectionHeight - colorWheelButtonRadius)/2, width: colorWheelButtonRadius, height: colorWheelButtonRadius)
+        //let colorWheelButtonFrame = CGRect(x: buttonPadding, y: (sectionHeight - colorWheelButtonRadius)/2, width: colorWheelButtonRadius, height: colorWheelButtonRadius)
         let colorWheelButton = UIButton(frame: colorWheelButtonFrame)
         let colorWheelImage = UIImage(named: "ColorPickerImage.png")
         colorWheelButton.setImage(colorWheelImage, forState: .Normal)
