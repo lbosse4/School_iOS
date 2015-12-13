@@ -30,7 +30,6 @@ class ChangeTeamColorViewController: UIViewController {
         colorPickerViewController.previousColor = model.majorColorForTeam(team)
         colorPickerViewController.completionBlock = {(chosenColor : UIColor) in
             self.dismissViewControllerAnimated(true, completion: nil)
-            //self.team.majorColor = chosenColor
             self.majorColor = chosenColor
             self.playerIconView.backgroundColor = chosenColor
         }
@@ -45,7 +44,6 @@ class ChangeTeamColorViewController: UIViewController {
         colorPickerViewController.previousColor = model.minorColorForTeam(team)
         colorPickerViewController.completionBlock = {(chosenColor : UIColor) in
             self.dismissViewControllerAnimated(true, completion: nil)
-            //self.team.minorColor = chosenColor
             self.minorColor = chosenColor
             self.playerIconNumberLabel.textColor = chosenColor
         }
@@ -56,8 +54,8 @@ class ChangeTeamColorViewController: UIViewController {
     }
     
     @IBAction func updateButtonPressed(sender: UIButton) {
-        team.majorColor = majorColor
-        team.minorColor = minorColor
+        model.updateMajorColorForTeam(team, majorColor: majorColor)
+        model.updateMinorColorForTeam(team, minorColor: minorColor)
         cancelBlock()
     }
     

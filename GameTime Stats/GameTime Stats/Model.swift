@@ -157,12 +157,24 @@ class Model : DataManagerDelegate {
         return teamObj
     }
     
+    func updateMajorColorForTeam(team: Team, majorColor: UIColor) {
+        let majorData = NSKeyedArchiver.archivedDataWithRootObject(majorColor)
+        team.majorColor = majorData
+    }
+    
+    func updateMinorColorForTeam(team: Team, minorColor: UIColor) {
+        let minorData = NSKeyedArchiver.archivedDataWithRootObject(minorColor)
+        team.minorColor = minorData
+    }
+    
     func majorColorForTeam(team: Team) -> UIColor {
+        
         let data = team.majorColor as! NSData
         return NSKeyedUnarchiver.unarchiveObjectWithData(data) as! UIColor
     }
     
     func minorColorForTeam(team: Team) -> UIColor {
+        
         let data = team.minorColor as! NSData
         return NSKeyedUnarchiver.unarchiveObjectWithData(data) as! UIColor
     }
