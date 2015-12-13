@@ -193,7 +193,7 @@
                                 <rect key="frame" x="412" y="100" width="304" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="115"/>
-                                <color key="textColor" red="0.0" green="0.14404296875" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.14509803921568626" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.0" green="0.0" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6LG-ln-eKK">
@@ -2594,15 +2594,15 @@
             <objects>
                 <viewController storyboardIdentifier="ColorPickerViewController" modalPresentationStyle="formSheet" id="iAk-9C-p2H" customClass="ColorPickerViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oDp-tM-Ud1">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="450"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Bv7-Ct-Y6S">
-                                <rect key="frame" x="15" y="14" width="320" height="420"/>
+                                <rect key="frame" x="15" y="14" width="320" height="470"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="QeL-aM-HgC">
-                                        <rect key="frame" x="15" y="350" width="292" height="60"/>
+                                        <rect key="frame" x="14" y="394" width="292" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CwW-5d-P8I">
@@ -2628,14 +2628,14 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="350" height="450"/>
+                    <size key="freeformSize" width="350" height="500"/>
                     <connections>
                         <outlet property="chooseColorButton" destination="CwW-5d-P8I" id="9FT-WT-Mg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bD1-Lp-XVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="-1394"/>
+            <point key="canvasLocation" x="1064" y="-1395"/>
         </scene>
     </scenes>
     <resources>

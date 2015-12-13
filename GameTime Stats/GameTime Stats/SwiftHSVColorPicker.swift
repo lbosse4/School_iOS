@@ -10,8 +10,8 @@ import UIKit
 public class SwiftHSVColorPicker: UIView {
     var colorWheel: ColorWheel!
     var brightnessView: BrightnessView!
-    //var selectedColorView: SelectedColorView!
-
+    var selectedColorView: SelectedColorView!
+    
     public var color: UIColor!
     var hue: CGFloat = 1.0
     var saturation: CGFloat = 1.0
@@ -45,22 +45,22 @@ public class SwiftHSVColorPicker: UIView {
         for view in views {
             view.removeFromSuperview()
         }
-
+        
         let width = self.bounds.width
         
         // Init SelectedColorView subview
-//        selectedColorView = SelectedColorView(frame: CGRect(x: 0, y:0, width: width, height: 44), color: self.color)
-//        // Add selectedColorView as a subview of this view
-//        self.addSubview(selectedColorView)
+        selectedColorView = SelectedColorView(frame: CGRect(x: 0, y:0, width: width, height: 44), color: self.color)
+        // Add selectedColorView as a subview of this view
+        self.addSubview(selectedColorView)
         
         // Init new ColorWheel subview
-        colorWheel = ColorWheel(frame: CGRect(x: 0, y: 0, width: width, height: width), color: self.color)
+        colorWheel = ColorWheel(frame: CGRect(x: 0, y: 44, width: width, height: width), color: self.color)
         colorWheel.delegate = self
         // Add colorWheel as a subview of this view
         self.addSubview(colorWheel)
         
         // Init new BrightnessView subview
-        brightnessView = BrightnessView(frame: CGRect(x: 0, y: width, width: width, height: 26), color: self.color)
+        brightnessView = BrightnessView(frame: CGRect(x: 0, y: width+44, width: width, height: 26), color: self.color)
         brightnessView.delegate = self
         // Add brightnessView as a subview of this view
         self.addSubview(brightnessView)
@@ -71,13 +71,13 @@ public class SwiftHSVColorPicker: UIView {
         self.saturation = saturation
         self.color = UIColor(hue: self.hue, saturation: self.saturation, brightness: self.brightness, alpha: 1.0)
         brightnessView.setViewColor(self.color)
-        //selectedColorView.setViewColor(self.color)
+        selectedColorView.setViewColor(self.color)
     }
     
     func brightnessSelected(brightness: CGFloat) {
         self.brightness = brightness
         self.color = UIColor(hue: self.hue, saturation: self.saturation, brightness: self.brightness, alpha: 1.0)
         colorWheel.setViewBrightness(brightness)
-        //selectedColorView.setViewColor(self.color)
+        selectedColorView.setViewColor(self.color)
     }
 }

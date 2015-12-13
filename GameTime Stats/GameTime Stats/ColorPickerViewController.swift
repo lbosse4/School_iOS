@@ -9,7 +9,7 @@
 import UIKit
 
 class ColorPickerViewController: UIViewController {
-    let colorPicker = SwiftHSVColorPicker(frame: CGRectMake(25, 20, 300, 350))
+    let colorPicker = SwiftHSVColorPicker(frame: CGRectMake(25, 20, 300, 400))
     var previousColor : UIColor?
     var cancelBlock : ((chosenColor: UIColor) -> Void)!
     @IBOutlet weak var chooseColorButton: UIButton!

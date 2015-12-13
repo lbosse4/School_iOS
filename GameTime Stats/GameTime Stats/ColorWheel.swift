@@ -252,6 +252,7 @@ class ColorWheel: UIView {
         if (!ok) {
             print("SwiftHSVColorPicker: exception <The color provided to SwiftHSVColorPicker is not convertible to HSV>")
         }
+        
         self.color = color
         self.brightness = brightness
         brightnessLayer.fillColor = UIColor(white: 0, alpha: 1.0-self.brightness).CGColor
