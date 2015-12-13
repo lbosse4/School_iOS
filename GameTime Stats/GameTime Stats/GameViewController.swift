@@ -22,8 +22,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let statSummaryContentSize = CGSize(width: 600.0, height: 800.0)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 0//30
-    let startingSeconds = 3
+    let startingMinutes = 30
+    let startingSeconds = 0//3
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
@@ -35,7 +35,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let yes = 1
     let activeAlpha : CGFloat = 1.0
     let inactiveAlpha : CGFloat = 0.5
-    let secondsInterval : NSTimeInterval = 1.0
+    let secondsInterval : NSTimeInterval = 0.05 //1.0
     
     //MARK: Variables
     var playerViews = [UIView]()
@@ -43,8 +43,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
-    var gameTimerMinutes = 0//30
-    var gameTimerSeconds = 3
+    var gameTimerMinutes = 30
+    var gameTimerSeconds = 0//3
     var homeScore = 0
     var guestScore = 0
     var currentPeriod = PeriodType.FirstHalf
@@ -406,18 +406,18 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         
         fieldImageView.bringSubviewToFront(playerView)
         
-//        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-//            playerView.frame.origin = origin
-//            }) { (finished) -> Void in
-//                self.benchScrollview.addSubview(playerView)
-//        }
-        
-        UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: { () -> Void in
+        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
             playerView.frame.origin = origin
-            
-            }) { (finished : Bool) -> Void in
+            }) { (finished) -> Void in
                 self.benchScrollview.addSubview(playerView)
         }
+        
+//        UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: { () -> Void in
+//            playerView.frame.origin = origin
+//            
+//            }) { (finished : Bool) -> Void in
+//                self.benchScrollview.addSubview(playerView)
+//        }
         
         if isPlayerAtIndexOnField[playerView.tag] {
             let currentSecondsLeft = calculateSecondsLeft()
@@ -437,6 +437,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //sees if any views are overlapping. If they are, put move the player on the field to the bench (replace with playerView)
     func checkForCollisions(playerView: UIView) {
+        
         for  currentView in playerViews {
             if (CGRectIntersectsRect(playerView.frame, currentView.frame)) && (currentView.tag != playerView.tag) {
                 resetPlayerView(currentView)

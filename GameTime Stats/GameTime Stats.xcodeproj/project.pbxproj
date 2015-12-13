@@ -17,6 +17,12 @@
 		8909789B1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909789A1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift */; };
 		8909789D1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909789C1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift */; };
 		8909789F1C1DE6CE0054E67A /* ChangeTeamColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909789E1C1DE6CE0054E67A /* ChangeTeamColorViewController.swift */; };
+		890978A71C1E2F670054E67A /* GameWalkthrough1.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978A11C1E2F670054E67A /* GameWalkthrough1.png */; };
+		890978A81C1E2F670054E67A /* GameWalkthrough2.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978A21C1E2F670054E67A /* GameWalkthrough2.png */; };
+		890978A91C1E2F670054E67A /* GameWalkthrough3.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978A31C1E2F670054E67A /* GameWalkthrough3.png */; };
+		890978AA1C1E2F670054E67A /* GameWalkthrough4.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978A41C1E2F670054E67A /* GameWalkthrough4.png */; };
+		890978AB1C1E2F670054E67A /* GameWalkthrough5.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978A51C1E2F670054E67A /* GameWalkthrough5.png */; };
+		890978AC1C1E2F670054E67A /* GameWalkthrough6.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978A61C1E2F670054E67A /* GameWalkthrough6.png */; };
 		891ECF951BF3A3C1009C813D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF941BF3A3C1009C813D /* Model.swift */; };
 		891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF961BF3A3F4009C813D /* GameViewController.swift */; };
 		891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF981BF3A409009C813D /* CreateTeamViewController.swift */; };
@@ -107,6 +113,12 @@
 		8909789A1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerWalkthroughViewController.swift; sourceTree = "<group>"; };
 		8909789C1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerWalkthroughDetailViewController.swift; sourceTree = "<group>"; };
 		8909789E1C1DE6CE0054E67A /* ChangeTeamColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeTeamColorViewController.swift; sourceTree = "<group>"; };
+		890978A11C1E2F670054E67A /* GameWalkthrough1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameWalkthrough1.png; sourceTree = "<group>"; };
+		890978A21C1E2F670054E67A /* GameWalkthrough2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameWalkthrough2.png; sourceTree = "<group>"; };
+		890978A31C1E2F670054E67A /* GameWalkthrough3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameWalkthrough3.png; sourceTree = "<group>"; };
+		890978A41C1E2F670054E67A /* GameWalkthrough4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameWalkthrough4.png; sourceTree = "<group>"; };
+		890978A51C1E2F670054E67A /* GameWalkthrough5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameWalkthrough5.png; sourceTree = "<group>"; };
+		890978A61C1E2F670054E67A /* GameWalkthrough6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameWalkthrough6.png; sourceTree = "<group>"; };
 		891ECF941BF3A3C1009C813D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		891ECF961BF3A3F4009C813D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		891ECF981BF3A409009C813D /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +222,19 @@
 			name = "Add Players Walkthrough";
 			sourceTree = "<group>";
 		};
+		890978A01C1E2F480054E67A /* Game Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				890978A11C1E2F670054E67A /* GameWalkthrough1.png */,
+				890978A21C1E2F670054E67A /* GameWalkthrough2.png */,
+				890978A31C1E2F670054E67A /* GameWalkthrough3.png */,
+				890978A41C1E2F670054E67A /* GameWalkthrough4.png */,
+				890978A51C1E2F670054E67A /* GameWalkthrough5.png */,
+				890978A61C1E2F670054E67A /* GameWalkthrough6.png */,
+			);
+			name = "Game Walkthrough";
+			sourceTree = "<group>";
+		};
 		891ECF901BF3A2C2009C813D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +257,7 @@
 				89301FC11C10D787001F81A9 /* StatsHistoryTableViewCell.swift */,
 				89A8F9231C13944400FF4602 /* GameStatsTableViewCell.swift */,
 				890978931C1D2A5F0054E67A /* Add Players Walkthrough */,
+				890978A01C1E2F480054E67A /* Game Walkthrough */,
 				89774B991BE3CADA007E02B4 /* Button Icons */,
 				89301FB41C10CFD0001F81A9 /* Color Picker Source */,
 				897083721BE03450008F5D5B /* Fonts */,
@@ -545,7 +571,10 @@
 				89EC2BC61BCF0DAB008B37DC /* LaunchScreen.storyboard in Resources */,
 				890978981C1D2A7B0054E67A /* AddPlayersWalkthrough1.png in Resources */,
 				89EC2BC31BCF0DAB008B37DC /* Assets.xcassets in Resources */,
+				890978AC1C1E2F670054E67A /* GameWalkthrough6.png in Resources */,
+				890978AB1C1E2F670054E67A /* GameWalkthrough5.png in Resources */,
 				89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */,
+				890978A71C1E2F670054E67A /* GameWalkthrough1.png in Resources */,
 				89DB69B61C137CF40057104E /* TrashCanImage.png in Resources */,
 				897083771BE04098008F5D5B /* Grass.png in Resources */,
 				890978991C1D2A7B0054E67A /* AddPlayersWalkthrough2.png in Resources */,
@@ -554,12 +583,15 @@
 				8970837A1BE040BD008F5D5B /* collegiateHeavyOutline Medium.ttf in Resources */,
 				89774B981BE3CAD4007E02B4 /* MinusIcon.png in Resources */,
 				89E30A6F1BDC6B520051212A /* scoreboard.ttf in Resources */,
+				890978A91C1E2F670054E67A /* GameWalkthrough3.png in Resources */,
 				897083781BE040B7008F5D5B /* Orbitron Light.ttf in Resources */,
 				897083791BE040BA008F5D5B /* Orbitron Medium.ttf in Resources */,
 				89EC2BC11BCF0DAB008B37DC /* Main.storyboard in Resources */,
 				890978971C1D2A7B0054E67A /* AddPlayersWalkthrough3.png in Resources */,
 				89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */,
+				890978AA1C1E2F670054E67A /* GameWalkthrough4.png in Resources */,
 				89ADE57A1C14D25400298889 /* README.pdf in Resources */,
+				890978A81C1E2F670054E67A /* GameWalkthrough2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

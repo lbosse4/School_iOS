@@ -34,12 +34,14 @@ struct PeriodType {
 class Model : DataManagerDelegate {
     static let sharedInstance = Model()
     let numAddPlayerWalkthroughImages = 3
+    let numGameWalkthroughImages = 6
     
     let dataManager = DataManager.sharedInstance
     let numPeriodTypes = 3
     private var teams : [Team]!
     private var players : [Player]!
     private var addPlayerWalkthroughImages = [String]()
+    private var gameWalkthroughImages = [String]()
 
     private init() {
         dataManager.delegate = self
@@ -48,6 +50,11 @@ class Model : DataManagerDelegate {
         for i in 0 ..< numAddPlayerWalkthroughImages {
             let imageString = "AddPlayersWalkthrough\(i + 1).png"
             addPlayerWalkthroughImages.append(imageString)
+        }
+        
+        for i in 0 ..< numGameWalkthroughImages {
+            let imageString = "GameWalkthrough\(i + 1).png"
+            gameWalkthroughImages.append(imageString)
         }
     }
     
@@ -87,8 +94,16 @@ class Model : DataManagerDelegate {
         return addPlayerWalkthroughImages[index]
     }
     
+    func gameWalkthroughImagesStringAtIndex(index: Int) -> String {
+        return gameWalkthroughImages[index]
+    }
+    
     func numAPWalkthroughImages() -> Int {
         return numAddPlayerWalkthroughImages
+    }
+    
+    func numGWalkthroughImages() -> Int {
+        return numGameWalkthroughImages
     }
     
     func numberOfPeriodTypes() -> Int {
