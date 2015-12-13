@@ -308,10 +308,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.16656802398989889" green="0.16656802398989889" blue="0.16656802398989889" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lw6-LE-93D">
-                                        <rect key="frame" x="18" y="834" width="724" height="150"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </scrollView>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="hCO-rX-uiB" userLabel="Score Board View">
                                         <rect key="frame" x="18" y="30" width="724" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -477,6 +473,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lw6-LE-93D">
+                                        <rect key="frame" x="18" y="834" width="724" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </scrollView>
                                     <view contentMode="scaleToFill" id="mQX-Vd-TYI" userLabel="Field View">
                                         <rect key="frame" x="7" y="318" width="746" height="496"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

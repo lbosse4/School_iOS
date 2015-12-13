@@ -20,7 +20,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let popoverContentSize = CGSize(width: 350.0, height: 470.0)
     let formSheetContentSize = CGSize(width: 350.0, height: 400.0)
     let statSummaryContentSize = CGSize(width: 600.0, height: 800.0)
-    let animationDuration : NSTimeInterval = 0.55
+    let animationDuration : NSTimeInterval = 7.0//0.55
     let maxSeconds = 59
     let startingMinutes = 0//30
     let startingSeconds = 3
@@ -389,9 +389,18 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             origin = CGPoint(x: playerViewMargin + (playerViewPaddingWidth * CGFloat(playerView.tag)), y: playerViewMargin)
         }
         
-        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+        fieldImageView.bringSubviewToFront(playerView)
+        
+//        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+//            playerView.frame.origin = origin
+//            }) { (finished) -> Void in
+//                self.benchScrollview.addSubview(playerView)
+//        }
+        
+        UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: { () -> Void in
             playerView.frame.origin = origin
-            }) { (finished) -> Void in
+            
+            }) { (finished : Bool) -> Void in
                 self.benchScrollview.addSubview(playerView)
         }
         
