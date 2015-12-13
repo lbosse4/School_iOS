@@ -34,6 +34,8 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
         let teamName = team!.name!
         let predicate = NSPredicate(format: "team.name == %@", teamName)
         dataSource.updateWithPredicate(predicate)
+        
+        self.navigationItem.title = "Game vs. \(game!.opponentName!)"
     }
     
     //MARK: Data Source Cell Configurer

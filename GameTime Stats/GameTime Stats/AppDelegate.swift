@@ -16,13 +16,21 @@ struct UserDefaults {
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let fontSize : CGFloat = 20.0
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-//        var navigationBarAppearace = UINavigationBar.appearance()
+       
+        UINavigationBar.appearance().barTintColor = UIColor.blackColor()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        // Set Navigation bar Title colour
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "Orbitron-Light", size: fontSize)!]
+        //self.navigationController.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "CaviarDreams", size: 20)!]
+
 //        navigationBarAppearace.
         
         //NSUser Defaults

@@ -130,10 +130,13 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        let title = model.teamAtIndex(row).name!
+        let team = model.teamAtIndex(row)
+        let title = team.name!
         pickerLabel.text = title
         pickerLabel.font = pickerViewFont
-        pickerLabel.backgroundColor = UIColor.purpleColor()
+        pickerLabel.backgroundColor = model.majorColorForTeam(team)
+        pickerLabel.textColor = model.minorColorForTeam(team)
+        pickerLabel.textAlignment = .Center
         return pickerLabel
     }
 }

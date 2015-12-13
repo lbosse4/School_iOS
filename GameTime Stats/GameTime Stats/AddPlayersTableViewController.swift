@@ -23,6 +23,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     var cancelBlock : (() -> Void)?
     var delegate : TeamCreatedProtocol?
     lazy var dataSource : AddPlayerDataSource = AddPlayerDataSource(entity: "Player", sortKeys: ["name"], predicate: nil, sectionNameKeyPath: "firstLetter", delegate: self.model)
+    //lazy var dataSource : AddPlayerDataSource = AddPlayerDataSource(entity: "Player", sortKeys: ["jerseyNumber"], predicate: nil, sectionNameKeyPath: nil, delegate: self.model)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         dataSource.updateWithPredicate(predicate)
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.title = "Players for \(team!.name!)"
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -77,7 +79,6 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         delegate?.dismissMe()
     }
     
-    
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: sectionHeight)
@@ -108,7 +109,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
             let playerController = segue.destinationViewController as! AddPlayerViewController
             playerController.team = team!
             playerController.cancelBlock = {() in
-                self.navigationController?.popViewControllerAnimated(true)
+                self.dismissViewControllerAnimated(true, completion: nil)
                 self.tableView.reloadData()
             }
         default:
