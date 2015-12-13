@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPlayerWalkthroughViewController : UIViewController, UIPageViewControllerDataSource {
+class AddPlayerWalkthroughViewController : UIViewController, UIPageViewControllerDataSource, APWalkthroughCompletedProtocol {
     let model = Model.sharedInstance
     
     var pageViewController : UIPageViewController?
@@ -27,12 +27,12 @@ class AddPlayerWalkthroughViewController : UIViewController, UIPageViewControlle
         self.addChildViewController(pageViewController!)
         pageViewController!.didMoveToParentViewController(self)
         self.view.addSubview(pageViewController!.view)
-        self.view.bringSubviewToFront(okayButtonView)
+        //self.view.bringSubviewToFront(okayButtonView)
     }
     
     func viewControllerAtIndex(index:Int) -> UIViewController {
         let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("AddPlayerWalkthroughDetailViewController") as! AddPlayerWalkthroughDetailViewController
-        
+        detailViewController.delegate = self
         
         let pageInstructionImage = model.addPlayerWalkthroughImageStringAtIndex(index)
         detailViewController.configure(pageInstructionImage, index: index)
@@ -40,6 +40,9 @@ class AddPlayerWalkthroughViewController : UIViewController, UIPageViewControlle
         return detailViewController
     }
 
+    func dismissMe() {
+        cancelBlock()
+    }
     
     @IBAction func okayButtonPressed(sender: UIButton) {
         cancelBlock()

@@ -31,6 +31,21 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         dataSource.tableView = tableView // fetchresultscontroller delegate needs to know this!
         tableView.dataSource = dataSource
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        var hasGames = false
+        let teams = model.testTeams()
+        for team in teams {
+            if !(team.games?.allObjects.count == 0) {
+                hasGames = true
+                break
+            }
+        }
+        
+        //TODO: GET THIS TO PRESENt ALERT
+        if !hasGames {
+            
+        }
+        
     }
     
     override func setEditing(editing: Bool, animated: Bool) {

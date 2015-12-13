@@ -1496,35 +1496,10 @@
                     <view key="view" contentMode="scaleToFill" id="oxO-9n-DbT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="ySd-wT-039">
-                                <rect key="frame" x="154" y="687" width="292" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5FK-qH-bAl">
-                                        <rect key="frame" x="6" y="7" width="281" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="34"/>
-                                        <state key="normal" title="Okay">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="okayButtonPressed:" destination="qPv-gA-5wu" eventType="touchUpInside" id="2Fv-o2-wAK"/>
-                                            <action selector="okayButtonPressed:" destination="7FW-r3-9GQ" eventType="touchUpInside" id="sXv-14-5Lb"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
-                    <connections>
-                        <outlet property="okayButtonView" destination="ySd-wT-039" id="8QV-2L-yiV"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8O-ya-Acz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1551,9 +1526,30 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="PTT-et-8E5">
-                                        <rect key="frame" x="48" y="46" width="463" height="593"/>
+                                        <rect key="frame" x="14" y="46" width="531" height="593"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <view contentMode="scaleToFill" id="7s8-AF-5IA">
+                                        <rect key="frame" x="134" y="671" width="292" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zhr-st-XyH">
+                                                <rect key="frame" x="8" y="7" width="276" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="20"/>
+                                                <state key="normal" title="Swipe Right to Continue">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="okayButtonPressed:" destination="7FW-r3-9GQ" eventType="touchUpInside" id="0OM-WR-oog"/>
+                                                    <action selector="okayButtonPressed:" destination="qPv-gA-5wu" eventType="touchUpInside" id="Vw9-eq-sUt"/>
+                                                    <action selector="okayButtonPressed:" destination="RtA-Gu-dqu" eventType="touchUpInside" id="ZfM-WT-fpP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1563,6 +1559,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="okayButton" destination="Zhr-st-XyH" id="tDJ-2J-XUr"/>
                         <outlet property="walkthroughImageView" destination="PTT-et-8E5" id="zU1-Ez-Ije"/>
                     </connections>
                 </viewController>

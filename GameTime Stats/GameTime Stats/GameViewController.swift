@@ -92,6 +92,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             shouldShowStatsEditor = false
             updateHalves()
             //make sure all of the data is saved
+            //TODO: MAKE SURE STATS ARE ORGANIZED
+            //TODO: FIX STAT TIME PLAYED ERROR
             model.saveDMContext()
         } else {
             if gameTimerSeconds == 0 {
