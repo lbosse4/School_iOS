@@ -152,8 +152,14 @@
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
+            <string>Orbitron-Medium</string>
+            <string>Orbitron-Medium</string>
+            <string>Orbitron-Medium</string>
+            <string>Orbitron-Medium</string>
+            <string>Orbitron-Medium</string>
         </mutableArray>
         <mutableArray key="collegiateHeavyOutline Medium.ttf">
+            <string>CollegiateHeavyOutline-Medium</string>
             <string>CollegiateHeavyOutline-Medium</string>
             <string>CollegiateHeavyOutline-Medium</string>
             <string>CollegiateHeavyOutline-Medium</string>
@@ -698,6 +704,111 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDk-ye-NYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1981" y="494"/>
+        </scene>
+        <!--Change Team Color View Controller-->
+        <scene sceneID="3zq-vT-lS0">
+            <objects>
+                <viewController storyboardIdentifier="ChangeTeamColorViewController" id="Tsy-Qk-cPW" customClass="ChangeTeamColorViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gjQ-5b-6Fq">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="575"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="CVJ-Gb-WYQ">
+                                <rect key="frame" x="15" y="15" width="320" height="545"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="syn-f2-6A1">
+                                        <rect key="frame" x="35" y="20" width="250" height="250"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KBa-xT-DH5">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="CollegiateHeavyOutline-Medium" family="CollegiateHeavyOutline" pointSize="160"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.00030612379350000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eWY-z3-JOC">
+                                        <rect key="frame" x="41" y="292" width="238" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="18"/>
+                                        <state key="normal" title="Choose Jersey Color">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chooseJerseyColorButtonPressed:" destination="Tsy-Qk-cPW" eventType="touchUpInside" id="Cu3-W5-o63"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HZg-KQ-q5T">
+                                        <rect key="frame" x="41" y="340" width="238" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="18"/>
+                                        <state key="normal" title="Choose Number Color">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chooseNumberColorButtonPressed:" destination="Tsy-Qk-cPW" eventType="touchUpInside" id="tA5-Bk-hBf"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" id="dE1-oc-io0">
+                                        <rect key="frame" x="14" y="402" width="292" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V4k-yV-Rtc">
+                                                <rect key="frame" x="6" y="7" width="281" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="34"/>
+                                                <state key="normal" title="Update">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="updateButtonPressed:" destination="Tsy-Qk-cPW" eventType="touchUpInside" id="r8Q-Ew-bcq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="PHi-kA-eXc">
+                                        <rect key="frame" x="14" y="470" width="292" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XW0-0K-PgQ">
+                                                <rect key="frame" x="6" y="7" width="281" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="34"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="Tsy-Qk-cPW" eventType="touchUpInside" id="f4b-QY-Dkd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="350" height="575"/>
+                    <connections>
+                        <outlet property="playerIconNumberLabel" destination="KBa-xT-DH5" id="APX-uP-NE8"/>
+                        <outlet property="playerIconView" destination="syn-f2-6A1" id="PSK-KP-Ppl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bEd-MM-eaU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2806" y="529.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K9T-Jo-sbi">
@@ -1954,7 +2065,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="keU-LK-GgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3730" y="1627"/>
+            <point key="canvasLocation" x="3818" y="2760"/>
         </scene>
         <!--Team Stats View Controller-->
         <scene sceneID="44R-dA-pIQ">
@@ -1995,7 +2106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wqe-ND-Sja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3730" y="494"/>
+            <point key="canvasLocation" x="3818" y="1627"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="Q77-h0-ibK">
@@ -2003,7 +2114,7 @@
                 <pageViewController storyboardIdentifier="TeamStatPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="VOb-lS-skF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGR-ZW-T5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4617" y="494"/>
+            <point key="canvasLocation" x="4705" y="1627"/>
         </scene>
         <!--Team Stats Detail View Controller-->
         <scene sceneID="Lww-de-CyC">
@@ -2303,7 +2414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z6o-Jk-q9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5501" y="494"/>
+            <point key="canvasLocation" x="5589" y="1627"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="CoR-47-g6A">
@@ -2311,7 +2422,7 @@
                 <pageViewController storyboardIdentifier="PlayerStatPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Eq1-xr-Kcn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7Z-gh-Y3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4617" y="1627"/>
+            <point key="canvasLocation" x="4705" y="2760"/>
         </scene>
         <!--Player Stats Detail View Controller-->
         <scene sceneID="o20-3l-aNg">
@@ -2626,18 +2737,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBg-xM-sg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5501" y="1621"/>
+            <point key="canvasLocation" x="5589" y="2754"/>
         </scene>
         <!--Color Picker View Controller-->
         <scene sceneID="Ane-eY-cir">
             <objects>
                 <viewController storyboardIdentifier="ColorPickerViewController" modalPresentationStyle="formSheet" id="iAk-9C-p2H" customClass="ColorPickerViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oDp-tM-Ud1">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Bv7-Ct-Y6S">
-                                <rect key="frame" x="15" y="14" width="320" height="470"/>
+                                <rect key="frame" x="15" y="14" width="320" height="558"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="QeL-aM-HgC">
@@ -2653,8 +2764,26 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="addPlayersButtonPressed:" destination="39O-8P-yka" eventType="touchUpInside" id="0oS-9h-E6d"/>
                                                     <action selector="chooseColorButtonPressed:" destination="iAk-9C-p2H" eventType="touchUpInside" id="tYy-p0-SvN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="fUC-DA-Egz">
+                                        <rect key="frame" x="14" y="462" width="292" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j01-Bq-42K">
+                                                <rect key="frame" x="7" y="8" width="278" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="34"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="iAk-9C-p2H" eventType="touchUpInside" id="ceZ-s9-uzk"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -2667,14 +2796,14 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="350" height="500"/>
+                    <size key="freeformSize" width="350" height="600"/>
                     <connections>
                         <outlet property="chooseColorButton" destination="CwW-5d-P8I" id="9FT-WT-Mg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bD1-Lp-XVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="-1395"/>
+            <point key="canvasLocation" x="1064" y="-1669"/>
         </scene>
     </scenes>
     <resources>

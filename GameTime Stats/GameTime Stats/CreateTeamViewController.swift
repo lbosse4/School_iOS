@@ -49,11 +49,14 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
         let colorPickerViewController = storyboard!.instantiateViewControllerWithIdentifier("ColorPickerViewController") as! ColorPickerViewController
         
         colorPickerViewController.previousColor = majorColor
-        colorPickerViewController.cancelBlock = {(chosenColor : UIColor) in
+        colorPickerViewController.completionBlock = {(chosenColor : UIColor) in
             self.dismissViewControllerAnimated(true, completion: nil)
             self.majorColor = chosenColor
             self.playerIconView.backgroundColor = chosenColor
         
+        }
+        colorPickerViewController.cancelBlock = {() in
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
         presentViewController(colorPickerViewController, animated: true, completion: nil)
         
@@ -62,11 +65,14 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     @IBAction func chooseNumberColorButtonPressed(sender: UIButton) {
         let colorPickerViewController = storyboard!.instantiateViewControllerWithIdentifier("ColorPickerViewController") as! ColorPickerViewController
         colorPickerViewController.previousColor = minorColor
-        colorPickerViewController.cancelBlock = {(chosenColor : UIColor) in
+        colorPickerViewController.completionBlock = {(chosenColor : UIColor) in
             self.dismissViewControllerAnimated(true, completion: nil)
             self.minorColor = chosenColor
             self.playerIconNumberLabel.textColor = chosenColor
         
+        }
+        colorPickerViewController.cancelBlock = {() in
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
         presentViewController(colorPickerViewController, animated: true, completion: nil)
         

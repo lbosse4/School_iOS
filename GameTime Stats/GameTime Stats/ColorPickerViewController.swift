@@ -11,7 +11,9 @@ import UIKit
 class ColorPickerViewController: UIViewController {
     let colorPicker = SwiftHSVColorPicker(frame: CGRectMake(25, 20, 300, 400))
     var previousColor : UIColor?
-    var cancelBlock : ((chosenColor: UIColor) -> Void)!
+    var completionBlock : ((chosenColor: UIColor) -> Void)!
+    var cancelBlock : (() -> Void)!
+    
     @IBOutlet weak var chooseColorButton: UIButton!
     
     override func viewDidLoad() {
@@ -24,6 +26,11 @@ class ColorPickerViewController: UIViewController {
     
     @IBAction func chooseColorButtonPressed(sender: UIButton) {
         let chosenColor = colorPicker.color
-        cancelBlock(chosenColor: chosenColor)
+        completionBlock(chosenColor: chosenColor)
     }
+    
+    @IBAction func cancelButtonPressed(sender: UIButton) {
+        cancelBlock()
+    }
+    
 }

@@ -16,6 +16,7 @@
 		890978991C1D2A7B0054E67A /* AddPlayersWalkthrough2.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978961C1D2A7B0054E67A /* AddPlayersWalkthrough2.png */; };
 		8909789B1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909789A1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift */; };
 		8909789D1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909789C1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift */; };
+		8909789F1C1DE6CE0054E67A /* ChangeTeamColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909789E1C1DE6CE0054E67A /* ChangeTeamColorViewController.swift */; };
 		891ECF951BF3A3C1009C813D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF941BF3A3C1009C813D /* Model.swift */; };
 		891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF961BF3A3F4009C813D /* GameViewController.swift */; };
 		891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF981BF3A409009C813D /* CreateTeamViewController.swift */; };
@@ -105,6 +106,7 @@
 		890978961C1D2A7B0054E67A /* AddPlayersWalkthrough2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddPlayersWalkthrough2.png; sourceTree = "<group>"; };
 		8909789A1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerWalkthroughViewController.swift; sourceTree = "<group>"; };
 		8909789C1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerWalkthroughDetailViewController.swift; sourceTree = "<group>"; };
+		8909789E1C1DE6CE0054E67A /* ChangeTeamColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeTeamColorViewController.swift; sourceTree = "<group>"; };
 		891ECF941BF3A3C1009C813D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		891ECF961BF3A3F4009C813D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		891ECF981BF3A409009C813D /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				8902FCF21BFD0A2E004655CA /* ViewTeamsTableViewController.swift */,
+				8909789E1C1DE6CE0054E67A /* ChangeTeamColorViewController.swift */,
 			);
 			name = "View Teams";
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				891ECF951BF3A3C1009C813D /* Model.swift in Sources */,
 				89301FBA1C10D09D001F81A9 /* BrightnessView.swift in Sources */,
 				89301FBD1C10D09D001F81A9 /* SelectedColorView.swift in Sources */,
+				8909789F1C1DE6CE0054E67A /* ChangeTeamColorViewController.swift in Sources */,
 				894BCE451BFBEADA008DF1C4 /* StatEditorTableViewController.swift in Sources */,
 				89301FBB1C10D09D001F81A9 /* ColorUtils.swift in Sources */,
 				894BCE3E1BFBBF30008DF1C4 /* Period+CoreDataProperties.swift in Sources */,

@@ -15,9 +15,10 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     let buttonWidth : CGFloat = 140.0
     let trashCanButtonWidth : CGFloat = 30.0
     let trashCanButtonHeight : CGFloat = 35.0
+    let colorWheelButtonRadius : CGFloat = 30.0
     let buttonHeight : CGFloat = 35.0
     let scrollPadding : CGFloat = 45.0
-    let trashCanPadding : CGFloat = 10.0
+    let buttonPadding : CGFloat = 10.0
     let sectionHeight : CGFloat = 50.0
     //let blueColor = UIColor(red:0.00, green:0.00, blue:0.86, alpha:1.0)
     let titleFont = UIFont(name: "Orbitron-Medium", size: 18.0)
@@ -52,6 +53,19 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         
         model.deleteTeam(team)
         self.tableView.reloadData()
+    }
+    
+    func colorWheelButtonPressed(sender: UIButton) {
+        let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection:  sender.tag)!
+        let team = model.teamWithName(sectionTitle)
+        let changeTeamColorViewController = storyboard!.instantiateViewControllerWithIdentifier("ChangeTeamColorViewController") as! ChangeTeamColorViewController
+        changeTeamColorViewController.team = team
+        changeTeamColorViewController.cancelBlock = {() in
+            self.dismissViewControllerAnimated(true, completion: nil)
+            self.tableView.reloadData()
+        }
+        changeTeamColorViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+        self.presentViewController(changeTeamColorViewController, animated: true, completion: nil)
     }
     
     func addPlayerButtonPressed(sender: UIButton){
@@ -100,7 +114,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         sectionView.backgroundColor = UIColor.blackColor()
         
         //clickable to allow collapsable sections
-        let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding, height: sectionHeight)
+        let teamNameButtonFrame = CGRect(x: buttonPadding*2 + colorWheelButtonRadius, y: 0.0, width: view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding, height: sectionHeight)
         let teamNameButton = UIButton(frame: teamNameButtonFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
         teamNameButton.setTitle(teamName, forState: .Normal)
@@ -109,12 +123,19 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         teamNameButton.tag = section
         
         //Button to delete team
-        let trashCanButtonFrame = CGRect(x:view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding - trashCanPadding, y: (sectionHeight - trashCanButtonHeight)/2, width: trashCanButtonWidth, height: trashCanButtonHeight)
+        let trashCanButtonFrame = CGRect(x:view.frame.width - trashCanButtonWidth - buttonWidth - scrollPadding - buttonPadding, y: (sectionHeight - trashCanButtonHeight)/2, width: trashCanButtonWidth, height: trashCanButtonHeight)
         let trashCanButton = UIButton(frame: trashCanButtonFrame)
         let trashCanImage = UIImage(named: "TrashCanImage.png")
         trashCanButton.setBackgroundImage(trashCanImage, forState: .Normal)
         trashCanButton.addTarget(self, action: "trashCanButtonPressed:", forControlEvents: .TouchUpInside)
         trashCanButton.tag = section
+        
+        let colorWheelButtonFrame = CGRect(x: buttonPadding, y: (sectionHeight - colorWheelButtonRadius)/2, width: colorWheelButtonRadius, height: colorWheelButtonRadius)
+        let colorWheelButton = UIButton(frame: colorWheelButtonFrame)
+        let colorWheelImage = UIImage(named: "ColorPickerImage.png")
+        colorWheelButton.setImage(colorWheelImage, forState: .Normal)
+        colorWheelButton.addTarget(self, action: "colorWheelButtonPressed:", forControlEvents: .TouchUpInside)
+        colorWheelButton.tag = section
         
         //add a player to a specific tea,m
         let addPlayerButtonFrame = CGRect(x: view.frame.width - buttonWidth - scrollPadding, y: (sectionHeight - buttonHeight)/2, width: buttonWidth, height: buttonHeight)
@@ -127,6 +148,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         addPlayerButton.setTitleColor(model.minorColorForTeam(team), forState: .Normal)
         addPlayerButton.tag = section
         
+        sectionView.addSubview(colorWheelButton)
         sectionView.addSubview(teamNameButton)
         sectionView.addSubview(trashCanButton)
         sectionView.addSubview(addPlayerButton)
