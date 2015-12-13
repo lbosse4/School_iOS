@@ -1602,10 +1602,10 @@
             </objects>
             <point key="canvasLocation" x="1981.4400000000001" y="-604.16000000000008"/>
         </scene>
-        <!--Add Player Walkthrough View Controller-->
+        <!--Walkthrough View Controller-->
         <scene sceneID="yud-DM-BDv">
             <objects>
-                <viewController storyboardIdentifier="AddPlayerWalkthroughViewController" id="7FW-r3-9GQ" customClass="AddPlayerWalkthroughViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughViewController" id="7FW-r3-9GQ" customClass="WalkthroughViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oxO-9n-DbT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1621,15 +1621,15 @@
         <!--Page View Controller-->
         <scene sceneID="SsI-OQ-pMu">
             <objects>
-                <pageViewController storyboardIdentifier="AddPlayerWalkthroughPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="29t-ij-qw7" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="WalkthroughPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="29t-ij-qw7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytL-b4-O4y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3730" y="-1777"/>
         </scene>
-        <!--Add Player Walkthrough Detail View Controller-->
+        <!--Walkthrough Detail View Controller-->
         <scene sceneID="ufD-Pr-UU4">
             <objects>
-                <viewController storyboardIdentifier="AddPlayerWalkthroughDetailViewController" id="RtA-Gu-dqu" customClass="AddPlayerWalkthroughDetailViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughDetailViewController" id="RtA-Gu-dqu" customClass="WalkthroughDetailViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kbk-mP-BH9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

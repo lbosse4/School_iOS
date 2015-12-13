@@ -90,12 +90,12 @@ class Model : DataManagerDelegate {
         return teams.count
     }
     
-    func addPlayerWalkthroughImageStringAtIndex(index: Int) -> String {
-        return addPlayerWalkthroughImages[index]
+    func addPlayerWalkthroughImageStrings() -> [String] {
+        return addPlayerWalkthroughImages
     }
     
-    func gameWalkthroughImagesStringAtIndex(index: Int) -> String {
-        return gameWalkthroughImages[index]
+    func gameWalkthroughImageStrings() -> [String] {
+        return gameWalkthroughImages
     }
     
     func numAPWalkthroughImages() -> Int {

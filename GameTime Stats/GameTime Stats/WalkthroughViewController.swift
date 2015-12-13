@@ -1,5 +1,5 @@
 //
-//  AddPlayerWalkthroughViewController.swift
+//  WalkthroughViewController.swift
 //  GameTime Stats
 //
 //  Created by Lauren Bosse on 12/12/15.
@@ -8,17 +8,18 @@
 
 import UIKit
 
-class AddPlayerWalkthroughViewController : UIViewController, UIPageViewControllerDataSource, APWalkthroughCompletedProtocol {
-    let model = Model.sharedInstance
+class WalkthroughViewController : UIViewController, UIPageViewControllerDataSource, WalkthroughCompletedProtocol {
+    //let model = Model.sharedInstance
     
     var pageViewController : UIPageViewController?
     var cancelBlock : (() -> Void)!
+    var imageStrings : [String]!
     
     @IBOutlet weak var okayButtonView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pageViewController = (self.storyboard?.instantiateViewControllerWithIdentifier("AddPlayerWalkthroughPageViewController") as? UIPageViewController)!
+        pageViewController = (self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughPageViewController") as? UIPageViewController)!
         pageViewController!.dataSource = self
         
         let firstPage = viewControllerAtIndex(0)
@@ -31,10 +32,11 @@ class AddPlayerWalkthroughViewController : UIViewController, UIPageViewControlle
     }
     
     func viewControllerAtIndex(index:Int) -> UIViewController {
-        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("AddPlayerWalkthroughDetailViewController") as! AddPlayerWalkthroughDetailViewController
+        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("WalkthroughDetailViewController") as! WalkthroughDetailViewController
         detailViewController.delegate = self
+        detailViewController.numPages = imageStrings.count
         
-        let pageInstructionImage = model.addPlayerWalkthroughImageStringAtIndex(index)
+        let pageInstructionImage = imageStrings[index]
         detailViewController.configure(pageInstructionImage, index: index)
         
         return detailViewController
@@ -50,7 +52,7 @@ class AddPlayerWalkthroughViewController : UIViewController, UIPageViewControlle
     
     //MARK: PageView Controller Data Source
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let contentViewController = viewController as! AddPlayerWalkthroughDetailViewController
+        let contentViewController = viewController as! WalkthroughDetailViewController
         var index = contentViewController.pageIndex!
         //checkPageIndex(index)
         if index == 0 {
@@ -62,10 +64,10 @@ class AddPlayerWalkthroughViewController : UIViewController, UIPageViewControlle
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let contentViewController = viewController as! AddPlayerWalkthroughDetailViewController
+        let contentViewController = viewController as! WalkthroughDetailViewController
         var index = contentViewController.pageIndex!
         //checkPageIndex(index)
-        if index == model.numAPWalkthroughImages() - 1 {
+        if index == imageStrings.count - 1 {
             return nil
             
         } else {

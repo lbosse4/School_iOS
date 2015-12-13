@@ -11,6 +11,7 @@ import UIKit
 class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, cancelGameProtocol, TeamStatsViewedProtocol {
     //MARK: Constants
     let model = Model.sharedInstance
+    let numWalkthroughDisplays = 2
     let playerViewSize : CGFloat = 55.0
     let playerViewPaddingWidth : CGFloat = 65.0
     let playerViewPaddingHeight : CGFloat = 65.0
@@ -599,6 +600,17 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 self.currentPlayers = self.model.playersForTeam(self.currentTeam!)
                 self.generateViews()
                 self.addStatsObjects()
+                
+                if self.currentTeam.games!.allObjects.count <= self.numWalkthroughDisplays {
+                    let walkThroughViewController = self.storyboard!.instantiateViewControllerWithIdentifier("WalkthroughViewController") as! WalkthroughViewController
+                    walkThroughViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+                    walkThroughViewController.imageStrings = self.model.gameWalkthroughImageStrings()
+                    walkThroughViewController.cancelBlock = {() in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                    self.presentViewController(walkThroughViewController, animated: true, completion: nil)
+                }
+                
             }
             
             gameSetupController.delegate = self

@@ -1,5 +1,5 @@
 //
-//  AddPlayerWalkthroughDetailViewController.swift
+//  WalkthroughDetailViewController.swift
 //  GameTime Stats
 //
 //  Created by Lauren Bosse on 12/12/15.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol APWalkthroughCompletedProtocol {
+protocol WalkthroughCompletedProtocol {
     func dismissMe()
 }
 
-class AddPlayerWalkthroughDetailViewController : UIViewController {
-    let model = Model.sharedInstance
+class WalkthroughDetailViewController : UIViewController {
     let okayFont = UIFont(name: "Orbitron-Medium", size: 34.0)
     let directionFont = UIFont(name: "Orbitron-Medium", size: 20.0)
     
     private var instructionImageName: String?
     var pageIndex: Int?
-    var delegate : APWalkthroughCompletedProtocol?
+    var delegate : WalkthroughCompletedProtocol?
+    var numPages : Int?
     
     @IBOutlet weak var walkthroughImageView: UIImageView!
     @IBOutlet weak var okayButton: UIButton!
@@ -28,7 +28,7 @@ class AddPlayerWalkthroughDetailViewController : UIViewController {
         let image = UIImage(named: instructionImageName!)
         walkthroughImageView.image = image
         walkthroughImageView.contentMode = UIViewContentMode.ScaleAspectFit
-        if pageIndex < model.numAPWalkthroughImages() - 1 {
+        if pageIndex < numPages! - 1 {
             okayButton.setTitle("Swipe Right to Continue", forState: .Normal)
             okayButton.titleLabel!.font = directionFont
             okayButton.userInteractionEnabled = false

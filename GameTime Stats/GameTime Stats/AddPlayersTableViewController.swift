@@ -47,8 +47,9 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         
         let numTeams = model.testTeams().count
         if numTeams <= numWalkthroughDisplays {
-            let walkThroughViewController = storyboard!.instantiateViewControllerWithIdentifier("AddPlayerWalkthroughViewController") as! AddPlayerWalkthroughViewController
+            let walkThroughViewController = storyboard!.instantiateViewControllerWithIdentifier("WalkthroughViewController") as! WalkthroughViewController
             walkThroughViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+            walkThroughViewController.imageStrings = model.addPlayerWalkthroughImageStrings()
             walkThroughViewController.cancelBlock = {() in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
