@@ -30,6 +30,9 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
         overtimeMinutesTextField.delegate = self
         overtimeMinutesTextField.keyboardType = UIKeyboardType.DecimalPad
         overtimeSecondsTextField.keyboardType = UIKeyboardType.DecimalPad
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
     func checkTextFields(){
@@ -140,4 +143,8 @@ class OvertimePromptViewController: UIViewController, UITextFieldDelegate{
         checkTextFields()
     }
 
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
 }

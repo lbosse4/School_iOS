@@ -83,7 +83,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionViewFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: sectionHeight)
         let sectionView = UIView(frame: sectionViewFrame)
-        sectionView.backgroundColor = UIColor.blackColor()
+        sectionView.backgroundColor = model.majorColorForTeam(team!)
         
         //view for playername first letter
         let playerNameLabelFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: sectionHeight)
@@ -91,7 +91,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         let playerNameFirstLetter = dataSource.tableView(tableView, titleForHeaderInSection: section)
         playerNameLabel.text = playerNameFirstLetter
         playerNameLabel.font = titleFont
-        playerNameLabel.textColor = UIColor.whiteColor()
+        playerNameLabel.textColor = model.minorColorForTeam(team!)
         playerNameLabel.textAlignment = NSTextAlignment.Center
         
         sectionView.addSubview(playerNameLabel)

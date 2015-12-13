@@ -13,7 +13,7 @@ protocol cancelGameProtocol {
     func dismissMe()
 }
 
-class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
+class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     //MARK: Constants
     let model = Model.sharedInstance
@@ -44,6 +44,8 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
         startGameButtonView.alpha = inactiveAlpha
         
         chosenTeam = model.teams[0]
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
     //MARK: Helper Functions
@@ -109,6 +111,11 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
 
     func textFieldDidEndEditing(textField: UITextField) {
         checkOpponentTeamNameLength()
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     // MARK: Picker Datasource Delegate

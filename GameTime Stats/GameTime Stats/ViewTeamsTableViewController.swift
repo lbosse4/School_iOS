@@ -19,7 +19,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     let scrollPadding : CGFloat = 45.0
     let trashCanPadding : CGFloat = 10.0
     let sectionHeight : CGFloat = 50.0
-    let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.84, alpha: 1.0)
+    //let blueColor = UIColor(red:0.00, green:0.00, blue:0.86, alpha:1.0)
     let titleFont = UIFont(name: "Orbitron-Medium", size: 18.0)
     let buttonFont = UIFont(name: "Orbitron-Light", size: 18.0)
     
@@ -122,7 +122,9 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         addPlayerButton.addTarget(self, action: "addPlayerButtonPressed:", forControlEvents: .TouchUpInside)
         addPlayerButton.setTitle("Add Player", forState: .Normal)
         addPlayerButton.titleLabel!.font = buttonFont
-        addPlayerButton.backgroundColor = darkBlueColor
+        let team = model.teamAtIndex(section)
+        addPlayerButton.backgroundColor = model.majorColorForTeam(team)
+        addPlayerButton.setTitleColor(model.minorColorForTeam(team), forState: .Normal)
         addPlayerButton.tag = section
         
         sectionView.addSubview(teamNameButton)

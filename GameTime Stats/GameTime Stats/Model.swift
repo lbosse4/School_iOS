@@ -236,12 +236,14 @@ class Model : DataManagerDelegate {
         let context = self.dataManager.managedObjectContext!
         context.deleteObject(game)
         updateTeamsAndPlayers()
+        dataManager.saveContext()
     }
     
     func deleteTeam(team : Team){
         let context = self.dataManager.managedObjectContext!
         context.deleteObject(team)
         updateTeamsAndPlayers()
+        dataManager.saveContext()
     }
     
 }

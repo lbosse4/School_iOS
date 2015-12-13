@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8902FCF31BFD0A2E004655CA /* ViewTeamsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902FCF21BFD0A2E004655CA /* ViewTeamsTableViewController.swift */; };
 		890661501BFF9DA00086CA2E /* AddPlayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */; };
+		8909788E1C1D02360054E67A /* ColorPickerImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8909788D1C1D02360054E67A /* ColorPickerImage.png */; };
+		890978901C1D023B0054E67A /* MetalGarbageCan.png in Resources */ = {isa = PBXBuildFile; fileRef = 8909788F1C1D023B0054E67A /* MetalGarbageCan.png */; };
 		891ECF951BF3A3C1009C813D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF941BF3A3C1009C813D /* Model.swift */; };
 		891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF961BF3A3F4009C813D /* GameViewController.swift */; };
 		891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF981BF3A409009C813D /* CreateTeamViewController.swift */; };
@@ -56,7 +58,6 @@
 		89A8F9301C13F64E00FF4602 /* TeamStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */; };
 		89A8F9321C13FE1700FF4602 /* PlayerStatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */; };
 		89ADE57A1C14D25400298889 /* README.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 89ADE5791C14D25400298889 /* README.pdf */; };
-		89BB18841C1BB64300562DD1 /* ColoPickerImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BB18831C1BB64300562DD1 /* ColoPickerImage.png */; };
 		89DB69B61C137CF40057104E /* TrashCanImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DB69B51C137CF40057104E /* TrashCanImage.png */; };
 		89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6A1BDC657C0051212A /* womensLacrosseField.png */; };
 		89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6C1BDC65820051212A /* mensLacrosseField.png */; };
@@ -92,6 +93,8 @@
 /* Begin PBXFileReference section */
 		8902FCF21BFD0A2E004655CA /* ViewTeamsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTeamsTableViewController.swift; sourceTree = "<group>"; };
 		8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayersTableViewController.swift; sourceTree = "<group>"; };
+		8909788D1C1D02360054E67A /* ColorPickerImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorPickerImage.png; sourceTree = "<group>"; };
+		8909788F1C1D023B0054E67A /* MetalGarbageCan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MetalGarbageCan.png; sourceTree = "<group>"; };
 		891ECF941BF3A3C1009C813D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		891ECF961BF3A3F4009C813D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		891ECF981BF3A409009C813D /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -139,7 +142,6 @@
 		89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsViewController.swift; sourceTree = "<group>"; };
 		89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatsDetailViewController.swift; sourceTree = "<group>"; };
 		89ADE5791C14D25400298889 /* README.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = README.pdf; sourceTree = "<group>"; };
-		89BB18831C1BB64300562DD1 /* ColoPickerImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColoPickerImage.png; sourceTree = "<group>"; };
 		89DB69B51C137CF40057104E /* TrashCanImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrashCanImage.png; sourceTree = "<group>"; };
 		89E30A6A1BDC657C0051212A /* womensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6C1BDC65820051212A /* mensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensLacrosseField.png; sourceTree = "<group>"; };
@@ -347,8 +349,9 @@
 		89E30A691BDC654E0051212A /* Photos */ = {
 			isa = PBXGroup;
 			children = (
-				89BB18831C1BB64300562DD1 /* ColoPickerImage.png */,
 				89DB69B51C137CF40057104E /* TrashCanImage.png */,
+				8909788D1C1D02360054E67A /* ColorPickerImage.png */,
+				8909788F1C1D023B0054E67A /* MetalGarbageCan.png */,
 				89E30A6C1BDC65820051212A /* mensLacrosseField.png */,
 				897083761BE04098008F5D5B /* Grass.png */,
 				89E30A6A1BDC657C0051212A /* womensLacrosseField.png */,
@@ -515,10 +518,11 @@
 				89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */,
 				89EC2BC61BCF0DAB008B37DC /* LaunchScreen.storyboard in Resources */,
 				89EC2BC31BCF0DAB008B37DC /* Assets.xcassets in Resources */,
-				89BB18841C1BB64300562DD1 /* ColoPickerImage.png in Resources */,
 				89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */,
 				89DB69B61C137CF40057104E /* TrashCanImage.png in Resources */,
 				897083771BE04098008F5D5B /* Grass.png in Resources */,
+				8909788E1C1D02360054E67A /* ColorPickerImage.png in Resources */,
+				890978901C1D023B0054E67A /* MetalGarbageCan.png in Resources */,
 				8970837A1BE040BD008F5D5B /* collegiateHeavyOutline Medium.ttf in Resources */,
 				89774B981BE3CAD4007E02B4 /* MinusIcon.png in Resources */,
 				89E30A6F1BDC6B520051212A /* scoreboard.ttf in Resources */,

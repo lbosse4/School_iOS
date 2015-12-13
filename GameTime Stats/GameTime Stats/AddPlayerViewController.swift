@@ -9,7 +9,7 @@
 
 import UIKit
 
-class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate {
+class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
     let model = Model.sharedInstance
     let numberOfPositions = 4
     let maxPlayerNameLength = 25
@@ -42,6 +42,8 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
         addPlayerButtonView.alpha = inactiveAlpha
         addPlayerButtonView.userInteractionEnabled = false
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
     //MARK: Helper Functions
@@ -127,6 +129,11 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UITextFie
     //if all the fields are filled, let the user add the player
     func textFieldDidEndEditing(textField: UITextField) {
         updateAddPlayerButton()
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     // MARK: Picker Datasource Delegate

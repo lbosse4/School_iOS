@@ -9,12 +9,13 @@
 
 import UIKit
 
-class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCreatedProtocol {
+class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCreatedProtocol, UIGestureRecognizerDelegate {
     let model = Model.sharedInstance
     let maxTeamNameLength = 25
     let inactiveAlpha : CGFloat = 0.5
     let activeAlpha : CGFloat = 1.0
-    let darkBlueColor = UIColor(red: 0.01, green: 0.02, blue: 0.78, alpha: 1.0)
+    let blueColor = UIColor(red:0.00, green:0.00, blue:0.86, alpha:1.0)
+    
     
     var majorColor : UIColor?
     var minorColor : UIColor?
@@ -34,9 +35,12 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
         addPlayersButtonView.alpha = inactiveAlpha
         let playerIconFrame = playerIconView.frame
         playerIconView.layer.cornerRadius = playerIconFrame.width/2
-        majorColor = darkBlueColor
-        self.playerIconView.backgroundColor = darkBlueColor
+        majorColor = blueColor
+        self.playerIconView.backgroundColor = blueColor
         minorColor = UIColor.whiteColor()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
     //MARK: Actions
@@ -108,6 +112,11 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     
     func dismissMe() {
         cancelBlock?()
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     //MARK: TextField Delegate

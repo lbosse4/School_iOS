@@ -193,8 +193,8 @@
                                 <rect key="frame" x="412" y="100" width="304" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="115"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="0.0" green="0.0" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.14404296875" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.0" green="0.0" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6LG-ln-eKK">
                                 <rect key="frame" x="564" y="198" width="152" height="50"/>
@@ -220,9 +220,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NNr-rM-tE5">
                                 <rect key="frame" x="246" y="414" width="276" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="22"/>
-                                <state key="normal" title="Create New Team">
+                                <state key="normal" title="Create Team">
                                     <color key="titleColor" red="0.62352941179999999" green="0.62352941179999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -232,9 +232,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AQj-XT-7de">
                                 <rect key="frame" x="246" y="494" width="276" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="22"/>
-                                <state key="normal" title="View Current Teams">
+                                <state key="normal" title="Edit Teams">
                                     <color key="titleColor" red="0.62352941179999999" green="0.62352941179999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -244,9 +244,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ywd-aq-DTj">
                                 <rect key="frame" x="246" y="575" width="276" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="22"/>
-                                <state key="normal" title="Stats History">
+                                <state key="normal" title="Team Stats">
                                     <color key="titleColor" red="0.62352941179999999" green="0.62352941179999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -256,7 +256,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cn8-At-tVM">
                                 <rect key="frame" x="246" y="654" width="276" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="22"/>
                                 <state key="normal" title="Start Game">
                                     <color key="titleColor" red="0.62352941179999999" green="0.62352941179999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -265,6 +265,11 @@
                                     <segue destination="kbi-2a-i8m" kind="modal" identifier="startGameSegue" id="GcE-Xq-ccN"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" id="cEe-jB-z5b">
+                                <rect key="frame" x="20" y="88" width="728" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

@@ -19,6 +19,15 @@ class StartScreenViewController : UIViewController {
     @IBOutlet weak var directionsLabel: UILabel!
     @IBOutlet weak var statsHistoryButton: UIButton!
     
+    override func viewDidLoad() {
+        //Makes sure to delete teams with no players. They are not accessable.
+        for team in model.teams {
+            if team.players!.allObjects.count == 0 {
+                model.deleteTeam(team)
+            }
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         //user can only access other functions if a team is made
         if model.teamCount() == 0{
