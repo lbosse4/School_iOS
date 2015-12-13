@@ -291,6 +291,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //returns true if value is odd
     func isOdd(value : Int) -> Bool {
+        
         if value % 2 == 0 {
             return false
         } else {
@@ -307,7 +308,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             playersPerRow = numPlayersThatfit
         } else {
             //if the scroll function is needed, and the count per row is odd, we want the extra view to appear in the first row, not the second
-            if isOdd(playersPerRow) {
+            if isOdd(currentPlayers.count) {
                 playersPerRow++
             }
         }
