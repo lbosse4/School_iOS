@@ -20,7 +20,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let popoverContentSize = CGSize(width: 350.0, height: 470.0)
     let formSheetContentSize = CGSize(width: 350.0, height: 400.0)
     let statSummaryContentSize = CGSize(width: 600.0, height: 800.0)
-    let animationDuration : NSTimeInterval = 7.0//0.55
+    let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
     let startingMinutes = 0//30
     let startingSeconds = 3
@@ -289,6 +289,15 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         timerLabel.text = "\(minString):\(secString)"
     }
     
+    //returns true if value is odd
+    func isOdd(value : Int) -> Bool {
+        if value % 2 == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func generateViews() {
         var loopCounter = 0
         playersPerRow = currentPlayers.count/2
@@ -296,6 +305,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         //formatting - numPlayersThatFit represents the number of players that fit without scrollview
         if playersPerRow <= numPlayersThatfit {
             playersPerRow = numPlayersThatfit
+        } else {
+            //if the scroll function is needed, and the count per row is odd, we want the extra view to appear in the first row, not the second
+            if isOdd(playersPerRow) {
+                playersPerRow++
+            }
         }
         let scrollViewWidth = (CGFloat(playersPerRow) * playerViewPaddingWidth) + (playerViewMargin * 2)
         // Allow images to continue off of the screen if there are too many to fit
