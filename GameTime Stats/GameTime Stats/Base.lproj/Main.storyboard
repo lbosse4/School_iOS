@@ -151,6 +151,7 @@
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
             <string>Orbitron-Medium</string>
+            <string>Orbitron-Medium</string>
         </mutableArray>
         <mutableArray key="collegiateHeavyOutline Medium.ttf">
             <string>CollegiateHeavyOutline-Medium</string>
@@ -1488,17 +1489,42 @@
             </objects>
             <point key="canvasLocation" x="1981.4400000000001" y="-604.16000000000008"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Player Walkthrough View Controller-->
         <scene sceneID="yud-DM-BDv">
             <objects>
-                <viewController id="7FW-r3-9GQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPlayerWalkthroughViewController" id="7FW-r3-9GQ" customClass="AddPlayerWalkthroughViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oxO-9n-DbT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="ySd-wT-039">
+                                <rect key="frame" x="154" y="687" width="292" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5FK-qH-bAl">
+                                        <rect key="frame" x="6" y="7" width="281" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Orbitron-Medium" family="Orbitron" pointSize="34"/>
+                                        <state key="normal" title="Okay">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="okayButtonPressed:" destination="qPv-gA-5wu" eventType="touchUpInside" id="2Fv-o2-wAK"/>
+                                            <action selector="okayButtonPressed:" destination="7FW-r3-9GQ" eventType="touchUpInside" id="sXv-14-5Lb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
+                    <connections>
+                        <outlet property="okayButtonView" destination="ySd-wT-039" id="8QV-2L-yiV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8O-ya-Acz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1507,22 +1533,38 @@
         <!--Page View Controller-->
         <scene sceneID="SsI-OQ-pMu">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="29t-ij-qw7" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="AddPlayerWalkthroughPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="29t-ij-qw7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytL-b4-O4y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3730" y="-1777"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Player Walkthrough Detail View Controller-->
         <scene sceneID="ufD-Pr-UU4">
             <objects>
-                <viewController id="RtA-Gu-dqu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPlayerWalkthroughDetailViewController" id="RtA-Gu-dqu" customClass="AddPlayerWalkthroughDetailViewController" customModule="GameTime_Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kbk-mP-BH9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="AQ4-eV-Nij">
+                                <rect key="frame" x="20" y="20" width="560" height="760"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="PTT-et-8E5">
+                                        <rect key="frame" x="48" y="46" width="463" height="593"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
+                    <connections>
+                        <outlet property="walkthroughImageView" destination="PTT-et-8E5" id="zU1-Ez-Ije"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="59F-7f-jxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

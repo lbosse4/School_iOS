@@ -33,16 +33,22 @@ struct PeriodType {
 
 class Model : DataManagerDelegate {
     static let sharedInstance = Model()
+    let numAddPlayerWalkthroughImages = 3
     
     let dataManager = DataManager.sharedInstance
     let numPeriodTypes = 3
-    var teams : [Team]!
-    var players : [Player]!
+    private var teams : [Team]!
+    private var players : [Player]!
+    private var addPlayerWalkthroughImages = [String]()
 
     private init() {
         dataManager.delegate = self
         teams = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Team, sortKeys: ["name"], predicate: nil) as! [Team]
         players = dataManager.fetchManagedObjectsForEntity(ObjectsKey.Player, sortKeys: ["jerseyNumber"], predicate: nil) as! [Player]
+        for i in 0 ..< numAddPlayerWalkthroughImages {
+            let imageString = "AddPlayersWalkthrough\(i + 1).png"
+            addPlayerWalkthroughImages.append(imageString)
+        }
     }
     
     func xcDataModelName() -> String {
@@ -68,9 +74,21 @@ class Model : DataManagerDelegate {
         return players.count
     }
     
+    func testTeams() -> [Team]{
+        return teams
+    }
+    
     //number of teams in database
     func teamCount() -> Int {
         return teams.count
+    }
+    
+    func addPlayerWalkthroughImageStringAtIndex(index: Int) -> String {
+        return addPlayerWalkthroughImages[index]
+    }
+    
+    func numAPWalkthroughImages() -> Int {
+        return numAddPlayerWalkthroughImages
     }
     
     func numberOfPeriodTypes() -> Int {

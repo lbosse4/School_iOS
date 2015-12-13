@@ -86,8 +86,6 @@ class RootViewController : UIViewController, UIPageViewControllerDataSource{
         delegate!.dismissWalkThrough()
     }
     
-    
-    
     @IBAction func dismissByCompletion(sender: AnyObject) {
        
         if let closure = completionBlock {

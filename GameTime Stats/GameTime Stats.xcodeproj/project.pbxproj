@@ -11,6 +11,11 @@
 		890661501BFF9DA00086CA2E /* AddPlayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */; };
 		8909788E1C1D02360054E67A /* ColorPickerImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8909788D1C1D02360054E67A /* ColorPickerImage.png */; };
 		890978901C1D023B0054E67A /* MetalGarbageCan.png in Resources */ = {isa = PBXBuildFile; fileRef = 8909788F1C1D023B0054E67A /* MetalGarbageCan.png */; };
+		890978971C1D2A7B0054E67A /* AddPlayersWalkthrough3.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978941C1D2A7B0054E67A /* AddPlayersWalkthrough3.png */; };
+		890978981C1D2A7B0054E67A /* AddPlayersWalkthrough1.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978951C1D2A7B0054E67A /* AddPlayersWalkthrough1.png */; };
+		890978991C1D2A7B0054E67A /* AddPlayersWalkthrough2.png in Resources */ = {isa = PBXBuildFile; fileRef = 890978961C1D2A7B0054E67A /* AddPlayersWalkthrough2.png */; };
+		8909789B1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909789A1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift */; };
+		8909789D1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909789C1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift */; };
 		891ECF951BF3A3C1009C813D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF941BF3A3C1009C813D /* Model.swift */; };
 		891ECF971BF3A3F4009C813D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF961BF3A3F4009C813D /* GameViewController.swift */; };
 		891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ECF981BF3A409009C813D /* CreateTeamViewController.swift */; };
@@ -95,6 +100,11 @@
 		8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayersTableViewController.swift; sourceTree = "<group>"; };
 		8909788D1C1D02360054E67A /* ColorPickerImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorPickerImage.png; sourceTree = "<group>"; };
 		8909788F1C1D023B0054E67A /* MetalGarbageCan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MetalGarbageCan.png; sourceTree = "<group>"; };
+		890978941C1D2A7B0054E67A /* AddPlayersWalkthrough3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddPlayersWalkthrough3.png; sourceTree = "<group>"; };
+		890978951C1D2A7B0054E67A /* AddPlayersWalkthrough1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddPlayersWalkthrough1.png; sourceTree = "<group>"; };
+		890978961C1D2A7B0054E67A /* AddPlayersWalkthrough2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddPlayersWalkthrough2.png; sourceTree = "<group>"; };
+		8909789A1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerWalkthroughViewController.swift; sourceTree = "<group>"; };
+		8909789C1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerWalkthroughDetailViewController.swift; sourceTree = "<group>"; };
 		891ECF941BF3A3C1009C813D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		891ECF961BF3A3F4009C813D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		891ECF981BF3A409009C813D /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +198,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		890978931C1D2A5F0054E67A /* Add Players Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				890978941C1D2A7B0054E67A /* AddPlayersWalkthrough3.png */,
+				890978951C1D2A7B0054E67A /* AddPlayersWalkthrough1.png */,
+				890978961C1D2A7B0054E67A /* AddPlayersWalkthrough2.png */,
+			);
+			name = "Add Players Walkthrough";
+			sourceTree = "<group>";
+		};
 		891ECF901BF3A2C2009C813D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +229,7 @@
 				894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */,
 				89301FC11C10D787001F81A9 /* StatsHistoryTableViewCell.swift */,
 				89A8F9231C13944400FF4602 /* GameStatsTableViewCell.swift */,
+				890978931C1D2A5F0054E67A /* Add Players Walkthrough */,
 				89774B991BE3CADA007E02B4 /* Button Icons */,
 				89301FB41C10CFD0001F81A9 /* Color Picker Source */,
 				897083721BE03450008F5D5B /* Fonts */,
@@ -281,6 +302,8 @@
 				89E94A941C1B2A17009D535A /* ColorPickerViewController.swift */,
 				8906614F1BFF9DA00086CA2E /* AddPlayersTableViewController.swift */,
 				896C02F81BFD483C00DAC7C7 /* AddPlayerViewController.swift */,
+				8909789A1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift */,
+				8909789C1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift */,
 			);
 			name = "Add Teams";
 			sourceTree = "<group>";
@@ -517,10 +540,12 @@
 				89774B961BE3CACF007E02B4 /* PlusIcon.png in Resources */,
 				89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */,
 				89EC2BC61BCF0DAB008B37DC /* LaunchScreen.storyboard in Resources */,
+				890978981C1D2A7B0054E67A /* AddPlayersWalkthrough1.png in Resources */,
 				89EC2BC31BCF0DAB008B37DC /* Assets.xcassets in Resources */,
 				89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */,
 				89DB69B61C137CF40057104E /* TrashCanImage.png in Resources */,
 				897083771BE04098008F5D5B /* Grass.png in Resources */,
+				890978991C1D2A7B0054E67A /* AddPlayersWalkthrough2.png in Resources */,
 				8909788E1C1D02360054E67A /* ColorPickerImage.png in Resources */,
 				890978901C1D023B0054E67A /* MetalGarbageCan.png in Resources */,
 				8970837A1BE040BD008F5D5B /* collegiateHeavyOutline Medium.ttf in Resources */,
@@ -529,6 +554,7 @@
 				897083781BE040B7008F5D5B /* Orbitron Light.ttf in Resources */,
 				897083791BE040BA008F5D5B /* Orbitron Medium.ttf in Resources */,
 				89EC2BC11BCF0DAB008B37DC /* Main.storyboard in Resources */,
+				890978971C1D2A7B0054E67A /* AddPlayersWalkthrough3.png in Resources */,
 				89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */,
 				89ADE57A1C14D25400298889 /* README.pdf in Resources */,
 			);
@@ -569,6 +595,7 @@
 				89A8F9261C13A23500FF4602 /* GameStatsDataSource.swift in Sources */,
 				89A8F9221C1392BC00FF4602 /* GameStatsTableViewController.swift in Sources */,
 				894BCE421BFBBFDA008DF1C4 /* Stats+CoreDataProperties.swift in Sources */,
+				8909789B1C1D2DE90054E67A /* AddPlayerWalkthroughViewController.swift in Sources */,
 				89E94A951C1B2A17009D535A /* ColorPickerViewController.swift in Sources */,
 				896C02FB1BFD4CBF00DAC7C7 /* StringUtils.swift in Sources */,
 				894BCE371BFBBF30008DF1C4 /* Game.swift in Sources */,
@@ -597,6 +624,7 @@
 				89A8F9241C13944400FF4602 /* GameStatsTableViewCell.swift in Sources */,
 				89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */,
 				894BA33C1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift in Sources */,
+				8909789D1C1D2F170054E67A /* AddPlayerWalkthroughDetailViewController.swift in Sources */,
 				8935A5CB1C0AA064006508FF /* OvertimePromptViewController.swift in Sources */,
 				891ECF991BF3A409009C813D /* CreateTeamViewController.swift in Sources */,
 				896331EB1C1750CD007C77AE /* SecondHalfPromptViewController.swift in Sources */,

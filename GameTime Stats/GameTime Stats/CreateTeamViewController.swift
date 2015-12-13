@@ -78,7 +78,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     
     @IBAction func addPlayersButtonPressed(sender: UIButton) {
         teamName = teamNameTextField.text!
-        let teams = model.teams
+        let teams = model.testTeams()
         isUniqueName = true
         for team in teams {
             let tmName = team.name!

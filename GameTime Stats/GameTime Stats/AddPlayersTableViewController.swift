@@ -19,6 +19,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     let formatter = NSNumberFormatter()
     let sectionHeight : CGFloat = 30.0
     let titleFont = UIFont(name: "Orbitron-Medium", size: 20.0)
+    let numWalkthroughDisplays = 2
     var team : Team?
     var cancelBlock : (() -> Void)?
     var delegate : TeamCreatedProtocol?
@@ -43,6 +44,16 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.navigationItem.title = "Players for \(team!.name!)"
+        
+        let numTeams = model.testTeams().count
+        if numTeams <= numWalkthroughDisplays {
+            let walkThroughViewController = storyboard!.instantiateViewControllerWithIdentifier("AddPlayerWalkthroughViewController") as! AddPlayerWalkthroughViewController
+            walkThroughViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+            walkThroughViewController.cancelBlock = {() in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            self.presentViewController(walkThroughViewController, animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

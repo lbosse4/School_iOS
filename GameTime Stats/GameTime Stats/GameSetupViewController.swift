@@ -43,7 +43,7 @@ class GameSetupViewController: UIViewController, UIPickerViewDelegate, UITextFie
         startGameButtonView.userInteractionEnabled = false
         startGameButtonView.alpha = inactiveAlpha
         
-        chosenTeam = model.teams[0]
+        chosenTeam = model.testTeams()[0]
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
     }

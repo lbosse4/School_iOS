@@ -20,7 +20,6 @@ class ColorPickerViewController: UIViewController {
         
         view.addSubview(colorPicker)
         colorPicker.setViewColor(previousColor!)
-        
     }
     
     @IBAction func chooseColorButtonPressed(sender: UIButton) {

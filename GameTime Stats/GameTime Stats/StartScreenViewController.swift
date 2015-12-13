@@ -21,7 +21,7 @@ class StartScreenViewController : UIViewController {
     
     override func viewDidLoad() {
         //Makes sure to delete teams with no players. They are not accessable.
-        for team in model.teams {
+        for team in model.testTeams() {
             if team.players!.allObjects.count == 0 {
                 model.deleteTeam(team)
             }
