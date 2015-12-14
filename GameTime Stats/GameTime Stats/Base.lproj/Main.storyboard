@@ -1896,6 +1896,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="gameCell" rowHeight="94" id="vOj-ov-DDR" customClass="StatsHistoryTableViewCell" customModule="GameTime_Stats" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="768" height="94"/>
@@ -1935,7 +1936,8 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.67191445707070696" green="0.67191445707070696" blue="0.67191445707070696" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dateLabel" destination="7E7-V4-pWS" id="VHG-TC-R3e"/>
                                     <outlet property="opponentNameLabel" destination="BaY-7W-sQb" id="gsw-2n-ybg"/>
@@ -2002,7 +2004,8 @@
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.67015861742424243" green="0.67015861742424243" blue="0.67015861742424243" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="jerseyNumber" destination="29j-9Z-C1d" id="ZbK-Rc-BRS"/>
                                     <outlet property="playerNameLabel" destination="TMY-Ft-bmB" id="2iD-yl-tTf"/>

@@ -69,12 +69,12 @@
 		89A8F92E1C13E7CA00FF4602 /* PlayerStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F92D1C13E7CA00FF4602 /* PlayerStatsViewController.swift */; };
 		89A8F9301C13F64E00FF4602 /* TeamStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */; };
 		89A8F9321C13FE1700FF4602 /* PlayerStatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */; };
-		89ADE57A1C14D25400298889 /* README.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 89ADE5791C14D25400298889 /* README.pdf */; };
 		89DB69B61C137CF40057104E /* TrashCanImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DB69B51C137CF40057104E /* TrashCanImage.png */; };
 		89E30A6B1BDC657C0051212A /* womensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6A1BDC657C0051212A /* womensLacrosseField.png */; };
 		89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6C1BDC65820051212A /* mensLacrosseField.png */; };
 		89E30A6F1BDC6B520051212A /* scoreboard.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A6E1BDC6B200051212A /* scoreboard.ttf */; };
 		89E30A711BDC6C0E0051212A /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E30A701BDC6C0A0051212A /* digital-7.ttf */; };
+		89E922F01C1E82B400D6DECA /* README.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 89E922EF1C1E82B400D6DECA /* README.pdf */; };
 		89E94A951C1B2A17009D535A /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E94A941C1B2A17009D535A /* ColorPickerViewController.swift */; };
 		89EC2BBC1BCF0DAB008B37DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */; };
 		89EC2BC11BCF0DAB008B37DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EC2BBF1BCF0DAB008B37DC /* Main.storyboard */; };
@@ -165,12 +165,12 @@
 		89A8F92D1C13E7CA00FF4602 /* PlayerStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatsViewController.swift; sourceTree = "<group>"; };
 		89A8F92F1C13F64E00FF4602 /* TeamStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsViewController.swift; sourceTree = "<group>"; };
 		89A8F9311C13FE1700FF4602 /* PlayerStatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatsDetailViewController.swift; sourceTree = "<group>"; };
-		89ADE5791C14D25400298889 /* README.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = README.pdf; sourceTree = "<group>"; };
 		89DB69B51C137CF40057104E /* TrashCanImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrashCanImage.png; sourceTree = "<group>"; };
 		89E30A6A1BDC657C0051212A /* womensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = womensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6C1BDC65820051212A /* mensLacrosseField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mensLacrosseField.png; sourceTree = "<group>"; };
 		89E30A6E1BDC6B200051212A /* scoreboard.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scoreboard.ttf; sourceTree = "<group>"; };
 		89E30A701BDC6C0A0051212A /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
+		89E922EF1C1E82B400D6DECA /* README.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = README.pdf; sourceTree = "<group>"; };
 		89E94A941C1B2A17009D535A /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		89EC2BB81BCF0DAB008B37DC /* GameTime Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameTime Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -289,8 +289,8 @@
 		891ECF931BF3A367009C813D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				89E922EF1C1E82B400D6DECA /* README.pdf */,
 				89EC2BC41BCF0DAB008B37DC /* LaunchScreen.storyboard */,
-				89ADE5791C14D25400298889 /* README.pdf */,
 				89EC2BBB1BCF0DAB008B37DC /* AppDelegate.swift */,
 				89EC2BC71BCF0DAB008B37DC /* Info.plist */,
 				89EC2BC21BCF0DAB008B37DC /* Assets.xcassets */,
@@ -596,9 +596,9 @@
 				897083791BE040BA008F5D5B /* Orbitron Medium.ttf in Resources */,
 				89EC2BC11BCF0DAB008B37DC /* Main.storyboard in Resources */,
 				890978971C1D2A7B0054E67A /* AddPlayersWalkthrough3.png in Resources */,
+				89E922F01C1E82B400D6DECA /* README.pdf in Resources */,
 				89E30A6D1BDC65820051212A /* mensLacrosseField.png in Resources */,
 				890978AA1C1E2F670054E67A /* GameWalkthrough4.png in Resources */,
-				89ADE57A1C14D25400298889 /* README.pdf in Resources */,
 				890978A81C1E2F670054E67A /* GameWalkthrough2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
