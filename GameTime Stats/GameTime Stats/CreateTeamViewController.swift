@@ -164,6 +164,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
                     //TODO: Make this blank team still show up
                     let players = self.team!.players?.allObjects as! [Player]
+                
                     if players.count == 0 {
                         self.model.deleteTeam(self.team!)
                     }

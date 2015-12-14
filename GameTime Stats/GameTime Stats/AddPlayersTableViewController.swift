@@ -87,6 +87,7 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     //MARK: Actions
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
         //dismissViewControllerAnimated(true, completion: nil)
+        let players = model.playersForTeam(team!)
         cancelBlock?()
         delegate?.dismissMe()
     }

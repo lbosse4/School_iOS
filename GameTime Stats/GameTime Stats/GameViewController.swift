@@ -92,11 +92,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             gameTimer.invalidate()
             shouldShowStatsEditor = false
             updateHalves()
-            model.saveDMContext()
             //make sure all of the data is saved
-            //TODO: MAKE SURE STATS ARE ORGANIZED
-            //TODO: FIX STAT TIME PLAYED ERROR
-            
+            model.saveDMContext()            
         } else {
             if gameTimerSeconds == 0 {
                 gameTimerMinutes--
@@ -231,6 +228,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         teamStatsSummaryViewController.team = currentTeam
         teamStatsSummaryViewController.game = currentGame
         teamStatsSummaryViewController.delegate = self
+        
         teamStatsSummaryViewController.cancelBlock = {() in
             self.dismissViewControllerAnimated(true, completion: nil)
         }
@@ -381,8 +379,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     func addStatsObjects(){
         for player in currentPlayers {
-            model.addStatsObject(player, game: currentGame!, currentPeriod: currentPeriod)
-            
+            let stats = model.addStatsObject(player, game: currentGame!, currentPeriod: currentPeriod)
+            stats.secondsLeftAtEnter = calculateSecondsLeft()
         }
         shouldShowStatsEditor = true
     }

@@ -149,7 +149,7 @@ class Model : DataManagerDelegate {
         
     }
     
-    func addStatsObject(player: Player, game: Game, currentPeriod: String){
+    func addStatsObject(player: Player, game: Game, currentPeriod: String) -> Stats{
         let periodObj = NSEntityDescription.insertNewObjectForEntityForName(ObjectsKey.Period, inManagedObjectContext: dataManager.managedObjectContext!) as! Period
         periodObj.game = game
         periodObj.type = currentPeriod
@@ -158,6 +158,7 @@ class Model : DataManagerDelegate {
         statsObj.player = player
         statsObj.period = periodObj
         dataManager.saveContext()
+        return statsObj
     }
 
     func addTeamWithName(name: String, majorColor: UIColor, minorColor: UIColor) -> Team {
