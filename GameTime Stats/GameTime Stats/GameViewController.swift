@@ -23,8 +23,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let statSummaryContentSize = CGSize(width: 600.0, height: 800.0)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 30
-    let startingSeconds = 0//3
+    let startingMinutes = 0//30
+    let startingSeconds = 1//030
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
@@ -36,7 +36,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let yes = 1
     let activeAlpha : CGFloat = 1.0
     let inactiveAlpha : CGFloat = 0.5
-    let secondsInterval : NSTimeInterval = 0.05 //1.0
+    let secondsInterval : NSTimeInterval = 0.5//1.0
     
     //MARK: Variables
     var playerViews = [UIView]()
@@ -44,8 +44,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
-    var gameTimerMinutes = 30
-    var gameTimerSeconds = 0//3
+    var gameTimerMinutes = 0//30
+    var gameTimerSeconds = 1//030
     var homeScore = 0
     var guestScore = 0
     var currentPeriod = PeriodType.FirstHalf
@@ -92,10 +92,11 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             gameTimer.invalidate()
             shouldShowStatsEditor = false
             updateHalves()
+            model.saveDMContext()
             //make sure all of the data is saved
             //TODO: MAKE SURE STATS ARE ORGANIZED
             //TODO: FIX STAT TIME PLAYED ERROR
-            model.saveDMContext()
+            
         } else {
             if gameTimerSeconds == 0 {
                 gameTimerMinutes--
@@ -111,12 +112,12 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     func updateHalves(){
         var loopCounter = 0
         for player in currentPlayers {
+            
             if isPlayerAtIndexOnField[loopCounter] {
                 let currentSecondsLeft = calculateSecondsLeft()
                 let playerStats = model.statsForPlayer(player, game: currentGame, periodType: currentPeriod)
                 let timeElapsed = Int(playerStats.secondsLeftAtEnter!) - currentSecondsLeft
                 playerStats.secondsPlayed = Int(playerStats.secondsPlayed!) + timeElapsed
-            
             }
             
             loopCounter++
@@ -162,6 +163,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 
                 var loopCounter = 0
                 for player in self.currentPlayers {
+                    
                     if self.isPlayerAtIndexOnField[loopCounter]{
                         let currentSecondsLeft = self.calculateSecondsLeft()
                         let playerStats = self.model.statsForPlayer(player, game: self.currentGame, periodType: self.currentPeriod)
@@ -194,6 +196,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 self.overtimeMinutes = otMinutes
                 self.overtimeSeconds = otSeconds
                 self.currentGame!.hasOvertime = true
+                
                 
                 self.overtimeChosenAnswer = answer
                 self.gameTimer.invalidate()
@@ -379,6 +382,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     func addStatsObjects(){
         for player in currentPlayers {
             model.addStatsObject(player, game: currentGame!, currentPeriod: currentPeriod)
+            
         }
         shouldShowStatsEditor = true
     }
@@ -413,14 +417,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 self.benchScrollview.addSubview(playerView)
         }
         
-//        UIView.animateWithDuration(animationDuration, delay: 0.0, options: .CurveEaseInOut, animations: { () -> Void in
-//            playerView.frame.origin = origin
-//            
-//            }) { (finished : Bool) -> Void in
-//                self.benchScrollview.addSubview(playerView)
-//        }
-        
         if isPlayerAtIndexOnField[playerView.tag] {
+            
             let currentSecondsLeft = calculateSecondsLeft()
             let playerStats = model.statsForPlayer(currentPlayers[playerView.tag], game: currentGame, periodType: currentPeriod)
             let timeElapsed = Int(playerStats.secondsLeftAtEnter!) - currentSecondsLeft
@@ -477,6 +475,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                     isPlayerAtIndexOnField[panningView.tag] = false
                 } else {
                     if !isPlayerAtIndexOnField[panningView.tag] {
+                        
                         let currentSecondsLeft = calculateSecondsLeft()
                         let playerStats = model.statsForPlayer(currentPlayers[panningView.tag], game: currentGame, periodType: currentPeriod)
                         playerStats.secondsLeftAtEnter = currentSecondsLeft

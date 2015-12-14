@@ -218,7 +218,6 @@ class ViewTeamsDataSource : NSObject, UITableViewDataSource, NSFetchedResultsCon
             case .Delete:
                 tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             case .Update:
-                
                 let object = objectAtIndexPath(indexPath!)
                 if let cell = tableView.cellForRowAtIndexPath(indexPath!)! as? PlayerTableViewCell {
                     delegate?.configureCell(cell, withObject: object)

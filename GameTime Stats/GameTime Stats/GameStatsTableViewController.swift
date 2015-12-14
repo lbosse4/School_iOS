@@ -36,6 +36,7 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
         dataSource.updateWithPredicate(predicate)
         
         self.navigationItem.title = "Game vs. \(game!.opponentName!)"
+        
     }
     
     //MARK: Data Source Cell Configurer
@@ -68,7 +69,8 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
         teamNameButton.setTitle(teamName, forState: .Normal)
         teamNameButton.titleLabel!.font = titleFont
-        teamNameButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        teamNameButton.setTitleColor(model.minorColorForTeam(team), forState: .Normal)
+        teamNameButton.backgroundColor = model.majorColorForTeam(team)
         teamNameButton.tag = section
         
         sectionView.addSubview(teamNameButton)
@@ -79,11 +81,16 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeight
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
 
     //MARK: Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
         case "playerStatsSegue":
+            
             let playerStatsViewController = segue.destinationViewController as! PlayerStatsViewController
             
             let indexPath = tableView.indexPathForSelectedRow
@@ -95,6 +102,7 @@ class GameStatsTableViewController: UITableViewController, GameStatsDataSourceCe
             }
             
         case "showTeamStatsSegue":
+            
             let teamStatsViewController = segue.destinationViewController as! TeamStatsViewController
             teamStatsViewController.team = team
             teamStatsViewController.game = game

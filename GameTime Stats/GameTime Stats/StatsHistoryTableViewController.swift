@@ -87,10 +87,12 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         //for collapsable sections
         let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - scrollPadding, height: sectionHeight)
         let teamNameButton = UIButton(frame: teamNameButtonFrame)
-        let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)
+        let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)!
+        let team = model.teamWithName(teamName)
         teamNameButton.setTitle(teamName, forState: .Normal)
         teamNameButton.titleLabel!.font = titleFont
-        teamNameButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        teamNameButton.backgroundColor = model.majorColorForTeam(team)
+        teamNameButton.setTitleColor(model.minorColorForTeam(team), forState: .Normal)
         teamNameButton.tag = section
         
         sectionView.addSubview(teamNameButton)
@@ -100,6 +102,10 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeight
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     //MARK: Prepare for Segue

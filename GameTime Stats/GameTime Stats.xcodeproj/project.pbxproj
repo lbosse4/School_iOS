@@ -265,8 +265,6 @@
 				894BA33B1C04D5A000CA2D35 /* AddPlayerTableViewCell.swift */,
 				89301FC11C10D787001F81A9 /* StatsHistoryTableViewCell.swift */,
 				89A8F9231C13944400FF4602 /* GameStatsTableViewCell.swift */,
-				890978931C1D2A5F0054E67A /* Add Players Walkthrough */,
-				890978A01C1E2F480054E67A /* Game Walkthrough */,
 				89774B991BE3CADA007E02B4 /* Button Icons */,
 				89301FB41C10CFD0001F81A9 /* Color Picker Source */,
 				897083721BE03450008F5D5B /* Fonts */,
@@ -409,6 +407,8 @@
 		89E30A691BDC654E0051212A /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				890978931C1D2A5F0054E67A /* Add Players Walkthrough */,
+				890978A01C1E2F480054E67A /* Game Walkthrough */,
 				89DB69B51C137CF40057104E /* TrashCanImage.png */,
 				8909788D1C1D02360054E67A /* ColorPickerImage.png */,
 				8909788F1C1D023B0054E67A /* MetalGarbageCan.png */,

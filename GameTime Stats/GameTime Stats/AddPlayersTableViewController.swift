@@ -114,6 +114,10 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
         return sectionHeight
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
     //MARK: Prepare for segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
