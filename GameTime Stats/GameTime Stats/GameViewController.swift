@@ -53,7 +53,6 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var isInitialLoad = true
     var currentGame : Game!
     var currentTeam : Team!
-    var overtimeChosenAnswer : Int?
     var overtimeMinutes : Int?
     var overtimeSeconds : Int?
     var shouldShowStatsEditor = true
@@ -81,6 +80,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     override func viewDidAppear(animated: Bool) {
         if isInitialLoad {
+            //game setup
             performSegueWithIdentifier("gameInfoSegue", sender: self)
             isInitialLoad = false
         }
@@ -89,12 +89,14 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     //MARK: Helper Functions
     func updateTimer() {
         if gameTimerMinutes == 0 && gameTimerSeconds == 0{
+            //get ready for next period. current one ended
             gameTimer.invalidate()
             shouldShowStatsEditor = false
             updateHalves()
             //make sure all of the data is saved
             model.saveDMContext()            
         } else {
+            //countdown
             if gameTimerSeconds == 0 {
                 gameTimerMinutes--
                 gameTimerSeconds = maxSeconds
@@ -110,6 +112,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         var loopCounter = 0
         for player in currentPlayers {
             
+            //if the player is still on the field, collect their final playing time for that half, before the halves are updated
             if isPlayerAtIndexOnField[loopCounter] {
                 let currentSecondsLeft = calculateSecondsLeft()
                 let playerStats = model.statsForPlayer(player, game: currentGame, periodType: currentPeriod)
@@ -125,13 +128,15 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
             //set the half indicator
             let secondHalfString = formatter.stringFromNumber(secondHalf)
             halfLabel.text = secondHalfString
-            
+            //notify the user that the second half is starting
             presentSecondHalfPromptViewController()
             
         case PeriodType.SecondHalf:
+            //prompt for overtime
             presentOvertimePromptViewController()
             
         case PeriodType.Overtime:
+            //present results
             presentTeamStatsSummaryViewController()
         default: break
         }
@@ -148,19 +153,24 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         secondHalfPromptViewController.cancelBlock = {() in
             self.dismissViewControllerAnimated(true, completion: { () -> Void in
                 self.gameTimer.invalidate()
+        
+                //change halves
                 self.currentPeriod = PeriodType.SecondHalf
                 self.gameTimerSeconds = self.startingSeconds
                 self.gameTimerMinutes = self.startingMinutes
                 self.updateTimerLabel()
+                
+                //allow the user to upadte clock
                 self.startButton.alpha = self.activeAlpha
                 self.startButton.alpha = self.activeAlpha
                 self.startButton.userInteractionEnabled = true
                 
+                //add second half objects
                 self.addStatsObjects()
                 
                 var loopCounter = 0
                 for player in self.currentPlayers {
-                    
+                    //if a player was left on the field from the first half, make sure they have a seconds left at enter field
                     if self.isPlayerAtIndexOnField[loopCounter]{
                         let currentSecondsLeft = self.calculateSecondsLeft()
                         let playerStats = self.model.statsForPlayer(player, game: self.currentGame, periodType: self.currentPeriod)
@@ -194,12 +204,13 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
                 self.overtimeSeconds = otSeconds
                 self.currentGame!.hasOvertime = true
                 
-                
-                self.overtimeChosenAnswer = answer
+                //update halves
                 self.gameTimer.invalidate()
                 self.gameTimerMinutes = otMinutes
                 self.gameTimerSeconds = otSeconds
                 self.updateTimerLabel()
+                
+                //allow user to edit clock
                 self.startButton.alpha = self.activeAlpha
                 self.startButton.userInteractionEnabled = true
                 self.addStatsObjects()
@@ -247,7 +258,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         
         popoverViewController.preferredContentSize = popoverContentSize
         let popoverMenuViewController = navPopoverViewController.popoverPresentationController
-        //maybe update this based on locatoin in fieldView
+
+        
         popoverMenuViewController!.permittedArrowDirections = .Any
         popoverMenuViewController!.delegate = self
         popoverMenuViewController!.sourceView = tappedView
@@ -396,6 +408,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
         return (currentLocation.x > fieldImageView.bounds.width - padding) || (currentLocation.x < 0) || (currentLocation.y > fieldImageView.bounds.height - padding) || (currentLocation.y < 0)
     }
     
+    //moves player view back to correct location in scrollview
     func resetPlayerView(playerView: UIView) {
         moveView(playerView, toSuperview: benchScrollview)
         
@@ -516,18 +529,37 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     
     //MARK: Actions
     @IBAction func cancelGameButtonPressed(sender: UIButton) {
-        model.deleteGame(currentGame!)
-        cancelBlock?()
+        //Make sure the user knows all of their progress will be lost
+        let alert = UIAlertController(title: "Are you sure?", message: "If you cancel the game now, your progress will be lost.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let stayInGameAction = UIAlertAction(title: "Stay in Game", style: .Cancel, handler: nil)
+        alert.addAction(stayInGameAction)
+        
+        //TODO: Look at this again
+        let saveCompletedHalves = UIAlertAction(title: "Save Completed Progress", style: .Default) { (action) -> Void in
+            self.cancelBlock?()
+        }
+        alert.addAction(saveCompletedHalves)
+        
+        let deleteGameAction = UIAlertAction(title: "Delete Game", style: .Destructive) { (action) -> Void in
+            self.model.deleteGame(self.currentGame!)
+            self.cancelBlock?()
+        }
+        alert.addAction(deleteGameAction)
+    
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func startTimerButtonPressed(sender: UIButton) {
         if !gameTimer.valid {
+            //restart timer
             gameTimer = NSTimer.scheduledTimerWithTimeInterval(secondsInterval, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
         }
         
     }
     
     @IBAction func stopTimerButtonPressed(sender: UIButton) {
+        //stop timer
         gameTimer.invalidate()
     }
     

@@ -128,6 +128,7 @@ class TeamStatsDetailViewController: UIViewController {
             numTurnovers += Int(stats.turnovers!)
         }
         
+        //Update Labels with collected Data
         assistsLabel.text = formatter.stringFromNumber(numAssists)
         causedTurnoversLabel.text = formatter.stringFromNumber(numCausedTurnovers)
         clearsLabel.text = formatter.stringFromNumber(numClears)
@@ -156,6 +157,7 @@ class TeamStatsDetailViewController: UIViewController {
             shotPercentageLabel.text = formatter.stringFromNumber(shotPercentage)
         }
         
+        //calculate the denominator from other stats
         let opponentShotsOnGoal = Int(numSaves) + Int(numGoalsAgainst)
         if opponentShotsOnGoal == 0{
             savePercentageLabel.text = formatter.stringFromNumber(0)

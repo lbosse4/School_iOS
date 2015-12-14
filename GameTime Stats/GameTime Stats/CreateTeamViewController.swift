@@ -86,6 +86,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
         teamName = teamNameTextField.text!
         let teams = model.testTeams()
         isUniqueName = true
+        //make sure the team name is unique to this team
         for team in teams {
             let tmName = team.name!
             if tmName == teamName {
@@ -133,6 +134,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
+
         checkTeamNameLength()
     }
     
@@ -162,7 +164,6 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
             
             playerController.cancelBlock = {() in
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    //TODO: Make this blank team still show up
                     let players = self.team!.players?.allObjects as! [Player]
                 
                     if players.count == 0 {
@@ -179,6 +180,7 @@ class CreateTeamViewController : UIViewController, UITextFieldDelegate, TeamCrea
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         switch identifier {
+            //the segue should not perform if the name is not unique
             case "addPlayersTableViewSegue":
                 if isUniqueName {
                     return true

@@ -9,7 +9,10 @@
 import UIKit
 
 class ColorPickerViewController: UIViewController {
+    //Third party
     let colorPicker = SwiftHSVColorPicker(frame: CGRectMake(25, 20, 300, 400))
+    
+    //stores the previous chosen color to display on color wheel
     var previousColor : UIColor?
     var completionBlock : ((chosenColor: UIColor) -> Void)!
     var cancelBlock : (() -> Void)!

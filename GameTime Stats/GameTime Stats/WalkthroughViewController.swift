@@ -15,8 +15,7 @@ class WalkthroughViewController : UIViewController, UIPageViewControllerDataSour
     var cancelBlock : (() -> Void)!
     var imageStrings : [String]!
     
-    @IBOutlet weak var okayButtonView: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         pageViewController = (self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughPageViewController") as? UIPageViewController)!
@@ -28,7 +27,6 @@ class WalkthroughViewController : UIViewController, UIPageViewControllerDataSour
         self.addChildViewController(pageViewController!)
         pageViewController!.didMoveToParentViewController(self)
         self.view.addSubview(pageViewController!.view)
-        //self.view.bringSubviewToFront(okayButtonView)
     }
     
     func viewControllerAtIndex(index:Int) -> UIViewController {
@@ -54,7 +52,6 @@ class WalkthroughViewController : UIViewController, UIPageViewControllerDataSour
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let contentViewController = viewController as! WalkthroughDetailViewController
         var index = contentViewController.pageIndex!
-        //checkPageIndex(index)
         if index == 0 {
             return nil
         } else {
@@ -66,10 +63,8 @@ class WalkthroughViewController : UIViewController, UIPageViewControllerDataSour
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         let contentViewController = viewController as! WalkthroughDetailViewController
         var index = contentViewController.pageIndex!
-        //checkPageIndex(index)
         if index == imageStrings.count - 1 {
             return nil
-            
         } else {
             index++
             return viewControllerAtIndex(index)

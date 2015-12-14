@@ -64,7 +64,7 @@ class PlayerStatsViewController: UIViewController, UIPageViewControllerDataSourc
         let contentViewController = viewController as! PlayerStatsDetailViewController
         var index = contentViewController.pageIndex!
         
-        //Determine if the game had overtime
+        //Determine number of pages
         let numPeriods = model.allStatsForPlayer(player, game: game).count
         
         if index == numPeriods - 1 {

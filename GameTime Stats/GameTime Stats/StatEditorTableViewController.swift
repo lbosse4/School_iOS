@@ -163,7 +163,7 @@ class StatEditorTableViewController: UITableViewController {
             freePositionAttemptsLabel.text = formatter.stringFromNumber(numFreePositionAttempts)
             stats.freePositionAttempts! = numFreePositionAttempts
         case 5:
-            //TODO: LINK THIS WITH GOALS. EVERY FREE POSITION GOAL IS A GOAL
+            //TODO: LINK THIS WITH GOALS.
             let numFreePositionGoals = Int(sender.value)
             freePositionGoalsLabel.text = formatter.stringFromNumber(numFreePositionGoals)
             stats.freePositionGoals = numFreePositionGoals

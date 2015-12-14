@@ -41,9 +41,15 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
             }
         }
         
-        //TODO: GET THIS TO PRESENt ALERT
         if !hasGames {
+            let alert = UIAlertController(title: "You don't have any games yet.", message: "Start a game, then you can see the summary here after.", preferredStyle: UIAlertControllerStyle.Alert)
+           
+            let saveCompletedHalves = UIAlertAction(title: "Okay", style: .Cancel) { (action) -> Void in
+                self.cancelBlock?()
+            }
+            alert.addAction(saveCompletedHalves)
             
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
     }
@@ -76,6 +82,9 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         let homeScore = game!.homeScore!
         let guestScore = game!.guestScore!
         cell.scoreLabel.text = "\(homeScore) to \(guestScore) (opponent)"
+        let team = game?.team!
+        cell.accessoryView?.tintColor = model.majorColorForTeam(team!)
+        
     }
 
     // MARK: - Table view data source
@@ -84,7 +93,6 @@ class StatsHistoryTableViewController: UITableViewController, StatsHistoryDataSo
         let sectionView = UIView(frame: sectionViewFrame)
         sectionView.backgroundColor = UIColor.blackColor()
         
-        //for collapsable sections
         let teamNameButtonFrame = CGRect(x: 0.0, y: 0.0, width: view.frame.width - scrollPadding, height: sectionHeight)
         let teamNameButton = UIButton(frame: teamNameButtonFrame)
         let teamName = dataSource.tableView(tableView, titleForHeaderInSection: section)!

@@ -56,6 +56,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     }
     
     func colorWheelButtonPressed(sender: UIButton) {
+        //Allow the user to change the team colors
         let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection:  sender.tag)!
         let team = model.teamWithName(sectionTitle)
         let changeTeamColorViewController = storyboard!.instantiateViewControllerWithIdentifier("ChangeTeamColorViewController") as! ChangeTeamColorViewController
@@ -69,6 +70,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
     }
     
     func addPlayerButtonPressed(sender: UIButton){
+        
         let sectionTitle = dataSource.tableView(self.tableView, titleForHeaderInSection: sender.tag)!
         let team = model.teamWithName(sectionTitle)
         
@@ -79,14 +81,10 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
 
         addPlayerViewController.cancelBlock = {() in
             self.dismissViewControllerAnimated(true, completion: nil)
-            //self.navigationController?.popViewControllerAnimated(true)
             self.tableView.reloadData()
         }
         
-        //self.navigationController?.addChildViewController(addPlayerViewController)
-        //self.navigationController?.presentViewController(addPlayerViewController, animated: true, completion: nil)
         self.presentViewController(addPlayerViewController, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(addPlayerViewController, animated: true)
     }
     
     //MARK: Data Source Cell Configurer
@@ -140,7 +138,7 @@ class ViewTeamsTableViewController: UITableViewController, ViewTeamsDataSourceCe
         colorWheelButton.addTarget(self, action: "colorWheelButtonPressed:", forControlEvents: .TouchUpInside)
         colorWheelButton.tag = section
         
-        //add a player to a specific tea,m
+        //add a player to a specific team
         let addPlayerButtonFrame = CGRect(x: view.frame.width - buttonWidth - scrollPadding, y: (sectionHeight - buttonHeight)/2, width: buttonWidth, height: buttonHeight)
         let addPlayerButton = UIButton(frame: addPlayerButtonFrame)
         addPlayerButton.addTarget(self, action: "addPlayerButtonPressed:", forControlEvents: .TouchUpInside)

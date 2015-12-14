@@ -63,7 +63,6 @@ class TeamStatsViewController: UIViewController, UIPageViewControllerDataSource 
         var index = teamStatsDetailViewController.pageIndex!
         
         //Determine if the game had overtime
-        //var numPeriods = model.numberOfPeriodTypes()
         let players = team.players!.allObjects as! [Player]
         let numPeriods = model.allStatsForPlayer(players[0], game: game).count
         

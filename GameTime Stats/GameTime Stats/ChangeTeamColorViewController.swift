@@ -19,6 +19,7 @@ class ChangeTeamColorViewController: UIViewController {
     @IBOutlet weak var playerIconNumberLabel: UILabel!
     
     override func viewDidLoad() {
+        //set views from defaults
         playerIconView.backgroundColor = model.majorColorForTeam(team)
         playerIconNumberLabel.textColor = model.minorColorForTeam(team)
         majorColor = model.majorColorForTeam(team)
@@ -26,10 +27,12 @@ class ChangeTeamColorViewController: UIViewController {
     }
     
     @IBAction func chooseJerseyColorButtonPressed(sender: UIButton) {
+        //allow the user to update the jersey color.
         let colorPickerViewController = storyboard!.instantiateViewControllerWithIdentifier("ColorPickerViewController") as! ColorPickerViewController
         colorPickerViewController.previousColor = model.majorColorForTeam(team)
         colorPickerViewController.completionBlock = {(chosenColor : UIColor) in
             self.dismissViewControllerAnimated(true, completion: nil)
+            //update color
             self.majorColor = chosenColor
             self.playerIconView.backgroundColor = chosenColor
         }
@@ -40,10 +43,12 @@ class ChangeTeamColorViewController: UIViewController {
     }
     
     @IBAction func chooseNumberColorButtonPressed(sender: UIButton) {
+        //allow the user to update the numbers color
         let colorPickerViewController = storyboard!.instantiateViewControllerWithIdentifier("ColorPickerViewController") as! ColorPickerViewController
         colorPickerViewController.previousColor = model.minorColorForTeam(team)
         colorPickerViewController.completionBlock = {(chosenColor : UIColor) in
             self.dismissViewControllerAnimated(true, completion: nil)
+            //update color 
             self.minorColor = chosenColor
             self.playerIconNumberLabel.textColor = chosenColor
         }

@@ -86,10 +86,25 @@ class AddPlayersTableViewController: UITableViewController, DataSourceCellConfig
     
     //MARK: Actions
     @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
-        //dismissViewControllerAnimated(true, completion: nil)
+        //make sure the team has players. Prompt if not
         let players = model.playersForTeam(team!)
-        cancelBlock?()
-        delegate?.dismissMe()
+        if players.count == 0 {
+            let alert = UIAlertController(title: "Your team has no players!", message: "You must have at least one player on your team to save it. Would you like to add more players, or delete the team?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let addPlayersAction = UIAlertAction(title: "Add Players", style: .Cancel, handler: nil)
+            alert.addAction(addPlayersAction)
+            
+            let deleteTeamAction = UIAlertAction(title: "Delete Team", style: .Destructive, handler: { (action) -> Void in
+                self.cancelBlock?()
+                self.delegate?.dismissMe()
+            })
+            alert.addAction(deleteTeamAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            cancelBlock?()
+            delegate?.dismissMe()
+        }
     }
     
     // MARK: - Table view data source
