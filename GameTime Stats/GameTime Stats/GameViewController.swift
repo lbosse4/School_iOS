@@ -23,8 +23,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let statSummaryContentSize = CGSize(width: 600.0, height: 800.0)
     let animationDuration : NSTimeInterval = 0.55
     let maxSeconds = 59
-    let startingMinutes = 0//30
-    let startingSeconds = 1//030
+    let startingMinutes = 30
+    let startingSeconds = 0//030
     let maxScore = 100
     let firstHalf = 1
     let secondHalf = 2
@@ -36,7 +36,7 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     let yes = 1
     let activeAlpha : CGFloat = 1.0
     let inactiveAlpha : CGFloat = 0.5
-    let secondsInterval : NSTimeInterval = 0.5//1.0
+    let secondsInterval : NSTimeInterval = 1.0
     
     //MARK: Variables
     var playerViews = [UIView]()
@@ -44,8 +44,8 @@ class GameViewController : UIViewController, UIGestureRecognizerDelegate, UIPopo
     var currentPlayers = [Player]()
     var gameTimer = NSTimer()
     var playersPerRow : Int = 0
-    var gameTimerMinutes = 0//30
-    var gameTimerSeconds = 1//030
+    var gameTimerMinutes = 030
+    var gameTimerSeconds = 0//030
     var homeScore = 0
     var guestScore = 0
     var currentPeriod = PeriodType.FirstHalf
