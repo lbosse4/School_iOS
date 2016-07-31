@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         case .Start:
             currentStartButtonState = startButtonOptions.Next
             startButton.setTitle("Next", forState: .Normal)
-            fallthrough
+            fallthrough 
             
         case .Next:
             directionLabel.text = "Pick correct answer."
